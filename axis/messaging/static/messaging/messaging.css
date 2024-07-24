@@ -1,0 +1,224 @@
+#inspect-message-modal .modal-header a {
+    margin-left: 2.1em;
+}
+
+/* Toast notifications */
+#toast-area {
+    position: fixed;
+    top: 126px;
+    right: 10px;
+    width: 400px;
+    z-index: 100;
+}
+#toast-area > [message] {
+    -webkit-transition:0.5s ease all;
+    -moz-transition:0.5s ease all;
+    -o-transition:0.5s ease all;
+    transition:0.5s ease all;
+
+    padding: 0 !important;
+    border-color: #aaa;
+    box-shadow: 0 2px 5px rgba(0,0,0, 0.1);
+}
+#toast-area > [message] {
+    border-radius: 4px !important;
+}
+
+/* Make popups more compact than full messages */
+#toast-area > [message] .media-body .small,
+#toast-area > [message] .media-body .message-sender {
+    display: none;
+}
+#toast-area [message] {
+    top: 0;
+}
+
+#toast-area .email-link,
+.nav .email-link {
+    display: none;
+}
+
+/* Messages tray and individual displays */
+#notifications-tray-toggler .unread {
+    color: #fff;
+}
+
+#notifications-tray-toggler + ul {
+    width: 400px;
+    padding-bottom: 0px !important;
+    max-height: 511px; /* 5 messages and the expander */
+    overflow-y: scroll;
+}
+
+.navbar .dropdown .bar {
+    padding: 5px;
+    text-align: right;
+}
+.navbar .dropdown .bar a {
+    display: inline;
+}
+
+.navbar .message {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.navbar [message] .mark-read i {
+    margin-top: 5px;
+}
+.navbar [message] + [message] > .message {
+    border-top: none;
+}
+.navbar [message]:last-child .message {
+    border-bottom: none;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+[message].private {
+    background-color: white;
+}
+[message].read {
+    background-color: #f5f5f5;  /* Overwrite contextual colors */
+    color: #333;
+}
+[message].read h4 {
+    font-weight: normal;
+}
+
+[message] .media {
+    padding-right: 10px;
+}
+[message] .pull-left .fa-stack {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    margin: 10px 0 0 5px;
+}
+[message] .pull-left .fa-stack .fa-stack-2x {
+    text-shadow: 0 0 5px white;
+}
+
+[message] .media-heading {
+    cursor: pointer;
+}
+[message] .media-heading:hover {
+    text-decoration: underline;
+}
+
+[message] .message.sticky .pull-left .sticky-icon i {
+    margin: 5px 0 0 8px;
+}
+[message] .message.sticky .pull-left .sticky-icon .fa-thumb-tack {
+/*    transform: rotate(45deg);*/
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    font-size: 0.8em;
+}
+[message] .pull-right {
+    width: 36px;
+    text-align: center;
+}
+[message] .mark-read i {
+/*    font-size: 28px;*/
+/*    width: 28px;*/
+/*    height: 36px;*/
+/*    line-height: 36px;*/
+    margin: 0 5px 0 0;
+}
+[message] .mark-read i.fa-list-ul {
+    opacity: 0.3;
+    color: white;
+    text-shadow: 0 0 1px black;
+}
+[message] .mark-read i.fa-check {
+    text-shadow: 0 0 1px white;
+}
+
+[message] h4 {
+    font-size: 1.2em;
+}
+
+[message] .media-body {
+    padding: 5px 0;
+}
+
+[message] .fa-external-link {
+    margin-left: 4px; /* this icon is really left-heavy and doesn't look centered by default */
+}
+[message] .fa-times {
+    margin-left: 2px;
+}
+
+
+[message] a.disabled i {
+    color: #d3d3d3 !important;
+    cursor: default;
+}
+
+.view-all-prompt {
+    padding: 0.5em;
+}
+
+.notifications-expand-toggler {
+    transition: 50ms;
+    -webkit-transition: 50ms;
+    -moz-transition: 50ms;
+    display: block;
+    position: relative;
+    z-index: 1;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+.expand-toggler-wrapper {
+    display: block;
+    width: 20px;
+    margin: 0 auto;
+    background: white;
+    text-align: center;
+}
+
+.notifications-expand-toggler[data-show-read="true"] {
+    border-color: transparent;
+    box-shadow: none;
+}
+.notifications-expand-toggler i {
+    transition: ease-in 100ms;
+    -webkit-transition: ease-in 100ms;
+    -moz-transition: ease-in 100ms;
+}
+
+.messaging-inbox [message] .mark-read i {
+    font-size: 20px;
+    height: auto;
+    line-height: 1em;
+}
+.messaging-inbox [datatable] tbody td:nth-child(6),
+.messaging-inbox [datatable] tbody td:nth-child(7),
+.messaging-inbox [datatable] tbody td:nth-child(8) {
+    text-align: center;
+}
+
+
+[category][preferences] .checkbox-column {
+    width: 15px;
+    text-align: center;
+}
+[category][preferences] .fa-stack {
+/*    margin-top: -0.3em;*/
+    width: 20px; /* Jiggering with stack sizes is a little weird) */
+    height: 20px;
+    line-height: 20px;
+}
+[category][preferences] tbody .fa-thumb-tack {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    font-size: 0.8em;
+}
+
+.loading-error-message {
+    padding: 0.5em;
+}

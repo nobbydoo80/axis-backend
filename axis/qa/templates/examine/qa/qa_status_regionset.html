@@ -1,0 +1,9 @@
+{% extends 'examine/angular_regionset_accordion.html' %}
+
+{% block add_new_button_text %} Add new [[ regionSet.verbose_name ]] {% endblock %}
+
+{% block add_new_button %}
+    <div ng-if="$root.ExamineSettings.can_add_qa">
+        {{ block.super }}
+    </div>
+{% endblock %}

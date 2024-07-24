@@ -1,0 +1,304 @@
+.imgCropper-wrapper {
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    margin-bottom: 2px;
+}
+
+.imgCropper-controls {
+    height: 22px;
+}
+
+.preview-actions {
+    margin-top: 14px;
+}
+
+.imgCropper-controls button {
+    position: absolute;
+}
+
+/* rotate */
+.imgCropper-controls button:nth-child(1) {
+    left: 15px;
+}
+.imgCropper-controls button:nth-child(6) {
+    left: 45px;
+}
+
+/* zoom */
+.imgCropper-controls button:nth-child(2) {
+    left: 75px;
+}
+.imgCropper-controls button:nth-child(5) {
+    left: 105px;
+}
+
+/* fit */
+.imgCropper-controls button:nth-child(3) {
+    left: 135px;
+}
+
+/* picker */
+.imgCropper-controls button:nth-child(7) {
+    left: 165px;
+}
+#signature-area button label {
+    cursor: pointer;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* crop */
+.imgCropper-controls button:nth-child(4) {
+    width: 105px;
+    left: 319px;
+}
+
+/* Tasks tab*/
+axis-region-set[options*="home_task"] .region-set>axis-region:first-child .scheduling-task-panel {
+    border-radius: 4px 4px 0 0;
+}
+
+axis-region-set[options*="home_task"] .region-set>axis-region:last-child .scheduling-task-panel {
+    border-radius: 0 0 4px 4px;
+}
+
+axis-region-set[options*="home_task"] .scheduling-task-panel .scheduling-task-panel-body-detail {
+    padding: 0 15px;
+}
+
+axis-region-set[options*="home_task"] .scheduling-task-panel .scheduling-task-panel-body-detail .scheduling-task-table {
+    border: 0;
+    margin: 0;
+}
+
+axis-region-set[options*="home_task"] .scheduling-task-panel .scheduling-task-panel-body-detail .scheduling-task-table tbody tr td {
+    border: 0;
+    padding: 8px 0;
+}
+
+axis-region-set[options*="home_task"] .panel-heading .heading-scheduling-task-table {
+    border: 0;
+    margin: 0;
+}
+
+axis-region-set[options*="home_task"] .panel-heading .heading-scheduling-task-table tbody tr td {
+    border: 0;
+    padding: 0;
+}
+
+/* User tasks tab*/
+axis-region-set[options*="user_task"] .region-set>axis-region:first-child .scheduling-task-panel {
+    border-radius: 4px 4px 0 0;
+}
+
+axis-region-set[options*="user_task"] .region-set>axis-region:last-child .scheduling-task-panel {
+    border-radius: 0 0 4px 4px;
+}
+
+axis-region-set[options*="user_task"] .scheduling-task-panel .scheduling-task-panel-body-detail {
+    padding: 0 15px;
+}
+
+axis-region-set[options*="user_task"] .scheduling-task-panel .scheduling-task-panel-body-detail .scheduling-task-table {
+    border: 0;
+    margin: 0;
+}
+
+axis-region-set[options*="user_task"] .scheduling-task-panel .scheduling-task-panel-body-detail .scheduling-task-table tbody tr td {
+    border: 0;
+    padding: 8px 0;
+}
+
+axis-region-set[options*="user_task"] .panel-heading .heading-scheduling-task-table {
+    border: 0;
+    margin: 0;
+}
+
+axis-region-set[options*="user_task"] .panel-heading .heading-scheduling-task-table tbody tr td {
+    border: 0;
+    padding: 0;
+}
+
+
+/*
+    Training tab
+ */
+axis-region-set[options*="user_training"] .approve-progressbar-wrapper {
+    position: absolute;
+    width: 260px;
+    right: 110px;
+    margin-top: 2px;
+}
+
+axis-region-set[options*="user_training"] .approve-progressbar-wrapper progress {
+    height: 16px;
+}
+
+axis-region-set[options*="user_training"] .approve-progressbar-wrapper .approve-list-popover {
+    width: 260px;
+    margin-top: 30px;
+}
+
+axis-region-set[options*="user_training"] .approve-progressbar-wrapper:hover .approve-list-popover {
+    display: block;
+}
+
+axis-region-set[options*="user_training"] .approve-progressbar-wrapper .approve-list-popover .popover-content {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+axis-region-set[options*="user_training"] .approve-progressbar-wrapper .approve-list-popover .popover-content .list-group-item {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+axis-region-set[options*="user_training"] .approve-progressbar-wrapper .approve-list-popover .approver-list {
+    margin-bottom: 0;
+}
+
+axis-region-set[options*="user_training"] .approve-progressbar-wrapper .approve-list-popover .popover-content .approver-list .list-group-item:last-child {
+    border-bottom: 0;
+}
+
+axis-region-set[options*="user_training"] .approve-progressbar-wrapper .approve-list-popover .popover-content .approver-list .list-group-item .approve-label {
+    display: block;
+    width: 100%;
+}
+
+axis-region-set[options*="user_training"] .region-set>axis-region .training-panel {
+    margin-bottom: 8px !important;
+}
+
+axis-region-set[options*="user_training"] .region-set>axis-region:first-child .training-panel {
+    border-radius: 4px 4px 0 0;
+}
+
+axis-region-set[options*="user_training"] .region-set>axis-region:last-child .training-panel {
+    border-radius: 0 0 4px 4px;
+}
+
+axis-region-set[options*="user_training"] .training-panel .training-panel-body-detail {
+    padding: 0 5px;
+}
+
+axis-region-set[options*="user_training"] .training-panel .training-panel-body-detail .training-table {
+    border: 0;
+    margin: 0;
+}
+
+axis-region-set[options*="user_training"] .training-panel .training-panel-body-detail .training-table tbody tr td {
+    border: 0;
+}
+
+axis-region-set[options*="user_training"] .panel-heading .object-name {
+    float: left;
+}
+
+/*
+    Accreditation tab
+ */
+axis-region-set[options*="user_accreditation"] .region-set>axis-region .accreditation-panel {
+    margin-bottom: 8px !important;
+}
+
+axis-region-set[options*="user_accreditation"] .region-set>axis-region:first-child .accreditation-panel {
+    border-radius: 4px 4px 0 0;
+}
+
+axis-region-set[options*="user_accreditation"] .region-set>axis-region:last-child .accreditation-panel {
+    border-radius: 0 0 4px 4px;
+}
+
+axis-region-set[options*="user_accreditation"] .accreditation-panel .accreditation-panel-body-detail {
+    padding: 0 15px;
+}
+
+axis-region-set[options*="user_accreditation"] .accreditation-panel .accreditation-panel-body-detail .accreditation-table {
+    border: 0;
+    margin: 0;
+}
+
+axis-region-set[options*="user_accreditation"] .accreditation-panel .accreditation-panel-body-detail .accreditation-table tbody tr td {
+    border: 0;
+    padding: 8px 0;
+}
+
+axis-region-set[options*="user_accreditation"] .panel-heading .heading-accreditation-table {
+    border: 0;
+    margin: 0;
+}
+
+axis-region-set[options*="user_accreditation"] .panel-heading .heading-accreditation-table tbody tr td {
+    border: 0;
+    padding: 0;
+}
+
+/*
+    Certification metric tab
+ */
+axis-region-set[options*="user_certification_metric"] th:nth-child(1),
+axis-region-set[options*="user_certification_metric"] table table td:nth-child(1) {
+    width: 180px;
+}
+
+axis-region-set[options*="user_certification_metric"] th:nth-child(2),
+axis-region-set[options*="user_certification_metric"] table table td:nth-child(2) {
+    width: 180px;
+}
+
+axis-region-set[options*="user_certification_metric"] th:nth-child(3),
+axis-region-set[options*="user_certification_metric"] table table td:nth-child(3) {
+    width: 100px;
+}
+
+axis-region-set[options*="user_certification_metric"] th:nth-child(4),
+axis-region-set[options*="user_certification_metric"] table table td:nth-child(4) {
+    width: 100px;
+}
+
+axis-region-set[options*="user_certification_metric"] th:nth-child(5),
+axis-region-set[options*="user_certification_metric"] table table td:nth-child(5) {
+    width: 100px;
+}
+
+/*
+    Inspection grade tab
+ */
+axis-region-set[options*="user_inspection_grade"] .region-set>axis-region .inspection_grade-panel {
+    margin-bottom: 8px !important;
+}
+
+axis-region-set[options*="user_inspection_grade"] .region-set>axis-region:first-child .inspection_grade-panel {
+    border-radius: 4px 4px 0 0;
+}
+
+axis-region-set[options*="user_inspection_grade"] .region-set>axis-region:last-child .inspection_grade-panel {
+    border-radius: 0 0 4px 4px;
+}
+
+axis-region-set[options*="user_inspection_grade"] .inspection_grade-panel .inspection_grade-panel-body-detail {
+    padding: 0 15px;
+}
+
+axis-region-set[options*="user_inspection_grade"] .inspection_grade-panel .inspection_grade-panel-body-detail .inspection_grade-table {
+    border: 0;
+    margin: 0;
+}
+
+axis-region-set[options*="user_inspection_grade"] .inspection_grade-panel .inspection_grade-panel-body-detail .inspection_grade-table tbody tr td {
+    border: 0;
+    padding: 8px 0;
+}
+
+axis-region-set[options*="user_inspection_grade"] .panel-heading .heading-inspection_grade-table {
+    border: 0;
+    margin: 0;
+}
+
+axis-region-set[options*="user_inspection_grade"] .panel-heading .heading-inspection_grade-table tbody tr td {
+    border: 0;
+    padding: 0;
+}

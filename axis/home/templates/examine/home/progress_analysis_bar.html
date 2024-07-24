@@ -1,0 +1,28 @@
+<div class="progress"
+    ng-class="{'progress-striped': progress.objectId && !progress.progress_analysis}">
+    <div class="progress-bar loading-bar"
+         ng-style="{
+            'width': (!progress.objectId || progress.progress_analysis ? 0 : 100) + '%',
+            'background-color': 'rgba(0, 0, 0, 0.15)',
+            'overflow': 'hidden'
+          }" role="progressbar">
+        <i class="fa fa-circle-o-notch fa-spin"></i> Checking requirements&hellip;
+    </div>
+
+    <div class="progress-bar progress-bar-success" ng-style="{'width': (progress.progress_analysis.completion || 0) + '%'}" role="progressbar">
+        <span ng-if="progress.hasIppPayments === true">
+            <i class="fa fa-usd"></i>
+        </span>
+        <span ng-if="progress.objectState == 'complete'">
+            <i class="fa fa-certificate"></i>
+            Certified - [[ progress.certificationDate | date: 'M/d/yy' ]]
+        </span>
+        <span ng-if="progress.objectState == 'qa_pending'">
+            <i class="fa fa-pencil-quare-o"></i>
+            Pending QA
+        </span>
+        <span ng-if="progress.objectState == 'certification_pending'">
+            Inspected
+        </span>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+{% verbatim %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group" id="div_id_{{this.id}}_{{this.form_name}}-0-{{this.field_name}}">
+            <div class="controls">
+                <div class="fileinput fileinput-{{#if this.value}}exists{{else}}new{{/if}}"
+                     data-provides="fileinput">
+                    <div class="input-group">
+                        <div class="uneditable-input form-control">
+                            <i class="icon-file fileinput-exists"></i>
+                            <span class="fileinput-filename"
+                                  title="{{this.value}}">{{this.value}}</span>
+                        </div>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" data-trigger="fileinput">
+                                <span class="fileinput-new">Select File</span>
+                                <span class="fileinput-exists">Change</span>
+                            </button>
+                            {{#unless disable_remove}}
+                                <button class="btn btn-default fileinput-exists"
+                                        data-dismiss="fileinput">
+                                    Remove
+                                </button>
+                            {{/unless}}
+                            {{#if this.value}}
+                                <a class="btn-btn-primary" href="{{this.url}}">
+                                    <i class="icon-cloud-download"></i>
+                                </a>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div style="display: none;">
+                        <input type="file" class="clearablefileinput"
+                               id="id_{{this.id}}_{{this.form_name}}-0-{{this.field_name}}"
+                               name="{{this.id}}_{{this.form_name}}-0-{{this.field_name}}">
+                    </div>
+                </div>
+                <input class="{{this.field_name}}_raw"
+                       id="id_{{this.id}}_{{this.form_name}}-0-{{this.field_name}}_raw"
+                       name="{{this.id}}_{{this.form_name}}-0-{{this.field_name}}_raw"
+                       type="hidden">
+                <input class="{{this.field_name}}_filename"
+                       id="id_{{this.id}}_{{this.form_name}}-0-{{this.field_name}}_raw_name"
+                       name="{{this.id}}_{{this.form_name}}-0-{{this.field_name}}_raw_name"
+                       type="hidden">
+                {{> field_errors_block}}
+                {{> help_text}}
+            </div>
+        </div>
+    </div>
+</div>
+{% endverbatim %}

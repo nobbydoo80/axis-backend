@@ -1,0 +1,17 @@
+<p>
+    A new user {{ user_fullname }} ({{ user_email }}) has requested approval to use AXIS.
+    You can approve their request at
+    <a target="_blank" href="{{ approval_url }}">{{ approval_url }}</a>
+</p>
+
+<p>
+    Details:
+    <ul>
+        <li><strong>Full name:</strong>&nbsp;<a target="_blank" href="{{ user_profile_url }}">{{ user_fullname }}</a></li>
+        <li><strong>Title:</strong>&nbsp;{{ user_title }}</li>
+        <li><strong>Email:</strong>&nbsp;<a href="mailto:{{ user_email }}">{{ user_email }}</a></li>
+        <li><strong>Work Phone:</strong>&nbsp;{{ user_work_phone }}</li>
+        <li><strong>Cell Phone:</strong>&nbsp;{{ user_cell_phone }}</li>
+        <li><strong>Email Domain:</strong>&nbsp;<a target="_blank" href="{{ user_domain }}">{{ user_domain }}</a></li>
+    </ul>
+</p>

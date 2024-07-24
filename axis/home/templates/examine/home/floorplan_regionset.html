@@ -1,0 +1,34 @@
+{% extends "examine/angular_regionset_panel.html" %}
+
+{% block add_new_button %}
+    <div class="btn-group" dropdown>
+        <button type="button" class="btn btn-default"
+                ng-click="regionSet.fetchNewRegion({'form_type': 'new'})"
+                ng-if="regionSet.new_region_url">
+            Add new floorplan
+        </button>
+        <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" ng-controller="FloorplanCopyController as fpCopy">
+            <li>
+                <a ng-click="regionSet.fetchNewRegion({'form_type': 'existing'})">
+                    Associate an existing floorplan
+                </a>
+            </li>
+
+            <li role="presentation" class="divider"></li>
+
+            <li ng-repeat="otherRegionObject in regionSet.parentRegionObject.parentRegionSet.regions"
+                ng-if="otherRegionObject.object.id && {# has already been saved #}
+                       otherRegionObject.object.id != regionSet.parentRegionObject.object.id &&  {# isn't this region #}
+                       otherRegionObject.object.floorplan &&  {# has an active floorplan #}
+                       regionSet.parentRegionObject.object.floorplans.indexOf(otherRegionObject.object.floorplan) === -1  {# isn't already used in floorplans m2m #}
+                ">
+                <a ng-click="fpCopy.copy(otherRegionObject)">
+                    Use from <em>[[ otherRegionObject.object_name ]]</em>
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock add_new_button %}

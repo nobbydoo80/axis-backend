@@ -1,0 +1,130 @@
+{% load crispy_forms_tags %}
+{% load crispy_file %}
+
+{% comment %}
+    Requires:
+        object_name -> Home, Subdivision, etc
+        formset -> formset object
+        shared_documents - docs which have been shared.
+
+    Optional:
+        exclude_form_controls -> If given, causes the template to skip <form> and <submit>
+{% endcomment %}
+
+{% block style_sheet %}
+<style type="text/css">
+    table.fileupload{
+        border-left: 1px solid #dddddd;;
+    }
+    table.fileupload td:first-of-type,
+    table.fileupload th:first-of-type{
+        border-left: 0;
+    }
+    .add-row{
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+{% if formset or shared_documents %}
+    <div class="row">
+        {% if shared_documents.count > 0 %}
+            <div class="col-md-12">
+                <h5>Documents shared by other in this {{ object_name }} to {{ request.user.company }}</h5>
+                <ul>
+                    {% for object in shared_documents %}
+                        <div class="col-md-6">
+                            <li>
+                                <a href="{{ object.document.url }}" title="{{ object.description }}">
+                                    {{ object.filename }}
+                                </a>
+                            </li>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+    {% if formset %}
+
+        <script type="text/javascript">
+            $(function(){
+                // formset.js
+                $('.formset_table_row').formset({
+                    prefix: '{{ formset.prefix }}',
+                    addText: 'Add another',
+                    deleteText: 'Remove'
+                });
+            });
+        </script>
+
+        <h5>Documents shared to the {{ object_name }} by {{ request.user.company }}</h5>
+        {% if not exclude_form_controls %}
+        <form id="myform" method="post" action='{{ request.path }}' enctype="multipart/form-data">
+        {% endif %}
+            {% csrf_token %}
+            {{ formset.management_form }}
+            <table class="table table-striped table-bordered fileupload">
+                <thead>
+                    <tr>
+                        <th style="width: 45%;">
+                            Documents
+                            {% if document_help_text %}
+                                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ document_help_text }}"></i>
+                            {% endif %}
+                        </th>
+                        <th style="width: 35%;">
+                            Description
+                            {% if description_help_text %}
+                                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ description_help_text }}"></i>
+                            {% endif %}
+                        </th>
+                        <th class="text-center">
+                            Public
+                            {% if public_help_text %}
+                                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ public_help_text }}"></i>
+                            {% endif %}
+                        </th>
+                        <th class="text-center">
+                            Remove
+                            {% if remove_help_text %}
+                                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ remove_help_text }}"></i>
+                            {% endif %}
+                        </th>
+                    </tr>
+                </thead>
+{#                Current implementation of formset.js can't figure out tbody #}
+                <tbody>
+                    {% for form in formset.forms %}
+                        <tr class="formset_table_row">
+                            {{ form.id }}
+                            {% for hidden_field in form.hidden_fields %}
+                                {{ hidden_field }}
+                            {% endfor %}
+                            <td>{{ form.document|as_crispy_file_field }}</td>
+                            <td>{{ form.description|as_crispy_field }}</td>
+                            <td class="text-center">{{ form.is_public }}</td>
+                            <td class="text-center">
+                                {% if form.instance.pk %}{{ form.DELETE }}{% endif %}</td>
+                        </tr>
+
+                        {% if form.errors %}
+                            <tr>
+                                <td colspan="4 alert alert-block alert-error">{{ form.errors }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% if not exclude_form_controls %}
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <input name="shared_document_submit" type="submit" class="btn btn-primary" value="Submit" />
+                </div>
+            </div>
+        </form>
+        {% endif %}
+
+    {% endif %}
+{% endif %}

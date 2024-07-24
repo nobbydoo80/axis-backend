@@ -1,0 +1,23 @@
+{% comment %}
+    Requires: object_type, name
+    This pulls the recent information
+{% endcomment %}
+
+<div id="recent_{{ object_type }}"></div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.getJSON("/api/v2/recent_items/?object_type={{ object_type }}&limit={{ limit|default:5 }}",
+                  function(data) {
+            var arr = []
+            for (var item of data) {
+                var str = '<li><a href="' + item.url + '">' + item.name + '</a></li>';
+                arr.push(str);
+            }
+            if (arr.length > 0) {
+                 $('#recent_{{ object_type }}').html(
+                     '<h5>{{ name }}</h5>' +
+                     '<ul>' + arr.join('\n') + '</ul>');
+            }
+        });
+    })
+</script>

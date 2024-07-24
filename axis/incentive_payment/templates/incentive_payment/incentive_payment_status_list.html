@@ -1,0 +1,279 @@
+{% extends 'base_list.html' %}
+{% load crispy_forms_tags %}
+
+{% block style_sheet %}
+{{ block.super }}
+    <style type="text/css">
+        #visual_indication_table li li {
+            background: #FBE3E4;
+            color: #8A1F11;
+        }
+        tbody tr td:first-child{ text-align: center; }
+        .dataTable th[data-name="select"] { width: 5%; text-align: center; }
+        .dataTable th[data-name="address"] { width: 15%; }
+        .dataTable th[data-name="state"] { width: 5%; }
+        .dataTable th[data-name="meter-set"] { width: 5%; }
+        .dataTable th[data-name="cert-date"] { width: 5%; }
+        .dataTable th[data-name="bldr-agrmnt"] { width: 5%; }
+        .dataTable th[data-name="remrate"] { width: 5%; }
+        .dataTable th[data-name="annotation"] { width: 5%; }
+        .dataTable th[data-name="last-activity"] { width: 5%; }
+    </style>
+{% endblock %}
+
+{% block header_text %}
+    {{ title }}
+{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript">
+        function confirm_datatable_options(options){
+            options.ajax.data = function(data){
+                data.builder_id = $("#id_builder").val();
+                data.subdivision_id = $("#id_subdivision").val();
+                data.eep_program_id = $("#id_eep_program").val();
+                data.state = $("#id_state").val();
+                data.activity_start = $("#id_activity_start").val();
+                data.activity_stop = $("#id_activity_stop").val();
+            }
+            return options;
+        }
+
+        var selected = [];
+        var toggle = false;
+        $(function(){
+            //start datepickers
+            $("#id_activity_start, #id_activity_stop").datepicker();
+            //hide stats div
+            //hide fields until a home is selected
+            $("#stats_div, #annotation_fields").hide();
+            //reload table on form change
+            $("#query_form").on('change', function(){
+                $('.datatable').dataTable().fnDraw();
+                $('.checkall').prop('checked', false);
+                toggle = false;
+                selected = [];
+                show_hide_action_panel()
+            });
+            //fix the header for select all column
+            $("[data-name='select']").html('Select All<br><input class="checkall" type="checkbox">');
+            //Check all checkboxes
+            $('.checkall').on('click', function(e){
+                var self = this;
+                $("table :checkbox:not(.checkall)").each(function(){
+                    var row = $(this).closest('tr');
+                    var iId = $(row).attr('id');
+                    is_in_array = jQuery.inArray(iId, selected)
+                    if(!toggle){
+                        if(is_in_array == -1){
+                            selected[selected.length] = iId;
+                        }
+                    } else {
+                        if(is_in_array != -1){
+                            selected = jQuery.grep(selected, function(value){
+                                return value != iId;
+                            })
+                        }
+                    }
+                    $("#id_stats").val(selected)
+                    $(this).prop('checked', self.checked);
+                })
+                e.stopPropagation()
+                toggle = !toggle
+		        show_hide_action_panel();
+            });
+            // Individual checkboxes
+            $('table tbody').on('change', ':checkbox', function(){
+                var row = $(this).closest('tr');
+                var iId = $(row).attr('id');
+                is_in_array = jQuery.inArray(iId, selected);
+                if(is_in_array == -1){
+                    selected[selected.length] = iId;
+                } else {
+                    selected = jQuery.grep(selected, function(value){
+                        return value != iId;
+                    })
+                }
+                $('#id_stats').val(selected);
+                console.log('selected: ', $("#id_stats").val())
+                show_hide_action_panel()
+            });
+
+
+            $("#annotation_form").on('submit', function(){
+                if(selected.length == 0){
+                    console.log('No homes are selected');
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+            $("#annotation_form").validate({
+                rules: {
+                    stats: { required: true },
+                    new_state: { required: true }
+                }
+            });
+            // state machine
+            var state = $("select#id_state");
+            var state_initial = state.find("option:selected").val();
+            console.log("Initial State :" + state_initial);
+
+            var new_state = $("select#id_new_state");
+            var new_state_defaults = new_state.children();
+
+            // Invalid state advancements for each filter type.
+            // These will be removed from the advancement <select> if the "state_initial" is chosen.
+            var invalid_states = {
+            {% if only_approve %}
+                'start': [
+                    'start',
+                    'ipp_failed',
+                    'ipp_payment_automatic_requirements',
+                    'ipp_payment_failed_requirements',
+                    'ipp_failed_restart',
+                    'payment_pending',
+                    'complete'
+                ],
+            {% else %}
+                'start': [
+                    'start',
+                    'ipp_failed',
+                    'ipp_payment_automatic_requirements',
+                    'payment_pending',
+                    'complete'
+                ],
+            {% endif %}
+                'ipp_failed_restart': [
+                    'start',
+                    'ipp_failed',
+                    'ipp_payment_automatic_requirements',
+                    'payment_pending',
+                    'complete'
+                ],
+                'ipp_payment_failed_requirements': [
+                    'start',
+                    'ipp_failed_restart',
+                    'ipp_payment_requirements',
+                    'ipp_payment_automatic_requirements',
+                    'payment_pending',
+                    'complete',
+                    'ipp_payment_failed_requirements'
+                ],
+                'ipp_payment_automatic_requirements': [
+                    'ipp_payment_requirements',
+                    'ipp_payment_automatic_requirements',
+                    'payment_pending',
+                    'complete',
+                    'ipp_payment_failed_requirements',
+                    'ipp_failed_restart'
+                ],
+                'payment_pending': [
+                    'start',
+                    'ipp_payment_requirements',
+                    'ipp_payment_automatic_requirements',
+                    'payment_pending',
+                    'complete',
+                    'ipp_payment_failed_requirements',
+                    'ipp_failed_restart'
+                ],
+                'complete': [
+                    'start',
+                    'ipp_payment_requirements',
+                    'ipp_payment_automatic_requirements',
+                    'payment_pending',
+                    'complete',
+                    'ipp_payment_failed_requirements',
+                    'ipp_failed_restart'
+                ]
+            };
+
+            function new_state_options_on_change(selected_state){
+                $.each(invalid_states[selected_state], function(i, invalid_state){
+                    new_state.find('option[value="'+invalid_state+'"]').remove();
+                });
+            }
+
+            function show_hide_action_panel(){
+                if (selected.length == 0) {
+                    $("#instructions").slideDown()
+                    $("#annotation_fields").slideUp()
+                    $('input[type="submit"]').prop('disabled', true);
+                } else {
+                    $("#instructions").slideUp()
+                    $("#annotation_fields").slideDown()
+                    $('input[type="submit"]').prop('disabled', false);
+                }
+            }
+
+            function change_handler(){
+                new_state.empty().append(new_state_defaults);
+                var state_selected = state.find("option:selected").val();
+                new_state_options_on_change(state_selected);
+                if (state_selected == 'ipp_payment_automatic_requirements') {
+                    $("#id_annotation").rules("add", "required");
+                    console.log("-- Added requirement for " + state_selected + " --")
+                }
+                console.log("-- Changed State " + state_selected + " --")
+            }
+
+            state.change(function(){
+                change_handler();
+            });
+            change_handler();
+        })
+    </script>
+{% endblock %}
+
+{% block list_content %}
+
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Filter Options</h3>
+
+            <form id="query_form">{% csrf_token %}
+                {{ query_form.builder|as_crispy_field }}
+                {{ query_form.eep_program|as_crispy_field }}
+                {{ query_form.subdivision|as_crispy_field }}
+                {{ query_form.state|as_crispy_field }}
+                <div class="row">
+                    <div class="col-md-6">{{ query_form.activity_start|as_crispy_field }}</div>
+                    <div class="col-md-6">{{ query_form.activity_stop|as_crispy_field }}</div>
+                </div>
+            </form>
+            {% if form %}
+                <div id="add_annotation" class="well">
+                    <form id="annotation_form" method="post" action="{{ form.action }}">
+                        <div id="instructions">
+                            <em>
+                                A Home must be selected to start Incentive Processing.
+                            </em>
+                        </div>
+                        <fieldset id="annotation_fields">
+                            {% if form.errors %}
+                                <tr>
+                                    <td colspan="4 alert alert-block alert-error">{{ form.errors }}</td>
+                                </tr>
+                            {% endif %}
+
+                            {% csrf_token %}
+                            <div class="hide_new_state"> {{ form.new_state|as_crispy_field }} </div>
+                            <div id="stats_div"> {{ form.stats|as_crispy_field }} </div>
+                            {{ form.annotation|as_crispy_field }}
+                            <div class="form-actions">
+                                <input title="Submit" name="submit" value="Update"
+                                       class="btn btn-primary"
+                                       type="submit"
+                                       disabled>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-9">
+            {{ datatable }}
+        </div>
+    </div>
+{% endblock %}

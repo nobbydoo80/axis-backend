@@ -1,0 +1,60 @@
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th colspan="6" class="text-center">
+            Washington Code Credit Calculations
+            <span ng-if="ctrl.result.is_locked"><i class="fa fa-lock"></i></span>
+        </th>
+    </tr>
+    <tr>
+        <th colspan="2" class="text-center">
+            Home Data
+        </th>
+        <th colspan="2" class="text-center">
+            Code Credits
+        </th>
+        <th colspan="2" class="text-center">
+            Incentives
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Conditioned Floor Area</th>
+            <td>[[ ctrl.result.summary.conditioned_floor_area|number:0 ]] Sq Ft</td>
+            <th>Required Code Credits</th>
+            <td>[[ ctrl.result.summary.required_credits_to_meet_code ]]</td>
+            <th>Code Credit Incentive</th>
+            <td>$[[ ctrl.result.summary.code_credit_incentive|number:2 ]]</td>
+        </tr>
+        <tr>
+            <th>Water Heating Fuel</th>
+            <td>[[ ctrl.result.summary.water_heating_fuel ]]</td>
+            <th>Total Selected Credits</th>
+            <td>[[ ctrl.result.summary.achieved_total_credits ]]</td>
+            <th>Smart Thermostat Incentive</th>
+            <td>$[[ ctrl.result.summary.thermostat_incentive|number:2 ]]</td>
+        </tr>
+        <tr>
+            <th>Thermostat Type</th>
+            <td>[[ ctrl.result.summary.thermostat_type ]]</td>
+            <th>Eligible Above Code Credits</th>
+            <td>[[ ctrl.result.summary.eligible_gas_points ]]</td>
+            <th>Fireplace Incentive</th>
+            <td>$[[ ctrl.result.summary.fireplace_incentive|number:2 ]]</td>
+        </tr>
+        <tr>
+            <th>Fireplace Efficiency</th>
+            <td>[[ ctrl.result.summary.fireplace_efficiency ]]</td>
+            <th>Total Therm Savings</th>
+            <td>[[ ctrl.result.summary.total_therm_savings|number:0 ]]</td>
+            <th>Builder Incentive</th>
+            <td>$[[ ctrl.result.summary.total_builder_incentive|number:2 ]]</td>
+        </tr>
+        <tr>
+            <td colspan="4">&nbsp;</td>
+            <th>Verifier Incentive</th>
+            <td>$[[ ctrl.result.summary.verifier_incentive|number:2 ]]</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,318 @@
+{% extends 'home/home_stats.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block page_title %}Provider Dashboard{% endblock %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <style>
+        .progress{
+            position: relative;
+        }
+        .progress::after{
+            content: '';
+            color: white;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .progress:hover::after{
+            content: 'View Info';
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .progress:active::after{
+            background: rgba(0, 0, 0, 0.2);
+        }
+        form .btn-block {
+            margin-top: 5px; {# Normally bootstrap does this for adjacent buttons #}
+        }
+        .items-selected {
+            display: none;
+        }
+        #transaction-modal .list-group-item-danger .list-group-item-text {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block javascript_head %}
+    <script>
+        window._qa_active = {{ qa_active|yesno:'true,false' }};
+    </script>
+    <script src="{% static 'home/js/AsyncProgressBar.js' %}"></script>
+    <script src="{% static 'home/js/home_status_report.js' %}"></script>
+    <script src="{% static 'home/js/xls_export.js' %}"></script>
+    <script src="{% static 'home/js/provider_dashboard.js' %}"></script>
+    <script type="text/javascript">
+        $(function(){
+            function addHiddenSelectionInputs(){
+                var homeIds = [];
+
+                $('input[type="hidden"][name="homes"]').remove();
+                $('.datatable').DataTable().rows(function(i, data, node){
+                    if ($(node).find(':checkbox:checked').length) {
+                        homeIds.push(data.DT_RowId);
+                    }
+                });
+
+                for (var i in homeIds) {
+                    $('#query_form').append('<input type="hidden" name="homes" value="'+homeIds[i]+'" />')
+                }
+            }
+            $('#export_button').click(function(){
+                addHiddenSelectionInputs();
+            });
+            $('#zip_button').click(function(){
+                addHiddenSelectionInputs();
+
+                {# All inputs need to be enabled so that they do a vanilla form submit #}
+                $('#query_form').find(':disabled').prop('disabled', false);
+            });
+
+            $('#mode-buttons button').click(function(){
+                $('#mode-buttons button').removeClass('btn-primary').addClass('btn-default');
+                $(this).removeClass('btn-default').addClass('btn-primary');
+            })
+        });
+
+        datatableview.finalizeOptions = (function(){
+            {# Add currently selected "mode" button to DT queries. #}
+            var super_finalizeOptions = datatableview.finalizeOptions;
+
+            return function finalizeOptions(datatable, options){
+                options = super_finalizeOptions(datatable, options);
+
+                options.fnHeaderCallback = function(nHead, aasData, iStart, iEnd, aiDisplay){
+
+                    var head = $(nHead),
+                        header = head.children().first();
+                    header.addClass('text-center');
+                    header.html('<label for="select-all">Select&nbsp;All</label><br/><input id="select-all" type="checkbox"/>');
+                    header.on('change', ':checkbox', function(e){
+                        var checkboxes = $(".datatable").find('tbody :checkbox');
+                        checkboxes.attr('checked', this.checked);
+                        checkboxes.trigger('change');
+                    });
+                };
+
+                var super_data = options.ajax.data || function(){};
+                options.ajax.data = function(data){
+                    super_data(data);
+                    data.datatable = $('#mode').val();
+                };
+                return options;
+            }
+        })();
+
+    </script>
+{% endblock %}
+
+{% block form_title %}
+    <h3>Filter Options
+        <small><a href="#" id="toggle-snapshot">Hide Stats</a></small></h3>
+{% endblock %}
+
+
+{% block list_content %}
+    {# Page mode switchers above the rest of the page's normal content #}
+    <div id="mode-buttons" class="row">
+        <div class="col-md-3">
+            <button type="button" class="btn btn-lg btn-block btn-primary"
+                    data-toggle="tab" href="#certification">Certification</button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-lg btn-block btn-default"
+                    data-toggle="tab" href="#qa">QA</button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-lg btn-block btn-default"
+                    data-toggle="tab" href="#notes">Notes</button>
+        </div>
+        {% if show_fasttrack_mode %}
+            <div class="col-md-3">
+                <button type="button" class="btn btn-lg btn-block btn-default"
+                        data-toggle="tab" href="#projecttracker">ProjectTracker</button>
+            </div>
+        {% endif %}
+    </div>
+    <hr>
+
+    {{ block.super }}
+{% endblock list_content %}
+
+
+{% block form_actions %}{% endblock form_actions %}
+
+
+{% block form_actions_top %}
+    {# Quicklink filters #}
+    <div class="list-group snapshot">
+        {% for link in quick_links %}
+            <a href="#" class="quick-link list-group-item" id="quick_link_{{ link.slug }}">
+                <span class="badge">{{ link.count }}</span>
+                {{ link.name }}
+                {% for k, v in link.filter_kwargs.items %}
+                    <span class="filter" data-name="{{ k|escape }}" data-value="{{ v|escape }}"></span>
+                {% endfor %}
+            </a>
+        {% endfor %}
+    </div>
+
+    {# Page's mode switcher controls this action area #}
+    <div class="tab-content">
+        <div class="tab-pane active" id="certification">
+            <p class="text-muted text-center">
+                <em class="no-items-selected">Select specific items to certify.</em>
+                <em class="items-selected">
+                    Certify or export <span class="checked-item-counter"></span> item(s).
+                </em>
+            </p>
+            <span class="no-items-selected">
+                <button type="button" class="btn btn-primary btn-block"
+                        disabled="disabled">
+                    Certify
+                </button>
+            </span>
+            <span class="items-selected">
+                <button type="button" class="btn btn-primary btn-block"
+                        data-target="#transaction-modal" data-toggle="modal">
+                    Certify
+                </button>
+            </span>
+        </div>
+        <div class="tab-pane" id="qa">
+            {% if qa_active %}
+                <p class="text-muted text-center">
+                    <em class="no-items-selected">Select specific items to review.</em>
+                    <em class="items-selected">
+                        Review or export <span class="checked-item-counter"></span> item(s).
+                    </em>
+                </p>
+                <span class="no-items-selected">
+                    <button type="button" class="btn btn-primary btn-block"
+                            disabled="disabled">
+                        Add Program Review
+                    </button>
+                </span>
+                <span class="items-selected">
+                    <button type="button" class="btn btn-primary btn-block"
+                            data-target="#transaction-modal" data-toggle="modal">
+                        Add Program Review
+                    </button>
+                </span>
+            {% else %}
+                <div class="text-center">
+                    Contact
+                    <mark>Sales@PivotalEnergy.net</mark>
+                    to use this feature.
+                </div>
+            {% endif %}
+        </div>
+        <div class="tab-pane" id="notes">
+            <p class="text-muted text-center">
+                <em class="no-items-selected">Select specific items to add a note.</em>
+                <em class="items-selected">
+                    Add a note to or export <span class="checked-item-counter"></span> item(s).
+                </em>
+            </p>
+            <span class="no-items-selected">
+                <button type="button" class="btn btn-primary btn-block"
+                        disabled="disabled">
+                    Add Notes
+                </button>
+            </span>
+            <span class="items-selected">
+                <button type="button" class="btn btn-primary btn-block"
+                        data-target="#transaction-modal" data-toggle="modal">
+                    Add Notes
+                </button>
+            </span>
+        </div>
+        <div class="tab-pane" id="projecttracker">
+            <p class="text-muted text-center">
+                <em class="no-items-selected">Select specific items to submit.</em>
+                <em class="items-selected">
+                    Submit or export <span class="checked-item-counter"></span> item(s).
+                </em>
+            </p>
+            <span class="no-items-selected">
+                <button type="button" class="btn btn-primary btn-block"
+                        disabled="disabled">
+                    Submit to ProjectTracker
+                </button>
+            </span>
+            <span class="items-selected">
+                <button type="button" class="btn btn-primary btn-block"
+                        data-target="#transaction-modal" data-toggle="modal">
+                    Submit to ProjectTracker
+                </button>
+            </span>
+        </div>
+    </div>
+
+    <button type="button" id="export_button" class="btn btn-primary btn-block"
+            data-toggle="modal" data-target="#myModal">
+        Export Data
+    </button>
+
+    <button type="submit" id="zip_button" class="btn btn-primary btn-block"
+            data-action="{% url 'home:report:bulk_checklist_reports' %}">
+        Generate Project Reports
+    </button>
+
+    {# Shared list of progress bars for current/past operations #}
+    <div class="progress-bar-target"></div>
+
+    <hr>
+    <a href="#" id="clear-filters">Clear Filters</a>
+{% endblock form_actions_top %}
+
+
+{% block extra_filters %}
+    {{ filter_form.remrate_flavor|as_crispy_field }}
+    {{ filter_form.meets_or_beats|as_crispy_field }}
+    <input id="mode" type="hidden" name="datatable" value="certification" />
+{% endblock %}
+
+
+{% block modals %}
+    {{ block.super }}
+    <div class="modal fade" id="transaction-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Certification</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="target"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary primary-action">Certify</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="result-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Title</h4>
+                </div>
+                <div class="modal-body">
+                    Content....
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

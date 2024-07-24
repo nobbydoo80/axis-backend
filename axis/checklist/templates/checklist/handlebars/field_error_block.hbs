@@ -1,0 +1,9 @@
+{% verbatim %}
+{{#if form_show_errors}}
+    {{#if field.errors.length}}
+        {{#each field.errors}}
+            <p class="help-block" id="error_{{@index}}_{{this.auto_id}}"><strong>{{this.error}}</strong></p>
+        {{/each}}
+    {{/if}}
+{{/if}}
+{% endverbatim %}

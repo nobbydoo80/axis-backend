@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block page_title %}Pivotal Energy Solutions{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="application/javascript">
+        $(document).ready(function () {
+            // Handler for .ready() called.
+            window.setTimeout(function () {
+                location.href = "{% url 'home' %}";
+            }, 3000);
+        });
+    </script>
+{% endblock javascript_head %}
+
+{% block style_sheet %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/public_bootstrap{% if not debug %}.min{% endif %}.css"
+          rel='stylesheet' media='screen'>
+{% endblock %}
+
+
+{% block full_content %}
+    <div class="row">
+        <div class="col-md-12 alert-success">
+            <h3>Thanks!! </h3>
+
+            <p>Your message was successfully sent!</p>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <p>Redirecting back to Pivotal Energy Solutions</p>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <p><a href="{% url 'home' %}" class="btn btn-primary btn-large">Back Home &raquo;</a></p>
+{% endblock %}

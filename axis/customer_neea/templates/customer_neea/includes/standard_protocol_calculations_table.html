@@ -1,0 +1,151 @@
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th colspan="3" class="text-center">
+            Standard Protocol Calculations
+            <span ng-if="ctrl.result.from_db"><i class="fa fa-lock"></i></span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+        {# BPA sponsor affiliation #}
+        <tr ng-if-start="ctrl.has_bpa_affiliation">
+            <th class="text-center"><b>Energy Savings Category</b></th>
+            <th class="text-center"><b>Savings (kWh)</b></th>
+            <th class="text-center"><b>Rate</b></th>
+        </tr>
+        <tr>
+            <th>Shell Upgrades, incl. Windows</th>
+            <td>[[ ctrl.result.reported_shell_windows_kwh_savings|number:2 ]]</td>
+            <td>$0.45</td>
+        </tr>
+        <tr>
+            <th>HVAC and Water Heat Upgrades</th>
+            <td>[[ ctrl.result.reported_hvac_waterheater_kwh_savings|number:2 ]]</td>
+            <td>$0.27</td>
+        </tr>
+        <tr>
+            <th>Appliance Upgrades</th>
+            <td>[[ ctrl.result.appliance_kwh_savings|number:2 ]]</td>
+            <td>$0.27</td>
+        </tr>
+
+        <tr ng-if="ctrl.program_slug=='neea-bpa'">
+            <th>Lighting Upgrades, including Fixtures, Showerheads and Smart Thermostats</th>
+            <td>[[ ctrl.result.reported_lighting_showerhead_tstats_kwh_savings|number:2 ]]</td>
+            <td>$0.10</td>
+        </tr>
+        <tr ng-if="ctrl.program_slug!='neea-bpa'">
+            <th>Smart Thermostats</th>
+            <td>[[ ctrl.result.reported_lighting_showerhead_tstats_kwh_savings|number:2 ]]</td>
+            <td>$0.10</td>
+        </tr>
+
+        <tr>
+            <th>Total</th>
+            <th colspan="2">[[ ctrl.result.total_kwh_savings|number:2 ]]</th>
+        </tr>
+
+        <tr></tr>  {# dummy to keep odd/even pattern smooth #}
+        <tr ng-if-end></tr>
+
+        {# No BPA sponsor affiliation #}
+        <tr ng-if-start="!ctrl.has_bpa_affiliation">
+            <th>Heating</th>
+            <td>[[ ctrl.result.heating_kwh_savings|number:2 ]] kWh</td>
+            <td>[[ ctrl.result.heating_therm_savings|number:2 ]] Therms</td>
+        </tr>
+        <tr>
+            <th>Cooling</th>
+            <td>[[ ctrl.result.cooling_kwh_savings|number:2 ]] kWh</td>
+            <td>[[ ctrl.result.cooling_therm_savings|number:2 ]] Therms</td>
+        </tr>
+        <tr>
+            <th>Smart Thermostat</th>
+            <td>[[ ctrl.result.smart_thermostat_kwh_savings|number:2 ]] kWh</td>
+            <td>[[ ctrl.result.smart_thermostat_therm_savings|number:2 ]] Therms</td>
+        </tr>
+        <tr>
+            <th>Water Heater</th>
+            <td>[[ ctrl.result.water_heater_kwh_savings|number:2 ]] kWh</td>
+            <td>[[ ctrl.result.water_heater_therm_savings|number:2 ]] Therms</td>
+        </tr>
+        <tr ng-if="ctrl.program_slug=='neea-bpa'">
+            <th>Low Flow Shower Heads</th>
+            <td>[[ ctrl.result.showerhead_kwh_savings|number:2 ]] kWh</td>
+            <td>[[ ctrl.result.showerhead_therm_savings|number:2 ]] Therms</td>
+        </tr>
+        <tr ng-if="ctrl.program_slug=='neea-bpa'">
+            <th>Lighting</th>
+            <td>[[ ctrl.result.lighting_kwh_savings|number:2 ]] kWh</td>
+            <td>0.00 Therms</td>
+        </tr>
+        <tr>
+            <th>Appliances</th>
+            <td>[[ ctrl.result.appliance_kwh_savings|number:2 ]] kWh</td>
+            <td>[[ ctrl.result.appliance_therm_savings|number:2 ]] Therms</td>
+        </tr>
+        <tr>
+            <th>Total Annual Savings (kWh)</th>
+            <th>[[ ctrl.result.total_kwh_savings|number:2 ]] kWh</th>
+            <th>[[ ctrl.result.total_therm_savings|number:2 ]] Therms</th>
+        </tr>
+        <tr>
+            <th>Total Annual Savings (MBtu)</th>
+            <th colspan="2"><b>[[ ctrl.result.total_mmbtu_savings|number:2 ]] MBtu</b></th>
+        </tr>
+
+        <tr></tr>  {# dummy to keep odd/even pattern smooth #}
+        <tr ng-if-end></tr>
+
+        {# Common to both tables #}
+        <tr ng-if="ctrl.show_utility_payment">
+            <th><b>Total BPA Utility Payment to BPA utility customer</b></th>
+            <th colspan="2"><b>[[ ctrl.result.pretty_total_incentive ]]</b></th>
+        </tr>
+
+        <tr>
+            <th colspan="3" class="text-center">
+                Utility Incentive Calculations
+            </th>
+        </tr>
+
+
+        <tr ng-if="ctrl.result.pct_improvement_method=='alternate'">
+            <th>As-Built Total Consumption (MBtu)</th>
+            <th colspan="2"><b>[[ ctrl.result.improved_total_consumption_mmbtu_with_savings|number:2 ]] MMBtu</b></th>
+        </tr>
+        <tr ng-if="ctrl.result.pct_improvement_method=='default'">
+            <th>As-Built Total Consumption (MBtu)</th>
+            <th colspan="2"><b>[[ ctrl.result.improved_total_consumption_mmbtu|number:2 ]] MMBtu</b></th>
+        </tr>
+
+        <tr>
+            <th>Reference Total Consumption (MBtu)</th>
+            <th colspan="2"><b>[[ ctrl.result.code_total_consumption_mmbtu|number:2 ]] MMBtu</b></th>
+        </tr>
+
+        <tr ng-if="ctrl.result.pct_improvement_method=='alternate'">
+            <th><b>Percent Improvement</b></th>
+            <th colspan="2"><b>[[ ctrl.result.pretty_revised_percent_improvement ]]</b></th>
+        </tr>
+        <tr ng-if="ctrl.result.pct_improvement_method=='default'">
+            <th><b>Percent Improvement</b></th>
+            <th colspan="2"><b>[[ ctrl.result.pretty_percent_improvement ]]</b></th>
+        </tr>
+
+
+        <tr>
+            <th><b>Total Utility Builder Incentive</b></th>
+            <th colspan="2"><b>[[ ctrl.result.pretty_builder_incentive ]]</b></th>
+        </tr>
+    </tbody>
+</table>
+
+<div ng-if="ctrl.result.utility_requirements">
+    <ul><li>[[ ctrl.result.utility_requirements.title ]]</li><ul>
+        <li ng-repeat="msg in ctrl.result.utility_requirements.requirements">
+            [[ msg ]]
+        </li></ul>
+    </ul>
+</div>

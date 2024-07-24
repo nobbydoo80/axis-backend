@@ -1,0 +1,107 @@
+{% extends "base_examine_wide.html" %}
+{% load bootstrap_tags %}
+{% load static %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'floorplan/examine.css' %}" type="text/css" media="screen, projection" />
+{% endblock style_sheet %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script src="{% static 'js/relationship/relationship.js' %}"></script>
+    <script src="{% static 'floorplan/examine.js' %}"></script>
+    <script type="text/javascript">
+        window.relationship_url = "{% url 'relationship:sidebar_ajax' app_label='floorplan' model='floorplan' object_id='0' %}";
+        window.__primary_object_id = {{ object.id|default:'null' }};
+    </script>
+{% endblock javascript_head %}
+
+{% block datatable_initialize %}
+    <script type="text/javascript">
+        angular.module('examineApp').run(function($rootScope, RegionService){
+            {% if view.create_new %}
+                $rootScope.$watch(function(){
+                    return $rootScope.examineApp.creating;
+                }, function(newValue, oldValue){
+                    if (newValue !== oldValue && newValue === false) {
+                        var primaryRegion = RegionService.getRegionFromTypeName('{{ primary_type }}');
+                        var object_id = primaryRegion.object.id;
+
+                        var tables = $('.existing-object-only .datatable');
+                        tables.each(function(){
+                            var datatable = $(this);
+                            var source_url = datatable.attr('data-source-url');
+                            source_url = source_url.replace(/\/(None|0)($|\/)/, "/" + object_id + "$2");
+                            datatable.attr('data-source-url', source_url);
+                        });
+                        datatableview.initialize(tables);
+                    }
+                });
+            {% else %}
+                $(function(){
+                    datatableview.initialize($('.existing-object-only .datatable'));
+                });
+            {% endif %}
+        });
+    </script>
+{% endblock datatable_initialize %}
+
+
+{% block tabs %}
+    <tabset>
+        <tab tab-helper badge-counter="examineApp.getRegionCounter"
+                        badge-counter-types="['floorplan_documents']"
+                        endpoint="tabs.documents">
+            <tab-heading>
+                Documents
+                <i ng-hide="badgeController.isLoaded" class="fa fa-spinner fa-fw fa-spin"></i>
+                <span class="badge">[[ badgeController.count ]]</span>
+            </tab-heading>
+            <axis-region-set options="pageRegions.documents"></axis-region-set>
+        </tab>
+        <tab tab-helper endpoint="tabs.input" heading="Simulation Data">
+            <div ng-controller="InputChoiceSwitcher">
+                <div ng-if="pageRegions.remrate && pageRegions.ekotrope"
+                     class="form-group">
+                    <label>Simulation Input</label>
+                    <select ng-model="inputChoice.type" class="form-control">
+                        <option ng-if="pageRegions.remrate" value="remrate">REM/Rate™</option>
+                        <option ng-if="pageRegions.ekotrope" value="ekotrope">Ekotrope</option>
+                    </select>
+                </div>
+                <div ng-if="pageRegions.remrate" ng-show="inputChoice.type == 'remrate' || inputChoice.type == null">
+                    <axis-single-region ng-if="pageRegions.remrate" options="pageRegions.remrate"></axis-single-region>
+                </div>
+                <div ng-if="pageRegions.ekotrope" ng-show="inputChoice.type == 'ekotrope' || inputChoice.type == null">
+                    <axis-single-region ng-if="pageRegions.ekotrope" options="pageRegions.ekotrope"></axis-single-region>
+                </div>
+            </div>
+        </tab>
+        <tab tab-helper endpoint="tabs.systems" heading="Systems" disabled="examineApp.creating">
+            <axis-single-region options="pageRegions.systems"></axis-single-region>
+        </tab>
+        <tab tab-helper endpoint="tabs.homes" heading="Homes" disabled="examineApp.creating">
+            <div class="row existing-object-only">
+                <div class="col-md-12">
+                    {{ homes_datatable }}
+                </div>
+            </div>
+        </tab>
+        <tab tab-helper endpoint="tabs.notes" heading="Notes">
+            <axis-region-set options="pageRegions.notes"></axis-region-set>
+        </tab>
+        <tab tab-helper endpoint="tabs.history" heading="History" disabled="examineApp.creating">
+            <div class="existing-object-only">
+                {% bootstrap_accordion id="history_accordion" %}
+
+                    {% panel heading="Floorplan History" %}
+                        {% include 'simple_history/includes/history_list.html' with object=object app_label='floorplan' model='floorplan' field='id' constraint=object.id %}
+
+                    {% panel heading="Floorplan Document History" %}
+                        {% include 'simple_history/includes/history_list.html' with object=object app_label='filehandling' model='customerdocument' content_type_id=object.content_type_id field='object_id' constraint=object.id %}
+                {% endbootstrap_accordion %}
+            </div>
+        </tab>
+    </tabset>
+{% endblock %}

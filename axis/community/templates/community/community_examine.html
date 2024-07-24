@@ -1,0 +1,106 @@
+{% extends "base_examine.html" %}
+{% load bootstrap_tags %}
+
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/relationship/relationship.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}community/examine.js"></script>
+    <script type="text/javascript">
+        function confirm_datatable_options(options){
+            var green_marker = '//www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png';
+            options.fnRowCallback = function(el, data){
+                var coords = data[3].split(' ').map(parseFloat);
+                window.__extraMapMarkers.push({
+                    id: window.__extraMapMarkers.length+2,
+                    center: {latitude: coords[0], longitude: coords[1]},
+                    icon: green_marker
+                });
+            };
+            return options;
+        }
+
+        window.relationship_url = "{% url 'relationship:sidebar_ajax' app_label='community' model='community' object_id='0' %}";
+        angular.module('examineApp').run(function($rootScope){
+            $rootScope.$on('SingleRegionLoaded:{{ primary_type }}:detailTemplateLoaded', build_relationship_sidebar);
+            $rootScope.$on('SingleRegionLoaded:subdivision_relationships:success', build_relationship_sidebar);
+        })
+    </script>
+{% endblock %}
+
+{% block datatable_initialize %}
+    <script type="text/javascript">
+        angular.module('examineApp').run(function($rootScope, RegionService){
+            {% if view.create_new %}
+                $('#id_subdivision_count').text("0");
+                $rootScope.$watch(function(){
+                    return $rootScope.examineApp.creating;
+                }, function(newValue, oldValue){
+                    if (newValue !== oldValue && newValue === false) {
+                        var primaryRegion = RegionService.getRegionFromTypeName('{{ primary_type }}');
+                        var object_id = primaryRegion.object.id;
+
+                        var tables = $('.existing-object-only .datatable');
+                        tables.each(function(){
+                            var datatable = $(this);
+                            var source_url = datatable.attr('data-source-url');
+                            source_url = source_url.replace(/\/(None|0)($|\/)/, "/" + object_id + "$2");
+                            datatable.attr('data-source-url', source_url);
+                        });
+                        datatableview.initialize(tables);
+                    }
+                });
+            {% else %}
+                $(function(){
+                    datatableview.initialize($('.existing-object-only .datatable'));
+                });
+            {% endif %}
+        });
+    </script>
+{% endblock datatable_initialize %}
+
+{% block tabs %}
+    <tabset>
+        <tab tab-helper endpoint="tabs.subdivisions" heading="Subdivisions"
+             disabled="examineApp.creating">
+            <div>
+                {% if perms.home.add_subdivision %}
+                    <div class="pull-right">
+                        <a class="btn btn-primary btn-xs" href="{% url "subdivision:add" %}">Add</a>
+                    </div>
+                {% endif %}
+                <h3><span id="id_subdivision_count"><i class="fa fa-spinner fa-spin"></i></span> Subdivisions in Community</h3>
+            </div>
+
+            <div class="existing-object-only">{{ subdivisions_datatable }}</div>
+        </tab>
+
+        <tab tab-helper endpoint="tabs.companies" heading="Companies"
+             disabled="examineApp.creating">
+            <axis-single-region options="pageRegions.relationships"></axis-single-region>
+        </tab>
+
+        <tab tab-helper endpoint="tabs.history" heading="History"
+             disabled="examineApp.creating">
+
+            <div class="existing-object-only">
+                {% bootstrap_accordion id="history_accordion" %}
+
+                    {% panel heading="Community History" %}
+                        {% include "simple_history/includes/history_list.html" with object=object app_label="community" model="community" field="id" constraint=object.id %}
+
+                {% endbootstrap_accordion %}
+            </div>
+        </tab>
+
+    </tabset>
+{% endblock tabs %}
+
+{% block sidebar %}
+    <div ng-if="$root.examineApp.creating">
+        {{ block.super }}
+    </div>
+    <div ng-if="!$root.examineApp.creating">
+        {% include "core/sidebar/includes/examine_companies.html" %}
+    </div>
+{% endblock %}

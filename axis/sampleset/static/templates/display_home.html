@@ -1,0 +1,65 @@
+<span>
+    <i class="fa fa-times-circle-o close-btn" ng-show="flags.isDeleting" ng-click="removeHome(home, sampleSet.name)"></i>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="list-group-item-heading">
+                <div class="icons-column text-centered text-primary">
+                    <i ng-show="home.is_certified" class="fa fa-fw fa-certificate" tooltip="Home is Certified"></i>
+                    <i ng-show="home.is_locked" class="fa fa-fw fa-lock" tooltip="Home has reached completion"></i>
+                </div>
+                <div class="address-column">
+                    <a target="_blank" ng-href="[[ home.detail_url ]]">
+                        [[ home.name ]]
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-8">
+            <div ng-switch="flags.showHomeDetail">
+                <div ng-switch-when="true">
+                    <small>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                [[ home.eep_program ]]
+                            </div>
+                            <div class="col-xs-4">
+                                [[ home.builder ]]
+                            </div>
+                            <div class="col-xs-4">
+                                [[ home.subdivision ]]
+                                <span ng-if="home.subdivision">/</span>
+                                [[ home.metro ]]
+                            </div>
+                        </div>
+                    </small>
+
+                </div>
+                <div ng-switch-default>
+                    <span
+                    tooltip="[[ popoverText ]]"
+                    tooltip-popup-delay="1000"
+                    class="label label-default"
+                    ng-class="{
+                        'answered': question.answer_id,
+                        'contributed': question.type == 'contributed' && question.answer_id,
+                        'failing': question.type == 'failing',
+                        'getting-answer': getGettingAnswer(question),
+                        'hover': questions.currentQuestion == question_id
+                    }"
+                    ng-repeat="(question_id, question) in answers"
+                    question-tick
+                    ></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</span>
+
+<!--ng-class="{
+                        'contributed': question.type == 'contributed' && question.answer_id,
+                        'answered': answered,
+                        'unanswered': unanswered,
+                        'getting-answer': getting_answer,
+                        'hover': questions.currentQuestion == question_id || questions.viewingQuestions.indexOf(question_id) != -1
+                    }"-->

@@ -1,0 +1,23 @@
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>[[ regionObject.object.last_update_display | date : 'M/d/yy h:mm a' ]]</td>
+        <td>[[ regionObject.object.user_display ]]</td>
+        <td>
+            <span ng-repeat="observation in regionObject.object.observation_set">
+                [[ observation.observation_type ]][[ $last ? '': ',' ]]
+            </span>
+        </td>
+        <td style="word-break: break-word;">
+            <span style="white-space: pre-wrap;">[[ regionObject.object.note ]]</span>
+            <div ng-repeat="document in regionObject.object.customer_documents">
+                <a ng-href="[[ document.url ]]">
+                    <i class="fa fa-cloud-download"></i>
+                    [[ document.filename ]]
+                </a>
+                <small class="text-muted" ng-if="document.filesize">
+                    (<span ng-bind="(document.filesize | bytes)"></span>)
+                </small>
+            </div>
+        </td>
+    </tr>
+</table>

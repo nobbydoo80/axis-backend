@@ -1,0 +1,60 @@
+<div ng-if="!ctrl.show_admin">
+    {% include "customer_eto/includes/washington_code_credit_calculations_table.html" %}
+</div>
+
+<div ng-if="ctrl.show_admin">
+    <ul ng-if="ctrl.has_reports" class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#wcc_summary">Summary</a></li>
+        <li><a data-toggle="tab" href="#wcc_inputs">Input Data</a></li>
+        <li><a data-toggle="tab" href="#wcc_specifications">Specifications</a></li>
+        <li><a data-toggle="tab" href="#wcc_savings">Savings</a></li>
+        <li><a data-toggle="tab" href="#wcc_incentive">Incentives</a></li>
+        <li><a data-toggle="tab" href="#wcc_credits">Credits</a></li>
+    </ul>
+
+    <div ng-if="ctrl.has_reports" class="tab-content">
+        <div id="wcc_summary" class="tab-pane fade in active">
+            {% include "customer_eto/includes/washington_code_credit_calculations_table.html" %}
+        </div>
+        <div id="wcc_inputs" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.inputs ]] </pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.input_dump ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="wcc_specifications" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.specifications ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="wcc_savings" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.savings ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="wcc_incentive" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.incentives ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="wcc_credits" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.credits ]] </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

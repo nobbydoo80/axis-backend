@@ -1,0 +1,194 @@
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+.btn-group{
+    cursor: not-allowed;
+}
+
+/* datatable column widths */
+[data-name="test-house"] {
+    width: 75px;
+}
+[data-name="subdivision"] {
+    width: 150px;
+}
+[data-name="builder"] {
+    width: 150px;
+}
+[data-name="sample-set"] {
+    width: 140px !important;
+}
+
+/* datatable filter column */
+.select2-container-multi {
+    width: 100% !important;
+}
+
+/* UI area */
+.test-home.item{
+    background: rgba(92, 142, 184, 0.1);
+}
+.list-group-item{
+    padding: 2px 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.list-group-item-heading{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.well-sm{
+    padding: 3px;
+}
+sample-set{
+    margin-bottom: 5px;
+    display: block;
+    position: relative;
+}
+.nav,
+.pagination,
+.carousel,
+.panel-title a{
+    cursor: pointer;
+}
+.panel,
+.panel-heading,
+.panel-body{
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+}
+
+.icons-column {
+    float: left;
+    width: 1.2857142857142858em; /* fa-fw */
+}
+
+.address-column {
+    margin-left: 1.3em;
+}
+[draggable].locked {
+    cursor: not-allowed;
+}
+
+/**
+styling for question viewing part
+*/
+.label:empty{
+    display: inline-block;
+    width: 1em;
+    height: 0.5em;
+    transition: width .2s linear;
+    -webkit-transition: width .2s linear;
+    padding: 0 3px;
+    margin: 0.1em;
+}
+.test-home .label,
+.sample-home .label{
+    background-color: #BDBDBD;
+}
+.test-home .answered{
+    background-color: #5cb85c;
+    height: 1em;
+}
+.test-home .answered.contributed,
+.sample-home .answered.contributed{
+    background-color: #BDBDBD;
+    height: 1em;
+}
+.test-home .getting-answer,
+.sample-home .getting-answer{
+    background-color: #5cb85c;
+}
+.test-home .failing{
+    background-color: #d9534f;
+}
+.hover{
+    background-color: #f0ad4e !important;
+}
+
+/**
+drag and drop bins
+*/
+.bin.empty{
+    background: #eeeeee;
+    box-shadow: 0 0 10px #bbb inset;
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 5px;
+}
+.empty-list{
+    display: none;
+}
+.bin.empty .empty-list{
+    color: #8F8F8F;
+    display: inline-block;
+    list-style-type: none;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.btn.bin{
+    min-width: 0%;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+}
+.btn.bin.empty{
+    min-width: 100%;
+}
+
+/**
+viewing questions
+*/
+.test-home, .sample-home{
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+}
+
+.item{
+    transition: all .2s ease;
+}
+.drag {
+    opacity: 0.5;
+}
+.over,
+.over .panel-heading{
+    background: peachpuff !important;
+}
+
+table.table{
+    margin-bottom: 0 !important;
+}
+table.table-condensed th{
+    padding: 3px !important;
+}
+.item td{
+    border-top: none !important;
+    width: 30%;
+}
+.item th{
+    width: 30%;
+}
+
+.close-btn {
+    border: none;
+    position: absolute;
+    top: 3px;
+    right: 2px;
+    z-index: 9000;
+    color: #f28a85;
+}
+.close-btn:hover{
+    color: #ff2320;
+}
+.table-drag-info{
+    pointer-events: none;
+    display: block;
+    background-color: #eee;
+    position: absolute;
+    padding: 15px;
+    border-right: 5px;
+}
+
+.datatable td:nth-child(5) {
+    text-align: center;
+}

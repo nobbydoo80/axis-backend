@@ -1,0 +1,112 @@
+{% extends 'base_list.html' %}
+{% load crispy_forms_tags %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <style type="text/css">
+        ul#visual_indication_table li ul li {
+            background: #FBE3E4;
+            color: #8A1F11;
+        }
+    </style>
+{% endblock %}
+
+{% block javascript_head %}
+{{ block.super }}
+    <script type="text/javascript">
+    {% include 'incentive_payment/includes/incentivedistribution_form.js' %}
+    </script>
+{% endblock %}
+
+{% block list_content %}
+    <div class="row">
+        <div class="col-md-3">
+            <form action="." method="post">
+            {% csrf_token %}
+    <div class="row">
+        <div class="col-md-12">
+            {% if object %}
+                {{ object.customer }}
+            {% endif %}
+            {{ form.customer|as_crispy_field }}
+        </div>
+        <div class="col-md-12">
+            {% if object.paid_date %}
+                {{ object.check_requested_date }}
+            {% endif %}
+            {{ form.check_requested_date|as_crispy_field }}
+        </div>
+    </div>
+    {% if update %}
+        <div class="row">
+            <div class="col-md-12">
+                {{ form.paid_date|as_crispy_field }}
+            </div>
+            <div class="col-md-12">
+                {{ form.check_number|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 key"> Total:</div>
+            <div class="col-md-10 value">{{ object.total }}</div>
+            {{ form.id }}
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            <a id="toggle_comment" href="#">Add Comment</a>
+
+            <div id="comment">
+                {{ form.comment|as_crispy_field }}
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-default" href="{{ cancel_url }}">Cancel</a>
+    </div>
+            </form>
+        </div>
+        <div class="col-md-9">
+            {{ datatable }}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Visual Indication Table</h4>
+            <ul id="visual_indication_table">
+                <li>Meter Set
+                    <ul>
+                        <li>Missing Meter Set</li>
+                    </ul>
+                </li>
+                <li>Cert Date
+                    <ul>
+                        <li>Cert Date outside of builder agreement window</li>
+                    </ul>
+                </li>
+                <li>Builder Agreement
+                    <ul>
+                        <li>Missing builder agreement</li>
+                        <li>Builder agreement with 0 remaining eligible lots</li>
+                    </ul>
+                </li>
+                <li>REM/Rate&#8482;
+                    <ul>
+                        <li>REM/Rate&#8482; HERS index w/o PV outside of Program target</li>
+                        <li>REM/Rate&#8482; Data File is missing</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

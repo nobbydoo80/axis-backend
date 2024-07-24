@@ -1,0 +1,11 @@
+{% extends "examine/angular_region_panel.html" %}
+
+{% block region %}
+    <div class="row">
+        <div class="col-xs-12 text-right">
+            <action-strip-set processing="regionSet.processing" actions="regionObject.actions"></action-strip-set>
+        </div>
+    </div>
+
+    <div detail-content ng-hide="region.editing()"><loading-spinner></loading-spinner></div>
+{% endblock region %}

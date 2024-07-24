@@ -1,0 +1,122 @@
+
+{% comment %}
+    Requires: app_label, model
+    These two contenttype fields help to fetch the appropriate generic relationship data.
+{% endcomment %}
+
+<div class="well">
+    <h4>Associated Companies</h4>
+    <dl id="relations"></dl>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var table = $('#relations');
+        $.getJSON("{% url "relationship:sidebar_ajax" app_label=app_label model=model object_id=object.id %}", function(data) {
+            var arr = []
+            for (var item in data) {
+                var itemData = data[item];
+                var dt = $('<dt/>').text(item);
+                table.append(dt);
+                for (idata in itemData) {
+                    var dd = $('<dd/>');
+                    dd.append(itemData[idata].href);
+                    // console.log(itemData[idata])
+                    var icons = $('<span class="icons"/>');
+                    if (itemData[idata].is_owned && itemData[idata].auto_add) {
+                        icons.append($('<i class="fa fa-unlock-alt" data-toggle="tooltip" title="Company auto accepted this relationship"></i>'));
+                    } else if(itemData[idata].is_owned){
+                        icons.append($('<i class="fa fa-lock" data-toggle="tooltip" title="Company approved this relationship"></i>'));
+                    }
+                    icons.append($(data[item][idata].add_href));
+                    if (!itemData[idata].is_owned) {
+                        icons.append($(data[item][idata].direct_href));
+                    }
+                    icons.append($(data[item][idata].delete_href));
+                    dd.prepend(icons);
+                    table.append(dd);
+                }
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('body').on('click', 'a.direct_relationship, a.delete_relationship', function(e){
+            e.preventDefault();
+            var self = $(this);
+            var url = $(this).attr('url');
+            $.ajax({
+                url: url,
+                method: 'POST',
+                success: function(data, status, text_status){
+                    self.parent().html(data.message);
+                    }
+                })
+            });
+    })
+</script>
+
+{% comment %}
+
+<div class="panel panel-default">
+        <div class="panel-heading"><h4>Associated Companies</h4></div>
+        <table id="relations" class="table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th colspan="2">Name</th>
+                    {# <th></th> #}
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.getJSON("{% url "relationship:sidebar_ajax" app_label=app_label model=model object_id=object.id %}", function(data) {
+                var table = $('#relations tbody');
+                for (var item in data) {
+                    var itemData = data[item];
+
+                    var row = $('<tr/>');
+                    row.append($('<td/>').text(item));
+                    for (idata in itemData) {
+                        // console.log(itemData[idata]);
+                        row.append($('<td/>').html(itemData[idata].href));
+                        var lock_column = $('<td class="text-center"/>');
+                        if (itemData[idata].is_owned && itemData[idata].auto_add) {
+                            lock_column.append($('<i class="fa fa-unlock-alt" data-toggle="tooltip" title="Company auto accepted this relationship"></i>'));
+                        } else if(itemData[idata].is_owned){
+                            lock_column.append($('<i class="fa fa-lock" data-toggle="tooltip" title="Company approved this relationship"></i>'));
+                        }
+                        lock_column.append(data[item][idata].add_href);
+                        if (!itemData[idata].is_owned) {
+                            lock_column.append(data[item][idata].direct_href);
+                        }
+                        lock_column.append(data[item][idata].delete_href);
+                        row.append(lock_column);
+                    }
+                    table.append(row);
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function(){
+            $('body').on('click', 'a.direct_relationship, a.delete_relationship', function(e){
+                e.preventDefault();
+                var self = $(this);
+                var url = $(this).attr('url');
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    success: function(data, status, text_status){
+                        self.parent().html(data.message);
+                        }
+                    })
+                });
+        })
+    </script>
+
+{% endcomment %}

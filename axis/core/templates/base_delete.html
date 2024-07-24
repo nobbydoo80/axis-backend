@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{# Generic base for delete views. #}
+
+{% block page_title %}Delete {{ verbose_name|capfirst }}{{ object }}{% endblock page_title %}
+
+{% block content %}
+    <form id="delete_form" method="post" action="">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+
+        <fieldset class="row-header">
+            <legend>
+                <p>
+                {% block header_text %}
+                    <span>Delete {{ verbose_name|capfirst }}:</span>
+                    <span class="value">{{ object.name|default:object }}</span>
+                {% endblock header_text %}
+                </p>
+            </legend>
+        </fieldset>
+        <br /> <br />
+        <div class="row">
+            <div class="col-md-12">
+                <strong>
+                    <p class="text-center text-danger">
+                    {% block warning %}
+                        <i class="fa fa-exclamation-triangle fa-lg"></i>
+                        Are you sure that you would like to
+                        <span style="text-decoration: underline">permanently delete</span>
+                        the {{ verbose_name }}? <br>
+                        {% block object_repr %}
+                            {{ object }}
+                        {% endblock object_repr %}
+                    {% endblock warning %}
+                    </p>
+                </strong>
+            </div>
+        </div>
+
+        <br /> <br />
+        <div class="row">
+            <div class="col-md-12">
+                {% block related_items %}
+                    {% if deleted_objects %}
+                        <p>The result of this will <span style="text-decoration: underline">
+                            <strong>permanently delete</strong></span> the following items:
+                        </p>
+                        <ul>
+                            {{ deleted_objects|unordered_list }}
+                        </ul>
+                    {% endif %}
+                {% endblock related_items %}
+            </div>
+        </div>
+
+        <br />
+        <div class="form-actions">
+            {% block form_actions %}
+                <input type="submit" name="submit" value="Delete" class="btn btn-primary"/>
+                <a class="btn btn-default" href="{{ cancel_url }}">Cancel</a>
+            {% endblock form_actions %}
+        </div>
+    </form>
+{% endblock content %}

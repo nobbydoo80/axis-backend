@@ -1,0 +1,12 @@
+{% extends 'examine/angular_regionset_panel.html' %}
+
+{% block regions %}
+    <div ng-show="regionSet.endpoints.length">
+        <hr>
+        <h3>
+            <span region-counter="regionSet.endpoints.length">QA Note</span>
+            with documents
+        </h3>
+        {{ block.super }}
+    </div>
+{% endblock %}

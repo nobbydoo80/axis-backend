@@ -1,0 +1,35 @@
+{% extends "base_filter_list.html" %}
+
+{% block extra_head %}
+    <style>
+        .select2-container--default .select2-results > #select2-id_state-results {
+            min-height: 248px;
+        }
+    </style>
+{% endblock %}
+
+{% block header_text %}
+    NGBS Client Agreements
+{% endblock %}
+
+{% block filters %}
+    {{ block.super }}
+    {% if user.is_superuser or user.is_customer_hirl_company_member %}
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/app/hi/client_agreements/create_without_docusign" class="btn btn-primary btn-block">
+                Create Legacy CA
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    {% if user.is_superuser or user.is_customer_hirl_company_member or user.company.company_type == 'rater' %}
+    <div class="row" style="margin-top: 2px;">
+        <div class="col-md-12">
+            <a href="/app/hi/client_agreements/builder/create_without_user" class="btn btn-primary btn-block">
+                Create CA w/o AXIS Account
+            </a>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

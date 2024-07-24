@@ -1,0 +1,9 @@
+{% block content %}
+    FILL ME IN
+{% endblock %}
+
+ -- Copyright 2011-2023 Pivotal Energy Solutions. All Rights Reserved.
+
+{% block unsubscribe %}
+{% if unsubscribe_email_link %}Unsubscribe {{ unsubscribe_email_link }}{% endif %}
+{% endblock %}

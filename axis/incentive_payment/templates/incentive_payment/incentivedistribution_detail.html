@@ -1,0 +1,162 @@
+{% extends 'base_detail.html' %}
+{% load humanize %}
+{% load bootstrap_tags %}
+
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript">
+        datatableview.autoInitialize = true;
+    </script>
+{% endblock javascript_head %}
+
+
+{% block detail_content %}
+    <div class="row">
+        <div class="col-md-12">
+            {% if request.user.company.name == "APS" %}
+                <a class="btn btn-primary"
+                   href="{% url 'incentive_payment:print' pk=object.id %}">Check Request</a>
+            {% endif %}
+            <a class="btn btn-primary" href="{% url 'incentive_payment:print_detail' pk=object.id %}">Check Detail</a>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 key">Invoice Number:</div>
+                <div class="col-md-6 value">{{ object.invoice_number|slice:':8' }}</div>
+            </div>
+            {% if object.company != request.user.company %}
+                <div class="row">
+                    <div class="col-md-6 key">Payee:</div>
+                    <div class="col-md-6 value">
+                        <address>
+                            <strong><a href="{{ object.company.get_absolute_url }}">{{ object.company.name }}</a></strong><br>
+                            {{ object.company.street_line1 }}<br>
+                            {{ object.company.city.name }}, {{ object.company.city.state }}
+                        </address>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-md-6 key">Customer:</div>
+                    <div class="col-md-6 value">
+                        <a href="{{ object.customer.get_absolute_url }}">{{ object.check_to_name }}</a><br>
+                        {% if object.check_to_name != object.customer.name %}
+                            To: {{ object.check_to_name }}<br>
+                        {% endif %}
+                        <address>
+                            {{ object.customer.street_line1 }}<br>
+                            {{ object.customer.city.name }}, {{ object.customer.city.state }}
+                        </address>
+                    </div>
+                </div>
+            {% endif %}
+            {% if object.rater_incentives.all|length %}
+                {% if request.user.company.company_type != 'builder' %}
+                    <div class="row">
+                        <div class="col-md-6 key">Separate rater incentives tied to this invoice:</div>
+                        <div class="col-md-6 value">
+                            <dl style="margin-top: 0;">
+                                {% for ipp in object.rater_incentives.all %}
+                                    <dt>{{ ipp.customer }}</dt>
+                                    <dd>&emsp;<a href="{{ ipp.get_absolute_url }}">{{ ipp.invoice_number|slice:':8' }}</a> - ${{ ipp.total|intcomma }}</dd>
+                                {% endfor %}
+                            </dl>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% if object.parent_incentive_distributions.all|length %}
+                    <div class="row">
+                        <div class="col-md-6 key">Parent incentive tied to this invoice:</div>
+                        <div class="col-md-6 value">
+                            <dl style="margin-top: 0;">
+                                {% for ipp in object.parent_incentive_distributions.all %}
+                                    <dt>{{ ipp.customer }}</dt>
+                                    <dd>&emsp;<a href="{{ ipp.get_absolute_url }}">{{ ipp.invoice_number|slice:':8' }}</a> - ${{ ipp.total|intcomma }}</dd>
+                                {% endfor %}
+                            </dl>
+                        </div>
+                    </div>
+                {% else %}
+                    {# No rater incentive involved at all #}
+                    <div class="row">
+                        <div class="col-md-6 key">Raters related to this invoice:</div>
+                        <div class="col-md-6 value">
+                            <dl style="margin-top: 0;">
+                                {% for rater_name in rater_names %}
+                                    <dt>{{ rater_name }}</dt>
+                                    <dd>&emsp;$0</dd>
+                                {% endfor %}
+                            </dl>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+    </div>
+        <div class="col-md-6">
+            {% if object.is_paid %}
+                <img src="{{ STATIC_URL }}images/paid.jpg" alt="Paid in Full">
+            {% else %}
+                {% if object.check_requested %}
+                    <img src="{{ STATIC_URL }}images/chk_requested.png" alt="Check Requested">
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 key">Invoice Total:</div>
+                    <div class="col-md-6 value">${{ object.total|intcomma }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 key">Check Number:</div>
+                    <div class="col-md-6 value">
+                        {% if object.check_number %} #{{ object.check_number }} {% else %} - {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 key">Check Requested:</div>
+                    <div class="col-md-6 value">
+                        {% if object.check_requested %} &#10004; {{ object.check_requested_date }} {% else %} - {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 key">Check Paid:</div>
+                    <div class="col-md-6 value">
+                        {% if object.is_paid %} &#10004; {{ object.paid_date }} {% else %} - {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% if object.comment %}
+        <hr>
+        <div class="row">
+            <div class="col-md-12 key">Comments:</div>
+            <div class="col-md-12 value">
+            <blockquote>
+                {{ object.comment }}
+            </blockquote>
+            </div>
+        </div>
+    {% endif %}
+    <hr>
+
+    {% bootstrap_navtabs %}
+        {% tab "Homes Paid" %}
+            {{ datatable }}
+
+        {% tab "History" show=perms.incentive_payment.change_incentivedistribution %}
+            {% include "simple_history/includes/history_list.html" with object=object app_label="incentive_payment" model="incentivedistribution" field="id" constraint=object.id %}
+    {% endbootstrap_navtabs %}
+
+{% endblock %}

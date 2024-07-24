@@ -1,0 +1,134 @@
+{% extends 'base_form.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}
+    {% if sampleset %}
+        Certify {{ object.eep_program }} for {{ sampleset }}
+    {% else %}
+        Certify {{ object.eep_program }} for Home:{{ object.home }}
+    {% endif %}
+{% endblock %}
+
+{% block javascript_head %}
+    <script style="text/javascript">
+        jQuery.validator.setDefaults({debug: false, success: "jvf_valid"});
+        $(document).ready(function() {
+{#            $("#id_certification_date").datepicker({ dateFormat: 'yy-mm-dd' });#}
+        $("#id_certification_date").datepicker({ dateFormat: 'mm/dd/yyyy' });
+            $("#myform").validate({
+                rules: {
+                    {% if form.certification_date.field.required  %}
+                        certification_date: {required: true}, {% endif %}
+                    csrfmiddlewaretoken: {required: true}
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block header_text %}
+    {% if sampleset %}
+        <span>Certify {{ object.eep_program }} for Sampleset:</span>
+        <span class="value">{{ sampleset }}</span>
+    {% else %}
+        <span>Certify {{ object.eep_program }} for Home:</span>
+        <span class="value">{{ object.home }}</span>
+    {% endif %}
+{% endblock %}
+{% block header_description %}
+    <div class="row">
+        <div class="col-md-12">
+            Please confirm the certification of the following program:
+            <strong>
+                <a href="{{ object.eep_program.get_absolute_url }}" target="_blank">
+                    {{ object.eep_program }}
+                </a>
+            </strong>
+        </div>
+    </div>
+    {% if sampleset %}
+        <br /><br />
+        <div class="row">
+            <div class="col-md-12">
+                <em>
+                    Note: This will certify the sampleset
+                    <a href="{{ sampleset.get_absolute_url }}" target="_blank">
+                        {{ sampleset }}
+                    </a>
+                    with {{ certifiable|length }} eligible home(s).
+                </em>
+            </div>
+        </div>
+    {% endif %}
+{% endblock header_description %}
+
+{% block form_content %}
+    <br>
+    <div class="row">
+        <div class="col-md-3">{{ form.certification_date|as_crispy_field }}</div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Lot Number</th>
+                    <th>Address</th>
+                    <th>Builder</th>
+                    <th>Type</th>
+                    <th>Cert Date /<br/> Certifiable</th>
+                </tr>
+                </thead>
+                {% for item in homes %}
+                    <tr {% if item.id not in certifiable %}class="warning"{% endif %}>
+                        <td><a href="{{ item.home.get_absolute_url }}"
+                               target="_blank"> {{ item.home.lot_number }}</a></td>
+                        <td>{{ item.home.get_addr }}</td>
+                        <td><a href="{{ item.home.get_builder.get_absolute_url }}"
+                               target="_blank"> {{ item.home.get_builder }}</a></td>
+                        <td>{{ item.get_rating_type }}</td>
+                        <td>{% if item.id in certifiable %}&#10004;{% else %}&#10008;{% endif %}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td><a href="{{ object.home.get_absolute_url }}"
+                               target="_blank"> {{ object.home.lot_number }}</a></td>
+                        <td>{{ object.home.get_addr }}</td>
+                        <td><a href="{{ object.home.get_builder.get_absolute_url }}"
+                               target="_blank"> {{ object.home.get_builder }}</a></td>
+                        <td>{{ object.get_rating_type }}</td>
+                        <td>{% if item.id in certifiable %}&#10004;{% else %}&#10008;{% endif %}</td>
+                    </tr>
+                {% endfor %}
+                {% for item in certified_homes %}
+                    <tr>
+                        <td><a href="{{ item.home.get_absolute_url }}"
+                               target="_blank"> {{ item.home.lot_number }}</a></td>
+                        <td>{{ item.home.get_addr }}</td>
+                        <td><a href="{{ item.home.get_builder.get_absolute_url }}"
+                               target="_blank"> {{ item.home.get_builder }}</a></td>
+                        <td>{{ item.get_rating_type }}</td>
+                        <td>{{ item.certification_date }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block form_actions %}
+    {# Use more suitable wording on Submit button #}
+    <button type="submit" id="id_submit" class="btn btn-primary">Certify</button>
+    {% if cancel_url %}
+        <a class="btn btn-default" href="{{ cancel_url }}">Cancel</a>
+    {% endif %}
+{% endblock form_actions %}

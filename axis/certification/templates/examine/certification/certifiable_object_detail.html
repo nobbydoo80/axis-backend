@@ -1,0 +1,25 @@
+<div>
+    {% block object_detail %}
+        <div class="row" ng-if="regionObject.fields.owner || ({{ request.company.id }} != regionObject.object.owner)">
+            <div class="col-md-4 key">
+                [[ regionObject.object.owner_info.company_type_name ]]
+            </div>
+            <div class="col-md-8">
+                <a ng-href="[[ regionObject.object.owner_info.url ]]">[[ regionObject.object.owner_info.name ]]</a>
+            </div>
+        </div>
+        <div class="row" ng-repeat="parent in objCtrl.walkParents() track by $index">
+            <div class="col-md-4 key" style="text-transform: capitalize;">[[ parent.type ]]</div>
+            <div class="col-md-8">
+                <a ng-href="[[ parent.url ]]">[[ parent.name || parent.id ]]</a>
+            </div>
+        </div>
+    {% endblock object_detail %}
+
+    {# <h4>Settings</h4> #}
+    <div class="row data-browser">
+        {% block settings_fields %}{% endblock settings_fields %}
+    </div>
+
+    {% block extra_detail %}{% endblock extra_detail %}
+</div>

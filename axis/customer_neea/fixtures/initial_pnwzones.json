@@ -1,0 +1,2102 @@
+[
+{
+   "fields": {
+      "county": [
+         "Nez Perce County",
+         "16069"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 1
+},
+{
+   "fields": {
+      "county": [
+         "Owyhee County",
+         "16073"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 2
+},
+{
+   "fields": {
+      "county": [
+         "Payette County",
+         "16075"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 3
+},
+{
+   "fields": {
+      "county": [
+         "Canyon County",
+         "16027"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 4
+},
+{
+   "fields": {
+      "county": [
+         "Ada County",
+         "16001"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 5
+},
+{
+   "fields": {
+      "county": [
+         "Gem County",
+         "16045"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 6
+},
+{
+   "fields": {
+      "county": [
+         "Idaho County",
+         "16049"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 7
+},
+{
+   "fields": {
+      "county": [
+         "Latah County",
+         "16057"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 8
+},
+{
+   "fields": {
+      "county": [
+         "Boundary County",
+         "16021"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 9
+},
+{
+   "fields": {
+      "county": [
+         "Shoshone County",
+         "16079"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 10
+},
+{
+   "fields": {
+      "county": [
+         "Lewis County",
+         "16061"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 11
+},
+{
+   "fields": {
+      "county": [
+         "Kootenai County",
+         "16055"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 12
+},
+{
+   "fields": {
+      "county": [
+         "Clearwater County",
+         "16035"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 13
+},
+{
+   "fields": {
+      "county": [
+         "Washington County",
+         "16087"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 14
+},
+{
+   "fields": {
+      "county": [
+         "Cassia County",
+         "16031"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 15
+},
+{
+   "fields": {
+      "county": [
+         "Benewah County",
+         "16009"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 16
+},
+{
+   "fields": {
+      "county": [
+         "Twin Falls County",
+         "16083"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 17
+},
+{
+   "fields": {
+      "county": [
+         "Minidoka County",
+         "16067"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 18
+},
+{
+   "fields": {
+      "county": [
+         "Power County",
+         "16077"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 19
+},
+{
+   "fields": {
+      "county": [
+         "Bannock County",
+         "16005"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 20
+},
+{
+   "fields": {
+      "county": [
+         "Oneida County",
+         "16071"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 21
+},
+{
+   "fields": {
+      "county": [
+         "Bingham County",
+         "16011"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 22
+},
+{
+   "fields": {
+      "county": [
+         "Adams County",
+         "16003"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 23
+},
+{
+   "fields": {
+      "county": [
+         "Lemhi County",
+         "16059"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 24
+},
+{
+   "fields": {
+      "county": [
+         "Franklin County",
+         "16041"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 25
+},
+{
+   "fields": {
+      "county": [
+         "Elmore County",
+         "16039"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 26
+},
+{
+   "fields": {
+      "county": [
+         "Gooding County",
+         "16047"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 27
+},
+{
+   "fields": {
+      "county": [
+         "Jerome County",
+         "16053"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 28
+},
+{
+   "fields": {
+      "county": [
+         "Lincoln County",
+         "16063"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 29
+},
+{
+   "fields": {
+      "county": [
+         "Bonner County",
+         "16017"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 30
+},
+{
+   "fields": {
+      "county": [
+         "Boise County",
+         "16015"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 31
+},
+{
+   "fields": {
+      "county": [
+         "Jefferson County",
+         "16051"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 32
+},
+{
+   "fields": {
+      "county": [
+         "Madison County",
+         "16065"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 33
+},
+{
+   "fields": {
+      "county": [
+         "Custer County",
+         "16037"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 34
+},
+{
+   "fields": {
+      "county": [
+         "Bear Lake County",
+         "16007"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 35
+},
+{
+   "fields": {
+      "county": [
+         "Butte County",
+         "16023"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 36
+},
+{
+   "fields": {
+      "county": [
+         "Camas County",
+         "16025"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 37
+},
+{
+   "fields": {
+      "county": [
+         "Caribou County",
+         "16029"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 38
+},
+{
+   "fields": {
+      "county": [
+         "Blaine County",
+         "16013"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 39
+},
+{
+   "fields": {
+      "county": [
+         "Fremont County",
+         "16043"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 40
+},
+{
+   "fields": {
+      "county": [
+         "Valley County",
+         "16085"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 41
+},
+{
+   "fields": {
+      "county": [
+         "Teton County",
+         "16081"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 42
+},
+{
+   "fields": {
+      "county": [
+         "Bonneville County",
+         "16019"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 43
+},
+{
+   "fields": {
+      "county": [
+         "Clark County",
+         "16033"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 44
+},
+{
+   "fields": {
+      "county": [
+         "Lake County",
+         "30047"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 45
+},
+{
+   "fields": {
+      "county": [
+         "Lincoln County",
+         "30053"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 46
+},
+{
+   "fields": {
+      "county": [
+         "Ravalli County",
+         "30081"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 47
+},
+{
+   "fields": {
+      "county": [
+         "Broadwater County",
+         "30007"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 48
+},
+{
+   "fields": {
+      "county": [
+         "Sanders County",
+         "30089"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 49
+},
+{
+   "fields": {
+      "county": [
+         "Mineral County",
+         "30061"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 50
+},
+{
+   "fields": {
+      "county": [
+         "Sweet Grass County",
+         "30097"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 51
+},
+{
+   "fields": {
+      "county": [
+         "Musselshell County",
+         "30065"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 52
+},
+{
+   "fields": {
+      "county": [
+         "Rosebud County",
+         "30087"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 53
+},
+{
+   "fields": {
+      "county": [
+         "Park County",
+         "30067"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 54
+},
+{
+   "fields": {
+      "county": [
+         "Stillwater County",
+         "30095"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 55
+},
+{
+   "fields": {
+      "county": [
+         "Big Horn County",
+         "30003"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 56
+},
+{
+   "fields": {
+      "county": [
+         "Yellowstone County",
+         "30111"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 57
+},
+{
+   "fields": {
+      "county": [
+         "Treasure County",
+         "30103"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 58
+},
+{
+   "fields": {
+      "county": [
+         "Petroleum County",
+         "30069"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 59
+},
+{
+   "fields": {
+      "county": [
+         "Wheatland County",
+         "30107"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 60
+},
+{
+   "fields": {
+      "county": [
+         "Missoula County",
+         "30063"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 61
+},
+{
+   "fields": {
+      "county": [
+         "Deer Lodge County",
+         "30023"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 62
+},
+{
+   "fields": {
+      "county": [
+         "Madison County",
+         "30057"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 63
+},
+{
+   "fields": {
+      "county": [
+         "Gallatin County",
+         "30031"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 64
+},
+{
+   "fields": {
+      "county": [
+         "Judith Basin County",
+         "30045"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 65
+},
+{
+   "fields": {
+      "county": [
+         "Flathead County",
+         "30029"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 66
+},
+{
+   "fields": {
+      "county": [
+         "Pondera County",
+         "30073"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 67
+},
+{
+   "fields": {
+      "county": [
+         "Beaverhead County",
+         "30001"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 68
+},
+{
+   "fields": {
+      "county": [
+         "Jefferson County",
+         "30043"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 69
+},
+{
+   "fields": {
+      "county": [
+         "Toole County",
+         "30101"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 70
+},
+{
+   "fields": {
+      "county": [
+         "Fergus County",
+         "30027"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 71
+},
+{
+   "fields": {
+      "county": [
+         "Granite County",
+         "30039"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 72
+},
+{
+   "fields": {
+      "county": [
+         "Meagher County",
+         "30059"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 73
+},
+{
+   "fields": {
+      "county": [
+         "Liberty County",
+         "30051"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 74
+},
+{
+   "fields": {
+      "county": [
+         "Golden Valley County",
+         "30037"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 75
+},
+{
+   "fields": {
+      "county": [
+         "Glacier County",
+         "30035"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 76
+},
+{
+   "fields": {
+      "county": [
+         "Silver Bow County",
+         "30093"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 77
+},
+{
+   "fields": {
+      "county": [
+         "Powell County",
+         "30077"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 78
+},
+{
+   "fields": {
+      "county": [
+         "Chouteau County",
+         "30015"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 79
+},
+{
+   "fields": {
+      "county": [
+         "Cascade County",
+         "30013"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 80
+},
+{
+   "fields": {
+      "county": [
+         "Teton County",
+         "30099"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 81
+},
+{
+   "fields": {
+      "county": [
+         "Powder River County",
+         "30075"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 82
+},
+{
+   "fields": {
+      "county": [
+         "Carbon County",
+         "30009"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 83
+},
+{
+   "fields": {
+      "county": [
+         "Carter County",
+         "30011"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 84
+},
+{
+   "fields": {
+      "county": [
+         "Lewis and Clark County",
+         "30049"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 85
+},
+{
+   "fields": {
+      "county": [
+         "Richland County",
+         "30083"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 86
+},
+{
+   "fields": {
+      "county": [
+         "Prairie County",
+         "30079"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 87
+},
+{
+   "fields": {
+      "county": [
+         "Hill County",
+         "30041"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 88
+},
+{
+   "fields": {
+      "county": [
+         "Blaine County",
+         "30005"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 89
+},
+{
+   "fields": {
+      "county": [
+         "Roosevelt County",
+         "30085"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 90
+},
+{
+   "fields": {
+      "county": [
+         "Valley County",
+         "30105"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 91
+},
+{
+   "fields": {
+      "county": [
+         "Wibaux County",
+         "30109"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 92
+},
+{
+   "fields": {
+      "county": [
+         "Phillips County",
+         "30071"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 93
+},
+{
+   "fields": {
+      "county": [
+         "Sheridan County",
+         "30091"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 94
+},
+{
+   "fields": {
+      "county": [
+         "Daniels County",
+         "30019"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 95
+},
+{
+   "fields": {
+      "county": [
+         "Custer County",
+         "30017"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 96
+},
+{
+   "fields": {
+      "county": [
+         "Garfield County",
+         "30033"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 97
+},
+{
+   "fields": {
+      "county": [
+         "McCone County",
+         "30055"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 98
+},
+{
+   "fields": {
+      "county": [
+         "Fallon County",
+         "30025"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 99
+},
+{
+   "fields": {
+      "county": [
+         "Dawson County",
+         "30021"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 100
+},
+{
+   "fields": {
+      "county": [
+         "Curry County",
+         "41015"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 101
+},
+{
+   "fields": {
+      "county": [
+         "Coos County",
+         "41011"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 102
+},
+{
+   "fields": {
+      "county": [
+         "Lane County",
+         "41039"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 103
+},
+{
+   "fields": {
+      "county": [
+         "Linn County",
+         "41043"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 104
+},
+{
+   "fields": {
+      "county": [
+         "Yamhill County",
+         "41071"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 105
+},
+{
+   "fields": {
+      "county": [
+         "Washington County",
+         "41067"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 106
+},
+{
+   "fields": {
+      "county": [
+         "Benton County",
+         "41003"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 107
+},
+{
+   "fields": {
+      "county": [
+         "Marion County",
+         "41047"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 108
+},
+{
+   "fields": {
+      "county": [
+         "Polk County",
+         "41053"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 109
+},
+{
+   "fields": {
+      "county": [
+         "Clatsop County",
+         "41007"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 110
+},
+{
+   "fields": {
+      "county": [
+         "Columbia County",
+         "41009"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 111
+},
+{
+   "fields": {
+      "county": [
+         "Tillamook County",
+         "41057"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 112
+},
+{
+   "fields": {
+      "county": [
+         "Lincoln County",
+         "41041"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 113
+},
+{
+   "fields": {
+      "county": [
+         "Hood River County",
+         "41027"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 114
+},
+{
+   "fields": {
+      "county": [
+         "Douglas County",
+         "41019"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 115
+},
+{
+   "fields": {
+      "county": [
+         "Clackamas County",
+         "41005"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 116
+},
+{
+   "fields": {
+      "county": [
+         "Multnomah County",
+         "41051"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 117
+},
+{
+   "fields": {
+      "county": [
+         "Morrow County",
+         "41049"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 118
+},
+{
+   "fields": {
+      "county": [
+         "Gilliam County",
+         "41021"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 119
+},
+{
+   "fields": {
+      "county": [
+         "Josephine County",
+         "41033"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 120
+},
+{
+   "fields": {
+      "county": [
+         "Wasco County",
+         "41065"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 121
+},
+{
+   "fields": {
+      "county": [
+         "Jackson County",
+         "41029"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 122
+},
+{
+   "fields": {
+      "county": [
+         "Umatilla County",
+         "41059"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 123
+},
+{
+   "fields": {
+      "county": [
+         "Malheur County",
+         "41045"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 124
+},
+{
+   "fields": {
+      "county": [
+         "Jefferson County",
+         "41031"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 125
+},
+{
+   "fields": {
+      "county": [
+         "Wheeler County",
+         "41069"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 126
+},
+{
+   "fields": {
+      "county": [
+         "Crook County",
+         "41013"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 127
+},
+{
+   "fields": {
+      "county": [
+         "Deschutes County",
+         "41017"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 128
+},
+{
+   "fields": {
+      "county": [
+         "Lake County",
+         "41037"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 129
+},
+{
+   "fields": {
+      "county": [
+         "Baker County",
+         "41001"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 130
+},
+{
+   "fields": {
+      "county": [
+         "Sherman County",
+         "41055"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 131
+},
+{
+   "fields": {
+      "county": [
+         "Union County",
+         "41061"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 132
+},
+{
+   "fields": {
+      "county": [
+         "Grant County",
+         "41023"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 133
+},
+{
+   "fields": {
+      "county": [
+         "Klamath County",
+         "41035"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 134
+},
+{
+   "fields": {
+      "county": [
+         "Wallowa County",
+         "41063"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 135
+},
+{
+   "fields": {
+      "county": [
+         "Harney County",
+         "41025"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 136
+},
+{
+   "fields": {
+      "county": [
+         "Clallam County",
+         "53009"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 137
+},
+{
+   "fields": {
+      "county": [
+         "Clark County",
+         "53011"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 138
+},
+{
+   "fields": {
+      "county": [
+         "Cowlitz County",
+         "53015"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 139
+},
+{
+   "fields": {
+      "county": [
+         "Grays Harbor County",
+         "53027"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 140
+},
+{
+   "fields": {
+      "county": [
+         "Island County",
+         "53029"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 141
+},
+{
+   "fields": {
+      "county": [
+         "Jefferson County",
+         "53031"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 142
+},
+{
+   "fields": {
+      "county": [
+         "King County",
+         "53033"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 143
+},
+{
+   "fields": {
+      "county": [
+         "Kitsap County",
+         "53035"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 144
+},
+{
+   "fields": {
+      "county": [
+         "Klickitat County",
+         "53039"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 145
+},
+{
+   "fields": {
+      "county": [
+         "Lewis County",
+         "53041"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 146
+},
+{
+   "fields": {
+      "county": [
+         "Mason County",
+         "53045"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 147
+},
+{
+   "fields": {
+      "county": [
+         "Pacific County",
+         "53049"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 148
+},
+{
+   "fields": {
+      "county": [
+         "Pierce County",
+         "53053"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 149
+},
+{
+   "fields": {
+      "county": [
+         "San Juan County",
+         "53055"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 150
+},
+{
+   "fields": {
+      "county": [
+         "Skagit County",
+         "53057"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 151
+},
+{
+   "fields": {
+      "county": [
+         "Snohomish County",
+         "53061"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 152
+},
+{
+   "fields": {
+      "county": [
+         "Thurston County",
+         "53067"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 153
+},
+{
+   "fields": {
+      "county": [
+         "Wahkiakum County",
+         "53069"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 154
+},
+{
+   "fields": {
+      "county": [
+         "Whatcom County",
+         "53073"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 155
+},
+{
+   "fields": {
+      "county": [
+         "Columbia County",
+         "53013"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 156
+},
+{
+   "fields": {
+      "county": [
+         "Yakima County",
+         "53077"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 157
+},
+{
+   "fields": {
+      "county": [
+         "Asotin County",
+         "53003"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 158
+},
+{
+   "fields": {
+      "county": [
+         "Benton County",
+         "53005"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 159
+},
+{
+   "fields": {
+      "county": [
+         "Chelan County",
+         "53007"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 160
+},
+{
+   "fields": {
+      "county": [
+         "Douglas County",
+         "53017"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 161
+},
+{
+   "fields": {
+      "county": [
+         "Franklin County",
+         "53021"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 162
+},
+{
+   "fields": {
+      "county": [
+         "Garfield County",
+         "53023"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 163
+},
+{
+   "fields": {
+      "county": [
+         "Walla Walla County",
+         "53071"
+      ],
+      "cooling_zone": 3,
+      "heating_zone": 1
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 164
+},
+{
+   "fields": {
+      "county": [
+         "Pend Oreille County",
+         "53051"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 165
+},
+{
+   "fields": {
+      "county": [
+         "Skamania County",
+         "53059"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 166
+},
+{
+   "fields": {
+      "county": [
+         "Stevens County",
+         "53065"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 167
+},
+{
+   "fields": {
+      "county": [
+         "Whitman County",
+         "53075"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 168
+},
+{
+   "fields": {
+      "county": [
+         "Adams County",
+         "53001"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 169
+},
+{
+   "fields": {
+      "county": [
+         "Grant County",
+         "53025"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 170
+},
+{
+   "fields": {
+      "county": [
+         "Kittitas County",
+         "53037"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 171
+},
+{
+   "fields": {
+      "county": [
+         "Lincoln County",
+         "53043"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 172
+},
+{
+   "fields": {
+      "county": [
+         "Okanogan County",
+         "53047"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 173
+},
+{
+   "fields": {
+      "county": [
+         "Spokane County",
+         "53063"
+      ],
+      "cooling_zone": 2,
+      "heating_zone": 2
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 174
+},
+{
+   "fields": {
+      "county": [
+         "Ferry County",
+         "53019"
+      ],
+      "cooling_zone": 1,
+      "heating_zone": 3
+   },
+   "model": "customer_neea.pnwzone",
+   "pk": 175
+}
+]

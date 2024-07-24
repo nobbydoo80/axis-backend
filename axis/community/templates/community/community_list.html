@@ -1,0 +1,20 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .dataTable th[data-name="name"] { width: 25%; }
+        .dataTable th[data-name="metro-city"] { width: 35%; }
+        .dataTable th[data-name="associations"] { width: 10%; }
+    </style>
+{% endblock %}
+
+{% block list_content %}
+    {{ block.super }}
+    {% include "core/includes/address_confirmation_legend.html" %}
+{% endblock %}

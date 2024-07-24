@@ -1,0 +1,32 @@
+<br>
+<div class="row">
+    <div class="col-md-5 key">[[ ::regionObject.fields.is_active.label ]]:</div>
+    <div class="col-md-1 value"><span boolean-checkmark="regionObject.object.is_active"></span>
+    </div>
+    <div class="col-md-5 key">[[ ::regionObject.fields.is_public.label ]]:</div>
+    <div class="col-md-1 value"><span boolean-checkmark="regionObject.object.is_public"></span>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-5 key">[[ ::regionObject.fields.manual_transition_on_certify.label ]]:</div>
+    <div class="col-md-1 value"><span
+      boolean-checkmark="regionObject.object.manual_transition_on_certify"></span></div>
+    <div class="col-md-5 key">[[ ::regionObject.fields.opt_in.label ]]</div>
+    <div class="col-md-1 value"><span boolean-checkmark="regionObject.object.opt_in"></span></div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12 key">[[ ::regionObject.fields.certifiable_by.label ]]:</div>
+</div>
+<ul>
+    <li ng-repeat="company in regionObject.object.certifiable_by_details">
+        <a ng-href="[[ company.url ]]">[[ company.name ]]</a>
+    </li>
+</ul>
+
+<div class="row">
+    <div class="col-md-3 key">[[ ::regionObject.fields.viewable_by_company_type.label ]]:</div>
+    <div class="col-md-9 value">[[ regionObject.object.viewable_by_company_type || "-"]]</div>
+</div>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{# Generic base for confirmation views that contain just a prompt and a couple of buttons. #}
+
+{% block page_title %}Confirm{% endblock page_title %}
+
+{% block content %}
+    <form id="myform" method="post" action="">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+
+        <fieldset class="row-header">
+            <legend>
+                {% block header_text %}
+                    <span>Confirm::</span>
+                {% endblock header_text %}
+            </legend>
+        </fieldset>
+
+        <div class="row">
+            <div class="col-md-12">
+                {% block prompt %}
+                    Are you sure?
+                {% endblock prompt %}
+            </div>
+        </div>
+
+        <br />
+        <div class="form-actions">
+            {% block form_actions %}
+                <button type="submit" class="btn btn-primary">
+                    {% block confirm_button_text %}
+                        Confirm
+                    {% endblock confirm_button_text %}
+                </button>
+                <a class="btn btn-default" href="{{ cancel_url }}">Cancel</a>
+            {% endblock form_actions %}
+        </div>
+    </form>
+{% endblock content %}

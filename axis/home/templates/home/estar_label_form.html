@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %} Home ENERGY STAR label Printing {% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .dataTable th[data-name="select"],
+        .dataTable tr td:first-child { text-align: center; width: 5%; }
+        .dataTable th[data-name="address"] { width: 30%; }
+        .dataTable th[data-name="subdivision"] { width: 20%; }
+        .dataTable th[data-name="floorplan"] { width: 15%; }
+        .dataTable th[data-name="eep-programs"] { width: 25%; }
+        .dataTable th[data-name="state"] { width: 5%; }
+    </style>
+{% endblock %}
+
+{% block javascript_head %}
+    <script>
+    datatableview.autoInitialize = true
+    var selected = [];
+  	jQuery.validator.setDefaults({debug: false,success: "jvf_valid"});
+  	$(document).ready(function(){
+        $("#id_default_date").datepicker({ dateFormat: 'yy-mm-dd' });
+        $("#form").validate({
+    	    rules: {
+                {% if form.default_date.field.required %}default_date:{required: true},{% endif %}
+    	    }
+        })
+        // keep form from being submitted if no homes are selected
+        $("#form").submit(function(){
+            if(selected.length == 0){
+                console.log('No homes are selected');
+                return false;
+            } else {
+                return true;
+            }
+        })
+        // replace the first column title with icon
+        $("[data-name='select']")
+                .html('<i class="fa fa-files-o"></i>')
+        // insert home id into selection for printing labels
+        $('table').on('click', 'input[type="checkbox"]', function () {
+            var row = $(this).closest('tr')
+            var iId = $(row).attr('id')
+            is_in_array = jQuery.inArray(iId, selected);
+            if (is_in_array == -1) {
+                selected[selected.length] = iId;
+            } else {
+                selected = jQuery.grep(selected, function (value) {
+                    return value != iId;
+                })
+            }
+            $('#id_homes').val(selected);
+            if(selected.length == 0){
+                $('input[type="submit"]').prop('disabled', true);
+            } else {
+                $('input[type="submit"]').prop('disabled', false);
+            }
+        });
+    });
+    </script>
+{% endblock %}
+
+{% block full_content %}
+    <fieldset>
+        <legend><h2>ENERGY STAR Home labels</h2></legend>
+        <form id="form" action="" method="post">
+            <div class="row">
+                <div class="col-md-6">
+
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="row">
+                            <div class="col-md-12">{{ form.non_field_errors }}</div>
+                        </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ form.default_date|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row" id="homesform" style="display: none;">
+                        <div class="col-md-12">{{ form.homes }}</div>
+                    </div>
+                    <div class="row">
+                        <div><strong><h3>Instructions</h3></strong></div>
+                        <em>This is meant to be printed on ENERGY STAR &reg; New Home Stickers.</em>
+                        <ol>
+                            <li>Using the labels provided select the homes which you want to print
+                                labels for.
+                            </li>
+                            <li>If the home is not yet certified fill in a default certification date.</li>
+                            <li>Hit Submit</li>
+                            <li>Load your labels in your printer.</li>
+                            <li>Open the resulting PDF and print them to the labels.</li>
+                        </ol>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-2 image-right">
+                    <object id="estar" type="image/svg+xml"
+                            data="{{ STATIC_URL }}images/ESTAR.svg" width="150">
+                    <param name="src" value="{{ STATIC_URL }}images/ESTAR.svg">
+                    </object>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" value="Submit" name="submit" title="submit" class="btn btn-primary" disabled>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+    <hr>
+
+    {{ datatable }}
+
+{% endblock %}

@@ -1,0 +1,136 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">[[ vm.extraData.name ]]</h4>
+</div>
+<div class="modal-body">
+    <form>
+        <h4>Basic information</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <span ng-switch="vm._editing">
+                    <span ng-switch-default>
+                        <label>[[ (vm.extraData.type == 'person' ? 'First Name' : 'Company Name') ]]</label>
+                        <p>[[ vm.extraData.first_name || '-' ]]</p>
+                    </span>
+                    <axis-field ng-switch-when="true"
+                                field="regionObject.helpers.contact_form.first_name"
+                                label="(extraData.type == 'person' ? 'First Name' : 'Company Name')"
+                                value="vm.extraData.first_name"></axis-field>
+                </span>
+            </div>
+            <div class="col-md-4" ng-if="vm.extraData.type == 'person'">
+                    <span ng-switch="vm._editing">
+                        <span ng-switch-default>
+                        <label>[[ regionObject.helpers.contact_form.last_name.label ]]</label>
+                        <p>[[ vm.extraData.last_name || '-' ]]</p>
+                    </span>
+                    <axis-field ng-switch-when="true"
+                                field="regionObject.helpers.contact_form.last_name"
+                                label="regionObject.helpers.contacta_form.last_name.label"
+                                value="vm.extraData.last_name"></axis-field>
+                <span>
+            </div>
+            <div class="col-md-4">
+                    <span ng-switch="vm._editing">
+                        <span ng-switch-default>
+                        <label>[[ (vm.extraData.type == 'person' ? 'Description' : 'Website') ]]</label>
+                        <p>[[ vm.extraData.description || '-' ]]</p>
+                    </span>
+                    <axis-field ng-switch-when="true"
+                                field="regionObject.helpers.contact_form.description"
+                                label="regionObject.helpers.contacta_form.description.label"
+                                value="vm.extraData.description"></axis-field>
+                <span>
+            </div>
+            <div class="col-md-4" ng-if="vm.extraData.type == 'person'">
+                    <span ng-switch="vm._editing">
+                        <span ng-switch-default>
+                        <label>[[ regionObject.helpers.contact_form.phone.label ]]</label>
+                        <p>[[ vm.extraData.phone || '-' ]]</p>
+                    </span>
+                    <axis-field ng-switch-when="true"
+                                field="regionObject.helpers.contact_form.phone"
+                                label="regionObject.helpers.contacta_form.phone.label"
+                                value="vm.extraData.phone"></axis-field>
+                <span>
+            </div>
+            <div class="col-md-4" ng-if="vm.extraData.type == 'person'">
+                    <span ng-switch="vm._editing">
+                        <span ng-switch-default>
+                        <label>[[ regionObject.helpers.contact_form.email.label ]]</label>
+                        <p>[[ vm.extraData.email || '-' ]]</p>
+                    </span>
+                    <axis-field ng-switch-when="true"
+                                field="regionObject.helpers.contact_form.email"
+                                label="regionObject.helpers.contacta_form.email.label"
+                                value="vm.extraData.email"></axis-field>
+                <span>
+            </div>
+        </div>
+
+        <div ng-if="vm.extraData.type == 'person'">
+            <hr>
+            <h4>Address</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <span ng-switch="vm._editing">
+                        <span ng-switch-default>
+                            <label>[[ regionObject.helpers.contact_form.street_line1.label ]]</label>
+                            <p>[[ vm.extraData.street_line1 || '-' ]]</p>
+                        </span>
+                        <axis-field ng-switch-when="true"
+                                    field="regionObject.helpers.contact_form.street_line1"
+                                    label="regionObject.helpers.contacta_form.street_line1.label"
+                                    value="vm.extraData.street_line1"></axis-field>
+                    <span>
+                </div>
+                <div class="col-md-4">
+                    <span ng-switch="vm._editing">
+                        <span ng-switch-default>
+                            <label>[[ regionObject.helpers.contact_form.street_line2.label ]]</label>
+                            <p>[[ vm.extraData.street_line2 || '-' ]]</p>
+                        </span>
+                        <axis-field ng-switch-when="true"
+                                    field="regionObject.helpers.contact_form.street_line2"
+                                    label="regionObject.helpers.contacta_form.street_line2.label"
+                                    value="vm.extraData.street_line2"></axis-field>
+                    <span>
+                </div>
+                <div class="col-md-4">
+                    <span ng-switch="vm._editing">
+                        <span ng-switch-default>
+                            <label>[[ regionObject.helpers.contact_form.city.label ]]</label>
+                            <p>[[ vm.extraData.city || '-' ]]</p>
+                        </span>
+                        <axis-field ng-switch-when="true"
+                                    field="regionObject.helpers.contact_form.city"
+                                    label="regionObject.helpers.contacta_form.city.label"
+                                    value="vm.extraData.city"></axis-field>
+                    <span>
+                </div>
+                <div class="col-md-4">
+                    <span ng-switch="vm._editing">
+                        <span ng-switch-default>
+                            <label>[[ regionObject.helpers.contact_form.zipcode.label ]]</label>
+                            <p>[[ vm.extraData.zipcode || '-' ]]</p>
+                        </span>
+                        <axis-field ng-switch-when="true"
+                                    field="regionObject.helpers.contact_form.zipcode"
+                                    label="regionObject.helpers.contacta_form.zipcode.label"
+                                    value="vm.extraData.zipcode"></axis-field>
+                    <span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" ng-switch="vm._editing">
+    <span ng-switch-default>
+        <button type="button" class="btn btn-default" ng-click="vm._editing=true">Edit</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.cancel()">Close</button>
+    </span>
+    <span ng-switch-when="true">
+        <button type="button" class="btn btn-default" ng-click="vm._editing=false">Cancel</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.ok()">Save</button>
+    </span>
+</div>

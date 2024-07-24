@@ -1,0 +1,10 @@
+<div class="well">
+    <h4>Associated Programs</h4>
+    <ul>
+        {% for program in object.eep_programs.all %}
+            <li>
+                <a href="{{ program.get_absolute_url }}">{{ program }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

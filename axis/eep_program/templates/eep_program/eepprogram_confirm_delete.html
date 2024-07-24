@@ -1,0 +1,16 @@
+{% extends "base_delete.html" %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %} Delete Energy Efficiency Program {{ object }} {% endblock %}
+
+{% block warning %}
+    <i class="fa fa-exclamation-triangle fa-lg"></i>
+    Are you sure that you would like to
+    <span style="text-decoration: underline">permanently delete</span>
+    the Energy Efficiency Program {{ object }}?
+{% endblock warning %}

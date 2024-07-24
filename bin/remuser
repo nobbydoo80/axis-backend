@@ -1,0 +1,21 @@
+#!/bin/bash
+
+[[ -e bin/django ]] || { echo >&2 "Run this from the repository root instead."; exit 1; }
+
+export $(grep -v '^#' .env | xargs)
+
+echo
+
+if [[ "x$1" == "x" || "x$2" == "x" || "$3" != "" ]]; then
+    echo "bin/remuser 'username' 'password'"
+    exit 1
+fi
+
+bin/server-hosts
+
+echo
+echo "ssh production -> ./manage.py add_rem_user '$1' '$2'"
+ssh production 'source ${HOME}/.virtualenvs/axis/bin/activate; cd ~/axis; ./manage.py add_rem_user' "'$1' '$2'"
+
+echo
+echo "Done."

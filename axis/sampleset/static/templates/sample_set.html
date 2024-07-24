@@ -1,0 +1,110 @@
+<accordion-group is-open="accordion.open" ng-class="accordion.currentClass" droppable>
+    <accordion-heading>
+        <i class="fa fa-times-circle-o close-btn" ng-show="flags.isDeleting" ng-click="removeSampleSet(sampleSet, flags.changed)"></i>
+        <div class="pull-right">
+            <i tooltip="Sample Set is Metro Sampled" ng-show="sampleSet.isMetroSampled" class="fa fa-fw fa-map-marker"></i>
+            <div class="btn-group btn-group-sm" dropdown is-open="flags.dropDownOpen">
+                <a prevent-close tooltip="Toggle Remove mode" ng-click="flags.isDeleting = !flags.isDeleting" ng-class="{'active': flags.isDeleting}" class="btn btn-default"><i class="fa fa-fw fa-times"></i></a>
+                <a prevent-close tooltip="Toggle Home Detail Information" ng-click="flags.showHomeDetail = !flags.showHomeDetail" ng-class="{'active': flags.showHomeDetail}" class="btn btn-default"><i class="fa fa-fw fa-info"></i></a>
+                <a prevent-close tooltip="Save Sample Set" ng-disabled="!flags.changed" ng-click="api.commit($event)" class="btn btn-default"><i class="fa fa-fw fa-save"></i></a>
+
+                    <a prevent-close class="btn btn-default" ng-click="certify($event)" ng-disabled="!flags.isCertifiable" ng-class="{'btn-primary': is_certifiable}">Certify</a>
+                    <button prevent-close type="button" class="btn btn-default dropdown-toggle">
+                        <i class="fa fa-fw fa-caret-down"></i>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li><a ng-disabled="sampleSet.id" tooltip="Advance to next state" ng-click="api.advance($event); closeDropDown($event)" ><i class="fa fa-fw fa-forward"></i> Advance</a></li>
+                        <li><a tooltip="Edit the Alternate Name" ng-click="flags.editAltName = !flags.editAltName; closeDropDown($event)"><i class="fa fa-fw fa-pencil"></i> Alternate Name</a>
+                        </li>
+                    </ul>
+            </div>
+                <span
+                    prevent-close
+                    style="display: inline-block;"
+                    ng-class="notification.currentClass"
+                    ng-click="notification.open = messages.messages.length ? !notification.open : false"
+                    class="label label-default">
+                        <i ng-show="flags.isProcessing" class="fa fa-spinner fa-spin"></i>
+                        <span ng-hide="flags.isProcessing">[[ messages.messages.length || '0' ]]</span>
+                </span>
+        </div>
+
+        <span ng-show="flags.changed">*</span>
+        <span ng-show="sampleSet.id"> ([[ sampleSet.id ]]) </span>
+        <span ng-hide="sampleSet.name"><i class="fa fa-spin fa-spinner"></i> Loading...</span>
+        <!--[[ sampleSet.alt_name || sampleSet.uuid ]]-->
+        [[ sampleSet.name | split:'-':0 ]]
+        <br/>
+        <small>
+            [[ sampleSet.builder_name || 'Builder Undetermined' ]]
+            <span ng-show="sampleSet.alt_name">
+                - [[ sampleSet.alt_name ]]
+            </span>
+        </small>
+    </accordion-heading>
+    <div class="row" ng-show="!sampleSet.id || flags.editAltName">
+        <div class="col-xs-6 col-xs-offset-3">
+            <label> Alternate Name </label>
+            <input
+                    tooltip="To Save Alternate Name Save the Sample Set."
+                    ng-change="flags.changed = true"
+                    class="form-control"
+                    ng-model="sampleSet.alt_name"
+                    placeholder="Alternate Name..."
+                    type="text">
+            <br/>
+        </div>
+    </div>
+
+    <!-- collapse works as "isCollapsed". we're using it as "hasSomethingToShow" -->
+    <div collapse="!notification.open">
+        <div ng-repeat="message in messages.messages">
+            <div class="alert alert-[[ getAlertLevel(message.level) ]]">
+                [[ message.message ]]
+                <button type="button" ng-click="flags.showHomeDetail = !flags.showHomeDetail" class="btn btn-default btn-xs pull-right">Show Detail Information</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="flags.dragNDrop">
+        <div class="col-xs-12">
+            <small class="text-muted">Drop Homes anywhere in the Sample Set to add.</small>
+        </div>
+    </div>
+    <br/>
+
+    <div class="row" ng-show="flags.showHomeDetail">
+        <div class="col-xs-12">
+            <table class="table table-condensed">
+                <thead><tr>
+                    <th class="col-xs-4">Address</th>
+                    <th class="col-xs-3">Program</th>
+                    <th class="col-xs-3">Builder</th>
+                    <th class="col-xs-3">Metro</th>
+                </tr></thead>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="list-group">
+                <li
+                        display-home
+                        draggable
+                        class="test-home item list-group-item"
+                        ng-repeat="home in sampleSet.test_homes"
+                        ng-class="{'locked': home.is_locked}">
+                    </li>
+
+                <li
+                        display-home
+                        draggable
+                        class="sample-home item list-group-item"
+                        ng-repeat="home in sampleSet.sampled_homes"
+                        ng-class="{'locked': home.is_locked}">
+                    </li>
+            </ul>
+        </div>
+    </div>
+</accordion-group>

@@ -1,0 +1,17 @@
+#hi-brand {
+    background-image: url(../images/home_innovations_square.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: 48px ;
+    padding-left: 35px;
+    margin-top: 5px;
+}
+
+#axis-hi-brand {
+    background-image: url(../images/home_innovations_square.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: 48px ;
+    padding-left: 35px;
+    margin-top: 5px;
+}

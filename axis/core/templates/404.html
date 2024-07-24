@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load tags %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Page not Found{% endblock %}
+{% block googletracking %}{% googleanalytics404js %}{% endblock %}
+
+{% block content %}
+<article>
+    <br />
+    <h2 class="text-danger text-center">
+        <i class="fa fa-thumbs-down"></i> Sorry this page does not exist. <i class="fa fa-frown-o"></i></h2>
+    <br />
+    <br />
+    <br />
+    <p class="text-center">If you feel you received this in error please
+        <a href="http://support.pivotalenergysolutions.com">contact</a> your friendly support
+            representative for assistance.</p>
+
+</article>
+{% endblock %}

@@ -1,0 +1,26 @@
+<div ng-if="regionObject.object['user']">
+    <div class="row">
+        <div class="col-md-4 key">Company Name:</div>
+        <div class="col-md-8 value">[[ regionObject.object['company_name'] || '-' ]]</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 key">Name:</div>
+        <div class="col-md-8 value">[[ regionObject.object['name'] || '-' ]]</div>
+    </div>
+</div>
+
+<div ng-if="regionObject.object['company']">
+    <div class="row">
+        <div class="col-md-4 key">Company Name:</div>
+        <div class="col-md-8 value">[[ regionObject.object['company_name'] || '-' ]]</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 key">Name:</div>
+        <div class="col-md-8 value">[[ regionObject.object['first_name'] + regionObject.object['last_name'] || '-' ]]</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 key">Title:</div>
+    <div class="col-md-8 value">[[ regionObject.object['title'] || '-' ]]</div>
+</div>

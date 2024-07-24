@@ -1,0 +1,63 @@
+<div login dropdown is-open="login.dropdown_open" class="btn-group">
+    <span class="sign-in">
+        <a href="{% url 'auth:login' %}" class="btn btn-default navbar-btn hidden-xs hidden-sm dropdown-toggle" dropdown-toggle>
+            <i class="fa fa-sign-in"></i>&nbsp;Sign In
+        </a>
+    </span>
+    <span>
+        <a href="{% url 'tensor_registration:register_anonymous' %}" class="btn btn-default navbar-btn hidden-xs hidden-sm">
+            <i class="fa fa-user-plus"></i>&nbsp;Register
+        </a>
+    </span>
+
+    <span class="sign-in"> {# fixes button-group weirdness #}
+        <a href="{% url 'auth:login' %}" class="btn btn-default navbar-btn hidden-md hidden-lg">
+            <i class="fa fa-sign-in"></i>&nbsp;Sign In
+        </a>
+    </span>
+
+    <span> {# fixes button-group weirdness #}
+        <a href="{% url 'tensor_registration:register_anonymous' %}" class="btn btn-default navbar-btn hidden-md hidden-lg">
+            <i class="fa fa-user-plus"></i>&nbsp;Register
+        </a>
+    </span>
+
+    <form class="dropdown-menu pull-right" style="width:300px;" ng-submit="login.login($event)">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="col-sm-12">Login</h4>
+
+                <div class="row" ng-if="login.errors.__all__">
+                    <div class="col-sm-12">
+                        <div class="alert alert-danger">[[ login.errors.__all__[0] ]]</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 form-group" ng-class="{'has-error': login.errors.username}">
+                    <input type="text" prevent-close placeholder="Email Address or Username" ng-model="login.username"
+                           class="form-control"/>
+                    <span class="text-danger" ng-if="login.errors.username"
+                          ng-repeat="error in login.errors.username track by $index">[[ error ]]</span>
+                </div>
+
+                <div class="col-sm-12 form-group" ng-class="{'has-error': login.errors.password}">
+                    <input type="password" prevent-close placeholder="Password" ng-model="login.password"
+                           class="form-control"/>
+                    <span class="text-danger" ng-if="login.errors.username"
+                          ng-repeat="error in login.errors.password track by $index">[[ error ]]</span>
+                </div>
+
+                <div class="col-sm-12 form-group">
+                    <button class="btn btn-primary" type="submit">
+                      <i class="fa fa-spin fa-spinner" ng-show="login.spinner_displayed && !login.errors"></i>
+                      Sign In
+                    </button>
+                    <a class="pull-right forgot-password" style="bottom: 0" href="{% url "password_reset" %}">
+                        <button type="button" class="btn btn-link">Forgot Password?</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

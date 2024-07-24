@@ -1,0 +1,47 @@
+{% block regionset %}
+    <table class="table table-bordered table-striped examine-table">
+        <thead>
+        <tr>
+            <th ng-repeat="field_name in regionSet.visible_fields">
+                [[ regionSet.verbose_names[field_name] ]]
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        </thead>
+        {% block region %}
+            <tr axis-region region-object="regionObject"
+                ng-repeat="regionObject in regionSet.regions">
+            </tr>
+        {% endblock %}
+        <tr ng-if="regionSet.regions.length == 0 && regionSet.isDoneLoading()">
+            <td colspan="[[ regionSet.visible_fields.length + 1 ]]">
+                <br>
+
+                <p class="text-center">
+                    {% block no_regions_text %}
+                        No Items to display.
+                    {% endblock %}
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="[[ regionSet.visible_fields.length + 1 ]]"
+                region-set-non-field-errors></td>
+        </tr>
+        <tr ng-if="regionSet.new_region_url" ng-hide="regionSet.isFull()">
+            <td colspan="[[ regionSet.visible_fields.length + 1 ]]" class="text-center">
+                {% block add_new_button %}
+                    <button class="btn btn-default examine-add-new"
+                            ng-click="regionSet.fetchNewRegion()"
+                            ng-disabled="regionSet.processing">
+                        <i class="fa fa-fw"
+                           ng-class="regionSet.processing ? 'fa-spinner fa-spin' : 'fa-plus-circle'"></i>
+                        {% block add_new_button_text %} Add new [[ regionSet.verbose_name | humanize ]] {% endblock %}
+                    </button>
+                {% endblock %}
+            </td>
+        </tr>
+    </table>
+{% endblock %}

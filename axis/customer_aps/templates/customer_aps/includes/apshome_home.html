@@ -1,0 +1,20 @@
+
+{% comment %}
+    Requires: home
+    A home is what is needed to figure out whether or not the meterset should be there..
+{% endcomment %}
+
+{% if request.user.company.slug == "aps" or request.user.is_superuser %}
+    {% for item in object.apshome.legacyapshome_set.all %}
+        {% if forloop.first %}<div class="row"><div class="col-md-4"><i>Legacy Payment:</i></div><ul>{% endif %}
+        <li><a href="{{ item.get_absolute_url }}">{{ item }}</a></li>
+        {% if forloop.last %}</ul></div>{% endif %}
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-4 key">Meterset:</div>
+        <div class="col-md-8 value">
+            <a href="{{ object.apshome.get_absolute_url }}">
+                {{ object.apshome.meterset_date|date:'m/d/Y'|default:'-' }}</a>
+        </div>
+    </div>
+{% endif %}

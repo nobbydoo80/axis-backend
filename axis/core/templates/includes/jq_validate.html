@@ -1,0 +1,22 @@
+<script type="text/javascript">
+    jQuery.validator.setDefaults({
+        ignore: '',
+        highlight: function(element) {
+            var $element = $(element);
+            var $input = ($element.hasClass('select2widget')) ? $element : $element.focus()
+            $element.closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function(element) {
+            element
+                .text('OK!').addClass('valid')
+                .closest('.form-group').removeClass('has-error').addClass('has-success');
+        }
+    });
+    // Validate select2 input when it has changed. (We need to do this because
+    // select2 inputs are not handled by jquery.validation's `onfocusout`.)
+    $(function(){
+        $('.controls').on('change', '.select2-offscreen', function(event){
+            $(event.target).valid();
+        })
+    })
+</script>

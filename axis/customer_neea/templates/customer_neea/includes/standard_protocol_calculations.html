@@ -1,0 +1,80 @@
+<div ng-if="!ctrl.show_admin">
+    {% include "customer_neea/includes/standard_protocol_calculations_table.html" %}
+</div>
+
+<div ng-if="ctrl.show_admin">
+    <ul ng-if="ctrl.has_reports" class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#neea_summary">Summary</a></li>
+        <li><a data-toggle="tab" href="#neea_inputs">Input Data</a></li>
+        <li><a data-toggle="tab" href="#neea_hc">Heating / Cooling</a></li>
+        <li><a data-toggle="tab" href="#neea_la">Lights / Appliances</a></li>
+        <li><a data-toggle="tab" href="#neea_thermo">Thermostat / Shower</a></li>
+        <li><a data-toggle="tab" href="#neea_incentives">Savings<span ng-if="ctrl.show_admin"> / Incentives</span></a></li>
+    </ul>
+
+    <div ng-if="ctrl.has_reports" class="tab-content">
+        <div id="neea_summary" class="tab-pane fade in active">
+            {% include "customer_neea/includes/standard_protocol_calculations_table.html" %}
+        </div>
+        <div id="neea_inputs" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.summary ]] </pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.simulation_dump ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="neea_hc" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.hot_water ]] </pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.heating_cooling ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="neea_la" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.lighting ]] </pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.appliances ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="neea_thermo" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.shower_head ]] </pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.thermostat ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="neea_incentives" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.total ]] </pre>
+                </div>
+            </div>
+            <div ng-if="ctrl.show_utility_payment" class="row">
+                <div class="col-md-12">
+                    <pre> [[ ctrl.result.reports.incentives ]] </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .dataTable th[data-name="type"] { width: 20%; }
+        .dataTable th[data-name="id"] { width: 10%; }
+    </style>
+{% endblock %}
+
+{% block header_text %}items found on search for "{{ q }}"{% endblock %}
+
+{% block list_content %}
+    <p><em>&emsp;Not seeing what you are after - try
+        <a href="{% url 'search:search' %}">Advanced Search</a></em></p>
+    <br />
+
+    <table class="table datatable table-striped table-bordered"
+           cellpadding="0" cellspacing="0" border="0"
+           data-source-url="{% url 'basic_search' %}?q={{ q }}"
+           data-result-counter-id="id_count">
+        <thead>
+            <tr>
+                <th data-name="type">Type</th>
+                <th data-name="name">Item</th>
+                <th data-name="id">ID</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+{% endblock %}

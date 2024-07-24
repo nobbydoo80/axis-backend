@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-md-6">
+        {% with items=object.ceilingtype_set.filter_unvaulted_ceilings.all %}
+            {% if items %}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title">Ceiling w/Attic</h4></div>
+                    <ul class="list-group">{% for item in items %}<li class="list-group-item">{{ item }}</li>{% endfor %}</ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with items=object.ceilingtype_set.filter_vaulted_ceilings.all %}
+            {% if items %}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title">Vaulted Ceiling</h4></div>
+                    <ul class="list-group">{% for item in items %}<li class="list-group-item">{{ item }}</li>{% endfor %}</ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with items=object.abovegradewall_set.all %}
+            {% if items %}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title">Above Grade Walls</h4></div>
+                    <ul class="list-group">{% for item in items %}<li class="list-group-item">{{ item }}</li>{% endfor %}</ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with items=object.foundationwall_set.all %}
+            {% if items %}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title">Foundation Walls</h4></div>
+                    <ul class="list-group">{% for item in items %}<li class="list-group-item">{{ item }}</li>{% endfor %}</ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with items=object.framefloor_set.all %}
+            {% if items %}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title">Frame Floors</h4></div>
+                    <ul class="list-group">{% for item in items %}<li class="list-group-item">{{ item }}</li>{% endfor %}</ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with items=object.slab_set.all %}
+            {% if items %}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title">Slab Floors</h4></div>
+                    <ul class="list-group">{% for item in items %}<li class="list-group-item">{{ item }}</li>{% endfor %}</ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="col-md-6">
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <th>Conditioned Space</th>
+                    <td>{{ object.building.building_info.conditioned_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Shell Area</th>
+                    <td>{{ object.results.shell_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Foundation Wall Area</th>
+                    <td>{{ object.foundationwall_set.get_total_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Slab Floor Area</th>
+                    <td>{{ object.slab_set.get_total_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Frame Floor Area</th>
+                    <td>{{ object.framefloor_set.get_total_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Rim and Band</th>
+                    <td>{{ object.joist_set.get_total_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Above Grade Wall Area</th>
+                    <td>{{ object.abovegradewall_set.get_total_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Window Area</th>
+                    <td>{{ object.window_set.get_dominant_values.gross_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Doors Area</th>
+                    <td>{{ object.door_set.get_total_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Ceilings Area</th>
+                    <td>{{ object.roof_set.get_total_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Skylights Area</th>
+                    <td>{{ object.skylight_set.get_total_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Ducts Area</th>
+                    <td>{{ object.ductsystem_set.get_total_area|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Window / Wall Ratio</th>
+                    <td>{{ object.building.window_wall_ratio|floatformat:1|default:"-" }}</td>
+                </tr>
+                <tr>
+                    <th>Window / Floor Ratio</th>
+                    <td>{{ object.building.window_floor_ratio|floatformat:1|default:"-" }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <th>Window Dominant U-Value <i>(by gross area)</i></th>
+                    <td>{{ object.window_set.get_dominant_values.u_value|floatformat:2 }}</td>
+                </tr>
+                <tr>
+                    <th>Window Dominant SHGC <i>(by gross area)</i></th>
+                    <td>{{ object.window_set.get_dominant_values.solar_heat_gain_coefficient|floatformat:2 }}</td>
+                </tr>
+                {% if object.skylight_set.all|length %}
+                <tr>
+                    <th>Skylight Dominant U-Value <i>(by gross area)</i></th>
+                    <td>{{ object.skylight_set.get_dominant_values.u_value|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Skylight Dominant SHGC <i>(by gross area)</i></th>
+                    <td>{{ object.skylight_set.get_dominant_values.solar_heat_gain_coefficient|floatformat:1 }}</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <em>&dagger; More than one value exists, the dominant value is shown.</em>
+        </div>
+    </div>
+</div>

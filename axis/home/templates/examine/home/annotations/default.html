@@ -1,0 +1,10 @@
+{% comment %}
+    Requires: required_annotations
+{% endcomment %}
+
+<div class="row" ng-repeat="field_name in regionObject.visible_fields">
+    <div class="col-md-4 key">[[ regionObject.fields[field_name].label ]]:
+        {# <span class="asteriskField" ng-if="regionObject.fields[field_name].options.required">*</span> #}
+    </div>
+    <div class="col-md-8 value">[[ regionObject.object[field_name] || '-' ]]</div>
+</div>

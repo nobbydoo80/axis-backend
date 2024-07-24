@@ -1,0 +1,8 @@
+{% include "core/sidebar/includes/examine_companies.html" %}
+
+<div ng-if="regionObject.id">
+    <div class="well" ng-if="regionObject.helpers.show_aps_thermostat_incentive_machinery">
+        <h4>APS 2019 Thermostat Options</h4>
+        <axis-single-region options="regionObject.helpers.aps_thermostat_machinery"></axis-single-region>
+    </div>
+</div>

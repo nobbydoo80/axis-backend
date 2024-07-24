@@ -1,0 +1,76 @@
+{% extends 'examine/angular_region_accordion.html' %}
+
+{% block panel_heading %}
+    {# Goingt o float right, needs to come before block.super's <action-set> #}
+    <program-progress-bar
+            ng-if="regionObject.object.id && regionObject.helpers.home_status && regionObject.object.requirement_type_display == 'Field'"
+            object-id="regionObject.helpers.home_status.object.id"
+            progress-url="regionObject.helpers.home_status.object.progress_url"
+            has-ipp-payments="false"
+            object-state="regionObject.helpers.home_status.object.state"
+            certification-date="regionObject.helpers.home_status.object.certification_date"
+            region="region"
+    ></program-progress-bar>
+
+    {# Program name #}
+    {{ block.super }}
+
+    <span ng-if="regionObject.object.id"
+        class="label label-default"
+        ng-bind="regionObject.object.state_display">
+    </span>
+
+    <span ng-if="regionObject.object.result == 'pass'"
+        class="label label-success"
+        ng-bind="regionObject.object.result_display">
+    </span>
+    <span ng-if="regionObject.object.result == 'fail'"
+        class="label label-danger"
+        ng-bind="regionObject.object.result_display">
+    </span>
+{% endblock %}
+
+{# Removes the leading "Program:" #}
+{% block heading %}{% if user.is_superuser %}[ [[ regionObject.object.id ]] ] {% endif %}<strong>[[ regionObject.object_name ]]</strong>{% endblock heading %}
+
+{% block panels %}
+    <div id="[[ regionObject.type_name ]]_[[ regionObject.id ]]_panel" class="row">
+        <div ng-class="(regionObject.helpers.home_status &&regionObject.object.requirement_type_display == 'Field') ? 'col-md-9' : 'col-md-12' ">
+            {{ block.super }}
+
+            {# Displaying child panel as a sibling, instead of nesting it within the detail content. #}
+            <div ng-if="regionObject.helpers.machinery.annotations">
+                <div ng-if="regionObject.helpers.show_disclaimer"  ng-controller="NWESHDisclaimerController">
+                    <div collapse="!showDisclaimer" ng-if="regionObject.helpers.show_nwesh_disclaimer"><i>
+                        The Northwest ENERGY STAR® Homes program highly suggests that copies of
+                        ENERGY STAR checklists and supporting documentation are added to home records
+                        in Axis for supplemental record-saving. Checklists and other documents may be required
+                        and/or requested for review by Providers, QA Designees, utilities, H-QUITOs, NEEA,
+                        EPA, or by RESNET for quality assurance purposes. It is ultimately the discretion of
+                        Providers and QA Designees to require that Raters upload documentation to each
+                        home, sample set, or multifamily project in Axis. If checklists or other documents are not
+                        in Axis, contact the Rater who inspected the home.
+                    </i></div>
+                    <div collapse="!showDisclaimer" ng-if="regionObject.helpers.show_hp_disclaimer"><i>
+                        It is highly recommended that copies of supporting documentation are added to home records
+                        in Axis for supplemental record-saving. Checklists and other documents may be required
+                        and/or requested for review by utilities or NEEA for quality assurance purposes.
+                    </i></div>
+                    <a ng-click="toggleDisclaimer($event)" href>
+                        <span ng-show="showDisclaimer">Hide Prompt</span>
+                        <span ng-show="!showDisclaimer">Show Prompt</span>
+                    </a>
+                </div>
+                <axis-single-region options="regionObject.helpers.machinery.annotations"></axis-single-region>
+            </div>
+        </div>
+        <div class="col-md-3 requirements-sidebar" ng-if="regionObject.object.id && regionObject.helpers.home_status && regionObject.object.requirement_type_display == 'Field'" style="width: 284px;">
+            <program-progress-list
+                progress-url="regionObject.helpers.home_status.object.progress_url"
+                type-name="regionObject.helpers.home_status.type_name"
+                region-object="regionObject.helpers.home_status"
+                region="region"
+            ></program-progress-list>
+        </div>
+    </div>
+{% endblock %}

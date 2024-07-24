@@ -1,0 +1,15 @@
+{% extends 'examine/angular_region_panel.html' %}
+
+{% block object_name %}
+    <div ng-hide="region.editing()">
+        <span class="key">Policy Number:</span>
+        <span>[[ regionObject.object.policy_number || '-' ]]</span>
+        <span class="key">Start date:</span>
+        <span>[[ regionObject.object.start_date || '-' ]]</span>
+        <span class="key">Expiration date:</span>
+        <span>[[ regionObject.object.expiration_date || '-' ]]</span>
+    </div>
+    <div ng-show="region.editing()">
+        <span class="key">New COI Document</span>
+    </div>
+{% endblock object_name %}

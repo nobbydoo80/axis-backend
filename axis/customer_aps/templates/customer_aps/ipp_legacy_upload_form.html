@@ -1,0 +1,12 @@
+{% extends 'base_form.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_file %}
+
+{% block form_content %}
+    <div class="row">
+        <div class="col-md-6">
+            {{ form.rater|as_crispy_field }}
+            {{ form.document|as_crispy_file_field }}
+        </div>
+    </div>
+{% endblock %}

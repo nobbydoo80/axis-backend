@@ -1,0 +1,32 @@
+<div validate-rem-vs-blg update-remdata-on-change="">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <axis-field field="regionObject.fields.remrate_target" on-change="lookupRemrateInfo()"></axis-field>
+        </div>
+        <div class="col-md-12 form-group">
+            <axis-field field="regionObject.fields.remrate_data_file"></axis-field>
+        </div>
+    </div>
+    <div class="row" ng-init="show_validation_data" ng-if="validation_data">
+        <div class="col-md-12">
+            <div ng-if="data_has_mismatches">
+                <a ng-click="show_validation_data = !show_validation_data">
+                    [[ show_validation_data ? 'Hide' : 'Show' ]] Validation
+                </a>
+                <div class="label label-danger">Mismatch</div>
+                <div class="well well-sm text-muted" ng-show="show_validation_data">
+                    <div class="row">
+                        <div class="col-md-3"
+                             ng-repeat="(key, value) in validation_data"
+                             ng-class="[validationClass(value)]"
+                             tooltip-html-unsafe="Simulation: [[ value.sim ]]<br/>BLG: [[ value.blg ]]"
+                             tooltip-trigger="click">
+                            <i class="fa" ng-class="value.matches ? 'fa-check-square' : 'fa-square-o'"></i>
+                            [[ value.name ]]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

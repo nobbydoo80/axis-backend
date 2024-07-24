@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    Message Center
+{% endblock page_title %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}messaging/inbox.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var date_fields = "#id_date_created_start,#id_date_created_end,#id_date_alerted_start,#id_date_alerted_end";
+            $(date_fields).datepicker();
+            $(date_fields).on('change', function(e){
+                var prev_date = $(this).data('prev_selected_date');
+                if(prev_date == undefined){
+                    $(this).data('prev_selected_date', $(this).val());
+                    return;
+                } else {
+                    if(prev_date == $(this).val()){
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        return;
+                    } else {
+                        $(this).data('prev_selected_date', $(this).val());
+                    }
+                }
+            });
+
+            $("form").on('change', function(e){
+                $('[datatable]').DataTable().ajax.reload();
+            });
+        });
+
+        datatableview.finalizeOptions = function(datatable, options){
+            options.ajax.data = function(data){
+                data.level = $('#id_level').val();
+                data.category = $('#id_category').val();
+                data.delivery_type = $('#id_delivery_type').val();
+                data.date_created_start = $('#id_date_created_start').val();
+                data.date_created_end = $('#id_date_created_end').val();
+                data.date_alerted_start = $('#id_date_alerted_start').val();
+                data.date_alerted_end = $('#id_date_alerted_end').val();
+            }
+            return options;
+        };
+
+    </script>
+{% endblock javascript_head %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .dataTable th:nth-child(1) { width: 40px !important; }
+        .dataTable th:nth-child(2) { width: 75px !important; }
+        .dataTable th:nth-child(3) { width: auto !important; }
+        .dataTable th:nth-child(4) { width: 87px !important; }
+        .dataTable th:nth-child(5),
+        .dataTable th:nth-child(6) { width: 86px !important; }
+        .dataTable th:nth-child(7) { width: 79px !important; }
+        .dataTable th:nth-child(8) { width: 78px !important; }
+    </style>
+{% endblock %}
+
+{% block axis_angular_dependencies %}
+    ['axis.messaging.inbox']
+{% endblock axis_angular_dependencies %}
+
+
+{% block full_content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-12">
+                <p>
+                    <span>Message Center</span>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Filters</h4>
+            <br>
+            <form>
+                {{ filter_form.level|as_crispy_field }}
+                {{ filter_form.category|as_crispy_field }}
+                {{ filter_form.delivery_type|as_crispy_field }}
+                <div class="row">
+                    <div class="col-md-6">{{ filter_form.date_created_start|as_crispy_field }}</div>
+                    <div class="col-md-6">{{ filter_form.date_created_end|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ filter_form.date_alerted_start|as_crispy_field }}</div>
+                    <div class="col-md-6">{{ filter_form.date_alerted_end|as_crispy_field }}</div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-9">
+            {% include "messaging/includes/message_list.html" with include_read=True %}
+        </div>
+    </div>
+
+{% endblock full_content %}

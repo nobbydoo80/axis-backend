@@ -1,0 +1,14 @@
+from rest_framework import routers
+
+from axis.customer_eto.api import FastTrackSubmissionViewSet
+
+__author__ = "Autumn Valenta"
+__date__ = "5/27/13 10:29 AM"
+__copyright__ = "Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved."
+__credits__ = [
+    "Autumn Valenta",
+]
+
+
+api_router = routers.SimpleRouter()
+api_router.register(r"projects", FastTrackSubmissionViewSet, "projects")

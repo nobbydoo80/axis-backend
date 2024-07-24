@@ -1,0 +1,16 @@
+<style type="text/css">
+    #checklist-questions .datatable th[data-name="name"] { width: 75% !important;}
+    #checklist-questions .datatable th[data-name="required"] { width: 5% !important; }
+</style>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <p class="key"><span id="questions_count">
+            <i class="fa fa-spinner fa-spin"></i>
+        </span> Questions for: {{ object }}</p>
+    </div>
+</div>
+<br />
+
+{{ questions_datatable }}

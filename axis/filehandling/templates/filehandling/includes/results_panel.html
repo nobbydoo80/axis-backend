@@ -1,0 +1,61 @@
+  <div class="panel
+    {% if object.has_errors %}panel-danger
+    {% else %}
+        {% if object.WARNING|length %}panel-warning
+        {% else %}
+            {% if object.INFO|length %}panel-info{% endif %}
+        {% endif %}
+    {% endif %}">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_{{ row_id }}">
+            {% if label %}{{ label }}{% else %}Row {{ row_id }} Issues{% endif %}
+        </a>
+        <div class="pull-right">
+          {% if object.CRITICAL|length %}
+            <span class="label label-danger">Critical</span>
+          {% endif %}
+          {% if object.ERROR|length %}
+            <span class="label label-danger">Error</span>
+          {% endif %}
+          {% if object.WARNING|length %}
+            <span class="label label-warning">Warning</span>
+          {% endif %}
+          {% if object.INFO|length %}
+            <span class="label label-info">Info</span>
+          {% endif %}
+          {% if debug and False %}
+              {% if object.DEBUG|length %}
+                <span class="label label-default">Debug</span>
+              {% endif %}
+          {% endif %}
+        </div>
+      </h4>
+    </div>
+    <div id="collapse_{{ row_id }}" class="panel-collapse collapse {% if open_in %}in{% endif %} ">
+      <div class="panel-body">
+          {% if object.CRITICAL|length %}
+              <div class="col-md-12 key"><strong>Errors:</strong></div>
+              <div class="col-md-12 value"><ul>{{ object.CRITICAL|safeseq|unordered_list }}</ul></div>
+          {% endif %}
+          {% if object.ERROR|length %}
+              <div class="col-md-12 key"><strong>Errors:</strong></div>
+              <div class="col-md-12 value"><ul>{{ object.ERROR|safeseq|unordered_list }}</ul></div>
+          {% endif %}
+          {% if object.WARNING|length %}
+              <div class="col-md-12 key"><strong>Warnings:</strong></div>
+              <div class="col-md-12 value"><ul>{{ object.WARNING|safeseq|unordered_list }}</ul></div>
+          {% endif %}
+          {% if object.INFO|length %}
+              <div class="col-md-12 key"><strong>Info:</strong></div>
+              <div class="col-md-12 value"><ul>{{ object.INFO|safeseq|unordered_list }}</ul></div>
+          {% endif %}
+          {% if debug and False %}
+              {% if object.DEBUG|length %}
+                  <div class="col-md-12 key"><strong>Debug:</strong></div>
+                  <div class="col-md-12 value"><ul>{{ object.DEBUG|safeseq|unordered_list }}</ul></div>
+              {% endif %}
+          {% endif %}
+      </div>
+    </div>
+  </div>

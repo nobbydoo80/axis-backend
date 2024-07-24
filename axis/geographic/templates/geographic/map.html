@@ -1,0 +1,11 @@
+{% if object.latitude and object.longitude %}
+    {% include "geographic/map_google.html" %}
+{% else %}
+    <div class='img-rounded'
+         style="width: 100%; height: {{ height|default:"300" }}px; background-color: #F2F2F2;
+                 display: table-cell; text-align: center; vertical-align: middle;
+                 padding: 20px; color: darkgray;">
+        Axis was unable to confirm and map this address. Please verify the accuracy of the address.
+        If the address entered is correct, it may be too new for our mapping engines to find it.
+    </div>
+{% endif %}

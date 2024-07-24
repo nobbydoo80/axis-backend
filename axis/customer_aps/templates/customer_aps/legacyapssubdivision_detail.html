@@ -1,0 +1,83 @@
+{% extends 'base_detail.html' %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block detail_content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 key">Builder:</div>
+                <div class="col-md-6 value">
+                    <a href="{{ object.legacy_builder.get_absolute_url }}">{{ object.legacy_builder }}</a>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-6 key">Parcel:</div>
+                <div class="col-md-6 value">{{ object.parcel }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">City:</div>
+                <div class="col-md-6 value">{{ object.sub_loc_city }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">ZIP Code:</div>
+                <div class="col-md-6 value">{{ object.sub_loc_zip }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">Crossroads:</div>
+                <div class="col-md-6 value">{{ object.sub_location }}</div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-6 key">Number of Homes:</div>
+                <div class="col-md-6 value">{{ object.legacyapshomes_set.count|default:'-' }}</div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 key">Rater:</div>
+                <div class="col-md-6 value">
+                    <a href="{{ object.legacy_rater.get_absolute_url }}">{{ object.legacy_rater }}</a>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-6 key">Contract Date:</div>
+                <div class="col-md-6 value">{{ object.contract_date }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">Expire Date:</div>
+                <div class="col-md-6 value">{{ object.exp_date }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">Lots Signed:</div>
+                <div class="col-md-6 value">{{ object.lots_signed }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">Lots Paid:</div>
+                <div class="col-md-6 value">{{ object.lots_paid }}</div>
+            </div>
+            {% if object.ammended_date %}
+                <div class="row">
+                    <div class="col-md-6 key">Ammended Date:</div>
+                    <div class="col-md-6 value">{{ object.ammended_date }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 key">Ammended Lots:</div>
+                    <div class="col-md-6 value">{{ object.addendum_lots }}</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    {{ datatable }}
+{% endblock %}

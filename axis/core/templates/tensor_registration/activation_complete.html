@@ -1,0 +1,22 @@
+{% extends "tensor_registration/registration_base.html" %}
+
+{% block page_title %}Account Registration Complete{% endblock page_title %}
+
+{% block full_content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-12">
+                <p>Account Registration complete!</p>
+            </div>
+        </div>
+    </header>
+    <br/>
+    <br/>
+    <p class="text-center">Now you can <a href="{% url 'auth:login' %}">login</a> with your credentials.</p>
+    <br/>
+    <br/>
+    <br/>
+    <p class="text-center">If you feel require further assistance please
+        <a href="http://support.pivotalenergysolutions.com">contact</a> your friendly support
+        representative for assistance.</p>
+{% endblock full_content %}

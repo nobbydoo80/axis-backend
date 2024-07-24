@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[[ -e bin/django ]] || { echo >&2 "Run this from the repository root instead."; exit 1; }
+
+find . -name '*.pyc' -delete

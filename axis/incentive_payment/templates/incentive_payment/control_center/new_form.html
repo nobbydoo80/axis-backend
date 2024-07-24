@@ -1,0 +1,25 @@
+{% load crispy_forms_tags %}
+
+<form method="post" action="{{ form.action }}">
+    <button type="button" class="reload_form btn btn-default btn-xs"><i class="fa fa-refresh"></i></button>
+    {% csrf_token %}
+    {{ form.customer|as_crispy_field }}
+    <div class="hide-form">
+        {{ form.check_requested_date|as_crispy_field }}
+        {{ form.comment|as_crispy_field }}
+        {{ form.stats|as_crispy_field }}
+
+        <div class="form-actions">
+            <input class="btn btn-primary"
+                   title="Submit" name="submit"
+                   value="Update"
+                   type="submit">
+            <input class="btn btn-default" title="Submit"
+                   name="submit"
+                   value="Revert"
+                   type="submit">
+        </div>
+        <div class="messages" style="display: none;"></div>
+    </div>
+
+</form>

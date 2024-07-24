@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load media_url %}
+
+{% block page_title %}{{ flatpage.title }}{% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .flatpage-data { min-height: 400px; }
+    </style>
+{% endblock %}
+
+{% block full_content %}
+    <div class="flatpage-data">
+        {{ flatpage.content|media_url:STATIC_URL }}
+    </div>
+{% endblock %}

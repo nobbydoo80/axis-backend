@@ -1,0 +1,102 @@
+{% extends 'base_detail.html' %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block detail_content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4 key">Lot:</div>
+                <div class="col-md-8 value">{{ object.address.lot_no }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4 key">Street:</div>
+                <div class="col-md-8 value">{{ object.get_street_line_1 }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">City:</div>
+                <div class="col-md-8 value">{{ object.lt_city }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">State:</div>
+                <div class="col-md-8 value">{{ object.lt_state }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">ZIP Code:</div>
+                <div class="col-md-8 value">{{ object.lt_zip }}</div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4 key">Floorplan:</div>
+                <div class="col-md-8 value">{{ object.plan_no }}</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4 key">Site ID:</div>
+                <div class="col-md-8 value">
+                    <a href="{{ object.aps_home.get_absolute_url }}">{{ object.premise_id }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Meter Set Date:</div>
+                <div class="col-md-8 value">{{ object.initial_meter_set }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4 key">Lot Status:</div>
+                <div class="col-md-8 value">{{ object.lot_status }}</div>
+            </div>
+            {% if object.pd_date %}
+                <div class="row">
+                    <div class="col-md-4 key">Paid Date:</div>
+                    <div class="col-md-8 value">{{ object.pd_date }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">Check / Value:</div>
+                    <div class="col-md-8 value">{{ object.ck_numb }} / ${{ object.amt_pd }}</div>
+                </div>
+            {% endif %}
+            {% if object.solar_ready %}
+                <div class="row">
+                    <div class="col-md-4 key">Solar Ready:</div>
+                    <div class="col-md-8 value">{{ object.solar_ready }}</div>
+                </div>
+            {% endif %}
+            {% if object.solar_type %}
+                <div class="row">
+                    <div class="col-md-4 key">Solar Type:</div>
+                    <div class="col-md-8 value">{{ object.solar_type }}</div>
+                </div>
+            {% endif %}
+            {% if object.amt_pd_sr %}
+                <div class="row">
+                    <div class="col-md-4 key">Solar Paid Date / Amount:</div>
+                    <div class="col-md-8 value">{{ object.pd_date_sr }} / ${{ object.amt_pd_sr }}</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 key">Subdivision:</div>
+        <div class="col-md-3 value">
+            <a href="{{ object.legacy_subdivision.get_absolute_url }}">{{ object.legacy_subdivision.sub }}</a>
+        </div>
+        {% if object.subdivision.mstr_plan %}
+            <div class="col-md-3 key">Community:</div>
+            <div class="col-md-3 value">{{ object.subdivision.mstr_plan }}</div>
+        {% endif %}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 key">Certification Date:</div>
+        <div class="col-md-3 value">{{ object.compliance_date }}</div>
+    </div>
+{% endblock %}

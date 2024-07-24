@@ -1,0 +1,33 @@
+<div class="panel panel-default inspection_grade-panel">
+    <div class="panel-heading">
+        <table class="table heading-inspection_grade-table">
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="[[ regionObject.object['object_link'] ]]">
+                            [[ regionObject.object['content_object_display'] ]]
+                        </a>
+                    </td>
+                    <td>
+                        <action-strip-set processing="regionSet.processing"
+                              actions="regionObject.actions"></action-strip-set>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-body form-target inspection_grade-panel-body-detail" detail-content ng-hide="region.editing()">
+        <div detail-content ng-hide="region.editing()">
+            <loading-spinner></loading-spinner>
+        </div>
+    </div>
+
+    <div class="panel-body form-target" form-content ng-show="region.editing()">
+        <non-field-errors></non-field-errors>
+        <div form-content ng-show="region.editing()">
+            <loading-spinner></loading-spinner>
+        </div>
+    </div>
+
+</div>

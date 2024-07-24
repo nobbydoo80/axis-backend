@@ -1,0 +1,33 @@
+{% extends "base_confirm.html" %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Home State Advancement{% endblock %}
+
+{% block header_text %}
+    Home State Advancement
+{% endblock header_text %}
+
+{% block prompt %}
+    Please confirm you want to move this to the next state "<em>{{ next_state }}</em>".
+
+    {% if object.sampleset %}
+        <div class="row">
+            <div class="col-md-12">
+                <em>
+                    Note: This will also advance all homes attached to sample set
+                    <a href="{{ object.sampleset.get_absolute_url }}" target="_blank">{{ object.sampleset }}</a>
+                    to state {{ next_state }}.
+                </em>
+            </div>
+        </div>
+    {% endif %}
+{% endblock prompt %}
+
+{% block confirm_button_text %}
+    Yes
+{% endblock confirm_button_text %}

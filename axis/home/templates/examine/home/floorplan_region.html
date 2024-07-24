@@ -1,0 +1,16 @@
+{% extends "examine/angular_region_panel.html" %}
+
+{% block heading %}
+    <span ng-show="regionObject.parentRegionObject.object.floorplan == regionObject.object.id && (regionObject.object.id != null || $index == 0)">
+        <i class="fa fa-star"></i> {% if user.is_superuser %}[ [[ regionObject.object.id ]] ] {% endif %} Active
+    </span>
+    <span ng-switch="regionObject.object.id || region.form_type">
+        <span ng-switch-when="existing">
+            [[ regionObject.helpers.verbose_name ]]:
+            <strong>Existing [[ regionObject.helpers.verbose_name ]]</strong>
+        </span>
+        <span ng-switch-default>
+            {{ block.super }}
+        </span>
+    </span>
+{% endblock heading %}

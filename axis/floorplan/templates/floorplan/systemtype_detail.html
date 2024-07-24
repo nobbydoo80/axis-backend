@@ -1,0 +1,32 @@
+{% extends 'base_detail.html' %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block detail_content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4 key">Name:</div>
+                <div class="col-md-8 value">{{ object.name }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Description:</div>
+                <div class="col-md-8 value">{{ object.description }}</div>
+            </div>
+            {% if request.user.company != object.company %}
+                <div class="row">
+                    <div class="col-md-4 key">Company:</div>
+                    <div class="col-md-8 value">{{ object.company }}</div>
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-4 key">Is Public:</div>
+                <div class="col-md-8 value">{{ object.is_public }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

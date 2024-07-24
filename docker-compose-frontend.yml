@@ -1,0 +1,86 @@
+# This file allows testing a Django server and ngnx setup that mirrors our production
+# setup. It really is only used for testing things like server configuration and such
+# that require the full setup. Usually for local development we just run Django's
+# built-i server (manage.py runserver)
+version: "3.2"
+
+services:
+  nginx:
+    image: pivotalenergy/nginx:latest
+    volumes:
+      - ../docker/${COMPOSE_PROJECT_NAME:-axis}/app-media:/app/media:rw
+      - ../docker/${COMPOSE_PROJECT_NAME:-axis}/app-static:/static:ro
+#    environment:
+#      BASE_SITE_URL: 'localhost'
+#      WEBSOCKET_HOST: 'messaging:8080'
+    depends_on:
+      - app
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - main
+  messaging:
+    image: pivotalenergy/axis-messaging:latest
+    build:
+      dockerfile: axis/messaging/server/Dockerfile
+      context: .
+#    environment:
+#      DOCKER_APP: 'app'
+#      DJANGO_HTTP_PORT: '8000'
+    env_file:
+      - .env
+    networks:
+      - main
+    depends_on:
+      - app
+    links:
+      - app
+      - rabbitmq
+    expose:
+      - 8080
+      # - "8002"
+    ports:
+      - 8080:8080
+#    volumes:
+#      # DEVELOPMENT ONLY This is all to allow real time editing..
+#      - ./axis/messaging/server/server.js:/app/server.js
+#      - ./settings:/app/settings
+
+  app:
+    image: pivotalenergy/axis:latest
+    ports:
+      - 8000:8000
+    expose:
+      - 8000
+    links:
+      - db
+      - rabbitmq
+      - memcached
+    env_file:
+    - .env
+    environment:
+      DJANGO_SETTINGS_MODULE: 'settings.dev_docker'
+      COLLECT_STATIC: 'on'
+      FRONTEND_ONLY: 'on'
+    networks:
+      - main
+    depends_on:
+      - db
+      - memcached
+    volumes:
+      - ../docker/${COMPOSE_PROJECT_NAME:-axis}/app-media:/app/media:rw
+      - ../docker/${COMPOSE_PROJECT_NAME:-axis}/app-static:/app/static:rw
+      # DEVELOPMENT ONLY This is all to allow real time editing..
+      - ./axis:/app/axis
+      - ./settings:/app/settings
+      - ./bin:/app/bin
+      - ./manage.py:/app/manage.py
+      - ./celeryapp.py:/app/celeryapp.py
+      - ./urls.py:/app/urls.py
+      - ./.docker-entrypoint.sh:/app/docker-entrypoint.sh
+      - ./.env:/app/.env
+
+networks:
+  main:

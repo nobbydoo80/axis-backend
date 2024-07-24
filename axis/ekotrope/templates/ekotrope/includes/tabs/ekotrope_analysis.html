@@ -1,0 +1,64 @@
+{% load humanize %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Annual Energy Cost ($/yr)</h4></div>
+            <table class="table">
+                <tbody>
+                    {% for item in summary.analysis.energy.breakdown.byFuel %}
+                        {% if item.cost > 0 %}
+                            <tr>
+                                <th>{{ item.fuel }}</th>
+                                <td>${{ item.cost|floatformat:2 }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Annual End-Use Consumption</h4></div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Cost</th>
+                        <td>${{ summary.analysis.energy.summary.cost|floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Heating (MBtu)</th>
+                        <td>{{ summary.analysis.energy.summary.heatingConsumption|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cooling (MBtu)</th>
+                        <td>{{ summary.analysis.energy.summary.coolingConsumption|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Hot Water (MBtu)</th>
+                        <td>{{ summary.analysis.energy.summary.waterHeatingConsumption|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lights &amp; Appliances (MBtu)</th>
+                        <td>{{ summary.analysis.energy.summary.lightingAndAppliancesConsumption|floatformat:0 }}</td>
+                    </tr>
+
+                    {# These are only partially implemented by Ekotrope at the moment #}
+                    {% if summary.analysis.energy.summary.winterElectricPowerPeak > -1 %}
+                        <tr>
+                            <th>Peak Winter Electric Power (kW)</th>
+                            <td>{{ summary.analysis.energy.summary.winterElectricPowerPeak|floatformat:0 }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if summary.analysis.energy.summary.summerElectricPowerPeak > -1 %}
+                        <tr>
+                            <th>Peak Summer Electric Power (kW)</th>
+                            <td>{{ summary.analysis.energy.summary.summerElectricPowerPeak|floatformat:0 }}</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{% extends "email_base.txt" %}
+
+{% block content %}
+Hello Support,
+
+Axis has captured that {{ requesting_user.get_full_name }} has requested a change to the REMRate account for {{ company }} on {{ target_hostname }}.  This will get closed once this request has been completed.
+
+On behalf of,
+
+{{ requesting_user.get_full_name }}
+
+
+{% endblock  %}

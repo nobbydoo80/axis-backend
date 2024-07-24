@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[[ -e bin/django ]] || { echo >&2 "Run this from the repository root instead."; exit 1; }
+
+./manage.py testserver --noinput --settings=settings.qa.puppeteer --addrport 8000 compiled/test_companies_and_users.json

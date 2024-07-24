@@ -1,0 +1,38 @@
+{% extends "examine/angular_form_default.html" %}
+
+{% block content %}
+    <div ng-controller="HomeStatusFormController">
+        <div class="row form-group" ng-if="regionObject.fields.eep_program">
+            <div class="col-md-12">
+                <axis-field field="regionObject.fields.eep_program"></axis-field>
+            </div>
+        </div>
+        <div class="row form-group" ng-if="regionObject.fields.company">
+            <div class="col-md-12">
+                <axis-field field="regionObject.fields.company"
+                            on-change="regionObject.fields.rater_of_record ? lookupCompanyUsers() : false"></axis-field>
+            </div>
+        </div>
+        <div class="row form-group" ng-if="regionObject.fields.rater_of_record || regionObject.fields.energy_modeler || regionObject.fields.field_inspectors">
+            <div class="col-md-4">
+                <axis-field field="regionObject.fields.rater_of_record"></axis-field>
+            </div>
+            <div class="col-md-4">
+                <axis-field field="regionObject.fields.energy_modeler"></axis-field>
+            </div>
+            <div class="col-md-4">
+                <axis-field field="regionObject.fields.field_inspectors"></axis-field>
+            </div>
+        </div>
+        <div class="row form-group" ng-if="regionObject.fields.customer_hirl_rough_verifier || regionObject.fields.customer_hirl_final_verifier">
+            <div class="col-md-4">
+                <axis-field field="regionObject.fields.customer_hirl_rough_verifier"></axis-field>
+            </div>
+            <div class="col-md-4">
+                <axis-field field="regionObject.fields.customer_hirl_final_verifier"></axis-field>
+            </div>
+        </div>
+    </div>
+
+    <axis-region-set options="regionObject.helpers.machinery.floorplan" ng-if="regionObject.helpers.machinery.floorplan"></axis-region-set>
+{% endblock content %}

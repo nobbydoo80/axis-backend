@@ -1,0 +1,48 @@
+<table>
+    <thead>
+        <tr>
+            <td>
+                Project
+            </td>
+            <td>
+                H-Number
+            </td>
+            <td>
+                Previous Paid
+            </td>
+            <td>
+                New Amounts Paid
+            </td>
+            <td>
+                Total Paid
+            </td>
+            <td>
+                Date Update
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in result_table_data %}
+            <tr>
+                <td>
+                    {% if data.project.home_status %}
+                        <a href="{{ base_url }}{{ data.project.home_status.get_absolute_url }}">
+                            {{ data.project.id }}
+                        </a>
+                    {% else %}
+                        <a href="{{ base_url }}{{ data.project.get_absolute_url }}">
+                            {{ data.project.id }}
+                        </a>
+                    {% endif %}
+                </td>
+                <td>
+                    {{ data.project.h_number }}
+                </td>
+                <td>{{ data.previous_paid }}</td>
+                <td>{{ data.new_amounts_paid }}</td>
+                <td>{{ data.total_amount_paid }}</td>
+                <td>{{ data.date_update }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

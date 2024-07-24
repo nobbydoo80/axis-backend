@@ -1,0 +1,17 @@
+{% extends "filehandling/asynchronousprocesseddocument_form.html" %}
+{% load crispy_forms_filters %}
+
+{% comment %}
+    Author: Tim Valenta <tvalenta@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block form_content %}
+    {{ block.super }}
+    {% if form.update_existing_answers %}
+        <div class="row">
+            <div class="col-md-6">{{ form.update_existing_answers|as_crispy_field }}</div>
+        </div>
+    {% endif %}
+{% endblock %}

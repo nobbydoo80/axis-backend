@@ -1,0 +1,452 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-2">
+                <span class="key">Full Name:</span>
+            </div>
+            <div class="col-md-8">
+                <span class="value">[[ regionObject.object.first_name ]] [[ regionObject.object.last_name ]]</span>
+            </div>
+            <div class="col-md-1">
+                <span class="key">Active:</span>
+            </div>
+            <div class="col-md-1">
+                    <span class="value">
+                        <i class="fa"
+                           ng-class="{'fa-check-square-o': regionObject.object.is_active, 'fa-square-o': !regionObject.object.is_active}"></i>
+                    </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <span class="key">Title:</span>
+            </div>
+            <div class="col-md-8">
+                <span class="value">[[ regionObject.object.title || '-' ]]</span>
+            </div>
+            <div class="col-md-1">
+                <span class="key">Public:</span>
+            </div>
+            <div class="col-md-1">
+                    <span class="value">
+                        <i class="fa"
+                           ng-class="{'fa-check-square-o': regionObject.object.is_public, 'fa-square-o': !regionObject.object.is_public}"></i>
+                    </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                    <span class="key">
+                        Email:
+                    </span>
+            </div>
+            <div class="col-md-8">
+                <a class="value" href="mailto:[[ regionObject.object.email ]]"
+                   ng-show="regionObject.object.email">
+                    [[ regionObject.object.email ]]
+                </a>
+                <span class="value" ng-hide="regionObject.object.email">
+                    -
+                </span>
+            </div>
+            {% if request.user.id == object.id or request.user.is_superuser %}
+                <div class="col-md-1">
+                        <span class="key">
+                            Admin:
+                        </span>
+                </div>
+                <div class="col-md-1">
+                        <span class="value">
+                            <i class="fa"
+                               ng-class="{'fa-check-square-o': regionObject.object.is_company_admin, 'fa-square-o': !regionObject.object.is_company_admin}"></i>
+                        </span>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                    <span class="key">
+                        Department:
+                    </span>
+            </div>
+            <div class="col-md-8">
+                    <span class="value">
+                        [[ regionObject.object.department || '-' ]]
+                    </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <span class="key">Company:</span>
+            </div>
+            <div class="col-md-8">
+                <a class="value"
+                   href="/company/[[ regionObject.object.company_type ]]/[[ regionObject.object.company ]]/">
+                    [[ regionObject.object.company_name ]]
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                            <span class="key">
+                                <i class="fa fa-phone" aria-hidden="true"></i>&emsp;Work:
+                            </span>
+                    </div>
+                    <div class="col-md-8">
+                        <a ng-show="regionObject.object.work_phone"
+                           class="value"
+                           href="tel:[[ regionObject.object.work_phone ]]">
+                            [[ regionObject.object.work_phone | tel ]]
+                        </a>
+                        <span ng-hide="regionObject.object.work_phone" class="value">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                            <span class="key">
+                                <i class="fa fa-mobile" aria-hidden="true"></i>&emsp;Cell:
+                            </span>
+                    </div>
+                    <div class="col-md-8">
+                        <a ng-show="regionObject.object.cell_phone"
+                           class="value" href="tel:[[ regionObject.object.cell_phone ]]">
+                            [[ regionObject.object.cell_phone ]]
+                        </a>
+                        <span ng-hide="regionObject.object.cell_phone" class="value">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                            <span class="key">
+                                <i class="fa fa-fax" aria-hidden="true"></i>&emsp;Fax:
+                            </span>
+                    </div>
+                    <div class="col-md-8">
+                        <span class="value">
+                            [[ regionObject.object.fax_number || '-' ]]
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                            <span class="key">
+                                <i class="fa fa-mobile"></i>&emsp;Alt:
+                            </span>
+                    </div>
+                    <div class="col-md-8">
+                        <a ng-show="regionObject.object.alt_phone"
+                           class="value" href="tel:[[ regionObject.object.alt_phone ]]">
+                            [[ regionObject.object.alt_phone ]]
+                        </a>
+                        <span ng-hide="regionObject.object.alt_phone" class="value">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><i class="fa fa-map-marker"
+                                                          aria-hidden="true"></i>&emsp;Company
+                                address
+                            </div>
+                            <div class="panel-body">
+                                <address>
+                                    <strong>[[ regionObject.object.company_name ]]</strong><br/>
+                                    [[ regionObject.object.company_street_line1 ]]<br/>
+                                    <div ng-show="regionObject.company_street_line2">
+                                        [[ regionObject.object.company_street_line2 ]]
+                                    </div>
+                                    [[ regionObject.object.company_city_name ]],
+                                    [[ regionObject.object.company_zipcode ]]
+                                    <br/>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><i class="fa fa-map-marker"
+                                                          aria-hidden="true"></i>&emsp;Company
+                                Shipping Address
+                            </div>
+                            <div class="panel-body">
+                                <address ng-show="regionObject.object.company_shipping_geocode">
+                                    <strong>[[ regionObject.object.company_name ]]</strong><br/>
+                                    [[ regionObject.object.company_shipping_geocode_street_line1 ]]<br/>
+                                    <div ng-show="regionObject.object.company_shipping_geocode_street_line2">
+                                        [[ regionObject.object.company_shipping_geocode_street_line2 ]]
+                                    </div>
+                                    [[ regionObject.object.company_shipping_geocode_city_name ]],
+                                    [[ regionObject.object.company_shipping_geocode_zipcode ]]
+                                    <br/>
+                                </address>
+                                <address ng-hide="regionObject.object.company_shipping_geocode">
+                                    <strong>[[ regionObject.object.company_name ]]</strong><br/>
+                                    [[ regionObject.object.company_street_line1 ]]<br/>
+                                    <div ng-show="regionObject.object.company_street_line2">
+                                        [[ regionObject.object.company_street_line2 ]]
+                                    </div>
+                                    [[ regionObject.object.company_city_name ]],
+                                    [[ regionObject.object.company_zipcode ]]
+                                    <br/>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default"
+                     ng-show="regionObject.object.mailing_geocode_exists">
+                    <div class="panel-heading">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>&emsp;Mailing address
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4 key">Street line 1:
+                                    </div>
+                                    <div class="col-md-8"
+                                         ng-bind="regionObject.object.mailing_geocode_street_line1 || '-'"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 key">Street line 2:
+                                    </div>
+                                    <div class="col-md-8"
+                                         ng-bind="regionObject.object.mailing_geocode_street_line2 || '-'"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 key">City:</div>
+                                    <div class="col-md-8"
+                                         ng-bind="regionObject.object.mailing_geocode_city_display || '-'"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 key">Zip Code:
+                                    </div>
+                                    <div class="col-md-8"
+                                         ng-bind="regionObject.object.mailing_geocode_zipcode || '-'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6"
+                 ng-show="regionObject.object.shipping_geocode_exists || !regionObject.object.shipping_geocode_exists && regionObject.object.mailing_geocode_exists">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>&emsp;Shipping address
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div ng-show="regionObject.object.shipping_geocode_exists">
+                                    <div class="row">
+                                        <div class="col-md-4 key">Street line 1:</div>
+                                        <div class="col-md-8"
+                                             ng-bind="regionObject.object.shipping_geocode_street_line1 || '-'"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 key">Street line 2:</div>
+                                        <div class="col-md-8"
+                                             ng-bind="regionObject.object.shipping_geocode_street_line2 || '-'"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 key">City:</div>
+                                        <div class="col-md-8"
+                                             ng-bind="regionObject.object.shipping_geocode_city_display || '-'"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 key">Zip Code:</div>
+                                        <div class="col-md-8"
+                                             ng-bind="regionObject.object.shipping_geocode_zipcode || '-'"></div>
+                                    </div>
+                                </div>
+
+                                <div ng-show="!regionObject.object.shipping_geocode_exists && regionObject.object.mailing_geocode_exists">
+                                    <div class="row">
+                                        <div class="col-md-4 key">Street line 1:
+                                        </div>
+                                        <div class="col-md-8"
+                                             ng-bind="regionObject.object.mailing_geocode_street_line1 || '-'"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 key">Street line 2:
+                                        </div>
+                                        <div class="col-md-8"
+                                             ng-bind="regionObject.object.mailing_geocode_street_line2 || '-'"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 key">City:</div>
+                                        <div class="col-md-8"
+                                             ng-bind="regionObject.object.mailing_geocode_city_display || '-'"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 key">Zip Code:
+                                        </div>
+                                        <div class="col-md-8"
+                                             ng-bind="regionObject.object.mailing_geocode_zipcode || '-'"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default"
+                     ng-show="({{ request.user.id }} == regionObject.object.id || {{ request.user.is_superuser|yesno:"true,false" }}) && regionObject.fields.hes_username.value != null">
+                    <div class="panel-heading"><i class="fa fa-unlock" aria-hidden="true"></i>&emsp;HES
+                        credentials
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                            <span class="key">
+                                                Username:
+                                            </span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="value">[[ regionObject.fields.hes_username.value || '-' ]]</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                            <span class="key">
+                                                Password:
+                                            </span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="value" ng-show="showPassword">[[ regionObject.fields.hes_password.value || '-' ]]</span>
+                                <button class="btn btn-primary btn-xs"
+                                        ng-click="showPassword = !showPassword"
+                                        ng-hide="showPassword">Show password
+                                </button>
+                                <button class="btn btn-primary btn-xs"
+                                        ng-click="showPassword = !showPassword"
+                                        ng-show="showPassword">Hide password
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Show only for rater and superusers-->
+                {% if request.user.is_superuser or request.company.company_type == 'rater' %}
+                    <div class="panel panel-default"
+                         ng-show="{{ request.user.id }} == regionObject.object.id || {{ request.user.is_superuser|yesno:"true,false" }}">
+                        <div class="panel-heading"><i class="fa fa-user"
+                                                      aria-hidden="true"></i>&emsp;Rater
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <span class="key">
+                                            Role:
+                                        </span>
+                                    <span class="value">[[ regionObject.object.rater_roles_display || '-' ]]</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <span class="key">
+                                            RESNET RTIN:
+                                        </span>
+                                    <span class="value">[[ regionObject.object.rater_id || '-' ]]</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <span class="key">
+                                            Signature:
+                                        </span>
+                                    <a ng-show="regionObject.object.signature_image"
+                                       href="[[ regionObject.object.signature_image ]]"
+                                       class="value" target="_blank">View</a>
+                                    <span class="value"
+                                          ng-hide="regionObject.object.signature_image">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- Show only for provider and superusers-->
+                {% if request.user.is_superuser or request.company.company_type == 'provider' %}
+                    <div class="panel panel-default"
+                         ng-show="{{ request.user.id }} == regionObject.object.id || {{ request.user.is_superuser|yesno:"true,false" }}">
+                        <div class="panel-heading"><i class="fa fa-refresh"
+                                                      aria-hidden="true"></i>&emsp;RESNET
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <span class="key">
+                                            RESNET Username:
+                                        </span>
+                                    <span class="value">[[ regionObject.object.resnet_username || '-' ]]</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <span class="key">
+                                            RESNET Password:
+                                        </span>
+                                    <span class="value">[[ regionObject.object.resnet_password || '-' ]]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <span class="key">
+                                    Timezone preferences:
+                                </span>
+                            </div>
+                            <div class="col-md-8">
+                                    <span class="value">
+                                        [[ regionObject.object.timezone_preference || '-' ]]
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

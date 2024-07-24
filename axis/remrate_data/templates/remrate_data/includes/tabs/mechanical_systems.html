@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-md-12">
+    {% with items=object.installedequipment_set.all %}
+        {% if items %}
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4 class="panel-title">Installed Equipment</h4></div>
+                <ul class="list-group">{% for item in items %}<li class="list-group-item">{{ item }}</li>{% endfor %}</ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+    </div>
+
+    <div class="col-md-12">
+    {% with items=object.generalmechanicalequipment_set.all %}
+        {% if items %}
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4 class="panel-title">Mechanical Equipment</h4></div>
+                <ul class="list-group">{% for item in items %}<li class="list-group-item">{{ item }}</li>{% endfor %}</ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+    </div>
+
+    {% if object.infiltration.get_ventilation_system %}
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4 class="panel-title">Ventilation</h4></div>
+                <ul class="list-group"><li class="list-group-item">{{ object.infiltration.get_ventilation_system }}</li></ul>
+            </div>
+        </div>
+    {% endif %}
+
+    {% with items=object.photovoltaics.all %}
+        <div class="col-md-12">
+        {% if items %}
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4 class="panel-title">Photovoltaics</h4></div>
+                <ul class="list-group">{% for item in items %}<li class="list-group-item">{{ item }}</li>{% endfor %}</ul>
+            </div>
+        {% endif %}
+        </div>
+    {% endwith %}
+
+    {% if object.solarsystem and object.solarsystem.area > 0 %}
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4 class="panel-title">Solar System</h4></div>
+                <ul class="list-group"><li class="list-group-item">{{ object.solarsystem }}</li></ul>
+            </div>
+        </div>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Whole Home Infiltration</h4></div>
+            <ul class="list-group">
+                <li class="list-group-item">Input Type: {{ object.infiltration.get_testing_type_display }}</li>
+                <li class="list-group-item">Annual
+                    Infiltration: {{ object.infiltration.heating_value }} {{ object.infiltration.get_units_display }}</li>
+                <li class="list-group-item">Shelter Class: {{ object.infiltration.shelter_class }}</li>
+                <li class="list-group-item">Code
+                    Verification: {{ object.infiltration.get_verification_type_display }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            {% with units=object.ductsystem_set.all.0.get_leakage_unit_display %}
+            <div class="panel-heading"><h4 class="panel-title">Duct Leakage</h4></div>
+            <ul class="list-group">
+                <li class="list-group-item">Total Supply Leakage: {{ object.ductsystem_set.get_total_supply_leakage|floatformat:1 }} {{ units }}</li>
+                <li class="list-group-item">Total Return Leakage: {{ object.ductsystem_set.get_total_return_leakage|floatformat:1 }} {{ units }}</li>
+                <li class="list-group-item">Total Leakage: {{ object.ductsystem_set.get_total_leakage|floatformat:1 }} {{ units }}</li>
+            </ul>
+            {% endwith %}
+        </div>
+    </div>
+
+</div>

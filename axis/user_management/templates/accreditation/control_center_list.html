@@ -1,0 +1,206 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Accreditation{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/accreditation/accreditation_control_center_list.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <script>
+        datatableview.finalizeOptions = (function () {
+            var super_finalizeOptions = datatableview.finalizeOptions;
+            return function _confirm_datatable_options(datatable, options) {
+                if (options['columns'] &&
+                    options['columns'].length) {
+                    for (var i = 0; i < options['columns'].length; i++) {
+                        if (options['columns'][i]['name'] &&
+                            options['columns'][i]['name'].indexOf('data-idall') !== -1) {
+                            options.select = {
+                                style: 'multi',
+                                selector: 'td:first-child'
+                            }
+                            options['columns'][i]['sClass'] = 'select-checkbox'
+                        }
+                    }
+                }
+                options = super_finalizeOptions(datatable, options);
+                options.ajax.data = function (data) {
+                    {% for field in form %}
+                        data.{{ field.name }} = $("#{{ field.auto_id }}")
+                        {% if field.field.widget.input_type == 'checkbox' %}
+                            .is(':checked') ? 'on' : 'off'
+                        {% else %}
+                            .val()
+                        {% endif %}
+                        ;
+                    {% endfor %}
+                }
+                return options
+            }
+        })();
+        $(function () {
+            $('#filters .select2 select').css('width', '100%').select2();
+            $('#filters .datepicker input').datepicker();
+        });
+    </script>
+{% endblock javascript_head %}
+
+{% block list_content %}
+    <div ng-controller="AccreditationControlCenterListController as ctrl">
+        <div class="row">
+            <div class="col-md-3">
+                <form id="filters" action="" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {% if form.company.field.widget.show_label %}
+                                    <label for="{{ form.company.auto_id }}">{{ form.company.label }}</label>
+                                {% endif %}
+                                {{ form.company }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {% if form.expiration_within.field.widget.show_label %}
+                                    <label for="{{ form.expiration_within.auto_id }}">{{ form.expiration_within.label }}</label>
+                                {% endif %}
+                                {{ form.expiration_within }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {% if form.state.field.widget.show_label %}
+                                    <label for="{{ form.state.auto_id }}">{{ form.state.label }}</label>
+                                {% endif %}
+                                {{ form.state }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="datepicker">
+                                <label>Expiration date: </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="datepicker">
+                                {% if form.expiration_date_start.label %}
+                                    <label for="{{ form.expiration_date_start.auto_id }}">{{ form.expiration_date_start.label }}</label>
+                                {% endif %}
+                                {{ form.expiration_date_start }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group datepicker">
+                                {% if form.expiration_date_end.label %}
+                                    <label for="{{ form.expiration_date_end.auto_id }}">{{ form.expiration_date_end.label }}</label>
+                                {% endif %}
+                                {{ form.expiration_date_end }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="datepicker">
+                                <label>Initial Date: </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="datepicker">
+                                {% if form.date_initial_start.label %}
+                                    <label for="{{ form.date_initial_start.auto_id }}">{{ form.date_initial_start.label }}</label>
+                                {% endif %}
+                                {{ form.date_initial_start }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group datepicker">
+                                {% if form.date_initial_end.label %}
+                                    <label for="{{ form.date_initial_end.auto_id }}">{{ form.date_initial_end.label }}</label>
+                                {% endif %}
+                                {{ form.date_initial_end }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="datepicker">
+                                <label>Most Recent Accreditation Date: </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="datepicker">
+                                {% if form.date_last_start.label %}
+                                    <label for="{{ form.date_last_start.auto_id }}">{{ form.date_last_start.label }}</label>
+                                {% endif %}
+                                {{ form.date_last_start }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group datepicker">
+                                {% if form.date_last_end.label %}
+                                    <label for="{{ form.date_last_end.auto_id }}">{{ form.date_last_end.label }}</label>
+                                {% endif %}
+                                {{ form.date_last_end }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary btn-block" type="submit">Apply filters</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr>
+                    </div>
+                </div>
+                {% if request.user.is_customer_hirl_company_member %}
+                    <div class="row" style="margin-bottom: 2px;">
+                        <div class="col-xs-12">
+                            <button class="btn btn-primary btn-block" ng-click="createCustomerHIRLReport()"
+                                    ng-class="{'disabled': ngbs_verifier_report_busy}">
+                                <span ng-hide="ngbs_verifier_report_busy">NGBS Verifiers Report</span>
+                                <span ng-show="ngbs_verifier_report_busy">Processing <i class="fa fa-spinner fa-lg fa-spin"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary btn-block" ng-click="createReport()"
+                                ng-class="{'disabled': busy}">
+                            <span ng-hide="busy">Create report</span>
+                            <span ng-show="busy">Processing <i class="fa fa-spinner fa-lg fa-spin"></i></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                {% block table %}
+                    {{ datatable }}
+                {% endblock table %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

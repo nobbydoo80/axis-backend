@@ -1,0 +1,15 @@
+{% extends "base_delete.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block title %}
+    Delete {{ verbose_name }} {{ object.building.project.name }}
+{% endblock title %}
+
+{% block object_repr %}
+    {{ object.building.project.name }}
+{% endblock object_repr %}

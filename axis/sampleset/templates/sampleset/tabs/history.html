@@ -1,0 +1,16 @@
+{% load bootstrap_tags %}
+
+{% comment %}
+    Requires: object -> Home
+{% endcomment %}
+
+{% bootstrap_accordion id="history_accordion" %}
+
+    {% panel "Sampleset History" %}
+        {% include "simple_history/includes/history_list.html" with object=object app_label="sampling" model="sampleset" field="id" constraint=object.id %}
+
+    {% panel "Sampleset Home History" %}
+        {% include "simple_history/includes/history_list.html" with object=object app_label="home" model="eepprogramhomestatus" field="sampleset" constraint=object.id %}
+
+
+{% endbootstrap_accordion %}

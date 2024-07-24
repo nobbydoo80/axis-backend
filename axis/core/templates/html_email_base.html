@@ -1,0 +1,371 @@
+<style type="text/css">
+    #body	{
+        width: 640px;
+        margin: 0 auto;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #333333;
+        background-color: #ffffff;
+    }
+    #header	{
+        border-bottom: 1px solid #dfe2e1;
+        position: relative;
+        margin-bottom: 10px
+    }
+    #logo {
+        background-image: url("http://s3.amazonaws.com/assets.pivotalenergy.net/static/production/images/axis_light_grey_email.png");
+        background-repeat: no-repeat;
+        background-size: 640px 100px;
+        width: 640px;
+        height: 100px;
+        padding-top: 15px;
+    }
+    #footer_logo {
+        background-image: url("http://s3.amazonaws.com/assets.pivotalenergy.net/static/production/images/axis_light_grey_small.png");
+        background-repeat: no-repeat;
+        background-size: 190px 55px;
+        width: 190px;
+        height: 55px;
+        padding-top: 5px;
+        margin-top: 3px;
+    }
+
+    #footer {
+        border-top: 1px solid #dfe2e1;
+        position: relative;
+        margin-top: 20px;
+        min-height: 65px;
+        padding-bottom: 20px;
+    }
+    #content {
+        margin-right: 10px;
+        margin-left: 25px;
+        min-height: 400px;
+        color:#222;
+        background:#fff;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    h1 small,
+    h2 small,
+    h3 small,
+    h4 small,
+    h5 small,
+    h6 small,
+    .h1 small,
+    .h2 small,
+    .h3 small,
+    .h4 small,
+    .h5 small,
+    .h6 small {
+      font-weight: normal;
+      line-height: 1;
+      color: #999999;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    h4,
+    h5,
+    h6 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    h1,
+    .h1 {
+      font-size: 36px;
+    }
+
+    h2,
+    .h2 {
+      font-size: 30px;
+    }
+
+    h3,
+    .h3 {
+      font-size: 24px;
+    }
+
+    h4,
+    .h4 {
+      font-size: 18px;
+    }
+
+    h5,
+    .h5 {
+      font-size: 14px;
+    }
+
+    h6,
+    .h6 {
+      font-size: 12px;
+    }
+
+    h1 small,
+    .h1 small {
+      font-size: 24px;
+    }
+
+    h2 small,
+    .h2 small {
+      font-size: 18px;
+    }
+
+    h3 small,
+    .h3 small,
+    h4 small,
+    .h4 small {
+      font-size: 14px;
+    }
+
+
+    .text-right {
+      text-align: right;
+    }
+    .text-muted {
+      color: #999999;
+    }
+    a {
+      color: #bf0d25;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      color: #770817;
+      text-decoration: underline;
+    }
+
+    a:focus {
+      outline: thin dotted #333;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 6px 12px;
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.428571429;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+           -o-user-select: none;
+              user-select: none;
+    }
+
+    .btn:focus {
+      outline: thin dotted #333;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      color: #333333;
+      text-decoration: none;
+    }
+
+    .btn:active,
+    .btn.active {
+      background-image: none;
+      outline: 0;
+      -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+              box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    }
+
+
+    .btn-default {
+      color: #333333;
+      background-color: #ffffff;
+      border-color: #cccccc;
+    }
+
+    .btn-default:hover,
+    .btn-default:focus,
+    .btn-default:active,
+    .btn-default.active,
+    .open .dropdown-toggle.btn-default {
+      color: #333333;
+      background-color: #ebebeb;
+      border-color: #adadad;
+    }
+
+    .btn-default:active,
+    .btn-default.active,
+    .open .dropdown-toggle.btn-default {
+      background-image: none;
+    }
+
+    .btn-default.disabled,
+    .btn-default[disabled],
+    fieldset[disabled] .btn-default,
+    .btn-default.disabled:hover,
+    .btn-default[disabled]:hover,
+    fieldset[disabled] .btn-default:hover,
+    .btn-default.disabled:focus,
+    .btn-default[disabled]:focus,
+    fieldset[disabled] .btn-default:focus,
+    .btn-default.disabled:active,
+    .btn-default[disabled]:active,
+    fieldset[disabled] .btn-default:active,
+    .btn-default.disabled.active,
+    .btn-default[disabled].active,
+    fieldset[disabled] .btn-default.active {
+      background-color: #ffffff;
+      border-color: #cccccc;
+    }
+
+    .btn-primary {
+      color: #ffffff;
+      background-color: #bf0d25;
+      border-color: #a70b20;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active,
+    .btn-primary.active,
+    .open .dropdown-toggle.btn-primary {
+      color: #ffffff;
+      background-color: #990a1e;
+      border-color: #6e0715;
+    }
+
+    .btn-primary:active,
+    .btn-primary.active,
+    .open .dropdown-toggle.btn-primary {
+      background-image: none;
+    }
+
+    .btn-primary.disabled,
+    .btn-primary[disabled],
+    fieldset[disabled] .btn-primary,
+    .btn-primary.disabled:hover,
+    .btn-primary[disabled]:hover,
+    fieldset[disabled] .btn-primary:hover,
+    .btn-primary.disabled:focus,
+    .btn-primary[disabled]:focus,
+    fieldset[disabled] .btn-primary:focus,
+    .btn-primary.disabled:active,
+    .btn-primary[disabled]:active,
+    fieldset[disabled] .btn-primary:active,
+    .btn-primary.disabled.active,
+    .btn-primary[disabled].active,
+    fieldset[disabled] .btn-primary.active {
+      background-color: #bf0d25;
+      border-color: #a70b20;
+    }
+
+    .btn-link {
+      font-weight: normal;
+      color: #bf0d25;
+      cursor: pointer;
+      border-radius: 0;
+    }
+
+    .btn-link,
+    .btn-link:active,
+    .btn-link[disabled],
+    fieldset[disabled] .btn-link {
+      background-color: transparent;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+    }
+
+    .btn-link,
+    .btn-link:hover,
+    .btn-link:focus,
+    .btn-link:active {
+      border-color: transparent;
+    }
+
+    .btn-link:hover,
+    .btn-link:focus {
+      color: #770817;
+      text-decoration: underline;
+      background-color: transparent;
+    }
+
+    .btn-link[disabled]:hover,
+    fieldset[disabled] .btn-link:hover,
+    .btn-link[disabled]:focus,
+    fieldset[disabled] .btn-link:focus {
+      color: #999999;
+      text-decoration: none;
+    }
+
+    .btn-lg {
+      padding: 10px 16px;
+      font-size: 18px;
+      line-height: 1.33;
+      border-radius: 6px;
+    }
+
+    .btn-sm,
+    .btn-xs {
+      padding: 5px 10px;
+      font-size: 12px;
+      line-height: 1.5;
+      border-radius: 3px;
+    }
+
+    .btn-xs {
+      padding: 1px 5px;
+    }
+
+</style>
+<div id="body">
+    <div id="content">
+        {% block content %}
+            <h1>Hello, world!</h1>
+            <p>{% lorem %}</p>
+            <p><a href="https://pivotalenergy.net" class="btn btn-primary btn-large">Learn more &raquo;</a> </p>
+
+        {% endblock %}
+    </div>
+    <div id="footer">
+        <div style="width: 40%; float:left">
+            <div id="footer_logo" href="pivotalenergy.net" alt="Axis"></div>
+        </div>
+
+        <div style="width: 60%; float:right">
+            <p class="text-muted text-right" style="font-size: x-small; margin-top: 35px">
+                 Copyright 2011-2023 Pivotal Energy Solutions. All Rights Reserved.
+            </p>
+        </div>
+    </div>
+    {% block unsubscribe %}
+    {% endblock %}
+</div>

@@ -1,0 +1,128 @@
+{% extends "base_detail.html" %}
+{% load bootstrap_tags %}
+{% load humanize %}
+
+{% block sidebar %}
+{% include "remrate_data/includes/remrate_data_sidebar.html" with object=object %}
+{% endblock %}
+
+{% block header_text %}Viewing REM/Rate&trade; Verification Summary{% endblock %}
+
+
+{% block detail_content %}
+{% if errors|length %}
+<div class="row">
+    <div class="col-md-12 alert alert-danger">
+        This REM/Rate&trade; data set was not successfully exported.
+        Please delete this and re-export this REM/Rate&trade; design.
+        <ul>
+            {% for error in errors %}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+        {% if object.export_type == 4 or object.export_type == 5 %}
+        <br/>
+        <strong style="padding: 10px">Note: UDRH data require BOTH design
+            / reference checkboxes be selected for export in REM/Rate&trade;</strong>
+        {% endif %}
+
+    </div>
+</div>
+{% endif %}
+{% if not object.results %}
+<div class="row">
+    <div class="col-md-12 alert alert-danger">
+        Error: This REM/Rate&trade; does not have any results.
+        Please delete this and re-export this BLG Data.
+        {% if request.user.is_superuser %}
+        Export Status is: {{ object.building.get_sync_status_display }}
+        {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4 key">REM/Rate&trade; ID</div>
+                <div class="col-md-8 value"> {{ object.axis_id }}</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 key">Property</div>
+                <div class="col-md-8 value"> {{ object.building.project.property_address|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key"></div>
+                <div class="col-md-8 value">{{ object.building.project.property_city|default:"-" }}, {{ object.building.project.property_state|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Builders Name</div>
+                <div class="col-md-8 value">{{ object.building.project.builder_name|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Building Name</div>
+                <div class="col-md-8 value">{{ object.building.project.name|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">RESNET Reg ID</div>
+                <div class="col-md-8 value">{{ object.building.project.resnet_registry_id|default:"-" }}</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4 key">Rating No.</div>
+                <div class="col-md-8 value">{{ object.building.project.rating_number|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Rating Org.</div>
+                <div class="col-md-8 value">{{ object.building.project.rating_organization|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Raters Name</div>
+                <div class="col-md-8 value">{{ object.building.project.rater_name|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Raters ID</div>
+                <div class="col-md-8 value">{{ object.building.project.rater_id|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Rating Date</div>
+                <div class="col-md-8 value">{{ object.building.project.rating_date|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Data Type</div>
+                <div class="col-md-8 value">{{ object.get_export_type_display|default:"-" }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock detail_content %}
+
+{% block tabs %}
+    {% bootstrap_navtabs %}
+        {% tab "Bldg. Info / Ratings" %}
+            {% include "remrate_data/includes/tabs/building_information.html" %}
+
+
+        {% tab "Bldg. Shell" %}
+            {% include "remrate_data/includes/tabs/building_shell.html" %}
+
+
+        {% tab "Mech. Systems" %}
+            {% include "remrate_data/includes/tabs/mechanical_systems.html" %}
+
+
+        {% tab "Lights &amp; Appl." %}
+            {% include "remrate_data/includes/tabs/lights_and_appliances.html" %}
+
+
+        {% tab "Fuel Summary" %}
+            {% include "remrate_data/includes/tabs/fuel_summary.html" %}
+
+        {% tab "Homes / Refs" %}
+            {% include "remrate_data/includes/tabs/homes.html" %}
+
+        {% tab "HES" show=show_hes_tab %}
+            {% include "remrate_data/includes/tabs/hes.html" %}
+
+    {% endbootstrap_navtabs %}
+{% endblock tabs %}

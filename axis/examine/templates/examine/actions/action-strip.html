@@ -1,0 +1,47 @@
+<div class="text-right" ng-if="::(!regionSet.hideActionStrip && !region.hideActionStrip)">
+
+    {# "waiting" LABEL #}
+    {# This only shows when there isn't a dedicated commit-action button to demonstrate a waiting #}
+    {# indicator is spinning. #}
+    <action-strip ng-if="region.isProcessing('waiting') && !region.isProcessing(regionObject.commit_instruction)"
+                  data-name="_waiting">
+        <span class="text-muted">
+            <i class="fa fa-fw fa-spin fa-spinner"></i>
+            Saving...
+        </span>
+    </action-strip>
+
+    {# static actions only #}
+    <action-strip data-name="static"
+                  ng-if="actionsObject.static.actions"
+                  ng-class="{'empty': actionsObject.static.actions.length == 0}">
+        <action-button ng-repeat="action in actionsObject.static.actions" options="action">
+            <i class="fa fa-fw fa-[[ action.icon ]]" ng-if="action.icon"></i>
+            [[ action.name ]]
+        </action-button>
+    </action-strip>
+
+    <!-- MULTIPLE INSTANCE -->
+    <action-strip ng-repeat="(stripName, strip) in actionsObject" ng-show="stripName == region.activeState"
+                  ng-if="stripName != 'static' && !singleInstance"
+                  ng-class="{'empty': strip.actions.length == 0}"
+                  data-name="[[ stripName ]]">
+        <action-button ng-repeat="action in strip.actions"
+                       options="action"
+                       ng-show="!region.isCommitAction(action) || region.shouldShowCommitAction()">
+            <i class="fa fa-fw fa-[[ action.icon ]]" ng-if="action.icon"></i>
+            [[ action.name ]]
+        </action-button>
+    </action-strip>
+
+    <!-- SINGLE INSTANCE -->
+    <action-strip ng-if="!!singleInstance" ng-class="{'empty': actionsObject[singleInstance].actions.length == 0}" data-name="[[ singleInstance ]]">
+        <action-button ng-repeat="action in actionsObject[singleInstance].actions"
+                       options="action"
+                       ng-show="!region.isCommitAction(action) || region.shouldShowCommitAction()">
+            <i class="fa fa-fw fa-[[ action.icon ]]" ng-if="action.icon"></i>
+            [[ action.name ]]
+        </action-button>
+    </action-strip>
+
+</div>

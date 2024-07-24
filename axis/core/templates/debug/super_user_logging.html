@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{# Generic base for detail views. #}
+
+{% block page_title %}Logging Testing{% endblock page_title %}
+
+
+{% block content %}
+    <h1>This is test for logging substems.</h1>
+
+    <script type="text/javascript">
+
+        $().ready(function () {
+            console.log("We should not return a good value - but we should see something in our logs")
+            $.ajax({
+                type: 'GET', url: '/api/v2/error_test/',
+                success: function (data) {
+                    alert("This should not have happened..");
+                }
+            });
+
+        });
+    </script>
+
+{% endblock %}

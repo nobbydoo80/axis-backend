@@ -1,0 +1,52 @@
+#!/bin/bash
+
+[[ -e bin/django ]] || { echo >&2 "Run this from the repository root instead."; exit 1; }
+
+export $(grep -v '^#' .env | xargs)
+
+FRONTEND=../axis-frontend
+VERSION=$1
+if [[ "x$VERSION" == "x" ]]; then
+    VERSION=$(jq -r '.version' $FRONTEND/package.json)
+fi
+ROOT="s3://assets.pivotalenergy.net/static/axis-frontend"
+
+DIST=dist/axis-frontend
+RELEASE=release
+
+DEPLOY_URL=app
+
+mkdir -p $FRONTEND/$RELEASE
+rm -rf $FRONTEND/$RELEASE
+mkdir -p $FRONTEND/$RELEASE
+
+echo
+echo "Preparing $VERSION release build..."
+
+echo
+cd $FRONTEND
+echo "ng build --base-href=/$DEPLOY_URL/ --deploy-url=/$DEPLOY_URL/"
+ng build --base-href=/$DEPLOY_URL/ --deploy-url=/$DEPLOY_URL/ || { exit 1; }
+
+echo
+cd -
+
+echo "Gzipping $FRONTEND/$DIST..."
+find $FRONTEND/$DIST | grep ".js" | xargs -I{} gzip -n -9 -k {}
+
+echo "Staging to $FRONTEND/$RELEASE..."
+# Move files to release/, then strip .gz
+for i in $FRONTEND/$DIST/*.gz; do mv $i ${i/dist\/axis-frontend/release}; done
+for i in $FRONTEND/$RELEASE/*.gz; do mv $i ${i/.gz/}; done
+
+echo "Sync gzip-encoded files..."
+AWS_SECRET_ACCESS_KEY="$AWS_SECRET_KEY" \
+aws s3 sync $FRONTEND/$RELEASE "$ROOT/$VERSION" --acl public-read --content-encoding gzip
+
+echo "Sync other files..."
+aws s3 sync $FRONTEND/$DIST "$ROOT/$VERSION" --acl public-read --exclude "*.js*"
+
+echo
+echo 'Proceed with:'
+echo "    bin/deploy-frontend (production|demo|beta|staging|gamma) $VERSION"
+echo

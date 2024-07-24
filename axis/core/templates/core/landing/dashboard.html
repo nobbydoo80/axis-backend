@@ -1,0 +1,25 @@
+{% extends "core/landing/generic.html" %}
+{% load static %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <script src="{% static 'core/dashboard/dashboard_generic.js' %}"></script>
+    <link href="{{ STATIC_URL }}core/dashboard/dashboard{% if not debug %}.min{% endif %}.css?v=1" rel="stylesheet" media="screen">
+{% endblock extra_head %}
+
+
+{% block axis_angular_dependencies %}
+    {{ block.super }}.concat(['axis.dashboard.generic'])
+{% endblock axis_angular_dependencies %}
+
+
+{% block news %}
+    {% with collapsed=True %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock news %}
+
+
+{% block landing_content %}
+    <hr>
+{% endblock landing_content %}

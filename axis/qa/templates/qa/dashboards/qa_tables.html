@@ -1,0 +1,114 @@
+<div id="summary-program-metrics-panel" class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#summary-program-metrics-panel" href="#summary-program-metrics-table">
+                    Program Metrics
+                </a>
+            </h3>
+        </div>
+        <div id="summary-program-metrics-table" class="panel-collapse collapse">
+            <div class="panel-body">
+                {% include 'core/landing/_neeautility_incentive_table.html' %}
+                {% include 'qa/dashboards/program_metrics.html' with program_metrics_title=program_metrics_title report_url='neea_utility_report' %}
+                {% include 'core/landing/_neeautility_uncertified_table.html' %}
+
+                <div class="text-center">
+                    <a data-toggle="collapse" data-parent="#summary-program-metrics-panel" href="#summary-program-metrics-table"
+                       class="text-muted">
+                        <i class="fa fa-fw fa-arrow-up"></i>
+                        collapse Program Metrics
+                        <i class="fa fa-fw fa-arrow-up"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if show_eto_qa_tables %}
+    <div id="eto-qa-panel" class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#eto-qa-panel" href="#eto-qa-tables">
+                        ETO QA
+                    </a>
+                </h3>
+            </div>
+            <div id="eto-qa-tables" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% include 'qa/dashboards/eto_file_qa_metrics.html' with show_pending_homes_count=True %}
+                    {% include 'qa/dashboards/eto_field_qa_metrics.html' %}
+
+                    <div class="text-center">
+                        <a data-toggle="collapse" data-parent="#eto-qa-panel" href="#eto-qa-tables"
+                           class="text-muted">
+                            <i class="fa fa-fw fa-arrow-up"></i>
+                            collapse ETO QA table group
+                            <i class="fa fa-fw fa-arrow-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% if show_neea_qa_tables %}
+    <div id="neea-qa-panel" class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#neea-qa-panel" href="#neea-qa-tables">
+                        Utility Incentive V2 QA
+                    </a>
+                </h3>
+            </div>
+            <div id="neea-qa-tables" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% include 'qa/dashboards/neea_file_qa_metrics.html' with style='rater' show_sums=True hide_in_progress_count=True show_utility_filter=True %}
+                    {% include 'qa/dashboards/neea_field_qa_metrics.html' with style='rater' show_sums=True hide_in_progress_count=True show_utility_filter=True %}
+                    {% include 'qa/dashboards/neea_file_qa_metrics.html' with style='utility' show_sums=True hide_in_progress_count=True %}
+                    {% include 'qa/dashboards/neea_field_qa_metrics.html' with style='utility' show_sums=True hide_in_progress_count=True %}
+
+                    <div class="text-center">
+                        <a data-toggle="collapse" data-parent="#neea-qa-panel" href="#neea-qa-tables"
+                           class="text-muted">
+                            <i class="fa fa-fw fa-arrow-up"></i>
+                            collapse Utility Incentive V2 QA table group
+                            <i class="fa fa-fw fa-arrow-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% if show_generic_qa_tables %}
+    <div id="generic-qa-panel" class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#generic-qa-panel" href="#generic-qa-tables">
+                        QA
+                    </a>
+                </h3>
+            </div>
+            <div id="generic-qa-tables" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% include 'qa/dashboards/file_qa_metrics.html' with show_pending_homes_count=False %}
+                    {% include 'qa/dashboards/field_qa_metrics.html' %}
+
+                    <div class="text-center">
+                        <a data-toggle="collapse" data-parent="#generic-qa-panel" href="#generic-qa-tables"
+                           class="text-muted">
+                            <i class="fa fa-fw fa-arrow-up"></i>
+                            collapse QA table group
+                            <i class="fa fa-fw fa-arrow-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

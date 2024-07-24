@@ -1,0 +1,25 @@
+{% extends "html_email_base.html" %}
+
+{% block content %}
+{{ user }},
+
+The following is a summary of the {{ report.messages|length }} notification{{ report.messages|length|pluralize }} generated in Axis between {{ start_date }} and {{ end_date }}.
+
+Current subscription setting: {{ report.threshold_display }}
+
+You can update your Axis notification settings here: https://{{ domain }}/messaging/
+
+{% for message in report.messages %}
+    {{ message.title }} ({{ message.level }})<br>
+    {% if message.url %}{{ site.domain }}{{ message.url }}<br>{% endif %}
+    {{ message.date_created }}
+    Alerted: {% if message.date_alerted %}&#x2714;{% else %}--{% endif %}  Emailed: {% if message.date_sent %}&#x2714;{% else %}--{% endif %}
+    {{ message.content|safe }}
+{% endfor %}
+
+Sincerely,
+
+        The AXIS Support Team
+
+
+{% endblock content %}

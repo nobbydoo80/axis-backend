@@ -1,0 +1,29 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}Axis REST API{% endblock %}
+
+{% block meta %}
+    {{ block.super }}
+    {% include "core/favicons.html" %}
+{% endblock %}
+
+{% block style %}
+    <link href="{{ STATIC_URL }}css/bootstrap/3.3.2/bootstrap{% if not debug %}.min{% endif %}.css?v=1" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}css/font-awesome/4.4.0/font-awesome.min.css?v=1" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}css/main{% if not debug %}.min{% endif %}.css?v=1" rel="stylesheet" media="screen">
+    {{ block.super }}
+    <style type="text/css">
+        body { background: none; background-attachment: inherit; }
+        .nav > .dropdown {padding-top: 5px;}
+        .nav > li > a > i {padding-top: 5px;}
+        .navbar-form > .form-group > .form-control {
+            margin-top: 0;
+            height: 34px;
+            padding: 3px 12px;
+        }
+    </style>
+{% endblock %}
+
+{% block navbar %}
+    {% include "core/base-menu.html" %}
+{% endblock %}

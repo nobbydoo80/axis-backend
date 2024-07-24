@@ -1,0 +1,41 @@
+
+{% if form %}
+    <div class="row">
+        <div class="col-md-8">
+            <label for="{{ form.is_public.auto_id }}">
+                Public Program
+            </label>
+        </div>
+        <div class="col-md-4">{{ form.is_public }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <label for="{{ form.is_legacy.auto_id }}">
+                Is this a legacy program
+            </label>
+        </div>
+        <div class="col-md-4">{{ form.is_legacy }}</div>
+    </div>
+
+{% else %}
+    <div class="row">
+        <div class="col-md-6 key">Public Program:</div>
+        <div class="col-md-6 value">
+            {% if object.is_public %}&#x2714;
+            {% else %} No {% endif %}
+        </div>
+    </div>
+
+    {% if perms.checklist.change_answer and object.is_active %}
+        <br /><br />
+        <div class="row">
+            <div class="col-md-6">
+                Download Template:
+                &emsp;
+                <a class="btn btn-default" href="{% url 'checklist:bulk_checklist_download' pk=object.id %}">
+                    Download Template
+                </a>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}

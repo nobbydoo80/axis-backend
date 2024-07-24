@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Add Contact</h4>
+</div>
+<div class="modal-body">
+    <form>
+        <h4>Basic information</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <axis-field field="regionObject.helpers.contact_form.first_name"
+                            label="(extraData.type == 'person' ? 'First Name' : 'Company Name')"></axis-field>
+            </div>
+            <div class="col-md-4" ng-if="extraData.type == 'person'">
+                <axis-field field="regionObject.helpers.contact_form.last_name"></axis-field>
+            </div>
+            <div class="col-md-4">
+                <axis-field field="regionObject.helpers.contact_form.description"
+                            label="(extraData.type == 'person' ? 'Description' : 'Website')"></axis-field>
+            </div>
+            <div class="col-md-4" ng-if="extraData.type == 'person'">
+                <axis-field field="regionObject.helpers.contact_form.phone"></axis-field>
+            </div>
+            <div class="col-md-4" ng-if="extraData.type == 'person'">
+                <axis-field field="regionObject.helpers.contact_form.email"></axis-field>
+            </div>
+        </div>
+
+        <div ng-if="extraData.type == 'person'">
+            <hr>
+            <h4>Address</h4>
+            <div class="row">
+                <div class="col-md-4"><axis-field field="regionObject.helpers.contact_form.street_line1"></axis-field></div>
+                <div class="col-md-4"><axis-field field="regionObject.helpers.contact_form.street_line2"></axis-field></div>
+                <div class="col-md-4"><axis-field field="regionObject.helpers.contact_form.city"></axis-field></div>
+                <div class="col-md-4"><axis-field field="regionObject.helpers.contact_form.zipcode"></axis-field></div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" ng-click="vm.ok()">Save</button>
+</div>

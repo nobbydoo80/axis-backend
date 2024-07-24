@@ -1,0 +1,49 @@
+{% extends "base_examine_wide.html" %}
+{% load static %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}certification/examine{% if not debug %}.min{% endif %}.css" type="text/css" media="screen, projection" />
+{% endblock style_sheet %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script src="{% static 'certification/examine.js' %}"></script>
+{% endblock javascript_head %}
+
+
+{% block tabs %}
+    <tabset>
+        {% if machinery_specs.workflowstatus %}
+            <tab tab-helper endpoint="tabs.programs" heading="{{ program_tab_label }}">
+                <axis-region-set options="pageRegions.workflowstatus"></axis-region-set>
+            </tab>
+        {% endif %}
+
+        {% if buildings_datatable %}
+            <tab tab-helper endpoint="tabs.buildings" heading="Buildings"
+                 disabled="examineApp.creating">
+                {# <action-strip> #}
+                {#     <action-button options="{ #}
+                {#         size: 'xs', #}
+                {#         style: 'primary', #}
+                {#         instruction: 'new_certifiable_object', #}
+                {#         objectType: 'building' #}
+                {#     }"> #}
+                {#         Add #}
+                {#     </action-button> #}
+                {# </action-strip> #}
+                <div class="pull-right">
+                    <a id="add-child-button"
+                       class="btn btn-primary btn-xs"
+                       href="{% url "certification:object:generate" type="building" parent_id=object.id|default:0 workflow_id=workflow.id %}">
+                        Add
+                    </a>
+                </div>
+                <br>
+                <br>
+                {{ buildings_datatable }}
+            </tab>
+        {% endif %}
+    </tabset>
+{% endblock tabs %}

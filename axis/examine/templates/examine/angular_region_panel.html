@@ -1,0 +1,34 @@
+{% block region %}
+    <div class="panel panel-default">
+        {% block panel %}
+
+            <div class="panel-heading">
+                {% block panel_heading %}
+                    <div class="text-right actions">
+                        <action-strip-set processing="regionSet.processing" actions="regionObject.actions"></action-strip-set>
+                    </div>
+                    <span class="object-name">
+                        {% block object_name %}
+                            {% block heading %}[[ regionObject.helpers.verbose_name ]]: <strong>[[ regionObject.object_name ]]</strong>{% endblock heading %}
+                        {% endblock object_name %}
+                    </span>
+                {% endblock panel_heading %}
+            </div>
+
+            {% block panel_body_wrapper %}
+                <div class="panel-body form-target">
+                    {% block panels %}
+                        <non-field-errors></non-field-errors>
+                        <div detail-content ng-hide="region.editing()"><loading-spinner></loading-spinner></div>
+                        <div form-content ng-show="region.editing()"><loading-spinner></loading-spinner></div>
+                    {% endblock panels %}
+                </div>
+            {% endblock panel_body_wrapper %}
+
+            {% block footer_wrapper %}
+            <div class="panel-footer">{% block footer %}{% endblock footer %}</div>
+            {% endblock footer_wrapper %}
+
+        {% endblock panel %}
+    </div>
+{% endblock region %}

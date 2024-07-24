@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Task Metrics</h3>
+    </div>
+    <div class="panel-body" style="background-color:#eee;">
+        <div class="row form-group">
+            <div class="col-md-4 form-inline">
+                <label for="task-metrics-start">Start:</label>
+                <input type="text" class="form-control" id="task-metrics-start" ng-model="widget.task_controls.date_start">
+            </div>
+            <div class="col-md-4 form-inline">
+                <label for="task-metrics-end">End:</label>
+                <input type="text" class="form-control" id="task-metrics-end" ng-model="widget.task_controls.date_end">
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-default btn-md pull-right" ng-click="widget.taskMetrics()">Update</button>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Rater</th>
+                <th>Homes</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr ng-if="!widget.task_metrics_data">
+            <td colspan="2" class="text-center">No data to show.</td>
+        </tr>
+        <tr ng-repeat="data in widget.task_metrics_data">
+            <th>
+                <a ng-href="{% url 'home:report:status' %}?[[ widget.getControlsAsParams('task_') ]]&state=complete&task_assignee=[[ data.assignee_id ]]" target="_blank">
+                    [[ data.assignee_name ]]
+                </a>
+            </th>
+            <td>[[ data.homes_count ]]</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

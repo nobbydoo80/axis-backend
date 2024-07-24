@@ -1,0 +1,11 @@
+<table class="table table-bordered">
+    <tr>
+        <td
+             ng-repeat="field_name in regionObject.field_order"
+             ng-init="field=regionObject.fields[field_name]"
+             ng-hide="isHiddenField(field)"
+                 >
+                 <axis-field no-label></axis-field>
+        </td>
+    </tr>
+</table>

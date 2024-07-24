@@ -1,0 +1,84 @@
+{% load rest_framework %}
+
+<div class="row" id="home_status_id">
+    <div class="col-md-3">{% render_field serializer.home_status_id style=style %}</div>
+</div>
+
+<h4>Step 1: Home Location and Size</h4>
+<p>Select County, Utilities, and enter Conditioned Area (sq. ft.)</p>
+<br/>
+<div class="row">
+    <div class="col-md-6">{% render_field serializer.county style=style %}</div>
+    <div class="col-md-6">{% render_field serializer.conditioned_area style=style %}</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">{% render_field serializer.electric_utility style=style %}</div>
+    <div class="col-md-6">{% render_field serializer.gas_utility style=style %}</div>
+</div>
+
+<hr/>
+
+<h4>Step 2: Heating and Cooling</h4>
+<p>Select the Heating Fuel, Primary Heating Equipment, Heating System Configuration, and Smart
+    Thermostat. Then enter the Annual End-Use Consumption values as displayed on the REM/Rate UDRH
+    Fuel Summary Report (enter “0” if not applicable).</p>
+<br/>
+<div class="row">
+    <div class="col-md-3">{% render_field serializer.heating_fuel style=style %}</div>
+    <div class="col-md-4">{% render_field serializer.primary_heating_type style=style %}</div>
+    <div class="col-md-5">{% render_field serializer.heating_system_config style=style %}</div>
+    <div class="col-md-8">{% render_field serializer.smart_thermostat_installed style=style %}</div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered" cellpadding="0" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                    <th width="40%"></th>
+                    <th class="text-center">Reference Home</th>
+                    <th class="text-center">Improved Home</th>
+                </tr>
+                </thead>
+            <tbody>
+            <tr>
+                <th>Heating (kWh)</th>
+                <td>{% render_field serializer.code_data_heating_kwh style=style %}</td>
+                <td>{% render_field serializer.improved_data_heating_kwh style=style %}</td>
+            </tr>
+            <tr>
+                <th>Heating (Therms)</th>
+                <td>{% render_field serializer.code_data_heating_therms style=style %}</td>
+                <td>{% render_field serializer.improved_data_heating_therms style=style %}</td>
+            </tr>
+            <tr>
+                <th>Cooling (kWh)</th>
+                <td>{% render_field serializer.code_data_cooling_kwh style=style %}</td>
+                <td>{% render_field serializer.improved_data_cooling_kwh style=style %}</td>
+            </tr>
+            <tr>
+                <th>Total (kWh)</th>
+                <td>{% render_field serializer.code_data_total_consumption_kwh style=style %}</td>
+                <td>{% render_field serializer.improved_data_total_consumption_kwh style=style %}</td>
+            </tr>
+            <tr>
+                <th>Total (Therms)</th>
+                <td>{% render_field serializer.code_data_total_consumption_therms style=style %}</td>
+                <td>{% render_field serializer.improved_data_total_consumption_therms style=style %}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br/>
+
+<h4>Step 3: Water Heating </h4>
+<p>Select the Water Heater type and quantity of Low-Flow Showerheads
+    (enter “0” if not applicable).</p>
+<br/>
+<div class="row">
+    <div class="col-md-4" style="padding-top: 20px">{% render_field serializer.water_heater_tier style=style %}</div>
+    <div class="col-md-4">{% render_field serializer.qty_shower_head_1p5 style=style %}</div>
+    <div class="col-md-4">{% render_field serializer.qty_shower_head_1p75 style=style %}</div>
+</div>

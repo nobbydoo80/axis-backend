@@ -1,0 +1,12 @@
+{% extends "examine/angular_region_default.html" %}
+
+{% block action_strip_set %}
+    {# removed action strip #}
+{% endblock action_strip_set %}
+
+{% block region %}
+    <div class="note-annotation"
+         ng-class="{'note-public': regionObject.object.is_public, 'note-private': !regionObject.object.is_public}">
+        {{ block.super }}
+    </div>
+{% endblock region %}

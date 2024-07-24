@@ -1,0 +1,77 @@
+{% extends 'base_form.html' %}
+{% load crispy_forms_tags %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(function(){
+            $("#id_check_requested_date").datepicker({ dateFormat: 'yy-mm-dd'});
+            $("#id_paid_date").datepicker({ dateFormat: 'yy-mm-dd'});
+
+            $("#comment").hide();
+            $("#toggle_comment").on('click', function(){
+                $("#comment").toggle('slow');
+            });
+
+            // If the user changes the customer of the ID alert them of the affects.
+            var customerChanged = false;
+            $("#id_customer").on('change', function(){
+                customerChanged = true;
+            });
+
+            $("#id_total").on('change', function(){
+                $("#comment").toggle('slow');
+            });
+
+            $("form").submit(function(e){
+                if(customerChanged){
+                    var msg = "{{ confirmation_message }}";
+                    return confirm(msg);
+                }
+                return true;
+            })
+        });
+        datatableview.autoInitialize = true;
+    </script>
+{% endblock %}
+
+{% block form_content %}
+    <div class="row">
+        <div class="col-md-12">{{ form.customer|as_crispy_field }}</div>
+    </div>
+    <br> <br>
+    <div class="row">
+        <div class="col-md-3">
+            {% if object.is_paid %}
+                <span class="key">Requested Date:</span><br>
+                <div style="margin-top: 18px;">
+                    {{ object.check_requested_date }}</div>
+            {% endif %}
+            {{ form.check_requested_date|as_crispy_field }}
+        </div>
+        <div class="col-md-3">{{ form.paid_date|as_crispy_field }}</div>
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-3">{{ form.check_number|as_crispy_field }}</div>
+
+    </div>
+    <br> <br>
+    <div class="row">
+        <div class="col-md-5">{{ form.total|as_crispy_field }}</div>
+        {{ form.id }}
+    </div>
+
+    <br>
+    {% if form.comment.field.required %}
+        {{ form.comment|as_crispy_field }}
+    {% else %}
+    <div class="row col-md-12"><a href="#" id="toggle_comment">Add Comment</a></div>
+    <div class="row col-md-12" id="comment">{{ form.comment|as_crispy_field }}</div>
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <hr>
+    {{ datatable }}
+{% endblock %}

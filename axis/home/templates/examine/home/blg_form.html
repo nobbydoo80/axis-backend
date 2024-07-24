@@ -1,0 +1,42 @@
+<div class="img-rounded text-center default-map"
+     ng-controller="BLGUploadController as controller">
+    <div class="row">
+        <div class="col-md-12">
+            Optionally you may upload a compatible REM/Rate™ BLG file to have Axis fill out these
+            fields for you.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <div class="text-left">
+                <axis-field field="regionObject.fields.blg_file" no-label></axis-field>
+            </div>
+            <axis-field field="regionObject.fields.blg_file_raw"></axis-field>
+            <axis-field field="regionObject.fields.blg_file_raw_name"></axis-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-default btn-xs"
+                    ng-disabled="!regionObject.object.blg_file_raw_name"
+                    ng-click="controller.upload()">
+                Populate fields
+            </button>
+        </div>
+    </div>
+    <non-field-errors></non-field-errors>
+    <div class="row" ng-show="regionObject.blg_data !== undefined">
+        <div class="col-md-12 text-center text-success">
+            <p>
+                <br>
+                Data loaded from file.
+            </p>
+            <p>
+                Please supply the EEP Program, and correct any missing items.  Note that
+                Builder and Rater Orgs may not appear if the name given in the BLG data does not
+                match the company's name in Axis.
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,178 @@
+{% extends 'home/home_stats.html' %}
+{% load crispy_forms_tags %}
+{% load cache %}
+{% load static %}
+
+{% comment %}
+Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+    {% endcomment %}
+
+    {% block page_title %}Energy Performance Score Report{% endblock %}
+
+    {% block style_sheet %}
+    <style type="text/css">
+        .select2-container.select2-container-multi {
+            width: 100%;
+        }
+
+        .datatable th[data-name="address"] {
+            width: 25%
+        }
+
+        .datatable th[data-name="subdivision"] {
+            width: 20%
+        }
+
+        .datatable th[data-name="floorplan"] {
+            width: 20%
+        }
+
+        .datatable th[data-name="eep-program"] {
+            width: 25%
+        }
+
+        .datatable th[data-name="state"] {
+            width: 10%
+        }
+    </style>
+    {% endblock %}
+
+    {% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript">
+        var spinnerTemplate = $("<i></i>").addClass('fa fa-fw fa-spin fa-spinner');
+
+        $(function () {
+            var datatable = $(".datatable"),
+                input = $("select[name=homes]");
+
+            $("#axis_form").on('submit', function (event) {
+                var button = $(this).find('[type=submit]'),
+                    spinner = spinnerTemplate.clone();
+                button.attr('disabled', true).prepend(spinner);
+
+                var checked = datatable.find(':checkbox:checked').map(function () {
+                    return $(this).closest('tr').attr('id');
+                });
+                input.val(checked);
+
+                if (checked.length == 0) {
+                    alert('Please select some homes to continue.');
+                    button.attr('disabled', false);
+                    spinner.remove();
+                    return false;  // Stop the submission.
+                } else {
+                    setTimeout(function () {
+                        datatable.find(':checkbox').attr('checked', false);
+                        button.attr('disabled', false);
+                        spinner.remove();
+                    }, checked.length * 200);
+                }
+            });
+
+            var date_ranges = $('#date_ranges'),
+                date_inputs = $("#id_activity_start, #id_activity_stop"),
+                certification_date_inputs = $("#id_certification_date_start, #id_certification_date_end");
+
+            certification_date_inputs.datepicker();
+            date_inputs.datepicker();
+            // show date by default if they values in them.
+            date_ranges.slideToggle(
+                date_inputs.val().length > 0 ||
+                certification_date_inputs.val().length > 0);
+
+            $('#show_dates_href').on('click', function (e) {
+                e.preventDefault();
+                if (date_ranges.is(":visible")) {
+                    if (date_inputs.val() === "") {
+                        date_ranges.slideUp(400);
+                    }
+                } else {
+                    date_ranges.slideDown(400);
+                }
+            });
+            $("form#query_form").on('change', function (e) {
+                // don't fire datatable reload on checkbox changes
+                if (!$(e.target).is(":checked, :radio")) {
+                    $('.datatable').dataTable().fnDraw();
+                }
+            });
+        });
+
+        datatableview.finalizeOptions = (function () {
+            var super_finalizeOptions = datatableview.finalizeOptions;
+
+            return function _eps_confirm_datatable_options(datatable, options) {
+                options = super_finalizeOptions(datatable, options);
+                // This adds the header select all
+                options.fnHeaderCallback = function (nHead, aasData, iStart, iEnd, aiDisplay) {
+
+                    var head = $(nHead),
+                        header = head.children().first();
+                    header.addClass('text-center');
+                    header.html("Select All <br/><input type='checkbox'/>");
+                    header.on('change', ':checkbox', function (e) {
+                        $(".datatable").find('tbody :checkbox').attr('checked', this.checked);
+                    });
+                };
+                options.ajax.data = function (data) {
+                    data.builder_id = $('#id_builder').val();
+                    data.rater_id = $('#id_rater').val();
+                    data.subdivision_id = $('#id_subdivision').val();
+                    data.eep_program_id = $('#id_eep_program').val();
+                    data.program_activity_start = $('#id_activity_start').val();
+                    data.program_activity_stop = $('#id_activity_stop').val();
+                    data.certification_only = $('#id_certification_only').val();
+                    data.certification_date_start = $('#id_certification_date_start').val();
+                    data.certification_date_end = $('#id_certification_date_end').val();
+                };
+                return options;
+
+            }
+        })();
+    </script>
+
+    {% endblock %}
+
+    {% block header_text %}
+    Energy Performance Score Report
+    {% endblock header_text %}
+
+    {% block list_content %}
+    {# This is hidden and manipulated by the javascript on the datatable.#}
+    <form action="" id="axis_form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="homesform" style="display: none;" novalidate>{{ form.homes }}</div>
+
+        <div>Select one or more homes and click Submit to generate the EPS score sheet.</div>
+        <br />
+
+        {% if form.homes.errors %}
+        <div class="alert error">You must select some homes!</div>
+        {% endif %}
+
+        <div class="form-actions">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    <br />
+    {{ block.super }}
+
+    {% endblock list_content %}
+
+    {% block extra_advanced_filters %}
+    <div class="row">
+        <div class="col-md-6">
+            {{ filter_form.certification_date_start|as_crispy_field }}
+        </div>
+        <div class="col-md-6">
+            {{ filter_form.certification_date_end|as_crispy_field }}
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block form_actions %}
+    {# Empty so that we can position them above the datatable#}
+    {% endblock form_actions %}

@@ -1,0 +1,15 @@
+{% for partnertype, partner_cos in object_list.items %}
+    <div class="row col-md-12">
+        <strong>{{ partnertype }}</strong>
+        {% for partner in partner_cos  %}
+            {% if forloop.first %}<ul>{% endif %}
+            <li><a href="{{ partner.get_absolute_url }}">{{ partner }}</a></li>
+            {% for x in partner.contacts %}
+                {% if forloop.first %}<ul>{% endif %}
+                <li><a href="{{ x.get_absolute_url }}">{{ x }}</a></li>
+                {% if forloop.last %}</ul>{% endif %}
+            {% endfor %}
+            {% if forloop.last %}</ul>{% endif %}
+        {% endfor %}
+    </div>
+{% endfor %}

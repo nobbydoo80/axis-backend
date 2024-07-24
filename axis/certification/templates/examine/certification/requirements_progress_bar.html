@@ -1,0 +1,24 @@
+<div class="progress"
+    ng-class="{'progress-striped': statusCtrl.requirements.loading}">
+    <div class="progress-bar loading-bar"
+         ng-style="{
+            'width': (!regionObject.object.id || statusCtrl.requirements.data ? 0 : 100) + '%',
+            'background-color': 'rgba(0, 0, 0, 0.15)',
+            'overflow': 'hidden'
+          }" role="progressbar">
+        <i class="fa fa-circle-o-notch fa-spin"></i> Checking requirements&hellip;
+    </div>
+
+    <div class="progress-bar progress-bar-success" role="progressbar"
+         ng-style="{'width': (statusCtrl.requirements.data.completion || 0) + '%'}">
+        <div class="progress-bar-label"
+             ng-switch="regionObject.object.state">
+            <i ng-switch-when="'complete'" class="fa fa-fw fa-certificate"></i>
+            <i ng-switch-when="'qa_pending'" class="fa fa-fw fa-pencil-quare-o"></i>
+            <span class="label label-primary">
+                Completion: [[ (statusCtrl.requirements.data.completion || 0) | number:0 ]]%
+                {# [[ regionObject.object.state_description ]] #}
+            </span>
+        </div>
+    </div>
+</div>

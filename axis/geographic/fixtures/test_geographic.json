@@ -1,0 +1,370 @@
+[
+{
+    "pk": 174,
+    "model": "geographic.metro",
+    "fields": {
+        "cbsa_code": "28420",
+        "is_active": true,
+        "name": "Kennewick-Pasco-Richland, WA"
+    }
+},
+{
+    "pk": 264,
+    "model": "geographic.metro",
+    "fields": {
+        "cbsa_code": "38060",
+        "is_active": true,
+        "name": "Phoenix-Mesa-Glendale, AZ"
+    }
+},
+{
+    "pk": 344,
+    "model": "geographic.metro",
+    "fields": {
+        "cbsa_code": "46060",
+        "is_active": true,
+        "name": "Tucson, AZ"
+    }
+},
+{
+    "pk": 1,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "3_moist",
+        "moisture_regime": "A",
+        "is_active": true,
+        "zone": 3
+    }
+},
+{
+    "pk": 2,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "2_moist",
+        "moisture_regime": "A",
+        "is_active": true,
+        "zone": 2
+    }
+},
+{
+    "pk": 3,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "7",
+        "moisture_regime": null,
+        "is_active": true,
+        "zone": 7
+    }
+},
+{
+    "pk": 4,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "8",
+        "moisture_regime": null,
+        "is_active": true,
+        "zone": 8
+    }
+},
+{
+    "pk": 5,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "2_dry",
+        "moisture_regime": "B",
+        "is_active": true,
+        "zone": 2
+    }
+},
+{
+    "pk": 6,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "4_dry",
+        "moisture_regime": "B",
+        "is_active": true,
+        "zone": 4
+    }
+},
+{
+    "pk": 7,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "5_dry",
+        "moisture_regime": "B",
+        "is_active": true,
+        "zone": 5
+    }
+},
+{
+    "pk": 8,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "3_dry",
+        "moisture_regime": "B",
+        "is_active": true,
+        "zone": 3
+    }
+},
+{
+    "pk": 9,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "4_moist",
+        "moisture_regime": "A",
+        "is_active": true,
+        "zone": 4
+    }
+},
+{
+    "pk": 10,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "3_marine",
+        "moisture_regime": "C",
+        "is_active": true,
+        "zone": 3
+    }
+},
+{
+    "pk": 11,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "4_marine",
+        "moisture_regime": "C",
+        "is_active": true,
+        "zone": 4
+    }
+},
+{
+    "pk": 12,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "6_dry",
+        "moisture_regime": "B",
+        "is_active": true,
+        "zone": 6
+    }
+},
+{
+    "pk": 13,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "5_moist",
+        "moisture_regime": "A",
+        "is_active": true,
+        "zone": 5
+    }
+},
+{
+    "pk": 14,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "1_moist",
+        "moisture_regime": "A",
+        "is_active": true,
+        "zone": 1
+    }
+},
+{
+    "pk": 15,
+    "model": "geographic.climatezone",
+    "fields": {
+        "doe_zone": "6_moist",
+        "moisture_regime": "A",
+        "is_active": true,
+        "zone": 6
+    }
+},
+{
+    "model": "geographic.country",
+    "pk": 1,
+    "fields": {
+        "abbr": "US",
+        "name": "United States"
+    }
+},
+{
+    "pk": 104,
+    "model": "geographic.county",
+    "fields": {
+        "county_fips": "04013",
+        "longitude": -112.495534,
+        "name": "Maricopa",
+        "metro": [
+            "Phoenix-Mesa-Glendale, AZ"
+        ],
+        "legal_statistical_area_description": "Maricopa County",
+        "ansi_code": "00037026",
+        "water_area_meters": 62795719,
+        "state": "AZ",
+        "county_type": "1",
+        "land_area_meters": 23828260196,
+        "latitude": 33.346541,
+        "climate_zone": [
+            "2_dry"
+        ]
+    }
+},
+{
+    "pk": 107,
+    "model": "geographic.county",
+    "fields": {
+        "county_fips": "04019",
+        "longitude": -111.783018,
+        "name": "Pima",
+        "metro": [
+            "Tucson, AZ"
+        ],
+        "legal_statistical_area_description": "Pima County",
+        "ansi_code": "00025446",
+        "water_area_meters": 5337525,
+        "state": "AZ",
+        "county_type": "1",
+        "land_area_meters": 23794311939,
+        "latitude": 32.128237,
+        "climate_zone": [
+            "2_dry"
+        ]
+    }
+},
+{
+    "pk": 108,
+    "model": "geographic.county",
+    "fields": {
+        "county_fips": "04021",
+        "longitude": -111.367257,
+        "name": "Pinal",
+        "metro": [
+            "Phoenix-Mesa-Glendale, AZ"
+        ],
+        "legal_statistical_area_description": "Pinal County",
+        "ansi_code": "00025447",
+        "water_area_meters": 22331525,
+        "state": "AZ",
+        "county_type": "1",
+        "land_area_meters": 13896869603,
+        "latitude": 32.91891,
+        "climate_zone": [
+            "2_dry"
+        ]
+    }
+},
+{
+    "pk": 2957,
+    "model": "geographic.county",
+    "fields": {
+        "county_fips": "53005",
+        "longitude": -119.516864,
+        "name": "Benton",
+        "metro": [
+            "Kennewick-Pasco-Richland, WA"
+        ],
+        "legal_statistical_area_description": "Benton County",
+        "ansi_code": "01513302",
+        "water_area_meters": 154412831,
+        "state": "WA",
+        "county_type": "1",
+        "land_area_meters": 4403961281,
+        "latitude": 46.228072,
+        "climate_zone": [
+            "5_dry"
+        ]
+    }
+},
+{
+    "pk": 7708,
+    "model": "geographic.city",
+    "fields": {
+        "longitude": -119.173645,
+        "name": "Kennewick",
+        "legal_statistical_area_description": "Kennewick city",
+        "ansi_code": "02410184",
+        "county": [
+            "Benton County",
+            "53005"
+        ],
+        "country": 1,
+        "water_area_meters": 3696448,
+        "place_fips": "5335275",
+        "land_area_meters": 69756231,
+        "latitude": 46.198265
+    }
+},
+{
+    "pk": 10301,
+    "model": "geographic.city",
+    "fields": {
+        "longitude": -112.647138,
+        "name": "Buckeye",
+        "legal_statistical_area_description": "Buckeye town",
+        "ansi_code": "02411736",
+        "county": [
+            "Maricopa County",
+            "04013"
+        ],
+        "country": 1,
+        "water_area_meters": 342242,
+        "place_fips": "0407940",
+        "land_area_meters": 971914337,
+        "latitude": 33.430118
+    }
+},
+{
+    "pk": 22709,
+    "model": "geographic.city",
+    "fields": {
+        "longitude": -111.742191,
+        "name": "Gilbert",
+        "legal_statistical_area_description": "Gilbert town",
+        "ansi_code": "02412682",
+        "county": [
+            "Maricopa County",
+            "04013"
+        ],
+        "country": 1,
+        "water_area_meters": 475521,
+        "place_fips": "0427400",
+        "land_area_meters": 176023316,
+        "latitude": 33.310209
+    }
+},
+{
+    "pk": 26833,
+    "model": "geographic.city",
+    "fields": {
+        "longitude": -111.931782,
+        "name": "Tempe",
+        "legal_statistical_area_description": "Tempe city",
+        "ansi_code": "02412045",
+        "county": [
+            "Maricopa County",
+            "04013"
+        ],
+        "country": 1,
+        "water_area_meters": 678512,
+        "place_fips": "0473000",
+        "land_area_meters": 103416305,
+        "latitude": 33.388414
+    }
+},
+{
+    "pk": 28114,
+    "model": "geographic.city",
+    "fields": {
+        "longitude": -112.087966,
+        "name": "Phoenix",
+        "legal_statistical_area_description": "Phoenix city",
+        "ansi_code": "02411414",
+        "county": [
+            "Maricopa County",
+            "04013"
+        ],
+        "country": 1,
+        "water_area_meters": 3221362,
+        "place_fips": "0455000",
+        "land_area_meters": 1338256106,
+        "latitude": 33.572163
+    }
+}
+]

@@ -1,0 +1,80 @@
+{% comment %}
+    Requires:
+        summary: the dictionary of project, houseplan, and analysis data
+{% endcomment %}
+{% load tz %}
+
+<style type="text/css">
+    .sim_results dt { padding-left: 10px; text-align: left; font-weight: normal; }
+    .sim_results dd { margin-left: 175px; }
+    .sim_dl dt { width: 80px; }
+    .sim_dl dd { margin-left: 100px; }
+</style>
+
+<div class="well">
+    <h4>Programs</h4>
+    <dl class="dl-horizontal sim_results">
+        <dt>EnergySTAR v3.0</dt>
+        <dd>{{ summary.analysis.compliances.EnergyStarV3 }}</dd>
+
+        <dt>EnergySTAR v3.1</dt>
+        <dd>{{ summary.analysis.compliances.EnergyStarV31 }}</dd>
+
+        <dt>&nbsp;</dt>
+        <dd></dd>
+
+        <dt>RESNET HERS</dt>
+        <dd>{{ summary.analysis.hersScore|floatformat:0 }}</dd>
+    </dl>
+
+    <h4>Compliance</h4>
+    <dl class="dl-horizontal sim_results">
+        <dt>IECC 2006 <small>Performance</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2006Performance }}</dd>
+
+        <dt>IECC 2006 <small>Prescriptive</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2006Prescriptive }}</dd>
+
+        <dt>IECC 2009 <small>Performance</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2009Performance }}</dd>
+
+        <dt>IECC 2009 <small>Prescriptive</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2009Prescriptive }}</dd>
+
+        <dt>IECC 2012 <small>Performance</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2012Performance }}</dd>
+
+        <dt>IECC 2012 <small>Prescriptive</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2012Prescriptive }}</dd>
+
+        <dt>IECC 2015 <small>Performance</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2015Performance }}</dd>
+
+        <dt>IECC 2015 <small>Prescriptive</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2015Prescriptive }}</dd>
+
+        <dt>IECC 2015 <small>ERI</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2015ERI }}</dd>
+
+        <dt>IECC 2018 <small>Performance</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2018Performance }}</dd>
+        <dt>IECC 2018 <small>Prescriptive</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2018Prescriptive }}</dd>
+        <dt>IECC 2018 <small>ERI</small></dt>
+        <dd>{{ summary.analysis.compliances.IECC2018ERI }}</dd>
+
+    </dl>
+
+    <h4>Data Statistics</h4>
+
+    <dl class="dl-horizontal sim_dl">
+        <dt>Version</dt>
+        <dd>{{ summary.project.algorithmVersion|default:'-' }}</dd>
+
+        <dt>Uploaded</dt>
+        <dd>{{ object.created_date|timezone:request.user.timezone_preference|date:"m/d/Y G:i" }}</dd>
+
+        <dt>Simulated</dt>
+        <dd>{{ object.analysis.created_date|timezone:request.user.timezone_preference|date:"m/d/Y G:i" }}</dd>
+    </dl>
+</div>

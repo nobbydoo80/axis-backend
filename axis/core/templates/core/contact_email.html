@@ -1,0 +1,13 @@
+Hello {{ user.first_name }},
+
+<p>
+    <a href="mailto:{{ email }}">{{ name }}</a> has requested information about
+    Pivotal Energy solutions via <a href="https://{{site.domain}}/">{{ site.name }}</a>
+</p>
+
+<p>Contact Name: {{ name }}</p>
+<p>Email: <a href="mailto:{{ email }}">{{ email }}</a></p>
+<p>Phone: {{ phone }}</p>
+<p>Subject: {{ subject }}</p>
+<p>Message: <br />{{ message }}</p>
+<br />

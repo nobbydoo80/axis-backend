@@ -1,0 +1,14 @@
+{% if user.is_authenticated %}
+<div class="navbar-extras">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <span class="current-company">
+                    {{ request.user.company.name }} [{{ request.user.company.company_type | title }}]
+                    (<a href="#" class="change-company-link" ng-click="vm.changeCompany($event)"> Change </a>)
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

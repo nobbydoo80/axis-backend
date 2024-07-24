@@ -1,0 +1,9 @@
+{% extends 'qa/dashboards/file_qa_metrics.html' %}
+
+{% block panel_title %} ETO File QA {% endblock %}
+
+{% block metrics %}
+    {% with prefix='eto_' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock metrics %}

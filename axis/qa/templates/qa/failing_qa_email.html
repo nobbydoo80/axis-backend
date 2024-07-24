@@ -1,0 +1,11 @@
+<p>{{ header }}</p>
+<ul>
+    {% for stat in stats %}
+    <li>
+        <a href="{{ base_url }}{{ stat.home.get_absolute_url }}" target="_blank">
+            {{ stat.home.get_home_address_display }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+<p>{{ footer }}</p>

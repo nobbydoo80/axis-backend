@@ -1,0 +1,23 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block style_sheet %}
+    <style type="text/css">
+    .dataTable th[data-name="name"] { width: 20%; }
+    .dataTable th[data-name="address"] { width: 20%; }
+    .dataTable th[data-name="planmodel"] { width: 15%; }
+    .dataTable th[data-name="communitydevelop"] { width: 15%; }
+    .dataTable th[data-name="rating-number"] { width: 15%; }
+    .dataTable th[data-name="hers-score"] { width: 5%; }
+    .dataTable th[data-name="upload"] { width: 10%; }
+    </style>
+{% endblock %}
+
+{% block action_button %}
+    <i style="font-size: 1rem">*Upload dates shown in <a href="{% url "profile:detail" pk=user.pk %}">{{ user.timezone_preference }}</a>.</i>
+{% endblock action_button %}

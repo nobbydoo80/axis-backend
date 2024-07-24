@@ -1,0 +1,198 @@
+<div id="[[ regionObject.type_name ]]_[[ regionObject.id ]]">
+
+    <br>
+    <div ng-if="regionObject.object.home_analysis">
+        <h4>Home Overview</h4>
+        <table class="table table-condensed">
+            <thead>
+            <th>Name</th>
+            <th>Home Value</th>
+            </thead>
+            <tr ng-class="regionObject.object.home_analysis.rater.warning  ? 'danger': ''">
+                <th>
+                    [[ regionObject.object.home_analysis.rater.label]]
+                </th>
+                <td>
+                    [[ regionObject.object.home_analysis.rater.value]]
+                </td>
+            </tr>
+            <tr ng-class="regionObject.object.home_analysis.rater_of_record.warning  ? 'danger': ''">
+                <th>
+                    [[ regionObject.object.home_analysis.rater_of_record.label]]
+                </th>
+                <td>
+                    [[ regionObject.object.home_analysis.rater_of_record.value]]
+                </td>
+            </tr>
+            <tr ng-class="regionObject.object.home_analysis.builder.warning  ? 'danger': ''">
+                <th>
+                    [[ regionObject.object.home_analysis.builder.label]]
+                </th>
+                <td>
+                    [[ regionObject.object.home_analysis.builder.value]]
+                </td>
+            </tr>
+            <tr ng-class="regionObject.object.home_analysis.addresss_long.warning  ? 'danger': ''">
+                <th>
+                    [[ regionObject.object.home_analysis.addresss_long.label]]
+                </th>
+                <td>
+                    [[ regionObject.object.home_analysis.addresss_long.value]]
+                </td>
+            </tr>
+            <tr ng-class="regionObject.object.home_analysis.electric_utility.warning  ? 'danger': ''">
+                <th>
+                    [[ regionObject.object.home_analysis.electric_utility.label]]
+                </th>
+                <td>
+                    [[ regionObject.object.home_analysis.electric_utility.value]]
+                </td>
+            </tr>
+            <tr ng-class="regionObject.object.home_analysis.gas_utility.warning  ? 'danger': ''">
+                <th>
+                    [[ regionObject.object.home_analysis.gas_utility.label]]
+                </th>
+                <td>
+                    [[ regionObject.object.home_analysis.gas_utility.value]]
+                </td>
+            </tr>
+        </table>
+        <br>
+    </div>
+
+    <div ng-if="regionObject.object.spec_analysis">
+        <h4>Specification Analysis</h4>
+        <table class="table table-condensed" ng-if="regionObject.object.spec_analysis.building_envelope_specification">
+            <thead><th colspan="6">1. Efficient Building Envelope Options</th>
+            <thead>
+            <th>Credit Selection</th>
+            <th>Option</th>
+            <th>Minimum</th>
+            <th>Installed</th>
+            <th>Meets Req</th>
+            <th>Warning</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in regionObject.object.spec_analysis.building_envelope_specification.specifications"
+                ng-class="row.warning  ? 'danger': ''">
+                <td>[[row.section]]</td>
+                <td>[[row.label]]</td>
+                <td>[[row.minimum_requirement]]</td>
+                <td>[[row.installed]]</td>
+                <td>[[row.meets_requirement ? "Yes" : "No"]]</td>
+                <td>[[row.warning]]</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <th colspan="6">Meets Requirements? [[ regionObject.object.spec_analysis.building_envelope_specification.meet_requirements ? "Yes" : "No"]]</th>
+            </tfoot>
+        </table>
+
+        <table class="table table-condensed" ng-if="regionObject.object.spec_analysis.air_leakage_specification">
+            <thead><th colspan="6">2. Air Leakage Control & Efficient Ventilation Options</th>
+            <thead>
+            <th>Credit Selection</th>
+            <th>Option</th>
+            <th>Minimum</th>
+            <th>Installed</th>
+            <th>Meets Req</th>
+            <th>Warning</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in regionObject.object.spec_analysis.air_leakage_specification.specifications"
+                ng-class="row.warning  ? 'danger': ''">
+                <td>[[row.section]]</td>
+                <td>[[row.label]]</td>
+                <td>[[row.minimum_requirement]]</td>
+                <td>[[row.installed]]</td>
+                <td>[[row.meets_requirement ? "Yes" : "No"]]</td>
+                <td>[[row.warning]]</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <th colspan="6">Meets Requirements? [[ regionObject.object.spec_analysis.air_leakage_specification.meet_requirements ? "Yes" : "No"]]</th>
+            </tfoot>
+        </table>
+
+        <table class="table table-condensed" ng-if="regionObject.object.spec_analysis.hvac_specification">
+            <thead><th colspan="6">3. High Efficiency HVAC Equipment Options</th>
+            <thead>
+            <th>Credit Selection</th>
+            <th>Option</th>
+            <th>Minimum</th>
+            <th>Installed</th>
+            <th>Meets Req</th>
+            <th>Warning</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in regionObject.object.spec_analysis.hvac_specification.specifications"
+                ng-class="row.warning  ? 'danger': ''">
+                <td>[[row.section]]</td>
+                <td>[[row.label]]</td>
+                <td>[[row.minimum_requirement]]</td>
+                <td>[[row.installed]]</td>
+                <td>[[row.meets_requirement ? "Yes" : "No"]]</td>
+                <td>[[row.warning]]</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <th colspan="6">Meets Requirements? [[ regionObject.object.spec_analysis.hvac_specification.meet_requirements ? "Yes" : "No"]]</th>
+            </tfoot>
+        </table>
+
+        <table class="table table-condensed" ng-if="regionObject.object.spec_analysis.hvac_distribution_specification">
+            <thead><th colspan="6">4. High Efficiency HVAC Distribution System</th>
+            <thead>
+            <th>Credit Selection</th>
+            <th>Option</th>
+            <th>Minimum</th>
+            <th>Installed</th>
+            <th>Meets Req</th>
+            <th>Warning</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in regionObject.object.spec_analysis.hvac_distribution_specification.specifications"
+                ng-class="row.warning  ? 'danger': ''">
+                <td>[[row.section]]</td>
+                <td>[[row.label]]</td>
+                <td>[[row.minimum_requirement]]</td>
+                <td>[[row.installed]]</td>
+                <td>[[row.meets_requirement ? "Yes" : "No"]]</td>
+                <td>[[row.warning]]</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <th colspan="6">Meets Requirements? [[ regionObject.object.spec_analysis.hvac_distribution_specification.meet_requirements ? "Yes" : "No"]]</th>
+            </tfoot>
+        </table>
+
+        <table class="table table-condensed" ng-if="regionObject.object.spec_analysis.water_specification">
+            <thead><th colspan="6">5. Efficient Water Heating</th>
+            <thead>
+            <th>Credit Selection</th>
+            <th>Option</th>
+            <th>Minimum</th>
+            <th>Installed</th>
+            <th>Meets Req</th>
+            <th>Warning</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in regionObject.object.spec_analysis.water_specification.specifications"
+                ng-class="row.warning  ? 'danger': ''">
+                <td>[[row.section]]</td>
+                <td>[[row.label]]</td>
+                <td>[[row.minimum_requirement]]</td>
+                <td>[[row.installed]]</td>
+                <td>[[row.meets_requirement ? "Yes" : "No"]]</td>
+                <td>[[row.warning]]</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <th colspan="6">Meets Requirements? [[ regionObject.object.spec_analysis.water_specification.meet_requirements ? "Yes" : "No"]]</th>
+            </tfoot>
+        </table>
+
+        <br>
+    </div>
+
+</div>

@@ -1,0 +1,73 @@
+<div class="row ngduallist">
+    <div class="col-sm-4 left-container">
+        <label ng-if="duallistOption.leftContainerLabel">[[ duallistOption.leftContainerLabel ]]</label>
+        <div class="text-center">
+            [[ leftscope.length ]] Available
+        </div>
+        {# <form class="form-inline"> #}
+            <div class="searchline">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search"
+                           ng-model="leftSearchString">
+                    <div class="input-group-addon">
+                        <input title="toggle all" class="all pull-right"
+                               ng-model="leftSelectAll"
+                               ng-change="selectAllLeftContainer(filteredLeftScope)"
+                               type="checkbox">
+                    </div>
+                </div>
+            </div>
+        {# </form> #}
+
+        <div class="left-sub-container">
+            {# <div class="list-group"> #}
+                <div ng-class="{active:data.selected}"
+                     ng-repeat="data in leftscope|filter:{text:leftSearchString} as filteredLeftScope track by $index"
+                     ng-click="data.selected=!data.selected"
+                     class="duallist-item">
+                    [[ data.text ]]
+                </div>
+            {# </div> #}
+        </div>
+    </div>
+    <div class="col-md-1 text-center">
+        <div class="btn-group-vertical" style="margin-top: 150px">
+            <button ng-click="moveRight(filteredLeftScope)" class="btn btn-default add moveRightButton"
+                    tooltip-placement="top" tooltip="Add selected items">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+            <button ng-click="moveLeft(filteredRightScope)" class="btn btn-default remove moveLeftButton"
+                    tooltip-placement="bottom" tooltip="Remove selected items">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+        </div>
+    </div>
+    <div class="col-sm-4 right-container">
+        <label ng-if="duallistOption.rightContainerLabel">[[ duallistOption.rightContainerLabel ]]</label>
+        <div class="text-center">
+            [[ rightscope.length ]] Selected
+        </div>
+        {# <form class="form-inline"> #}
+            <div class="searchline">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search"
+                           ng-model="rightSearchString">
+                    <div class="input-group-addon">
+                        <input ng-model="rightSelectAll" ng-change="selectAllRightContainer(filteredRightScope)" title="toggle all" class="all pull-right" type="checkbox">
+                    </div>
+                </div>
+            </div>
+        {# </form> #}
+
+        <div class="right-sub-container">
+            {# <div class="list-group"> #}
+                <div ng-class="{active:data.selected}"
+                     ng-repeat="data in rightscope|filter:{text:rightSearchString} as filteredRightScope track by $index"
+                     ng-click="data.selected=!data.selected"
+                     class="duallist-item">
+                    [[ data.text ]]
+                </div>
+            {# </div> #}
+        </div>
+    </div>
+</div>

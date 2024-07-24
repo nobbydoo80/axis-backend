@@ -1,0 +1,28 @@
+<div ng-controller="MainNavigationController as vm">
+    <div class="navbar navbar-neea navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand navbar-brand" href="{% url 'home' %}" id="brand-neea">&nbsp;</a>
+            <div class="navbar-collapse collapse navbar-responsive-collapse nav-collapse-scrollable">
+                <ul class="nav navbar-nav">
+                 {% for menu in menu %}
+                     {% include 'core/menu-item.html' %}
+                 {% endfor %}
+                </ul>
+                {% if user.is_authenticated %}
+                    {% include 'core/menu-authenticated.html' %}
+                {% else %}
+                    <div class="pull-right">
+                        <a href="{% url 'auth:login' %}" class="btn btn-default navbar-btn">
+                            <i class="fa fa-sign-in"></i>&nbsp;Sign In</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% include "core/base_navigation_extras.html" %}
+</div>

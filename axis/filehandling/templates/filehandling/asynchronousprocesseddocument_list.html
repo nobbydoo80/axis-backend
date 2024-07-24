@@ -1,0 +1,17 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+{% block page_title %}Processed Documents listing{% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+    .dataTable th[data-name="state"] { width: 10%; }
+    .dataTable th[data-name="created-date"] { width: 18%; }
+    .dataTable th[data-name="modified-date"] { width: 19%; }
+    .dataTable th[data-name="company"] { width: 20%; }
+    </style>
+{% endblock %}

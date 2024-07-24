@@ -1,0 +1,58 @@
+[
+{
+    "pk": 1,
+    "model": "sites.site",
+    "fields": {
+        "domain": "localhost",
+        "name": "Pivotal Energy - Dev"
+    }
+},
+{
+    "pk": 2,
+    "model": "sites.site",
+    "fields": {
+        "domain": "axis.pivotalenergy.net",
+        "name": "Pivotal Energy Solutions"
+    }
+},
+{
+    "pk": 3,
+    "model": "sites.site",
+    "fields": {
+        "domain": "beta.pivotalenergy.net",
+        "name": "Pivotal Energy - Beta"
+    }
+},
+{
+    "pk": 4,
+    "model": "sites.site",
+    "fields": {
+        "domain": "staging.pivotalenergy.net",
+        "name": "Pivotal Energy Solutions - Staging"
+    }
+},
+{
+    "pk": 5,
+    "model": "sites.site",
+    "fields": {
+        "domain": "demo.pivotalenergy.net",
+        "name": "Pivotal Energy Solutions - Demo"
+    }
+},
+{
+    "pk": 6,
+    "model": "sites.site",
+    "fields": {
+        "domain": "neea.pivotalenergy.net",
+        "name": "Northwest Energy Efficiency Alliance   - Pivotal"
+    }
+},
+{
+    "pk": 7,
+    "model": "sites.site",
+    "fields": {
+        "domain": "gamma.pivotalenergy.net",
+        "name": "Pivotal Energy Solutions - ɣ"
+    }
+}
+]

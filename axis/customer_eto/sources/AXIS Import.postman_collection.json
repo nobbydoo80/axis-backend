@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "ea5d789a-284e-4ea1-bfff-0d2b8713c700",
+		"name": "AXIS Import",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Axis Import SLE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "\"http://tempuri.org/FTImportXML\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soap:Body>\r\n    <FTImportXML xmlns=\"http://tempuri.org/\">\r\n      <xmlIn>\r\n        <ETOImport xmlns=\"\">\r\n          <ImportCode>AXISEPSFULL</ImportCode>\r\n          <APIKey>B75A5170-8CCC-447B-AEC2-7C3DC55AC025</APIKey>\r\n          <Project ID=\"189043\">\r\n            <Program>SLE</Program>\r\n            <Track>T00000000189</Track>\r\n            <Type>SLERES</Type>\r\n            <SubType>ENH</SubType>\r\n            <Title>8068 SE Blanton St</Title>\r\n            <Status>Active</Status>\r\n            <Phase>PAYMENT</Phase>\r\n            <StartDate>2023-03-02</StartDate>\r\n            <Notes />\r\n            <ExternalReferences>\r\n              <ExternalReference>\r\n                <Type>0041</Type>\r\n                <Value>189043</Value>\r\n              </ExternalReference>\r\n              <ExternalReference>\r\n                <Type>0040</Type>\r\n                <Value>1732596E</Value>\r\n              </ExternalReference>\r\n            </ExternalReferences>\r\n            <Attributes />\r\n            <Measures>\r\n              <Measure ID=\"1\">\r\n                <Code>SOLRDYCON</Code>\r\n                <Quantity>1</Quantity>\r\n                <InstallDate>2023-03-02</InstallDate>\r\n                <Cost>0</Cost>\r\n                <Incentive>200.00</Incentive>\r\n                <Attributes>\r\n                  <Attribute>\r\n                    <Name>PGROSS</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                  <Attribute>\r\n                    <Name>PFOOT</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                  <Attribute>\r\n                    <Name>RATIO</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                  <Attribute>\r\n                    <Name>CAPAC</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                  <Attribute>\r\n                    <Name>FEAS</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                </Attributes>\r\n              </Measure>\r\n              <Measure ID=\"2\">\r\n                <Code>SOLRDYCON</Code>\r\n                <Quantity>1</Quantity>\r\n                <InstallDate>2023-03-02</InstallDate>\r\n                <Cost>0</Cost>\r\n                <Incentive>50.00</Incentive>\r\n                <Attributes>\r\n                  <Attribute>\r\n                    <Name>PGROSS</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                  <Attribute>\r\n                    <Name>PFOOT</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                  <Attribute>\r\n                    <Name>RATIO</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                  <Attribute>\r\n                    <Name>CAPAC</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                  <Attribute>\r\n                    <Name>FEAS</Name>\r\n                    <Value />\r\n                  </Attribute>\r\n                </Attributes>\r\n              </Measure>\r\n            </Measures>\r\n          </Project>\r\n          <Site>\r\n            <SiteType>STRUCTURE</SiteType>\r\n            <SiteMarket>SINGLEFAM</SiteMarket>\r\n            <SiteProperties>\r\n              <Properties>\r\n                <Property>\r\n                  <Name>YRBLT</Name>\r\n                  <Value>2023</Value>\r\n                </Property>\r\n                <Property>\r\n                  <Name>AREA</Name>\r\n                  <Value>1334</Value>\r\n                </Property>\r\n                <Property>\r\n                  <Name>NUMFLRS</Name>\r\n                  <Value>2</Value>\r\n                </Property>\r\n                <Property>\r\n                  <Name>FOUNDATION</Name>\r\n                  <Value>Enclosed crawl space</Value>\r\n                </Property>\r\n              </Properties>\r\n            </SiteProperties>\r\n            <SiteTechnologies>\r\n              <Technology ID=\"1\">\r\n                <Code>GASFURN</Code>\r\n              </Technology>\r\n              <Technology ID=\"2\">\r\n                <Code>GASDHWTNKLS</Code>\r\n              </Technology>\r\n              <Technology ID=\"3\">\r\n                <Code>ACCENTRAL</Code>\r\n              </Technology>\r\n            </SiteTechnologies>\r\n            <ServiceProviders>\r\n              <ProviderInfo>\r\n                <Service>ELE</Service>\r\n                <Provider>PGE</Provider>\r\n              </ProviderInfo>\r\n              <ProviderInfo>\r\n                <Service>GAS</Service>\r\n                <Provider>NWN</Provider>\r\n              </ProviderInfo>\r\n            </ServiceProviders>\r\n            <Associations>\r\n              <Projects>\r\n                <Project ID=\"189043\">\r\n                  <Measures>\r\n                    <Measure ID=\"1\" />\r\n                    <Measure ID=\"2\" />\r\n                  </Measures>\r\n                </Project>\r\n              </Projects>\r\n            </Associations>\r\n            <AddressInfo>\r\n              <Type>Site</Type>\r\n              <Address>8068 SE Blanton St</Address>\r\n              <City>Hillsboro</City>\r\n              <State>OR</State>\r\n              <Zip>97123</Zip>\r\n              <Plus4 />\r\n            </AddressInfo>\r\n          </Site>\r\n          <TradeAlly>\r\n            <InternalID>10723847</InternalID>\r\n            <Associations>\r\n              <Projects>\r\n                <Project ID=\"189043\">\r\n                  <Role>BUILDER</Role>\r\n                  <Measures>\r\n                    <Measure ID=\"1\" />\r\n                  </Measures>\r\n                </Project>\r\n              </Projects>\r\n            </Associations>\r\n          </TradeAlly>\r\n          <TradeAlly>\r\n            <InternalID>10432820</InternalID>\r\n            <Associations>\r\n              <Projects>\r\n                <Project ID=\"189043\">\r\n                  <Role>SOINSP</Role>\r\n                  <Measures>\r\n                    <Measure ID=\"2\" />\r\n                  </Measures>\r\n                </Project>\r\n              </Projects>\r\n            </Associations>\r\n          </TradeAlly>\r\n        </ETOImport>\r\n      </xmlIn>\r\n    </FTImportXML>\r\n  </soap:Body>\r\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services-stg.energytrust.org/etoimport/service.asmx",
+					"protocol": "https",
+					"host": [
+						"services-stg",
+						"energytrust",
+						"org"
+					],
+					"path": [
+						"etoimport",
+						"service.asmx"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

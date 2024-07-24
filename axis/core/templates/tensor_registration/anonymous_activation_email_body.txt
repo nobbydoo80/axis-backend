@@ -1,0 +1,11 @@
+Welcome to AXIS!
+
+Before we can activate your account, please click the confirmation link shown below.  After clicking the link, a notification will be sent to an administrator who must review and approve your registration before activating your account.  You will not be able to log into AXIS until your account has been activated by an administrator.
+
+If you believe you have received this email in error, forward the email to support@pivotalenergysolutions.com or simply ignore the email.
+
+This confirmation link is valid for the next {{ expiration_days }} days.  If you do not confirm your email address within that timeframe, you will need to re-register.
+
+https://{{ site.domain }}{% url "tensor_registration:anonymous_activate" activation_key=activation_key %}
+
+The AXIS Support Team

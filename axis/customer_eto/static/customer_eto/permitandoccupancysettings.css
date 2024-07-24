@@ -1,0 +1,22 @@
+.permitandoccupancysettings h5 {
+    color: #bf0d25;
+    text-transform: capitalize;
+}
+
+.permitandoccupancysettings .inherited input {
+    margin-right: 0.2em;
+}
+.permitandoccupancysettings .inherited label {
+    font-weight: normal;
+}
+
+.community-selection {
+    margin-bottom: 0.65em;
+}
+
+.compliance-options-preview ul {
+    list-style-type: lower-alpha;
+}
+.compliance-options-preview ul ul {
+    list-style-type: disc;
+}

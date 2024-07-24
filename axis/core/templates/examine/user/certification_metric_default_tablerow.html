@@ -1,0 +1,18 @@
+{% extends "examine/angular_detail_tablerow.html" %}
+
+{% block table_cell %}
+    <td>
+        [[ regionObject.object['eep_program_display'] ]]
+    </td>
+    <td>
+        <span ng-bind-html="regionObject.object['name_display_link'] | trustAsHtml"></span>
+    </td>
+    <td>
+        <a href="[[ regionObject.object['home_link'] ]]">
+            [[ regionObject.object['home_display'] ]]
+        </a>
+    </td>
+    <td>
+        [[ regionObject.object['certification_date'] ]]
+    </td>
+{% endblock table_cell %}

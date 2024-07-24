@@ -1,0 +1,22 @@
+{% extends "examine/angular_form_default.html" %}
+
+{% block content %}
+    <div class="min-height-100">
+        <div class="row form-group">
+            <div class="col-md-12">
+                <axis-field field="regionObject.fields.eep_program"></axis-field>
+            </div>
+        </div>
+        <div class="row form-group" ng-if="regionObject.fields.owner">
+            <div class="col-md-12">
+                <axis-field field="regionObject.fields.owner"></axis-field>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="data-browser">
+        {% block data_fields %}{% endblock data_fields %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% comment %}
+    Requires: required_annotations
+{% endcomment %}
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Letter of Approval</h3>
+    </div>
+    <div class="col-xs-6">
+        <h3>Certification</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="row">
+            <div class="col-md-12 key">[[ regionObject.fields["loa-points-awarded-by-verifier-ngbs-land-development-2020-new-final"].label ]]:</div>
+            <div class="col-md-12 value">[[ regionObject.object["loa-points-awarded-by-verifier-ngbs-land-development-2020-new-final"] || '-' ]]</div>
+        </div>
+    </div>
+     <div class="col-xs-6">
+        <div class="row">
+            <div class="col-md-12 key">[[ regionObject.fields["points-awarded-by-verifier-ngbs-land-development-2020-new-final"].label ]]:</div>
+            <div class="col-md-12 value">[[ regionObject.object["points-awarded-by-verifier-ngbs-land-development-2020-new-final"] || '-' ]]</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+   <div class="col-xs-6">
+        <div class="row">
+            <div class="col-md-12 key">[[ regionObject.fields["loa-rating-level-archived-ngbs-land-development-2020-new-final"].label ]]:</div>
+            <div class="col-md-12 value">[[ regionObject.object["loa-rating-level-archived-ngbs-land-development-2020-new-final"] || '-' ]]</div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="row">
+            <div class="col-md-12 key">[[ regionObject.fields["rating-level-archived-ngbs-land-development-2020-new-final"].label ]]:</div>
+            <div class="col-md-12 value">[[ regionObject.object["rating-level-archived-ngbs-land-development-2020-new-final"] || '-' ]]</div>
+        </div>
+    </div>
+</div>

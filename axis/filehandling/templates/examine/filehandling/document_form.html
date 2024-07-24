@@ -1,0 +1,50 @@
+<table class="table table-bordered drop-area">
+    <tr ng-show="fileProgress">
+        <td colspan="3" class="bg-info text-center">
+            <i class="fa fa-spinner fa-spin"></i> Reading file...
+        </td>
+    </tr>
+    <tr ng-hide="fileProgress">
+        <td>
+            <axis-field
+                    field="regionObject.fields.document"
+                    no-label
+                    drop-area=".drop-area"
+                    auto-save="true">
+            </axis-field>
+            <p ng-show="regionObject.fields.document.value === null" class="text-muted" ng-style="{
+                'margin-top': '-3.5em',
+                'position': 'absolute',
+                'margin-left': '1em'}">
+                To attach files, drag &amp; drop here or click to browse.
+            </p>
+        </td>
+        <td>
+            <axis-field field="regionObject.fields.description" no-label></axis-field>
+            <p class="text-muted" ng-show="regionObject._masterForm.description.length > 30">
+                <i>[[ regionObject._masterForm.description ]]</i>
+            </p>
+            <div class="dropdown" ng-if="regionObject.helpers.show_customer_hirl_quick_responses">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Quick Response<span class="caret"></span> </a>
+                <ul class="dropdown-menu">
+                    <li><a href="" ng-click="regionObject.object.description = 'Rough Verification Report'">Rough Verification Report</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Final Verification Report'">Final Verification Report</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Front Elevation Photo'">Front Elevation Photo</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Additional Photos'">Additional Photos</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Energy Report'">Energy Report</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Remodel Performance Analysis'">Remodel Performance Analysis</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Desktop Audit Item'">Desktop Audit Item</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Signature Page'">Signature Page</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Desktop Audit Item'">Desktop Audit Item</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Signed WRI Checklist'">Signed WRI Checklist</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Signed Badge Verification Tab'">Signed Badge Verification Tab</a></li>
+                    <li><a href="" ng-click="regionObject.object.description = 'Other'">Other</a></li>
+                </ul>
+            </div>
+        </td>
+        <td class="text-center">
+            <axis-field field="regionObject.fields.is_public"></axis-field>
+            <axis-field field="regionObject.fields.login_required"></axis-field>
+        </td>
+    </tr>
+</table>

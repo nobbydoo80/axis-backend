@@ -1,0 +1,14 @@
+{% extends 'examine/angular_regionset_panel.html' %}
+
+{% block regions %}
+    {% block manage_task_type %}
+        <div class="text-right actios" ng-controller="TaskTypeModalController as modal">
+            <button class="btn btn-default btn-xs" ng-click="modal.open()">
+                <i class="fa fa-fw fa-gear"></i>
+                Manage task types
+            </button>
+        </div>
+        <br>
+    {% endblock %}
+    {{ block.super }}
+{% endblock %}

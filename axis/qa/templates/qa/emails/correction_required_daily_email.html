@@ -1,0 +1,7 @@
+<p>QA Corrections have been requested on {{ full_date }} for the following project{% if total > 1 %}s{% endif %}:</p>
+<ul>
+    {% for stat in home_statuses %}
+        <li><a href="{{ base_url }}{{ stat.home.get_absolute_url }}">{{ stat.home }}</a>
+    {% endfor %}
+</ul>
+<p>Your assistance is requested to get these homes corrected as soon as possible.</p>

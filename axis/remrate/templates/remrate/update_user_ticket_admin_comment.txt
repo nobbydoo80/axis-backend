@@ -1,0 +1,20 @@
+{% extends "email_base.txt" %}
+
+{% block content %}
+Hey Admins,
+
+To update this account you are requested to open my MySQL connection in MySQL Workbench to
+
+    {{ db_host }}:{{ db_port }}
+
+using the admin account username '{{ db_user }}' and the correct password.
+
+Once MySQL Workbench connects to {{ db_host }} please execute the following query:
+
+    SET PASSWORD FOR '{{ username }}'@'%' = PASSWORD('{{ password }}');
+
+Sincerely,
+
+The AXIS Support Team
+
+{% endblock  %}

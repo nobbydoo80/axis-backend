@@ -1,0 +1,44 @@
+Hello {{ user.first_name }},
+
+<p>
+    On {{ date|date:"l, F d Y" }}, the following homes participating in the {{ program }} for {{ rater_names }}
+    were reviewed and, when applicable, passed QA. These homes have been certified in AXIS,
+    finalizing the savings data and program eligibility.
+</p>
+<ul>
+    {% for stat in stats %}
+        <li>
+            <a href="{{ base_url }}{{ stat.home.get_absolute_url }}" target="_blank">
+                {{ stat.home.get_home_address_display }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% if company.company_type == 'rater' %}
+    <p>
+        The utilities associated to these homes have been notified.
+
+        If applicable, QA results may be reviewed by navigating to the home and clicking on the QA tab.
+
+        This notification does not guarantee an incentive nor an incentive amount from your utility.
+        Please work with your utilities to complete any additional requirements they have for their new homes program.
+        AXIS entry and certification of homes participating in {program} program may be one of several requirements.
+
+        Contact your local utility or NEEA's BetterBuiltNW team with questions (info@betterbuiltnw.com).
+    </p>
+{% else %}
+    <p>
+        The Raters associated to these homes have been notified.
+
+        Reports for these homes are now available on the Utility Reports page. The savings may be claimed and
+        are deemed eligible for incentive payment.
+
+        This notification does not guarantee in incentive nor an incentive amount. Utility incentive processing
+        is currently completed outside of AXIS. The savings data and % improvement over code must meet your program's
+        minimum threshold. Please work with your Raters and Builders to complete any additional requirements for
+        your new homes program. AXIS entry and certification of homes participating in the {program} program
+        may be one of several requirements.
+
+        Contact NEEA's BetterBuiltNW team with questions (info@betterbuiltnw.com).
+    </p>
+{% endif %}

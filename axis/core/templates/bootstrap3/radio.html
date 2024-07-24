@@ -1,0 +1,22 @@
+{% load crispy_forms_tags %}
+<div class="controls btn-group"{% if flat_attrs %} {{ flat_attrs|safe }}{% endif %} data-toggle="buttons">
+    {% include 'bootstrap3/layout/field_errors_block.html' %}
+
+    {% for choice_data in question.choices %}
+        <label class="btn btn-default{% if inline_class %} {{ inline_class }}{% endif %}">
+            <input type="radio"{% if field.value and choice_data.choice|stringformat:"s" == field.value|stringformat:"s" %}
+                   checked="checked"{% endif %} name="{{ field.html_name }}"
+                   id="id_{{ field.html_name }}_{{ forloop.counter }}"
+                   value="{{ choice_data.choice }}"
+                   data-is-failure='{{ choice_data.is_considered_failure|yesno:"1,0" }}'
+                   data-display-as-failure='{{ choice_data.is_considered_failure|yesno:"1,0" }}'
+                   data-document-required='{{ choice_data.document_required|yesno:"1,0" }}'
+                   data-photo-required='{{ choice_data.photo_required|yesno:"1,0" }}'
+                   data-comment-required='{{ choice_data.comment_required|yesno:"1,0" }}'
+                   autofill="{{ question.allow_bulk_fill }}"
+            >{{ choice_data.choice }}
+        </label>
+    {% endfor %}
+
+    {% include 'bootstrap3/layout/help_text.html' %}
+</div>

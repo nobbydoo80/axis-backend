@@ -1,0 +1,13 @@
+{% if request.user.is_authenticated %}
+    <div class="well" style="padding-top: 8px;">
+        <h4>Recently Viewed</h4>
+        {# TODO: this file is pending a rewrite as of 12/22/14 #}
+        {% include "core/sidebar/includes/recent_items.html" with object_type="community" name="Communities" %}
+        {% include "core/sidebar/includes/recent_items.html" with object_type="subdivision" name="Subdivisions/MF Projects" %}
+        {% include "core/sidebar/includes/recent_items.html" with object_type="floorplan" name="Floorplans" %}
+        {% include "core/sidebar/includes/recent_items.html" with object_type="remrate_data" name="REM/Rate" %}
+        {% include "core/sidebar/includes/recent_items.html" with object_type="home" name="Projects" %}
+        {% include "core/sidebar/includes/recent_items.html" with object_type="incentive_payment" name="Incentive Payments" %}
+        {% include "core/sidebar/includes/recent_items.html" with object_type="company" name="Companies" %}
+    </div>
+{% endif %}

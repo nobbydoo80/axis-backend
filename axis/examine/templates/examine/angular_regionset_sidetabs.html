@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-3 examine-sidetabs">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            <li ng-repeat="regionObject in regionSet.regions" sidetab-button>
+                {% comment %}
+                    TODO: add these two lines back when nested tabs is sorted out.
+
+                    From <li>:
+                    tab-helper endpoint="tabs.programs.[[ $index ]]">
+
+                    From <a>:
+                    ng-click="$state.go('tabs.programs.[[ $index ]]')"
+                {% endcomment %}
+                <a href="#[[ regionSet.type_name_slug ]]-[[ $index ]]"
+                   role="tab" data-toggle="tab">
+                    {% block button %}
+                        [[ regionObject.object_name ]]
+                    {% endblock button %}
+                </a>
+            </li>
+            <loading-spinner ng-hide="regionSet.isDoneLoading()" class="blockstyle"></loading-spinner>
+            <li class="text-center" ng-hide="regionSet.isFull()">
+                <button class="btn btn-default examine-add-new" ng-click="regionSet.fetchNewRegion()">
+                    <i class="fa fa-fw fa-plus-circle"></i>
+                    Add new [[ regionSet.verbose_name | humanize ]]
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content col-md-9">
+        <div region-object="regionObject" ng-repeat="regionObject in regionSet.regions"
+                class="tab-pane" id="[[ regionSet.type_name_slug ]]-[[ $index ]]">
+            {% block panel %}
+                <axis-region></axis-region>
+            {% endblock panel %}
+        </div>
+    </div>
+</div>

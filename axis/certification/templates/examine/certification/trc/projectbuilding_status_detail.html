@@ -1,0 +1,213 @@
+{% extends "examine/certification/workflow_status_detail.html" %}
+
+{% block data_fields %}
+    <div faux-tab-switcher>
+        <div class="row button-row">
+            <div class="col-md-12 text-center">
+                <div class="nav btn-group btn-group-sm">
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'participation-status-[[ regionObject.id ]]'}"
+                       ng-if="regionObject.helpers.group_has_fields['Participation Status']"
+                       ng-click="switcherCtrl.setActive('participation-status-'+[[ regionObject.id ]])">
+                        Participation Status
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'project-data-[[ regionObject.id ]]'}"
+                       ng-if="regionObject.helpers.group_has_fields['Project Data']"
+                       ng-click="switcherCtrl.setActive('project-data-'+[[ regionObject.id ]])">
+                        Project Data
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'project-contacts-[[ regionObject.id ]]'}"
+                       ng-if="regionObject.helpers.group_has_fields['Project Contacts']"
+                       ng-click="switcherCtrl.setActive('project-contacts-'+[[ regionObject.id ]])">
+                        Project Contacts
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'energy-data-[[ regionObject.id ]]'}"
+                       ng-if="regionObject.helpers.group_has_fields['Energy Data']"
+                       ng-click="switcherCtrl.setActive('energy-data-'+[[ regionObject.id ]])">
+                        Energy Data
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'prescriptive-details-[[ regionObject.id ]]'}"
+                       ng-if="regionObject.helpers.group_has_fields['Prescriptive Details']"
+                       ng-click="switcherCtrl.setActive('prescriptive-details-'+[[ regionObject.id ]])">
+                        Prescriptive Details
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'incentive-details-[[ regionObject.id ]]'}"
+                       ng-if="regionObject.helpers.group_has_fields['Incentive Details']"
+                       ng-click="switcherCtrl.setActive('incentive-details-'+[[ regionObject.id ]])">
+                        Incentive Details
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': statusCtrl.showNotes}"
+                       ng-if="regionObject.helpers.machinery.notes !== undefined"
+                       ng-click="switcherCtrl.setActive('notes')">
+                        Notes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div ng-class="{'active': switcherCtrl.getActive() == 'participation-status-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Participation Status']">
+                <h4>Pre-qualification</h4>
+                <div class="row">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.lead_contact_date"><label>[[ regionObject.helpers.data_labels.lead_contact_date ]]</label><br>[[ (regionObject.object.data.lead_contact_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.pre_qual_start_date"><label>[[ regionObject.helpers.data_labels.pre_qual_start_date ]]</label><br>[[ (regionObject.object.data.pre_qual_start_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.application_form_received"><label>[[ regionObject.helpers.data_labels.application_form_received ]]</label><br>[[ (regionObject.object.data.application_form_received | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.application_package_complete_date"><label>[[ regionObject.helpers.data_labels.application_package_complete_date ]]</label><br>[[ (regionObject.object.data.application_package_complete_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.bond_applicant"><label>[[ regionObject.helpers.data_labels.bond_applicant ]]</label><br>[[ regionObject.object.data.bond_applicant || '-' ]]</div>
+                </div>
+
+                <hr>
+                <h4>Technical Review</h4>
+                <div class="row">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.energy_advisor"><label>[[ regionObject.helpers.data_labels.energy_advisor ]]</label><br>[[ regionObject.object.data.energy_advisor_info.name || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.energy_model_received"><label>[[ regionObject.helpers.data_labels.energy_model_received ]]</label><br>[[ (regionObject.object.data.energy_model_received | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.assessment_report_received"><label>[[ regionObject.helpers.data_labels.assessment_report_received ]]</label><br>[[ (regionObject.object.data.assessment_report_received | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.photos_received"><label>[[ regionObject.helpers.data_labels.photos_received ]]</label><br>[[ (regionObject.object.data.photos_received | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    {# <div class="col-md-4" ng-if="regionObject.helpers.data_form.project_complete_date"><label>[[ regionObject.helpers.data_labels.project_complete_date ]]</label><br>[[ (regionObject.object.data.project_complete_date | date : 'MM/dd/yyyy') || '-' ]]</div> #}
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_review_started"><label>[[ regionObject.helpers.data_labels.date_review_started ]]</label><br>[[ (regionObject.object.data.date_review_started | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_comments_sent"><label>[[ regionObject.helpers.data_labels.date_comments_sent ]]</label><br>[[ (regionObject.object.data.date_comments_sent | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_review_complete"><label>[[ regionObject.helpers.data_labels.date_review_complete ]]</label><br>[[ (regionObject.object.data.date_review_complete | date : 'MM/dd/yyyy') || '-' ]]</div>
+                </div>
+                <div class="row" ng-if="regionObject.helpers.data_form.review_memo_field">
+                    <div class="col-md-12"><label>[[ regionObject.helpers.data_labels.review_memo_field ]]</label><br>[[ regionObject.object.data.review_memo_field || '-' ]]</div>
+                </div>
+
+                <hr>
+                <h4>Verification</h4>
+                <div class="row">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_type"><label>[[ regionObject.helpers.data_labels.verification_type ]]</label><br>[[ (regionObject.object.data.verification_type | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_documents_received"><label>[[ regionObject.helpers.data_labels.verification_documents_received ]]</label><br>[[ (regionObject.object.data.verification_documents_received | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.trc_verifier"><label>[[ regionObject.helpers.data_labels.trc_verifier ]]</label><br>[[ regionObject.object.data.trc_verifier_info.name || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_scheduled"><label>[[ regionObject.helpers.data_labels.verification_scheduled ]]</label><br>[[ (regionObject.object.data.verification_scheduled | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_performed"><label>[[ regionObject.helpers.data_labels.verification_performed ]]</label><br>[[ (regionObject.object.data.verification_performed | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_complete"><label>[[ regionObject.helpers.data_labels.verification_complete ]]</label><br>[[ (regionObject.object.data.verification_complete | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    {# <div class="col-md-4" ng-if="regionObject.helpers.data_form.tech_assist_start_date"><label>[[ regionObject.helpers.data_labels.tech_assist_start_date ]]</label><br>[[ (regionObject.object.data.tech_assist_start_date | date : 'MM/dd/yyyy') || '-' ]]</div> #}
+                </div>
+                <div class="row" ng-if="regionObject.helpers.data_form.verification_memo_field">
+                    <div class="col-md-12"><label>[[ regionObject.helpers.data_labels.verification_memo_field ]]</label><br>[[ regionObject.object.data.verification_memo_field || '-' ]]</div>
+                </div>
+
+                <hr>
+                <h4>Dropped/Waitlist</h4>
+                <div class="row">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.dropped_date"><label>[[ regionObject.helpers.data_labels.dropped_date ]]</label><br>[[ (regionObject.object.data.dropped_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.dropped_reason"><label>[[ regionObject.helpers.data_labels.dropped_reason ]]</label><br>[[ regionObject.object.data.dropped_reason || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.waitlist_date"><label>[[ regionObject.helpers.data_labels.waitlist_date ]]</label><br>[[ (regionObject.object.data.waitlist_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'project-data-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Project Data']">
+                <div class="row">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.number_of_buildings"><label>[[ regionObject.helpers.data_labels.number_of_buildings ]]</label><br>[[ regionObject.object.data.number_of_buildings || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.number_of_floors"><label>[[ regionObject.helpers.data_labels.number_of_floors ]]</label><br>[[ regionObject.object.data.number_of_floors || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.number_of_units"><label>[[ regionObject.helpers.data_labels.number_of_units ]]</label><br>[[ regionObject.object.data.number_of_units || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.conditioned_floor_area"><label>[[ regionObject.helpers.data_labels.conditioned_floor_area ]]</label><br>[[ (regionObject.object.data.conditioned_floor_area | number) || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.property_class"><label>[[ regionObject.helpers.data_labels.property_class ]]</label><br>[[ regionObject.object.data.property_class || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.rise_type"><label>[[ regionObject.helpers.data_labels.rise_type ]]</label><br>[[ regionObject.object.data.rise_type || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.resident_type"><label>[[ regionObject.helpers.data_labels.resident_type ]]</label><br>[[ regionObject.object.data.resident_type || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.expected_construction_start_date"><label>[[ regionObject.helpers.data_labels.expected_construction_start_date ]]</label><br>[[ (regionObject.object.data.expected_construction_start_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.expected_construction_completion_date"><label>[[ regionObject.helpers.data_labels.expected_construction_completion_date ]]</label><br>[[ (regionObject.object.data.expected_construction_completion_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.energy_modeling_method"><label>[[ regionObject.helpers.data_labels.energy_modeling_method ]]</label><br>[[ regionObject.object.data.energy_modeling_method || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.retrofit_scope_of_work"><label>[[ regionObject.helpers.data_labels.retrofit_scope_of_work ]]</label><br>[[ regionObject.object.data.retrofit_scope_of_work || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.code_year"><label>[[ regionObject.helpers.data_labels.code_year ]]</label><br>[[ regionObject.object.data.code_year || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.year_built"><label>[[ regionObject.helpers.data_labels.year_built ]]</label><br>[[ regionObject.object.data.year_built || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.year_renovated"><label>[[ regionObject.helpers.data_labels.year_renovated ]]</label><br>[[ regionObject.object.data.year_renovated || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.utility_electric"><label>[[ regionObject.helpers.data_labels.utility_electric ]]</label><br>[[ regionObject.object.data.utility_electric || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.utility_gas"><label>[[ regionObject.helpers.data_labels.utility_gas ]]</label><br>[[ regionObject.object.data.utility_gas || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.water_heater_fuel_type"><label>[[ regionObject.helpers.data_labels.water_heater_fuel_type ]]</label><br>[[ regionObject.object.data.water_heater_fuel_type || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.space_heat_fuel_type"><label>[[ regionObject.helpers.data_labels.space_heat_fuel_type ]]</label><br>[[ regionObject.object.data.space_heat_fuel_type || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.water_heater_distribution_type"><label>[[ regionObject.helpers.data_labels.water_heater_distribution_type ]]</label><br>[[ regionObject.object.data.water_heater_distribution_type || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.space_heat_distribution_type"><label>[[ regionObject.helpers.data_labels.space_heat_distribution_type ]]</label><br>[[ regionObject.object.data.space_heat_distribution_type || '-' ]]</div>
+                </div>
+                <div class="row" ng-if="regionObject.helpers.data_form.project_memo_field">
+                    <div class="col-md-12"><label>[[ regionObject.helpers.data_labels.project_memo_field ]]</label>[[ regionObject.object.data.project_memo_field || '-' ]]</div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'project-contacts-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Project Contacts']">
+                <div class="row">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.payee_company">{% include "examine/certification/trc/_view_contact_link.html" with field='payee_company' %}<label>[[ regionObject.helpers.data_labels.payee_company ]]</label><br>[[ regionObject.object.data.payee_company_info.name || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.payee_contact">{% include "examine/certification/trc/_view_contact_link.html" with field='payee_contact' %}<label>[[ regionObject.helpers.data_labels.payee_contact ]]</label><br>[[ regionObject.object.data.payee_contact_info.name || '-' ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.customer_company">{% include "examine/certification/trc/_view_contact_link.html" with field='customer_company' %}<label>[[ regionObject.helpers.data_labels.customer_company ]]</label><br>[[ regionObject.object.data.customer_company_info.name || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.customer_contact">{% include "examine/certification/trc/_view_contact_link.html" with field='customer_contact' %}<label>[[ regionObject.helpers.data_labels.customer_contact ]]</label><br>[[ regionObject.object.data.customer_contact_info.name || '-' ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.application_package_coordinator">{% include "examine/certification/trc/_view_contact_link.html" with field='application_package_coordinator' %}<label>[[ regionObject.helpers.data_labels.application_package_coordinator ]]</label><br>[[ regionObject.object.data.application_package_coordinator_info.name || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.energy_modeler">{% include "examine/certification/trc/_view_contact_link.html" with field='energy_modeler' %}<label>[[ regionObject.helpers.data_labels.energy_modeler ]]</label><br>[[ regionObject.object.data.energy_modeler_info.name || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verifier">{% include "examine/certification/trc/_view_contact_link.html" with field='verifier' %}<label>[[ regionObject.helpers.data_labels.verifier ]]</label><br>[[ regionObject.object.data.verifier_info.name || '-' ]]</div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'energy-data-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Energy Data']">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Enrollment</h4>
+                        <div class="row">
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.kwh_savings"><label>[[ regionObject.helpers.data_labels.kwh_savings ]]</label><br>[[ (regionObject.object.data.kwh_savings | number) || '-' ]]</div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.therms_savings"><label>[[ regionObject.helpers.data_labels.therms_savings ]]</label><br>[[ (regionObject.object.data.therms_savings | number) || '-' ]]</div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.percent_improvement"><label>[[ regionObject.helpers.data_labels.percent_improvement ]]</label><br>[[ (regionObject.object.data.percent_improvement | number : 2) || '-' ]] %</div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.percent_above_code"><label>[[ regionObject.helpers.data_labels.percent_above_code ]]</label><br>[[ (regionObject.object.data.percent_above_code | number : 2) || '-' ]] %</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Installed</h4>
+                        <div class="row">
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.kwh_savings_installed"><label>[[ regionObject.helpers.data_labels.kwh_savings_installed ]]</label><br>[[ (regionObject.object.data.kwh_savings_installed | number) || '-' ]]</div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.therms_savings_installed"><label>[[ regionObject.helpers.data_labels.therms_savings_installed ]]</label><br>[[ (regionObject.object.data.therms_savings_installed | number) || '-' ]]</div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.percent_improvement_installed"><label>[[ regionObject.helpers.data_labels.percent_improvement_installed ]]</label><br>[[ (regionObject.object.data.percent_improvement_installed | number : 2) || '-' ]] %</div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.percent_above_code_installed"><label>[[ regionObject.helpers.data_labels.percent_above_code_installed ]]</label><br>[[ (regionObject.object.data.percent_above_code_installed | number : 2) || '-' ]] %</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="regionObject.object.certifiable_object_info.type == 'project'">
+                    <div class="col-md-12">
+                        <em class="text-muted">
+                            This data is aggregated at the Building level.
+                        </em>
+                    </div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'prescriptive-details-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Prescriptive Details']">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Enrollment</h4>
+                        <div class="row">
+                            <div class="col-md-4" ng-if="regionObject.helpers.data_form.prescriptive_measures_section"><label>[[ regionObject.helpers.data_labels.prescriptive_measures_section ]]</label><br>[[ regionObject.object.data.prescriptive_measures_section || '-' ]]</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Installed</h4>
+                        <div class="row">
+                            <div class="col-md-4" ng-if="regionObject.helpers.data_form.prescriptive_measures_section_installed"><label>[[ regionObject.helpers.data_labels.prescriptive_measures_section_installed ]]</label><br>[[ regionObject.object.data.prescriptive_measures_section_installed || '-' ]]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'incentive-details-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Incentive Details']">
+                <div class="row">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.incentive_type"><label>[[ regionObject.helpers.data_labels.incentive_type ]]</label><br>[[ regionObject.object.data.incentive_type || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.total_incentive"><label>[[ regionObject.helpers.data_labels.total_incentive ]]</label><br>$ [[ (regionObject.object.data.total_incentive | currency : '') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.total_incentive_installed"><label>[[ regionObject.helpers.data_labels.total_incentive_installed ]]</label><br>$ [[ (regionObject.object.data.total_incentive_installed | currency : '') || '-' ]]</div>
+
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_reservation_sent"><label>[[ regionObject.helpers.data_labels.date_reservation_sent ]]</label><br>[[ (regionObject.object.data.date_reservation_sent | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_reserved"><label>[[ regionObject.helpers.data_labels.date_reserved ]]</label><br>[[ (regionObject.object.data.date_reserved | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.incentive_forecast_date"><label>[[ regionObject.helpers.data_labels.incentive_forecast_date ]]</label><br>[[ (regionObject.object.data.incentive_forecast_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.incentive_request_date"><label>[[ regionObject.helpers.data_labels.incentive_request_date ]]</label><br>[[ (regionObject.object.data.incentive_request_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.incentive_delivered_date"><label>[[ regionObject.helpers.data_labels.incentive_delivered_date ]]</label><br>[[ (regionObject.object.data.incentive_delivered_date | date : 'MM/dd/yyyy') || '-' ]]</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock data_fields %}

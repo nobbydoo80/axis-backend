@@ -1,0 +1,59 @@
+{% extends "base_form.html" %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% load crispy_file %}
+
+{% block javascript_head %}
+    <script type="text/javascript">
+        $(function(){
+            $('.dateinput').datepicker();
+        });
+    </script>
+{% endblock %}
+
+{% block form_content %}
+    <fieldset>
+        <div class="row">
+            {% if update %}
+                <div class="col-md-3 key">Builder:</div>
+                <div class="col-md-9 value">
+                    <a href="{{ form.instance.builder_org.get_absolute_url }}">
+                        {{ form.instance.builder_org }}</a>
+                </div>
+            {% else %}
+                <div class="col-md-12">{{ form.builder_org|as_crispy_field }}{{ form.company }}</div>
+            {% endif %}
+        </div>
+        <div class="row">
+            {% if update %}
+                <div class="col-md-3 key">Subdivision:</div>
+                <div class="col-md-9 value">
+                    {% if form.instance.subdivision %}
+                        <a href="{{ form.instance.subdivision.get_absolute_url }}">
+                            {{ form.instance.subdivision }}</a>
+                    {% else %}-{% endif %}
+                </div>
+                <br /><br />
+            {% else %}
+                <div class="col-md-12"> {{ form.subdivision|as_crispy_field }}</div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.total_lots|as_crispy_field }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">{{ form.eep_programs|as_crispy_field }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">{{ form.start_date|as_crispy_field }}</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3">{{ form.expire_date|as_crispy_field }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">{{ form.document|as_crispy_file_field }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">{{ form.comment|as_crispy_field }}</div>
+        </div>
+    </fieldset>
+{% endblock %}

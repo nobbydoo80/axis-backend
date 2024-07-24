@@ -1,0 +1,179 @@
+{% if form %}
+    <div class="row">
+        <div class="col-md-2">
+            <strong>Assigned:</strong>
+        </div>
+        <div class="col-md-10">
+            Require that company type X (at least 1) be assigned to a home
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <strong>Relation Req:</strong>
+        </div>
+        <div class="col-md-10">
+            Require that you have a association with that company
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+            <em class="text-muted">
+                Note: This may have unintended side effects. By selecting these you understand that
+                a home cannot be certified until these relationships are established. In short, this
+                can delay the certification of the home.
+            </em>
+        </div>
+    </div>
+    <br />
+    <table class="table table-striped table-bordered">
+        <thead>
+            <th class="col-md-4">Company Type</th>
+            <th class="col-md-4 text-center">Assigned</th>
+            <th class="col-md-4 text-center">Relation Req</th>
+        </thead>
+        <tbody>
+            {% if user.company.company_type != 'builder' %}
+                <tr>
+                    <td>Builder</td>
+                    <td>{{ form.require_builder_assigned_to_home }}</td>
+                    <td>{{ form.require_builder_relationship }}</td>
+                </tr>
+            {% endif %}
+            {% if user.company.company_type != 'hvac' %}
+                <tr>
+                    <td>HVAC Contractor</td>
+                    <td>{{ form.require_hvac_assigned_to_home }}</td>
+                    <td>{{ form.require_hvac_relationship }}</td>
+                </tr>
+            {% endif %}
+            {% if user.company.company_type != 'utility' %}
+                <tr>
+                    <td>Utility Company</td>
+                    <td>{{ form.require_utility_assigned_to_home }}</td>
+                    <td>{{ form.require_utility_relationship }}</td>
+                </tr>
+            {% endif %}
+            {% if user.company.company_type != 'provider' %}
+                <tr>
+                    <td>Provider</td>
+                    <td>{{ form.require_provider_assigned_to_home }}</td>
+                    <td>{{ form.require_provider_relationship }}</td>
+                </tr>
+            {% endif %}
+            {% if user.company.company_type != 'rater' %}
+                <tr>
+                    <td>Rater (if applicable)</td>
+                    <td>{{ form.require_rater_assigned_to_home }}</td>
+                    <td>{{ form.require_rater_relationship }}</td>
+                </tr>
+            {% endif %}
+            {% if user.company.company_type != 'qa' %}
+                <tr>
+                    <td>QA (if applicable)</td>
+                    <td>{{ form.require_qa_assigned_to_home }}</td>
+                    <td>{{ form.require_qa_relationship }}</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <hr />
+    <div class="row">
+        <div class="col-md-8">
+            <label for="{{ form.certifiable_by.auto_id }}">
+                Certifiable by:
+            </label><br/>&nbsp;<i>Who can ONLY certify this program (None is anyone)</i>
+        </div>
+        <div class="col-md-4">{{ form.certifiable_by }}</div>
+    </div>
+
+
+{% else %}
+    <em>
+        Note: If "Assigned" is checked these company types must be attached to the home in
+        order to certify the home. If "Relationship Req" is checked then
+        {{ object.owner }} must have an association with that company.
+    </em>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <th>Company Type</th>
+                    <th>Assigned</th>
+                    <th>Relation Req</th>
+                </thead>
+                <tbody>
+                    {% if user.company.company_type != 'builder' %}
+                        <tr>
+                            <td>Builder</td>
+                            <td>{% if object.require_builder_relationship %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                            <td>{% if object.require_builder_assigned_to_home %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                        </tr>
+                    {% endif %}
+                    {% if user.company.company_type != 'hvac' %}
+                        <tr>
+                            <td>HVAC Contractor</td>
+                            <td>{% if object.require_hvac_relationship %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                            <td>{% if object.require_hvac_assigned_to_home %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                        </tr>
+                    {% endif %}
+                    {% if user.company.company_type != 'utility' %}
+                        <tr>
+                            <td>Utility Company</td>
+                            <td>{% if object.require_utility_relationship %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                            <td>{% if object.require_utility_assigned_to_home %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                        </tr>
+                    {% endif %}
+                    {% if user.company.company_type != 'provider' %}
+                        <tr>
+                            <td>Provider</td>
+                            <td>{% if object.require_provider_relationship %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                            <td>{% if object.require_provider_assigned_to_home %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                        </tr>
+                    {% endif %}
+                    {% if user.company.company_type != 'rater' %}
+                        <tr>
+                            <td>Rater (if applicable)</td>
+                            <td>{% if object.require_rater_relationship %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                            <td>{% if object.require_rater_assigned_to_home %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                        </tr>
+                    {% endif %}
+                    {% if user.company.company_type != 'qa' %}
+                        <tr>
+                            <td>QA Organization (if applicable)</td>
+                            <td>{% if object.require_qa_relationship %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                            <td>{% if object.require_qa_assigned_to_home %}&#x2714;{% else %}
+                                No{% endif %}</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12 key">Certifiable by:</div>
+        <div class="col-md-12 value">
+            <ul>
+            {% for company in object.certifiable_by.all %}
+                <li>{{ company }}</li>
+            {% empty %} <li>Anyone</li> {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+{% endif %}

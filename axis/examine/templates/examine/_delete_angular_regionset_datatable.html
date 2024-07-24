@@ -1,0 +1,13 @@
+<table class="table table-bordered table-striped examine-table examine-datatable">
+    <thead>
+        <tr>
+            <th ng-repeat="field_name in regionSet.visible_fields">
+                [[ field_name | humanize ]]
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr axis-region region-object="regionObject" ng-repeat="regionObject in regions track by $index">
+        </tr>
+    </tbody>
+</table>

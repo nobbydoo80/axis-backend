@@ -1,0 +1,103 @@
+<div class="row">
+    <div class="col-md-2">
+        <span class="key">[[ ::regionObject.fields.name.label ]]:</span>
+    </div>
+    <div class="col-md-10">
+        <span class="value">[[ regionObject.object.name ]]</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <span class="key">[[ ::regionObject.fields.sponsor.label ]]:</span>
+    </div>
+    <div class="col-md-10">
+        <span class="value">
+            <a ng-href="[[ regionObject.object.owner_url ]]">[[ regionObject.object.owner_name
+                ]]</a>
+        </span>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-md-3 key">[[ ::regionObject.fields.program_visibility_date.label ]]:</div>
+    <div class="col-md-3 value">
+        [[ regionObject.object.program_visibility_date || '-' | date: 'M/d/yy' ]]
+    </div>
+    <div class="col-md-3 key">[[ ::regionObject.fields.program_start_date.label ]]:</div>
+    <div class="col-md-3 value">[[ regionObject.object.program_start_date || '-' | date: 'M/d/yy'
+        ]]
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 key">[[ ::regionObject.fields.program_close_date.label ]]:</div>
+    <div class="col-md-1 value">[[ regionObject.object.program_close_date || '-' | date: 'M/d/yy'
+        ]]
+    </div>
+    <div class="col-md-3 key">[[ ::regionObject.fields.program_submit_date.label ]]:</div>
+    <div class="col-md-1 value">
+        [[ regionObject.object.program_submit_date || '12/20/20' | date: 'M/d/yy' ]]
+    </div>
+    <div class="col-md-3 key">[[ ::regionObject.fields.program_end_date.label ]]:</div>
+    <div class="col-md-1 value">[[ regionObject.object.program_end_date || '-' | date: 'M/d/yy' ]]
+    </div>
+</div>
+<br>
+
+
+<div ng-if="regionObject.object.program_close_warning">
+    <div class="row">
+        <div class="col-md-3 key">[[ ::regionObject.fields.program_close_warning_date.label ]]:</div>
+        <div class="col-md-9 value">[[ regionObject.object.program_close_warning_date || '-' | date: 'M/d/yy' ]]</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 key">[[ ::regionObject.fields.program_close_warning.label ]]:</div>
+        <div class="col-md-9 value">
+            <div ng-bind-html="(regionObject.object.program_close_warning | trustAsHtml)"></div>
+        </div>
+    </div>
+</div>
+<br>
+<div ng-if="regionObject.object.program_submit_warning">
+    <div class="row">
+        <div class="col-md-3 key">[[ ::regionObject.fields.program_submit_warning_date.label ]]:</div>
+        <div class="col-md-9 value">[[ regionObject.object.program_submit_warning_date || '-' | date: 'M/d/yy' ]]</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 key">[[ ::regionObject.fields.program_submit_warning.label ]]:</div>
+        <div class="col-md-9 value">
+            <div ng-bind-html="(regionObject.object.program_submit_warning | trustAsHtml)"></div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row" ng-if="regionObject.object.comment">
+    <div class="col-md-12 key">[[ ::regionObject.fields.comment.label ]]:</div>
+    <div class="col-md-12">
+        <div class="well well-lg" ng-bind-html="(regionObject.object.comment | trustAsHtml)"></div>
+    </div>
+</div>
+
+{% if perms.checklist.change_answer %}
+<br>
+<div class="row" ng-if="regionObject.object.is_active">
+    <div class="col-md-6" ng-if="regionObject.object.checklist_download_url">
+        <div class="row">
+            <div class="col-md-6 key">Program Single Template:</div>
+            <div class="col-md-6 value"><a class="btn btn-default"
+                                           ng-href="[[ regionObject.object.checklist_download_url ]]">Download
+                Template</a></div>
+        </div>
+    </div>
+    <div class="col-md-6" ng-if="regionObject.object.bulk_checklist_download_url">
+        <div class="row">
+            <div class="col-md-6 key">Program Bulk Template:</div>
+            <div class="col-md-6 value"><a class="btn btn-default"
+                                           ng-href="[[ regionObject.object.bulk_checklist_download_url ]]">Download
+                Template</a></div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<br>

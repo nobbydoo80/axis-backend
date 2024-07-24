@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12">
+        {% if summary.houseplan.mechanicals.equipment %}
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4 class="panel-title">Installed Equipment</h4></div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.mechanicals.equipment %}
+                        <li class="list-group-item">
+                            {{ item.equipmentType }},
+                            {% if item.heating and item.heating.percentLoad %}{{ item.heating.efficiency }} {{ item.heating.efficiencyType }} ({{ item.heating.percentLoad }}%){% endif %}
+                            {% if item.cooling and item.cooling.percentLoad %}{{ item.cooling.efficiency }} {{ item.cooling.efficiencyType }} ({{ item.cooling.percentLoad }}%){% endif %}
+                            {% if item.waterHeating and item.waterHeating.percentLoad %}{{ item.waterHeating.efficiency }} {{ item.waterHeating.efficiencyType }} ({{ item.waterHeating.percentLoad }}%){% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Infiltration</h4></div>
+            <ul class="list-group">
+                <li class="list-group-item">CFM @ 50 Pascals: {{ summary.houseplan.thermalEnvelope.infiltration.cfm50|floatformat:2 }}</li>
+                <li class="list-group-item">ACH @ 50 Pascals: {{ summary.houseplan.thermalEnvelope.infiltration.ach50|floatformat:2 }}</li>
+                <li class="list-group-item">Effective Leakage Area: {{ summary.houseplan.thermalEnvelope.infiltration.effectiveLeakageArea|floatformat:2 }}</li>
+                <li class="list-group-item">Specific Leakage Area: {{ summary.houseplan.thermalEnvelope.infiltration.specificLeakageArea|floatformat:6 }}</li>
+                <li class="list-group-item">Heating Natural: {{ summary.houseplan.thermalEnvelope.infiltration.heatingNaturalACH }} ACH @ 50 Pascals</li>
+                <li class="list-group-item">Cooling Natural: {{ summary.houseplan.thermalEnvelope.infiltration.coolingNaturalACH }} ACH @ 50 Pascals</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Duct Leakage</h4></div>
+            <ul class="list-group">
+                <li class="list-group-item">Duct System Count: {{ summary.houseplan.mechanicals.summary.ductSystemCount }}</li>
+                <li class="list-group-item">Total Leakage: {{ summary.houseplan.mechanicals.summary.ductLeakageTotal|floatformat:1 }}</li>
+                <li class="list-group-item">Leakage to Outside: {{ summary.houseplan.mechanicals.summary.ductLeakageToOutside|floatformat:1 }}</li>
+            </ul>
+        </div>
+    </div>
+
+</div>

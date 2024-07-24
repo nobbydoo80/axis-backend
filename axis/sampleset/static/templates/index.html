@@ -1,0 +1,103 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button
+            ng-click="makeEmptySampleSet()"
+            type="button"
+            class="btn btn-default">
+                New Sample Set
+        </button>
+        <a ng-click="showHelp = !showHelp">
+            <span ng-switch="showHelp">
+                <span ng-switch-when="true">Hide Help</span>
+                <span ng-switch-default>Show Help</span>
+            </span>
+        </a>
+    </div>
+</div>
+<br/>
+
+<div class="row" collapse="!showHelp">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-xs-6">
+                <h4>Welcome to the Sampling control panel</h4>
+                <strong>Creating and Updating a new Sampleset</strong>
+                <ol>
+                    <li>Use the table below to filter through homes eligible for Sampling.</li>
+                    <li>
+                        If the home is not part of a Sample Set:
+                        <ul>
+                            <li>Drag the row into a Sample Set or make a new Sample Set.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-xs-6 well text-center">
+                <strong>Question Box Legend.</strong>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <td></td>
+                        <td>Test Homes</td>
+                        <td>Sampled Homes</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Source Answer</td>
+                        <td class="test-home"><span class="label label-default answered"></span></td>
+                        <td class="sample-home">N/A</td>
+                    </tr>
+                    <tr>
+                        <td>Contributed Answer</td>
+                        <td class="test-home"><span class="label label-default answered contributed"></span></td>
+                        <td class="sample-home"><span class="label label-default answered contributed"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Receiving Answer</td>
+                        <td class="test-home"><span class="label label-default getting-answer"></span></td>
+                        <td class="sample-home"><span class="label label-default getting-answer"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Unanswered</td>
+                        <td class="test-home"><span class="label label-default"></span></td>
+                        <td class="sample-home"><span class="label label-default"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Failing Answer</td>
+                        <td class="test-home"><span class="label label-default answered failing"></span></td>
+                        <td class="sample-home">N/A</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-6">
+        <accordion close-others="false">
+            <sample-set ng-repeat="sampleSet in viewingSampleSets" ng-if="$index%2 == 0"></sample-set>
+        </accordion>
+    </div>
+    <div class="col-xs-6">
+        <accordion close-others="false">
+            <sample-set ng-repeat="sampleSet in viewingSampleSets" ng-if="$index%2"></sample-set>
+        </accordion>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div
+            droppable
+            ng-click="makeEmptySampleSet()"
+            class="bin"
+            ng-class="{'empty': ssProperties.isDragging}">
+                <div class="empty-list">
+                    Drop Home to create a new Sample Set.
+                </div>
+        </div>
+    </div>
+</div>

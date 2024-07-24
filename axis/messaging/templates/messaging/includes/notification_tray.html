@@ -1,0 +1,74 @@
+<li class="dropdown" ng-controller="messagingNotificationPulldownController as pulldown">
+    <a id="notifications-tray-toggler" type="button" data-toggle="dropdown" href
+       ng-click="messages.dismissPopups(); pulldown.checkForAutoExpand()">
+        <i class="fa fa-bell navbar-icon" ng-class="{'unread': messages.hasUnread()}"></i>
+        <span ng-if="!messages.error">
+            <span class="label" ng-class="'label-' + messages.getHighestUnreadSeverity()"
+                  ng-bind="messages.unreadCount()"></span>
+        </span>
+        <span ng-cloak ng-if="messages.error">
+            <span class="label label-warning">?</span>
+        </span>
+    </a>
+    <ul class="dropdown-menu" role="menu" ng-click="$event.stopPropagation();">
+        <li class="bar">
+            <a href
+               ng-click="messages.hasUnread() ? messages.markAllAsRead() : nothing">
+                <span ng-class="{'text-muted': !messages.hasUnread()}">
+                    Mark all as read
+                </span>
+            </a>
+            <a href="{% url "messaging:list" %}">View all</a>
+        </li>
+
+        <li ng-cloak ng-if="messages.error"
+            class="list-group-item-warning text-center loading-error-message">
+            <i class="fa fa-spinner fa-spin"></i>
+            Trouble loading messages, please wait...
+        </li>
+
+        <li ng-cloak ng-show="!messages.hasUnread()"
+            class="unread list-group-item text-center text-muted">
+
+            <div class="view-all-prompt text-center"
+                 ng-show="messages.serverHasMore()">
+                <a href="{% url "messaging:list" %}"
+                   class="btn btn-xs btn-primary">View remaining [[ messages.serverMessageCount ]]</a>
+            </div>
+            <span ng-hide="messages.serverHasMore()">
+                No unread messages.
+            </span>
+        </li>
+
+        {# Unread #}
+        <li message item="message" ng-repeat="message in messages.unread track by message.id"
+            class="unread list-group-item-[[ message.level | bootstrapcontext ]]"
+            ng-class="{'private': message.sender}"></li>
+
+        <div class="view-all-prompt text-center"
+             ng-show="messages.hasUnread() && messages.serverHasMore()">
+            <a href="{% url "messaging:list" %}"
+               class="btn btn-xs btn-primary">View all [[ messages.serverMessageCount ]]</a>
+        </div>
+
+        {# Expander #}
+        <div class="notifications-expand-wrapper" role="presentation"
+             ng-show="messages.hasRead()">
+            <a class="notifications-expand-toggler"
+               ng-click="pulldown.showRead = !pulldown.showRead"
+               data-toggle="tooltip" data-placement="bottom" title="Toggle read messages" data-container="body"
+               data-show-read="[[ pulldown.showRead ]]">
+                <span class="expand-toggler-wrapper">
+                    <i class="fa fa-ellipsis-h" ng-class="pulldown.showRead ? 'fa-rotate-90' : ''">
+                    </i>
+                </span>
+            </a>
+        </div>
+
+        {# Read #}
+        <li message item="message" ng-repeat="message in messages.read track by message.id"
+            class="read" ng-show="!message.alert_read || pulldown.showRead"
+            ng-class="{'private': message.sender}"></li>
+
+    </ul>
+</li>

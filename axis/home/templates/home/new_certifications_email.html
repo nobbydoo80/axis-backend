@@ -1,0 +1,25 @@
+Hello {{ user.first_name }},
+
+<p>On {{ start_date | date:"l, F d Y" }} the following homes for {{ company }} were completed in Axis.</p>
+<ul>
+    {% for program, details in programs.items %}
+        <li>
+            <h5>{{ program }}</h5>
+            {% if details.program_text %} <small>{{ details.program_text }}</small> {% endif %}
+            <ul>
+                {% for stat in details.homes %}
+                    <li>
+                        <a target="_blank" href="{{ base_url }}{{ stat.home.get_absolute_url }}">
+                            {{ stat.home.get_addr }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+<br/>
+
+<p>Sincerely,<br><br>
+    <em>The AXIS Support Team</em>
+</p>

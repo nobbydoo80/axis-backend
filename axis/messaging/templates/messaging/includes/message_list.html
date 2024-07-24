@@ -1,0 +1,82 @@
+<div class="messaging-inbox">
+    <span class="pull-right" style="margin-top: 0.75em;">
+        <a class="btn btn-xs btn-default" href ng-click="messages.markAllAsRead()">
+            Mark all as read
+        </a>
+        {% if show_viewall_link %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-xs btn-default" href="{% url "messaging:list" %}">
+                View all
+            </a>
+        {% endif %}
+    </span>
+
+    {% if include_read %}
+        <div ng-controller="TabsController as tabs">
+            <ul class="nav nav-tabs">
+                <li>
+                    <a href="#tab-unread" ng-click="tabs.activate(this)" data-toggle="tab">
+                        Unread
+                        <span class="badge badge-primary" ng-bind="messages.unread.length || ''"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab-read" ng-click="tabs.activate(this)" data-toggle="tab">
+                        Read
+                    </a>
+                </li>
+                {# <li> #}
+                {#     <a href="#tab-sent" ng-click="tabs.activate(this)" data-toggle="tab"> #}
+                {#         Sent #}
+                {#     </a> #}
+                {# </li> #}
+                <li>
+                    <a href="#tab-settings" ng-click="tabs.activate(this)" data-toggle="tab">
+                        Settings
+                    </a>
+                </li>
+            </ul>
+
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab-unread">
+
+    {% endif %}
+                <h4>
+                    <span ng-bind="messages.unread.length"></span>
+                    Unread Messages
+                </h4>
+                <br>
+                <div ng-controller="UnreadMessagingRetrievalController as dt">
+                    <table datatable="" dt-options="dt.options" dt-columns="dt.columns"
+                           class="table table-bordered">
+                    </table>
+                </div>
+
+    {% if include_read %}
+            </div>
+                <div class="tab-pane" id="tab-read">
+                    <h4>Read Messages</h4>
+                    <br>
+                    <div ng-controller="ReadMessagingRetrievalController as dt">
+                        <table datatable="" dt-options="dt.options" dt-columns="dt.columns"
+                               class="table table-bordered">
+                        </table>
+                    </div>
+                </div>
+                {# <div class="tab-pane" id="tab-sent"> #}
+                {#     <h4>Sent Messages</h4> #}
+                {#     <br> #}
+                {#     <div ng-controller="SentMessagingRetrievalController as dt"> #}
+                {#         <table datatable="" dt-options="dt.options" dt-columns="dt.columns" #}
+                {#                class="table table-bordered"> #}
+                {#         </table> #}
+                {#     </div> #}
+                {# </div> #}
+                <div class="tab-pane" id="tab-settings">
+                    {% include "messaging/includes/settings.html" %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

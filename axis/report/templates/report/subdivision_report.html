@@ -1,0 +1,30 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Cost basis reports{% endblock %}
+
+{% block header_text %}{{ block.super }} &mdash; Cost basis reports{% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .dataTable th[data-name="name"] { width: 30%; }
+        .dataTable th[data-name="city"] { width: 20%; }
+        .dataTable th[data-name="builder"] { width: 20%; }
+    </style>
+{% endblock %}
+
+
+{% block list_content %}
+    {% if object_list %}
+        {{ block.super }}
+    {% else %}
+        <div class="alert alert-warning">
+            No Subdivisions with Builder Agreements associated to {{ request.user.company }}
+        </div>
+    {% endif %}
+{% endblock list_content %}

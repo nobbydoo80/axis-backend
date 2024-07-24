@@ -1,0 +1,28 @@
+{% verbatim %}
+<div class="control btn-group" data-toggle="buttons">
+    {{! flatattrs, whatever that is}}
+    {{> field_errors_block}}
+
+    {{#each choices}}
+        <label class="btn btn-default">
+            {{! inline classes that need to placed}}
+            <input type="radio"
+                   {{#compare this.choice ../answer.answer}}
+                       checked="checked"
+                   {{/compare}}
+                   id="id_{{../id}}-answer_{{@index}}"
+                   name="{{../id}}-answer"
+                   value="{{this.choice}}"
+                   data-is-failure="{{yesno this.is_considered_failure}}"
+                   data-display-as-failure="{{yesno this.display_as_failure}}"
+                   data-document-required="{{yesno this.document_required}}"
+                   data-photo-required="{{yesno this.photo_required}}"
+                   data-comment-required="{{yesno this.comment_required}}"
+                   autofill="{{yesno ../allow_bulk_fill}}"
+                   >{{this.choice}}
+        </label>
+    {{/each}}
+
+    {{> help_text}}
+</div>
+{% endverbatim %}

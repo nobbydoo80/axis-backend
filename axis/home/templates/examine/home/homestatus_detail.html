@@ -1,0 +1,245 @@
+{# {% if request.user.company != regionObject.object.company %} #}
+    <div class="row">
+        <div class="col-md-3">
+            <strong>[[ regionObject.object.company_type ]]:</strong>
+        </div>
+        <div class="col-md-9">
+            <a ng-href="[[ regionObject.object.company_url ]]">[[ regionObject.object.company_name ]]</a>
+        </div>
+    </div>
+{# {% endif %} #}
+<div class="row">
+    <div class="col-md-3">
+        <strong>Rater of Record:</strong>
+    </div>
+    <div class="col-md-9">
+        <span ng-hide="regionObject.object.rater_of_record">-</span>
+        <a href="/profile/[[ regionObject.object.rater_of_record ]]/" target="_blank" ng-show="regionObject.object.rater_of_record">
+            [[ regionObject.object.rater_of_record_display || '-' ]]
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <strong>Energy Modeler:</strong>
+    </div>
+    <div class="col-md-9">
+        <span ng-hide="regionObject.object.energy_modeler">-</span>
+        <a href="/profile/[[ regionObject.object.energy_modeler ]]/" target="_blank" ng-show="regionObject.object.energy_modeler">
+            [[ regionObject.object.energy_modeler_display || '-' ]]
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <strong>Field Inspector(s):</strong>
+    </div>
+    <div class="col-md-9">
+        <span ng-bind-html="regionObject.object.field_inspectors_display || '-' | trustAsHtml"></span>
+    </div>
+</div>
+<div class="row" ng-if="regionObject.helpers.is_customer_hirl_project_program">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Rough Verifier:</strong>
+            </div>
+            <div class="col-md-6" ng-bind-html="regionObject.object.customer_hirl_rough_verifier_display || '-' | trustAsHtml">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Final Verifier:</strong>
+            </div>
+            <div class="col-md-6" ng-bind-html="regionObject.object.customer_hirl_final_verifier_display || '-' | trustAsHtml">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" ng-if="regionObject.helpers.is_customer_hirl_project_program">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <strong>NGBS Certification Level:</strong>
+            </div>
+            <div class="col-md-6">
+                [[ regionObject.object.customer_hirl_certification_level || '-' ]]
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" ng-if="regionObject.object.rating_type">
+    <div class="col-md-3">
+        <strong>Rating Type:</strong>
+    </div>
+    <div class="col-md-9">
+        <span ng-if="regionObject.object.sampleset">
+            <a ng-href="[[ regionObject.object.sampleset_url ]]" class="label label-primary">
+                <i class="fa fa-group"></i>
+                Sampleset
+                [[ regionObject.object.sampleset_name ]]
+            </a>
+            &nbsp;
+            •
+        </span>
+
+        [[ regionObject.object.rating_type ]]
+    </div>
+</div>
+
+<div class="row" ng-if="regionObject.helpers.has_checklist">
+    <div class="col-md-3">
+        <strong>Checklist:</strong>
+    </div>
+    <div class="col-md-9">
+        [[ regionObject.object.pct_complete | number:0 ]]%
+    </div>
+</div>
+
+<div class="row" ng-if="regionObject.object.fastrack_submit_status || regionObject.object.fastrack_solar_submit_status">
+    <div class="col-md-3">
+        <strong>ENH PT ID:</strong>
+    </div>
+    <div class="col-md-3">
+        [[ regionObject.object.fastrack_enh_id || regionObject.object.fastrack_submit_status ]]
+    </div>
+    <div class="col-md-3">
+        <strong>SLE PT ID:</strong>
+    </div>
+    <div class="col-md-3">
+        [[ regionObject.object.fastrack_sle_id || regionObject.object.fastrack_solar_submit_status  ]]
+    </div>
+</div>
+<div class="row" ng-if="regionObject.object.resnet_id">
+    <div class="col-md-3">
+        <strong>RESNET Registry ID:</strong>
+    </div>
+    <div class="col-md-9">
+        [[ regionObject.object.resnet_id ]]
+    </div>
+</div>
+
+<div class="row" ng-if="regionObject.helpers.annotation_beats_annual_fuel_usage">
+    <div class="col-md-3">
+        <strong>Meets or Beats Ann. Fuel Usage:</strong>
+    </div>
+    <div class="col-md-9">
+        [[ regionObject.helpers.annotation_beats_annual_fuel_usage ]]
+    </div>
+</div>
+
+
+<br>
+
+
+
+<div ng-if="regionObject.object.floorplan">
+    <div class="row">
+        <div class="col-md-12">
+            <axis-single-region options="regionObject.helpers.machinery.active_floorplan"></axis-single-region>
+        </div>
+    </div>
+</div>
+
+<div ng-if="regionObject.object.rating_type&&!regionObject.object.floorplan">
+    <p class="text-muted">
+        No Simulation data is associated to this program.
+    </p>
+</div>
+
+<div class="rtf-calculations-output" ng-if="regionObject.helpers.show_rtf_table" url="regionObject.helpers.rtf_url">
+
+    <div ng-show="ctrl.loading" class="rtf-calculations-progress-indicator text-center">
+        <i class="fa fa-spinner fa-spin fa-lg"></i> Loading Standard Protocol Calculations&hellip; </div>
+
+    <div ng-if="ctrl.error" class="rtf-calculations-errors alert alert-warning">
+        <b>[[ ctrl.errors.message ]]</b>
+        <ul>
+            <li ng-repeat="msg in ctrl.errors.errors">
+                [[ msg ]]
+            </li>
+        </ul>
+    </div>
+
+    <div ng-if="ctrl.success" class="rtf-calculations-output-data">
+        {% include "customer_neea/includes/standard_protocol_calculations.html" %}
+    </div>
+
+</div>
+
+
+<div class="wcc-calculations-output" ng-if="regionObject.helpers.show_wcc_table" url="regionObject.helpers.wcc_url">
+
+    <div ng-show="ctrl.loading" class="wcc-calculations-progress-indicator text-center">
+        <i class="fa fa-spinner fa-spin fa-lg"></i> Loading Washington Code Credit Calculations&hellip; </div>
+
+    <div ng-if="ctrl.error" class="wcc-calculations-errors alert alert-warning">
+        <b>[[ ctrl.errors.status ]]</b>
+        <div ng-repeat="(classification, value) in ctrl.errors.errors">
+            <b class="key" style="text-transform: capitalize;">[[ classification.replaceAll("_", " ")]]</b>
+            <ul>
+                <li ng-repeat="(name, messages) in value">
+                    <span class="key" style="text-transform: capitalize;">[[name.replaceAll("_", " ")]]</span>
+                    <span class="value" ng-repeat="msg in messages">[[msg]]</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-if="ctrl.success" class="wcc-calculations-output-data">
+        {% include "customer_eto/includes/washington_code_credit_calculations.html" %}
+    </div>
+
+</div>
+
+
+<div class="eto-legacy-calculations-output"
+     ng-if="regionObject.helpers.show_legacy_eps_table"
+     data-showview="[[ regionObject.helpers.eps_showview ]]"
+     >
+
+    <div ng-show="etoLegacyCalculationsOutputController.loading" class="eto-calculations-progress-indicator text-center">
+        <i class="fa fa-spinner fa-spin fa-lg"></i>
+        Loading Energy Performance Score&hellip;
+    </div>
+
+    <div ng-show="etoLegacyCalculationsOutputController.error" class="eto-calculations-errors alert alert-warning"></div>
+
+    <div ng-show="etoLegacyCalculationsOutputController.success" class="eto-calculations-legacy-output-data">
+        {% include "customer_eto/includes/home_as_built_table.html" %}
+    </div>
+
+    <form action="{% url "eto:calculator" %}" method="post" class="eto-calculations-input"
+          ng-if="regionObject.helpers.eps_calculations_valid"
+          style="display: none">
+        {% csrf_token %}
+        <input type="hidden" name="home_status" value="[[ regionObject.object.id ]]" />
+        <div class="form-area"></div>
+    </form>
+</div>
+
+<div class="eto-calculations-output"
+     ng-if="regionObject.helpers.show_eps_table"
+     data-showview="[[ regionObject.helpers.eps_showview ]]"
+     >
+
+    <div ng-show="ctrl.loading" class="eto-calculations-progress-indicator text-center">
+        <i class="fa fa-spinner fa-spin fa-lg"></i> Loading Energy Performance Score Calculations&hellip; </div>
+
+    <div ng-if="ctrl.error" class="eto-calculations-errors alert alert-warning">
+        <b>[[ ctrl.errors.status ]]</b>
+        <div ng-repeat="(classification, messages) in ctrl.errors.errors">
+            <b class="key" style="text-transform: capitalize;">[[ classification.replaceAll("_", " ")]]</b>
+            <ul>
+                <li ng-repeat="msg in messages">[[ msg]]</li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-if="ctrl.success" class="eto-calculations-output-data">
+        {% include "customer_eto/includes/eps_calculations.html" %}
+    </div>
+
+</div>

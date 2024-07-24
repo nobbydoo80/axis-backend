@@ -1,0 +1,81 @@
+<div class="message"
+     ng-class="{'unread': !message.alert_read, 'read': message.alert_read, 'sticky': message.sticky_alert}"
+     ng-mouseover="messageController.startHover()" ng-mouseleave="messageController.endHover()"
+     data-id="[[ message.id ]]">
+    <div class="media">
+        <div class="pull-left">
+            <span class="fa-stack">
+                <i class="fa fa-fw fa-stack-2x text-[[ message.level | bootstrapcontext ]]"
+                   ng-class="{'fa-circle-o-notch': message.level == 'system' && message.sender === null,
+                              'fa-exclamation-circle': message.level == 'error' && message.sender === null,
+                              'fa-exclamation-triangle': message.level == 'warning' && message.sender === null,
+                              'fa-check-circle': message.level == 'success' && message.sender === null,
+                              'fa-info-circle': message.level == 'info' && message.sender === null,
+                              'fa-code': message.level == 'debug' && message.sender === null,
+                              'fa-user': message.sender !== null}">
+                </i>
+                <span ng-if="message.sticky_alert && !message.alert_read" class="sticky-icon">
+                    <i class="fa fa-fw fa-stack-1x fa-square text-primary"></i>
+                    <i class="fa fa-fw fa-stack-1x fa-thumb-tack fa-inverse"></i>
+                </span>
+            </span>
+        </div>
+        <div class="pull-right" ng-click="$event.stopPropagation();">
+            <a ng-if="messageController.isToast()"
+               href id="msg-[[ message.id ]]" ng-click="messageController.dismissPopup()"
+               title="Dismiss popup"
+               class="">
+                <i class="fa fa-times text-[[ message.level | bootstrapcontext ]]"></i>
+            </a>
+            <a href class="mark-read" ng-click="messageController.markAsRead()" title="Mark as read"
+               ng-show="!message.alert_read">
+                <span class="fa-stack">
+                    <i class="fa fa-list-ul fa-stack-1x text-[[ message.level | bootstrapcontext ]]"></i>
+                    <i class="fa fa-check fa-stack-1x text-[[ message.level | bootstrapcontext ]]"></i>
+                </span>
+            </a>
+            <a href id="msg-[[ message.id ]]" ng-click="messageController.sendEmail()"
+               class="email-link">
+                <span class="fa-stack">
+                    <i class="fa fa-envelope-o fa-stack-1x text-muted" title="Forward to my email"></i>
+                    <i class="fa fa-spinner fa-spin fa-stack-1x text-muted" ng-show="message.sending_email"></i>
+                    <i class="fa fa-check fa-stack-1x" ng-show="message.date_sent"
+                       title="Email sent" style="margin-left:-5px"></i>
+                </span>
+            </a>
+            <a ng-if="message.url"
+               ng-class="{'disabled': !messageController.isOtherUrl()}"
+               ng-href="[[ message.url || '' ]]"
+               ng-click="messageController.goToUrlCallback($event)"
+               title="[[ messageController.isOtherUrl() ? 'Go to page' : 'This message originated from this page' ]]"
+               target="_blank">
+                <i class="fa fa-fw fa-external-link text-[[ message.level | bootstrapcontext ]]"></i>
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading" ng-click="messages.openMessage(message)">
+                [[ message.title ]]
+            </h4>
+            <span ng-switch="message.sender" class="text-muted message-sender">
+                <span ng-switch-when="null">
+                    Axis:
+                </span>
+                <span ng-switch-default>
+                    [[ message.user_name ]]
+                </span>
+            </span>
+            <span ng-bind-html="messageController.htmlContent"></span>
+            <div class="small text-muted">
+                [[ message.date_created | date:"MM/dd/yyyy h:mma" ]]
+                •
+                [[ message.level ]]
+                <span ng-show="message.category">
+                    •
+                    <span class="label label-default">
+                        [[ message.category ]]
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

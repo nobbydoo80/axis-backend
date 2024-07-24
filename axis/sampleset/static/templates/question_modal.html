@@ -1,0 +1,19 @@
+<span>
+
+    <div class="modal-header">
+        <h3 class="modal-title">[[question.question]]</h3>
+    </div>
+    <div class="modal-body">
+        <h3 class="text-center" ng-hide="question">
+            <i class="fa fa-spin fa-spinner"></i> Loading...
+        </h3>
+        <div ng-bind-html="asHTML(question.description)"></div>
+        <hr/>
+        <div ng-repeat="(key, value) in question">
+            [[key]]
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="close()" class="btn btn-primary">Close</button>
+    </div>
+</span>

@@ -1,0 +1,21 @@
+{% extends "flatpages/default.html" %}
+
+{% load media_url %}
+
+{% block full_content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-12">
+                <p>{{ flatpage.title }}</p>
+            </div>
+        </div>
+    </header>
+    <div class="flatpage-data">
+        <div class="row">
+            <div class="col-md-12">
+                <strong>{{ flatpage.created_at }}</strong><br /><br />
+                {{ flatpage.content|media_url:STATIC_URL }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

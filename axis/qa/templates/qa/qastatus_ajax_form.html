@@ -1,0 +1,21 @@
+{% load crispy_forms_filters %}
+<br />
+{% csrf_token %}
+{{ form.owner }}
+{{ form.user }}
+<div class="col-md-4">
+    {{ form.new_state|as_crispy_field }}
+</div>
+<div class="col-md-2 hidden" id="qa_result_selector">
+    {{ form.result|as_crispy_field }}
+</div>
+<br />
+<div class="col-md-10">
+    {{ form.note|as_crispy_field }}
+</div>
+<br />
+<div class="col-md-6 form-actions">
+    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+    <span class="submitting-notification text-warning"></span>
+</div>
+<br />

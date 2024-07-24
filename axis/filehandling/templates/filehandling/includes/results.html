@@ -1,0 +1,14 @@
+{% load dates %}
+
+{% if old_style %}
+    <div class="col-md-12 value"> <ul>{{ old_style|safeseq|unordered_list }}</ul></div>
+{% endif %}
+{% if results %}
+    <div class="col-md-12 value"> <ul>
+        {% for item in results %}
+            <li>{% if debug %}
+                    {{ item.created|truncate_timestamp }}&nbsp;
+                {% endif %}{{ item.getMessage|safe }}</li>
+        {% endfor %}
+    </ul></div>
+{% endif %}

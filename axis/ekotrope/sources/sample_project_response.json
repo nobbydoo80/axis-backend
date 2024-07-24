@@ -1,0 +1,61 @@
+{
+   "id":"0vQXRZAd",
+   "name":"Eastmark Tamery Parcel 12 3575 ",
+   "model":"3575",
+   "notes":"",
+   "plans":[
+      {
+         "id":"x7y6nx03",
+         "name":"18.08.29 kj IECC09+ESv3"
+      }
+   ],
+   "status":"UNREGISTERED",
+   "builder":"CalAtlantic Homes",
+   "isLocked":false,
+   "location":{
+      "zip":"85212",
+      "city":"Mesa",
+      "state":"AZ",
+      "climateZone":{
+         "zone":2,
+         "moistureRegime":"DRY"
+      },
+      "streetAddress":"3575"
+   },
+   "community":"Eastmark Tamery Parcel 12",
+   "createdAt":"2018-09-25T20:33:26.000+0000",
+   "createdBy":"axis-drw-api",
+   "lastSavedAt":"2018-09-25T20:33:26.000+0000",
+   "lastSavedBy":"axis-drw-api",
+   "masterPlanId":"x7y6nx03",
+   "utilityRates":[
+      {
+         "fuel":"ELECTRIC",
+         "name":"SRP 2018 Basic Plan"
+      },
+      {
+         "fuel":"NATURAL_GAS",
+         "name":"SWG 2018 Single Family"
+      }
+   ],
+   "algorithmVersion":"3.1.0",
+   "hersRatingDetails":{
+      "rater":{
+         "name":"Katie Johnson",
+         "email":"katiej@drwaz.com",
+         "ratingCompany":{
+            "id":"eGqO0Yd0",
+            "name":"D.R. Wastchak"
+         },
+         "resnetRaterId":"5377019",
+         "resnetProviderId":"1998-056"
+      },
+      "ratingType":"SAMPLED",
+      "associatedUsers":[
+
+      ]
+   },
+   "resultsUnchangedSince":"2018-09-25T20:33:26.000+0000",
+   "selfOrPlanLastSavedAt":"2018-09-25T20:33:26.000+0000",
+   "builderPermitDateOrNumber":""
+}

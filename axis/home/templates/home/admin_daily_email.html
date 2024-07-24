@@ -1,0 +1,52 @@
+{% load humanize %}
+Hello {{ user.first_name }},
+{% if certification_total %}
+    <p>The following homes were certified or bulk uploaded (with certification dates) on {{ start_date | date:"l, F d Y" }}</p>
+    <ul>
+        {% for company, program_dict in certifications.items %}
+            <li>
+                <h5>{{ company }}</h5>
+                <ul>
+                    {% for program, count in program_dict.items %}
+                        <li>{{ count }} home{% if count > 1 %}s{% endif %} certified for {{ program }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% if payment_total %}
+    {% if certification_total %}<br />{% endif %}
+    <p>The following homes were paid {{ start_date | date:"l, F d Y" }}.</p>
+    <ul>
+        {% for company, customer_dict in payments.items %}
+            <li>
+                <h5>{{ company }}</h5>
+                <ul>
+                    {% for customer, total in customer_dict.items %}
+                        <li>{{ customer }}: ${{ total|intcomma }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% if not certification_total and not payment_total %}
+    <p>Light day - no certifications and no payments :(</p>
+{% endif %}
+
+<h5>Overall data statistics:</h5>
+<ul>
+{% for title, data in statistics.items %}
+    <li><strong>{{ title }}</strong>
+        <ul>Created:{% if data.created > 0 %}
+            <strong style="color: darkgreen">
+                &#x21e7;&nbsp;{{ data.created|intcomma }}
+            </strong>
+            {% else %}&nbsp;{{ data.created }}{% endif %}</ul>
+        <ul>Total: {{ data.total|intcomma }}</ul>
+    </li>
+{% endfor %}
+</ul>
+
+

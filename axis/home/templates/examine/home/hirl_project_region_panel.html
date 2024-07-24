@@ -1,0 +1,14 @@
+{% extends "examine/angular_region_panel.html" %}
+
+
+{% block heading %}
+    <a href="/app/hi/project_registrations/[[ regionObject.object.registration ]]">
+        Project ID: [[ regionObject.object.id ]]
+    </a>
+    <span ng-if="regionObject.object.legacy_certification_id">
+        |
+    </span>
+    <a href="/app/hi/project_registrations/[[ regionObject.object.registration ]]" ng-if="regionObject.object.legacy_certification_id">
+        NGBS Legacy Project ID: [[ regionObject.object.legacy_certification_id ]]
+    </a>
+{% endblock heading %}

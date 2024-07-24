@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}
+    {% if search_model %}
+        {{ search_model }} Results
+    {% else %}
+        Search
+    {% endif %}
+{% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        #model-select-wrapper select {
+            width: 33%;
+        }
+        .constraint-form:first-child .constraint-type * {
+            display: none;
+        }
+        .constraint-type {
+        }
+        .constraint-type label,
+        .constraint-field label,
+        .constraint-operator label {
+            display: none;
+        }
+        .description {
+            display: none;
+        }
+        .add-row, .delete-row {
+            display: none;
+        }
+        .delete-button-column a {
+            vertical-align: middle;
+        }
+        .delete-button-column a:hover {
+            text-decoration: none;
+            margin-top: 0.5em;
+        }
+        .constraint-terms .row {
+            height: 2.5em; /* Lock this so it doesn't bounce around on transition */
+            overflow-y: hidden;
+        }
+        .end-term:before {
+            content: "and";
+            position: absolute;
+            margin: 0.5em 0 0 -2em;
+/*            font-size: 0.8em;*/
+        }
+    </style>
+{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.appsearch.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var form = $('form');
+
+            form.find('input[type=text]').addClass('form-control');
+
+            // Activate appsearch
+            form.appsearch({
+                formChoices: {{ search.render_all_constraint_choices }},
+                setFieldDescription: function(descriptionBox, type, text, value, constraintForm){
+                    var description;
+                    if (type == "text") {
+                        description = "Text";
+                    } else if (type == "date") {
+                        description = "MM/DD/YYYY";
+                    } else if (type == "number") {
+                        description = "Number";
+                    } else if (type == "boolean") {
+                        description = "true/false or yes/no";
+                    }
+                    constraintForm.find('.term input').attr('placeholder', description);
+                },
+
+                // Passed directly to formset.js
+                formsetOptions: {
+                    prefix: '{{ search.constraint_formset.prefix }}',
+                    addText: '',
+                    deleteText: ''
+                }
+            });
+
+            $('#add-button-column button').on('click', function(){
+                form.find('a.add-row').click();
+                return false;
+            });
+            $('.delete-button-column a').on('click', function(){
+                return $(this).closest('.constraint-form').find('.delete-row').click();
+            });
+
+            // Hook the field-update event and configure the datepicker when appropriate
+            form.on('field-updated', function(e, inputs, type){
+                if (type == "date") {
+                    inputs.datepicker({ dateFormat: 'yy-mm-dd' });
+                } else {
+                    inputs.datepicker("remove");
+                }
+            });
+            form.find('.constraint-operator select').on('change', function(){
+                var select = $(this);
+                var option = select.find(':selected');
+                var value = select.val();
+
+                var constraintForm = select.closest('.constraint-form')
+                var begin_term = constraintForm.find('.begin-term');
+                if (value == "between") {
+                    begin_term.addClass('col-md-6').removeClass('col-md-12');
+                } else {
+                    begin_term.removeClass('col-md-6').addClass('col-md-12');
+                }
+            });
+
+            var selector = $("#data_table");
+            selector.dataTable();
+
+        });
+    </script>
+{% endblock %}
+
+{% block full_content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-12">
+                <p>Structured Search</p>
+            </div>
+        </div>
+    </header>
+
+    {{ search.render_search_form }}
+
+    {% if search.ready %}
+        <hr />
+        {{ search.render_results_list }}
+    {% endif %}
+{% endblock %}

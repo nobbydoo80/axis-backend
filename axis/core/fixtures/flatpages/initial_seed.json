@@ -1,0 +1,820 @@
+[
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "About us..",
+      "url": "/about/",
+      "template_name": "",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "        <link rel=\"stylesheet\" href=\"{{ STATIC_URL }}css/public_bootstrap.min.css\" rel='stylesheet' media='screen'>\r\n    <script type=\"application/javascript\">\r\n        $(function () {\r\n            var jumboHeight = $('.jumbotron').outerHeight();\r\n\r\n            function parallax() {\r\n                var scrolled = $(window).scrollTop();\r\n                $('.bg').css('height', (jumboHeight - scrolled) + 'px');\r\n            }\r\n\r\n            $(window).scroll(function (e) {\r\n                parallax();\r\n            });\r\n\r\n        });\r\n    </script>\r\n\r\n    <header>\r\n       <div class=\"container\">\r\n        <div class=\"bg\"></div>\r\n        <div class=\"jumbotron\">\r\n            <h1 style=\"text-align: center\">Mission</h1>\r\n            <p style=\"text-align: center\">\r\n                Enabling the transformation of the energy efficiency market through innovative software solutions\r\n                that deliver efficiency, accuracy and transparency.\r\n            </p>\r\n            </div>\r\n        </div>\r\n     </header>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-md-7\">\r\n            <p>\r\n                At Pivotal Energy Solutions we are a committed team of hard working professionals who enjoy\r\n                creating and delivering software and tools that radically improve the way in which energy efficiency\r\n                data is collected, displayed, and shared.\r\n            </p>\r\n\r\n            <br />\r\n            <p><a href=\"/contact/\" class=\"btn btn-primary btn-large\">Learn more &raquo;</a></p>\r\n        </div>\r\n\r\n        <div class=\"col-md-5\">\r\n            <img class=\"img-rounded pull-right\" width='400' src=\"{{ STATIC_URL }}images/AZHome.jpg\"/>\r\n        </div>\r\n    </div>\r\n",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Pivotal Energy Solutions",
+      "url": "/info/",
+      "template_name": "",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "            <p>Pivotal Energy Solutions is a technology company focused on delivering innovative software solutions for\r\n                the energy efficiency market. Our flagship product, Axis, is a cloud-hosted software platform designed\r\n                to enable operational efficiencies and transparency for energy efficiency program administrators,\r\n                participants, and evaluators. </p><br/>\r\n\r\n            <p> Used by leading program sponsors and utilities such as <a href=\"http://neea.org/\" target=\"blank\">NEEA</a>,  <a href=\"http://energytrust.org/\" target=\"blank\">Energy Trust\r\n                of Oregon</a>, and  <a href=\"https://www.aps.com\" target=\"blank\">Arizona Public Service</a>, Axis serves as a centralized data collection, storage, and\r\n                sharing hub with integrated workflow management and messaging functionality. In addition to supporting\r\n                the RESNET energy rating protocols, the modular architecture of Axis allows for customization of\r\n                functionality, visibility, and workflows to meet program-specific needs.</p>\r\n",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "License Agreement",
+      "url": "/license/",
+      "template_name": "",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "  <div class=\"hide\">\r\n  <div style=\"background:#ffffcc;padding:4 8;border-bottom:thin solid #eeeeee;font-family:Arial,sans-serif\">\r\n  </div>\r\n  </div>\r\n  <div style=\"margin:1ex\">\r\n<div>\r\n\r\n  <p align=\"center\"><font size=\"2\" face=\"Times New Roman\"><b>END-USER \r\nLICENSE AGREEMENT</b></font> <br> <br></p>\r\n<p align=\"justify\"><font size=\"2\" face=\"Times New Roman\"><b>PLEASE READ \r\nTHIS END USER LICENSE AGREEMENT (\u201cAGREEMENT\u201d) CAREFULLY BEFORE ACCEPTING \r\nIT AS IT GOVERNS YOUR USE OF SOFTWARE CALLED AXIS AND ITS PROPRIETARY \r\nAND ASSOCIATED DOCUMENTATION (\u201cSOFTWARE\u201d), THIS WEBSITE LOCATED \r\nAT <a href=\"HTTPS://AXIS.PIVOTALENERGYSOLUTIONS.COM\" target=\"_blank\">HTTPS://AXIS.<WBR>PIVOTALENERGYSOLUTIONS.COM</a> (\u201cWEBSITE\u201d), A DATABASE \r\n(\u201cDATABASE\u201d) OF THE SOFTWARE AND THE WEBSITE (COLLECTIVELY, \r\n\u201cPRODUCTS\u201d).  YOUR USE OF THE SOFTWARE (IF PERMITTED BASED \r\nON YOUR USER PRIVILEGES) AVAILABLE AT THE WEBSITE, YOUR ABILITY TO ACCESS \r\nTHE DATABASE, AND YOUR USE OF INFORMATION IN THE DATABASE (IF PERMITTED \r\nBASED ON YOUR USER PRIVILEGES) IS EXPRESSLY CONDITIONED UPON YOUR ACCEPTANCE \r\nOF THIS AGREEMENT.  </b></font> <br></p>\r\n<p align=\"justify\"><font size=\"2\" face=\"Times New Roman\"><b>BY SIGNING \r\nTHIS AGREEMENT OR BY SELECTING THE \r\n\u201cI ACCEPT\u201d BUTTON BELOW, YOU AGREE TO BE LEGALLY BOUND BY THIS AGREEMENT.  \r\nYOU AGREE THAT THIS AGREEMENT IS A LEGALLY BINDING AGREEMENT BY AND \r\nBETWEEN PIVOTAL ENERGY SOLUTIONS, LLC \r\n(\u201cLICENSOR\u201d) AND YOU (\u201cLICENSEE\u201d) AND IS ENFORCEABLE LIKE ANY \r\nWRITTEN NEGOTIATED AGREEMENT SIGNED BY YOU.  DO NOT SIGN OR SELECT \r\n\u201cI ACCEPT\u201d UNTIL YOU HAVE CAREFULLY READ AND AGREED TO THE FOLLOWING \r\nTERMS AND CONDITIONS.  YOU MAY AT ANY TIME SELECT \r\n\u201cI DECLINE\u201d AND EXIT THIS WEBSITE OR SOFTWARE OR WITHHOLD YOUR SIGNATURE.</b></font> <br>\r\n</p>\r\n<ol type=\"1\">\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Grant Of License</u></b>. \r\n  Licensor hereby grants to Licensee a non-exclusive, non-transferable, \r\n  non-sublicenseable, limited license in United States (the &quot;License&quot;), \r\n  for the term set forth in Section 4, to use the Products.  The \r\n  foregoing license grant is subject to the restrictions below and the \r\n  other terms and conditions of this Agreement.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Prohibited \r\n  Conduct</u></b>.  Except to the extent otherwise expressly permitted \r\n  hereunder or otherwise by separate agreement, and without limitation, \r\n  the following restrictions shall apply to Licensee\u2019s use of the Products: \r\n  (a) Licensee may not copy or reproduce any portion of the Products; \r\n  (b) Licensee may not change, alter, modify, or create derivative works, \r\n  enhancements, extensions, or add-ons to the Products; (c) Licensee may \r\n  not decompile, reverse engineer, or disassemble any part of the Products, \r\n  in whole or in part; (d) Licensee may not assist any third party in \r\n  engaging in any activity prohibited by this Agreement; and (e) Licensee \r\n  will at all times comply with, and will not circumvent or attempt to \r\n  circumvent, any of the restrictions on use set forth in this Section \r\n  2 or elsewhere in this Agreement.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Confidentiality \r\n  Obligations</u></b>.</font></li>\r\n  </ol>\r\n<ul>\r\n<ol type=\"a\">\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Confidential \r\n  Information</b>.  Licensee acknowledges that the Website, the Database, \r\n  and the Software embodies, includes, provides, and contains valuable \r\n  trade secrets and confidential information owned by Licensor.  \r\n  \u201cConfidential Information\u201d shall include but not limited to, employee, \r\n  supplier, and competitor information; blueprints, drawings, and other \r\n  designs and concepts; know-how and other methods; purchasing, cost, \r\n  pricing, profitability, and other financial information; research and \r\n  development, marketing, sales, contractual and other business plans \r\n  and techniques; policies and training materials; inventions (whether \r\n  patentable or not), works of authorship (whether copyrightable or not), \r\n  trade secrets,  the functionality of the Website, the Software, \r\n  and the Database, the appearance, content and flow of the user interface \r\n  of the Website and the Software.  Licensee also acknowledges that \r\n  some or all of the Confidential Information may be located or stored \r\n  in the Databases accessible to Licensee from, through, or using the \r\n  Website and/or the Software.  Confidential Information does not \r\n  include any information that is publically available through or from \r\n  third parties.  </font></li>\r\n</ol>\r\n<ol type=\"a\" start=\"2\">\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Non-Disclosure</b>.  \r\n  All Confidential Information will remain the property of the disclosing \r\n  Party (except for the Information, whose ownership is set forth in Section \r\n  6), and the receiving or non-owing Party will not be deemed by virtue \r\n  of its access to the Confidential Information of the disclosing or owning \r\n  Party to have acquired any right or interest in or to any such Confidential \r\n  Information, other than as specifically set forth herein.  The \r\n  receiving or non-owning Party agrees: (i) to hold the Confidential Information \r\n  of the disclosing or owning Party in strict confidence and to safeguard \r\n  the Confidential Information of the disclosing or owning Party with \r\n  the care that the receiving or non-owning Party uses to protect its \r\n  own Confidential Information, but in no case less than a reasonable \r\n  degree of care; (ii) except as expressly authorized in this Agreement, \r\n  not to disclose any Confidential Information of the disclosing or owning \r\n  Party to any third party, other than employees and independent contractors \r\n  of the receiving or non-owning Party who have a need to know the Confidential \r\n  Information of the disclosing or owning Party for the purposes of this \r\n  Agreement and who are subject to a written confidentiality agreement \r\n  that affords at least as much protection to the Confidential Information \r\n  of the disclosing or owning Party as this Section 5; (iii) to use the \r\n  Confidential Information of the disclosing or owning Party solely and \r\n  exclusively in accordance with the terms of this Agreement in order \r\n  to carry out the receiving or non-owning Party\u2019s obligations and exercise \r\n  its rights under this Agreement; and (iv) to notify the disclosing or \r\n  owning Party promptly of any unauthorized use or disclosure of the Confidential \r\n  Information of the disclosing or owning Party and to cooperate with \r\n  and assist the disclosing or owning Party in every reasonable way to \r\n  stop or minimize such unauthorized use or disclosure.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Personally Identifiable \r\n  Information</b>.  Licensor shall treat any personally identifiable \r\n  information (e.g., name and phone number) that it receives of \r\n  Licensee as Confidential Information and in compliance with Licensor\u2019s \r\n  obligations under this Agreement, including, but not limited to, those \r\n  set forth in Section 3(b) and applicable laws, rules, and regulations \r\n  regarding personally identifiable information.  However, Licensor \r\n  may share personally identifiable information when Licensee signs an \r\n  agreement allowing Licensor to release their personally identifiable \r\n  information. </font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Injunction</b>.  \r\n  Both Parties agrees that if a court of competent jurisdiction determines \r\n  that the Party receiving the Confidential Information has breached, \r\n  or attempted or threatened to breach, its confidentiality obligations \r\n  under this Agreement, the disclosing or owning Party will be entitled \r\n  to obtain appropriate injunctive relief and other measures restraining \r\n  further attempted or threatened breaches of such obligations.  \r\n  Such injunctive relief or other measures will be in addition to, and \r\n  not in lieu of, any other rights and remedies available to the disclosing \r\n  or owning Party.</font></li>\r\n  </ol>\r\n</ul>\r\n<ol type=\"1\" start=\"4\">\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Term and Termination</u></b>.  \r\n  The terms of this Agreement shall continue unless terminated as provided \r\n  in this Section.  This Agreement will terminate automatically, \r\n  without notice or liability to Licensee or any third party, in the event \r\n  of a material breach by Licensee of any of the agreed upon terms and \r\n  conditions stated herein.  In addition, (i) Licensor may decide, \r\n  on its own, to terminate this Agreement at any time in its sole and \r\n  absolute discretion, by written or electronic notice to Licensee, in \r\n  which event this Agreement shall terminate on the date specified in \r\n  such notice; and (ii) at Licensor\u2019s discretion, the Website, the Database, \r\n  and/or the Software may be designed to cease to function after a period \r\n  of time has elapsed and, in such event, this Agreement will terminate \r\n  automatically when the Website, the Database, and/or the Software ceases \r\n  to function.  Upon termination of this Agreement, Licensee shall \r\n  immediately cease any and all use of the Website, the Database, and/or \r\n  the Software and any confidential information and shall promptly destroy \r\n  or return all such material to Licensor.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Survival</u></b>.  \r\n  The provisions of Sections 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, and \r\n  this Section 5 shall survive any termination of this Agreement.  \r\n  The confidentiality obligations under Section 3 herein shall be effective \r\n  until Licensor ceases to keep the Confidential Information confidential.  \r\n  Further, Recipient\u2019s confidentiality obligations under Section 3 shall \r\n  not be affected by bankruptcy, assignment, attachment, or seizure procedures, \r\n  whether initiated by or against Licensee, nor by the rejection of any \r\n  agreement between Licensor and Licensee, by a trustee of Licensee in \r\n  bankruptcy, or by the Licensee as a debtor in possession or the equivalent \r\n  of any of the foregoing under local law.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Collected \r\n  Information Ownership</u></b>.  Licensor may collect and summarize \r\n  the data in the aggregate for analytics (\u201cCollected Data\u201d) using \r\n  the Software, the Website, or other means, and store the Collected Data \r\n  in the Database or a different database.  Any data or information \r\n  collected and/or compiled by Licensor under this Agreement shall be \r\n  performed in such a manner that (a) no Personally Identifiable Information \r\n  may be derived therefrom, and (b) the results of any Collected Data \r\n  shall not include any Personally Identifiable Information.  If  \r\n  Licensee owns any or all of the Collected Data, Licensee hereby grants \r\n  to Licensor a perpetual, non-exclusive, irrevocable, worldwide, royalty-free, \r\n  and sublicenseable right and license to use such data or information \r\n  included in the Collected Data for any business purpose.  Licensor\u2019s \r\n  use of the Collected Data shall comply with the confidentiality obligations \r\n  in Section 3(c).  </font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Intellectual \r\n  Property Protection</u></b>.  The Website, the Software, and the \r\n  Database, are intellectual property of and are owned by Licensor.  \r\n  The Information may be intellectual property of and may be owned by \r\n  Licensor.  The structure, organization, and code of the Website, \r\n  the Software, and the Database (and portions of the Information owned \r\n  by Licensor) are valuable trade secrets and confidential information \r\n  of Licensor and are protected by law including, without limitation, \r\n  the copyright laws of the United States and other countries, by applicable \r\n  international treaty provisions.  Licensor retains ownership of \r\n  its intellectual property rights in, to, and under the Website, the \r\n  Software, the Database, and the Information (as applicable), and Licensee \r\n  may not obtain any rights therein by virtue of this Agreement or otherwise, \r\n  unless expressly stated herein.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Representations \r\n  and Warranties by Licensee</u></b>.  Licensee represents and warrants \r\n  to Licensor that: (i) Licensee has the full power and authority to enter \r\n  into and perform its obligations under this Agreement; (ii) Licensee\u2019s \r\n  assent to and performance of its obligations under this Agreement does \r\n  not constitute a breach of or conflict with any other agreement or arrangement \r\n  by which Licensee is bound, or any applicable laws, regulations or rules; \r\n  (iii) all information provided by Licensee is accurate and current and \r\n  will be updated by Licensee to remain current; (iv) this Agreement constitutes \r\n  legal, valid and binding obligations on Licensee, enforceable in accordance \r\n  with its terms and conditions; (v) Licensee will comply with all applicable \r\n  laws, rules and regulations in its use of the Website, the Software, \r\n  and/or the Database, as well as the agreed upon terms of this Agreement; \r\n  and (vi) Licensee understand and acknowledge that Licensor may terminate \r\n  this Agreement as provided in Section 4 of this Agreement.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Indemnification</u></b>.  \r\n  Licensee agrees to indemnify and hold Licensor and its employees, representatives, \r\n  agents, attorneys, affiliates, directors, officers, members, managers \r\n  and shareholders (collectively, the \u201cIndemnified Parties\u201d) harmless \r\n  from any damage, loss, cost or expense (including without limitation, \r\n  attorneys\u2019 fees and costs) incurred in connection with any third party \r\n  claim, demand or action (\u201cClaim\u201d) brought or asserted against any \r\n  of the Indemnified Parties alleging facts or circumstances that would \r\n  constitute a breach of any provision of this Agreement by Licensee. \r\n  Licensee agrees to indemnify, defend and hold harmless the Indemnified \r\n  Parties from and against any and all losses, liabilities, costs (including \r\n  reasonable attorneys\u2019 fees and costs) or damages resulting from (either \r\n  directly or indirectly) any of the following: (a) any claim by any third \r\n  party that the data in the Database (but expressly excluding any data \r\n  in the Database entered by Licensee) infringes or misappropriates, as \r\n  applicable, such third party\u2019s patent, copyright, trade secret or \r\n  trademark or other intellectual property rights enforceable under applicable \r\n  laws of any jurisdiction within the United States of America; or (b) \r\n  any claim by a third party arising directly from a compromise, loss \r\n  or disclosure of Personally Identifiable Information. If Licensee is \r\n  obligated to provide indemnification pursuant to this provision, Licensor \r\n  may, in its sole and absolute discretion, control the disposition of \r\n  any Claim at Licensee\u2019s sole cost and expense.  Without limiting \r\n  the foregoing, Licensee may not settle, compromise, or in any other \r\n  manner dispose of any Claim without the consent of Licensor.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Disclaimer \r\n  of Warranties</u></b>.  LICENSOR PROVIDES THE WEBSITE, THE DATABASE \r\n  AND THE SOFTWARE ON AN \u201cAS IS\u201d AND \u201cAS AVAILABLE\u201d BASIS.  \r\n  LICENSOR DOES NOT REPRESENT OR WARRANT THAT THE WEBSITE, THE DATABASE, \r\n  AND/OR THE SOFTWARE OR ITS USE (I) WILL BE UNINTERRUPTED OR SECURE, \r\n  (II) WILL BE FREE OF DEFECTS, INACCURACIES OR ERRORS, (III) WILL MEET \r\n  LICENSEE\u2019S REQUIREMENTS, (IV) WILL OPERATE IN THE CONFIGURATION OR \r\n  WITH OTHER HARDWARE OR SOFTWARE LICENSEE USE, OR THAT DEFECTS IN THE \r\n  WEBSITE, THE DATABASE, AND/OR THE SOFTWARE WILL BE CORRECTED.  \r\n  LICENSOR MAKES NO WARRANTIES OF ANY KIND AND EXPRESSLY DISCLAIMS ALL \r\n  WARRANTIES, EXPRESS, OR IMPLIED, INCLUDING WITHOUT LIMITATION, WARRANTIES \r\n  OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, AND NON-INFRINGEMENT.  \r\n  THE ENTIRE RISK AS TO THE RESULTS AND PERFORMANCE OF THE WEBSITE AND/OR \r\n  THE SOFTWARE IS ASSUMED BY YOU.  FURTHERMORE, LICENSOR DOES NOT \r\n  WARRANT OR MAKE ANY REPRESENTATIONS REGARDING THE USE OR THE RESULTS \r\n  OF THE USE OF THE SOFTWARE, THE DATABASE, AND/OR THE WEBSITE IN TERMS \r\n  OF THEIR CORRECTNESS, ACCURACY, RELIABILITY, OR OTHERWISE.  NO \r\n  ORAL OR WRITTEN INFORMATION OR ADVICE GIVEN BY LICENSOR OR LICENSOR\u2019S \r\n  AUTHORIZED REPRESENTATIVE SHALL CREATE, OR IN ANY WAY INCREASE THE SCOPE \r\n  OF, A WARRANTY.  SHOULD THE WEBSITE AND/OR THE SOFTWARE PROVE DEFECTIVE, \r\n  LICENSEE (AND NOT LICENSOR OR LICENSOR\u2019S AUTHORIZED REPRESENTATIVE) \r\n  ASSUME THE ENTIRE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.  \r\n  Some jurisdictions do not allow the exclusion of implied warranties, \r\n  so the above exclusion may not apply to Licensee.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Exclusion \r\n  of Damages</u></b>.  UNDER NO CIRCUMSTANCES INCLUDING NEGLIGENCE, \r\n  SHALL LICENSOR, OR ITS DIRECTORS, OFFICERS, EMPLOYEES OR AGENTS, BE \r\n  LIABLE TO LICENSEE OR ANY THIRD PARTY FOR ANY CONSEQUENTIAL, INCIDENTAL, \r\n  INDIRECT, PUNITIVE, EXEMPLARY OR SPECIAL DAMAGES (INCLUDING DAMAGES \r\n  RELATING TO LOST PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, \r\n  LOST DATA, LOSS OF GOODWILL AND THE LIKE) ARISING OUT OF OR RELATING \r\n  TO OR CONNECTED WITH THE USE OR MISUSE OF, OR INABILITY TO USE, THE \r\n  WEBSITE, THE DATABASE OR THE SOFTWARE, REGARDLESS OF THE CAUSE OF ACTION \r\n  ON WHICH THEY ARE BASED, EVEN IF LICENSOR HAS PREVIOUSLY BEEN ADVISED \r\n  OF THE POSSIBILITY OF SUCH DAMAGES.  Some jurisdictions do not \r\n  allow the limitation or exclusion of liability for incidental or consequential \r\n  damages, so the above limitation or exclusion may not apply to Licensee.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>Limitation \r\n  of Liability</u></b>.  IN NO EVENT WILL LICENSOR\u2019S LIABILITY \r\n  ARISING FROM OR RELATING TO, OR IN CONNECTION WITH THIS AGREEMENT, THE \r\n  WEBSITE, THE DATABASE, AND/OR THE SOFTWARE EXCEED $10.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b><u>General Provisions</u></b>.  </font></li>\r\n  </ol>\r\n<ul>\r\n<ol type=\"a\">\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Independent Contractor \r\n  Status</b>.  Licensor is an independent contractor and shall be \r\n  free to exercise its discretion and independent judgment.</font></li>\r\n</ol>\r\n<ol type=\"a\" start=\"2\">\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>No Representation \r\n  As Agent.  </b>A Party will not represent itself as the other Party \r\n  and shall not commit or obligate the other Party in any way to other \r\n  parties.  Each Party agrees that, during the term of this Agreement, \r\n  the Party will not act in any manner that compromises the other Party \r\n  or implies the other Party\u2019s endorsement of any product or service.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Reporting Requirements</b>.  \r\n  Licensee shall be responsible for making all applications, preparing \r\n  all reports and paying all amounts that may be required by appropriate \r\n  federal, state and local laws (e.g., taxes, required licenses and otherwise) \r\n  pertaining to, or arising out of this Agreement.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Taxes</b>.  \r\n  Each Party assumes full responsibility for its personnel, including, \r\n  but not limited to, the making of all deductions required of employers \r\n  by federal, state, and local laws, including social security and withholding \r\n  taxes, and of contributions for employment compensation funds and the \r\n  maintenance of workman&#39;s compensation and liability insurance for each \r\n  of them.  Notwithstanding the foregoing, each Party may make such \r\n  deductions from amounts payable to the other Party hereunder if, and \r\n  as, required by law or government regulation.  Each Party shall \r\n  provide the other Party with its federal tax identification number upon \r\n  written request.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Compliance with \r\n  Agreement</b>.  Each Party warrants to the other Party that it \r\n  shall take appropriate action, by instruction or agreement with its \r\n  personnel, to ensure that all of its personnel performing work or services \r\n  hereunder shall be bound by and comply with all of the terms and conditions \r\n  hereof, including but not limited to, Section 4 hereof, pertaining to \r\n  Confidentiality Obligations.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Compliance with \r\n  Law</b>.  Each Party will comply with all applicable federal, state, \r\n  county and municipal statutes, ordinances, rules and regulations pertaining \r\n  to, or regulating, the performance of this Agreement, or any part hereof.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Rights Are Cumulative</b>.  \r\n  Every right or remedy conferred upon, or reserved to, the Parties by \r\n  this Agreement shall be cumulative and shall be in addition to every \r\n  right or remedy now or hereafter existing at law or in equity, and the \r\n  pursuit of any right or remedy shall not be construed as an election.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Force Majeure.  </b>\r\n  Licensor will not be liable for failing to perform under this Agreement \r\n  by the occurrence of any event beyond its reasonable control, including \r\n  without limitation, a labor disturbance, an Internet outage, interruption \r\n  of service, communication outage, failure by a service provider to Licensor, \r\n  fire, terrorism, natural disaster, or war.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Governing Law</b>.  \r\n  All disputes arising out of or relating to this Agreement (including \r\n  its formation, performance, or alleged breach) or use of the Products \r\n  shall be governed by the substantive law of the State of Arizona (without \r\n  giving effect to any conflict of law principal arising under Arizona \r\n  law).  Any litigation arising out of or under this Agreement or \r\n  Licensee\u2019s use of the Products may be brought only in federal or state \r\n  courts located in Maricopa County in the State of Arizona.  The \r\n  parties waive any and all objections to the venue in those Courts and \r\n  hereby submit to the jurisdiction of those courts.  Licensee hereby \r\n  waive all rights and/or entitlements to a trial by a jury in connection \r\n  with any dispute that arises out of or relates in any way to this Agreement, \r\n  the Products.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Assignment</b>.  \r\n  Licensee may not assign or otherwise transfer this Agreement or its \r\n  rights and obligations hereunder without the prior written consent of \r\n  Licensor, which consent will not be unreasonably withheld.  Licensor \r\n  may assign or otherwise transfer this Agreement or its rights and obligations \r\n  hereunder without the prior written consent of Licensee.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Export Rules</b>.  \r\n  Licensee agrees that the Software, the Website, the Database, and/or \r\n  the Personally Identifiable will not be shipped, transferred or exported \r\n  into any country or used in any manner prohibited by the United States \r\n  Export Administration Act or any other applicable federal and state \r\n  export laws, restrictions or regulations.  </font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Severability</b>.  \r\n  If a court of competent jurisdiction determines that any provision of \r\n  this Agreement is illegal, invalid or otherwise unenforceable for any \r\n  reason, such provision will be deemed stricken to the extent that it \r\n  is illegal, invalid or otherwise unenforceable.  All remaining \r\n  provisions will remain in full force and effect, and this Agreement \r\n  will be interpreted as if it had not contained the severed provision.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Waiver Of Class \r\n  Action Rights</b>.  By entering into this Agreement, Licensee hereby \r\n  irrevocably waives any right Licensee may have to join claims with those \r\n  of others in the form of a class action or similar procedural device.  \r\n  Any claims arising out of, relating to, or in connection with this Agreement \r\n  must be asserted individually.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Headings</b>.  \r\n  Captions and section headings used herein are for reference purposes \r\n  only and will not control or alter the meaning of this Agreement as \r\n  set forth in the text.</font></li>\r\n  <li><font size=\"2\" face=\"Times New Roman\"><b>Entire Agreement</b>.  \r\n  Except as otherwise provided for herein, this Agreement constitutes \r\n  the entire agreement between the Parties pertaining to the subject matter \r\n  hereof and supersedes all prior and contemporaneous agreements, negotiations \r\n  and understandings, oral or written, between the Parties with respect \r\n  to the subject matter hereof and it supersedes all prior and contemporaneous, \r\n  oral and written agreements and understandings with respect to the same.  \r\n  Licensor may unilaterally amend or otherwise alter this Agreement, and \r\n  Licensee\u2019s continued access to the Website, the Database, and the \r\n  Software shall be conditioned on acceptance of such amendments.  \r\n  This Agreement will be binding on and inure to the benefit of the legal \r\n  representatives, successors and permitted assigns of the Parties.  \r\n  This Agreement may be modified only by an instrument in writing executed \r\n  by duly authorized representatives of each Party.  In the event \r\n  of any conflict between a provision of this Agreement and a provision \r\n  of any Exhibit, the provision of this Agreement will control.</font></li>\r\n</ol>\r\n</ul>\r\n\r\n\r\n</div>\r\n\r\n</div>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Products",
+      "url": "/products/",
+      "template_name": "",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "        <div class=\"col-md-12\"><p>Axis is a cloud-based data and workflow management platform that streamlines energy ratings and energy efficiency program participation through data sharing by connecting raters/verifiers, HERS providers, home builders, HVAC contractors, QA organizations, utilities, program evaluators, and others using a centralized data repository. <a href=\"/contact\">Contact us</a> to learn more about Axis.</p>\r\n\r\n        <div class=\"col-md-4\">\r\n            <h3><a href=\"/products/raters_providers/\">HERS Raters and Certification Organizations</a></h3>\r\n            <ul>\r\n                <li>Track your homes in shared system.</li>\r\n                <li>Import Architectural Energy Corporation\u2019s REM/Rate\u2122 data and populate inspection checklists.</li>\r\n                <li>Export and upload or populate ENERGY STAR 3.0 checklists on a per-home basis or as a batch process.</li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"col-md-4\">\r\n            <h3><a href=\"/products/utility_program_sponsors/\">Utilities and Program Sponsors</a></h3>\r\n            <ul>\r\n                <li>Create custom Energy Efficiency Programs (EEPs) and define program data collection requirements and incentive levels</li>\r\n                <li>Review home inspection and energy model data</li>\r\n                <li>Process incentive payments</li>\r\n                <li>Store program documentation</li>\r\n                <li>Customized report generation</li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"col-md-4\">\r\n            <h3><a href=\"/products/builder/\">Builders</a></h3>\r\n            <ul>\r\n                <li>Immediate access to Rater inspection reports for Builder homes</li>\r\n                <li>Track incentive payments</li>\r\n                <li>Review Energy Savings prior to construction</li>\r\n                <li>Customized report generation</li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"col-md-12\">\r\n            <br /><br />\r\n            <blockquote>\r\n                <p>With Axis, we will have access to more comprehensive data to QA homes within our program.</p>\r\n                <footer>Tom Hines of <cite title=\"APS\">Arizona Public Service</cite></footer>\r\n            </blockquote>\r\n        </div>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Builder",
+      "url": "/products/builder/",
+      "template_name": "",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "        <div class=\"col-md-12\">\r\n            <h3>Builders</h3>\r\n            <p>Pivotal Energy Solutions' Axis product provides</p>\r\n            <ul>\r\n                <li>Immediate access to Rater inspection reports for Builder homes</li>\r\n                <li>Track incentive payments</li>\r\n                <li>Review Energy Savings prior to construction</li>\r\n                <li>Customized report generation</li>\r\n            </ul>\r\n        </div>\r\n",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Raters and Certification Organizations",
+      "url": "/products/raters_providers/",
+      "template_name": "",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "        <div class=\"col-md-12\">\r\n            <h3>HERS Raters and Certification Organizations</h3>\r\n            <p>Pivotal Energy Solutions' Axis product provides</p>\r\n            <ul>\r\n                <li>Track your homes in shared system.</li>\r\n                <li>Import Architectural Energy Corporation\u2019s REM/Rate\u2122 data and populate inspection checklists.</li>\r\n                <li>Export and upload or populate ENERGY STAR 3.0 checklists on a per-home basis or as a batch process.</li>\r\n            </ul>\r\n        </div>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Utilities and Program Sponsors",
+      "url": "/products/utility_program_sponsors/",
+      "template_name": "",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "        <div class=\"col-md-12\">\r\n            <h3>Utilities and Program Sponsors</h3>\r\n            <p>Pivotal Energy Solutions' Axis product provides</p>\r\n            <ul>\r\n                <li>Create custom Energy Efficiency Programs (EEPs) and define program data collection requirements and incentive levels</li>\r\n                <li>Review home inspection and energy model data</li>\r\n                <li>Process incentive payments</li>\r\n                <li>Store program documentation</li>\r\n                <li>Customized report generation</li>\r\n            </ul>\r\n        </div>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "APS Selects Pivotal\u2019s Axis for ENERGY STAR\u00ae New Homes Program Data Management",
+      "url": "/public-news/02-20-2012/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "<p>Arizona Public Service (APS), Arizona\u2019s largest electric utility company serving over one million customers in 11 of the state\u2019s 15 counties, has selected Pivotal Energy Solutions\u2019 Axis software platform to manage the data for its award winning APS ENERGY STAR\u00ae Homes new construction program starting in 2012.</p>\r\n<br />\r\n<p>APS administers their New Homes program internally and Tom Hines, Program Manager at APS, believes \u201cAxis will reduce our administrative costs by enabling data sharing and automated report generation and notifications for our Rater/Provider and Builder partners.\u201d  Axis\u2019s cloud-hosted database architecture allows for authenticated users working together on an APS ENERGY STAR\u00ae home to populate and share checklists, share inspection schedules and results, and monitor qualification status.  As the program sponsor, APS will use the data collected to review and approve incentive payments.  \u201cAxis will allow us to collect not only energy simulation files and data but the complete ENERGY STAR\u00ae version 3 Thermal Enclosure checklists from Rater/Certification Organizations for homes in our program.   With Axis, we will have access to more comprehensive data to QA homes within our program,\u201d says Tom.  Axis supports incentive payment processing for program sponsors and invoice generation and tracking for Rater/Certification Organizations and HVAC contractors.  Axis also supports the RESNET sampling protocol to assist Certification Organizations with tracking sampling controls and creating sampling batches.  \u201cWe\u2019ve enjoyed working with the Pivotal team and look forward to our deployment of Axis in the coming months,\u201d Tom added.</p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Pivotal in Orlando in 2013 (twice!)",
+      "url": "/public-news/01-01-2013/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "<p>Pivotal Energy Solutions will be hosting a booth at AESP\u2019s 23rd National Conference, January 29 through 31, 2013, in Orlando, Florida. A month later, we\u2019ll also be back in Orlando hosting an expo booth for the 2013 RESNET Conference , February 27 through March 1.  Come visit us for a demo of Axis or contact us directly for a private demonstration during the conference.</p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "NEEA Selects Pivotal\u2019s Axis for Northwest ENERGY STAR\u00ae Homes Program Data Management",
+      "url": "/public-news/01-17-2013/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "<p>The <a href=\"http://neea.org/\">Northwest Energy Efficiency Alliance (NEEA)</a> has selected the Axis software platform from Pivotal Energy Solutions to manage the data for its award winning Northwest ENERGY STAR\u00ae Homes new construction program starting in 2013.  The Northwest ENERGY STAR\u00ae Homes program is a regional initiative intended to promote the construction of energy efficient homes using the guidelines set forth by the U.S. Environmental Protection Agency (EPA).  The program is available to participants in Oregon, Washington, Idaho, and Montana, and enabled the certification of over 3,000 ENERGY STAR\u00ae homes in 2012.</p>\r\n<br />\r\n<p>The Northwest ENERGY STAR\u00ae Homes program is made possible by the Northwest Energy Efficiency Alliance (NEEA), a private nonprofit organization funded by more than 100 Northwest utilities, the Energy Trust of Oregon and the Bonneville Power Administration. NEEA has won the U.S. EPA\u2019s ENERGY STAR\u00ae Award For Excellence, Partner Of The Year for Program Delivery, and Sustained Excellence awards as it continues it\u2019s mission to mobilize the Northwest to become increasingly energy efficient for a sustainable future.</p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "registration_required": true,
+      "title": "Updated Selects - On the road to the New UI",
+      "url": "/site-news/07-15-2013/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "You may have noticed that we are making small changes as we prepare for our revamped User Interface (UI) deployment coming over the next several months. The latest changes involve a small change to some of our HTML Selectors in forms.  <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669506-Updated-Selects-On-the-road-to-the-New-UI\">(Read More....)</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "No Geocoding Matches - What gives!",
+      "url": "/site-news/07-18-2013/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "Central to Axis is the ability to geocode a location.  The geocoding process involves taking an address (or an intersection) you entered and feeding that to a number of GIS (Geographic Information Services)... <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669526-Updates-to-Geocoding\">Read More...</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "New Release 2.0.13",
+      "url": "/site-news/09-12-2013/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "A new release of the Axis user interface has been released with some important changes which may affect you... <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669546-Axis-release-2-0-13\">Read More...</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Government Shutdown - EPA Updates",
+      "url": "/site-news/10-01-2013/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "With the government shutdown in effect, the The EPA website and partner feeds including Builder and Rater status updates will not be getting updated.  This will resume once the the federal government reopens. We apologize for the inconvenience.",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "New Release 2.1.1 - Streamlining home creation",
+      "url": "/site-news/10-05-2013/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "This weekend we are rolling out a new feature to improve the workflow for raters and providers.  We are excited about this release because it originated from you.  You wanted a faster way to create a home.  We have taken this feedback and have implemented a number of new enhancements to make the process of getting data into axis easier.  <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669566-Axis-Updates-Streamlining-home-creation\">Read More...</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "New Release 2.6.1 - REM/Rate\u00ae 14.4 / Caching",
+      "url": "/site-news/12-30-2013/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "A new release of the Axis has been released with some important changes which may affect you... <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669586-Axis-2-6-1-Release\">Read More...</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Energy Trust of Oregon Selects Pivotal\u2019s Axis for their EPS\u2122 New Homes Program",
+      "url": "/public-news/01-13-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "<p>Energy Trust of Oregon, a leader in energy efficiency program design and delivery, has selected the Axis software platform from Pivotal Energy Solutions to administer their EPS energy efficiency program targeted for residential new construction.  EPS is an energy performance score that helps homebuyers in Oregon assess a newly built home\u2019s energy consumption, utility costs, and carbon footprint by rating the efficiency of that home and comparing it against similarly sized homes in Oregon. More than 4,000 Oregon homes have received an EPS since 2009.</p>\r\n<br />\r\n<p>Energy Trust of Oregon is an independent nonprofit organization dedicated to helping utility customers benefit from saving energy and tapping renewable resources. Their services, cash incentives and energy solutions have helped participating customers of Portland General Electric, Pacific Power, NW Natural and Cascade Natural Gas save on energy bills. Energy Trust\u2019s work helps keep energy costs as low as possible, creates jobs and builds a sustainable energy future.</p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Release 2.7.2 - Updates to Associations",
+      "url": "/site-news/03-12-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "Associations are a key component to Axis and allow you to share information with other companies.  They are created by adding a company to an object like a home or subdivision.  This latest release updates associations (aka relationships). Last nights change took away some of the \u2018mystery\u2019 in associations but gave you a lot more flexibility which we feel you will appreciate. <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669606-Updates-to-Associations\">Read More..</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Release 2.7.5 - Multiple Program Support",
+      "url": "/site-news/04-07-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "The ability to add multiple programs onto homes has been supported since the beginning of Axis. However it was recently requested that we support adding programs onto homes once the initial program has been certified.  <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669626-Release-2-7-5-Adding-a-program-to-a-completed-home\">Read More..</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Release 3.0",
+      "url": "/site-news/04-28-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "This weekend we released a new revision of Axis.  We are very excited about this release and it has some important changes which may affect you.    Click through to read more about the upcoming changes <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669666-Release-3-0\">Read More..</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Release 3.1",
+      "url": "/site-news/05-20-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "Tonight we released a new revision of Axis.  We are very excited about this release and it has some important changes which may affect you.    Click through to read more about the upcoming changes <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669686-Release-3-1\">Read More..</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "REM/Rate\u00ae 14.5 - Released",
+      "url": "/site-news/06-09-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "Last week Architectural Energy Corporation (AEC) released version 14.5 which corrects a number of issues including the issue our customers identified with Air Source Heat Pumps.  You can download the latest version <a href=\"http://www.archenergy.com/products/remrate/license-and-download-remrate\" target=\"_blank\">here</a>.  For a full list of the changes in 14.5 is also <a href=\"http://www.archenergy.com/products/remrate/remrate-version-history\" target=\"_blank\">available</a>.",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Happy Independance Day - Release 3.2",
+      "url": "/site-news/07-04-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "Earlier this week we released a new revision of Axis.  We are very excited about this release and it has some important changes which may affect you including Utility Validations on NWESH programs, Minimum Incentive Payments for Certification Organizations on ETO Programs, and improvements to Incentive Payment Processing.    Click through to read more about the upcoming changes <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669726-Release-3-2\">Read More..</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Looking for the old UI?",
+      "url": "/site-news/07-15-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "If you are looking for the old UI you can find <strong>legacy Axis</strong> at <a href=\"https://axis.v2.pivotalenergy.net\">https://axis.v2.pivotalenergy.net</a>and <strong>legacy NEEA</strong> at <a href=\"https://neea.v2.pivotalenergy.net\">https://neea.v2.pivotalenergy.net</a>.  The old UI is no longer maintained and will eventually no longer function.  If there is something we overlooked please send let us know by filing a ticket with <a href=\"http://support.pivotalenergysolutions.com/login\">Support</a>.  Thanks!",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "New Release 3.3 - Multi-Family Support / REM/Rate\u00ae Updates",
+      "url": "/site-news/07-21-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "Tonight we released a new revision of Axis.  We are very excited about this release and it has some important changes which may affect you including Multi-Family support on Homes, Improved messaging on bulk uploads and an improved REM/Rate\u00ae export backend process.  Click through to read more about the upcoming changes <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669786-Release-3-3\">Read More..</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "The North Carolina Building Performance Association Selects Pivotal\u2019s Axis for their state-wide HERS Providership",
+      "url": "/public-news/09-15-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "<p>The North Carolina Building Performance Association (NCBPA), a non-profit trade association dedicated to growing North Carolina\u2019s building performance industry, has selected the Axis software platform from Pivotal Energy Solutions to administer various residential new construction energy efficiency programs available in North Carolina and surrounding states. A variety of programs will be offered through Axis for the NCBPA Rater community as will all RESNET required QA/QC.</p>\r\n<br />\r\n<p>The North Carolina Building Performance Association, based in Raleigh, N.C., provides residents and businesses with the resources they need to live and work in healthy, safe, durable, cost-effective and environmentally friendly homes and buildings. The association advocates for growth in building and energy codes, promotes the industry workforce and provides services to member companies that help sustain North Carolina\u2019s reputation as a national leader in building performance.  For more information about NCBPA, click <a href=\"http://www.buildingnc.org\" target=blank>here</a>.</p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "New Release 3.4 - Sampling",
+      "url": "/site-news/09-26-2014/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "Tonight we released a new revision of Axis.  We are very excited about this release and it has some important changes which may affect you including a completely new Sampling User Interface (UI) which we call Sampling Control Center.  In this release you can now much more effectively manage samplesets from simple modifications to full sampling management.  We are still putting the finishing touches on training and documentation so stay tuned or <a href=\"mailto:support@pivotalenergysolutions.com\">ask</a> one of your friendly support representatives for more information.",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Release 3.5",
+      "url": "/site-news/03-25-2015/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "We are excited to announce the release of version 3.5 of Axis on March 31, 2015. Axis users will see some changes to the interaction with communities, subdivisions, and homes. Our goal with Axis Version 3.5 (v3.5) is to improve a user\u2019s ability to create and edit homes, subdivisions, and communities. It also provides minor layout changes to better use page space, enhances document handling, updates widgets and caching methodologies, adds file type validation, and includes other performance improvements. <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669706-Release-3-5-Examine-View\">Read more..</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Release 3.6 - Notifications",
+      "url": "/site-news/05-22-2015/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "Tonight we are pleased to announce a new release 3.6.  Pivotal has completely overhauled how we handle notifications in the platform. This update now presents new notifications as real-time popups on the recipient's screen, which can easily be dismissed, marked as \"read\", or linked to an actionable page. A new notification indicator in the top menu bar shows, at-a-glance, the number of unread notifications and provides the ability to view notifications. Lastly, the message center gives the ability to determine how you want notifications delivered (Email, anyone?). More information is available <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669346-VIDEO-Notifications-in-Axis\">here</a>. ",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Axis Release 3.9 - Home Notes",
+      "url": "/site-news/09-15-2015/",
+      "template_name": "",
+      "sites": [
+        2
+      ],
+      "content": "We are pleased to release new functionality to Axis that allows users to add shareable notes directly to a home! Home notes provide a simple way for a user to record a note that is only shared among that user's company in Axis, and also to share notes with users for ALL companies associated with the home in Axis. You can find more information <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669366-VIDEO-Home-Notes\">here</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Axis User Group Meeting to be held in Portland Oct. 13",
+      "url": "/public-news/09-29-2015/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "<p>Pivotal will be holding it's first Axis User Group Meeting in Portland, Oct. 12, 2015.  Pivotal clients and users will be gathering to \"compare and contrast\" how they use Axis to support their respective energy efficiency programs and collaboratively plan the Axis development roadmap for 2016. </p>\r\n<br />\r\n<p>If you'd like to attend, please contact us to receive additional information regarding the time and place of the meeting by clicking <a href=\"http://https://pivotalenergysolutions.com/contact/\" target=blank>here</a> or calling us at (480) 256-2737.</p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Find us at the EPA ENERGY STAR Stakeholders Meeting in Portland Oct. 13-15!",
+      "url": "/public-news/09-28-2015/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "<p>The Pivotal team will be attending this year's EPA ENERGY STAR Stakeholders Meeting to be held in Portland, OR, Oct. 13 through 15.  Please let us know if you'll be attending as well and if you'd like to set up a time for a quick demo of Axis, our energy efficiency data hub.  Find out more about the ENERGY STAR meeting by clicking <a href=\"http://http://www.energystar.gov/partner_resources/energy_star_meetings/2015_energy_star_certified_homes_stakeholder_meeting\" target=blank>here</a>.</p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Axis Release 3.10",
+      "url": "/site-news/10-26-2015/",
+      "template_name": "",
+      "sites": [
+        2,
+        6
+      ],
+      "content": "We are happy to announce a new release that includes multiple improvements and bug fixes along with enhanced Provider functionality. You may notice changes in appearance to data tables as well as the Axis login function. Export of data tables to multiple file types now works better and more reliably. The enhanced Provider functionality now supports different types of QA, bulk certification of homes, and a streamlined dashboard. If you have any questions, please contact us using <a href=\"http://support.pivotalenergysolutions.com\">our support page</a>.",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Join us at RESNET 2016!",
+      "url": "/public-news/01-05-2016/",
+      "template_name": "",
+      "sites": [
+        2
+      ],
+      "content": "Pivotal will be hosting a booth on the exhibit floor and offering a pre-conference session at the 2016 RESNET conference to be held in Scottsdale, Arizona, February 29 through March 2 to demonstrate our Axis software platform and share with you our plans for 2016!  The pre-conference session has been scheduled for SATURDAY, February 27, so please take that into consideration when booking your travel.  Registration for the pre-conference session is available through RESNET, or contact us using the \"Contact\" button above and we'll get you registered.  We look forward to seeing you in Scottsdale!!  ",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Pivotal Licenses Appraisal Institute's Green Addendum",
+      "url": "/public-news/02-23-2016/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        6
+      ],
+      "content": "<p>Pivotal Energy Solutions is pleased to announce the licensing of the Appraisal Institute's Residential Green and Energy Efficient Addendum (G&EEA) enabling auto-population of the G&EEA directly from its Axis platform.  The Appraisal Institute, the world's largest professional organization of real estate appraisers, developed the G&EEA for use by appraisers to document the energy efficiency features of a home for appraisal purposes.  Through an agreement with the Appraisal Institute, Pivotal's Axis platform generates and auto-populates the Green Addendum using home energy rating and energy efficiency program data.</p>\r\n\r\n<p>Pivotal's Axis platform is a cloud-based data collection, storage, and sharing solution used by HERS Raters and Certification Organizations, home builders, and energy efficiency program sponsors to streamline data collection for energy ratings and energy efficiency programs such as ENERGY STAR Homes.  By offering an auto-populated Green Addendum within Axis, Pivotal seeks to eliminate data entry errors while documenting the energy efficiency features of new homes in a consistent manner to enable the proper valuation of high-performance homes within the real estate market.</p>\r\n\r\n<p>For more information about the Appraisal Institute and the Residential Green and Energy Efficient Addendum, go to <a href=\"http://www.appraisalinstitute.org/education/education-resources/green-building-resources/\" target=blank>http://www.appraisalinstitute.org/education/education-resources/green-building-resources/</a>.  For more information about Pivotal's Axis platform, contact Bob Burns at 800-980-AXIS.</p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "UPDATE - File QA",
+      "url": "/site-news/02-24-2016/",
+      "template_name": "",
+      "sites": [
+        2,
+        6
+      ],
+      "content": "Pivotal has released new functionality for Axis that lays the foundation for better QA support and improved use of the Axis landing page (the page you land on after logging in and after clicking the Axis logo in the upper left corner of any page) to surface program and QA metrics prominently. Depending upon the program you participate in, this functionality may or may not currently be available to you. This update also adds automated file QA capabilities to Axis. <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669866-Axis-Release-File-QA\">You can read more about this and watch a brief demo video on our support site.</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Bonded Builders Warranty Group and Pivotal Energy Solutions form new Partnership",
+      "url": "/public-news/02-26-2016/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        3,
+        5,
+        6
+      ],
+      "content": "<p>Bonded Builders Warranty Group (BBWG) and Pivotal Energy Solutions are pleased to announce the availability of BBWG\u2019s Residential Energy Guarantee (REG) program through Pivotal\u2019s Axis Platform. </p>\r\n\r\n<p>The REG is an exclusive program available to builders who construct and certify homes that meet industry standards for energy efficiency such as HERS, Energy Star, LEED or National Green Building Standard. This first-of-its-kind program for new homes is the only national program which guarantees energy usage of the entire home based on standards set by the Residential Energy Service Network (RESNET). The program reimburses the homeowner for cost of gas and electricity usage exceeding the home\u2019s predicted energy usage by more than 15%.</p>\r\n\r\n<p>Axis is a cloud-based data collection, storage, and sharing solution used by HERS Raters, new home builders, and program sponsors to streamline the data collection process for energy ratings and energy efficiency programs such as ENERGY STAR Homes.</p>\r\n\r\n<p>By offering the BBWG REG through Axis, BBWG is making it even easier for builders and home owners to enroll in the REG program and guarantee their new home's energy performance.  For more information about BBWG's REG, contact Steve Hooker at 800-749-0381 x4618. For more information about Pivotal's Axis platform, contact Bob Burns at 800-980-AXIS.</p>\r\n\r\n<p>Learn more about Bonded Builders Warranty Group, please visit <a href=\"http://www.bondedbuilders.com\" target=blank>www.bondedbuilders.com</a>.</p>\r\n",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "RELEASE - Inspection Checklist",
+      "url": "/site-news/03-16-2016/",
+      "template_name": "",
+      "sites": [
+        2,
+        6
+      ],
+      "content": "Pivotal has released an update to Axis that enhances our inspection checklist functionality. If you have ever used the Axis user interface to provide checklist answers, then this applies to you. The enhancements will change the look of the checklist, but also allow us to give you more options for navigating the checklist and quickly answering the checklist questions. The underlying changes were made with an eye toward mobile and also support enhanced field QA functionality that we have developed. <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669846-Axis-Release-Updated-Checklist\">Learn more...</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Pivotal and Ekotrope Announce Collaboration to Streamline Energy Ratings",
+      "url": "/public-news/02-24-2016/",
+      "template_name": "flatpages/news.html",
+      "sites": [
+        2,
+        6
+      ],
+      "content": "<p>Pivotal Energy Solutions and Ekotrope announced today a collaboration enabling the generation of energy ratings and energy consumption data directly from Pivotal's Axis platform.  Axis will be the first product to utilize Ekotrope's new general purpose application programming interface (API) to enable cloud-based simulations using the RESNET accredited Ekotrope engine.</p>\r\n\r\n<p>Pivotal's Axis platform is a cloud-based data collection, storage, and sharing solution used by HERS Raters and Certification Organizations, home builders, and energy efficiency program sponsors to streamline data collection for energy ratings and energy efficiency programs such as ENERGY STAR Homes.  By offering the Ekotrope engine from within Axis, Pivotal can offer HERS Raters the ability to enter preliminary rating data, generate a preliminary rating, validate and correct preliminary rating data from the field, generate a confirmed rating, and submit rating data to their Provider all from within a single, cloud-based platform.  The Axis/Ekotrope collaboration also provides energy efficiency programs an hourly-simulation option for the calculation of energy consumption and savings.</p>\r\n\r\n<p>By offering access to their cloud-based energy simulation engine, Ekotrope seeks to expand its market beyond new home builders into energy ratings to support HERS energy performance ratings and utility programs at a time when hourly simulation is becoming a requirement in the market.</p>\r\n\r\n<p>For more information about Pivotal's Axis platform, go to <a href=\"https://pivotalenergysolutions.com\" target=blank>www.PivotalEnergySolutions.com,</a> or contact Bob Burns at 800-980-AXIS.  For more information about Ekotrope, go to <a href=\"http://www.ekotrope.com\" target=blank>www.ekotrope.com.</a></p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Axis Pricing",
+      "url": "/pricing/",
+      "template_name": "",
+      "sites": [
+        2,
+        3,
+        5,
+        1,
+        6,
+        4
+      ],
+      "content": "<div class=\"container\">\r\n    <div class=\"row\"><div class=\"col-md-12\"><br/><center>\r\nAxis pricing and deployment models vary based on the scope of usage and functionality required. If you are a utility, energy efficiency program sponsor, home builder, or QA organization, please <a href=\"/contact\">contact us</a> directly to discuss Axis pricing models.</center><br/><br/>\r\n    </div></div>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-1\">\r\n        </div>\r\n\r\n        <div class=\"col-md-5\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading\">\r\n                    <img class=\"center-block\" width='150' src=\"{{ STATIC_URL }}images/axis_light_grey.svg\"/>\r\n                    <h3 class=\"text-center\">RATER</h3>\r\n                </div>\r\n                <div class=\"panel-body text-center\">\r\n                    <p class=\"lead\" style=\"font-size:30px\"><strong>$20 per user per month</strong></p>\r\n                    <p class=\"lead\" style=\"font-size:30px\"><strong>&nbsp;</strong></p>\r\n                    <br/>\r\n                    <p class=\"lead\" style=\"font-size:30px\"><strong>$250 - $750</strong><sup>1</sup>\r\n                        <span style=\"font-size: 24px\"><br/>One time setup fees<br/>(Depends on complexity)</span></p>\r\n                </div>\r\n                <ul class=\"list-group list-group-flush text-center\">\r\n                    <li class=\"list-group-item\">Single / Multi-Family Support</li>\r\n                    <li class=\"list-group-item\">Inspection Workflow Support</li>\r\n                    <li class=\"list-group-item\">Sampling Support</li>\r\n                    <li class=\"list-group-item\">Label / Certificate Generation</li>\r\n                    <li class=\"list-group-item\">Rating Software Integration<sup>3</sup></li>\r\n                    <li class=\"list-group-item\">In System Notifications</li>\r\n\r\n                    <li class=\"list-group-item\">100Gb Storage</li>\r\n                    <li class=\"list-group-item\">Data Sharing<sup>4</sup></li>\r\n\r\n                    <li class=\"list-group-item\">Unlimited Companies</li>\r\n                    <li class=\"list-group-item\">Unlimited Contacts</li>\r\n                    <li class=\"list-group-item\">Unlimited Programs</li>\r\n                    <li class=\"list-group-item\">Unlimited Checklist</li>\r\n                    <li class=\"list-group-item\">24 \u00d7 7 \u00d7 365 Desktop / Mobile Access</li>\r\n                </ul>\r\n            </div>\r\n            <p><br /><h3>For more information:</h3>\r\n                   <a href=\"/contact/\" class=\"btn btn-primary ban-large\">Contact Us</a></p>\r\n        </div>\r\n        <div class=\"col-md-5\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading\">\r\n                    <img class=\"center-block\" width='150' src=\"{{ STATIC_URL }}images/axis_light_grey.svg\"/>\r\n                    <h3 class=\"text-center\">PROVIDER</h3>\r\n                </div>\r\n                <div class=\"panel-body text-center\">\r\n                    <p class=\"lead\" style=\"font-size:30px\"><strong>$20 per user per month</strong></p>\r\n                    <p class=\"lead\" style=\"font-size:30px\"><strong>$7 per home</strong></p>\r\n                    <br/>\r\n                    <p class=\"lead\" style=\"font-size:30px\"><strong>$750 - $1,500</strong><sup>2</sup>\r\n                        <span style=\"font-size: 24px\"><br/>One time setup fees<br/>(Depends on complexity)</span></p>\r\n                </div>\r\n                <ul class=\"list-group list-group-flush text-center\">\r\n                    <li class=\"list-group-item\">Single / Multi-Family Support</li>\r\n                    <li class=\"list-group-item\">Inspection Workflow Support</li>\r\n                    <li class=\"list-group-item\">Sampling Support</li>\r\n                    <li class=\"list-group-item\">Label / Certificate Generation</li>\r\n                    <li class=\"list-group-item\">Rating Software Integration<sup>3</sup></li>\r\n\r\n                    <li class=\"list-group-item\">Certification Workflow Support</li>\r\n                    <li class=\"list-group-item\">Field / File QA Workflow Support</li>\r\n                    <li class=\"list-group-item\">EPA Host Quarterly Reporting</li>\r\n\r\n                    <li class=\"list-group-item\">In System Notifications</li>\r\n\r\n                    <li class=\"list-group-item\">100Gb Storage</li>\r\n                    <li class=\"list-group-item\">Data Sharing<sup>4</sup></li>\r\n\r\n                    <li class=\"list-group-item\">Unlimited Companies</li>\r\n                    <li class=\"list-group-item\">Unlimited Contacts</li>\r\n                    <li class=\"list-group-item\">Unlimited Programs</li>\r\n                    <li class=\"list-group-item\">Unlimited Checklist</li>\r\n                    <li class=\"list-group-item\">24 \u00d7 7 \u00d7 365 Desktop / Mobile Access</li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-md-1\">\r\n        </div>\r\n       \r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\"><br /><br />\r\n            <ol>\r\n                <li>Rater Setup Fees include Program / Company Creation and Remote Rater / Builder training</li>\r\n                <li>Provider Setup Fees include Program / Company Creation and On-Site or Remote Rater / Builder / QA training</li>\r\n                <li>Software integrations vary based on rating software</li>\r\n                <li>Monthly per user fees apply</li>\r\n            </ol>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</div>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Release \u2013 Create Home from REM/Rate file",
+      "url": "/site-news/05-05-2016/",
+      "template_name": "",
+      "sites": [
+        2,
+        6
+      ],
+      "content": "We are pleased to announce new functionality that Pivotal has released for the Axis platform to enable the creation of a home record in Axis by simply uploading a REM/Rate file (.blg). Users may now upload the REM/Rate file and Axis will populate home information such as address, companies, rater and floorplan info. This functionality can eliminate the need to enter manually into Axis the data that you have already entered into REM/Rate, increasing the efficiency of program participation. More details can be found <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669886-Axis-Release-Create-Home-from-REM-Rate-File\">on our support site\u2026.</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "NGBS\u2122 and Pivotal Energy Solutions Announce Data Sharing Agreement",
+      "url": "/public-news/09-15-2016/",
+      "template_name": "",
+      "sites": [
+        2,
+        6
+      ],
+      "content": "<p>Home Innovation Research Labs and Pivotal Energy Solutions are pleased to announce the availability of NGBS Green Certified homes through Pivotal\u2019s Axis energy efficiency data collection and sharing platform.</p>\r\n\r\n<p>Over 85,000 U.S. homes have met the requirements of the ICC 700 National Green Building Standard\u2122 (NGBS) - the only residential green building rating system approved by ANSI as an American National Standard. The NGBS Green stringent third-party verified certification process ensures that homes and apartments are built in compliance with the NGBS and focuses on three highly marketable attributes: healthy homes; lower operating costs; and sustainable lifestyle. NGBS Green homes must achieve high performance metrics in several key areas, including, site design, resource efficiency, water efficiency, energy efficiency, indoor environmental quality, and building operation/maintenance. An NGBS Green Certified home can be awarded a Bronze, Silver, Gold, or Emerald certification level, depending on the number of green practices successfully incorporated in its design and construction.  And NGBS Green is the only national green home certification program that requires increasingly higher point thresholds in every category \u2013 not merely an increase in the overall points for the home.</p>\r\n\r\n<p>Pivotal's Axis platform is a cloud-based energy rating data and workflow management solution used by HERS Raters and Certification Organizations, home builders, and energy efficiency program sponsors to streamline collection and sharing of energy ratings and program certifications. The consolidation of Axis data and Home Innovation\u2019s NGBS Green Certified home data furthers Pivotal\u2019s commitment toward proper valuation of energy-efficient homes by establishing Axis as a trusted data hub that facilitates data sharing within the energy efficiency industry and with multiple listing services (MLS) and other real estate market data systems.</p>\r\n\r\n<p>\u201cWe are excited to be working with Pivotal Energy Solutions,\u201d said Michael Luzier, president and CEO of Home Innovation. \u201cWe believe this partnership is well-timed to remedy two of today\u2019s most intractable market barriers when it comes to green homes \u2013 ensuring green certified homes receive the right valuation, and helping homebuyers and renters find them easily.\u201d</p>\r\n\r\n<p>To learn more about Axis, go to <a href=\"http://www.PivotalEnergySolutions.com\" target=blank>www.PivotalEnergySolutions.com</a> or contact Bob Burns at 800-980-AXIS.  For more information about Home Innovation Research Labs or the NGBS Green certification program, go to <a href=\"http://www.homeinnovation.com/green\" target=blank>www.homeinnovation.com/green</a>.</p>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "registration_required": false,
+      "title": "Update - Tasks",
+      "url": "/site-news/10-03-2016/",
+      "template_name": "",
+      "sites": [
+        2,
+        6
+      ],
+      "content": "Axis allows users to record scheduled and completed tasks for a home. This can be used to schedule or track rating and verification-related tasks for a home such as field inspections or any other workflow tasks that have been completed by your company's users and contacts. These tasks are informational at this point but will be utilized by other functionality within Axis in the future. <a href=\"http://support.pivotalenergysolutions.com/hc/en-us/articles/213669906-Axis-Update-Tasks\">Read more...</a>",
+      "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 52
+  }
+]

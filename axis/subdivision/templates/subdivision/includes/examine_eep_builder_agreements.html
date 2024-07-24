@@ -1,0 +1,13 @@
+{% if perms.builder_agreement.add_builderagreement or object.builderagreement_set.all|length and perms.builder_agreement.view_builderagreement %}
+    <h4>Program Builder Agreements</h4>
+    <ul ng-if="regionObject.helpers.builder_agreements.length > 0">
+        <li ng-repeat="data in regionObject.helpers.builder_agreements">
+            <a ng-href="[[ data.url ]]">[[ data.text ]]</a>
+        </li>
+    </ul>
+    {% if perms.builder_agreement.add_builderagreement %}
+        <div class="text-right" ng-if="regionObject.helpers.builder_agreements.length === 0">
+            <a class="btn" href="{% url "builder_agreement:add" %}">Add new agreement</a>
+        </div>
+    {% endif %}
+{% endif %}

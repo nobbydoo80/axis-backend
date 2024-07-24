@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block page_title %}Pivotal News{% endblock %}
+
+{% block full_content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-12">
+                <p>Pivotal Energy Solutions News</p>
+            </div>
+        </div>
+    </header>
+
+    {% for item in news %}
+        <div class="row">
+            <div class="col-md-12">
+                <h4>{{ item.date }} - <a href="{{ item.url }}">{{ item.title }}</a></h4>
+                {{ item.content|safe }}
+            </div>
+        </div>
+        {% if not forloop.last %}<hr/>{% endif %}
+    {% endfor %}
+{% endblock full_content %}

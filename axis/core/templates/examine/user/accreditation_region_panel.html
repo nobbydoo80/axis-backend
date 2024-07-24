@@ -1,0 +1,45 @@
+<div class="panel panel-default accreditation-panel"
+     ng-controller="UserAccreditationController as userAccreditationController">
+    <div class="panel-heading">
+        <table class="table heading-accreditation-table">
+            <tbody>
+                <tr>
+                    <td ng-hide="region.editing()" width="25%">
+                        <b>Program name:</b>
+                        <span class="text-capitalize">[[ regionObject.object['display_name'] ]]</span>
+                    </td>
+                    <td ng-hide="region.editing()" width="15%">
+                        <b>ID:</b>
+                        <span>[[ regionObject.object['accreditation_id'] ]]</span>
+                    </td>
+                    <td ng-hide="region.editing()" width="25%">
+                        <b>Role:</b>
+                        <span>[[ regionObject.object['role_display'] ]]</span>
+                    </td>
+                    <td ng-hide="region.editing()">
+                        <b>Status:</b>
+                        <span>[[ regionObject.object['state_display'] ]]</span>
+                    </td>
+                    <td>
+                        <action-strip-set processing="regionSet.processing"
+                              actions="regionObject.actions"></action-strip-set>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-body form-target accreditation-panel-body-detail" detail-content ng-hide="region.editing()">
+        <div detail-content ng-hide="region.editing()">
+            <loading-spinner></loading-spinner>
+        </div>
+    </div>
+
+    <div class="panel-body form-target" form-content ng-show="region.editing()">
+        <non-field-errors></non-field-errors>
+        <div form-content ng-show="region.editing()">
+            <loading-spinner></loading-spinner>
+        </div>
+    </div>
+
+</div>

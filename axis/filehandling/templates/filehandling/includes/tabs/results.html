@@ -1,0 +1,42 @@
+{% if results.critical or results.CRITICAL %}
+    <br />
+    <div class="row alert alert-danger">
+        <div class="col-md-12 key"><strong>Critical:</strong></div>
+        {% include "filehandling/includes/results.html" with old_style=results.critical results=results.CRITICAL %}
+    </div>
+{% endif %}
+
+
+{% if results.errors or results.ERROR %}
+    <br />
+    <div class="row alert alert-danger">
+        <div class="col-md-12 key"><strong>Errors:</strong></div>
+        {% include "filehandling/includes/results.html" with old_style=results.errors results=results.ERROR %}
+    </div>
+{% endif %}
+
+{% if results.warnings or results.WARNING %}
+    <br />
+    <div class="row alert alert-warning">
+        <div class="col-md-12 key"><strong>Warnings:</strong></div>
+        {% include "filehandling/includes/results.html" with old_style=results.warnings results=results.WARNING %}
+    </div>
+{% endif %}
+
+{% if results.info or results.INFO %}
+    <br />
+    <div class="row alert alert-info">
+        <div class="col-md-12 key"><strong>Informational:</strong></div>
+        {% include "filehandling/includes/results.html" with old_style=results.info results=results.INFO %}
+    </div>
+{% endif %}
+
+{% if debug %}
+    {% if results.debug or results.DEBUG %}
+        <br />
+        <div class="row alert alert-info">
+            <div class="col-md-12 key"><strong>Debug:</strong></div>
+            {% include "filehandling/includes/results.html" with old_style=results.debug results=results.DEBUG %}
+        </div>
+    {% endif %}
+{% endif %}

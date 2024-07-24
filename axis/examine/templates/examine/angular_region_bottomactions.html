@@ -1,0 +1,23 @@
+{% block region %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <span axis-transclude="heading"> </span>
+
+            <non-field-errors></non-field-errors>
+
+            {% block panels %}
+                <div detail-content ng-hide="region.editing()"><loading-spinner></loading-spinner></div>
+                <div form-content ng-show="region.editing()"><loading-spinner></loading-spinner></div>
+            {% endblock panels %}
+
+            <br>
+            <div class="well well-sm clearfix form-actions" ng-show="region.editing()">
+                {% block action_strip_set %}
+                    <action-strip-set class="bottom-actions" actions="regionObject.actions"></action-strip-set>
+                {% endblock action_strip_set %}
+            </div>
+
+        </div>
+    </div>
+{% endblock region %}

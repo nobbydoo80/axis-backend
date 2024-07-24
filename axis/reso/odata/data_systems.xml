@@ -1,0 +1,41 @@
+<feed xml:base="${base_url}OData/DataSystem"
+      xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+      xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+      xmlns:georss="http://www.georss.org/georss"
+      xmlns="http://www.w3.org/2005/Atom">
+    <id>${base_url}DataSystem/DataSystem</id>
+    <title type="text">DataSystem</title>
+    <updated>${last_updated}</updated>
+    <link rel="self" title="DataSystem" href="DataSystem"/>
+    <entry>
+        <id>${base_url}DataSystem('RESO_MLS')</id>
+        <category term="RESO.OData.Transport.DataSystem"
+                  scheme="http://schemas.microsoft.com/ado/2007/08/dataservices"/>
+        <link rel="edit" title="DataSystem" href="DataSystem('RESO_MLS')"/>
+        <title/>
+        <updated>${last_updated}</updated>
+        <author>
+            <name/>
+        </author>
+        <content type="application/xml">
+            <m:properties>
+                <d:Name>RESO_MLS</d:Name>
+                <d:ServiceURI>${base_url}OData/RESO_MLS/Properties/</d:ServiceURI>
+                <d:DateTimeStamp m:type="Edm.DateTime">${now}</d:DateTimeStamp>
+                <d:TransportVersion>${transport_version}</d:TransportVersion>
+                <d:DataDictionaryVersion>${data_dictionary_version}</d:DataDictionaryVersion>
+                <d:Resources m:type="Collection(RESO.OData.Transport.Resource)">
+                    <d:element>
+                        <d:Name>Property</d:Name>
+                        <d:ResourcePath>Property</d:ResourcePath>
+                        <d:Description>RESO Standard Property Resource</d:Description>
+                        <d:DateTimeStamp m:type="Edm.DateTime">${now}</d:DateTimeStamp>
+                        <d:TimeZoneOffset m:type="Edm.Int32">${tzoffset}</d:TimeZoneOffset>
+                        <d:Localizations m:type="Collection(RESO.OData.Transport.Localization)"/>
+                    </d:element>
+                </d:Resources>
+                <d:ID>RESO_MLS</d:ID>
+            </m:properties>
+        </content>
+    </entry>
+</feed>

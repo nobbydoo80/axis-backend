@@ -1,0 +1,73 @@
+"""__init__.py: Django Ekotrope container"""
+
+
+__author__ = "Steven Klass"
+__date__ = "1/21/16 10:22"
+__copyright__ = "Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved."
+__credits__ = [
+    "Steven Klass",
+]
+__license__ = "See the file LICENSE.txt for licensing information."
+
+
+EKO_RESULT_MAP = (
+    ("roofHeatingLoad", "roof_heating_load"),
+    ("roofCoolingLoad", "roof_cooling_load"),
+    ("rimJoistHeatingLoad", "joist_heating_load"),
+    ("rimJoistCoolingLoad", "joist_cooling_load"),
+    ("skylightHeatingLoad", "windows_skylights_cooling_load"),
+    ("skylightCoolingLoad", "windows_skylights_heating_load"),
+    ("hotWaterLoad",),
+    ("applianceEul", 21.408695183026882),
+    ("totalEnergyConsumption", 82.99839347662072),
+    ("hotWaterLoad", 12.038885279753094),
+    ("totalTdv", 0.0),
+    ("srecKwhrs", []),
+    ("totalHeatingTdv", 0.0),
+    ("heatingConsumption", 35.488919468239274),
+    ("coolingFanConsumption", 0.0),
+    ("gasConsumption", 38.82891946823976),
+    ("heatingFanConsumption", 4.349192568154193),
+    ("coolingConsumption", 3.5682515523825686),
+    ("tdvAdjustedElectricHeatingLoad", 0.0),
+    ("electricConsumptionBeforeOnsiteGeneration", 44.169474008380966),
+    ("lightingEul", 5.376009939120892),
+    ("propaneConsumption", 0.0),
+    ("onsitePowerProduction", 0.0),
+    ("tdvAdjustedElectricCoolingLoad", 0.0),
+    ("netTotalEnergyConsumption", 82.99839347662072),
+    ("oilConsumption", 0.0),
+    ("totalHotWaterTdv", 0.0),
+    ("totalCoolingTdv", 0.0),
+    ("woodConsumption", 0.0),
+    ("electricEulla", 23.444705122149387),
+    ("totalEulla", 26.784705122149873),
+    ("totalHeatingConsumption", 39.83811203639347),
+    ("effectiveLeakageArea", 216.08),
+    ("solarPowerProduction", 0.0),
+    ("hotWaterConsumption", 12.807324765694814),
+    ("heatingLoad", 29.161452008036896),
+    ("naturalGasEulla", 3.340000000000488),
+    ("electricConsumptionAfterOnsiteGeneration", 44.16947400838096),
+    ("coolingLoad", 12.235879074663545),
+    ("srecPrices", []),
+    ("windowCoolingLoad", 0.9475768428032136),
+    ("internalGainsCoolingLoad", 3.1413792888478125),
+    ("windowHeatingLoad", -13.944755096844156),
+    ("wallCoolingLoad", 1.4051854665258878),
+    ("glazingGainsHeatingLoad", 10.15607413995422),
+    ("doorCoolingLoad", 0.05479542203604922),
+    ("floorCoolingLoad", 0.6534656763270394),
+    ("infiltrationCoolingLoad", 0.3204592135658319),
+    ("basementWallHeatingLoad", 0.0),
+    ("ventilationHeatingLoad", -5.280344272804482),
+    ("internalGainsHeatingLoad", 8.785939981191564),
+    ("wallHeatingLoad", -7.243306697561348),
+    ("floorHeatingLoad", -9.615346508989838),
+    ("basementWallCoolingLoad", 0.0),
+    ("ventilationCoolingLoad", 0.35881103111451995),
+    ("glazingGainsCoolingLoad", 4.424294076745822),
+    ("infiltrationHeatingLoad", -6.184493818647216),
+    ("doorHeatingLoad", -0.806381821721675),
+    ("totalCoolingConsumption", 3.5682515523825686),
+)

@@ -1,0 +1,19 @@
+{% extends "email_base.txt" %}
+
+{% block content %}
+Hello,
+
+{{ requesting_user.get_full_name }} has requested a new REMRate account for {{ company }} on
+{{ target_hostname }}.  To create this account you are requested to open my MySQL connection
+in MySQL Workbench to {{ db_host }}:{{ db_port }} using the admin account
+username '{{ db_user }}' and the correct password.
+
+Once MySQL Workbench connects to {{ db_host }} please execute the following query:
+
+    GRANT ALL PRIVILEGES on remrate.* to '{{ username }}'@'%' IDENTIFIED BY '{{ password }}';
+
+Sincerely,
+
+    The AXIS Support Team
+
+{% endblock content %}

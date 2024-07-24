@@ -1,0 +1,67 @@
+<ul class="nav navbar-nav navbar-right">
+    <li class="hidden-xs hidden-sm">
+        <form class="navbar-form navbar-right" method="get" action='{% url 'basic_search' %}' style="margin-right: -16px;">
+            <div class="form-group" style="width: 90px"> {# width is deliberately smaller than expanded input #}
+                <input id="q" name="q" type="text" class="form-control pull-right" placeholder="Search"
+                       value="{{ q|default:'' }}">
+            </div>
+        </form>
+    </li>
+
+    {% include "messaging/includes/notification_tray.html" %}
+
+    {% if request.user.is_superuser or request.user.is_impersonate %}
+        <li class="dropdown" impersonate dropdown is-open="impersonate.is_open" prevent-typeahead-close>
+            <a href dropdown-toggle class="dropdown-toggle">
+                <i class="fa fa-shield navbar-icon" ng-style="{'color': impersonate.is_impersonating() ? 'red' : ''}"></i>
+            </a>
+
+            <form class="dropdown-menu pull-right" style="width: 400px;" ng-submit="impersonate.impersonate(impersonate.user)">
+                <div class="col-sm-12 form-group">
+                    <div class="user"></div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="impersonation-list"></div>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <input prevent-close type="text"
+                           class="form-control"
+                           typeahead="user as user.username for user in ::impersonate.users | filter:$viewValue | limitTo: 15"
+                           typeahead-template-url="template/typeahead/typeahead-impersonate-match.html"
+                           ng-model="impersonate.user"/>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <button type="submit" class="btn btn-primary" ng-disabled="!impersonate.user">
+                       <i class="fa fa-spin fa-spinner" ng-show="impersonate.processing"></i> Impersonate
+                    </button>
+                    <button class="btn btn-default" type="button" ng-click="impersonate.stop()" ng-disabled="!impersonate.is_impersonating()">Stop</button>
+                    <a id="logout" href="{% url 'auth:logout' %}" class="btn btn-default">Logout</a>
+                </div>
+            </form>
+        </li>
+        {% if request.user.is_superuser or request.user.is_impersonate %}
+            <li>
+                {% if request.user.show_beta or request.user.is_impersonate and request.impersonator.show_beta %}
+                    <a href="{% url 'toggle_beta' %}" data-toggle="tooltip" data-placement="bottom"
+                       title="Turn off Beta for classic view">
+                        Beta
+                        <i class="fa fa-power-off text-success" aria-hidden="true"></i>
+                    </a>
+                {% else %}
+                    <a href="{% url 'toggle_beta' %}" data-toggle="tooltip" data-placement="bottom"
+                       title="Turn on Beta to see improved pages">
+                        Beta
+                        <i class="fa fa-power-off text-danger" aria-hidden="true"></i>
+                    </a>
+                {% endif %}
+            </li>
+        {% endif %}
+    {% else %}
+        <li>
+            <a id="logout" href="{% url 'auth:logout' %}" data-toggle="tooltip" title="Logout of Axis"
+               class="navbar-icon" data-placement="bottom">
+                <i class="fa fa-sign-out"></i>
+            </a>
+        </li>
+    {% endif %}
+</ul>

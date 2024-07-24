@@ -1,0 +1,108 @@
+
+<table class="table table-striped table-bordered" cellpadding="0" cellspacing="0" border="0">
+    <thead>
+    <tr>
+        <th colspan="3" class="text-center">Home as Built</th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>kWh Savings</th>
+        <th>Therm Savings</th>
+    </tr>
+    </thead>
+    <tbody>
+        {{ instance }}
+        <tr>
+            <th>Heating</th>
+            <td>{{ result.heating_kwh_savings|floatformat:2 }}</td>
+            <td>{{ result.heating_therm_savings|floatformat:2 }}</td>
+        </tr>
+        <tr>
+            <th>Cooling</th>
+            <td>{{ result.cooling_kwh_savings|floatformat:2 }}</td>
+            <td>{{ result.cooling_therm_savings|floatformat:2 }}</td>
+        </tr>
+        <tr>
+            <th>Smart Thermostat</th>
+            <td>{{ result.smart_thermostat_kwh_savings|floatformat:2 }}</td>
+            <td>{{ result.smart_thermostat_therm_savings|floatformat:2 }}</td>
+        </tr>
+        <tr>
+            <th>Hot Water Heater</th>
+            <td>{{ result.water_heater_kwh_savings|floatformat:2 }}</td>
+            <td>{{ result.water_heater_therm_savings|floatformat:2 }}</td>
+        </tr>
+        <tr>
+            <th>Low Flow Shower Heads</th>
+            <td>{{ result.showerhead_kwh_savings|floatformat:2 }}</td>
+            <td>{{ result.showerhead_therm_savings|floatformat:2 }}</td>
+        </tr>
+        <tr>
+            <th>Lighting</th>
+            <td>{{ result.lighting_kwh_savings|floatformat:2 }}</td>
+            <td>0.0</td>
+        </tr>
+        <tr>
+            <th>Appliances</th>
+            <td>{{ result.appliance_kwh_savings |floatformat:2 }}</td>
+            <td>{{ result.appliance_therm_savings |floatformat:2 }}</td>
+        </tr>
+
+        <tr><td colspan="3"></tr>
+        <tr>
+            <th><b>As Built Total Consumption (MBtu)</b></th>
+        {% if result.pct_improvement_method == "alternate" %}
+             <th colspan="2"><b>{{ result.improved_total_consumption_mmbtu_with_savings|floatformat:2 }} MBtu</b>&nbsp;(Axis)</th>
+        {% else %}
+            <th colspan="2"><b>{{ result.improved_total_consumption_mmbtu|floatformat:2 }} MBtu</b>&nbsp;(REMRate)</th>
+        {% endif %}
+        </tr>
+        <tr>
+            <th><b>Reference Total Consumption (MBtu)</b></th>
+            <th colspan="2"><b>{{ result.code_total_consumption_mmbtu|floatformat:2 }} MBtu</b></th>
+        </tr>
+
+        <tr><td colspan="3"></tr>
+
+        <tr>
+            <th><b>Total Annual Savings</b></th>
+            <td><b>{{ result.total_kwh_savings|floatformat:2 }} </b></td>
+            <td><b>{{ result.total_therm_savings|floatformat:2 }} </b></td>
+        </tr>
+
+        <tr>
+            <th><b>Total Annual Savings (MBtu)</b></th>
+            <th colspan="2"><b>{{ result.total_mmbtu_savings|floatformat:2 }} MBtu</b></th>
+        </tr>
+
+        <tr></tr>
+
+        <tr>
+            <th><b>Percent Improvement</b></th>
+        {% if result.pct_improvement_method == "alternate" %}
+            <th colspan="2"><b>{{ result.pretty_revised_percent_improvement }}</b>&nbsp;(Axis)</th>
+        {% else %}
+            <th colspan="2"><b>{{ result.pretty_percent_improvement }}</b>&nbsp;(REMRate)</th>
+        {% endif %}
+        </tr>
+
+        <tr>
+            <th><b>Estimated Incentive</b></th>
+            <td colspan="2"><b>{{ result.pretty_builder_incentive }}</b></td>
+        </tr>
+
+    </tbody>
+</table>
+
+{% if result.utility_requirements %}
+<div class="alert alert-warning" role="alert">
+    <ul>
+        <li>{{ result.utility_requirements.title }}</li>
+        <ul>
+            {% for msg in result.utility_requirements.requirements %}
+            <li>{{ msg }}</li>
+            {% endfor %}
+        </ul>
+    </ul>
+</div>
+{% endif %}

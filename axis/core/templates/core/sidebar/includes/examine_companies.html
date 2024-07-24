@@ -1,0 +1,20 @@
+<div class="well">
+    <h4>Associated Companies</h4>
+    <dl id="relations"></dl>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('body').on('click', 'a.direct_relationship, a.delete_relationship', function(e){
+            e.preventDefault();
+            var self = $(this);
+            var url = $(this).attr('url');
+            $.ajax({
+                url: url,
+                method: 'POST',
+                success: function(data, status, text_status){
+                    self.parent().html(data.message);
+                }
+            });
+        });
+    });
+</script>

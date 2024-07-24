@@ -1,0 +1,164 @@
+{% extends 'base_examine_wide.html' %}
+{% load static %}
+
+{% block extra_dependencies %}
+    'ng-duallist',
+{% endblock extra_dependencies %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script src="{% static 'filehandling/examine/customer_documents.js' %}"></script>
+    <script type="text/javascript" src="{% static 'customer_hirl/examine/verifier_agreements.js' %}"></script>
+{#    <script>#}
+{#        window.API_PATH = '{% url "apiv2:hirl_verifier_agreement-list" %}';#}
+{#    </script>#}
+    <style>
+    [duallist-helper] .left-sub-container,
+    [duallist-helper] .right-sub-container {
+        min-height: 300px;
+        max-height: 300px;
+        overflow-y: scroll;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+    [duallist-helper] .duallist-item {
+        position: relative;
+        display: block;
+        padding: 5px 10px;
+        margin-bottom: -1px;
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+    }
+    [duallist-helper] .duallist-item:hover,
+    [duallist-helper] .duallist-item.active {
+        background-color: #be1408;
+        color: white;
+    }
+    [duallist-helper] .searchline {
+        margin-bottom: 0.5em;
+    }
+    </style>
+    <script>
+        window.API_PATH = '{% url "apiv2:hirl_verifier_agreement-list" %}';
+    </script>
+    <style type="text/css">
+        axis-single-region[options*="hirl_verifier_enrollment"] .fileinput > .form-control {
+            background-color: transparent;
+        }
+
+        .padded-1 {
+            margin-top: 1em;
+        }
+
+        .padded-2 {
+            margin-top: 2em;
+        }
+
+        .padded-3 {
+            margin-top: 3.3em;
+        }
+
+        axis-region-set[options*="documents"] th:nth-child(2),
+        axis-region-set[options*="documents"] table table td:nth-child(2) {
+            width: 200px;
+        }
+
+        axis-region-set[options*="documents"] th:nth-child(3),
+        axis-region-set[options*="documents"] table table td:nth-child(3) {
+            width: 120px;
+        }
+
+        axis-region-set[options*="documents"] th:nth-child(4),
+        axis-region-set[options*="documents"] table table td:nth-child(4) {
+            width: 80px;
+        }
+
+        axis-region-set[options*="notes"] th:nth-child(2),
+        axis-region-set[options*="notes"] table table td:nth-child(2),
+        axis-region-set[options*="notes"] th:nth-child(3),
+        axis-region-set[options*="notes"] table table td:nth-child(3),
+        axis-region-set[options*="notes"] th:nth-child(4),
+        axis-region-set[options*="notes"] table table td:nth-child(4) {
+            width: 80px;
+        }
+    </style>
+    <script>
+        angular.module('axis').run(function (Actions) {
+            Actions.addPostMethodToType('save', ['hirl_verifier_enrollment'], function (regionObject) {
+                window.location.reload();
+            });
+        });
+    </script>
+{% endblock javascript_head %}
+
+
+{% block header %}
+    {# Create mode only, since the machinery area will replace this. #}
+    <div class="row row-header">
+    <div class="col-md-8">
+        <p><span>NGBS Verifier Enrollment: {% firstof object.verifier request.user %}</span></p>
+    </div>
+    <div class="col-md-4">
+        <div class="text-right">
+            <action-strip-set
+                    ng-hide="region.editing()"
+                    single-instance="default"
+                    processing="regionSet.processing">
+            </action-strip-set>
+        </div>
+    </div>
+{% endblock header %}
+
+
+{% block tabs %}
+    <tabset>
+        {% if is_owner %}
+            <tab tab-helper endpoint="tabs.enrollment" heading="Contact Information">
+                <axis-single-region options="pageRegions.hirl_verifier_agreement_enrollment"/>
+            </tab>
+        {% endif %}
+
+        <tab ng-if="true" tab-helper badge-counter="examineApp.getRegionCounter"
+             badge-counter-types="['hirl_verifier_agreement_documents']"
+             endpoint="tabs.documents"
+             disabled="examineApp.creating">
+            <tab-heading>
+                Documents
+                <i ng-hide="badgeController.isLoaded" class="fa fa-spinner fa-fw fa-spin"></i>
+                <span class="badge">[[ badgeController.count ]]</span>
+            </tab-heading>
+            <axis-region-set options="pageRegions.documents"></axis-region-set>
+        </tab>
+        <!-- Use ng-if to make badgeController as isolated scope -->
+        <tab ng-if="true" tab-helper endpoint="tabs.notes" badge-counter="examineApp.getRegionCounter" badge-counter-types="['verifieragreement_annotations']" disabled="examineApp.creating">
+            <tab-heading>
+                Notes
+                <i ng-hide="badgeController.isLoaded" class="fa fa-spinner fa-fw fa-spin"></i>
+                <span class="badge">[[ badgeController.count ]]</span>
+            </tab-heading>
+            <div class="existing-object-only">
+                <axis-region-set options="pageRegions.notes"></axis-region-set>
+            </div>
+        </tab>
+
+        <tab tab-helper endpoint="tabs.history" heading="History" disabled="examineApp.creating">
+            <div class="existing-object-only">
+                {% if object.id %}
+                    {% include 'simple_history/includes/history_list.html' with object=object app_label='customer_hirl' model='verifieragreement' field='id' constraint=object.id %}
+                {% endif %}
+            </div>
+        </tab>
+
+        {% if debug and request.user.is_superuser or request.impersonator %}
+            <tab tab-helper endpoint="tabs.dev">
+                <tab-heading>
+                    <i class="fa fa-cog"></i>
+                </tab-heading>
+                <pre style="whitespace: pre-line">{{ object.data | pprint }}</pre>
+            </tab>
+        {% endif %}
+    </tabset>
+{% endblock tabs %}

@@ -1,0 +1,200 @@
+{% block full_content %}
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6 col-md-push-6">
+                    {% block map_content %}
+                        {% include "geographic/angular_map.html" %}
+                    {% endblock map_content %}
+                </div>
+                <div class="col-md-6 col-md-pull-6">
+                    {% block detail_content %}
+
+                        <div class="row" ng-if="regionObject.object.builder_name">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.builder_name ]]:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.builder_name || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">Builder:</div>
+                            <div class="col-md-7">
+                        <span ng-show="regionObject.object.builder_org_name">
+                            <a href="[[ regionObject.object.builder_org_url ]]">
+                                [[ regionObject.object.builder_org_name ]]
+                            </a>
+                        </span>
+                                <span ng-hide="regionObject.object.builder_org_name">-</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.community ]]:
+                                <span field-name="community" review-popover></span></div>
+                            <div class="col-md-7">
+                        <span ng-show="regionObject.object.community_name">
+                            <a href="[[ regionObject.object.community_url ]]">
+                                [[ regionObject.object.community_name ]]
+                                <span ng-if="regionObject.object.community_is_multi_family"
+                                      class="label label-default">
+                                     Multi-family
+                                </span>
+                            </a>
+                        </span>
+                                <span ng-hide="regionObject.object.community_name">-</span>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="regionObject.object.county_name">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.metro ]]:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.metro_name || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="regionObject.object.county_name">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.county ]]:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.county_name || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.city ]]:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.city_name || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="regionObject.object.county_name">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.state ]]:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.state || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="!regionObject.object.county_name">
+                            <div class="col-md-5 key">Country:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.country_name || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.cross_roads ]]: <span
+                                    review-popover field-name="cross_roads"></span></div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.cross_roads || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">Multi-family:</div>
+                            <div class="col-md-7">
+                                <div ng-if="regionObject.object.is_multi_family">
+                                    <span ng-if="regionObject.object.is_multi_family"
+                                          class="label label-default">
+                                         Multi-family
+                                    </span>
+                                </div>
+                                <div ng-if="!regionObject.object.is_multi_family">
+                                    --
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5 key">Axis ID:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.axis_id || '-'"></div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row" ng-if="regionObject.helpers.allow_sampling">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.use_sampling ]]: <span
+                                    review-popover field-name="use_sampling"></span></div>
+                            <div class="col-md-7">
+                                [[ regionObject.object.use_sampling ? 'Yes' : 'No' ]]
+                            </div>
+                        </div>
+                        <div class="row" ng-if="regionObject.helpers.allow_sampling">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.use_metro_sampling ]]:
+                                <span review-popover field-name="use_metro_sampling"></span></div>
+                            <div class="col-md-7">
+                                [[ regionObject.object.use_metro_sampling ? 'Yes' : 'No' ]]
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5 key">Buildings:</div>
+                            <div class="col-md-7 value">
+                        <span ng-if="regionObject.object.homes_count">
+                            <a ng-href="{% url "home:report:status" %}?subdivision=[[ regionObject.object.id ]]">
+                                [[ regionObject.object.homes_count ]]
+                            </a>
+                        </span>
+                        <span ng-if="!regionObject.object.homes_count">
+                            0
+                        </span>
+                                {% if perms.home.add_home %}
+                                    <span class="pull-right">
+                                <a href="{% url 'home:add' %}">Add</a> /
+                                <a href="{% url 'home:upload' %}">Bulk</a>
+                            </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row" ng-if="regionObject.helpers.show_unit_count">
+                            <div class="col-md-5 key">Units:</div>
+                            <div class="col-md-7 value">[[ regionObject.helpers.customer_hirl_total_unit_count ]]</div>
+                        </div>
+                        <div class="row"
+                             ng-if="regionObject.helpers.allow_sampling && (regionObject.object.use_sampling || regionObject.object.use_metro_sampling)">
+                            <div class="col-md-5 key">
+                                <span style="text-transform: capitalize">[[ regionObject.object.sample_eligibility || "" ]]</span>
+                                Sample Sets:
+                            </div>
+                            <div class="col-md-7 value">
+                                <span ng-if="regionObject.object.samplesets_count">
+                                    <a href="[[ regionObject.helpers.samplesets_url ]]">
+                                        [[ regionObject.object.samplesets_count ]]
+                                    </a>
+                                </span>
+                                <span ng-if="!regionObject.object.samplesets_count">
+                                    0
+                                </span>
+                                {% if perms.sampleset.add_sampleset %}
+                                    <span ng-if="regionObject.object.homes_count" class="pull-right">
+                                <a href="{% url 'home:add' %}">Add</a> /
+                                <a href="{% url 'home:upload' %}">Bulk</a>
+                            </span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row" ng-if="regionObject.object.electric_only">
+                            <div class="col-md-5 key">Electric Only:</div>
+                            <div class="col-md-7 value">[[ regionObject.object.electric_only ]]</div>
+                        </div>
+                        <div class="row" ng-if="regionObject.object.fuel_types">
+                            <div class="col-md-5 key">Fuel Types:</div>
+                            <div class="col-md-7 value">[[ regionObject.object.fuel_types ]]</div>
+                        </div>
+                        <br/>
+                        {% include "subdivision/includes/examine_eep_builder_agreements.html" %}
+                        <br/>
+                        {% include "subdivision/includes/examine_eep_programs.html" %}
+                    {% endblock detail_content %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 sidebar hidden-sm hidden-xs">
+            {% include "subdivision/subdivision_sidebar.html" %}
+            <div class="well" ng-if="regionObject.helpers.permitandoccupancysettings !== undefined">
+              <h4>City Of Hillsboro<br /> Energy Efficiency Compliance </h4>
+                <button class="btn btn-default btn-sm btn-block" ng-click="region.handleAction({instruction: 'permitandoccupancysettings', modal: {templateUrl: '/examine/customer_eto/permitandoccupancysettings.html'}})" ng-disabled="region.isProcessing()">
+                    <i class="fa fa-fw fa-spin fa-spinner" ng-if="region.isProcessing('permitandoccupancysettings')"></i>
+                    Edit Compliance Option
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock full_content %}

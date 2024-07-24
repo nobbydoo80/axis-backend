@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ETOImport>
+  <ImportCode>AXISEPSFULL</ImportCode>
+  <APIKey>B75A5170-8CCC-447B-AEC2-7C3DC55AC025</APIKey>
+  <Project ID="191063">
+    <Program>ENH</Program>
+    <Track>T00000000099</Track>
+    <Type>WHH</Type>
+    <SubType>1FT-GG</SubType>
+    <Title>This is a tester</Title>
+    <Status>Active</Status>
+    <Phase>PAY</Phase>
+    <ExternalReferences>
+      <ExternalReference>
+        <Type>0041</Type>
+        <Value>191063</Value>
+      </ExternalReference>
+      <ExternalReference>
+        <Type>0040</Type>
+        <Value>1732596E</Value>
+      </ExternalReference>
+    </ExternalReferences>
+    <Attributes>
+      <Attribute>
+        <Name>PROJSOLAR</Name>
+        <Value>No</Value>
+      </Attribute>
+    </Attributes>
+    <Measures>
+      <Measure ID="1">
+        <Code>WHEPS</Code>
+        <Quantity>1</Quantity>
+        <Cost>1</Cost>
+        <InstallDate>2022-07-14</InstallDate>
+        <Incentive>0.00</Incentive>
+        <LoadProfile>
+          <kwh>Res Central AC</kwh>
+          <Therm>Res Heating</Therm>
+        </LoadProfile>
+        <Attributes>
+          <Attribute>
+            <Name>ENFACT</Name>
+            <Value>0.96</Value>
+          </Attribute>
+          <Attribute>
+            <Name>MANUFACTURER</Name>
+            <Value>Navien</Value>
+          </Attribute>
+          <Attribute>
+            <Name>MODEL</Name>
+            <Value>NPE-180 S2</Value>
+          </Attribute>
+          <Attribute>
+            <Name>SN</Name>
+            <Value>2080N2140601390</Value>
+          </Attribute>
+          <Attribute>
+            <Name>DHWTYPE</Name>
+            <Value>Tankless</Value>
+          </Attribute>
+          <Attribute>
+            <Name>FUELTYPE</Name>
+            <Value>Gas</Value>
+          </Attribute>
+          <Attribute>
+            <Name>LOCATION</Name>
+            <Value>Open Crawl Space</Value>
+          </Attribute>
+          <Attribute>
+            <Name>TANKSIZE</Name>
+            <Value>0.0</Value>
+          </Attribute>
+        </Attributes>
+      </Measure>
+      <Measure ID="2">
+        <Code>GASFFURNEPS</Code>
+        <Quantity>1</Quantity>
+        <Cost>2</Cost>
+        <InstallDate>2022-07-14</InstallDate>
+        <Incentive>0.00</Incentive>
+        <Attributes>
+          <Attribute>
+            <Name>AFUE</Name>
+            <Value>96.199997</Value>
+          </Attribute>
+          <Attribute>
+            <Name>MANUFACTURER</Name>
+            <Value>Bryant</Value>
+          </Attribute>
+          <Attribute>
+            <Name>MODEL</Name>
+            <Value>915SB48080E17*</Value>
+          </Attribute>
+        </Attributes>
+      </Measure>
+      <Measure ID="3">
+        <Code>SMARTTHERMOEPS</Code>
+        <Quantity>1</Quantity>
+        <Cost>3</Cost>
+        <InstallDate>2022-07-14</InstallDate>
+        <Incentive>0.00</Incentive>
+        <Attributes>
+          <Attribute>
+            <Name>MANUFACTURER</Name>
+            <Value>NEST Thermostat E</Value>
+          </Attribute>
+        </Attributes>
+      </Measure>
+      <Measure ID="4">
+        <Code>CUSTEPSVERFELE</Code>
+        <Quantity>1</Quantity>
+        <Cost>4</Cost>
+        <InstallDate>2022-07-14</InstallDate>
+        <Incentive>40.47</Incentive>
+        <Life>32.0</Life>
+        <LoadProfile>
+          <kwh>Res Central AC</kwh>
+          <Therm>None - gas</Therm>
+        </LoadProfile>
+      </Measure>
+      <Measure ID="5">
+        <Code>CUSTEPSVERFGAS</Code>
+        <Quantity>1</Quantity>
+        <Cost>5</Cost>
+        <InstallDate>2022-07-14</InstallDate>
+        <Incentive>465.43</Incentive>
+        <Life>32.0</Life>
+        <LoadProfile>
+          <kwh>None - ele</kwh>
+          <Therm>Res Heating</Therm>
+        </LoadProfile>
+      </Measure>
+      <Measure ID="6">
+        <Code>EPSENHELE</Code>
+        <Quantity>1</Quantity>
+        <Cost>6</Cost>
+        <Savings>
+          <kwh>38</kwh>
+          <Therm>0</Therm>
+        </Savings>
+        <InstallDate>2022-07-14</InstallDate>
+        <Incentive>202.36</Incentive>
+        <Life>32.0</Life>
+        <LoadProfile>
+          <kwh>Res Central AC</kwh>
+          <Therm>None - gas</Therm>
+        </LoadProfile>
+      </Measure>
+      <Measure ID="7">
+        <Code>EPSENHGAS</Code>
+        <Quantity>1</Quantity>
+        <Cost>7</Cost>
+        <Savings>
+          <kwh>0</kwh>
+          <Therm>283</Therm>
+        </Savings>
+        <InstallDate>2022-07-14</InstallDate>
+        <Incentive>2327.14</Incentive>
+        <Life>32.0</Life>
+        <LoadProfile>
+          <kwh>None - ele</kwh>
+          <Therm>Res Heating</Therm>
+        </LoadProfile>
+      </Measure>
+    </Measures>
+  </Project>
+  <Site>
+    <SiteType>STRUCTURE</SiteType>
+    <SiteMarket>SINGLEFAM</SiteMarket>
+    <SiteProperties>
+      <Properties>
+        <Property>
+          <Name>YRBLT</Name>
+          <Value>2022</Value>
+        </Property>
+        <Property>
+          <Name>AREA</Name>
+          <Value>3161</Value>
+        </Property>
+        <Property>
+          <Name>NUMFLRS</Name>
+          <Value>2</Value>
+        </Property>
+        <Property>
+          <Name>FOUNDATION</Name>
+          <Value>Enclosed crawl space</Value>
+        </Property>
+      </Properties>
+    </SiteProperties>
+    <SiteTechnologies>
+      <Technology ID="1">
+        <Code>GASFURN</Code>
+      </Technology>
+      <Technology ID="2">
+        <Code>GASDHWTNKLS</Code>
+      </Technology>
+    </SiteTechnologies>
+    <ServiceProviders>
+      <ProviderInfo>
+        <Service>ELE</Service>
+        <Provider>PGE</Provider>
+      </ProviderInfo>
+      <ProviderInfo>
+        <Service>GAS</Service>
+        <Provider>NWN</Provider>
+      </ProviderInfo>
+    </ServiceProviders>
+    <Associations>
+      <Projects>
+        <Project ID="191063">
+          <Measures>
+            <Measure ID="1" />
+            <Measure ID="2" />
+            <Measure ID="3" />
+            <Measure ID="4" />
+            <Measure ID="5" />
+            <Measure ID="6" />
+            <Measure ID="7" />
+          </Measures>
+        </Project>
+      </Projects>
+    </Associations>
+    <AddressInfo>
+      <Type>Site</Type>
+      <Address>11327 NW Valros Ln</Address>
+      <City>Portland</City>
+      <State>OR</State>
+      <Zip>97229</Zip>
+      <Plus4 />
+    </AddressInfo>
+  </Site>
+  <TradeAlly>
+    <InternalID>10713716</InternalID>
+    <Associations>
+      <Projects>
+        <Project ID="191063">
+          <Role>BUILDER</Role>
+          <Measures>
+            <Measure ID="6" />
+            <Measure ID="7" />
+          </Measures>
+        </Project>
+      </Projects>
+    </Associations>
+  </TradeAlly>
+  <TradeAlly>
+    <InternalID>10150098</InternalID>
+    <Associations>
+      <Projects>
+        <Project ID="191063">
+          <Role>VERIFIER</Role>
+          <Measures>
+            <Measure ID="4" />
+            <Measure ID="5" />
+          </Measures>
+        </Project>
+      </Projects>
+    </Associations>
+  </TradeAlly>
+</ETOImport>

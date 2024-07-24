@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Designer Edition 8.1.6.2625 (http://www.liquid-technologies.com)-->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ETOImport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ImportCode" type="xs:string" />
+        <xs:element name="APIKey" type="xs:string" minOccurs="0" />
+        <xs:element name="SystemUser" type="xs:string" minOccurs="0" />
+        <xs:element name="Project" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="InternalID" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Confirmation" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Program" type="xs:string" minOccurs="0" />
+              <xs:element name="Type" type="xs:string" minOccurs="0" />
+              <xs:element name="SubType" type="xs:string" minOccurs="0" />
+              <xs:element name="Title" type="xs:string" minOccurs="0" />
+              <xs:element name="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="Phase" type="xs:string" minOccurs="0" />
+              <xs:element name="Track" type="xs:string" minOccurs="0" />
+              <xs:element name="Reference" type="xs:string" minOccurs="0" />
+              <xs:element name="StartDate" type="xs:date" minOccurs="0" />
+              <xs:element name="CompleteDateEstimate" type="xs:date" minOccurs="0" />
+              <xs:element name="CompleteDateActual" type="xs:date" minOccurs="0" />
+              <xs:element name="Notes" type="xs:string" minOccurs="0" />
+              <xs:element name="ExternalReferences" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ExternalReference" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Type" type="xs:string" />
+                          <xs:element name="Value" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Documents" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Document" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:all>
+                          <xs:element name="FileName" type="xs:string" />
+                          <xs:element name="ClassCode" type="xs:string" />
+                        </xs:all>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="Attributes" minOccurs="0" />
+              <xs:element name="Measures" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Measure" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:all>
+                          <xs:element name="Code" type="xs:string" />
+                          <xs:element name="Quantity" type="xs:int" />
+                          <xs:element name="InstallDate" type="xs:date" />
+                          <xs:element name="Cost" type="xs:decimal" minOccurs="0" />
+                          <xs:element name="Incentive" type="xs:string" minOccurs="0" />
+                          <xs:element name="Life" type="xs:string" minOccurs="0" />
+                          <xs:element name="Savings" minOccurs="0">
+                            <xs:complexType>
+                              <xs:all>
+                                <xs:element name="kwh" type="xs:int" minOccurs="0" />
+                                <xs:element name="Therm" type="xs:decimal" minOccurs="0" />
+                              </xs:all>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="LoadProfile" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="kwh" type="xs:string" minOccurs="0" />
+                                <xs:element name="Therm" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element ref="Attributes" minOccurs="0" />
+                          <xs:element name="Notes" type="xs:string" minOccurs="0" />
+                        </xs:all>
+                        <xs:attribute name="ID" type="xs:int" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+            <xs:attribute name="ID" type="xs:int" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Site" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="InternalID" type="xs:string" minOccurs="0" />
+              <xs:element name="SiteType" type="xs:string" minOccurs="0" />
+              <xs:element name="SiteMarket" type="xs:string" minOccurs="0" />
+              <xs:element name="ServiceProviders" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ProviderInfo" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Service" type="xs:string" />
+                          <xs:element name="Provider" type="xs:string" />
+                          <xs:element name="Account" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Associations" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Projects" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Project" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:all>
+                                <xs:element name="Measures" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Measure" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:attribute name="ID" type="xs:int" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:all>
+                              <xs:attribute name="ID" type="xs:int" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="AddressInfo" />
+              <xs:element name="SiteProperties" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="Properties" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SiteTechnologies" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Technology" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Code" type="xs:string" minOccurs="1" />
+                          <xs:element ref="Properties" minOccurs="0" />
+                        </xs:sequence>
+                        <xs:attribute name="ID" type="xs:int" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Customer" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="InternalID" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="NameFirst" type="xs:string" minOccurs="0" />
+              <xs:element name="NameLast" type="xs:string" minOccurs="0" />
+              <xs:element name="Phone" type="xs:string" minOccurs="0" />
+              <xs:element name="Email" type="xs:string" minOccurs="0" />
+              <xs:element name="Addresses" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="AddressInfo" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Associations" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Projects" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Project" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:all>
+                                <xs:element name="Role" type="xs:string" />
+                                <xs:element name="Measures" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Measure" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:attribute name="ID" type="xs:int" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:all>
+                              <xs:attribute name="ID" type="xs:int" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TradeAlly" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="InternalID" type="xs:string" />
+              <xs:element ref="CompanyInfo" minOccurs="0" />
+              <xs:element name="Associations">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="Projects" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Project" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Role" type="xs:string" />
+                                <xs:element name="Measures" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Measure" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:attribute name="ID" type="xs:int" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="ID" type="xs:int" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Attributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Attribute" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="xs:string" />
+              <xs:element name="Value" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddressInfo">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="Type" type="xs:string" />
+        <xs:element name="Address" type="xs:string" />
+        <xs:element name="City" type="xs:string" />
+        <xs:element name="State" type="xs:string" />
+        <xs:element name="Zip" type="xs:string" />
+        <xs:element name="Plus4" type="xs:string" minOccurs="0" />
+        <xs:element name="Barcode" type="xs:string" minOccurs="0" />
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompanyInfo">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="InternalID" type="xs:int" minOccurs="0" />
+        <xs:element name="Name" type="xs:string" minOccurs="0" />
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Properties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="xs:string" />
+              <xs:element name="Value" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

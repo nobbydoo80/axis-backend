@@ -1,0 +1,11 @@
+{% extends "examine/angular_region_bottomactions.html" %}
+
+{% block panels %}
+    {{ block.super }}
+
+    <div class="row" ng-if="!regionObject.object.id">
+        <div class="col-md-9">
+            <axis-single-region options="examineApp.pageRegions.relationships"></axis-single-region>
+        </div>
+    </div>
+{% endblock panels %}

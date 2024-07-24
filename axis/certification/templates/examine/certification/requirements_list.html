@@ -1,0 +1,76 @@
+<span ng-if="statusCtrl.requirements.data.completed_tests" class="pull-right completed-toggler">
+    <a class="show-completed-steps text-muted" ng-click="progressCtrl.toggleCompleted()">
+        [[ progressCtrl.showingCompleted ? "Hide" : "Show" ]] completed
+    </a>
+</span>
+<h5>
+    Requirements
+    <span ng-switch="statusCtrl.requirements.data.status">
+        <span class="badge" ng-switch-when="false">
+            [[ statusCtrl.requirements.data.total_requirements - statusCtrl.requirements.data.completed_requirements ]]
+        </span>
+        <span ng-switch-when="true">
+            <i class="fa fa-check"></i>
+        </span>
+        <span ng-switch-default>
+            <i class="fa fa-spinner fa-spin"></i>
+        </span>
+    </span>
+</h5>
+<ul class="requirements">
+    <li ng-repeat="(i, requirement) in statusCtrl.requirements.data.requirements"
+        ng-class="{'text-muted': requirement.status}"
+        ng-if="requirement.status !== null && (!requirement.status || progressCtrl.showingCompleted)">
+
+        <i class="fa" ng-class="{
+            'fa-check-square': requirement.status === true,
+            'fa-square-o': requirement.status === false,
+        }"></i>
+        <span class="requirement" data-requirement="[[ requirement.codename ]]">[[ requirement.name ]]</span>
+        <div class="message" ng-if="requirement.message">
+            <i class="icon-info-sign fa fa-info-circle text-danger"></i>
+            <a ng-if="requirement.url" ng-click="progressCtrl.routeRequirementLink(requirement.url)"
+               ng-bind-html="progressCtrl.trustAsHtml(requirement.message)">
+            </a>
+            <span ng-if="!requirement.url"
+                  ng-bind-html="progressCtrl.trustAsHtml(requirement.message)">
+            </span>
+            <div ng-if="requirement.data"
+                 compile-html="requirement.data">
+            </div>
+        </div>
+    </li>
+</ul>
+<h5>
+    Warnings
+    <span ng-switch="statusCtrl.requirements.data.status">
+        <span class="badge" ng-switch-when="true">
+            [[ progress_warnings.length ]]
+        </span>
+        <span class="badge" ng-switch-when="false">
+            [[ progress_warnings.length ]]
+        </span>
+        <span ng-switch-default>
+            <i class="fa fa-spinner fa-spin"></i>
+        </span>
+    </span>
+</h5>
+<ul class="requirements">
+    <li ng-repeat="(i, requirement) in statusCtrl.requirements.data.requirements | filter:{status: null} as progress_warnings">
+
+    <i class="fa fa-flag"></i>
+        <span class="requirement" data-requirement="[[ requirement.codename ]]">[[ requirement.name ]]</span>
+        <div class="message" ng-if="requirement.message">
+            <i class="icon-info-sign fa fa-info-circle text-warning"></i>
+            <a ng-if="requirement.url" ng-click="progressCtrl.routeRequirementLink(requirement.url)"
+               ng-bind-html="progressCtrl.trustAsHtml(requirement.message)">
+            </a>
+            <span ng-if="!requirement.url"
+                  ng-bind-html="progressCtrl.trustAsHtml(requirement.message)">
+            </span>
+            <div ng-if="requirement.data"
+                 compile-html="requirement.data">
+            </div>
+        </div>
+    </li>
+</ul>

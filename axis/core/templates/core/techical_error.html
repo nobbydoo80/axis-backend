@@ -1,0 +1,164 @@
+<h4 class="{{ levelname|lower }}"
+{% if levelname == "INFO" %}
+    style="color: #3a87ad; background-color: #d9edf7; border-color: #bce8f1; border-width: 2px; padding: 10px;"
+{% elif levelname == "WARNING" %}
+    style="color: #c09853; background-color: #fcf8e3; border-color: #fbeed5; border-width: 2px;padding: 10px;"
+{% elif levelname == "ERROR" or levelname == "CRITICAL" %}
+    style="color: #b94a48; background-color: #f2dede; border-color: #eed3d7; border-width: 2px;padding: 10px;"
+{% else %}
+    style="color: #000; background-color: #efefef; border-color: #555; border-width: 2px; padding: 10px;"
+{% endif %}
+>{{ message }}</h4>
+
+
+<table class="meta"><tbody>
+    {% if url %}
+        <tr>
+            <th>Path:</th>
+            <td>{{ url }}</td>
+        </tr>
+    {% endif %}
+    {% if user %}
+        <tr>
+            <th>User:</th>
+            <td>{{ full_name }} ({{ user.username }}) {{ user.email }} ({{ user.work_phone }})</td>
+        </tr>
+    {% endif %}
+    {% if user.company %}
+        <tr>
+            <th>Company:</th>
+            <td>{{ user.company }}</td>
+        </tr>
+    {% endif %}
+    <tr>
+        <th>Server:</th>
+        <td>{{ hostname }}</td>
+    </tr>
+    <tr>
+        <th>Server Time:</th>
+        <td>{{ time|date:"r" }}</td>
+    </tr>
+    <tr>
+      <th>Django Version:</th>
+      <td>{{ django_version_info }}</td>
+    </tr>
+    {% if exception_type %}
+        <tr>
+          <th>Exception Type:</th>
+          <td>{{ exception_type }}</td>
+        </tr>
+    {% endif %}
+    {% if exception_type and exception_value %}
+        <tr>
+          <th>Exception Value:</th>
+          <td><pre>{{ exception_value|force_escape }}</pre></td>
+        </tr>
+    {% endif %}
+    <tr>
+      <th>{% if exception_type %}Exception{% else %}Message{% endif %} Location:</th>
+      <td>{% if context.git_url  %}<a href="{{ context.git_url}}">{% endif %}
+      {{ context.filename|escape }}{% if context.git_url  %}</a>{% endif %}
+      in {{ context.function|escape }}, line {{ context.lineno }}</td>
+    </tr>
+    {% if context.commit and context.commit_url %}
+    <tr>
+      <th>GitHub Commit</th>
+      <td><a href="{{ context.commit_url }}">{{ context.commit }}</a></td>
+    </tr>
+    <tr>
+      <th>GitHub Release Hash</th>
+      <td>{{ git_hash }} Branch: {{ git_branch }}</td>
+    </tr>
+    {% endif %}
+    {% if public_hostname %}
+    <tr>
+      <th>AWS Instance:</th>
+      <td>{{ public_hostname }} ({{ public_ip }})</td>
+    </tr>
+    {% endif %}
+    <tr>
+      <th>Python Executable:</th>
+      <td>{{ sys_executable|escape }}</td>
+    </tr>
+    <tr>
+      <th>Python Version:</th>
+      <td>{{ sys_version_info }}</td>
+    </tr>
+
+</tbody></table>
+
+{% if unicode_hint %}
+<div id="unicode-hint">
+    <h2>Unicode error hint</h2>
+    <p>The string that could not be encoded/decoded was: <strong>{{ unicode_hint|force_escape }}</strong></p>
+</div>
+{% endif %}
+
+{% if template_does_not_exist %}
+<div id="template-not-exist">
+    <h2>Template-loader postmortem</h2>
+    {% if loader_debug_info %}
+        <p>Django tried loading these templates, in this order:</p>
+        <ul>
+        {% for loader in loader_debug_info %}
+            <li>Using loader <code>{{ loader.loader }}</code>:
+                <ul>{% for t in loader.templates %}<li><code>{{ t.name }}</code> (File {% if t.exists %}exists{% else %}does not exist{% endif %})</li>{% endfor %}</ul>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Django couldn't find any templates because your <code>TEMPLATE_LOADERS</code> setting is empty!</p>
+    {% endif %}
+</div>
+{% endif %}
+{% if exception_info %}
+    <h3>{% if exception_type and exception_value %}Traceback Info{% endif %}</h3>
+    <pre>{{ exception_info }}</pre>
+    <br /><br />
+{% endif %}
+
+{% if unicode_hint %}
+    <div>
+        <h4>Unicode error hint</h4>
+        <p>The string that could not be encoded/decoded was: <strong>{{ unicode_hint|force_escape }}</strong></p>
+    </div>
+{% endif %}
+
+{% if context %}
+    <h3>{% if exception_type and exception_value %}Traceback{% else %}{{ levelname|lower|capfirst }} Message{% endif %} Context</h3>
+    {% autoescape off %}
+    <code>{% if context.git_url  %}<a href="{{ context.git_url}}">{% endif %}{{ context.filename|escape }}{% if context.git_url  %}</a>{% endif %}</code> in <code>{{ context.function|escape }}</code> starting at line {{ context.pre_context_lineno }}<br /><br />
+    {% if context.context_line %}
+        <div class="context_data">
+            {% if context.pre_context %}
+                <pre style="margin: 0px;">{{ context.pre_context }}</pre>
+            {% endif %}
+            <pre
+                {% if levelname == "INFO" or levelname == "DEBUG" %}
+                    style="color: #3a87ad; background-color: #d9edf7; border-color: #bce8f1; border-width: 2px; padding: 10px; margin: 0px;"
+                {% elif levelname == "WARNING" %}
+                    style="color: #c09853; background-color: #fcf8e3; border-color: #fbeed5; border-width: 2px;padding: 10px; margin: 0px;"
+                {% elif levelname == "ERROR" or levelname == "CRITICAL" %}
+                    style="color: #b94a48; background-color: #f2dede; border-color: #eed3d7; border-width: 2px;padding: 10px; margin: 0px;"
+                {% else %}
+                    style="padding: 10px; margin: 0px;"
+                {% endif %}
+                    >{{ context.context_line|escape }}</pre>
+            {% if context.post_context %}
+                <pre style="margin: 0px;">{{ context.post_context }}</pre>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if context.vars %}
+        <h4>Local Vars</h4>
+        <table><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+            {% for var in context.vars|dictsort:"0" %}
+                <tr>
+                    <td>{{ var.0|force_escape }}</td>
+                    <td><pre>{{ var.1 }}</pre></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    {% endautoescape %}
+{% endif %}

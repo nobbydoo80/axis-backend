@@ -1,0 +1,50 @@
+{% extends "examine/angular_region_accordion.html" %}
+
+{% block panel_heading %}
+    {# Floats right, needs to come before block.super's <action-set> to work correctly #}
+    <div class="row">
+        <div class="col-xs-3 pull-right">
+            <program-progress-bar></program-progress-bar>
+        </div>
+        <div class="col-xs-9">
+            {# Program name #}
+            {{ block.super }}
+
+            <span ng-if="regionObject.object.id && !regionObject.object.completion_date"
+                  class="label label-default">
+                [[ regionObject.object.state_description ]]
+                <span ng-if="regionObject.helpers.state_sublabel">
+                    - [[ regionObject.helpers.state_sublabel ]]
+                </span>
+            </span>
+        </div>
+    </div>
+{% endblock panel_heading %}
+
+
+{# Removes the leading "Program:" #}
+{% block heading %}{% if user.is_superuser %}[ [[ regionObject.object.id ]] ] {% endif %}<strong>[[ regionObject.object_name ]]</strong>{% endblock heading %}
+
+
+{# Add in a sidebar that appears no matter which mode the region is in (view/edit) #}
+{% block panels %}
+    <div id="panel_[[ regionObject.id ]]" class="row">
+        <div class="col-xs-9">
+            {{ block.super }}
+
+            <div ng-show="statusCtrl.showNotes" ng-if="regionObject.helpers.machinery.notes !== undefined">
+                <div class="row">
+                    <div class="col-md-12">
+                        <axis-region-set options="regionObject.helpers.machinery.notes"></axis-region-set>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-3 requirements-sidebar" ng-if="regionObject.object.id">
+                <program-progress-list></program-progress-list>
+                <generic-annotations-list></generic-annotations-list>
+            </div>
+        </div>
+    </div>
+{% endblock panels %}

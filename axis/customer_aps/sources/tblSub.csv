@@ -1,0 +1,408 @@
+"BldrId"	"SubCode"	"Sub"	"Active"	"MstrPlan"	"SubLocation"	"SubLocCity"	"SubLocZip"	"LotsSigned"	"LotsPaid"	"ContractDate"	"ExpDate"	"AddendumDate"	"AddendumLots"	"AmmendedDate"	"AmmendedLots"	"Rater"	"SolarCommunity"	"Parcel"	"SubComment"
+"ELL01"	"70ELARASR"	"Araby Crossing"	1		"Crossing Ave"	"Yuma"	"85365"	152	1	9/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	1	"NA"	" "
+"ELL01"	"70ELARRSR"	"Arroyo De Fortuna"	0		"44th St."	"Yuma"	"85367"	24	24	9/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	1	"NA"	" "
+"JCH01"	"70JCHPRE"	"AVATAR-Preserve At Palm Valley"	1	"Palm Valley"	"Litchfield Rd & Palm Valley Blvd"	"Goodyear"	"85359"	22	9	10/1/10 0:00:00	12/31/11 0:00:00			1/1/11 0:00:00	0	"EFL"	0	"NA"	" "
+"LOV01"	"70LOVIZA"	"Izabel Homes"	1		"N. Izabel St. & Felice Ave."	"Flagstaff"	"86001"	16	3	8/1/10 0:00:00	12/31/11 0:00:00				0	"E3"	0	"NA"	" "
+"MONA1"	"70MONAPRSR"	"Privada"	1		"Alma School N. Of Jomax"	"Scottsdale"	"85262"	25	1	8/1/09 0:00:00	8/1/11 0:00:00				0	"EFL"	1	"NA"	" "
+"MER01"	"70MPVCOSR"	"Palm Valley Cortile"	1	"Palm Valley"	"Mcdowell & Litchfield Rd."	"Goodyear"	"85395"	93	31	10/15/10 0:00:00	12/31/11 0:00:00			1/1/11 0:00:00	0	"DRW"	1	"NA"	" "
+"ABB01"	"ABBVAL"	"Valle del Sol"	0		"Somerton Ave. & 12th St."	"Somerton"	"85364"	201	0	5/1/08 0:00:00	5/1/10 0:00:00				0	"Energy Inspectors"	0
+"ABB01"	"ABBVEN"	"Venezia"	0		"Cesar Chavez & Madison"	"Somerton"	"85364"	180	1	5/1/08 0:00:00	5/1/10 0:00:00				0	"Energy Inspectors"	0
+"PUL01"	"AMR5KCAC"	"Parkside 4000 ~ Cactus"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	100	0	11/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"AMR5KCAN"	"Parkside 5000 ~ Canyon"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	100	0	11/1/11 0:00:00	12/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"AMRU20"	"AMR-Unit 20 / Classics, Premiers, Estates"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	58	34	4/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"AMRU40"	"AMR-Unit 40 Holiday, Cottages, Classics, Prem, Est"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	151	5	4/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"ANT01"	"ANTCU2"	"INACTIVE-AZ Custom Homes"	0		"tbd"			7	2	2/12/07 0:00:00	2/12/09 0:00:00				0	"E3"	0		"Yavapai County"
+"ASH01"	"ASHAZI"	"INACTIVE-(aka Apex Construction)  AZ Custom Homes"	1		"Various Locations"	"Arizona City"	"85223"	48	9	12/1/06 0:00:00	1/1/09 0:00:00				0	"EFL"	0		"DROPPED"
+"ASH02"	"ASHES1"	"INA-Estrella Mtn Ranch - Las Palmas at Montecito"	0	"Estrella Mountain Ranch"		"Goodyear"		91	76	3/1/07 0:00:00	3/1/11 0:00:00				0	"EFL"	0
+"ASH02"	"ASHES2"	" Estrella Mountain  - Mesquite Highlands"	0	"Estrella Mountain Ranch"		"Goodyear"		92	19	3/1/07 0:00:00	3/1/09 0:00:00				0	"EFL"	0		"SOLD OUT"
+"ASH02"	"ASHES3"	"INACTIVEstrella Mountain Ranch - Saguaro Highlands"	0	"Estrella Mountain Ranch"		"Goodyear"		66	8	3/1/07 0:00:00	3/1/09 0:00:00				0	"EFL"	0		"SOLD OUT"
+"ASH02"	"ASHFVW"	"Fairview Park"	0	"Verrado"	"Verrado Way & McDowell Rd."	"Buckeye"	"85396"	121	0	7/31/09 0:00:00	7/31/11 0:00:00				0	"EFL"	0
+"ASH02"	"ASHFVW70"	"Fairview Park"	1	"Verrado"	"Verrado Way & Mcdowell Rd."	"Buckeye"	"85396"	113	26	7/1/10 0:00:00	7/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"ASH02"	"ASHLPM70"	"Las Palmas At Montecito"	1	"Estrella Mountain Ranch"	"Estrella Pkwy & Westar"	"Goodyear"	"85338"	37	30	6/15/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"ASH02"	"ASHMAB"	"Marley Park - Bloomfield"	1	"Marley Park"		"Surprise"		28	25	3/1/07 0:00:00	3/1/11 0:00:00				0	"EFL"	0
+"ASH02"	"ASHMAH"	"INACTIVE-Marley Park - Haciendas"	0	"Marley Park"		"Surprise"		99	48	3/1/07 0:00:00	3/1/09 0:00:00				0	"EFL"	0		"SOLD OUT"
+"ASH02"	"ASHSAN70"	"San Rafael At Portales"	1		"Sarival & Mcdowell"	"Goodyear"	"85338"	97	34	4/15/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"ASH02"	"ASHVEC"	"Verrado - Casitas"	1	"Verrado"		"Buckeye"		154	52	3/1/07 0:00:00	3/1/11 0:00:00				0	"EFL"	0
+"ASH02"	"ASHVEF"	"INACTIVE-Verrado - Fairview Park"	0	"Verrado"		"Buckeye"		121	5	3/1/07 0:00:00	3/1/09 0:00:00				0	"EFL"	0		"SOLD OUT"
+"ASH02"	"ASHVEM"	"INACTIVE-Verrado - Madison Park"	0	"Verrado"		"Buckeye"		111	48	3/1/07 0:00:00	3/1/11 0:00:00				0	"EFL"	0
+"ASH02"	"ASHVEM70"	"Madison Park At Verrado"	1	"Verrado"	"Verrado Way North Of I-10"	"Buckeye"	"85326"	55	16	6/15/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"ASH02"	"ASHVEP"	"Verrado - Presidio"	1	"Verrado"		"Buckeye"		159	52	3/1/07 0:00:00	3/1/11 0:00:00				0	"EFL"	0
+"ASH02"	"ASHVIS"	"Vistancia - Eagle Canyon at Vistancia"	1	"Vistancia"		"Peoria"		79	39	3/1/07 0:00:00	3/1/11 0:00:00				0	"EFL"	0
+"BEA01"	"BEAGLN70SRS"	"Glenmont Estates"	1		"Yuma & Estrella Parkway"	"Goodyear"	"85338"	94	26	12/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	1	"NA"	" "
+"BEA01"	"BEASAN70SRS"	"Sanctuary At Canyon Trails"	1		"303 & Yuma"	"Goodyear"	"85338"	107	15	10/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	1	"NA"	" "
+"BEA01"	"BEASANSRS"	"Sanctuary At Canyon Trails"	0		"303 & Yuma"	"Goodyear"	"85338"	52	0	10/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"BEA01"	"BEATER"	"Terraza At Villago"	0		"Pinal Ave & Mccartney"	"Casa Grande"	"85122"	1	1	5/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	0	"NA"
+"BEA01"	"BEATER70SRS"	"Terraza At Villago"	1		"Pinal Ave & Mccartney"	"Casa Grande"	"85122"	99	9	5/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	1	"NA"	" "
+"BEA01"	"BEATERSRS"	"Terraza At Villago"	0		"Pinal Ave & Mccartney"	"Casa Grande"	"85122"	49	0	5/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	0	"NA"	" "
+"BEA01"	"BEATRI70SRS"	"Trianda Terrace"	1		"Indian School & Falcon Dr."	"Goodyear"	"85395"	40	20	12/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	1	"NA"	" "
+"CAC01"	"CACENC"	"Encore at Grayhawk"	1	"Grayhawk"	"Pima Rd. & Thompson Peak Pkwy."	"Scottsdale"	"85255"	44	40	6/15/08 0:00:00	6/15/10 0:00:00				0	"Energy Inspectors"	0	"3H"
+"CAC01"	"CACSUM"	"Verrado - Summit Park"	1	"Verrado"	"Verrado Way & Western Dr."	"Buckeye"	"85326"	31	6	6/15/08 0:00:00	6/15/10 0:00:00				0	"Energy Inspectors"	0	"4.802 & 4.902"
+"CAN01"	"CANREF"	"INACTIVE-Reflections at Blue Hills"	0		"Miller Rd. & Maricopa Rd."	"Buckeye"	"85326"	119	0	5/15/08 0:00:00	5/15/10 0:00:00				0	"DRW"	0		"ON HOLD"
+"CEN01"	"CENBRO"	"INACTIVE-Oasis at Canyon Trails - Brookhaven"	0		"Cotton Lane & Van Buren Street"	"Goodyear"	"85338"	152	31	11/15/06 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0
+"CEN01"	"CENBRO1"	"Oasis at Canyon Trails - Brookhaven"	1		"Cotton Lane & Van Buren Street"	"Goodyear"	"85338"	49	44	1/1/08 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0
+"CEN01"	"CENCRE"	"INACTIVE-Oasis at Canyon Trails - Crestview"	0		"Cotton Lane & Van Buren Street"	"Goodyear"	"85338"	64	21	11/15/06 0:00:00	12/31/07 0:00:00				0	"Energy Inspectors"	0		"CLOSED"
+"CEN01"	"CENHAR"	"INACTIVE-Harmony at Desert Oasis"	0	"Desert Oasis"	"163 Avenue and Jomax"	"Surprise"		372	25	11/15/06 0:00:00	12/31/07 0:00:00				0	"Energy Inspectors"	0
+"CEN01"	"CENHAR1"	"Harmony at Desert Oasis"	1	"Desert Oasis"	"163 Avenue and Jomax"	"Surprise"		29	14	1/1/08 0:00:00	1/1/10 0:00:00				0		0
+"CEN01"	"CENHAV"	"Haven at Desert Oasis"	1	"Desert Oasis"	"163RD AVE & JOMAX"	"SURPRISE"	"85387"	53	40	1/1/08 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0
+"CEN01"	"CENPAR"	"INACTIVE-Parkview Square at Verrado"	0	"Verrado"	"I-10 North to Verrado Way"	"Buckeye"	"85396"	136	3	11/15/06 0:00:00	12/31/07 0:00:00				0	"Energy Inspectors"	0
+"CEN01"	"CENPAR1"	"Parkview Square at Verrado"	1	"Verrado"	"I-10 North to Verrado Way"	"Buckeye"	"85396"	49	53	1/1/08 0:00:00	1/1/10 0:00:00				0		0
+"CEN01"	"CENPRE"	"INACTIVE-The Preserve at Cibola Vista"	0	"Cibola Vista"	"Lake Pleasant Pkwy & Cibola Vista Road"	"Peoria"	"85353"	109	62	11/15/06 0:00:00	12/31/07 0:00:00			11/12/10 0:00:00	15	"Energy Inspectors"	0	""	" "
+"CEN01"	"CENPRE1"	"The Preserve at Cibola Vista"	1	"Cibola Vista"	"Lake Pleasant Pkwy & Cibola Vista Road"	"Peoria"	"85353"	49	35	1/1/08 0:00:00	1/1/10 0:00:00				0		0
+"CEN01"	"CENREF"	"INACTIVE-Oasis at Canyon Trails - Reflection"	0		"Cotton Lane & Van Buren Street"	"Goodyear"	"85338"	243	60	11/15/06 0:00:00	12/31/07 0:00:00				0	"Energy Inspectors"	0
+"CEN01"	"CENREF1"	"INACTIVE-Oasis at Canyon Trails - Reflection"	0		"Cotton Lane & Van Buren Street"	"Goodyear"	"85338"	96	38	1/1/08 0:00:00	1/1/10 0:00:00				0		0
+"PUL02"	"CENREF2"	"INACTIVE-Reflection"	0		"Cotton Ln & Van Buren"	"Goodyear"	"85338"	26	0	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"CEN01"	"CENSER"	"INACTIVE-Serenade at Desert Oasis"	0	"Desert Oasis"	"163 Avenue and Jomax"	"Goodyear"		768	56	11/15/06 0:00:00	12/31/07 0:00:00				0	"Energy Inspectors"	0
+"CEN01"	"CENSER1"	"Serenade at Desert Oasis"	1	"Desert Oasis"	"163 Avenue and Jomax"	"Goodyear"		28	9	1/1/08 0:00:00	1/1/10 0:00:00				0		0
+"CEN01"	"CENSTA"	"INACTIVE-Oasis at Canyon Trails - Stargazer"	0		"Cotton Lane & Van Buren Street"	"Goodyear"	"85338"	236	56	11/15/06 0:00:00	12/31/07 0:00:00				0	"Energy Inspectors"	0
+"CEN01"	"CENSTA1"	"INACTIVE-Oasis at Canyon Trails - Stargazer"	0		"Cotton Lane & Van Buren Street"	"Goodyear"	"85338"	209	83	1/1/08 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0
+"PUL02"	"CENSTA2"	"INACTIVE-Stargazer"	0		"Cotton Ln & Van Buren"	"Goodyear"	"85338"	39	0	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"CHA01"	"CHATTE"	"Tranquil Trail Estates"	0		"Tranquil Trail & Happy Hollow Dr."	"Carefree"	"85377"	7	0	11/1/08 0:00:00	11/1/10 0:00:00				0	"EFL"	0
+"CNB01"	"CNBGFR70"	"Grey Fox Ridge"	1		"Main & Grey Fox Ridge"	"Cottonwood"	"86326"	12	5	5/1/10 0:00:00	12/31/11 0:00:00				0	"E3"	0	"NA"	" "
+"COL01"	"COLRIV"	"INACTIVE-Riverstone Estates"	0		"78 Avenue and Deer Valley Road"	"Peoria"	"85382"	101	57	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0
+"CON01"	"CONMEA"	"INACTIVE-The Meadows at Desert Sky Ranch"	0	"Desert Sky Ranch"	"Korsten and Schulltz Road"	"Casa Grande"	"85222"	83	0	11/20/06 0:00:00	12/31/07 0:00:00				0	"Energy Inspectors"	0		"INACTIVE"
+"COP01"	"COPCUS"	"Custom Homes"	1		"TBD"	"NEW RIVER"		5	3	9/1/08 0:00:00	9/1/10 0:00:00				0	"E3"	0
+"BEA01"	"CORPER70SRS"	"Cortessa Peralta"	1		"Olive & Citrus"	"Waddell"	"85355"	49	6	10/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	1	"NA"	" "
+"BEA01"	"CORPERSRS"	"Cortessa - Peralta"	0		"Olive & Citrus"	"Waddell"	"85355"	22	0	10/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"BEA01"	"CORVE70SRS"	"Cortessa Verona"	1		"Olive & Citrus"	"Waddell"	"85355"	41	3	10/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	1	"NA"	" "
+"BEA01"	"CORVERSRS"	"Cortessa - Verona"	0		"Olive & Citrus"	"Waddell"	"85355"	17	0	10/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"COU01"	"COUCOU"	"INACTIVE-Countrywalk Estates"	0		"Pinal&Hopi"	"Casa Grande"	"85222"	67	11	7/1/07 0:00:00	7/1/09 0:00:00				0	"Energy Inspectors"	0		"INACTIVE"
+"COU01"	"COUTHU"	"INACTIVE-Thunderbird at Tammarron"	0		"Cottonwood&Arizola"	"Casa Grande"	"85222"	45	0	7/1/07 0:00:00	7/1/09 0:00:00				0	"Energy Inspectors"	0		"INACTIVE"
+"DAV01"	"DAVSER"	"INACTIVE-Serenity at Estrella"	0	"Estrella Mountain Ranch"	"CALISTOGA & ESTRELLA PKWY"	"GOODYEAR"		84	9	10/1/07 0:00:00	10/1/09 0:00:00				0	"DRW"	0	"9.3"
+"PUL01"	"DMRALL"	"INACTIVE-Norterra DW-Allegro (Series) G8000'S"	0	"Fireside at Norterra"	"NORTERRA PKWY & CASINO AVE"	"PHOENIX"	"85085"	38	21	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"DMRALL1"	"Norterra DW/allegro/G8000s"	1	"Fireside at Norterra"	"Norterra Pkwy & Casino Ave"	"Phoenix"	"85085"	18	2	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMRART"	"INACTIVE-Norterra Artisan (Ranch Cluster) 6-pack"	0	"Fireside at Norterra"	"NORTERRA PKWY & CASINO AVE"	"PHOENIX"	"85085"	21	21	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0		"SOLD OUT"
+"PUL01"	"DMRMAE"	"Norterra Maestro - Pulte 4000 Vista"	1	"Fireside at Norterra"	"Norterra Pkwy & Casino Ave"	"Phoenix"	"85085"	121	17	6/15/10 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMRMAJ70"	"Fireside @ Norterra ~ Majesty 5500"	1	"Fireside at Norterra"	"Dynamite Mtn Ranch & Valley Vista"	"Phoenix"	"85085"	88	4	10/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMRMON"	"INACTIVE-Norterra DW-Montage (Series) 4500'S"	0	"Fireside at Norterra"	"NORTERRA PKWY & CASINO AVE"	"PHOENIX"	"85085"	11	1	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"DMRMON1"	"INACTIVE-Norterra - DW/montage/4500s"	0	"Fireside at Norterra"	"Norterra Pkwy & Casino Ave"	"Phoenix"	"85085"	10	0	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMRMON70"	"Fireside At Norterra Desert Ridge/4500s/DW/montage"	1		"40th St. & Deer Valley Rd."	"Phoenix"	"85050"	77	38	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMRMOS"	"INACTIVE-Norterra Mosaic (Series 1) 3500'S"	0	"Fireside at Norterra"	"NORTERRA PKWY & CASINO AVE"	"PHOENIX"	"85085"	31	44	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0		"SOLD OUT"
+"PUL01"	"DMROVR"	"INACTIVE-Norterra FC 3500 Overlook"	0	"Fireside at Norterra"	"W Casino Ave  & N Melvern Trail"	"Phoenix"	"85085"	84	4	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0
+"PUL01"	"DMROVR1"	"INACTIVE-Norterra Overlook/FC 3500s"	0	"Fireside at Norterra"	"Norterra Pkwy & Casino Ave."	"Phoenix"	"85085"	80	26	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMROVR70"	"Fireside Norterra/dynamite Mountain Ranch/FC 3500"	1		"Norterra Pkwy & Casino Ave."	"Phoenix"	"85085"	141	24	11/1/09 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMRPRI"	"INACTIVE-Norterra DW-Primavera (Series) 5500'S"	0	"Fireside at Norterra"	"NORTERRA PKWY & CASINO AVE"	"PHOENIX"	"85085"	106	69	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"DMRPRI1"	"INACTIVE-NorterraDW/primavera/5500s"	0	"Fireside at Norterra"	"Norterra Pkwy & Casino Ave."	"Phoenix"	"85085"	47	17	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMRPRI70"	"Fireside @ Desert Ridge - 5500s/DW/primavera"	1		"40th St. & Deer Valley Rd."	"Phoenix"	"85050"	32	9	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMRTEA"	"INACTIVE-Norterra Teavana  (Ranch Triplex)"	0	"Fireside at Norterra"	"NORTERRA PKWY & CASINO AVE"	"PHOENIX"	"85085"	33	38	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0		"SOLD OUT"
+"PUL01"	"DMRVER"	"INACTIVE-Norterra Verano (Ranch Stacked Flats)"	0	"Fireside at Norterra"	"NORTERRA PKWY & CASINO AVE"	"PHOENIX"	"85085"	12	9	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0		"SOLD OUT"
+"PUL01"	"DMRVIS"	"INACTIVE - Norterra Vista (First Choice 4000's)"	0	"Fireside at Norterra"	"Norterra Pkwy & Casino Ave."	"Phoenix"	"85085"	86	31	9/19/08 0:00:00	11/1/09 0:00:00				0	"EFL"	0
+"PUL01"	"DMRVIS1"	"INACTIVE-Norterra - Vista/FC 4000"	0	"Fireside at Norterra"	"Norterra Pkwy & Casino Ave"	"Phoenix"	"85085"	61	16	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"DMRVIS70"	"Fireside At Norterra/Vista/FC 4000"	1	"Dynamite Mountain Ranch"	"Norterra Pkwy & Casino Ave."	"Phoenix"	"85085"	95	21	11/1/09 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"DOR01"	"DORBRO70"	"Brookside/lakeside At Prescott Lakes"	1		"Brookside/lakeside At Prescott Lakes"	"Prescott"	"86301"	75	14	4/1/11 0:00:00	12/31/11 0:00:00				0	"E3"	0	"NA"	" "
+"DOU01"	"DOUPRE"	"INACTIVE-Presidio in the Pines"	0		"Woody Mountain Road & Route 66"	"Flagstaff"	"86001"	184	0	8/1/07 0:00:00	8/1/09 0:00:00				0	"E3"	0
+"DRHOR"	"DRHSONV"	"Sonoran Vista"	1		"Watson & Broadway"	"Buckeye"	"85326"	167	7	9/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"DRHOR"	"DRHTUCR"	"Tuscany Ranch"	1		"67th Ave & Happy Valley Rd."	"Phoenix"	"85310"	14	0	11/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"PUL02"	"DWCLAS70SR"	"Sun City Festival DW - Classics"	1		"Sun Valley Pkwy & Canyon Springs Blvd."	"Buckeye"	"85396"	71	37	3/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"PUL02"	"DWCOTT70SR"	"Sun City Festival DW - Cottages"	1		"Sun Valley Pkwy & Canyon Springs Blvd"	"Buckeye"	"85396"	44	6	3/1/08 0:00:00	3/1/10 0:00:00				0	"EFL"	1	"NA"	" "
+"PUL02"	"DWESTA70SR"	"Sun City Festival DW - Estates"	1		"Sun Valley Pkwy & Canyon Springs Blvd"	"Buckeye"	"85396"	37	4	3/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"PUL02"	"DWHOLI70SR"	"Sun City Festival DW - Holiday"	1		"Sun Valley Pkwy & Canyon Springs Blvd"	"Buckeye"		33	10	3/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"PUL02"	"DWPREM70SR"	"Sun City Festival DW - Premiers"	1		"Sun Valley Pkwy & Canyon Springs Blvd"	"Buckeye"	"85396"	105	24	3/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"EGS01"	"EGS01"	"INACTIVE-1 acre lots"	0		"Hazen Rd. & Hwy 85"	"Buckeye"	"85326"	7	0	5/21/08 0:00:00	5/21/10 0:00:00				0	"DRW"	0		"INACTIVE"
+"ELI01"	"ELISUN"	"INACTIVE-Sundero"	0		"117 Avenue & Pinnacle Peak"	"Sun City"	"85375"	118	37	1/1/07 0:00:00	1/1/10 0:00:00				0	"DRW"	0		"INACTIVE"
+"ELL01"	"ELLARA"	"INACTIVE-Araby Crossing"	0		"Crossing Avenue"	"Yuma"	"85365"	152	0	9/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"ELL01"	"ELLEST"	"Estrella Unit 3"	1		"County 10th"	"Yuma"	"85367"	5	4	9/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"ELL01"	"ELLESTSR"	"Estrella Unit #3 - Solar Ready"	1		"County 10th"	"Yuma"	"85367"	17	9	9/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	1	"NA"	" "
+"ELL01"	"ELLESTSR70"	"Estrella Unit # 3"	1		"County 10th"	"Yuma"	"85367"	15	3	7/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"ELL01"	"ELLSEE70SR"	"Scottsdale East Estates"	1		"Scottsdale Dr. & 34th Pl."	"Yuma"	"85367"	88	3	9/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	1	"NA"	" "
+"EMP01"	"EMPELD"	"INACTIVE-Mt. Elden Villas"	0			"Flagstaff"	"86001"	28	27	7/1/06 0:00:00	12/31/07 0:00:00				0	"E3"	0		"CLOSED OUT"
+"EMP01"	"EMPFM3"	"INACTIVE-Flagstaff Meadows III"	0		"Shadow Mountain & Bellemont"	"Flagstaff"		261	0	10/1/07 0:00:00	12/31/07 0:00:00				0	"E3"	0		"CLOSED OUT"
+"EMP01"	"EMPPIN"	"INACTIVE-Pinnacle Pines"	0			"Flagstaff"	"86001"	206	42	7/1/06 0:00:00	12/31/07 0:00:00				0	"E3"	0		"PENDING BANKRUPTCY"
+"EMP01"	"EMPRET"	"INACTIVE-Retreat III"	0			"Flagstaff"	"86001"	57	44	7/1/06 0:00:00	12/31/07 0:00:00				0	"E3"	0		"PENDING BANKRUPTCY"
+"ERI01"	"ERICUS"	"INACTIVE-AZ Custom Homes"	0			"Prescott"		8	0	8/1/07 0:00:00	8/1/09 0:00:00				0	"E3"	0		"INACTIVE"
+"HAB02"	"FLAG01"	"Flagstaff division"	1		"Custom"	"Flagstaff"	"86004"	5	3	1/1/09 0:00:00	1/1/11 0:00:00				0	"E3"	0
+"FOR01"	"FORCUS70"	"Custom"	1		"To Be Provided"	"Prescott"	"86305"	5	2	4/1/11 0:00:00	12/31/11 0:00:00				0	"E3"	0	"NA"	" "
+"HAB03"	"HABCUS"	"Prescott area"	1		"various"	"Prescott"	"86301"	15	5	7/1/09 0:00:00	7/1/11 0:00:00				0	"E3"	0
+"HAB01"	"HABPHX"	"Custom"	1		"Tbd"	"Tbd"		35	5	6/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"HOM01"	"HOMMIR"	"INACTIVE-The Mirage at Desert Oasis"	0	"Desert Oasis"	"Jomax  Road and 163 Avenue"	"Surprise"		139	7	8/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0		"SOLD OUT"
+"HOM01"	"HOMPAL"	"INACTIVE-The Palms at Desert Oasis"	0	"Desert Oasis"	"Jomax  Road and 163 Avenue"	"Surprise"		83	12	8/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0		"SOLD OUT"
+"HOM01"	"HOMSYC"	"INACTIVE-Sycamore Creek at Surprise Farms"	0	"Surprise Farms"	"Greenway Road and 175 Avenue"	"Surprise"		122	32	8/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0		"SOLD OUT"
+"HOM01"	"HOMSYC1"	"Sycamore Creek"	1		"Greenway & 175th Ave."	"Surprise"	"85374"	52	6	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"HOM01"	"HOMSYCSR"	"Sycamore Creek"	1		"Greenway & 175th Ave"	"Surprise"	"85388"	46	5	11/1/09 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"HOM01"	"HOMSYCSR70"	"Sycamore Creek"	1	"NA"	"Greenway & 175th Ave"	"Surprise"	"85374"	46	0	4/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"HOP01"	"HOPCUS"	"Custom"	1		"N. AZ"	"Flagstaff"	"86004"	6	1	9/1/08 0:00:00	12/31/11 0:00:00				0	"E3"	0
+"HOP01"	"HOPHIL"	"INACTIVE-Hilltop Gardens"	0		"538 S. Fountaine St."	"Flagstaff"	"86001"	5	5						0	"E3"	0
+"HUN01"	"HUNCUS"	"Custom"	1		"Coconino County/Flagstaff Area"	"Flagstaff"	"86004"	5	1	6/1/09 0:00:00	6/1/11 0:00:00				0	"E3"	0
+"JAC01"	"JACCV1"	"Cielo Verde Phase I"	1	"Cielo Verde"	"Cielo Verde Dr. & 32nd St."	"Yuma"	"85364"	54	8	2/1/08 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"Phase I"
+"JCH01"	"JCHCM70SR"	"AVATAR-CantaMia At Estrella"	1		"S. Estrella Pkwy & Queen Creek Rd."	"Goodyear"	"85338"	629	58	4/1/10 0:00:00	12/31/11 0:00:00			1/1/11 0:00:00	0	"EFL"	1	"NA"	" "
+"JCH01"	"JCHSER70SR"	"AVATAR-Sereno At Palm Valley"	1		"Mcdowell & Sarival"	"Goodyear"	"85359"	63	13	5/15/10 0:00:00	12/31/11 0:00:00			1/1/11 0:00:00	0	"EFL"	1	"NA"	"Hers70"
+"JLH01"	"JLHMOR"	"INACTIVE-Morada at Palm Valley"	0	"Palm Valley"	"Monte Vista & Sarival Rd."	"Goodyear"	"85340"	68	0	3/1/08 0:00:00	3/1/10 0:00:00				0	"DRW"	0		"INACTIVE"
+"JLH01"	"JLHSER"	"INACTIVE-Sereno at Palm Valley"	0	"Palm Valley"	"Monte Vista & Sarival Rd."	"Goodyear"	"85340"	68	0	3/1/08 0:00:00	3/1/10 0:00:00				0	"DRW"	0		"INACTIVE"
+"KBH01"	"KBHMES70"	"Mesquite Cove"	1		"Bell Rd. & 184th Dr."	"Surprise"	"85374"	12	0	8/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"KEY01"	"KEYIRO"	"INACTIVE-Ironwood Village"	0		"Peart Road and McMurray Boulvard"	"Casa Grande"		92	20	8/15/06 0:00:00	1/1/10 0:00:00				0	"DRW"	0
+"KEY01"	"KEYIRO1"	"INACTIVE-Ironwood Village"	0		"Peart Rd. & Mcmurray Blvd"	"Casa Grande"	"85222"	60	6	1/1/10 0:00:00	1/1/12 0:00:00				0	"DRW"	0	"NA"	" "
+"KEY01"	"KEYIRO70"	"Ironwood Village"	1		"Peart Rd & Mcmurray Blvd"	"Casa Grande"	"85222"	40	38	4/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"KEY01"	"KEYIRO70SR"	"Ironwood Village - solar option/not solar ready"	0		"Peart Rd & Mcmurray Blvd"	"Casa Grande"	"85222"	12	0	10/1/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"KHOV1"	"KHVAV70"	"Avalon At Verrado"	1	"Verrado"	"I-10 & Verrado Way"	"Buckeye"	"85396"	88	0	12/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"KHOV1"	"KHVAVV"	"Avalon at Verrado (plans 46,47,48,49)"	1	"Verrado"	"I-10 & Verrado Way"	"Buckeye"	"85396"	128	17	3/15/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	"Blah Blah Blah"
+"KHOV1"	"KHVEBS70"	"Estates At Blackstone"	1	"NA"	"Vistancia Blvd. & Lone Mtn Rd."	"Peoria"	"85383"	51	3	12/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"KHOV1"	"KHVENCSV70"	"Enclave @ Stetson Valley"	1	"Stetson Valley"	"55th Ave. & Happy Valley Rd."	"Phoenix"	"85083"	84	6	9/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"KHOV1"	"KHVEST"	"Estates At Blackstone"	1	"Blackstone At Vistancia"	"Vistancia Blvd & Lone Mountain Rd"	"Peoria"	"85383"	67	15	5/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"KHOV1"	"KHVREGCDS70"	"Regency @ Colina Del Sur"	1		"67th Ave & Jomax"	"Peoria"	"85383"	21	0	9/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"KHOV1"	"KHVREGEH70"	"Regency At Eagle Heights"	0	"NA"	"75th Ave & Rose Garden Ln."	"Glendale"	"85308"	68	0	12/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"KHOV1"	"KHVREH"	"Regency At Eagle Heights"	1	"NA"	"75th Ave & Rose Garden Ln"	"Glendale"	"85308"	68	0	12/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"KHOV1"	"KHVVCR"	"Vintage at Crossriver"	0		"123rd Ave. & Pinnacle Peak"	"Peoria"	"85375"	80	53	7/31/09 0:00:00	7/31/11 0:00:00				0	"Energy Inspectors"	0
+"KHOV1"	"KHVVHV70"	"Vintage At Happy Valley"	1		"47th Ave & Happy Valley Rd."	"Phoenix"	"85083"	35	14	4/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"KHOV1"	"KHVVIV"	"Vintage At Verrado (plans 41,42,43,45)"	1	"Verrado"	"I-10 And Verrado Way"	"Buckeye"	"85396"	100	21	3/15/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"KHOV1"	"KHVVMP"	"Vintage At Marley Park"	0	"Marley Park"	"Waddell Rd, W Of Bullard Ave."	"Surprise"	"85379"	56	19	3/15/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"KHOV1"	"KHVVV70"	"Vintage At Verrado"	1	"Verrado"	"I-10 & Verrado Way"	"Buckeye"	"85396"	100	2	12/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"TAM01"	"LAENT"	"La Entrada - Montecito in Estrella  100s"	1	"Estrella Mountain Ranch"	"I-10 & Estrella Pkwy"	"Goodyear"	"85338"	75	19	5/15/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"TAM01"	"LAMIR"	"La Mirada - Montecito in Estrella  700s"	1	"Estrella Mountain Ranch"	"I-10 & Estrella Pkwy"	"Goodyear"	"85338"	111	21	5/15/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"EQU01"	"LAPIED"	"INACTIVE-La Piedras Townhomes"	0		"20th St. & Beardsley Rd."	"Phoenix"	"85024"	59	0	5/1/08 0:00:00	5/1/10 0:00:00				0	"DRW"	0		"INACTIVE"
+"LEN01"	"LENASA70"	"Asante"	1		"303 Loop & Grande"	"Surprise"	"85387"	21	0	5/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"LEN01"	"LENELM70"	"Estates At Lone Mountain"	1		"56th St & Lone Mountain"	"Phoenix"	"85331"	184	0	5/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"LEN01"	"LENEST70"	"Estates At Stetson Valley"	1	"Stetson Valley"	"Happy Valley Rd & 50th Ave"	"Phoenix"	"85083"	62	0	5/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"LEN01"	"LENHOR70"	"Horizon At Stetson Valley"	1	"Stetson Valley"	"Happy Valley Rd & 50th Ave"	"Phoenix"	"85083"	34	0	5/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"LEN01"	"LENSIG70"	"Signatures At Stetson Valley"	1	"Stetson Valley"	"Happy Valley Rd. & 50th Ave."	"Phoenix"	"85083"	23	2	5/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"LEN01"	"LENVIS70"	"Vision At Stetson Valley"	1	"Stetson Valley"	"Happy Valley Rd & 50th Ave."	"Phoenix"	"85083"	65	0	5/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"LIB01"	"LIBTUN"	"INACTIVE-Tunlii"	0		"HWY 267/OLD HWY 179"	"CAMP VERDE"	"86322"	15	15	9/1/08 0:00:00	9/1/10 0:00:00				0	"E3"	0		"CLOSED OUT"
+"MAR01"	"MARCRE"	"Crescent Views"	1		"Pyramid Pk Pkwy & Sonoran Mtn Ranch Rd"	"Peoria"	"85383"	56	12	2/15/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARCREsr"	"Crescent Views At Sonoran Mountain Ranch"	0		"Pyramid Peak Pkwy & Sonoran Mountain Ranch Rd."	"Peoria"	"85383"	56	1	2/15/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARCREsr70"	"Crescent Views"	1		"Pyramid Peak & Sonoran Mtn. Ranch Rd."	"Peoria"	"85383"	29	4	12/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	1	"NA"	" "
+"MAR01"	"MARDES"	"Desert Pass At Sonoran Foothills"	1		"27th Dr. Carefree Highway"	"Phoenix"	"85085"	12	2	2/15/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARDESsr"	"Desert Pass At Sonoran Foothills"	0		"27th Dr. South Of Carefree Hwy"	"Phoenix"	"85045"	12	0	2/15/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARMED"	"Medina At Estrella"	1	"Estrella Mountain Ranch"	"Calistoga & S. 102nd Dr."	"Goodyear"	"85338"	77	11	6/15/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARMED70"	"Medina @ Estrella"	1		"Calistoga & S. 102nd Dr."	"Goodyear"	"85338"	50	0	12/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARMEDSR"	"Medina At Estrella"	1	"Estrella Mountain Ranch"	"Calistoga & S. 102nd Dr."	"Goodyear"	"85338"	77	9	6/15/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARMOR"	"Morada At Palm Valley"	1		"Mcdowell Rd & Sarival Ave."	"Goodyear"	"85395"	3	1	6/15/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARMORsr"	"Morada At Palm Valley"	1		"Mcdowell Rd. & Sarival Ave"	"Goodyear"	"85395"	60	16	6/15/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARMORsr70"	"Morada @ Palm Valley"	1		"Mcdowell & Sarival Ave."	"Goodyear"	"85395"	36	2	12/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MAR01"	"MARVER70"	"Maracay At Verrado"	1	"Verrado"	"I-10 & Verrado Way"	"Buckeye"	"85396"	51	0	12/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"MAT01"	"MATCAN70"	"Mattamy Homes At Canyon Trails"	1		"Cotton Ln. & Pima St."	"Goodyear"	"85338"	58	4	3/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"MAT01"	"MATHMP70"	"Mattamy Homes At Marley Park"	1	"Marley Park"	"Reems & Larkspur"	"Surprise"	"85379"	42	13	12/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"MCH01"	"MCHGOS"	"Ghost Hollow Estates"	1		"Pinal Ave. & Ghost Ranch Rd."	"Casa Grande"	"85222"	130	3	1/15/09 0:00:00	1/15/11 0:00:00				0	"Energy Inspectors"	0
+"MER01"	"MERARV"	"Aria At Vistancia"	1	"Vistancia"	"Westland Rd."	"Peoria"	"85383"	62	0	12/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MER01"	"MERARV70"	"Aria At Vistancia"	1	"Vistancia"	"Westland Rd"	"Peoria"	"85383"	62	0	12/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MER01"	"MERCIB70SR"	"Cibola Vista"	1		"Lake Pleasant Pkwy & Jomax Rd"	"Peoria"	"85383"	51	48	7/21/10 0:00:00	12/31/11 0:00:00			1/1/11 0:00:00	0	"DRW"	1	"NA"	" "
+"MER01"	"MERNIC"	"Nicholas Point -50s"	1		"Ray Rd & Mcqueen Rd"	"Chandler"	"85225"	15	0	2/1/10 0:00:00	2/1/12 0:00:00				0	"DRW"	0	"NA"	" "
+"MER01"	"MERNICPT70"	"Nicholas Point"	1	"NA"	"Ray & Mcqueen"	"Chandler"	"85225"	44	25	9/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MER01"	"MERNICsr"	"Nicholas Point"	0		"Ray & Mcqueen"	"Chandler"	"85225"	80	51	2/1/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MER01"	"MERRIVSR"	"Riverstone Estates"	1		"78th Ave & Deer Valley Rd"	"Peoria"	"85382"	30	29	4/1/10 0:00:00	12/31/11 0:00:00				0	"DRW"	1	"NA"	" "
+"MER01"	"MERSONSR"	"Sonoran Foothills"	1		"Dove Valley Rd & 16th Ave"	"Phoenix"	"85085"	37	36	4/1/10 0:00:00	12/31/11 0:00:00			1/1/11 0:00:00	0	"DRW"	1	"NA"	" "
+"MER02"	"MERSUN"	"Sundance Active Adult"	1	"Sundance"	"Yuma & Watson Rd."	"Buckeye"	"85326"	255	22	9/15/08 0:00:00	12/31/11 0:00:00				0	"DRW"	0
+"MER02"	"MERSUNSR"	"Sundance Active Adult"	1		"Watson & Yuma"	"Buckeye"	"85326"	140	12	9/15/10 0:00:00	12/31/11 0:00:00				0	"DRW"	1	"NA"	" "
+"MER01"	"MERVAL"	"Valley Vista (Meritage)"	1		"Norterra Pkwy & Jomax"	"Phoenix"	"85085"	22	19	8/1/09 0:00:00	8/1/11 0:00:00				0	"DRW"	0
+"MER01"	"MERVALsr"	"Valley Vista"	0		"19th Ave & Jomax"	"Phoenix"	"85085"	15	13	9/1/09 0:00:00	9/1/11 0:00:00				0	"DRW"	0	"NA"	" "
+"MER01"	"MONACA"	"INACTIVE-Acacia at Verrado"	0	"Verrado"	"Verrado Way"	"Buckeye"	"85326"	68	17	1/1/07 0:00:00	12/31/07 0:00:00				0	"EFL"	0		"CLOSED OUT"
+"MONA1"	"MONAPRSR"	"Privada"	0		"Alma School N Of Jomax"	"Scottsdale"	"85262"	1	1	8/1/09 0:00:00	8/1/11 0:00:00				0	"EFL"	1	"NA"	" "
+"MON01"	"MONBEL"	"INACTIVE-Belmont Pointe"	0		"14 Street and Belmont Avenue"	"Phoenix"	"85020"	11	0	11/8/06 0:00:00	12/31/07 0:00:00				0	"Energy Inspectors"	0
+"MER01"	"MONCOU"	"INACTIVE-Monterey Court at Verrado"	0	"Verrado"	"Verrado Way"	"Buckeye"	"85326"	189	10	1/1/07 0:00:00	12/31/07 0:00:00				0	"EFL"	0		"CLOSED OUT"
+"MON01"	"MONHOR"	"INACTIVE-Horseman's Park Estates"	0		"98 Way & McDowell Mountain Ranch Road"	"Scottsdale"	"85260"	8	0	11/8/06 0:00:00	12/31/07 0:00:00				0	"Energy Inspectors"	0
+"MER01"	"MONMBV70SR"	"Monterey at Mirabel Village"	1		"Cave Creek Rd. & Lone Mountain Pkwy"	"Scottsdale"	"85262"	40	6	8/1/09 0:00:00	12/31/11 0:00:00			1/1/11 0:00:00	0	"DRW"	1
+"MER01"	"MONMIR"	"INACTIVE-Monterey at Mirabel Village"	0		"Cave Creek Rd & Lone Mountain Parkway"	"Scottsdale"		76	26	1/1/07 0:00:00	1/1/10 0:00:00				0	"EFL"	0
+"MER01"	"MONSEB"	"Sera Brisa (Monterey)"	0		"94th St. & Bell Rd."	"Scottsdale"	"85255"	13	7	8/1/09 0:00:00	8/1/11 0:00:00				0	"DRW"	0
+"MER01"	"MONSER"	"INACTIVE-Sera Brisa"	0		"94 Street North of Bell Road"	"Scottsdale"		48	24	1/1/07 0:00:00	1/1/10 0:00:00				0	"EFL"	0
+"MER01"	"MONVER"	"INACTIVE-Monterey at Verrado"	0	"Verrado"	"Verrado Way & Western Dr."	"Buckeye"	"85396"	49	33	8/1/09 0:00:00	8/1/11 0:00:00			10/1/10 0:00:00	63	"DRW"	0
+"MER01"	"MONVER70SR"	"Monterrey At Verrado"	1	"Verrado"	"Verrado Way & Thomas Rd"	"Buckeye"	"85396"	85	52	8/1/09 0:00:00	12/31/11 0:00:00			1/1/11 0:00:00	0	"DRW"	1	"NA"	" "
+"MER01"	"MONVERSR"	"Monterrey At Verrado"	0	"Verrado"	"Verrado Way & Thomas Rd"	"Buckeye"	"85396"	85	4	8/1/09 0:00:00	12/31/11 0:00:00				0	"DRW"	1	"NA"
+"NIC01"	"NICMCR"	"INACTIVE-McCartney Ranch"	0	"McCartney Ranch"	"Trekell & Rodeo"	"Casa Grande"	"85222"	120	0	10/1/07 0:00:00	10/1/09 0:00:00				0	"Energy Inspectors"	0	"3 & 4"	"REMOVED FROM AD"
+"NIC01"	"NICPAL"	"INACTIVE-Palisades at Estrella"	0	"Estrella Mountain Ranch"	"San Miguel & Porter"	"Goodyear"	"85338"	14	0	10/1/07 0:00:00	10/1/09 0:00:00				0	"Energy Inspectors"	0	"59"	"REMOVED FROM AD"
+"NIC01"	"NICVAL"	"INACTIVE-Valencia at Montecito"	0	"Estrella Mountain Ranch"	"S. Estrella Pkwy & Williams Field Rd."	"Goodyear"	"85338"	72	0	10/1/07 0:00:00	10/1/09 0:00:00				0	"Energy Inspectors"	0	"7.8 & 7.9"	"REMOVED FROM AD 7.8- lots 1-27; 7.9 - lots 1-45"
+"PAL01"	"PALCBI"	"INACTIVE-Palomino Community"	0		"Greenway Rd. & Cave Creek Rd."	"Phoenix"	"85032"	6	6	3/1/09 0:00:00	3/1/11 0:00:00				0	"Energy Inspectors"	0
+"PUL01"	"PDRETE"	"INACTIVE-DR DW-Eternal  (Cluster)"	0	"Fireside at Desert Ridge"	"40TH ST & DEER VALLEY"	"PHOENIX"	"85050"	75	48	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PDRETE1"	"INACTIVE-Desert Ridge-DW/eternal/cluster"	0	"Fireside at Desert Ridge"	"40th St & Deer Valley"	"Phoenix"	"85050"	27	31	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PDRETE70"	"Fireside Desert Ridge/cluster/dw/eternal"	1		"40th St. & Deer Valley Rd."	"Phoenix"	"85050"	69	26	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PDRINF"	"INACTIVE-DR DW-Infinity (Triplex)"	0	"Fireside at Desert Ridge"	"40TH ST & DEER VALLEY"	"PHOENIX"	"85050"	56	56	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0	"dba Del Webb"	"INACTIVE"
+"PUL01"	"PDRMAJ"	"INACTIVE-DR DW-Majesty (5500'S)"	0	"Fireside at Desert Ridge"	"40TH ST & DEER VALLEY"	"PHOENIX"	"85050"	75	22	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PDRMAJ1"	"Desert Ridge -DW/majesty/5500s"	1	"Fireside at Desert Ridge"	"40th St & Deer Valley"	"Phoenix"	"85050"	55	21	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PDRMON"	"INACTIVE-DR DW-Monument (4500'S)"	0	"Fireside at Desert Ridge"	"40TH ST & DEER VALLEY"	"PHOENIX"	"85050"	163	35	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PDRMON1"	"Desert Ridge-DW/monument/4500s"	1	"Fireside at Desert Ridge"	"40th St & Deer Valley"	"Phoenix"	"85050"	135	40	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PDRSPL"	"INACTIVE-DR DW-Splendor (3500'S)"	0	"Fireside at Desert Ridge"	"40TH ST & DEER VALLEY"	"PHOENIX"	"85050"	198	61	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PDRSPL1"	"Desert Ridge - DW/splendor/3500s"	0	"Fireside at Desert Ridge"	"40th St & Deer Valley"	"Phoenix"	"85050"	144	29	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PDRSPL70"	"Fireside Desert Ridge/3500s/DW/Splendor"	1		"40th St. & Deer Valley Rd."	"Phoenix"	"85050"	126	11	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"BEA01"	"PERSUP70SRS"	"Peralta At Surprise Farms"	1		"Nw Of Citrus & Greenway"	"Surprise"	"85388"	102	6	12/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	1	"NA"	" "
+"PER01"	"PERTER"	"Terra Bella"	1		"Ave. 5 1/2 E & 40th St."	"Yuma"	"85365"	104	5	4/21/08 0:00:00	12/31/11 0:00:00			4/21/10 0:00:00	0	"Energy Inspectors"	0
+"PUL01"	"PULACC"	"INACTIVE-AMR DW-Unit 19 - Acclaim"	0	"Anthem at Merrill Ranch/ Del Webb Parkside"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	83	29	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULACC1"	"AMR-DW/unit 19/acclaim"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	54	0	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULADO"	"Festival Foothills - Adobe"	1	"Festival Ranch"	"Canyon Springs Blvd & Desert Vista Blvd"	"Buckeye"	"85374"	303	166	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0		"Added Adobe - 6/13/07"
+"PUL01"	"PULAMB"	"INACTIVE-AMR Unit 27 -Belmont/First Choice (3500s)"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch"	"Florence"	"85232"	125	68	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"Pulte Parkside"	"Merrill Ranch Pulte Parkside 3500"
+"PUL01"	"PULAMB1"	"AMR Unit 27/Belmont/FC 3500s"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	60	36	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULAMB70"	"AMR-FC/3500s"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	81	20	3/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULARG"	"INA-Anthem - DW-Arroyo Grande 6500s (Dream Series)"	0	"Anthem"	"NEW RIVER RD & CIRCLE MOUNTAIN DR"	"ANTHEM"	"85087"	101	27	11/1/07 0:00:00	11/1/09 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULARG1"	"INACTIVE-Anthem-Arroyo Grande/dream/6500s/unit 81"	0	"Anthem"	"New River Rd & Circle Mountain Dr"	"Phoenix"	"85087"	79	12	11/1/09 0:00:00	11/1/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULARG70"	"Anthem Arroyo Grand/6500s/unit 81/dream"	1	"Anthem"	"New River Rd. & Circle Mountain Dr."	"Phoenix"	"85087"	59	23	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULASP"	"Anthem - Aspire Series (unit 81 - 5500 series)"	1	"Anthem"	"Circle Mountain Dr. & New River Rd."	"Phoenix"	"85087"	85	76	6/15/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULBRI"	"INACTIVE-Verrado - Brighton Place"	0	"Verrado"	"Verrado Way and I-10"	"Buckeye"	"85326"	94	97	12/1/06 0:00:00	3/1/10 0:00:00				0	"EFL"	0		"CLOSING OUT"
+"PUL02"	"PULCAB"	"Cabrillo Point"	1		"73rd St. & Grandview"	"Peoria"	"85382"	69	33	3/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULCAB70"	"Cabrillo Point"	1		"73rd St & Grandview"	"Peoria"	"85382"	32	2	4/1/10 0:00:00	4/1/12 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULCAC70"	"AMR ~ Parkside ~ Cactus ~ 4000"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Parkway"	"Florence"	"85132"	100	2	11/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULCAN"	"INACTIVE-Canyon Trails"	0	"Canyon Trails"	"Canyon Springs Blvd & Yuma Road"	"Goodyear"	"85338"	121	116	12/1/06 0:00:00	3/1/10 0:00:00				0	"EFL"	0	"4S Parcel A and F"	"CLOSED OUT"
+"PUL01"	"PULCAN70"	"AMR ~ Parkside ~ Canyon ~ 5000"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	100	1	11/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULCAT"	"INACTIVE-Corte Bella - Catelina"	0	"Corte Bella"	"Pedarro Drive & Mission Drive"	"Sun City West"	"85375"	68	60	12/1/06 0:00:00	12/31/07 0:00:00				0	"EFL"	0		"CLOSED OUT"
+"PUL01"	"PULCEL"	"Anthem - Celebrate series (unit 81 - 8000 series)"	1	"Anthem"	"Circle Mountain Dr. & New River Rd."	"Phoenix"	"85087"	48	3	6/15/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULCLA"	"Sun City Festival - DW - Classics"	0	"Festival Ranch"	"Canyon Springs Blvd & Bell Road"	"Buckeye"	"85374"	2450	375	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULCLA70SR"	"AMR-Classics"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	51	13	3/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"PUL02"	"PULCNY"	"INACTIVE-White Tank Foothills - Canyon"	0	"White Tank Foothills"	"Las Palmaritas Drive & Olive Avenue"	"Waddell"	"85355"	106	96	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULCNY70"	"White Tank Foothills-Canyon/5400s"	1	"White Tank Foothills"	"Las Palmaritas Dr. & Olive Ave."	"Phoenix"	"85355"	11	7	3/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULCOM"	"INACTIVE-White Tank Foothills - Compass"	0	"White Tank Foothills"	"Las Palmaritas Drive & Olive Avenue"	"Waddell"	"85355"	190	91	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULCOM70"	"White Tank Foothills-Compass/4500s"	1	"White Tank Foothills"	"Las Palmaritas Dr. & Olive Ave."	"Phoenix"	"85355"	55	3	3/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULCOT"	"Sun City Festival - DW - Cottage"	0	"Festival Ranch"	"Canyon Springs Blvd & Bell Road"	"Buckeye"	"85374"	951	207	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULCOT70SR"	"AMR-Cottages"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	28	10	3/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"PUL01"	"PULCTR"	"INACTIVE-AMR Unit 39 - Cantera/Andover/FC (4500s)"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch"	"Florence"	"85232"	55	32	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"Pulte Parkside"	"4500s"
+"PUL01"	"PULCTR1"	"AMR Unit 39/Cantera/Andover/FC 4500s"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	24	16	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULCTR70"	"AMR-Pulte 4500s"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	54	2	3/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULDES"	"INACTIVE-AMR Unit 23 - Destiny/FC 3500s"	0	"Anthem at Merrill Ranch"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	166	139	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"First Choice"
+"PUL01"	"PULDES1"	"INACTIVE-AMR Unit 23/Destiny/FC 3500s"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	27	28	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULDIS"	"INACTIVE-White Tank Foothills - Discovery"	0	"White Tank Foothills"	"Las Palmaritas Drive & Olive Avenue"	"Waddell"	"85355"	108	71	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULDIS70"	"White Tank Foothills-Discovery/6500s"	1	"White Tank Foothills"	"Las Palmaritas Dr. & Olive Ave."	"Phoenix"	"85355"	26	13	3/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULDSC"	"INACTIVE-AMR Unit 12 - Discovery"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	88	0	1/1/08 0:00:00	1/1/10 0:00:00				0	"EFL"	0
+"PUL01"	"PULDSC1"	"AMR-Unit 12/discovery"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	88	0	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL03"	"PULDVY"	"Red Rock - Discovery Series"	0	"Red Rock"	"I-10 & Red Rock"	"Red Rock"	"85245"	322	67	5/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"3500S"
+"PUL02"	"PULEST"	"Sun City Festival - DW - Estates"	0	"Festival Ranch"	"Canyon Springs Blvd & Bell Road"	"Buckeye"	"85374"	863	102	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULEST70SR"	"AMR-Estates"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	10	1	3/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"PUL02"	"PULFC1"	"Sun City Festival - FC Festival Foothills"	0	"Festival Ranch"	"Canyon Springs Blvd. & Desert Vista Blvd."	"Buckeye"	"85374"	84	0	6/17/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULFOO"	"Vista de Montana - Foothills / 48'S"	1		"Woodlands Ave & Van Buren Street"	"Buckeye"	"85326"	890	179	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL01"	"PULHER"	"INACT- DW-Unit 13 - Heritage/Celebration, 3000's"	0	"Anthem at Merrill Ranch/ Del Webb Parkside"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	119	93	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULHER1"	"AMR-DW/unit13/heritage/celebration/3000s"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	29	0	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULHOL"	"Sun City Festival - DW-Holiday"	0	"Festival Ranch"	"Canyon Springs Blvd. & Bell Rd."	"Buckeye"	"85374"	172	37	6/17/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULHOL70SR"	"AMR-Holiday Series"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	17	3	3/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"PUL03"	"PULHOM"	"INACTIVE-Red Rock - Homestead"	0	"Red Rock"	"I-10 & Red Rock"	"Red Rock"	"85245"	144	62	6/15/09 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"2500s"
+"PUL03"	"PULHOM70"	"Red Rock 2400s/Homestead Series"	1		"I-10 & Red Rock"	"Red Rock"	"85245"	81	4	5/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULINS"	"INACTIVE-AMR DW-Unit 21 - Inspiration/Radiance"	0	"Anthem at Merrill Ranch/ Del Webb Parkside"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	91	27	7/1/06 0:00:00	12/31/07 0:00:00				0	"EFL"	0	"dba Del Webb"	"CLOSED"
+"PUL01"	"PULJUB"	"INACTIVE-AMR DW-Unit 11 - Jubilation/Premier"	0	"Anthem at Merrill Ranch"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	129	126	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULJUB1"	"AMR DW/Unit 11/Jubilation/Premier"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	6	9	1/1/10 0:00:00	1/1/12 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULLEG"	"INACTIVE-AMR DW-Unit 6 - Legacy/Cottages"	0	"Anthem at Merrill Ranch"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	112	97	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULLEG1"	"AMR-DW/Unit 6/Legacy/Cottages"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	19	6	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL03"	"PULLGD"	"INACTIVE-Red Rock - Legend Series"	0	"Red Rock"	"I-10 & Red Rock"	"Red Rock"	"85245"	214	74	5/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"4500s"
+"PUL03"	"PULLGD70"	"Red Rock - 4500s/Legend Series"	1		"I-10 & Red Rock"	"Red Rock"	"85245"	150	11	5/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULLIB"	"INACTIVE-AMR Unit 14 - Liberty"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	107	0	1/1/08 0:00:00	1/1/10 0:00:00				0	"EFL"	0
+"PUL01"	"PULLIB1"	"AMR-Unit 14/liberty"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	107	0	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULLON"	"INACTIVE-Lone Mountain"	1	"Lone Mountain"	"56th St. & Lone Mountain Rd."	"Scottsdale"	"85260"	84	13	12/1/08 0:00:00	12/1/10 0:00:00				0	"EFL"	0
+"PUL01"	"PULLON70"	"Lone Mountain"	1		"56th St. & Lone Mountain Rd."	"Scottsdale"	"85260"	68	7	12/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULMAJ"	"INACTIVE-Fireside Sienna Hills-DW - Majesty Series"	0		"Verrado Way and I-10"	"Buckeye"	"85326"	261	0	12/1/06 0:00:00	12/31/07 0:00:00				0	"EFL"	0	"dba Del Webb"	"PENDING 2009"
+"PUL02"	"PULMIR"	"INACTIVE-Corte Bella - Miramar"	0	"Corte Bella"	"Pedarro Drive & Mission Drive"	"Sun City West"	"85375"	45	38	12/1/06 0:00:00	12/31/07 0:00:00				0	"EFL"	0		"CLOSED OUT"
+"PUL02"	"PULMNU"	"Stetson Monument 3500s"	0	"Stetson Valley"	"Happy Valley Rd & 51st Ave"	"Glendale"	"85310"	61	7	3/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULMNU70"	"Stetson Monument Series 3500s"	1	"Stetson Valley"	"Happy Valley Rd & 51st Ave"	"Glendale"	"85310"	38	20	3/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULMOD"	"INACTIVE-AMR Model Home Park/Unit 2/Holiday series"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	34	12	1/1/08 0:00:00	1/1/10 0:00:00				0	"EFL"	0
+"PUL01"	"PULMOD1"	"AMR-Unit 2/holiday Series/model Home Park"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	22	6	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULMON"	"INACTIVEFireside Sienna Hills-DW - Monument Series"	0		"Verrado Way and I-10"	"Buckeye"	"85326"	338	0	12/1/06 0:00:00	12/31/07 0:00:00				0	"EFL"	0	"dba Del Webb"	"PENDING 2009"
+"PUL01"	"PULNOL"	"INACTIVE-Northgate Ledgestone"	0		"Grandview Road and 19 Avenue"	"Phoenix"	"85023"	249	220	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0		"Bldr List has 3500"
+"PUL01"	"PULNOL1"	"Northgate Ledgestone"	1		"Grandview Rd. & 19th Ave"	"Phoenix"	"85023"	31	15	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULNOR"	"INACTIVE-Northgate Ridgerock"	0		"Grandview Road and 19 Avenue"	"Phoenix"	"85023"	276	164	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0		"Bldr List has Cluster"
+"PUL01"	"PULNOR1"	"INACTIVE-Northgate Ridgerock"	0		"Grandview Rd & 19th Ave"	"Phoenix"	"85023"	120	15	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULNOR70"	"Northgate - Ridgerock"	1		"Grandview Rd. & 19th Ave."	"Phoenix"	"85023"	42	20	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULOVR"	"INACTIVE-AMR DW-Unit 4 - Overlook/Classics/5000's"	0	"Anthem at Merrill Ranch"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	140	74	7/1/06 0:00:00	12/31/07 0:00:00				0	"EFL"	0	"dba Del Webb"	"CLOSED"
+"PUL02"	"PULPEA"	"Festival Foothills - Peak"	1	"Festival Ranch"	"Canyon Springs Blvd & Desert Vista Blvd"	"Buckeye"	"85374"	203	47	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0		"Changed name from Festival Foothills - Cedar Creek Series - 6/13/07"
+"PUL02"	"PULPIN"	"Vista De Montana - Pinnacles / 58'S"	1		"Woodlands Ave & Van Buren Street"	"Buckeye"	"85326"	210	65	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULPIN70"	"Vista De Montana - HERS 70 - Pinnacles & Foothills"	1		"Woodlands Ave & Van Buren St"	"Buckeye"	"85326"	67	65	4/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULPRE"	"Sun City Festival - DW- Premiers"	0	"Festival Ranch"	"Canyon Springs Blvd & Bell Road"	"Buckeye"	"85374"	2639	334	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULPRE70SR"	"AMR-Premiers"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	42	10	3/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"PUL02"	"PULPRO"	"Stetson Prospector / 5000's"	1	"Stetson Valley"	"Happy Valley Road and 51 Avenue"	"Glendale"	"85310"	83	47	7/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0		"Added 6/19/07"
+"PUL02"	"PULPRS"	"INACTIVE-Corte Bella - Presidio"	0	"Corte Bella"	"Pedarro Drive & Mission Drive"	"Sun City West"	"85375"	52	20	12/1/06 0:00:00	12/31/07 0:00:00				0	"EFL"	0		"CLOSED OUT"
+"PUL01"	"PULREU"	"INACTIVE-AMR DW-Unit 8 - Reunion/Estates"	0	"Anthem at Merrill Ranch"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	91	28	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"dba Del Webb"	"CLOSED"
+"PUL01"	"PULREU1"	"AMR-DW/unit 8/reunion/estates"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	63	14	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULRID"	"Festival Foothills - Ridge"	1	"Festival Ranch"	"Canyon Springs Blvd & Desert Vista Blvd"	"Buckeye"	"85374"	424	62	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0		"Changed name from Festival Foothills - Oak Creek Series - 6/13/07"
+"PUL01"	"PULSAV"	"INACTIVE-AMR Savoy/Unit 29"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	86	0	1/1/08 0:00:00	1/1/10 0:00:00				0	"EFL"	0
+"PUL01"	"PULSAV1"	"AMR-Unit 29/savoy"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	86	0	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULSER"	"INACTIVE-AMR Unit 10 - Serenity"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"FLORENCE"	"85232"	31	0	1/1/08 0:00:00	1/1/10 0:00:00				0	"EFL"	0
+"PUL01"	"PULSER1"	"AMR-Unit 10/serenity"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	31	0	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULSMT"	"White Tank Foothills - Summit"	1	"White Tank Foothills"	"Las Palmaritas Drive & Olive Avenue"	"Waddell"	"85355"	95	102	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULSON"	"Festival Foothills - Sonoran"	1	"Festival Ranch"	"Canyon Springs Blvd & Desert Vista Blvd"	"Buckeye"	"85374"	336	97	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0		"Changed name from Festival Foothills - Phoenix Series - 6/13/07"
+"PUL02"	"PULSPL"	"INACTIVEFireside Sienna Hills-DW - Splendor Series"	0	"Verrado"	"Verrado Way and I-10"	"Buckeye"	"85326"	204	0	12/1/06 0:00:00	12/31/07 0:00:00				0	"EFL"	0	"dba Del Webb"	"PENDING 2009"
+"PUL02"	"PULSTC"	"INACTIVE-Stetson Centennial / 7000'S"	0	"Stetson Valley"	"Happy Valley Road 51 Avenue"	"Glendale"	"85310"	132	57	7/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0		"CLOSED OUT"
+"PUL02"	"PULSTD"	"Stetson Discovery / 6500'S"	1	"Stetson Valley"	"Happy Valley Road 51 Avenue"	"Glendale"	"85310"	154	58	7/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULSTH"	"Stetson Harmony / Cluster / 6-pack"	1	"Stetson Valley"	"Happy Valley Road 51 Avenue"	"Glendale"	"85310"	171	110	7/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULSTL"	"INACTIVE-Stetson Legend / 4000's"	0	"Stetson Valley"	"Happy Valley Road 51 Avenue"	"Glendale"	"85310"	121	60	7/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0		"CLOSED OUT"
+"PUL02"	"PULSTP"	"Stetson Pioneer / 5500's"	1	"Stetson Valley"	"Happy Valley Road 51 Avenue"	"Glendale"	"85310"	223	69	7/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL01"	"PULSTR"	"INA Stratford/Unit 54 (Holiday,Cottage,Classic, .."	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	101	24	1/1/08 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"Estates, Premier"
+"PUL01"	"PULSTR1"	"AMR-Unit 54/Stratford/Holiday/Cottages/Classics"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	84	58	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULSTT"	"Stetson Treasure / 4500's"	1	"Stetson Valley"	"Happy Valley Road and 51 Avenue"	"Glendale"	"85310"	238	126	7/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"PULSUM"	"INACTIVE-Verrado - Summerfield Point"	0	"Verrado"	"Verrado Way and I-10"	"Buckeye"	"85326"	61	40	12/1/06 0:00:00	3/1/10 0:00:00				0	"EFL"	0		"CLOSED OUT"
+"PUL01"	"PULTAP"	"INACTIVE-AMR DW-Unit 15 - Tapestry"	0	"Anthem at Merrill Ranch/ Del Webb Parkside"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	45	34	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"dba Del Webb"
+"PUL01"	"PULTAP1"	"AMR-DW/Unit 15/Tapestry/5400s"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	13	16	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULTAR"	"Tartesso"	1		"Sun Valley Parkway & WHY 10"	"Buckeye"	"85326"	147	85	12/1/06 0:00:00	3/1/10 0:00:00				0	"EFL"	0		"CLOSING OUT"
+"PUL02"	"PULTDR70"	"Tierra Del Rio"	1		"Happy Valley Rd & 107th Ave"	"Peoria"	"85383"	231	54	5/1/10 0:00:00	12/31/11 0:00:00			6/1/11 0:00:00	0	"EFL"	0	"TDR Parcel 6"	" adding three plans"
+"PUL01"	"PULTRA"	"INACTIVE-AMR Unit 25 - Tradition/FC 4000s"	0	"Anthem at Merrill Ranch"	"Hunt Highway and Merrill Ranch Pkwy"	"Florence"	"85232"	88	42	7/1/06 0:00:00	1/1/10 0:00:00				0	"EFL"	0	"First Choice"
+"PUL01"	"PULTRA1"	"AMR Unit 25/Tradition/FC 4000s"	0	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85232"	46	27	1/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL01"	"PULTRA70"	"AMR-FC/4000"	1	"Anthem at Merrill Ranch"	"Hunt Hwy & Merrill Ranch Pkwy"	"Florence"	"85132"	76	16	3/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"PUL02"	"PULTRL"	"White Tank Foothills - Trailhead"	1	"White Tank Foothills"	"Las Palmaritas Drive & Olive Avenue"	"Waddell"	"85355"	80	76	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"PUL02"	"REFSTA70"	"Centex Reflections/Stargazer -- Canyon Trails"	1		"Van Buren & Cotton Ln."	"Goodyear"	"85338"	31	6	4/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"BEA01"	"REGSUP70SRS"	"Regency At Surprise Farms"	1		"Nw Of Citrus & Greenway"	"Surprise"	"85388"	56	3	12/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	1	"NA"	" "
+"RES01"	"RESCON"	"Custom homes"	1		"Yavapai County - Prescott valley"	"Prescott"	"86302"	5	4	1/1/09 0:00:00	1/1/11 0:00:00				0	"E3"	0
+"RIC02"	"RICBEM70"	"Bennett At Estrella Mountain"	1	"Estrella Mountain Ranch"	"179th Ave & Ray Rd"	"Goodyear"	"85338"	92	7	3/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"RIC02"	"RICBMP70"	"Bennett At Marley Park"	1	"Marley Park"	"Waddell & Bullard"	"Surprise"	"85374"	56	0	3/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"RIC02"	"RICCPV70"	"Cottages At Palm Valley"	1		"W Mcdowell Rd & N 159th Ave"	"Goodyear"	"85395"	76	4	3/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"RIC01"	"RICCUS"	"INACTIVE-Custom Homes"	0	"Custom Homes"	"N. AZ"	"Williams"	"86046"	5	0	9/1/08 0:00:00	9/1/10 0:00:00				0	"E3"	0
+"RIC02"	"RICDAS70"	"Davis At Savannah"	1		"Perryville Rd & Camelback Rd."	"Litchfield Park"	"85351"	65	15	3/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"RIC02"	"RICDAV70"	"Davis At Verrado"	1	"Verrado"	"I-10 & Verrado Way"	"Buckeye"	"85396"	95	17	3/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"RIC02"	"RICTRA70"	"Tramonto"	1		"27th Ave & Carefree Hwy"	"Phoenix"	"85086"	55	5	3/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"ROB01"	"ROBPEB"	"PebbleCreek"	1	"PebbleCreek"	"N. Pebble Creek Pkwy & I-10"	"Goodyear"	"85338"	778	86	11/1/08 0:00:00	11/1/10 0:00:00				0	"EFL"	0
+"ROB01"	"ROBPEB70"	"Pebblecreek"	1	"Pebblecreek"	"N. Pebblecreek Pkwy & I-10"	"Goodyear"	"85338"	154	89	5/15/10 0:00:00	11/1/10 0:00:00				0	"EFL"	0	"NA"	" "
+"ROB01"	"ROBPEB70SR"	"Pebblecreek - 70SR"	1		"N. Pebblecreek Pkwy & I-10"	"Goodyear"	"85338"	503	29	12/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	1	"NA"	" "
+"ROB01"	"ROBPIN"	"Pinewood Fairway Condominiums"	0		"I-17 & Pinewood Blvd."	"Munds Park"	"86017"	8	8	11/1/10 0:00:00	12/31/11 0:00:00				0	"E3"	0	"NA"	" "
+"ROS01"	"ROSCAN"	"INACTIVE-Stone Canyon"	0	"Estrella Mountain Ranch"	"Estrella Parkway & Ray Road"	"Goodyear"	"85338"	67	0	12/1/06 0:00:00	12/31/07 0:00:00				0	"EFL"	0
+"ROS01"	"ROSDCR"	"Rosewood Homes at D.C. Ranch"	1	"DC Ranch"	"DESERT CAMP DR & THOMPSON PEAK PKWY"	"SCOTTSDALE"	"85255"	34	20	2/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"ROS01"	"ROSDCR70"	"Rosewood At Dc Ranch"	1	"DC Ranch"	"Desert Camp Dr & Thompson Peak Pkwy"	"Scottsdale"	"85255"	13	4	2/1/08 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"ROS01"	"ROSGAT"	"Stone Gate"	1	"Estrella Mountain Ranch"	"Estrella Parkway & Ray Road"	"Goodyear"	"85338"	54	37	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"ROS01"	"ROSGAT70SR"	"Stone Gate In Montecito At Estrella"	1	"Estrella Mountain Ranch"	"Calistoga Dr. & 182nd Ave"	"Goodyear"	"85338"	16	1	1/1/08 0:00:00	12/31/11 0:00:00			6/1/11 0:00:00	0	"EFL"	1	"NA"	"Solar Addendum - for SR"
+"ROS01"	"ROSPRO"	"Production Parcel G-3/A-30 -- Mountain Gate at Vis"	1	"Vistancia"	"137 Ave and Creosote"	"Peoria"	"85383"	65	48	12/1/06 0:00:00	12/31/11 0:00:00				0	"EFL"	0
+"ROS01"	"ROSPRO70SR"	"Mountain Gate At Vistancia"	1	"Vistancia"	"137th Ave & Creosote"	"Peoria"	"85383"	18	1	1/1/08 0:00:00	12/31/11 0:00:00			6/1/11 0:00:00	0	"EFL"	1	"NA"	" Solar Addendum - for SR"
+"MER01"	"SEDEL70SR"	"Sedella"	1		"Indian School Rd. & Citrus Rd."	"Goodyear"	"85338"	69	17	4/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	1	"NA"	" "
+"SHEA2"	"SHBRIWE70"	"Brighton @ Watson Estates"	1	"Watson Estates"	"Yuma & Watson"	"Buckeye"	"85326"	81	0	5/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"SHEA2"	"SHEENT"	"Entrada at Vistancia"	0	"Vistancia"	"Lone Mountain Parkway & Vistancia Blvd."	"Peoria"	"85383"	14	14	4/1/09 0:00:00	4/1/11 0:00:00				0	"DRW"	0	"A-1"
+"SHEA2"	"SHEGRA"	"Granite Ridge at Arroyo Mountain Estates"	1	"Arroyo Mountain Estates"	"Camelback & Jackrabbit"	"Litchfield Park"	"85340"	14	13	4/1/09 0:00:00	4/1/11 0:00:00				0	"DRW"	0
+"SHEA2"	"SHEMOU"	"Mountain Shadows at Arroyo Mountain Estates"	1	"Arroyo Mountain Estates"	"Camelback & Jackrabbit"	"Litchfield Park"	"85340"	57	14	4/1/09 0:00:00	4/1/11 0:00:00				0	"DRW"	0
+"SHEA2"	"SHEMOU70"	"Mountain Shadows at Arroyo Mountain Estates"	1	"Arroyo Mountain Estates"	"Camelback & Jackrabbit"	"Litchfield Park"	"85340"	35	18	7/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"SHEA2"	"SHEMVE"	"Mountain View Estates at Vistancia"	1	"Vistancia"	"Lone Mountain Parkway & Vistancia Blvd."	"Peoria"	"85383"	32	30	4/1/09 0:00:00	4/1/11 0:00:00				0	"DRW"	0	"A-9"
+"SHEA1"	"SHETRI"	"INACTIVE-AA - Trilogy at Vistancia"	0	"Vistancia"	"VISTANCIA BLVD & TRILOGY BLVD"	"PEORIA"	"85383"	1000	280	12/15/07 0:00:00	12/15/09 0:00:00				0	"DRW"	0
+"SHEA1"	"SHETRI2"	"Trilogy At Vistancia"	1	"Vistancia"	"Vistancia Blvd & Trilogy Blvd"	"Peoria"	"85383"	748	177	12/15/09 0:00:00	12/15/11 0:00:00				0	"DRW"	0	"NA"	" "
+"SHEA1"	"SHETRI270"	"Trilogy"	1	"Vistancia"	"Vistancia Blvd. & Trilogy Blvd"	"Peoria"	"85383"	140	0	7/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"SHEA1"	"SHETRISR"	"INACTIVE - Trilogy At Vistancia"	0	"Vistancia"	"Vistancia Blvd & Trilogy Blvd"	"Peoria"	"85383"	132	77	7/1/09 0:00:00	12/15/09 0:00:00				0	"EFL"	0	"NA"	" Solar Addendum"
+"SHEA2"	"SHEVLP70"	"Village At Litchfield Park"	1		"Park Avenue & Wigwam Blvd"	"Litchfield Park"	"85340"	67	20	11/1/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"SHEA2"	"SHEVLP70SR"	"Village At Litchfield Park"	1		"Park Avenue & Wigwam Blvd"	"Litchfield Park"	"85340"	67	2	11/1/10 0:00:00	12/31/11 0:00:00				0	"DRW"	1	"NA"
+"SHEA2"	"SHKENWE70"	"Kensington @ Watson Estates"	1	"Watson Estates"	"W. Yuma Rd & S. Watson Rd."	"Buckeye"	"85326"	67	0	5/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"SHEA2"	"SPCANT"	"Sierra Point At Canyon Trails"	1		"Lower Buckeye Rd & Canyon Trails Blvd"	"Goodyear"	"85338"	26	7	7/1/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"SPH01"	"SPHCGP"	"INACTIVE-The Canyons at Granite Park"	0		"HWY 89 & TWISTED TRAIL"	"PRESCOTT"	"86301"	24	4	10/1/07 0:00:00	10/1/09 0:00:00				0	"E3"	0
+"SPH01"	"SPHCGP70"	"Canyons At Granite Park"	1		"Hwy 89 & Twisted Trail"	"Prescott"	"86301"	21	1	10/1/09 0:00:00	10/1/11 0:00:00			2/1/11 0:00:00	0	"E3"	0	"NA"	" "
+"STA01"	"STABHV70"	"Blue Horizon Villages"	1		"Jackrabbit Rd. & Yuma Rd."	"Buckeye"	"85326"	112	18	6/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"1&2"	" "
+"STA01"	"STACAT70"	"Canyon Trails 4500/5000"	1		"Yuma Rd. & Cotton Ln."	"Goodyear"	"85326"	12	5	2/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"STA01"	"STACOR70"	"Cortessa"	1		"Olive Ave & Citrus Rd."	"Waddell"	"85355"	72	14	2/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"STA01"	"STAPAL70"	"Palm Valley"	1	"Palm Valley"	"Indian School & Litchfield Rd."	"Goodyear"	"85395"	55	7	3/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"SUN01"	"SUNCOQ"	"Coquito Trails"	0		"Indian School & N Falcon  Drive"	"Goodyear"	"85338"	5	0	4/1/07 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0	"10"
+"SUN01"	"SUNCOV"	"Covina - Palm Valley Phase VIII"	0	"Palm Valley"	"McDowell & Sarival"	"Goodyear"	"85338"	139	29	2/1/07 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0
+"SUN01"	"SUNKIN"	"Kingali Way"	0		"Indian School & Pebble Creek Road"	"Goodyear"	"85338"	47	0	4/1/07 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0	"18 and 19"
+"MER01"	"SUNRAN70SR"	"Sunset Ranch"	1		"Lake Pleasant Pkwy & Williams Rd."	"Peoria"	"85383"	35	26	4/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	1	"NA"	" "
+"TDG03"	"SUNTER"	"Sunset Terrace At The View"	1		"26th St & Sunset Terrace Blvd."	"Yuma"	"85365"	23	1	6/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"TDG03"	"SUNTERSR"	"Sunset Terrace At The View"	1		"26th St. & Sunset Terrace Blvd."	"Yuma"	"85365"	45	0	6/1/10 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	1	"NA"	" "
+"TDG03"	"SUNTERSR70"	"Sunset Terrace @ The View"	1		"26th And Sunset Terrace Blvd."	"Yuma"	"85365"	88	5	6/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" Subdivision Hers 70 Added"
+"TAL01"	"TALBUC"	"Buckeye Ranch"	0		"355 Avenue and Buckeye Road"	"Buckeye"		45	7	8/7/06 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0
+"TAL01"	"TALRAN"	"Ranchettes"	0		"353 Avenue and Lincoln"	"Buckeye"		24	1	8/7/06 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0
+"TAL01"	"TALSUN"	"Sun Valley Ranch"	0		"299 Avenue and Roosevelt Street"	"Buckeye"		32	10	8/7/06 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0
+"TDG01"	"TDGARA"	"INACTIVE-Araby Crossing"	0		"32nd St."	" Yuma"	"85365"	198	0	1/15/09 0:00:00	1/15/11 0:00:00				0	"Energy Inspectors"	0		"DROPPED"
+"TDG01"	"TDGARR"	"INACTIVE-Arroyo de Fortuna"	0		"44th St."	"Yuma"	"85367"	123	0	1/15/09 0:00:00	1/15/11 0:00:00				0	"Energy Inspectors"	0		"DROPPED"
+"TDG01"	"TDGEST"	"INACTIVE-Estrella #3"	0		"Ave 11 1/2 E. & County 10th St."	"Yuma"	"85367"	156	0	1/15/09 0:00:00	1/15/11 0:00:00				0	"Energy Inspectors"	0		"DROPPED"
+"TDG02"	"TDGSUN"	"INACTIVE-Sunset Terrace"	0		"26th St. & Sunset Terrace Blvd."	"Yuma"	"85367"	113	0	1/15/09 0:00:00	1/15/11 0:00:00				0	"Energy Inspectors"	0		"DROPPED"
+"TDG01"	"TDGTER"	"INACTIVE-Terraces Two"	0		"E. View Parkway"	"Yuma"	"85367"	123	0	1/15/09 0:00:00	1/15/11 0:00:00				0	"Energy Inspectors"	0		"DROPPED"
+"TAM01"	"TMBLKVIS70"	"Blackstone At Vistancia"	1	"Vistancia"	"Lone Mtn Pkwy * Vistancia Blvd"	"Peoria"	"85383"	22	0	12/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"TAM01"	"TMCTLEG70"	"Canyon Trails ~ Legacy"	1	"Canyon Trails"	"169th Ave & Lower Buckeye Rd"	"Goodyear"	"85338"	135	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TAM01"	"TMCTSUM70"	"Canyon Trails ~ Summit"	1	"Canyon Trails"	"S Cotton Ln & W Lower Buckeye Rd"	"Goodyear"	"85338"	119	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TAM01"	"TMDISC70"	"Surprise Farms P5 - Discovery"	1	"Surprise Farms"	"Bell Rd. & Hwy 303"	"Surprise"	"85388"	95	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TAM01"	"TMDISEN70"	"Las Brisas - Discovery/encore"	1		"Perryville Rd & 185th Ave"	"Goodyear"	"85338"	112	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TAM01"	"TMENCOR70"	"Surprise Farms P5 - Encore"	1	"Surprise Farrms"	"Bell Rd. & Hwy 303"	"Surprise"	"85388"	95	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TAM01"	"TMLEG70"	"Sycamore Estates - Legacy"	1		"183rd Ave & Bell Rd"	"Surprise"	"85388"	119	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TMM01"	"TMMPKV"	"Pine Knoll Village"	0		"Woodland Dr. & Pine Knoll Dr."	"Flagstaff"	"86001"	55	7	9/1/07 0:00:00	9/1/09 0:00:00				0	"E3"	0
+"TAM01"	"TMNORRG70"	"Noterra Ridge"	1	"NA"	"Norterra Pkwy & 23rd Ave"	"Phoenix"	"85085"	15	0	12/1/11 0:00:00	12/31/11 0:00:00				0	"Energy Inspectors"	0	"NA"	" "
+"TAM01"	"TMODYSS70"	"Surprise Farms P5 - Odyssey"	1	"Surprise Farms"	"Bell Rd. & Hwy 303"	"Surprise"	"85388"	109	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TAM01"	"TMPREM70"	"Surprise Farms P3 - Premiere"	1	"Surprise Farms"	"Bell Rd. & Hwy 303"	"Surprise"	"85388"	109	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TAM01"	"TMSAVVG70"	"Savannah - Voyage"	1		"Perryville Rd & W Oregon Ave"	"Surprise"	"85388"	79	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TAM01"	"TMVOY70"	"Sycamore Estates - Voyage"	1		"183rd Ave & Bell Rd"	"Surprise"	"85388"	131	0	8/1/11 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"TRE01"	"TREVER"	"Verrado"	1	"Verrado"	"I-10 & Verrado Way"	"Buckeye"	"85396"	13	11	4/1/10 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"TRE01"	"TREVER70SR"	"Verrado"	1		"I-10 & Verrado Way"	"Buckeye"	"85396"	36	16	4/1/10 0:00:00	12/31/11 0:00:00				0	"DRW"	1	"NA"	" "
+"TWL01"	"TWLALT"	"AltaVista at Vistancia (1000s)"	1	"Vistancia"	"Lone Mountain Pkwy & Vistancia Blvd"	"Peoria"	"85383"	31	14	1/15/09 0:00:00	1/15/11 0:00:00				0	"DRW"	0
+"TWL01"	"TWLALT70"	"Alta Vista"	1	"Vistancia"	"Lone Mountain Pkwy & Vistancia"	"Peoria"	"85383"	16	2	1/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"TWL01"	"TWLBLA"	"Blackstone at Vistancia (3000s)"	0	"Vistancia"	"Lone Mountain Pkwy & Vistancia Blvd"	"Peoria"	"85383"	27	7	1/15/09 0:00:00	1/15/11 0:00:00				0	"DRW"	0
+"TWL01"	"TWLBLA70"	"Vistancia At Blackstone"	1	"Vistancia"	"Lone Mountain Pkwy & Vistancia Blvd"	"Peoria"	"85353"	20	6	1/1/11 0:00:00	12/31/11 0:00:00				0	"DRW"	0	"NA"	" "
+"TWL01"	"TWLCAL"	"Calderra at Portales (1000s)"	1		"Pebblecreek Pkwy & McDowell Rd."	"Goodyear"	"85395"	20	17	1/15/09 0:00:00	1/15/11 0:00:00				0	"DRW"	0
+"TWL01"	"TWLDES"	"Desert Trails at Sonoran Foothills (2000-3000s)"	1		"N. Valley Pkwy & Foothills Dr."	"Phoenix"	"85085"	14	11	1/15/09 0:00:00	1/15/11 0:00:00				0	"DRW"	0
+"TWL01"	"TWLDSP"	"Desert Springs at Sonoran Foothills (1000s)"	1		"N. Valley Pkwy & Foothills Dr."	"Phoenix"	"85085"	32	28	1/15/09 0:00:00	1/15/11 0:00:00				0	"DRW"	0
+"TWL01"	"TWLLOS"	"Los Vientos at Portales (2000-3000s)"	1		"Pebblecreek Pkwy & McDowell Rd."	"Goodyear"	"85395"	20	10	1/15/09 0:00:00	1/15/11 0:00:00				0	"DRW"	0
+"TWL01"	"TWLMON"	"Montecina at Vistancia (2000s)"	0	"Vistancia"	"Lone Mountain Pkwy & Vistancia Blvd"	"Peoria"	"85383"	12	12	1/15/09 0:00:00	1/15/11 0:00:00				0	"DRW"	0
+"TWL01"	"TWLTOR"	"Torremar at Portales (4000s)"	1		"Pebblecreek Pkwy & McDowell Rd."	"Goodyear"	"85395"	54	11	1/15/09 0:00:00	1/15/11 0:00:00				0	"DRW"	0
+"BEA01"	"VERSUP70SRS"	"Verona At Surprise Farms"	1		"Nw Of Citrus & Greenway"	"Surprise"	"85388"	74	10	12/1/10 0:00:00	12/31/11 0:00:00			2/1/11 0:00:00	0	"Energy Inspectors"	1	"NA"	" "
+"RIC02"	"VILCRW"	"Village at Canyon Ridge West"	1		"Bell Rd. & 114th Ave."	"Surprise"	"85374"	112	15	4/1/09 0:00:00	4/1/11 0:00:00				0	"Energy Inspectors"	0
+"HAB01"	"VOS01"	"INACTIVE-AZ Custom Homes"	0		"Valleywide"	"tbd"		20	20	3/1/07 0:00:00	1/1/10 0:00:00				0	"Energy Inspectors"	0
+"WLH01"	"WLHARR"	"Arroyo at Coldwater Ranch"	1		"Happy Valley Rd. & Vistancia Blvd"	"Peoria"	"85383"	364	10	5/1/09 0:00:00	5/1/11 0:00:00				0	"Energy Inspectors"	0
+"WOO01"	"WOOSUN70"	"Encore at Sunset Ranch"	1		"Deer Valley & Lake Pleasant Pkwy"	"Peoria"	"85383"	87	2	11/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"WOO01"	"WOOSUN70SR"	"Encore at Sunset Ranch"	1		"Deer Valley & Lake Pleasant Pkwy"	"Peoria"	"85383"	87	31	11/1/10 0:00:00	12/31/11 0:00:00				0	"EFL"	0	"NA"	" "
+"WRH01"	"WRHGRE70SR"	"Greenspointe at Mountain Ranch"	1		"Estrella Parkway"	"Goodyear"	"85338"	60	10	3/31/08 0:00:00	12/31/11 0:00:00			8/1/11 0:00:00	0	"DRW"	1		"Added solar addendum"
+"WRH01"	"WRHIRO70SR"	"Ironwood Pointe"	1	"Estrella Mountain Ranch"	"Westar Dr. & W East Wind Ave."	"Goodyear"	"85338"	75	5	8/1/08 0:00:00	12/31/11 0:00:00			8/1/11 0:00:00	0	"DRW"	1		"Added solar addendum"
+"WRH01"	"WRHSER70SR"	"Serenity At Montecito"	1		"Calistoga & Galveston"	"Goodyear"	"85338"	60	7	11/1/10 0:00:00	12/31/11 0:00:00			8/1/11 0:00:00	6	"DRW"	1	"NA"	" Added 6 lots and solar addendum"

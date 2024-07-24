@@ -1,0 +1,122 @@
+{
+  "metrics": [
+    {
+      "name": "home-status-info",
+      "short_name": "Home Status Breakout",
+      "updating_method": "axis.home.models.eep_program_home_status.EEPProgramHomeStatus.get_references",
+      "is_reference_method": true,
+      "provides_for": [
+        "home_id",
+        "home_status_id",
+        "eep_program_id",
+        "rating_company_id",
+        "rater_of_record_id",
+        "rater_collection_request_id",
+        "rater_collection_last_update",
+        "annotation_last_update",
+        "associated_company_ids",
+        "floorplan_id",
+        "climate_zone_id",
+        "city_id",
+        "county_id",
+        "us_state",
+        "addresss_long",
+        "remrate_simulation_id",
+        "state"
+      ]
+    },
+    {
+      "name": "home-misc-details",
+      "short_name": "Home Misc Details",
+      "updating_method": "axis.home.analytics.get_home_misc_details",
+      "provides_for": [
+        "rater_of_record",
+        "climate_zone"
+      ]
+    },
+    {
+      "name": "home-status-associations",
+      "short_name": "Home Status Company Associations",
+      "updating_method": "axis.relationship.analytics.get_home_status_associations",
+      "provides_for": [
+        "builder",
+        "builder_id",
+        "electric_utility",
+        "electric_utility_id",
+        "gas_utility",
+        "gas_utility_id",
+        "provider",
+        "provider_id",
+        "rater",
+        "rater_id",
+        "other_companies"
+      ]
+    },
+    {
+      "name": "wcc-home-status-checklist-responses",
+      "short_name": "WA Code Credit Responses",
+      "updating_method": "axis.customer_eto.analytics.get_wcc_collection_responses",
+      "provides_for": [
+        "conditioned_floor_area",
+        "water_heating_fuel",
+        "thermostat_type",
+        "fireplace_efficiency",
+        "wall_cavity_r_value",
+        "wall_continuous_r_value",
+        "framing_type",
+        "window_u_value",
+        "window_shgc",
+        "floor_cavity_r_value",
+        "slab_perimeter_r_value",
+        "under_slab_r_value",
+        "ceiling_r_value",
+        "raised_heel",
+        "total_ua_alternative",
+        "air_leakage_ach",
+        "ventilation_type",
+        "ventilation_brand",
+        "ventilation_model",
+        "hrv_asre",
+        "furnace_brand",
+        "furnace_model",
+        "furnace_afue",
+        "furnace_location",
+        "duct_location",
+        "duct_leakage",
+        "dwhr_installed",
+        "water_heater_brand",
+        "water_heater_model",
+        "gas_water_heater_uef",
+        "electric_water_heater_uef"
+      ]
+    },
+    {
+      "name": "wcc-annotations",
+      "short_name": "WA Code Credit Annotations",
+      "updating_method": "axis.customer_eto.analytics.get_wcc_annotations",
+      "provides_for": [
+        "envelope_option",
+        "air_leakage_option",
+        "hvac_option",
+        "hvac_distribution_option",
+        "dwhr_option",
+        "water_heating_option",
+        "renewable_electric_option",
+        "appliance_option"
+      ]
+    },
+    {
+      "name": "wcc-calculator-specifications",
+      "short_name": "WA Code Credit Specifications",
+      "updating_method": "axis.customer_eto.analytics.get_washington_code_credit_calculator_specifications_data",
+      "provides_for": [
+        "air_leakage_specification",
+        "building_envelope_specification",
+        "hvac_specification",
+        "hvac_distribution_specification",
+        "water_specification"
+      ]
+    }
+
+  ]
+}

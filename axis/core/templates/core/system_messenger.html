@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+
+{% block axis_angular_dependencies %}
+    {{ block.super }}.concat(['axis.messenger']);
+{% endblock axis_angular_dependencies %}
+
+
+{% block angular_page_config %}
+    {{ block.super }}
+    <script>
+        angular.module('axis.messenger', [])
+        .controller('Messenger', function(){
+            var inputContainer = $('form #companies');
+            var inputTemplate = $('<input type="hidden" name="companies" value="" />');
+            var hasSelections = false;
+
+            this.hasConsent = false;
+            this.companiesInfo = {{ companies_info|safe }};
+            this.companyTypes = _.keys(this.companiesInfo);
+            this.storeSelections = function(group){
+                var container = $('#companies-' + group.companyType);
+                container.empty();
+                hasSelections = false;
+                _.each(group.selected, function(companyId){
+                    hasSelections = true;
+                    var input = inputTemplate.clone();
+                    input.val(companyId);
+                    container.append(input);
+                });
+            };
+            this.canSubmit = function(){
+                return hasSelections && this.hasConsent;
+            }
+        })
+        .controller('CompanyGroupController', function($scope){
+            var group = this;
+
+            this.companyType = $scope.companyType;
+            var messenger = $scope.ctrl;
+            var companies = messenger.companiesInfo[this.companyType];
+
+            // Public
+            this.list = companies
+            this.selections = {};  // might have deselected items
+            this.selected = [];  // holds only selected items taken from 'selections'
+            this.numSelected = function(){ return this.selected.length; };
+            this.storeSelections = function(){
+                set()
+                messenger.storeSelections(this);
+            };
+            this.isSelected = function(companyId){
+                return this.selections[companyId];
+            }
+
+            function set(){
+                group.selected.length = 0;
+                _.each(group.selections, function(v, k){
+                    if (v === true) {
+                        group.selected.push(k)
+                    };
+                })
+            }
+        })
+        .directive('companyGroup', function(){
+            return {
+                restrict: 'A',
+                scope: true,
+                controller: 'CompanyGroupController',
+                controllerAs: 'group'
+            };
+        });
+
+    </script>
+{% endblock angular_page_config %}
+
+
+{% block full_content %}
+
+    <h3>System Messenger</h3>
+
+    {% if form.errors %}
+        <dl>
+            {% for field, errors in form.errors.items %}
+                <dt>{{ field }}</dt>
+                <dl>{{ errors|join:', ' }}</dl>
+            {% endfor %}
+        </dl>
+    {% endif %}
+
+    <div ng-controller="Messenger as ctrl">
+        <form action="{% url 'system_messenger' %}" method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="(Subject)" id="{{ form.title.auto_id }}" name="{{ form.title.name }}" value="{{ form.title.initial|default:'' }}" />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" placeholder="(Message)" id="{{ form.content.auto_id }}" name="{{ form.content.name }}" value="{{ form.content.initial|default:'' }}"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6 form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="{{ form.level.auto_id }}">{{ form.level.label }}</label>
+                        <div class="col-xs-9">
+                            <select class="form-control" id="{{ form.level.auto_id }}" name="{{ form.level.name }}">
+                                {% for v, k in form.level.field.choices %}
+                                    <option value="{{ v }}"{% if form.level.initial == v %} selected{% endif %}>{{ k }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="{{ form.url.auto_id }}">{{ form.url.label }}</label>
+                        <div class="col-xs-9"><input type="text" class="form-control" placeholder="(Optional)" id="{{ form.url.auto_id }}" name="{{ form.url.name }}" value="{{ form.url.initial|default:'' }}" /></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="{{ form.sticky_alert.auto_id }}">{{ form.sticky_alert.label }}</label>
+                        <div class="col-xs-9"><input type="checkbox" id="{{ form.sticky_alert.auto_id }}" name="{{ form.sticky_alert.name }}"{% if form.sticky_alert.initial %} checked{% endif %} /></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="{{ form.cc.auto_id }}">{{ form.cc.label }}</label>
+                        <div class="col-xs-9"><input type="checkbox" id="{{ form.cc.auto_id }}" name="{{ form.cc.name }}"{% if form.cc.initial %} checked{% endif %} /></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="companies">
+                <div ng-repeat="companyType in ctrl.companyTypes"
+                     ng-attr-id="companies-[[ companyType ]]">
+                </div>
+            </div>
+
+            <div>
+                <input class="btn btn-primary" type="submit" disabled ng-disabled="!ctrl.canSubmit()"
+                       value="Send to selected companies" />
+                <label><input type="checkbox" ng-model="ctrl.hasConsent" /> I know what I'm doing</label>
+            </div>
+        </form>
+
+        <hr>
+
+        <h4>Select recipients</h4>
+        <div ng-repeat="companyType in ctrl.companyTypes"
+             ng-attr-id="accordion-[[ companyType ]]" class="panel-group">
+
+            <div company-group company-type="companyType"
+                 class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion-[[ companyType ]]" ng-href="#[[ companyType ]]">
+                            [[ companyType ]]
+                            <em class="text-muted" ng-show="group.numSelected() > 0">
+                                ([[ group.numSelected() ]] selected)
+                            </em>
+                        </a>
+                    </h4>
+                </div>
+                <div ng-attr-id="[[ companyType ]]" class="panel-collapse collapse">
+                    <div class="panel-body">
+
+                        {# Panel content #}
+                        <div class="row">
+                            <div ng-repeat="company in group.list"
+                                 class="col-md-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="group.selections[company.id]"
+                                               ng-change="group.storeSelections()"/>
+                                        [ [[ company.id ]] ]
+                                        [[ company.name ]]
+                                        <span ng-if="group.isSelected(company.id)">(selected)</span>
+                                        {# ([[ companyType ]]) #}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock full_content %}

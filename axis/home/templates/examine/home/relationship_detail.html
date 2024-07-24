@@ -1,0 +1,12 @@
+{% extends "examine/relationship/detail.html" %}
+
+{% block detail %}
+    <div>
+        {{ block.super }}
+
+        {% if not is_contributor %}
+            <br>
+            and {{ user.company }}
+        {% endif %}
+    </div>
+{% endblock detail %}

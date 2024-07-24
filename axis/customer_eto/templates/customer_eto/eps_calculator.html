@@ -1,0 +1,258 @@
+{% extends "base_form.html" %}
+{% load bootstrap_tags %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+{% block page_title %}Energy Performance Score Report for
+    {% if results.inputs.us_state == "WA" %}Southwest Washington{% else %}Oregon{% endif %}
+{% endblock %}
+
+{% block style_sheet %}
+{% endblock %}
+
+{% block javascript_head %}
+{% endblock %}
+
+{% block header_text %}
+    Energy Performance Score Calculator for {% if results.inputs.us_state == "WA" %}Southwest
+    Washington{% else %}Oregon{% endif %}
+{% endblock header_text %}
+
+{% block form_content %}
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>General</h4>
+            {% if show_full_form %}
+            <div class="row">
+                <div class="col-md-8">{{ form.location|as_crispy_field }}</div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-8">{{ form.us_state|as_crispy_field }}</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">{{ form.program|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2016">
+                <div class="col-md-8">{{ form.pathway|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">{{ form.primary_heating_equipment_type|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">{{ form.electric_utility|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">{{ form.gas_utility|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2020">
+                <div class="col-md-8">{{ form.builder|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2016">
+                <div class="col-md-8">{{ form.hot_water_ef|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2016">
+                <div class="col-md-8">{{ form.hot_water_type|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2017">
+                <div class="col-md-4">{{ form.qty_shower_head_1p75|as_crispy_field }}</div>
+                <div class="col-md-4">{{ form.qty_shower_head_1p6|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2017">
+                <div class="col-md-4">{{ form.qty_shower_head_1p5|as_crispy_field }}</div>
+                <div class="col-md-4">{{ form.qty_shower_wand_1p5|as_crispy_field }}</div>
+            </div>
+
+            <div class="row program-2020">
+                <div class="col-md-8">{{ form.has_gas_fireplace|as_crispy_field }}</div>
+            </div>
+
+            <div class="row program-2020">
+                <div class="col-md-8">{{ form.grid_harmonization_elements|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2020">
+                <div class="col-md-8">{{ form.smart_thermostat_brand|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2020">
+                <div class="col-md-8">{{ form.eps_additional_incentives|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2020">
+                <div class="col-md-8">{{ form.solar_elements|as_crispy_field }}</div>
+            </div>
+            <div class="row program-2020 program-2019">
+                <div class="col-md-8">{{ form.generated_solar_pv_kwh|as_crispy_field }}</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">{{ form.simulation|as_crispy_field }}</div>
+            </div>
+
+            {% if not show_full_form %}
+            <div class="row">
+                <div class="col-md-8">{{ form.rem_simulation|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">{{ form.eko_simulation|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-8" style="padding-top: 8px;">
+                    {{ form.use_legacy_simulation|as_crispy_field }}
+                </div>
+            </div>
+            {% endif %}
+            {% if not enable_inputs %}
+            <script type="text/javascript">
+              $('select').attr('disabled', true);
+              $('input').attr('disabled', true);
+              if ($("#id_program option:selected").text().indexOf("2020") >= 0) {
+                console.log("2020 Selected")
+                $(".program-2016").hide();
+                $(".program-2017").hide();
+                $(".program-2019").hide();
+                $(".program-2020").show();
+              }
+              if ($("#id_program option:selected").text().indexOf("2019") >= 0) {
+                console.log("2019 Selected")
+                $(".program-2016").hide();
+                $(".program-2017").hide();
+                $(".program-2019").show();
+                $(".program-2020").hide();
+              }
+                  if ($("#id_program option:selected").text().indexOf("2017") >= 0) {
+                    console.log("2017 Selected")
+                    $(".program-2016").hide();
+                    $(".program-2017").show();
+                    $(".program-2019").hide();
+                    $(".program-2020").hide();
+                  }
+                  if ($("#id_program option:selected").text().indexOf("2016") >= 0) {
+                    console.log("2016 Selected")
+                    $(".program-2016").show();
+                    $(".program-2017").hide();
+                    $(".program-2019").hide();
+                    $(".program-2020").hide();
+                  }
+
+                </script>
+            {% else %}
+                <script type="text/javascript">
+
+                  if ($("#id_program option:selected").text().indexOf("2020") >= 0) {
+                    console.log("2020 Selected")
+                    $(".program-2016").hide();
+                    $(".program-2017").hide();
+                    $(".program-2019").hide();
+                    $(".program-2020").show();
+                  }
+                  if ($("#id_program option:selected").text().indexOf("2019") >= 0) {
+                    console.log("2019 Selected")
+                    $(".program-2016").hide();
+                    $(".program-2017").hide();
+                    $(".program-2019").show();
+                    $(".program-2020").hide();
+                  }
+                  if ($("#id_program option:selected").text().indexOf("2017") >= 0) {
+                    console.log("2017 Selected")
+                    $(".program-2016").hide();
+                    $(".program-2017").show();
+                    $(".program-2019").hide();
+                    $(".program-2020").hide();
+                  }
+                  if ($("#id_program option:selected").text().indexOf("2016") >= 0) {
+                    console.log("2016 Selected")
+                    $(".program-2016").show();
+                    $(".program-2017").hide();
+                    $(".program-2019").hide();
+                    $(".program-2020").hide();
+                  }
+
+                  $("#id_program").bind("change", function () {
+                    if ($("#id_program option:selected").text().indexOf("2020") >= 0) {
+                      console.log("2020 Selected")
+                      $(".program-2016").hide();
+                      $(".program-2017").hide();
+                      $(".program-2019").hide();
+                      $(".program-2020").show();
+                    }
+                    if ($("#id_program option:selected").text().indexOf("2019") >= 0) {
+                      console.log("2019 Selected")
+                      $(".program-2016").hide();
+                      $(".program-2017").hide();
+                      $(".program-2019").show();
+                      $(".program-2020").hide();
+                    }
+                    if ($("#id_program option:selected").text().indexOf("2017") >= 0) {
+                      console.log("2017 Selected")
+                      $(".program-2016").hide();
+                      $(".program-2017").show();
+                      $(".program-2019").hide();
+                      $(".program-2020").hide();
+                    }
+                    if ($("#id_program option:selected").text().indexOf("2016") >= 0) {
+                      console.log("2016 Selected")
+
+                      $(".program-2016").show();
+                      $(".program-2017").hide();
+                      $(".program-2019").hide();
+                      $(".program-2020").hide();
+                    }
+                  });
+                  $("#id_eko_simulation").bind("change", function () {
+                    $("#id_use_legacy_simulation").prop("checked", false);
+                  });
+                </script>
+            {% endif %}
+
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                {% if results %}
+                    <h4>
+                        Results
+                        {% if results.inputs.us_state == "WA" %}
+                            <em>Southwest Washington</em>{% endif %}
+                    </h4>
+                    {% include "customer_eto/includes/home_as_built_table.html" with results=results %}
+                {% else %}
+                    <div class="row">
+                        <br/>
+                        <br/>
+                        <br/>
+                        The instructions for using the calculator can be found
+                        <a
+                          href="http://support.pivotalenergysolutions.com/entries/27709608-EPS-Calculator-Setup"
+                          target="_blank">here.</a>
+                    </div>
+                {% endif %}
+            </div>
+
+
+        </div>
+    </div>
+
+    {% bootstrap_navtabs %}
+
+        {% tab "Input Data" show=show_full_form %}
+        {% include 'customer_eto/tabs/calculator_input.html' %}
+
+        {% tab "Data" show=results.inputs_report %}
+        {% include 'customer_eto/tabs/simulation_data.html' with object=results.inputs_report %}
+
+        {% tab "Calculations" show=results.calculator_report %}
+        {% include "customer_eto/tabs/calculations.html" with object=results.calculator_report %}
+
+        {% tab "Incentive" show=results.incentive %}
+        {% include "customer_eto/tabs/incentive.html" with object=results.incentive_report %}
+
+        {% tab "Similar" show=results.similar %}
+        {% include "customer_eto/tabs/similar.html" with object=results.similar_report %}
+
+        {% tab "NZ/ESH" show=results.net_zero %}
+        {% include "customer_eto/tabs/net_zero.html" with object=results.net_zero %}
+
+    {% endbootstrap_navtabs %}
+
+{% endblock form_content %}

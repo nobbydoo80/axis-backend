@@ -1,0 +1,14 @@
+<table class="table table-bordered">
+    <tr>
+        <td>
+            {# Date-created column, leave empty to avoid confusion when it's different later #}
+            {# {% now "m/d/y h:i A" %} #}
+        </td>
+        <td>
+            {{ request.user }}
+        </td>
+        <td>
+            <axis-field no-label field="regionObject.fields.content"></axis-field>
+        </td>
+    </tr>
+</table>

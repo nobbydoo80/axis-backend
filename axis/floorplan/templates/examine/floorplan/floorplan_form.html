@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <i ng-show="reigonObject.loadingInputInfo" class="pull-right fa fa-spinner fa-spin"></i>
+                <axis-field field="regionObject.fields.name"></axis-field>
+            </div>
+            <div class="col-md-6 form-group">
+                <i ng-show="reigonObject.loadingInputInfo" class="pull-right fa fa-spinner fa-spin"></i>
+                <axis-field field="regionObject.fields.number"></axis-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <i ng-show="reigonObject.loadingInputInfo" class="pull-right fa fa-spinner fa-spin"></i>
+                <axis-field field="regionObject.fields.square_footage"></axis-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <axis-field field="regionObject.fields.companies"></axis-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <em>
+                    Note: Selecting a Company as a "Preliminary Share" provides the Company to
+                    see this data prior to a home being attached to it.
+                </em>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <axis-field field="regionObject.fields.subdivision"></axis-field>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <axis-field field="regionObject.fields.comment"></axis-field>
+            </div>
+        </div>
+    </div>
+</div>

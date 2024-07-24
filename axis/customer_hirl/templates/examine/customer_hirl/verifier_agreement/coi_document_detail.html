@@ -1,0 +1,20 @@
+<div>
+    <div class="row">
+        <div class="col-md-4">
+            <span class="key">[[ regionObject.verbose_names.document ]]:</span>
+            <span>
+                <a ng-href="[[ regionObject.object.url ]]"
+                   target="_blank" title="Download document" ng-if="regionObject.object.url">
+                    <i class="fa fa-download"></i>
+                </a>
+                <span ng-if="!regionObject.object.url">-</span>
+            </span>
+        </div>
+        <div class="col-md-8">
+            <span class="key">[[ regionObject.verbose_names.description ]]:</span>
+            <span>
+                [[ regionObject.object.description || '-' ]]
+            </span>
+        </div>
+    </div>
+</div>

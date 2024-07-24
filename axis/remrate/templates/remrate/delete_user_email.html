@@ -1,0 +1,21 @@
+{% extends "html_email_base.html" %}
+
+{% block content %}
+    Hello,
+
+    <p>{{ requesting_user.get_full_name }} has requested to delete REMRate account for {{ company }} on
+        <a href="{{ host_url }}">{{ target_hostname }}</a>.  To delete this account you are
+        requested to open my MySQL connection in MySQL Workbench to {{ db_host }}:{{ db_port }}
+        using the admin account username '{{ db_user }}' and the correct password.
+    </p>
+    <p>Once MySQL Workbench connects to {{ db_host }} please execute the following query:</p>
+    <pre>
+        REVOKE ALL PRIVILEGES, GRANT OPTION FROM '{{ username }}'@'%';
+        DROP USER '{{ username }}'@'%';
+    </pre>
+
+    <p>Sincerely,<br><br>
+        <em>The AXIS Support Team</em>
+    </p>
+
+{% endblock  %}

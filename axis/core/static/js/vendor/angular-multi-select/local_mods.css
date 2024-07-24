@@ -1,0 +1,46 @@
+/* Remove awful centering of big buttons */
+.multiSelect .button.multiSelectButton {
+    text-align: left;
+}
+
+/* Remove awful label boldness */
+.multiSelect .multiSelectItem:not(.multiSelectGroup) label {
+    font-weight: normal;
+}
+
+/* Remove awful :hover */
+.multiSelect .multiSelectItem:hover {
+    background: #d9edf7 !important;
+    color: #444 !important;
+    border-color: transparent !important;
+}
+
+/* Remove awful selected=true */
+.multiSelect .multiSelectItem:not(.multiSelectGroup).selected {
+    background: #3875d7;
+    color: white;
+    border-color: transparent !important;
+}
+
+/* Remove awful placement of .caret INSIDE of the last selected item text */
+.multiSelect .button {
+    padding-right: 28px; /* default 8px padding + 8px caret width + 12px caret margin */
+}
+.multiSelect .button .caret {
+    position: absolute;
+    right: 8px; /* default padding in the widget */
+    top: 50%;
+    margin: 0; /* doesn't matter with absolute positioning anyway */
+}
+
+/* Remove awful inline-block */
+.multiSelect .button {
+    width: 100%;
+}
+
+/* Remove awful unconstrained height */
+.multiSelect .checkBoxContainer {
+    width: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+}

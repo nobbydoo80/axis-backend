@@ -1,0 +1,9 @@
+{% extends 'qa/dashboards/field_qa_metrics.html' %}
+
+{% block panel_title %} ETO Field QA {% endblock %}
+
+{% block metrics %}
+    {% with prefix='eto_' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock metrics %}

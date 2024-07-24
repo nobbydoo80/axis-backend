@@ -1,0 +1,18 @@
+#!/bin/bash
+
+[[ -e bin/django ]] || { echo >&2 "Run this from the repository root instead."; exit 1; }
+
+SCRIPT_NAME=server_branches
+
+if [ -e .venv/src/infrastructure/infrastructure/bin/${SCRIPT_NAME}.py  ] ; then
+  SCRIPT=.venv/src/infrastructure/infrastructure/bin/${SCRIPT_NAME}.py
+elif [ -e .venv/bin/${SCRIPT_NAME}.py ]; then
+  SCRIPT=.venv/bin/${SCRIPT_NAME}.py
+else
+  echo "Unable to find infrastructure/${SCRIPT_NAME} script"
+  exit 1
+fi
+
+export $(grep -v '^#' .env | xargs)
+source ${VENV:-.venv}/bin/activate
+${SCRIPT} "${@:1}"

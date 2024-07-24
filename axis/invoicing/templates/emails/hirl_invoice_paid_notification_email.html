@@ -1,0 +1,43 @@
+<p>
+    You are receiving this notification because you are associated with
+    <a href="{{ customer_url }}">{{ customer }}, {{ customer.city }}</a>.
+</p>
+<p>
+    An invoice has been paid for the projects listed below with an Invoice ID of {{ invoice_id }}.
+    <a href="{{ invoice_detail_url }}">Click here to view the Invoice</a>.
+</p>
+<table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
+    <thead>
+        <tr>
+            <td style="font-weight: bold; border: 1px solid black; text-align: center;">
+                Project ID
+            </td>
+            <td style="font-weight: bold; border: 1px solid black; text-align: center;">
+                Address
+            </td>
+            <td style="font-weight: bold; border: 1px solid black; text-align: center;">
+                Fee Amount
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for invoice_item_group in invoice_item_groups %}
+            <tr>
+                <td style="border: 1px solid black; text-align: center;">
+                    <a href="{{ base_url }}{{ invoice_item_group.home_status.customer_hirl_project.get_absolute_url }}">
+                        {{ invoice_item_group.home_status.customer_hirl_project.id }}
+                    </a>
+                </td>
+                <td style="border: 1px solid black; text-align: center;">
+                    <a href="{{ invoice_item_group.home_status.get_absolute_url }}">
+                        {{ invoice_item_group.home_status.home.get_home_address_display }}
+                    </a>
+                </td>
+                <td style="border: 1px solid black; text-align: center;">${{ invoice_item_group.total }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p>
+    <a href="/app/hi/invoices">Click here</a> to view all invoices associated with your company.
+</p>

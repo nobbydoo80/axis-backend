@@ -1,0 +1,15 @@
+{% extends "examine/angular_delete_confirmation.html" %}
+
+{% block title %}
+    Remove [[ vm.regionObject.verbose_name ]] <em>[[ vm.regionObject.object_name ]]</em>
+{% endblock title %}
+
+{% block body %}
+    The floorplan will no longer be associated with the Program, but can be re-added later if
+    necessary.
+{% endblock body %}
+
+{% block footer %}
+    <button class="btn btn-primary" ng-click="vm.ok()">Remove</button>
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+{% endblock footer %}

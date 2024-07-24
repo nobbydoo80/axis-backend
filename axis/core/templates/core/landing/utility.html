@@ -1,0 +1,12 @@
+{% extends "core/landing/dashboard.html" %}
+{% load static %}
+
+{% block landing_content %}
+    <h4>Metrics</h4>
+
+    <div dashboard-widget dashboard-widget-metrics>
+        {% include 'qa/dashboards/qa_tables.html' %}
+    </div>
+
+    <hr>
+{% endblock landing_content %}

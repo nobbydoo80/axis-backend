@@ -1,0 +1,178 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Duct Leakage</h4></div>
+            <ul class="list-group">
+                <li class="list-group-item">Duct System Count: {{ summary.houseplan.mechanicals.summary.ductSystemCount }}</li>
+                <li class="list-group-item">Total Leakage: {{ summary.houseplan.mechanicals.summary.ductLeakageTotal|floatformat:1 }}</li>
+                <li class="list-group-item">Leakage to Outside: {{ summary.houseplan.mechanicals.summary.ductLeakageToOutside|floatformat:1 }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {% if summary.houseplan.thermalEnvelope.slabs %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Slabs
+                        <span class="badge badge-default">{{ summary.houseplan.thermalEnvelope.slabs|length }}</span>
+                    </h4>
+                </div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.thermalEnvelope.slabs %}
+                        <li class="list-group-item">
+                            {{ item.name }}, {{ item.type.name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if summary.houseplan.thermalEnvelope.framedFloors %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Framed Floors
+                        <span class="badge badge-default">{{ summary.houseplan.thermalEnvelope.framedFloors|length }}</span>
+                    </h4>
+                </div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.thermalEnvelope.framedFloors %}
+                        <li class="list-group-item">
+                            {{ item.name }}, {{ item.type.name }}, U-factor {{ item.type.uFactor|floatformat:2|default:'-' }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if summary.houseplan.thermalEnvelope.foundationWalls %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Foundation Walls
+                        <span class="badge badge-default">{{ summary.houseplan.thermalEnvelope.foundationWalls|length }}</span>
+                    </h4>
+                </div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.thermalEnvelope.foundationWalls %}
+                        <li class="list-group-item">
+                            {{ item.name }}, {{ item.type.name }}, Above {{ item.heightAboveGrade }},
+                            Below {{ item.depthBelowGrade }}, U-factor {{ item.type.uFactor|floatformat:2|default:'-' }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if summary.houseplan.thermalEnvelope.walls %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Walls
+                        <span class="badge badge-default">{{ summary.houseplan.thermalEnvelope.walls|length }}</span>
+                    </h4>
+                </div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.thermalEnvelope.walls %}
+                        <li class="list-group-item">
+                            {{ item.name }}{% if item.type.name %}, {{ item.type.name }}{% endif %},
+                            Color {{ item.surfaceColor }}, U-factor {{ item.type.uFactor|floatformat:2|default:'-' }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if summary.houseplan.thermalEnvelope.rimJoists %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Rim Joists
+                        <span class="badge badge-default">{{ summary.houseplan.thermalEnvelope.rimJoists|length }}</span>
+                    </h4>
+                </div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.thermalEnvelope.rimJoists %}
+                        <li class="list-group-item">
+                            {{ item.name }}{% if item.type.name %}, {{ item.type.name }}{% endif %},
+                            U-factor {{ item.type.uFactor|floatformat:2|default:'-' }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if summary.houseplan.thermalEnvelope.ceilings %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Ceilings
+                        <span class="badge badge-default">{{ summary.houseplan.thermalEnvelope.ceilings|length }}</span>
+                    </h4>
+                </div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.thermalEnvelope.ceilings %}
+                        <li class="list-group-item">
+                            {{ item.name }}{% if item.type.name %}, {{ item.type.name }}{% endif %},
+                            Color {{ item.surfaceColor }},
+                            U-factor {{ item.type.uFactor|floatformat:2|default:'-' }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if summary.houseplan.thermalEnvelope.windows %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Windows
+                        <span class="badge badge-default">{{ summary.houseplan.thermalEnvelope.windows|length }}</span>
+                    </h4>
+                </div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.thermalEnvelope.windows %}
+                        <li class="list-group-item">
+                            {{ item.name }}{% if item.type.name %}, {{ item.type.name }}{% endif %},
+                            {{ item.orientation }},
+                            U-factor {{ item.type.uFactor|floatformat:2|default:'-' }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if summary.houseplan.thermalEnvelope.skylights %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Skylights
+                        <span class="badge badge-default">{{ summary.houseplan.thermalEnvelope.skylights|length }}</span>
+                    </h4>
+                </div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.thermalEnvelope.skylights %}
+                        <li class="list-group-item">
+                            {{ item.name }}{% if item.type.name %}, {{ item.type.name }}{% endif %},
+                            {{ item.orientation }},
+                            U-factor {{ item.type.uFactor|floatformat:2|default:'-' }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if summary.houseplan.thermalEnvelope.doors %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Doors
+                        <span class="badge badge-default">{{ summary.houseplan.thermalEnvelope.doors|length }}</span>
+                    </h4>
+                </div>
+                <ul class="list-group">
+                    {% for item in summary.houseplan.thermalEnvelope.doors %}
+                        <li class="list-group-item">
+                            {{ item.name }}{% if item.type.name %}, {{ item.type.name }}{% endif %},
+                            U-factor {{ item.type.uFactor|floatformat:2|default:'-' }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</div>

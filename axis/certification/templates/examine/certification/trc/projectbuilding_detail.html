@@ -1,0 +1,57 @@
+{% extends "examine/certification/certifiable_object_detail.html" %}
+
+{% block settings_fields %}
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.building_name"><label>[[ regionObject.helpers.settings_labels.building_name ]]</label><br>[[ regionObject.object.settings.building_name || '-' ]]</div>
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_name"><label>[[ regionObject.helpers.settings_labels.project_name ]]</label><br>[[ regionObject.object.settings.project_name || '-' ]]</div>
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_number"><label>[[ regionObject.helpers.settings_labels.project_number ]]</label><br>[[ regionObject.object.settings.project_number || '-' ]]</div>
+    </div>
+    <div class="row data-browser">
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_street1"><label>[[ regionObject.helpers.settings_labels.project_street1 ]]</label><br>[[ regionObject.object.settings.project_street1 || '-' ]]</div>
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_street2"><label>[[ regionObject.helpers.settings_labels.project_street2 ]]</label><br>[[ regionObject.object.settings.project_street2 || '-' ]]</div>
+    </div>
+    <div class="row data-browser">
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_city"><label>[[ regionObject.helpers.settings_labels.project_city ]]</label><br>[[ regionObject.object.settings.project_city || '-' ]]</div>
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_county"><label>[[ regionObject.helpers.settings_labels.project_county ]]</label><br>[[ regionObject.object.settings.project_county_info.name || '-' ]]</div>
+        <div class="col-md-2" ng-if="regionObject.helpers.settings_form.project_state"><label>[[ regionObject.helpers.settings_labels.project_state ]]</label><br>[[ regionObject.object.settings.project_state || '-' ]]</div>
+        <div class="col-md-2" ng-if="regionObject.helpers.settings_form.project_zip"><label>[[ regionObject.helpers.settings_labels.project_zip ]]</label><br>[[ regionObject.object.settings.project_zip || '-' ]]</div>
+{% endblock settings_fields %}
+
+{% block extra_detail %}
+    <hr>
+
+    {# <div class="row" ng-if="regionObject.helpers.data.stat__number_of_buildings"> #}
+    {#     <div class="col-md-3 key">[[ regionObject.helpers.data_labels.stat__number_of_buildings ]]</div> #}
+    {#     <div class="col-md-9">[[ regionObject.object.data.stat__number_of_buildings || '-' ]]</div> #}
+    {# </div> #}
+    {# <div class="row" ng-if="regionObject.helpers.data.stat__number_of_units"> #}
+    {#     <div class="col-md-3 key">[[ regionObject.helpers.data_labels.stat__number_of_units ]]</div> #}
+    {#     <div class="col-md-9">[[ regionObject.object.data.stat__number_of_units || '-' ]]</div> #}
+    {# </div> #}
+    {# <div class="row" ng-if="regionObject.helpers.data.stat__conditioned_floor_area"> #}
+    {#     <div class="col-md-3 key">[[ regionObject.helpers.data_labels.stat__conditioned_floor_area ]]</div> #}
+    {#     <div class="col-md-9">[[ regionObject.object.data.stat__conditioned_floor_area || '-' ]]</div> #}
+    {# </div> #}
+    <div ng-if="regionObject.object.type == 'project'">
+        <div class="row">
+            <div class="col-md-3 key">Act. Number of Buildings</div>
+            <div class="col-md-9" ng-switch="regionObject.helpers.stats.number_of_buildings">
+                <span ng-switch-when="undefined">-</span>
+                <span ng-switch-default>[[ regionObject.helpers.stats.number_of_buildings ]]</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 key">Act. Number of Units</div>
+            <div class="col-md-9" ng-switch="regionObject.helpers.stats.number_of_units">
+                <span ng-switch-when="undefined">-</span>
+                <span ng-switch-default>[[ regionObject.helpers.stats.number_of_units | number ]]</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 key">Act. Conditioned Floor Area</div>
+            <div class="col-md-9" ng-switch="regionObject.helpers.stats.conditioned_floor_area">
+                <span ng-switch-when="undefined">-</span>
+                <span ng-switch-default>[[ regionObject.helpers.stats.conditioned_floor_area | number ]]</span>
+            </div>
+        </div>
+    </div>
+{% endblock extra_detail %}

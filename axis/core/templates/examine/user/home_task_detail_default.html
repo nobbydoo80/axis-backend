@@ -1,0 +1,25 @@
+<table class="table scheduling-task-table">
+    <tbody>
+        <tr>
+            <td width="30%">
+                <b>Address:</b>
+                <a href="[[ regionObject.object['task_list_url'] ]]" target="_blank">
+                    [[ regionObject.object['home_address'] ]]
+                </a>
+            </td>
+            <td width="15%">
+                <b>Status:</b>
+                [[ regionObject.object['status_display'] ]]
+            </td>
+            <td width="30%">
+                <b>Assignee(s):</b>
+                <span ng-bind-html="regionObject.object['assignees_display'] | trustAsHtml"></span>
+            </td>
+            <td>
+                <div ng-show="regionObject.object['note']">
+                    <b>Notes:</b> [[ regionObject.object['note'] ]]
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,95 @@
+{% extends "base_form.html" %}
+{% load crispy_forms_tags %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %} {{ page_title }} {% endblock %}
+{% block header_text %} {{ page_title }} {% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .dataTable th[data-name="address"] { width: 35%; }
+        .dataTable th[data-name="subdivision"] { width: 20%; }
+        .dataTable th[data-name="floorplan"] { width: 15%; }
+        .dataTable th[data-name="eep-programs"] { width: 25%; }
+        .dataTable th[data-name="state"] { width: 5%; }
+    </style>
+{% endblock %}
+
+{% block form_content %}
+        <div class="row">
+            <div class="col-md-12">
+                <p>This will download a printable version of a home with attached annotations and checklist questions.</p>
+                <p><em>Note: We currently only support printing the first selected item.</em></p>
+            </div>
+        </div>
+    <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="homesform">{{ form.homes|as_crispy_field }}</div>
+                <input type="submit" title="Submit" name="Submit" value="Submit"
+                       class="btn btn-primary">
+            </div>
+        </div>
+    <hr>
+
+    {{ datatable }}
+{% endblock %}
+{% block form_actions %} {% endblock %}
+
+{% block javascript_head %}
+    <script type="text/javascript" charset="utf-8">
+        var selected = [];
+        var toggle = false;
+
+        $(document).ready(function () {
+            $('#homesform').hide(); //Hide this sucker..
+            $("#id_default_date").datepicker({ dateFormat: 'yy-mm-dd' });
+
+            $("[data-name='select']").html('Select All<br><input class="checkall" type="checkbox">');
+            $('.checkall').on('click', function (e) {
+                var self = this;
+                $("table :checkbox:not(.checkall)").each(function () {
+                    var row = $(this).closest('tr');
+                    var iId = $(row).attr('id');
+                    is_in_array = jQuery.inArray(iId, selected);
+                    if (!toggle) {
+                        if (is_in_array == -1) {
+                            selected[selected.length] = iId;
+                        }
+                    } else {
+                        if (is_in_array != -1) {
+                            selected = jQuery.grep(selected, function (value) {
+                                return value != iId;
+                            })
+                        }
+                    }
+                    $("#id_homes").val(selected);
+                    $(this).prop('checked', self.checked);
+                });
+                e.stopPropagation();
+                toggle = !toggle
+            });
+
+
+            $('table tbody').on('change', ':checkbox', function(){
+                var row = $(this).closest('tr');
+                var iId = $(row).attr('id');
+                is_in_array = jQuery.inArray(iId, selected);
+                if(is_in_array == -1){
+                    selected[selected.length] = iId;
+                } else {
+                    selected = jQuery.grep(selected, function(value){
+                        return value != iId;
+                    })
+                }
+                $("#id_homes").val(selected);
+                console.log('selected: ', $("#id_homes").val());
+            })
+        });
+    </script>
+{% endblock %}

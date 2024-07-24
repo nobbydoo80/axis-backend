@@ -1,0 +1,98 @@
+{%  for object in object_list %}
+<div class="well">
+<div class="row">
+    <div class="col-md-3 key">Builder Option Package:</div>
+    <div class="col-md-3 value">{{ object.bop|default:"-" }}</div>
+    <div class="col-md-3 key">Performance Tester:</div>
+    <div class="col-md-3 value">{{ object.performance_test|default:"-" }}</div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-3 key">Description:</div>
+    <div class="col-md-9 value">{{ object.bop.description|default:"-" }}</div>
+</div>
+<br>
+
+{% for tco in object.get_attached_TCOs %}
+    {% if forloop.first %}<div class="row">
+        <div class="col-md-12 key">TCOs</div>{% endif %}
+    <div class="col-md-6" >&emsp;&bullet;{{ tco }}</div>
+    {% if forloop.last %}</div>{% endif %}
+
+{% endfor %}
+
+<div class="row">
+    <div class="col-md-3 key">Status:</div>
+    <div class="col-md-3 value">{{ object.status|default:"-" }}</div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-md-3 key">Primary Heat Source:</div>
+    <div class="col-md-3 value">{{ object.bop_heat_source|default:"-" }}</div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-md-3 key">Verification Date:</div>
+    <div class="col-md-3 value">{{ object.verification_date|date:"m/d/Y"|default:"-" }}</div>
+    <div class="col-md-3 key">Certification Date:</div>
+    <div class="col-md-3 value">{{ object.certification_date|date:"m/d/Y"|default:"-" }}</div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-md-3 key">Note:</div>
+    <div class="col-md-3 value">{{ object.note|default:"-" }}</div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-md-3 key">QA Required:</div>
+    <div class="col-md-3 value">{% if object.qa_required %}Yes{% else %}No{% endif %}</div>
+    <div class="col-md-3 key">QA Completed:</div>
+    <div class="col-md-3 value">{% if object.qa_completed %}Yes{% else %}No{% endif %}</div>
+</div>
+<div class="row">
+    <div class="col-md-2 key">QA Start:</div>
+    <div class="col-md-2 value">{{ object.qacompletedate|date:"m/d/Y"|default:"-" }}</div>
+    <div class="col-md-2 key">QA Last:</div>
+    <div class="col-md-2 value">{{ object.qa_lastactivity_date|date:"m/d/Y"|default:"-" }}</div>
+    <div class="col-md-2 key">QA Complete:</div>
+    <div class="col-md-2 value">{{ object.qacompletedate|date:"m/d/Y"|default:"-" }}</div>
+</div>
+<br>
+
+{% for key,value in object.get_verifier_results.items %}
+    {% if forloop.first %}<div class="row">
+        <div class="col-md-12 key">Inspections:</div>{% endif %}
+    {% if not value.optional %}
+        <div class="col-md-10 key">{{ value.name }}:</div>
+        <div class="col-md-2 value">{% if value.pass %}Yes{% else %}No{% endif %}</div>
+    {% endif %}
+{% endfor %}
+
+{% for key,value in object.get_verifier_results.items %}
+    {% if value.optional %}
+        <div class="col-md-10 key">{{ value.name }}:</div>
+        <div class="col-md-2 value">{% if value.pass %}Yes{% else %}No{% endif %}</div>
+    {% endif %}
+    {% if forloop.last %}</div>{% endif %}
+{% endfor %}
+
+{% for key,value in object.get_inspection_notes.items %}
+    {% if forloop.first %}<br><div class="row">{% endif %}
+    <div class="col-md-4 key">{{ key }}:</div>
+    <div class="col-md-8 value">{{ value }}</div>
+    {% if forloop.last %}</div>{% endif %}
+{% endfor %}
+
+{% if object.invoice or object.receipt %}
+    <br>
+    <div class="col-md-3 key">Invoice:</div>
+    <div class="col-md-3 value">{{ object.invoice|default:"-" }}</div>
+    <div class="col-md-3 key">Receipt:</div>
+    <div class="col-md-3 value">{{ object.receipt|default:"-" }}</div>
+{% endif %}
+</div>
+{% endfor %}

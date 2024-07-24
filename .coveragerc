@@ -1,0 +1,32 @@
+
+[run]
+branch = true
+omit =
+    */tests/*
+    */test_*.py
+    */tests/*
+    */migrations/*
+    */settings/*
+    */wsgi.py
+    manage.py
+    celeryapp.py
+    bin/*
+source = .
+
+[report]
+fail_under = 70
+omit =
+    */tests/*
+    */test_*.py
+    */tests/*
+    */migrations/*
+    */settings/*
+    */wsgi.py
+    manage.py
+    celeryapp.py
+    bin/*
+show_missing = true
+ignore_errors = true
+exclude_lines =
+        pragma: no cover
+        if __name__ == .__main__.:

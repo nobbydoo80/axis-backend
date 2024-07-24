@@ -1,0 +1,225 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Equipment{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/equipment/equipment_control_center_base_list.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <script>
+        datatableview.finalizeOptions = (function(){
+            var super_finalizeOptions = datatableview.finalizeOptions;
+            return function _confirm_datatable_options(datatable, options){
+                if (options['columns'] &&
+                    options['columns'].length) {
+                    for (var i=0; i<options['columns'].length; i++) {
+                        if (options['columns'][i]['name'] &&
+                            options['columns'][i]['name'].indexOf('data-idall') !== -1) {
+                            options.select = {
+                                style: 'multi',
+                                selector: 'td:first-child'
+                            }
+                            options['columns'][i]['sClass'] = 'select-checkbox'
+                        }
+                    }
+                }
+                options = super_finalizeOptions(datatable, options);
+                options.ajax.data = function(data){
+                    {% for field in form %}
+                        data.{{ field.name }} = $("#{{ field.auto_id }}")
+                            {% if field.field.widget.input_type == 'checkbox' %}
+                                .is(':checked') ? 'on' : 'off'
+                            {% else %}
+                                .val()
+                            {% endif %}
+                            ;
+                    {% endfor %}
+                }
+                return options
+            }
+        })();
+        $(function(){
+            $('#filters .select2 select').css('width', '100%').select2();
+            $('#filters .datepicker input').datepicker();
+        });
+    </script>
+{% endblock javascript_head %}
+
+{% block header_text %}Equipment with approval status '{{ equipment_state }}'{% endblock header_text %}
+
+{% block list_content %}
+    <div ng-controller="EquipmentControlCenterBaseListController as ctrl">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-block btn-lg{% if request.resolver_match.url_name == "control_center_new_list" %} btn-danger{% else %} btn-default{% endif %}" id="new" href="{% url "equipment:control_center_new_list" %}?{{ request.GET.urlencode }}">
+                    <span class="counter pending_count"> {{ new_count }} </span>
+                    <span class="title">New</span>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a class="btn btn-block btn-lg{% if request.resolver_match.url_name == "control_center_active_list" %} btn-danger{% else %} btn-default{% endif %}" id="active" href="{% url "equipment:control_center_active_list" %}?{{ request.GET.urlencode }}">
+                    <span class="counter corrections_received">{{ active_count }}</span>
+                    <span class="title">Active</span>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-block btn-lg{% if request.resolver_match.url_name == "control_center_rejected_list" %} btn-danger{% else %} btn-default{% endif %}" id="rejected" href="{% url "equipment:control_center_rejected_list" %}?{{ request.GET.urlencode }}">
+                    <span class="counter corrections_required">{{ rejected_count }}</span>
+                    <span class="title">Rejected</span>
+                </a>
+            </div>
+             <div class="col-md-3">
+                <a class="btn btn-block btn-lg{% if request.resolver_match.url_name == "control_center_expired_list" %} btn-danger{% else %} btn-default{% endif %}" id="expired" href="{% url "equipment:control_center_expired_list" %}?{{ request.GET.urlencode }}">
+                    <span class="counter approved_count"> {{ expired_count }} </span>
+                    <span class="title">Expired</span>
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <form id="filters" action="" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {% if form.company.field.widget.show_label %}
+                                    <label for="{{ form.company.auto_id }}">{{ form.company.label }}</label>
+                                {% endif %}
+                                {{ form.company }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {% if form.equipment_type.field.widget.show_label %}
+                                    <label for="{{ form.equipment_type.auto_id }}">{{ form.equipment_type.label }}</label>
+                                {% endif %}
+                                {{ form.equipment_type }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {% if form.calibration_date_range.field.widget.show_label %}
+                                    <label for="{{ form.calibration_date_range.auto_id }}">{{ form.calibration_date_range.label }}</label>
+                                {% endif %}
+                                {{ form.calibration_date_range }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group datepicker">
+                                {% if form.calibration_date_start.label %}
+                                    <label for="{{ form.calibration_date_start.auto_id }}">{{ form.calibration_date_start.label }}</label>
+                                {% endif %}
+                                {{ form.calibration_date_start }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group datepicker">
+                                {% if form.calibration_date_end.label %}
+                                    <label for="{{ form.calibration_date_end.auto_id }}">{{ form.calibration_date_end.label }}</label>
+                                {% endif %}
+                                {{ form.calibration_date_end }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary btn-block" type="submit">Apply filters
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+                </div>
+                {% if equipment_sponsor_status_state_choices %}
+                    <div class="well">
+                        <form name="processingForm" ng-submit="processingFormSubmit()" novalidate>
+                            {% if request.user.is_superuser %}
+                                <div class="form-group" ng-class="{ 'has-error' : processingForm.company.$error.required && (processingForm.$submitted || processingForm.company.$touched) }">
+                                    <label for="new_state" class="control-label">
+                                        Company
+                                    </label>
+                                    <div class="controls">
+                                        <select class="form-control"
+                                                name="company"
+                                                ng-model="userProcessingFormData.company_id"
+                                                required>
+                                            <option value="">-----</option>
+                                            {% for choice, label in company_choices %}
+                                                <option value="{{ choice }}">{{ label }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div ng-show="processingForm.$submitted || processingForm.company.$touched"
+                                         class="help-block">
+                                        <div ng-show="processingForm.company.$error.required">
+                                            Select a company
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="form-group" ng-class="{ 'has-error' : processingForm.new_state.$error.required && (processingForm.$submitted || processingForm.new_state.$touched) }">
+                                <label for="new_state" class="control-label">
+                                    Approval Status
+                                </label>
+                                <div class="controls">
+                                    <select class="form-control"
+                                            name="new_state"
+                                            ng-model="userProcessingFormData.new_state"
+                                            required>
+                                        <option value="">-----</option>
+                                        {% for choice, label in equipment_sponsor_status_state_choices %}
+                                            <option value="{{ choice }}">{{ label }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div ng-show="processingForm.$submitted || processingForm.new_state.$touched"
+                                     class="help-block">
+                                    <div ng-show="processingForm.new_state.$error.required">
+                                        Select Approval Status
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="state_note" class="control-label">
+                                    Notes
+                                </label>
+                                <textarea id="state_note" class="form-control" rows="3"
+                                          name="state_notes"
+                                          ng-model="userProcessingFormData.state_notes"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <input class="btn btn-primary btn-block" type="submit" value="Apply" ng-class="{'disabled': !userProcessingFormData.equipment_ids.length}" />
+                                <p class="help-block" ng-hide="userProcessingFormData.equipment_ids.length">
+                                    Select at least 1 equipment
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-md-9">
+                {% block table %}
+                    {{ datatable }}
+                {% endblock table %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

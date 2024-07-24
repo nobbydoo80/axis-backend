@@ -1,0 +1,24 @@
+<table class="table training-table">
+    <tbody>
+        <tr>
+            <td width="15%">
+                <b>Type:</b>
+                <span ng-show="regionObject.object['training_type'] == 1">Voluntary</span>
+                <span ng-show="regionObject.object['training_type'] == 2">Mandatory</span>
+            </td>
+            <td width="15%">
+                <b>Attendance:</b>
+                <span ng-show="regionObject.object['attendance_type'] == 1">In-person</span>
+                <span ng-show="regionObject.object['attendance_type'] == 2">Remote</span>
+                <span ng-show="regionObject.object['attendance_type'] == 3">ABSENT</span>
+            </td>
+            <td width="25%">
+                <b>Training Company/Conference:</b> [[ regionObject.object['address'] ]]
+            </td>
+            <td>
+                <b>Notes:</b>
+                [[ regionObject.object['notes']  || '-' ]]
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+{% extends "examine/angular_region_panel.html" %}
+
+{% block heading %}
+    {% if user.is_superuser %}[ [[ regionObject.object.id ]] ] {% endif %}
+    <strong>[[ regionObject.object_name ]]</strong>
+    <div class="pull-right"></div>
+{% endblock heading %}
+
+{% block panels %}
+    <non-field-errors></non-field-errors>
+    <div detail-content ng-hide="region.editing()">
+        <loading-spinner></loading-spinner>
+    </div>
+    <div form-content ng-show="region.editing()">
+        <loading-spinner></loading-spinner>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6" ng-if="regionObject.helpers.machineries.builder_organization_contact">
+            <axis-single-region options="regionObject.helpers.machineries.builder_organization_contact"></axis-single-region>
+        </div>
+        <div class="col-xs-6" ng-if="regionObject.helpers.machineries.architect_organization_contact">
+            <axis-single-region options="regionObject.helpers.machineries.architect_organization_contact"></axis-single-region>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" ng-if="regionObject.helpers.machineries.developer_organization_contact">
+            <axis-single-region options="regionObject.helpers.machineries.developer_organization_contact"></axis-single-region>
+        </div>
+        <div class="col-xs-6" ng-if="regionObject.helpers.machineries.community_owner_organization_contact">
+            <axis-single-region options="regionObject.helpers.machineries.community_owner_organization_contact"></axis-single-region>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" ng-if="regionObject.helpers.machineries.verifier_organization_contact">
+            <axis-single-region options="regionObject.helpers.machineries.verifier_organization_contact"></axis-single-region>
+        </div>
+    </div>
+{% endblock panels %}

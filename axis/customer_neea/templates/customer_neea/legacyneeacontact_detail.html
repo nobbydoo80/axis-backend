@@ -1,0 +1,49 @@
+{% extends 'base_detail.html' %}
+{% load bootstrap_tags %}
+
+{% comment %}
+    Author: Steven Klass <sklass@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block detail_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2 key">Name:</div>
+                <div class="col-md-10 value">{{ object.first_name }} {{ object.last_name }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 key">Title:</div>
+                <div class="col-md-10 value">{{ object.title|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 key">Partner:</div>
+                <div class="col-md-10 value">
+                    {% if object.partner %}
+                        <a href="{{ object.partner.get_absolute_url }}">{{ object.partner }}</a>
+                    {% else %}-{% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 key">Email:</div>
+                <div class="col-md-10 value">
+                    {% if object.email %}
+                        <a href="mailto://{{ object.email }}">{{ object.email }}</a>
+                    {% else %}-{% endif %}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2 key">Office Phone:</div>
+                <div class="col-md-2 value">{{ object.office_phone|default:"-" }}</div>
+                <div class="col-md-2 key">Direct Phone:</div>
+                <div class="col-md-2 value">{{ object.direct_phone|default:"-" }}</div>
+                <div class="col-md-2 key">Cell Phone:</div>
+                <div class="col-md-2 value">{{ object.cell_phone|default:"-" }}</div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

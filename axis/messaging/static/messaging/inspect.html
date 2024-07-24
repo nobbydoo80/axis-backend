@@ -1,0 +1,62 @@
+<div class="modal fade" id="inspect-message-modal" ng-click="$event.stopPropagation();">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-[[ message.level | bootstrapcontext ]] text-[[ message.level | bootstrapcontext ]]"
+           style="border-bottom-color: #a6a6a6;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">
+            <i class="fa fa-fw text-[[ message.level | bootstrapcontext]]"
+               ng-class="{'fa-exclamation-circle': message.level == 'error',
+                          'fa-exclamation-triangle': message.level == 'warning',
+                          'fa-info-circle': message.level == 'info',
+                          'fa-code': message.level == 'debug'}">
+            </i>
+            [[ message.title ]]
+        </h4>
+        <a ng-if="message.url" ng-click="message.goToUrl()">[[ messageController.getFullUrl() ]]</a>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted smaller">
+            [[ message.date_created | date:"MM/dd/yyyy h:mma" ]]
+            &nbsp;•&nbsp;
+            [[ message.level ]]
+            <span ng-if="message.category">
+                &nbsp;•&nbsp;
+                <span class="label label-default">[[ message.category ]]</span>
+            </span>
+        </p>
+        <p ng-switch="message.sender">
+            <strong>
+                From <em>
+                    <span ng-switch-when="null">
+                        Axis:
+                    </span>
+                    <span ng-switch-default>
+                        [[ message.user_name ]]:
+                    </span>
+                </em>
+            </strong>
+        </p>
+        <p ng-bind-html="messageController.htmlContent"></p>
+      </div>
+      <div class="modal-footer">
+        <span ng-show="message.date_sent">
+            <button class="btn btn-link disabled">
+                <i class="fa fa-envelope-o"></i>
+                Email delivered
+            </button>
+        </span>
+        <span ng-show="!message.date_sent">
+            <button class="btn btn-default"
+                    ng-disabled="messageController.isSending()"
+                    ng-click="messageController.sendEmail()">
+                <i ng-show="!messageController.isSending()" class="fa fa-share"></i>
+                <i ng-show="messageController.isSending()" class="fa fa-spinner fa-spin"></i>
+                Forward to email
+            </button>
+        </span>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

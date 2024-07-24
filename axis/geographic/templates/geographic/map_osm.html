@@ -1,0 +1,97 @@
+<script src="{{ STATIC_URL }}js/OpenLayers.js"></script>
+<script src="//maps.googleapis.com/maps/api/js?{% if not debug %}client=gme-pivotalenergysolutions&{% endif %}sensor=false" type="text/javascript"></script>
+
+<script>
+    window.onload = function() {
+
+        // the SATELLITE layer has all 22 zoom level, so we add it first to
+        // become the internal base layer that determines the zoom levels of the
+        // map.
+        var gsat = new OpenLayers.Layer.Google(
+            "Google Satellite",
+            {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22}
+        );
+        var gphy = new OpenLayers.Layer.Google(
+            "Google Terrain",
+            {type: google.maps.MapTypeId.TERRAIN, visibility: false}
+        );
+        var gmap = new OpenLayers.Layer.Google(
+            "Google Streets", // the default
+            {numZoomLevels: 22, visibility: false}
+        );
+        var ghyb = new OpenLayers.Layer.Google(
+            "Google Hybrid",
+            {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 22, visibility: false}
+        );
+
+        var bing_road = new OpenLayers.Layer.Bing({
+            name: "Bing Road",
+            key: 'AgHkPStmhMj0toeLtLWMDE_HvMCOE057at836Hamr5nvxixCL91fSnB8yidXxqh6',
+            type: "Road"
+        });
+        var bing_hybrid = new OpenLayers.Layer.Bing({
+            name: "Bing Hybrid",
+            key: 'AgHkPStmhMj0toeLtLWMDE_HvMCOE057at836Hamr5nvxixCL91fSnB8yidXxqh6',
+            type: "AerialWithLabels"
+        });
+        var bing_aerial = new OpenLayers.Layer.Bing({
+            name: "Bing Aerial",
+            key: 'AgHkPStmhMj0toeLtLWMDE_HvMCOE057at836Hamr5nvxixCL91fSnB8yidXxqh6',
+            type: "Aerial"
+        });
+
+        map = new OpenLayers.Map( {
+            div: 'map-canvas',
+            layers: [ gmap, gsat, ghyb, gphy,
+                    bing_road, bing_hybrid, bing_aerial,
+                    new OpenLayers.Layer.OSM() ],
+            controls: [
+                new OpenLayers.Control.Attribution(),
+                new OpenLayers.Control.Navigation(),
+                new OpenLayers.Control.PanZoomBar(),
+                new OpenLayers.Control.LayerSwitcher()
+            ]
+        });
+
+        map.setCenter(
+            new OpenLayers.LonLat({{ object.longitude }}, {{ object.latitude }}).transform(
+                new OpenLayers.Projection("EPSG:4326"),
+                map.getProjectionObject()
+            ), 16
+        );
+
+        var markers = new OpenLayers.Layer.Markers( "Markers" );
+        var size = new OpenLayers.Size(22,25);
+        var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+
+        {% for lat, long, name, color, url in alt_lat_longs %}
+            var icon = new OpenLayers.Icon('//www.google.com/intl/en_us/mapfiles/ms/micons/{{ color }}-dot.png', size, offset);
+            markers.addMarker(new OpenLayers.Marker(
+                    new OpenLayers.LonLat({{ long }}, {{ lat }}).transform(
+                        new OpenLayers.Projection("EPSG:4326"),
+                        map.getProjectionObject()
+                    ),icon));
+            map.addLayer(markers);
+        {% empty %}
+            var icon = new OpenLayers.Icon('//www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png', size, offset);
+            markers.addMarker(new OpenLayers.Marker(
+                    new OpenLayers.LonLat({{ object.longitude }}, {{ object.latitude }}).transform(
+                        new OpenLayers.Projection("EPSG:4326"),
+                        map.getProjectionObject()
+                    ),icon));
+            map.addLayer(markers);
+        {% endfor %}
+
+    }
+</script>
+<script type="text/javascript">
+    $(window).resize(function () {
+        var h = $(window).height(),
+            offsetTop = 60; // Calculate the top offset
+
+        $('#map-canvas').css('height', (h - offsetTop));
+    }).resize();
+</script>
+
+{#<div id="map-canvas" style="width: {{ width|default:"310" }}px; height: {{ height|default:"210" }}px"></div>#}
+<div id="map-canvas"></div>

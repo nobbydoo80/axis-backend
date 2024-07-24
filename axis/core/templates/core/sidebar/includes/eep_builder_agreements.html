@@ -1,0 +1,23 @@
+
+{% comment %}
+    Requires: object.builderagreement_set
+{% endcomment %}
+
+{% if perms.builder_agreement.add_builderagreement or object.builderagreement_set.all|length and perms.builder_agreement.view_builderagreement  %}
+    <div class="well">
+        <h4>Program Builder Agreements</h4>
+        {% if object.builderagreement_set.all|length %}
+            <ul>
+                {% for agreement in object.builderagreement_set.all %}
+                    <li><a href="{{ agreement.get_absolute_url }}">{{ agreement }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            {% if perms.builder_agreement.add_builderagreement %}
+                <div class="text-right">
+                    <a class="btn" href="{% url "builder_agreement:add" %}">Add new agreement</a>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endif %}

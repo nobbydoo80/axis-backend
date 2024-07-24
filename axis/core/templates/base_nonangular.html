@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% comment %}
+    This is a barebones re-declaration of the base template with [ng-app="axis"] wrapping ONLY the
+    menu area.
+
+    This template should only be used on pages that are deploying their own [ng-app] in the page
+    body, to avoid nesting axis.  Such pages were created before we added the global "axis" app,
+    and need to be updated to be made aware of the way the standard base.html template wraps the
+    whole page.
+{% endcomment %}
+
+{% block body %}
+    <div ng-app="axis"{% if user.is_authenticated %} messaging-wrapper{% endif %}>
+        {% block menu %}{{ block.super }}{% endblock %}
+        {% if user.is_authenticated %}
+            <view-message ng-show="messages.inspectMessage"></view-message>
+        {% endif %}
+
+        <ul id="toast-area" class="list-group"></ul>
+    </div>{# [ng-app="axis"] ends here! #}
+
+    {# Copy-paste structure from normal template #}
+    <div id="content" class="container">
+        {# {% include "messages/includes/bootstrap_messages.html" %} #}
+        {% block full_content %}{{ block.super }}{% endblock full_content %}
+        <hr>
+        {% block footer %}{{ block.super }}{% endblock footer %}
+    </div>
+{% endblock body %}

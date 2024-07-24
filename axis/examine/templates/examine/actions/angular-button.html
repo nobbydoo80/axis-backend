@@ -1,0 +1,118 @@
+<span ng-switch="getType()">
+    <span ng-switch-when="split-dropdown">
+        <span class="btn-group" dropdown>
+            <!-- Actions -->
+            <a class="btn btn-[[ style || options.style ]] btn-[[ size || options.size ]]"
+               ng-disabled="region.isProcessing() || disabled || options.disabled"
+                    ng-if="options.instruction" ng-click="region.handleAction(options)">
+                <i class="fa fa-fw fa-spin fa-spinner" ng-if="region.isProcessing(options.items)"></i>
+                <i class="fa fa-fw fa-[[ options.icon ]]" ng-if="options.icon"></i>
+                <span ng-transclude></span>
+            </a>
+            <!-- Links -->
+            <a class="btn btn-[[ style || options.style ]] btn-[[ size || options.size ]]"
+               ng-disabled="region.isProcessing() || disabled || options.disabled"
+                    ng-if="options.href" ng-href="[[ options.href ]]">
+                <i class="fa fa-fw fa-spin fa-spinner" ng-if="region.isProcessing(options.items)"></i>
+                <i class="fa fa-fw fa-[[ options.icon ]]" ng-if="options.icon"></i>
+                <span ng-transclude></span>
+            </a>
+            <!-- Text labels -->
+            <a class="btn btn-[[ style || options.style ]] btn-[[ size || options.size ]]"
+               ng-disabled="region.isProcessing() || disabled || options.disabled"
+                    ng-if="!(options.instruction || options.href)" style="cursor: text">
+                <i class="fa fa-fw fa-spin fa-spinner" ng-if="region.isProcessing(options.items)"></i>
+                <i class="fa fa-fw fa-[[ options.icon ]]" ng-if="options.icon"></i>
+                <span ng-transclude></span>
+            </a>
+            <button class="btn btn-[[ style || options.style ]] btn-[[ size || options.size ]] dropdown-toggle" dropdown-toggle>
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu" style="min-width: 30rem; max-width: 30rem;">
+                <li ng-repeat="item in options.items" class="[[ item.class || '' ]]" ng-class="{'disabled': !(item.instruction || item.href)}">
+                    <!-- Actions -->
+                    <a ng-if="::item.instruction" ng-click="region.handleAction(item)">
+                        <i class="fa fa-fw fa-[[ item.icon ]]" ng-if="::item.icon"></i>
+                        [[ item.name ]]
+                        <p class="list-group-item-text small text-muted"
+                           ng-if="::item.description"
+                           ng-bind="::item.description"
+                           style="white-space: normal;"></p>
+                    </a>
+                    <!-- Links -->
+                    <a ng-if="::item.href" ng-href="[[ item.href ]]">
+                        <i class="fa fa-fw fa-[[ item.icon ]]" ng-if="::item.icon"></i>
+                        [[ item.name ]]
+                        <p class="list-group-item-text small text-muted"
+                           ng-if="::item.description"
+                           ng-bind="::item.description"
+                           style="white-space: normal;"></p>
+                    </a>
+                    <!-- Text labels -->
+                    <a ng-if="!(item.instruction || item.href)" style="cursor: text">
+                        <i class="fa fa-fw fa-[[ item.icon ]]" ng-if="::item.icon"></i>
+                        [[ item.name ]]
+                        <p class="list-group-item-text small text-muted"
+                           ng-if="::item.description"
+                           ng-bind="::item.description"
+                           style="white-space: normal;"></p>
+                    </a>
+                </li>
+            </ul>
+        </span>
+    </span>
+    <span ng-switch-when="dropdown">
+        <div class="btn-group" dropdown>
+            <button class="btn btn-[[ style || options.style ]] btn-[[ size || options.size ]] dropdown-toggle"
+                    ng-disabled="region.isProcessing() || disabled || options.disabled"
+                    dropdown-toggle>
+                <i class="fa fa-fw fa-spin fa-spinner" ng-if="region.isProcessing(options.items)"></i>
+                <span ng-transclude></span>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" style="min-width: 30rem; max-width: 30rem;">
+                <li ng-repeat="item in options.items" class="[[ item.class || '' ]]" ng-class="{'disabled': !(item.instruction || item.href)}">
+                    <!-- Actions -->
+                    <a ng-if="::item.instruction" ng-click="region.handleAction(item)">
+                        <i class="fa fa-fw fa-[[ item.icon ]]" ng-if="::item.icon"></i>
+                        [[ item.name ]]
+                        <p class="list-group-item-text small text-muted"
+                           ng-if="::item.description"
+                           ng-bind="::item.description"
+                           style="white-space: normal;"></p>
+                    </a>
+                    <!-- Links -->
+                    <a ng-if="::item.href" ng-href="[[ item.href ]]">
+                        <i class="fa fa-fw fa-[[ item.icon ]]" ng-if="::item.icon"></i>
+                        [[ item.name ]]
+                        <p class="list-group-item-text small text-muted"
+                           ng-if="::item.description"
+                           ng-bind="::item.description"
+                           style="white-space: normal;"></p>
+                    </a>
+                    <!-- Text labels -->
+                    <a ng-if="!(item.instruction || item.href)" style="cursor: text">
+                        <i class="fa fa-fw fa-[[ item.icon ]]" ng-if="::item.icon"></i>
+                        [[ item.name ]]
+                        <p class="list-group-item-text small text-muted"
+                           ng-if="::item.description"
+                           ng-bind="::item.description"
+                           style="white-space: normal;"></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </span>
+    <span ng-switch-when="link">
+        <a class="btn btn-[[ style || options.style || 'default' ]] btn-[[ size || options.size || 'md' ]]" ng-href="[[ href || options.href ]]" ng-disabled="region.isProcessing() || disabled || options.disabled" ng-attr-target="[[(options.attrs && options.attrs.target) ? options.attrs.target : undefined]]">
+            <i class="fa fa-fw fa-spin fa-spinner" ng-if="region.isProcessing((instruction || options.instruction))"></i>
+            <span ng-transclude></span>
+        </a>
+    </span>
+    <span ng-switch-default>
+        <button class="btn btn-[[ style || options.style ]] btn-[[ size || options.size ]]" ng-click="region.handleAction((instruction || options))" ng-disabled="region.isProcessing() || disabled || options.disabled">
+            <i class="fa fa-fw fa-spin fa-spinner" ng-if="region.isProcessing((instruction || options.instruction))"></i>
+            <span ng-transclude></span>
+        </button>
+    </span>
+</span>

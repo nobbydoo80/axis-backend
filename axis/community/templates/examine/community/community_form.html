@@ -1,0 +1,50 @@
+<div ng-controller="CommunityFormController">
+    <axis-field field="regionObject.fields.geocode_response"></axis-field>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.name"></axis-field>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.city"
+                            on-change="makeGeocodeDirty()"></axis-field>
+            </div>
+        </div>
+        <div class="col-md-2 add-type-btn visible-desktop">
+            <a href="{% url "city:add" %}" class="btn btn-default btn-sm" target="_blank">Add</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.cross_roads"
+                            on-change="makeGeocodeDirty()"></axis-field>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-top: 1.4em">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.is_multi_family"
+                            on-change="makeGeocodeDirty()"></axis-field>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.website"></axis-field>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-hide="$root.examineApp.creating">
+        <div class="col-md-6">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.address_override"></axis-field>
+            </div>
+        </div>
+    </div>
+</div>

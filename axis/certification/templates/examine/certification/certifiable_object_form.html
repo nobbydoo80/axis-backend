@@ -1,0 +1,24 @@
+{% extends "examine/angular_form_default.html" %}
+
+{% block content %}
+    <div>
+        <div class="row form-group" ng-if="regionObject.fields.owner">
+            <div class="col-md-6">
+                <axis-field field="regionObject.fields.owner"></axis-field>
+            </div>
+        </div>
+        <div class="row form-group" ng-if="regionObject.fields.parent">
+            <div class="col-md-6">
+                <axis-field field="regionObject.fields.parent"></axis-field>
+            </div>
+        </div>
+    </div>
+
+    {# <hr> #}
+
+    {# <h4>Settings</h4> #}
+    <div class="row form-group data-browser">
+        {% block settings_fields %}{% endblock settings_fields %}
+    </div>
+
+{% endblock content %}

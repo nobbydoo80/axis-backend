@@ -1,0 +1,89 @@
+<div class="row" ng-controller="HomeFormController">
+    <div class="col-md-9">
+        <div class="alert alert-info" ng-show="regionObject.helpers.restricted_edit">
+            Some fields are unavailable for further modification.
+            <span ng-show="regionObject.helpers.restricted_by_ipp">
+                <span ng-switch="regionObject.helpers.restricted_by_homestatus_state">
+                    <span ng-switch-when="true">
+                        Inspection is complete.
+                    </span>
+                    <span ng-switch-when="false">
+                        Certification is complete and incentive payments have been made.
+                    </span>
+                </span>
+            </span>
+            <span ng-show="regionObject.helpers.restricted_by_sampling">
+                The home's Sample Set has been contains certified homes.
+            </span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row form-group">
+                    <div class="col-md-7">
+                        <axis-field field="regionObject.fields.lot_number"
+                                    on-change="makeGeocodeDirty()"></axis-field>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <axis-field field="regionObject.fields.street_line1"
+                                    on-change="makeGeocodeDirty()"></axis-field>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-7">
+                        <axis-field field="regionObject.fields.street_line2"
+                                    on-change="makeGeocodeDirty()"></axis-field>
+                    </div>
+                    <div class="col-md-4 col-md-offset-1" style="margin-top: 1.4em">
+                        <axis-field field="regionObject.fields.is_multi_family"
+                                    on-change="makeGeocodeDirty()"></axis-field>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-10">
+                        <axis-field field="regionObject.fields.subdivision"
+                                    on-change="makeGeocodeDirty(); lookupSubdivisionInfo()"></axis-field>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 1.4em">
+                        {% if perms.add_subdivision %}
+                            <a href="{% url "subdivision:add" %}" class="btn btn-default btn-sm" target="_blank">Add</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-10">
+                        <axis-field field="regionObject.fields.city"
+                                    on-change="makeGeocodeDirty()"></axis-field>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 1.4em">
+                        {% if perms.add_city %}
+                            <a href="{% url "city:add" %}" class="btn btn-default btn-sm" target="_blank">Add</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-10">
+                        <axis-field field="regionObject.fields.zipcode"
+                                    on-change="makeGeocodeDirty()"></axis-field>
+                    </div>
+                </div>
+                <div class="row form-group" ng-hide="$root.examineApp.creating">
+                    <div class="col-md-10">
+                        <axis-field field="regionObject.fields.address_override"></axis-field>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-10">
+                        <axis-field field="regionObject.fields.updated_construction_stage"></axis-field>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" ng-if="regionObject.helpers.machinery.home_blg">
+                <axis-single-region options="regionObject.helpers.machinery.home_blg"></axis-single-region>
+            </div>
+        </div>
+    </div>
+</div>

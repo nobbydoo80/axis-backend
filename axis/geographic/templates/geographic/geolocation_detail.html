@@ -1,0 +1,122 @@
+{% extends "base_detail.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %} Geolocation: {{ object }} {% endblock %}
+{% block header_text %}
+    <span class="key">Viewing Geolocation:</span>
+    <span class="value">{{ object }}</span>
+{% endblock %}
+
+{% block detail_content %}
+<div class="row">
+    <div class="col-md-6 col-md-push-6">
+        {% include "geographic/map.html" with width=620 height=420 %}
+    </div>
+    <div class="col-md-6 col-md-pull-6">
+        <h3>Input Address</h3>
+        <div class="row">
+            <div class="col-md-4 key">Input:</div>
+            <div class="col-md-8 value">{{ object.input_address }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 key">Created:</div>
+            <div class="col-md-8 value">{{ object.created_date|date:'m/d/Y P' }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 key">Last Modified:</div>
+            <div class="col-md-8 value">{{ object.modified_date|date:'m/d/Y P' }}</div>
+        </div>
+        <h3>Resulting Noramalized Address</h3>
+        {% if object.lot_number %}
+            <div class="row">
+                <div class="col-md-4 key">Lot Number:</div>
+                <div class="col-md-8 value">{{ object.lot_number }}</div>
+            </div>
+        {% endif %}
+        {% if object.street_line1 %}
+            <div class="row">
+                <div class="col-md-4 key">Street:</div>
+                <div class="col-md-8 value">
+                    {{ object.street_line1 }}
+                    {% if object.street_line2 %}
+                        <br>{{ object.street_line2 }}
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+        {% if object.city %}
+            <div class="row">
+                <div class="col-md-4 key">City:</div>
+                <div class="col-md-8 value">{{ object.city }}</div>
+            </div>
+        {% endif %}
+        {% if object.state %}
+            <div class="row">
+                <div class="col-md-4 key">City:</div>
+                <div class="col-md-8 value">{{ object.city }}</div>
+            </div>
+        {% endif %}
+        {% if object.county %}
+            <div class="row">
+                <div class="col-md-4 key">County:</div>
+                <div class="col-md-8 value">{{ object.county }}</div>
+            </div>
+        {% endif %}
+        {% if object.state %}
+            <div class="row">
+                <div class="col-md-4 key">State:</div>
+                <div class="col-md-8 value">{{ object.state }}</div>
+            </div>
+        {% endif %}
+        {% if object.zipcode %}
+            <div class="row">
+                <div class="col-md-4 key">ZIP Code:</div>
+                <div class="col-md-8 value">{{ object.zipcode }}</div>
+            </div>
+        {% endif %}
+        {% if object.intersection %}
+           <div class="row">
+               <div class="col-md-4 key">Raw Intersection:</div>
+               <div class="col-md-8 value">{{ object.intersection }}</div>
+           </div>
+        {% endif %}
+        {% if object.subdivision %}
+            <div class="row">
+                <div class="col-md-4 key">Subdivision:</div>
+                <div class="col-md-8 value">{{ object.subdivision }}</div>
+            </div>
+        {% endif %}
+        <br>
+        <div class="row">
+            <div class="col-md-4 key">Confirmed:</div>
+            <div class="col-md-8 value">
+                {% if object.confirmed_address %}&#10004;{% else %}&#10008;{% endif %}
+            </div>
+        </div>
+        <br>
+        <table>
+            {% for lat, long, name, color, url in alt_lat_longs %}
+                <tr>
+                    <td><img src="//www.google.com/intl/en_us/mapfiles/ms/micons/{{ color }}-dot.png" /> </td>
+                    <td><a href="{{ url }}">{{ name }}</a></td>
+                    <td>{{ lat|floatformat:4 }}, {{ long|floatformat:4 }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% if similar_lookups|length > 1 %}
+<hr>
+    <h3>Geolocation entities which share this same address</h3>
+    <ul>
+        {% for similar in similar_lookups %}
+            <li><a href="{% url 'geolocation:view' pk=similar.id %}">{{ similar.get_raw_address }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

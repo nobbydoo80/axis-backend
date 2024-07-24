@@ -1,0 +1,5 @@
+.venv
+axis/core/static/images/masters
+axis/core/static/images/homes
+axis/core/static/js/node_modules
+axis/core/static/js/build

@@ -1,0 +1,2033 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<buildingfile>
+    <xmlversion>0.21</xmlversion>
+    <io>64</io>
+    <building>
+        <notes>building notes&#x0A;notes line 2</notes>
+        <projectinfo>
+            <buildingname>the bldg name</buildingname>
+            <propertyowner>I.M. Smith</propertyowner>
+            <propertyaddress>2342 Maybee Ave.</propertyaddress>
+            <propertycity>Denver</propertycity>
+            <propertystate>CO</propertystate>
+            <propertyzip>80333</propertyzip>
+            <propertyphone>303 444 4444</propertyphone>
+            <buildername>WeeBeeGood Builders</buildername>
+            <builderaddress>bldr street 1</builderaddress>
+            <buildercity>bldr street 1</buildercity>
+            <builderphone>303 111 2222</builderphone>
+            <builderemail>bldr email</builderemail>
+            <modelname>The Jubilee</modelname>
+            <developmentname>Rocky View</developmentname>
+            <ratingorgname>L.A. Raters</ratingorgname>
+            <ratingorgaddress>rater street 1</ratingorgaddress>
+            <ratingorgcity>rater city</ratingorgcity>
+            <ratingorgstate>AK</ratingorgstate>
+            <ratingorgzip>ater zip</ratingorgzip>
+            <ratingorgphone>303 222 1111</ratingorgphone>
+            <ratingorgwebsite>www.laraters.com</ratingorgwebsite>
+            <ratername>H.I. Scorer</ratername>
+            <rateremail>a@laraters.com</rateremail>
+            <ratercertnumber>303 333 2222</ratercertnumber>
+            <ratingdate>4/12/95</ratingdate>
+            <ratingtype>Based on plans</ratingtype>
+            <ratingreason>New home</ratingreason>
+            <ratingnumber>XYZ-REM15p4</ratingnumber>
+            <providerid>____-___</providerid>
+            <samplesetid>0000</samplesetid>
+            <builderpermit>12345</builderpermit>
+            <verifier>
+                <name>Rater Name 1</name>
+                <id>RaterID1</id>
+            </verifier>
+            <verifier>
+                <name>Rater Name 2</name>
+                <id>RaterID2</id>
+            </verifier>
+            <verifier>
+                <name>Rater Name 3</name>
+                <id>RaterID3</id>
+            </verifier>
+            <verifier>
+                <name>Rater Name 4</name>
+                <id>RaterID4</id>
+            </verifier>
+        </projectinfo>
+        <buildingInfo>
+            <bldgLevelType>None</bldgLevelType>
+            <housingType>Single-family detached</housingType>
+            <numFloors>1</numFloors>
+            <foundationType>Conditioned basement</foundationType>
+            <crawlSpaceType>N/A</crawlSpaceType>
+            <bldgVolume>16000</bldgVolume>
+            <numBedrooms>3</numBedrooms>
+            <numUnits>1</numUnits>
+            <yearBuilt>2008</yearBuilt>
+            <condArea>2000</condArea>
+            <thermBoundary>REM Default</thermBoundary>
+            <finishedArea>0</finishedArea>
+            <numFloorsWithCondBsmt>1</numFloorsWithCondBsmt>
+        </buildingInfo>
+        <resnetInfo>
+            <q1>true</q1>
+            <q2A>true</q2A>
+            <q2B>false</q2B>
+            <q2C>true</q2C>
+            <q2D>true</q2D>
+            <q2E>true</q2E>
+            <q3A>false</q3A>
+            <q3B>true</q3B>
+            <q3C>false</q3C>
+            <hvacInstalled>Employer</hvacInstalled>
+            <hvacBusiness>Rater</hvacBusiness>
+            <insulationInstalled>Rater</insulationInstalled>
+            <insulationBusiness>N/A</insulationBusiness>
+            <airSealingInstalled>N/A</airSealingInstalled>
+            <airSealingBusiness>Employer</airSealingBusiness>
+            <windowsInstalled>Rater</windowsInstalled>
+            <windowsBusiness>N/A</windowsBusiness>
+            <appliancesInstalled>N/A</appliancesInstalled>
+            <appliancesBusiness>Employer</appliancesBusiness>
+            <constructionInstalled>Employer</constructionInstalled>
+            <constructionBusiness>N/A</constructionBusiness>
+            <otherInstalled>N/A</otherInstalled>
+            <otherBusiness>Rater</otherBusiness>
+            <otherService>this is the other text</otherService>
+            <otherProduct>other specify</otherProduct>
+            <q5>true</q5>
+        </resnetInfo>
+        <foundationwalls>
+            <foundationwall wallid="fndwall-1">
+                <name>Cond Basement</name>
+                <foundationwallType>
+                    <name>ek R-19 Draped, Full</name>
+                    <note>qwer</note>
+                    <type>Block: vermiculite cores</type>
+                    <studtype>Steel, 2x4, 16&quot; o.c.</studtype>
+                    <thickness>6.8</thickness>
+                    <interiorInsContinuousRVal>19.1</interiorInsContinuousRVal>
+                    <interiorInsFrameCavityRVal>1.1</interiorInsFrameCavityRVal>
+                    <interiorInsTopEdge>2.2</interiorInsTopEdge>
+                    <interiorInsTopEdgeType>from top of wall</interiorInsTopEdgeType>
+                    <interiorInsBottomEdge>3.3</interiorInsBottomEdge>
+                    <interiorInsBottomEdgeType>from bottom of wall</interiorInsBottomEdgeType>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <exteriorInsRVal>4.4</exteriorInsRVal>
+                    <exteriorInsTopEdge>5.5</exteriorInsTopEdge>
+                    <exteriorInsTopEdgeType>above grade</exteriorInsTopEdgeType>
+                    <exteriorInsBottomEdge>6.6</exteriorInsBottomEdge>
+                    <exteriorInsBottomEdgeType>below grade</exteriorInsBottomEdgeType>
+                </foundationwallType>
+                <length>128.3</length>
+                <height>8.7</height>
+                <heightAboveGrade>1.1</heightAboveGrade>
+                <depthBelowGrade>7.6</depthBelowGrade>
+                <location>Between conditioned space and ambient/ground</location>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </foundationwall>
+            <foundationwall wallid="fndwall-2">
+                <name>fwall 2</name>
+                <foundationwallType>
+                    <name>Mobile Home Skirt</name>
+                    <note></note>
+                    <type>MH Vinyl Skirting</type>
+                    <studtype>Steel, 2x6, 24&quot; o.c.</studtype>
+                    <thickness>0.1</thickness>
+                    <interiorInsContinuousRVal>8.0</interiorInsContinuousRVal>
+                    <interiorInsFrameCavityRVal>0.0</interiorInsFrameCavityRVal>
+                    <interiorInsTopEdge>0.0</interiorInsTopEdge>
+                    <interiorInsTopEdgeType>from top of wall</interiorInsTopEdgeType>
+                    <interiorInsBottomEdge>0.0</interiorInsBottomEdge>
+                    <interiorInsBottomEdgeType>from bottom of wall</interiorInsBottomEdgeType>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <exteriorInsRVal>0.0</exteriorInsRVal>
+                    <exteriorInsTopEdge>0.0</exteriorInsTopEdge>
+                    <exteriorInsTopEdgeType>from top of wall</exteriorInsTopEdgeType>
+                    <exteriorInsBottomEdge>0.0</exteriorInsBottomEdge>
+                    <exteriorInsBottomEdgeType>below grade</exteriorInsBottomEdgeType>
+                </foundationwallType>
+                <length>4.0</length>
+                <height>7.7</height>
+                <heightAboveGrade>0.0</heightAboveGrade>
+                <depthBelowGrade>7.7</depthBelowGrade>
+                <location>Between conditioned space and garage/ground</location>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </foundationwall>
+            <foundationwall wallid="fndwall-3">
+                <name>fwall 3</name>
+                <foundationwallType>
+                    <name>R-5 Ext, 2ft deep</name>
+                    <note></note>
+                    <type>Solid concrete or stone</type>
+                    <studtype>None</studtype>
+                    <thickness>8.0</thickness>
+                    <interiorInsContinuousRVal>0.0</interiorInsContinuousRVal>
+                    <interiorInsFrameCavityRVal>0.0</interiorInsFrameCavityRVal>
+                    <interiorInsTopEdge>0.0</interiorInsTopEdge>
+                    <interiorInsTopEdgeType>from top of wall</interiorInsTopEdgeType>
+                    <interiorInsBottomEdge>0.0</interiorInsBottomEdge>
+                    <interiorInsBottomEdgeType>from top of wall</interiorInsBottomEdgeType>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <exteriorInsRVal>5.0</exteriorInsRVal>
+                    <exteriorInsTopEdge>0.0</exteriorInsTopEdge>
+                    <exteriorInsTopEdgeType>from top of wall</exteriorInsTopEdgeType>
+                    <exteriorInsBottomEdge>2.0</exteriorInsBottomEdge>
+                    <exteriorInsBottomEdgeType>below grade</exteriorInsBottomEdgeType>
+                </foundationwallType>
+                <length>3.0</length>
+                <height>6.0</height>
+                <heightAboveGrade>4.0</heightAboveGrade>
+                <depthBelowGrade>2.0</depthBelowGrade>
+                <location>Between cond and another cond unit (adiabatic)</location>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </foundationwall>
+        </foundationwalls>
+        <aboveGradeWalls>
+            <aboveGradeWall wallid="agwall-1">
+                <name>Exterior Wall</name>
+                <aboveGradeWallType>
+                    <name>R-110</name>
+                    <note>qwer</note>
+                    <inputMode>Quick Fill Site-Built</inputMode>
+                    <constructionType>Standard Wood Frame</constructionType>
+                    <continousInsRval>0.0</continousInsRval>
+                    <frameCavityInsRval>11.0</frameCavityInsRval>
+                    <cavityInsThickness>3.5</cavityInsThickness>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <blockCavityInsRval>0.0</blockCavityInsRval>
+                    <gypsumThickness>0.500</gypsumThickness>
+                    <studSpacing>16.0</studSpacing>
+                    <studWidth>1.5</studWidth>
+                    <studDepth>3.5</studDepth>
+                    <defaultFramingFactor>true</defaultFramingFactor>
+                    <framingFactor>0.2300</framingFactor>
+                </aboveGradeWallType>
+                <area>1026.3</area>
+                <exteriorColor>Light</exteriorColor>
+                <location>Between conditioned space and ambient</location>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </aboveGradeWall>
+            <aboveGradeWall wallid="agwall-2">
+                <name>Common Wall</name>
+                <aboveGradeWallType>
+                    <name>R-150</name>
+                    <note>BigWall</note>
+                    <inputMode>Quick Fill Site-Built</inputMode>
+                    <constructionType>Standard Wood Frame</constructionType>
+                    <continousInsRval>0.0</continousInsRval>
+                    <frameCavityInsRval>15.0</frameCavityInsRval>
+                    <cavityInsThickness>3.5</cavityInsThickness>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <blockCavityInsRval>0.0</blockCavityInsRval>
+                    <gypsumThickness>0.500</gypsumThickness>
+                    <studSpacing>16.0</studSpacing>
+                    <studWidth>1.5</studWidth>
+                    <studDepth>3.5</studDepth>
+                    <defaultFramingFactor>true</defaultFramingFactor>
+                    <framingFactor>0.2300</framingFactor>
+                </aboveGradeWallType>
+                <area>513.2</area>
+                <exteriorColor>Light</exteriorColor>
+                <location>Between cond and another cond unit (adiabatic)</location>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </aboveGradeWall>
+            <aboveGradeWall wallid="agwall-3">
+                <name>pathlayer</name>
+                <aboveGradeWallType>
+                    <name>SIP 12-3/8&quot;</name>
+                    <note></note>
+                    <inputMode>Path Layer</inputMode>
+                    <pathLayer>
+                        <layerNames>
+                            <name>Gyp board</name>
+                            <name>Air Gap/Frm</name>
+                            <name>Continuous ins</name>
+                            <name>Ext Finish</name>
+                            <name></name>
+                            <name></name>
+                        </layerNames>
+                        <heatTransferPaths>
+                            <heatTransferPath>
+                                <name>SIP</name>
+                                <area>1.0000</area>
+                                <RVal>0.6800</RVal>
+                                <RVal>0.4500</RVal>
+                                <RVal>1.0300</RVal>
+                                <RVal>53.2000</RVal>
+                                <RVal>0.9400</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.1700</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                        </heatTransferPaths>
+                    </pathLayer>
+                </aboveGradeWallType>
+                <area>100.0</area>
+                <exteriorColor>Medium</exteriorColor>
+                <location>Between conditioned space and ambient</location>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </aboveGradeWall>
+        </aboveGradeWalls>
+        <roofs>
+            <roof roofid="roof-1">
+                <name>pathlayer</name>
+                <ceilingType>
+                    <name>ek R-38 Blown, Attic</name>
+                    <note>asf</note>
+                    <inputMode>Path Layer</inputMode>
+                    <pathLayer>
+                        <layerNames>
+                            <name>Gyp board</name>
+                            <name>Cavity Ins/Frm</name>
+                            <name>Continuous ins</name>
+                            <name></name>
+                            <name></name>
+                            <name></name>
+                        </layerNames>
+                        <heatTransferPaths>
+                            <heatTransferPath>
+                                <name>Framing</name>
+                                <area>0.1100</area>
+                                <RVal>0.6100</RVal>
+                                <RVal>0.4500</RVal>
+                                <RVal>4.3750</RVal>
+                                <RVal>6.0000</RVal>
+                                <RVal>0.1100</RVal>
+                                <RVal>0.2200</RVal>
+                                <RVal>0.3300</RVal>
+                                <RVal>0.4400</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name>Cavity</name>
+                                <area>0.8400</area>
+                                <RVal>0.6100</RVal>
+                                <RVal>0.4500</RVal>
+                                <RVal>13.0000</RVal>
+                                <RVal>6.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.6100</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name>Grade</name>
+                                <area>0.0500</area>
+                                <RVal>0.6100</RVal>
+                                <RVal>0.4500</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>6.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.6100</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                        </heatTransferPaths>
+                    </pathLayer>
+                </ceilingType>
+                <area>888.0</area>
+                <exteriorColor>Medium</exteriorColor>
+                <radiantBarrier>No</radiantBarrier>
+                <clayTile>No</clayTile>
+                <ventilation>No</ventilation>
+                <roofArea>888.0</roofArea>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </roof>
+            <roof roofid="roof-2">
+                <name>asdf</name>
+                <ceilingType>
+                    <name>R-50 Blown, Attic</name>
+                    <note></note>
+                    <inputMode>Quick Fill Site-Built</inputMode>
+                    <type>Attic</type>
+                    <continousInsRval>37.0</continousInsRval>
+                    <cavityInsRval>13.0</cavityInsRval>
+                    <cavityInsThickness>3.5</cavityInsThickness>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <gypsumThickness>0.500</gypsumThickness>
+                    <chordSpacing>24.0</chordSpacing>
+                    <chordWidth>1.5</chordWidth>
+                    <chordHeight>3.5</chordHeight>
+                    <defaultFramingFactor>true</defaultFramingFactor>
+                    <framingFactor>0.1100</framingFactor>
+                </ceilingType>
+                <area>1000.0</area>
+                <exteriorColor>Medium</exteriorColor>
+                <radiantBarrier>No</radiantBarrier>
+                <clayTile>No</clayTile>
+                <ventilation>No</ventilation>
+                <roofArea>1000.0</roofArea>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </roof>
+            <roof roofid="roof-3">
+                <name>qf vault</name>
+                <ceilingType>
+                    <name>R-35, Vaulted</name>
+                    <note></note>
+                    <inputMode>Quick Fill Site-Built</inputMode>
+                    <type>Vaulted</type>
+                    <continousInsRval>5.0</continousInsRval>
+                    <cavityInsRval>30.0</cavityInsRval>
+                    <cavityInsThickness>9.5</cavityInsThickness>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <gypsumThickness>0.500</gypsumThickness>
+                    <chordSpacing>24.0</chordSpacing>
+                    <chordWidth>1.5</chordWidth>
+                    <chordHeight>9.5</chordHeight>
+                    <defaultFramingFactor>true</defaultFramingFactor>
+                    <framingFactor>0.1100</framingFactor>
+                </ceilingType>
+                <area>222.0</area>
+                <exteriorColor>Medium</exteriorColor>
+                <radiantBarrier>No</radiantBarrier>
+                <clayTile>No</clayTile>
+                <ventilation>No</ventilation>
+                <roofArea>222.0</roofArea>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </roof>
+            <roof roofid="roof-4">
+                <name>qwer</name>
+                <ceilingType>
+                    <name>Mobile Home Ceiling</name>
+                    <note></note>
+                    <inputMode>Quick Fill Mobile Home</inputMode>
+                    <insulType>Batt</insulType>
+                    <unrestrictedRval>12.0</unrestrictedRval>
+                    <unrestrictedDepth>4.0</unrestrictedDepth>
+                    <ceilingWidth>16.500</ceilingWidth>
+                    <ceilingRise>4.0</ceilingRise>
+                    <trussHeightCenter>24.0</trussHeightCenter>
+                    <heelHeight>4.0</heelHeight>
+                    <ventilationSpace>1.000</ventilationSpace>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <gypsumThickness>0.625</gypsumThickness>
+                    <chordSpacing>24.0</chordSpacing>
+                    <chordWidth>1.5</chordWidth>
+                    <chordHeight>3.5</chordHeight>
+                    <defaultFramingFactor>true</defaultFramingFactor>
+                    <framingFactor>0.1100</framingFactor>
+                </ceilingType>
+                <area>333.0</area>
+                <exteriorColor>Medium</exteriorColor>
+                <radiantBarrier>Yes</radiantBarrier>
+                <clayTile>No</clayTile>
+                <ventilation>No</ventilation>
+                <roofArea>333.0</roofArea>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </roof>
+        </roofs>
+        <joists>
+            <joist>
+                <name>Rim, Cond</name>
+                <location>Between conditioned space and ambient</location>
+                <area>128.3</area>
+                <continuousInsRVal>0.0</continuousInsRVal>
+                <cavityInsRVal>11.0</cavityInsRVal>
+                <spacing>16.0</spacing>
+                <cavityInsThick>3.5</cavityInsThick>
+                <cavityInsGrade>III</cavityInsGrade>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </joist>
+        </joists>
+        <frameFloors>
+            <frameFloor>
+                <name>ff1</name>
+                <floorType>
+                    <name>R-300</name>
+                    <note></note>
+                    <inputMode>Quick Fill Site-Built</inputMode>
+                    <floorCovering>Carpet</floorCovering>
+                    <continousInsRval>0.0</continousInsRval>
+                    <cavityInsRval>30.0</cavityInsRval>
+                    <cavityInsThickness>10.0</cavityInsThickness>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <joistSpacing>16.0</joistSpacing>
+                    <joistWidth>1.5</joistWidth>
+                    <joistHeight>11.5</joistHeight>
+                    <defaultFramingFactor>true</defaultFramingFactor>
+                    <framingFactor>0.1300</framingFactor>
+                </floorType>
+                <area>300.0</area>
+                <location>Between conditioned space and ambient conditions</location>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </frameFloor>
+            <frameFloor>
+                <name>ff mh</name>
+                <floorType>
+                    <name>Mobile Home Floor</name>
+                    <note></note>
+                    <inputMode>Quick Fill Mobile Home</inputMode>
+                    <floorWidth>12.000</floorWidth>
+                    <outriggerWidth>6.0</outriggerWidth>
+                    <battRval>7.0</battRval>
+                    <battThickness>4.0</battThickness>
+                    <blanketRval>0.0</blanketRval>
+                    <blanketThickness>0.0</blanketThickness>
+                    <centerInsulType>Batt in cavities</centerInsulType>
+                    <outriggerInsulType>Batt in cavities</outriggerInsulType>
+                    <cavityInsGrade>III</cavityInsGrade>
+                    <joistSpacing>24.0</joistSpacing>
+                    <joistWidth>2.0</joistWidth>
+                    <joistHeight>6.0</joistHeight>
+                    <defaultFramingFactor>true</defaultFramingFactor>
+                    <framingFactor>0.1196</framingFactor>
+                </floorType>
+                <area>222.0</area>
+                <location>Between conditioned space and garage</location>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </frameFloor>
+            <frameFloor>
+                <name>asdf</name>
+                <floorType>
+                    <name>R-25 pl</name>
+                    <note></note>
+                    <inputMode>Path Layer</inputMode>
+                    <pathLayer>
+                        <layerNames>
+                            <name>Floor covering</name>
+                            <name>Subfloor</name>
+                            <name>Cavity ins</name>
+                            <name>Continuous ins</name>
+                            <name>Framing</name>
+                            <name></name>
+                        </layerNames>
+                        <heatTransferPaths>
+                            <heatTransferPath>
+                                <name>Cavity</name>
+                                <area>0.8200</area>
+                                <RVal>0.9201</RVal>
+                                <RVal>1.2300</RVal>
+                                <RVal>0.8200</RVal>
+                                <RVal>25.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.9200</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name>Framing</name>
+                                <area>0.1300</area>
+                                <RVal>0.9200</RVal>
+                                <RVal>1.2300</RVal>
+                                <RVal>0.8200</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>10.6250</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.9200</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name>Grade</name>
+                                <area>0.0500</area>
+                                <RVal>0.9200</RVal>
+                                <RVal>1.2300</RVal>
+                                <RVal>0.8200</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.9200</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                            <heatTransferPath>
+                                <name></name>
+                                <area>0.0000</area>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                                <RVal>0.0000</RVal>
+                            </heatTransferPath>
+                        </heatTransferPaths>
+                    </pathLayer>
+                </floorType>
+                <area>444.0</area>
+                <location>Between conditioned space and open crawl space</location>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </frameFloor>
+        </frameFloors>
+        <doors>
+            <door>
+                <name>Ext Doors</name>
+                <doorType>
+                    <name>1-3/4 Wd solid core</name>
+                    <note></note>
+                    <stormDoor>No</stormDoor>
+                    <rvalOpaque>2.10</rvalOpaque>
+                </doorType>
+                <area>40.0</area>
+                <wallidref>agwall-2</wallidref>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </door>
+            <door>
+                <name>door2</name>
+                <doorType>
+                    <name>Steel-ureth fm  strm</name>
+                    <note></note>
+                    <stormDoor>Yes</stormDoor>
+                    <rvalOpaque>1.70</rvalOpaque>
+                </doorType>
+                <area>0.0</area>
+                <wallidref>fndwall-3</wallidref>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </door>
+        </doors>
+        <windows>
+            <window>
+                <name>South Wall</name>
+                <windowType>
+                    <name>Double - Wood</name>
+                    <note></note>
+                    <uValue>0.490</uValue>
+                    <sHGC>0.580</sHGC>
+                </windowType>
+                <area>22.0</area>
+                <orientation>South</orientation>
+                <adjacentSummerShading>None</adjacentSummerShading>
+                <adjacentWinterShading>None</adjacentWinterShading>
+                <interiorSummerShading>0.70</interiorSummerShading>
+                <interiorWinterShading>0.70</interiorWinterShading>
+                <overhangDepth>0.0</overhangDepth>
+                <overhangToTopOfWindow>0.0</overhangToTopOfWindow>
+                <overhangToBottomOfWindow>0.0</overhangToBottomOfWindow>
+                <wallidref>agwall-1</wallidref>
+            </window>
+            <window>
+                <name>North Wall</name>
+                <windowType>
+                    <name>Double - Wood</name>
+                    <note></note>
+                    <uValue>0.490</uValue>
+                    <sHGC>0.580</sHGC>
+                </windowType>
+                <area>35.0</area>
+                <orientation>North</orientation>
+                <adjacentSummerShading>None</adjacentSummerShading>
+                <adjacentWinterShading>None</adjacentWinterShading>
+                <interiorSummerShading>1.00</interiorSummerShading>
+                <interiorWinterShading>1.00</interiorWinterShading>
+                <overhangDepth>0.0</overhangDepth>
+                <overhangToTopOfWindow>0.0</overhangToTopOfWindow>
+                <overhangToBottomOfWindow>0.0</overhangToBottomOfWindow>
+                <wallidref>agwall-2</wallidref>
+            </window>
+            <window>
+                <name>East Wall</name>
+                <windowType>
+                    <name>Double - Wood</name>
+                    <note></note>
+                    <uValue>0.490</uValue>
+                    <sHGC>0.580</sHGC>
+                </windowType>
+                <area>11.0</area>
+                <orientation>East</orientation>
+                <adjacentSummerShading>None</adjacentSummerShading>
+                <adjacentWinterShading>None</adjacentWinterShading>
+                <interiorSummerShading>0.70</interiorSummerShading>
+                <interiorWinterShading>0.40</interiorWinterShading>
+                <overhangDepth>0.0</overhangDepth>
+                <overhangToTopOfWindow>0.0</overhangToTopOfWindow>
+                <overhangToBottomOfWindow>0.0</overhangToBottomOfWindow>
+                <wallidref>fndwall-2</wallidref>
+            </window>
+            <window>
+                <name>wall4</name>
+                <windowType>
+                    <name>Double - Vinyl</name>
+                    <note></note>
+                    <uValue>0.460</uValue>
+                    <sHGC>0.570</sHGC>
+                </windowType>
+                <area>5.0</area>
+                <orientation>Southwest</orientation>
+                <adjacentSummerShading>None</adjacentSummerShading>
+                <adjacentWinterShading>None</adjacentWinterShading>
+                <interiorSummerShading>0.70</interiorSummerShading>
+                <interiorWinterShading>0.40</interiorWinterShading>
+                <overhangDepth>0.0</overhangDepth>
+                <overhangToTopOfWindow>0.0</overhangToTopOfWindow>
+                <overhangToBottomOfWindow>0.0</overhangToBottomOfWindow>
+                <wallidref>fndwall-3</wallidref>
+            </window>
+        </windows>
+        <skylights>
+            <skylight>
+                <name>sklite</name>
+                <windowType>
+                    <name>Dbl/LoE/Argon - Wood</name>
+                    <note></note>
+                    <uValue>0.360</uValue>
+                    <sHGC>0.450</sHGC>
+                </windowType>
+                <area>77.0</area>
+                <orientation>West</orientation>
+                <summerShading>Some</summerShading>
+                <winterShading>None</winterShading>
+                <pitch>2</pitch>
+                <roofidref>roof-2</roofidref>
+            </skylight>
+            <skylight>
+                <name>sklite2</name>
+                <windowType>
+                    <name>Single - Metal</name>
+                    <note></note>
+                    <uValue>1.310</uValue>
+                    <sHGC>0.800</sHGC>
+                </windowType>
+                <area>9.0</area>
+                <orientation>Southeast</orientation>
+                <summerShading>Some</summerShading>
+                <winterShading>None</winterShading>
+                <pitch>2</pitch>
+                <roofidref>roof-4</roofidref>
+            </skylight>
+        </skylights>
+        <slabs>
+            <slab>
+                <name>Heated Basement</name>
+                <slabType>
+                    <name>Uninsulated</name>
+                    <note></note>
+                    <coveringType>Carpet</coveringType>
+                    <insulGrade>I</insulGrade>
+                    <perimeterInsRVal>0.0</perimeterInsRVal>
+                    <perimeterInsDepth>0.0</perimeterInsDepth>
+                    <unSlabInsRVal>0.0</unSlabInsRVal>
+                    <unSlabInsWidth>0.0</unSlabInsWidth>
+                    <radiantSlab>No</radiantSlab>
+                </slabType>
+                <area>1000.0</area>
+                <fullPerimeter>128.0</fullPerimeter>
+                <exposedPerimeter>128.0</exposedPerimeter>
+                <onGradeExposedPerimeter>0.0</onGradeExposedPerimeter>
+                <depthBelowGrade>7.0</depthBelowGrade>
+                <fractionFloorAreaExposed>0.0</fractionFloorAreaExposed>
+                <useCalculatedUo>true</useCalculatedUo>
+                <preCalculatedUValue>0.0</preCalculatedUValue>
+            </slab>
+        </slabs>
+        <infiltration>
+            <measType>Code default</measType>
+            <htgSeasonInfilt>7.00</htgSeasonInfilt>
+            <clgSeasonInfilt>7.00</clgSeasonInfilt>
+            <units>ACH @ 50 Pascals</units>
+            <shelterClass>4</shelterClass>
+            <ieccVerify>Visually Inspected</ieccVerify>
+            <mechVentType>Balanced</mechVentType>
+            <sensibleRecoveryEff>8.0</sensibleRecoveryEff>
+            <fTotalRecoveryEff>9.0</fTotalRecoveryEff>
+            <mechVentRate>22</mechVentRate>
+            <mechVentHoursPerDay>24.0</mechVentHoursPerDay>
+            <mechVentFanWatts>33.0</mechVentFanWatts>
+            <ecmFanMotor>true</ecmFanMotor>
+        </infiltration>
+        <interiorMasses>
+            <dryWallThick>0.50</dryWallThick>
+            <interiorMass>
+                <name>intmass</name>
+                <location>Sunlit floor</location>
+                <type>Concrete</type>
+                <area>66.0</area>
+                <thickness>7.0</thickness>
+            </interiorMass>
+        </interiorMasses>
+        <lightApps>
+            <useDefaults>false</useDefaults>
+            <percentCFL>0.0</percentCFL>
+            <percentExtLight>0.0</percentExtLight>
+            <percentGarLight>0.0</percentGarLight>
+            <percentFluorescent>10.0</percentFluorescent>
+            <refrigeratorKWH>775</refrigeratorKWH>
+            <refrigeratorLocation>Conditioned</refrigeratorLocation>
+            <dishwasherEF>0.46</dishwasherEF>
+            <dishwasherCapacity>12</dishwasherCapacity>
+            <dishwasherkWhYear>0</dishwasherkWhYear>
+            <ovenFuel>Electric</ovenFuel>
+            <inductionRange>false</inductionRange>
+            <convectionOven>true</convectionOven>
+            <dryerFuel>Electric</dryerFuel>
+            <dryerLocation>Conditioned</dryerLocation>
+            <dryerMoistureSensing>false</dryerMoistureSensing>
+            <dryerGasEF>2.67</dryerGasEF>
+            <washerLocation>Conditioned</washerLocation>
+            <washerEfficiency>RESNET Default</washerEfficiency>
+            <washerLER>704</washerLER>
+            <washerCapacity>2.874</washerCapacity>
+            <washerElecRate>0.0803</washerElecRate>
+            <washerGasRate>0.58</washerGasRate>
+            <washerAnnualGasCost>23.00</washerAnnualGasCost>
+            <ceilingFanCFMWatt>70.4</ceilingFanCFMWatt>
+            <dryerCEF>2.32</dryerCEF>
+            <dryerIMEF>0.331</dryerIMEF>
+            <lightApp>
+                <name>Rated - Int Ltg</name>
+                <type>Light Fixture(s)</type>
+                <fuel>Electricity</fuel>
+                <location>Conditioned area</location>
+                <rate>1849.500</rate>
+                <rateUnits>kWh/use</rateUnits>
+                <use>1.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Rated - Ext Ltg</name>
+                <type>Light Fixture(s)</type>
+                <fuel>Electricity</fuel>
+                <location>Ambient</location>
+                <rate>205.500</rate>
+                <rateUnits>kWh/use</rateUnits>
+                <use>1.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Rated - Refrigerator</name>
+                <type>Refrigerator</type>
+                <fuel>Electricity</fuel>
+                <location>Conditioned area</location>
+                <rate>775.000</rate>
+                <rateUnits>kWh/use</rateUnits>
+                <use>1.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Rated - Dishwasher</name>
+                <type>Dishwasher</type>
+                <fuel>Electricity</fuel>
+                <location>Conditioned area</location>
+                <rate>0.587</rate>
+                <rateUnits>kWh/use</rateUnits>
+                <use>247.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Rated - Dishwasher</name>
+                <type>Dishwasher</type>
+                <fuel>Water</fuel>
+                <location>Conditioned area</location>
+                <rate>7.347</rate>
+                <rateUnits>Gallons/use</rateUnits>
+                <use>247.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Rated - Ceiling Fan</name>
+                <type>Ceiling Fan(s)</type>
+                <fuel>Electricity</fuel>
+                <location>Conditioned area</location>
+                <rate>42.614</rate>
+                <rateUnits>Watts</rateUnits>
+                <use>168.0</use>
+                <useUnits>Hours/Month</useUnits>
+                <quantity>3</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Oven/Range</name>
+                <type>Oven/Range</type>
+                <fuel>Electricity</fuel>
+                <location>Conditioned area</location>
+                <rate>547.505</rate>
+                <rateUnits>kWh/use</rateUnits>
+                <use>1.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Clothes Dryer</name>
+                <type>Clothes Dryer</type>
+                <fuel>Electricity</fuel>
+                <location>Conditioned area</location>
+                <rate>900.008</rate>
+                <rateUnits>kWh/use</rateUnits>
+                <use>1.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Clothes Washer</name>
+                <type>Clothes Washer</type>
+                <fuel>Electricity</fuel>
+                <location>Conditioned area</location>
+                <rate>90.001</rate>
+                <rateUnits>kWh/use</rateUnits>
+                <use>1.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Clothes Washer</name>
+                <type>Clothes Washer</type>
+                <fuel>Water</fuel>
+                <location>Conditioned area</location>
+                <rate>8.249</rate>
+                <rateUnits>Gallons/use</rateUnits>
+                <use>365.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Shower</name>
+                <type>Shower/Bath</type>
+                <fuel>Water</fuel>
+                <location>Conditioned area</location>
+                <rate>46.743</rate>
+                <rateUnits>Gallons/use</rateUnits>
+                <use>365.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+            <lightApp>
+                <name>Plug Loads</name>
+                <type>Plug Load(s)</type>
+                <fuel>Electricity</fuel>
+                <location>Conditioned area</location>
+                <rate>2871.170</rate>
+                <rateUnits>kWh/use</rateUnits>
+                <use>1.0</use>
+                <useUnits>Uses/Year</useUnits>
+                <quantity>1</quantity>
+                <efficiency>Standard</efficiency>
+            </lightApp>
+        </lightApps>
+        <equipInfo>
+            <heatingSetpoint>68.0</heatingSetpoint>
+            <coolingSetpoint>78.0</coolingSetpoint>
+            <setbackThermo>true</setbackThermo>
+            <setupThermo>true</setupThermo>
+            <coolingVentilation>Whole House Fan</coolingVentilation>
+            <equipmentInstances>
+                <capacityWeightHtg>true</capacityWeightHtg>
+                <capacityWeightClg>true</capacityWeightClg>
+                <capacityWeightDHW>true</capacityWeightDHW>
+                <equipmentInstance equipid="equip-1">
+                    <libraryType>Space Heating</libraryType>
+                    <location>Conditioned area</location>
+                    <numberUnits>1</numberUnits>
+                    <performanceAdjust>100.0</performanceAdjust>
+                    <percentHtgLoadServed>31.1</percentHtgLoadServed>
+                    <percentClgLoadServed>0.0</percentClgLoadServed>
+                    <percentDhwLoadServed>0.0</percentDhwLoadServed>
+                    <spaceHeatingType>
+                        <name>80AFUE Gas Furn 48k</name>
+                        <note></note>
+                        <sysType>Fuel-fired air distribution</sysType>
+                        <fuelType>Natural gas</fuelType>
+                        <ratedOutCapacity>48.0</ratedOutCapacity>
+                        <seasonalEqEff>80.0</seasonalEqEff>
+                        <effUnitType>AFUE</effUnitType>
+                        <deSuperHeater>false</deSuperHeater>
+                        <auxiliaryElectric>611</auxiliaryElectric>
+                        <auxElecType>Eae</auxElecType>
+                        <useAuxElectDefault>true</useAuxElectDefault>
+                        <useFanElectDefault>true</useFanElectDefault>
+                        <fanPower>0</fanPower>
+                        <pumpEnergy>0</pumpEnergy>
+                        <pumpEnergyType>Watts</pumpEnergyType>
+                        <ratedOutCapacityAt17>0</ratedOutCapacityAt17>
+                    </spaceHeatingType>
+                </equipmentInstance>
+                <equipmentInstance equipid="equip-2">
+                    <libraryType>Space Cooling</libraryType>
+                    <location>Ambient</location>
+                    <numberUnits>1</numberUnits>
+                    <performanceAdjust>100.0</performanceAdjust>
+                    <percentHtgLoadServed>0.0</percentHtgLoadServed>
+                    <percentClgLoadServed>42.9</percentClgLoadServed>
+                    <percentDhwLoadServed>0.0</percentDhwLoadServed>
+                    <spaceCoolingType>
+                        <name>10SEER A/C 3 ton</name>
+                        <note></note>
+                        <sysType>Air conditioner</sysType>
+                        <fuelType>Electric</fuelType>
+                        <ratedOutCapacity>36.0</ratedOutCapacity>
+                        <seasonalEqEff>10.0</seasonalEqEff>
+                        <effUnitType>SEER</effUnitType>
+                        <shf>0.70</shf>
+                        <deSuperHeater>false</deSuperHeater>
+                        <useFanElectDefault>false</useFanElectDefault>
+                        <fanPower>0</fanPower>
+                        <pumpEnergy>0</pumpEnergy>
+                        <pumpEnergyType>Watts</pumpEnergyType>
+                    </spaceCoolingType>
+                </equipmentInstance>
+                <equipmentInstance equipid="equip-3">
+                    <libraryType>Water Heating</libraryType>
+                    <location>Conditioned area</location>
+                    <numberUnits>1</numberUnits>
+                    <performanceAdjust>100.0</performanceAdjust>
+                    <percentHtgLoadServed>0.0</percentHtgLoadServed>
+                    <percentClgLoadServed>0.0</percentClgLoadServed>
+                    <percentDhwLoadServed>16.1</percentDhwLoadServed>
+                    <waterHeatingType>
+                        <name>40 gal. 0.56EF Gas</name>
+                        <note></note>
+                        <type>Conventional</type>
+                        <fuelType>Natural gas</fuelType>
+                        <energyFactor>0.56</energyFactor>
+                        <extraTankIns>0.0</extraTankIns>
+                        <tankVolumeGallons>40</tankVolumeGallons>
+                        <recoveryEff>0.76</recoveryEff>
+                    </waterHeatingType>
+                </equipmentInstance>
+                <equipmentInstance equipid="equip-4">
+                    <libraryType>Ground Source Heat Pump</libraryType>
+                    <location>Conditioned area</location>
+                    <numberUnits>1</numberUnits>
+                    <performanceAdjust>100.0</performanceAdjust>
+                    <percentHtgLoadServed>7.4</percentHtgLoadServed>
+                    <percentClgLoadServed>14.3</percentClgLoadServed>
+                    <percentDhwLoadServed>0.0</percentDhwLoadServed>
+                    <gshpEquipType>
+                        <name>GSHP 1 Ton</name>
+                        <note></note>
+                        <deSuperHeater>false</deSuperHeater>
+                        <htgCOPat32>3.10</htgCOPat32>
+                        <htgCAPat32>11.5</htgCAPat32>
+                        <elecResistanceBackupCap>0</elecResistanceBackupCap>
+                        <clgEERat77>14.5</clgEERat77>
+                        <clgCAPat77>12.0</clgCAPat77>
+                        <sensibleHeatFraction>0.70</sensibleHeatFraction>
+                        <fanPowerWatts>80</fanPowerWatts>
+                        <pumpEnergy>0</pumpEnergy>
+                        <pumpEnergyType>Watts</pumpEnergyType>
+                        <distributionType>Air Distribution</distributionType>
+                        <useFanDefaults>true</useFanDefaults>
+                    </gshpEquipType>
+                </equipmentInstance>
+                <equipmentInstance equipid="equip-5">
+                    <libraryType>Air-Source Heat Pump</libraryType>
+                    <location>Conditioned area</location>
+                    <numberUnits>1</numberUnits>
+                    <performanceAdjust>100.0</performanceAdjust>
+                    <percentHtgLoadServed>22.7</percentHtgLoadServed>
+                    <percentClgLoadServed>21.4</percentClgLoadServed>
+                    <percentDhwLoadServed>0.0</percentDhwLoadServed>
+                    <ashpEquipType>
+                        <name>18k 10seer 6.8hspf</name>
+                        <note></note>
+                        <deSuperHeater>false</deSuperHeater>
+                        <heatingEfficiency>6.80</heatingEfficiency>
+                        <heatingRatedOutCapacity17>11.0</heatingRatedOutCapacity17>
+                        <heatingRatedOutCapacity47>18.0</heatingRatedOutCapacity47>
+                        <elecResistanceBackupCap>5</elecResistanceBackupCap>
+                        <coolingEfficiency>10.00</coolingEfficiency>
+                        <coolingRatedOutCapacity>18.0</coolingRatedOutCapacity>
+                        <sensibleHeatFraction>0.70</sensibleHeatFraction>
+                    </ashpEquipType>
+                </equipmentInstance>
+                <equipmentInstance equipid="equip-6">
+                    <libraryType>Dual Fuel Heat Pump</libraryType>
+                    <location>Conditioned area</location>
+                    <numberUnits>1</numberUnits>
+                    <performanceAdjust>100.0</performanceAdjust>
+                    <percentHtgLoadServed>19.4</percentHtgLoadServed>
+                    <percentClgLoadServed>21.4</percentClgLoadServed>
+                    <percentDhwLoadServed>0.0</percentDhwLoadServed>
+                    <dfhpEquipType>
+                        <name>DFHP 1.5 Ton</name>
+                        <note></note>
+                        <deSuperHeater>false</deSuperHeater>
+                        <htgHSPF>7.00</htgHSPF>
+                        <htgCap47>13.4</htgCap47>
+                        <switchOverTemperature>33.0</switchOverTemperature>
+                        <clgSEER>10.0</clgSEER>
+                        <clgCap>18.0</clgCap>
+                        <clgSHF>0.70</clgSHF>
+                        <backupHtgFuelType>Natural gas</backupHtgFuelType>
+                        <backupHtgSeasonalEff>78.0</backupHtgSeasonalEff>
+                        <backupHtgEffUnits>AFUE</backupHtgEffUnits>
+                        <backupHtgOutputCapacity>30.0</backupHtgOutputCapacity>
+                    </dfhpEquipType>
+                </equipmentInstance>
+            </equipmentInstances>
+            <gshpWellInfo>
+                <type>Vertical</type>
+                <quantity>8.0</quantity>
+                <depth>100.0</depth>
+                <loopFlowGPM>2.00</loopFlowGPM>
+            </gshpWellInfo>
+            <dhwDistribution>
+                <allFixturesLowFlow>true</allFixturesLowFlow>
+                <allDhwPipesInsulatedR3>true</allDhwPipesInsulatedR3>
+                <recirculationType>Temperature control</recirculationType>
+                <maxFixtureDistance>89</maxFixtureDistance>
+                <supplyReturnLoopDistance>100</supplyReturnLoopDistance>
+                <pipeLengthDhw>89</pipeLengthDhw>
+                <pipeLengthRecircLoop>100</pipeLengthRecircLoop>
+                <recircPumpPower>50</recircPumpPower>
+                <hasDwhrUnit>true</hasDwhrUnit>
+                <dwhrUnitEfficiency>89.20</dwhrUnitEfficiency>
+                <dwhrPreheatsColdShower>true</dwhrPreheatsColdShower>
+                <dwhrPreheatsHotShower>true</dwhrPreheatsHotShower>
+                <numShowerheads>2</numShowerheads>
+                <numShowersToDwhr>1</numShowersToDwhr>
+                <hwControlEffectiveness>0.00</hwControlEffectiveness>
+            </dhwDistribution>
+        </equipInfo>
+        <ductSystems>
+            <ductSystem>
+                <name>qual def</name>
+                <htgequipidref>equip-1</htgequipidref>
+                <clgequipidref>equip-2</clgequipidref>
+                <numReturnRegisters>1</numReturnRegisters>
+                <supplyArea>75.0</supplyArea>
+                <returnArea>0.0</returnArea>
+                <condFloorArea>500.0</condFloorArea>
+                <leakageInputType>Qualitative Default</leakageInputType>
+                <qualitativeDefault>RESNET/HERS default</qualitativeDefault>
+                <ductLeakTotal>80.0000</ductLeakTotal>
+                <ductLeakSupply>80.0000</ductLeakSupply>
+                <ductLeakReturn>80.0000</ductLeakReturn>
+                <ductLeakUnits>Thermal Efficiency (%)</ductLeakUnits>
+                <ductLeakTightTest>Postconstruction Test</ductLeakTightTest>
+                <ductLeakRealTotal>0.0000</ductLeakRealTotal>
+                <ductLeakTestExemption>false</ductLeakTestExemption>
+                <annexAFanFlowDefault>false</annexAFanFlowDefault>
+                <annexAFanFlow>0.0</annexAFanFlow>
+                <annexCAirHandlerInstalled>false</annexCAirHandlerInstalled>
+                <annexCAirHandlerCorrection>0.0</annexCAirHandlerCorrection>
+                <registerGrillesInstalled>false</registerGrillesInstalled>
+                <registerGrillesCorrection>0.0</registerGrillesCorrection>
+                <annexBLeakageType>Total Leakage</annexBLeakageType>
+                <annexBCfmSupply>0.0</annexBCfmSupply>
+                <annexBCfmReturn>0.0</annexBCfmReturn>
+                <annexBCfmTotal>0.0</annexBCfmTotal>
+                <annexBBufferPressureSupply>0.0</annexBBufferPressureSupply>
+                <annexBBufferPressureReturn>0.0</annexBBufferPressureReturn>
+                <annexBDuctPressureSupply>0.0</annexBDuctPressureSupply>
+                <annexBDuctPressureReturn>0.0</annexBDuctPressureReturn>
+                <annexCFanPressure>125.0</annexCFanPressure>
+                <annexCMeasuredCfm>0.0</annexCMeasuredCfm>
+                <duct>
+                    <location>Conditioned basement</location>
+                    <type>Supply</type>
+                    <percentArea>100</percentArea>
+                    <RVal>2.0</RVal>
+                </duct>
+                <duct>
+                    <location>Conditioned basement</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+            </ductSystem>
+            <ductSystem>
+                <name>total</name>
+                <htgequipidref>equip-5</htgequipidref>
+                <clgequipidref>equip-6</clgequipidref>
+                <numReturnRegisters>1</numReturnRegisters>
+                <supplyArea>66.0</supplyArea>
+                <returnArea>0.0</returnArea>
+                <condFloorArea>500.0</condFloorArea>
+                <leakageInputType>Total Leakage</leakageInputType>
+                <qualitativeDefault>RESNET/HERS default</qualitativeDefault>
+                <ductLeakTotal>30.0000</ductLeakTotal>
+                <ductLeakSupply>12.0000</ductLeakSupply>
+                <ductLeakReturn>18.0000</ductLeakReturn>
+                <ductLeakUnits>CFM25 / CFMfan</ductLeakUnits>
+                <ductLeakTightTest>Rough-In Test - w/ Air Handler</ductLeakTightTest>
+                <ductLeakRealTotal>0.0000</ductLeakRealTotal>
+                <ductLeakTestExemption>false</ductLeakTestExemption>
+                <annexAFanFlowDefault>true</annexAFanFlowDefault>
+                <annexAFanFlow>412.5</annexAFanFlow>
+                <annexCAirHandlerInstalled>false</annexCAirHandlerInstalled>
+                <annexCAirHandlerCorrection>15.0</annexCAirHandlerCorrection>
+                <registerGrillesInstalled>false</registerGrillesInstalled>
+                <registerGrillesCorrection>15.0</registerGrillesCorrection>
+                <annexBLeakageType>Total Leakage</annexBLeakageType>
+                <annexBCfmSupply>0.0</annexBCfmSupply>
+                <annexBCfmReturn>0.0</annexBCfmReturn>
+                <annexBCfmTotal>0.0</annexBCfmTotal>
+                <annexBBufferPressureSupply>0.0</annexBBufferPressureSupply>
+                <annexBBufferPressureReturn>0.0</annexBBufferPressureReturn>
+                <annexBDuctPressureSupply>50.0</annexBDuctPressureSupply>
+                <annexBDuctPressureReturn>50.0</annexBDuctPressureReturn>
+                <annexCFanPressure>50.0</annexCFanPressure>
+                <annexCMeasuredCfm>0.0</annexCMeasuredCfm>
+                <duct>
+                    <location>Attic, exposed</location>
+                    <type>Supply</type>
+                    <percentArea>80</percentArea>
+                    <RVal>3.0</RVal>
+                </duct>
+                <duct>
+                    <location>Attic, exposed</location>
+                    <type>Return</type>
+                    <percentArea>75</percentArea>
+                    <RVal>4.0</RVal>
+                </duct>
+                <duct>
+                    <location>Attic, under insulation</location>
+                    <type>Supply</type>
+                    <percentArea>20</percentArea>
+                    <RVal>3.1</RVal>
+                </duct>
+                <duct>
+                    <location>Attic, under insulation</location>
+                    <type>Return</type>
+                    <percentArea>25</percentArea>
+                    <RVal>4.1</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+            </ductSystem>
+            <ductSystem>
+                <name>sup ret</name>
+                <htgequipidref>equip-1</htgequipidref>
+                <numReturnRegisters>1</numReturnRegisters>
+                <supplyArea>66.0</supplyArea>
+                <returnArea>0.0</returnArea>
+                <condFloorArea>500.0</condFloorArea>
+                <leakageInputType>Supply and Return Leakage</leakageInputType>
+                <qualitativeDefault>RESNET/HERS default</qualitativeDefault>
+                <ductLeakTotal>30.0000</ductLeakTotal>
+                <ductLeakSupply>12.0000</ductLeakSupply>
+                <ductLeakReturn>18.0000</ductLeakReturn>
+                <ductLeakUnits>CFM @ 25 Pascals</ductLeakUnits>
+                <ductLeakTightTest>Postconstruction Test</ductLeakTightTest>
+                <ductLeakRealTotal>0.0000</ductLeakRealTotal>
+                <ductLeakTestExemption>false</ductLeakTestExemption>
+                <annexAFanFlowDefault>true</annexAFanFlowDefault>
+                <annexAFanFlow>800.0</annexAFanFlow>
+                <annexCAirHandlerInstalled>false</annexCAirHandlerInstalled>
+                <annexCAirHandlerCorrection>20.0</annexCAirHandlerCorrection>
+                <registerGrillesInstalled>false</registerGrillesInstalled>
+                <registerGrillesCorrection>20.0</registerGrillesCorrection>
+                <annexBLeakageType>Total Leakage</annexBLeakageType>
+                <annexBCfmSupply>0.0</annexBCfmSupply>
+                <annexBCfmReturn>0.0</annexBCfmReturn>
+                <annexBCfmTotal>0.0</annexBCfmTotal>
+                <annexBBufferPressureSupply>0.0</annexBBufferPressureSupply>
+                <annexBBufferPressureReturn>0.0</annexBBufferPressureReturn>
+                <annexBDuctPressureSupply>50.0</annexBDuctPressureSupply>
+                <annexBDuctPressureReturn>50.0</annexBDuctPressureReturn>
+                <annexCFanPressure>50.0</annexCFanPressure>
+                <annexCMeasuredCfm>0.0</annexCMeasuredCfm>
+                <duct>
+                    <location>Attic, exposed</location>
+                    <type>Supply</type>
+                    <percentArea>80</percentArea>
+                    <RVal>3.0</RVal>
+                </duct>
+                <duct>
+                    <location>Attic, exposed</location>
+                    <type>Return</type>
+                    <percentArea>75</percentArea>
+                    <RVal>4.0</RVal>
+                </duct>
+                <duct>
+                    <location>Attic, under insulation</location>
+                    <type>Supply</type>
+                    <percentArea>20</percentArea>
+                    <RVal>3.1</RVal>
+                </duct>
+                <duct>
+                    <location>Attic, under insulation</location>
+                    <type>Return</type>
+                    <percentArea>25</percentArea>
+                    <RVal>4.1</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+            </ductSystem>
+            <ductSystem>
+                <name>std 152</name>
+                <htgequipidref>equip-4</htgequipidref>
+                <clgequipidref>equip-2</clgequipidref>
+                <numReturnRegisters>1</numReturnRegisters>
+                <supplyArea>66.0</supplyArea>
+                <returnArea>0.0</returnArea>
+                <condFloorArea>500.0</condFloorArea>
+                <leakageInputType>Supply and Return Leakage</leakageInputType>
+                <qualitativeDefault>RESNET/HERS default</qualitativeDefault>
+                <ductLeakTotal>0.0000</ductLeakTotal>
+                <ductLeakSupply>0.0000</ductLeakSupply>
+                <ductLeakReturn>0.0000</ductLeakReturn>
+                <ductLeakUnits>CFM per Std 152</ductLeakUnits>
+                <ductLeakTightTest>Rough-In Test - w/o Air Handler</ductLeakTightTest>
+                <ductLeakRealTotal>0.0000</ductLeakRealTotal>
+                <ductLeakTestExemption>false</ductLeakTestExemption>
+                <annexAFanFlowDefault>true</annexAFanFlowDefault>
+                <annexAFanFlow>825.0</annexAFanFlow>
+                <annexCAirHandlerInstalled>false</annexCAirHandlerInstalled>
+                <annexCAirHandlerCorrection>30.0</annexCAirHandlerCorrection>
+                <registerGrillesInstalled>true</registerGrillesInstalled>
+                <registerGrillesCorrection>0.0</registerGrillesCorrection>
+                <annexBLeakageType>Supply and Return Leakage</annexBLeakageType>
+                <annexBCfmSupply>0.0</annexBCfmSupply>
+                <annexBCfmReturn>0.0</annexBCfmReturn>
+                <annexBCfmTotal>0.0</annexBCfmTotal>
+                <annexBBufferPressureSupply>0.0</annexBBufferPressureSupply>
+                <annexBBufferPressureReturn>0.0</annexBBufferPressureReturn>
+                <annexBDuctPressureSupply>50.0</annexBDuctPressureSupply>
+                <annexBDuctPressureReturn>50.0</annexBDuctPressureReturn>
+                <annexCFanPressure>50.0</annexCFanPressure>
+                <annexCMeasuredCfm>0.0</annexCMeasuredCfm>
+                <duct>
+                    <location>Attic, exposed</location>
+                    <type>Supply</type>
+                    <percentArea>80</percentArea>
+                    <RVal>3.0</RVal>
+                </duct>
+                <duct>
+                    <location>Attic, exposed</location>
+                    <type>Return</type>
+                    <percentArea>75</percentArea>
+                    <RVal>4.0</RVal>
+                </duct>
+                <duct>
+                    <location>Attic, under insulation</location>
+                    <type>Supply</type>
+                    <percentArea>20</percentArea>
+                    <RVal>3.1</RVal>
+                </duct>
+                <duct>
+                    <location>Attic, under insulation</location>
+                    <type>Return</type>
+                    <percentArea>25</percentArea>
+                    <RVal>4.1</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Supply</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+                <duct>
+                    <location>None</location>
+                    <type>Return</type>
+                    <percentArea>0</percentArea>
+                    <RVal>0.0</RVal>
+                </duct>
+            </ductSystem>
+        </ductSystems>
+        <activeSolar>
+            <sysType>DHW heating only</sysType>
+            <loopType>Air, direct</loopType>
+            <collectorType>Single glazing, flat black</collectorType>
+            <collectorOrientation>South</collectorOrientation>
+            <collectorArea>88.0</collectorArea>
+            <collectorTilt>44.0</collectorTilt>
+            <storageVol>33.0</storageVol>
+        </activeSolar>
+        <sunspace>
+            <sunSpaceMasses>
+                <sunSpaceMass>
+                    <name>ss intmass</name>
+                    <area>88</area>
+                    <thick>12.0</thick>
+                    <waterStorVol>0</waterStorVol>
+                    <type>Brick/Tile</type>
+                </sunSpaceMass>
+            </sunSpaceMasses>
+            <sunSpaceCommonWalls>
+                <sunSpaceCommonWall>
+                    <name>sswall</name>
+                    <area>77</area>
+                    <massThick>5.0</massThick>
+                    <ins>4.0</ins>
+                    <fanFlowRate>5</fanFlowRate>
+                    <massType>Concrete</massType>
+                    <fanCoupling>Yes</fanCoupling>
+                </sunSpaceCommonWall>
+            </sunSpaceCommonWalls>
+            <sunSpaceFloor>
+                <floorArea>101.0</floorArea>
+                <frFloorIns>7.0</frFloorIns>
+                <expSlabPer>111.0</expSlabPer>
+                <slabDepth>3.0</slabDepth>
+                <slabThickness>8.0</slabThickness>
+                <slabPerIns>5.5</slabPerIns>
+                <underSlabIns>4.4</underSlabIns>
+            </sunSpaceFloor>
+            <sunSpaceRoofWalls>
+                <exteriorWallArea>155</exteriorWallArea>
+                <roofArea>100</roofArea>
+                <subgradeWallArea>77</subgradeWallArea>
+                <roofIns>5.1</roofIns>
+                <exteriorWallIns>4.8</exteriorWallIns>
+                <subgradeWallIns>3.3</subgradeWallIns>
+            </sunSpaceRoofWalls>
+            <windows>
+                <window>
+                    <name>sswin1</name>
+                    <windowType>
+                        <name>Double - Vinyl</name>
+                        <note></note>
+                        <uValue>0.460</uValue>
+                        <sHGC>0.570</sHGC>
+                    </windowType>
+                    <area>88.0</area>
+                    <orientation>Southwest</orientation>
+                    <adjacentSummerShading>Some</adjacentSummerShading>
+                    <adjacentWinterShading>None</adjacentWinterShading>
+                    <interiorSummerShading>0.70</interiorSummerShading>
+                    <interiorWinterShading>0.85</interiorWinterShading>
+                    <overhangDepth>2.0</overhangDepth>
+                    <overhangToTopOfWindow>3.0</overhangToTopOfWindow>
+                    <overhangToBottomOfWindow>4.0</overhangToBottomOfWindow>
+                </window>
+            </windows>
+            <skylights>
+                <skylight>
+                    <name>sssky</name>
+                    <windowType>
+                        <name>Double/LoE - Wood</name>
+                        <note></note>
+                        <uValue>0.390</uValue>
+                        <sHGC>0.460</sHGC>
+                    </windowType>
+                    <area>66.0</area>
+                    <orientation>Southeast</orientation>
+                    <summerShading>Some</summerShading>
+                    <winterShading>None</winterShading>
+                    <pitch>3</pitch>
+                </skylight>
+            </skylights>
+        </sunspace>
+        <photovoltaicsList>
+            <photovoltaics>
+                <name>pv1</name>
+                <collectorOrientation>Southeast/Southwest</collectorOrientation>
+                <collectorArea>111.2</collectorArea>
+                <collectorPeakPower>88</collectorPeakPower>
+                <collectorTilt>55.0</collectorTilt>
+                <inverterEfficiency>12.0</inverterEfficiency>
+            </photovoltaics>
+            <photovoltaics>
+                <name>pv2</name>
+                <collectorOrientation>Northeast/Northwest</collectorOrientation>
+                <collectorArea>99.0</collectorArea>
+                <collectorPeakPower>77</collectorPeakPower>
+                <collectorTilt>49.0</collectorTilt>
+                <inverterEfficiency>11.1</inverterEfficiency>
+            </photovoltaics>
+        </photovoltaicsList>
+        <mandatoryRequirements>
+            <verifyIECC04Requirements>false</verifyIECC04Requirements>
+            <verifyIECC06Requirements>true</verifyIECC06Requirements>
+            <verifyIECC09Requirements>true</verifyIECC09Requirements>
+            <verifyIECC12Requirements>false</verifyIECC12Requirements>
+            <verifyIECC15Requirements>true</verifyIECC15Requirements>
+            <verifyIECCNYRequirements>true</verifyIECCNYRequirements>
+            <verifyIECCMIRequirements>true</verifyIECCMIRequirements>
+            <verifyFloridaRequirements>false</verifyFloridaRequirements>
+            <verifyESV2ThermalBypass>true</verifyESV2ThermalBypass>
+            <verifyESV2Products>true</verifyESV2Products>
+            <verifyESV3ThermalEnclosure>false</verifyESV3ThermalEnclosure>
+            <verifyESV3HVACSystemContractor>false</verifyESV3HVACSystemContractor>
+            <verifyESV3HVACSystemRater>false</verifyESV3HVACSystemRater>
+            <verifyESV3WaterManagement>false</verifyESV3WaterManagement>
+            <verifyESV3IndoorAirPlus>true</verifyESV3IndoorAirPlus>
+            <verifyESV3Refrigerators>false</verifyESV3Refrigerators>
+            <verifyESV3CeilingFans>false</verifyESV3CeilingFans>
+            <verifyESV3ExhaustFans>false</verifyESV3ExhaustFans>
+            <verifyESV3Dishwashers>false</verifyESV3Dishwashers>
+            <numESV3Refrigerators>1</numESV3Refrigerators>
+            <numESV3CeilingFans>1</numESV3CeilingFans>
+            <numESV3ExhaustFans>1</numESV3ExhaustFans>
+            <numESV3Dishwashers>1</numESV3Dishwashers>
+            <verifyBsmtESV3SAFExclude>true</verifyBsmtESV3SAFExclude>
+            <bmstESV3FloorArea>300</bmstESV3FloorArea>
+            <verifyESV3SlabExempt>true</verifyESV3SlabExempt>
+            <verifyESV3DuctReturn>false</verifyESV3DuctReturn>
+            <seekCertificationFor>ENERGY STAR V 3.0</seekCertificationFor>
+            <epaFieldAppID></epaFieldAppID>
+        </mandatoryRequirements>
+        <DOEChallenge>
+            <verifyFenestration>true</verifyFenestration>
+            <verifyInsulation>true</verifyInsulation>
+            <verifyDuctLocation>true</verifyDuctLocation>
+            <verifyAppliance>true</verifyAppliance>
+            <verifyLighting>true</verifyLighting>
+            <verifyFanEfficiency>true</verifyFanEfficiency>
+            <verifyIndoorAirQuality>true</verifyIndoorAirQuality>
+            <verifySolarElectric>true</verifySolarElectric>
+            <verifyWaterEfficiency>true</verifyWaterEfficiency>
+            <optWaterSense>Yes</optWaterSense>
+            <optIBHS>Don&apos;t Know</optIBHS>
+            <optManagement>No</optManagement>
+            <optWaiver>Yes</optWaiver>
+            <builderID>ID56789</builderID>
+        </DOEChallenge>
+        <utilityBill>
+            <startDate>01/01/2009</startDate>
+            <wban>94075</wban>
+            <occupants>0</occupants>
+            <htgFuelType>Electric</htgFuelType>
+            <htgFuelTypeUnits>kWh</htgFuelTypeUnits>
+            <dhwFuelType>Natural gas</dhwFuelType>
+            <dhwFuelTypeUnits>Therms</dhwFuelTypeUnits>
+            <ovenFuelType>Electric</ovenFuelType>
+            <ovenFuelTypeUnits>kWh</ovenFuelTypeUnits>
+            <dryerFuelType>Electric</dryerFuelType>
+            <dryerFuelTypeUnits>kWh</dryerFuelTypeUnits>
+            <isClgPresent>true</isClgPresent>
+            <isElecHtgPresent>false</isElecHtgPresent>
+            <dhwSetPointTemp>120</dhwSetPointTemp>
+            <cookingFrequency>26 - 50%</cookingFrequency>
+            <dhwEF>Regular</dhwEF>
+            <elecCost>11.00</elecCost>
+            <fuelCost>22.00</fuelCost>
+            <monthlyAveFuelBill_1>80.00</monthlyAveFuelBill_1>
+            <monthlyAveFuelBill_2>81.00</monthlyAveFuelBill_2>
+            <monthlyAveFuelBill_3>82.00</monthlyAveFuelBill_3>
+            <monthlyAveFuelBill_4>83.00</monthlyAveFuelBill_4>
+            <monthlyAveFuelBill_5>84.00</monthlyAveFuelBill_5>
+            <monthlyAveFuelBill_6>85.00</monthlyAveFuelBill_6>
+            <monthlyAveFuelBill_7>86.00</monthlyAveFuelBill_7>
+            <monthlyAveFuelBill_8>87.00</monthlyAveFuelBill_8>
+            <monthlyAveFuelBill_9>88.00</monthlyAveFuelBill_9>
+            <monthlyAveFuelBill_10>89.00</monthlyAveFuelBill_10>
+            <monthlyAveFuelBill_11>90.00</monthlyAveFuelBill_11>
+            <monthlyAveFuelBill_12>91.00</monthlyAveFuelBill_12>
+            <monthlyAveElecBill_1>66.00</monthlyAveElecBill_1>
+            <monthlyAveElecBill_2>67.00</monthlyAveElecBill_2>
+            <monthlyAveElecBill_3>68.00</monthlyAveElecBill_3>
+            <monthlyAveElecBill_4>69.00</monthlyAveElecBill_4>
+            <monthlyAveElecBill_5>70.00</monthlyAveElecBill_5>
+            <monthlyAveElecBill_6>71.00</monthlyAveElecBill_6>
+            <monthlyAveElecBill_7>72.00</monthlyAveElecBill_7>
+            <monthlyAveElecBill_8>73.00</monthlyAveElecBill_8>
+            <monthlyAveElecBill_9>74.00</monthlyAveElecBill_9>
+            <monthlyAveElecBill_10>75.00</monthlyAveElecBill_10>
+            <monthlyAveElecBill_11>76.00</monthlyAveElecBill_11>
+            <monthlyAveElecBill_12>77.00</monthlyAveElecBill_12>
+        </utilityBill>
+        <shellArea>6887</shellArea>
+    </building>
+    <location>
+        <city>Akron, CO</city>
+        <HDD>6181</HDD>
+        <CDH>8892</CDH>
+        <htgSolarS>0.273</htgSolarS>
+        <htgSolarSE>0.235</htgSolarSE>
+        <htgSolarE>0.159</htgSolarE>
+        <htgSolarNE>0.087</htgSolarNE>
+        <htgSolarN>0.065</htgSolarN>
+        <htgSolarH>0.254</htgSolarH>
+        <htgSolarSW>0.235</htgSolarSW>
+        <htgSolarW>0.159</htgSolarW>
+        <htgSolarNW>0.087</htgSolarNW>
+        <clgSolarS>0.124</clgSolarS>
+        <clgSolarSE>0.144</clgSolarSE>
+        <clgSolarE>0.143</clgSolarE>
+        <clgSolarNE>0.107</clgSolarNE>
+        <clgSolarN>0.072</clgSolarN>
+        <clgSolarH>0.261</clgSolarH>
+        <clgSolarSW>0.144</clgSolarSW>
+        <clgSolarW>0.143</clgSolarW>
+        <clgSolarNW>0.107</clgSolarNW>
+        <ambHS>39.310</ambHS>
+        <ambCS>67.920</ambCS>
+        <htgRegionIndex>11</htgRegionIndex>
+        <elevation>4662</elevation>
+        <numHtgSeasDays>229</numHtgSeasDays>
+        <latitude>40.200</latitude>
+        <htgAvgVertSolar>0.1626</htgAvgVertSolar>
+        <ambCSDay>74.970</ambCSDay>
+        <ambCSNight>60.870</ambCSNight>
+        <numClgSeasDays>136</numClgSeasDays>
+        <latentRegion>0</latentRegion>
+        <clgRegion>6</clgRegion>
+        <htgDesignTemp>3.0</htgDesignTemp>
+        <clgDesignTemp>91.2</clgDesignTemp>
+        <clgDesignWBTemp>63.0</clgDesignWBTemp>
+        <clgSeasJulianStartDay>133</clgSeasJulianStartDay>
+        <clgAvgVertSolar>0.1229</clgAvgVertSolar>
+        <avgHtgSeasClearCoeff>0.570</avgHtgSeasClearCoeff>
+        <avgClgSeasClearCoeff>0.630</avgClgSeasClearCoeff>
+        <grndTemp>54</grndTemp>
+        <tmyHDD65>5977</tmyHDD65>
+        <tmyCDD74>383</tmyCDD74>
+        <tmyClgInfiltDegHrs74>2449</tmyClgInfiltDegHrs74>
+        <ashraeInfiltWFactor>0.670</ashraeInfiltWFactor>
+        <climateZone>13</climateZone>
+        <warmHumid>false</warmHumid>
+        <annualAveWindSpeed>11.0</annualAveWindSpeed>
+        <annualAveAmbientAirTemp>50.0</annualAveAmbientAirTemp>
+    </location>
+    <utilityRateGroup>
+        <utilityRate>
+            <name>ek elec</name>
+            <note></note>
+            <fuelType>Electric</fuelType>
+            <fuelTypeUnits>kWh</fuelTypeUnits>
+            <season>
+                <startMonth>1</startMonth>
+                <stopMonth>6</stopMonth>
+                <serviceCharge>15.00</serviceCharge>
+                <blockRate>
+                    <max>600</max>
+                    <rate>0.0730</rate>
+                </blockRate>
+                <blockRate>
+                    <max>1400</max>
+                    <rate>0.0630</rate>
+                </blockRate>
+                <blockRate>
+                    <max>1000000</max>
+                    <rate>0.0550</rate>
+                </blockRate>
+            </season>
+            <season>
+                <startMonth>7</startMonth>
+                <stopMonth>12</stopMonth>
+                <serviceCharge>0.00</serviceCharge>
+                <blockRate>
+                    <max>500000</max>
+                    <rate>0.0700</rate>
+                </blockRate>
+                <blockRate>
+                    <max>1000000</max>
+                    <rate>0.0600</rate>
+                </blockRate>
+            </season>
+        </utilityRate>
+        <utilityRate>
+            <name>Default Gas Provider</name>
+            <note></note>
+            <fuelType>Natural gas</fuelType>
+            <fuelTypeUnits>Therms</fuelTypeUnits>
+            <season>
+                <startMonth>1</startMonth>
+                <stopMonth>12</stopMonth>
+                <serviceCharge>5.00</serviceCharge>
+                <blockRate>
+                    <max>1000000</max>
+                    <rate>0.5000</rate>
+                </blockRate>
+            </season>
+        </utilityRate>
+        <utilityRate>
+            <name>Default Propane Provider</name>
+            <note></note>
+            <fuelType>Propane</fuelType>
+            <fuelTypeUnits>Gallons</fuelTypeUnits>
+            <season>
+                <startMonth>9</startMonth>
+                <stopMonth>3</stopMonth>
+                <serviceCharge>4.00</serviceCharge>
+                <blockRate>
+                    <max>1000000</max>
+                    <rate>0.9000</rate>
+                </blockRate>
+            </season>
+            <season>
+                <startMonth>4</startMonth>
+                <stopMonth>8</stopMonth>
+                <serviceCharge>4.00</serviceCharge>
+                <blockRate>
+                    <max>1000000</max>
+                    <rate>0.7000</rate>
+                </blockRate>
+            </season>
+        </utilityRate>
+        <utilityRate>
+            <name>Default Oil Provider</name>
+            <note></note>
+            <fuelType>Fuel oil</fuelType>
+            <fuelTypeUnits>Gallons</fuelTypeUnits>
+            <season>
+                <startMonth>1</startMonth>
+                <stopMonth>12</stopMonth>
+                <serviceCharge>0.00</serviceCharge>
+                <blockRate>
+                    <max>1000000</max>
+                    <rate>0.9000</rate>
+                </blockRate>
+            </season>
+        </utilityRate>
+        <utilityRate>
+            <name>ek kero</name>
+            <note></note>
+            <fuelType>Kerosene</fuelType>
+            <fuelTypeUnits>Gallons</fuelTypeUnits>
+            <season>
+                <startMonth>1</startMonth>
+                <stopMonth>12</stopMonth>
+                <serviceCharge>2.22</serviceCharge>
+                <blockRate>
+                    <max>1000000</max>
+                    <rate>0.9000</rate>
+                </blockRate>
+            </season>
+        </utilityRate>
+        <utilityRate>
+            <name>ek wood</name>
+            <note></note>
+            <fuelType>Wood</fuelType>
+            <fuelTypeUnits>Cords</fuelTypeUnits>
+            <season>
+                <startMonth>1</startMonth>
+                <stopMonth>12</stopMonth>
+                <serviceCharge>11.11</serviceCharge>
+                <blockRate>
+                    <max>1000000</max>
+                    <rate>13.3300</rate>
+                </blockRate>
+            </season>
+        </utilityRate>
+    </utilityRateGroup>
+    <econParam>
+        <eemBaselineType>HERS Reference Home</eemBaselineType>
+        <eemBaselineFile></eemBaselineFile>
+        <improvementCost>0</improvementCost>
+        <improvementLife>30</improvementLife>
+        <mortgageRate>5.700</mortgageRate>
+        <mortgagePeriod>30</mortgagePeriod>
+        <downpayment>10.0</downpayment>
+        <appraisedValue>0</appraisedValue>
+        <inflation>2.420</inflation>
+        <energyInflation>3.643</energyInflation>
+        <discountRate>4.420</discountRate>
+        <analysisPeriod>30</analysisPeriod>
+        <mortgageRateDefault>false</mortgageRateDefault>
+        <mortgagePeriodDefault>false</mortgagePeriodDefault>
+        <downpaymentDefault>false</downpaymentDefault>
+        <inflationDefault>true</inflationDefault>
+        <energyInflationDefault>true</energyInflationDefault>
+        <discountRateDefault>true</discountRateDefault>
+        <analysisPeriodDefault>true</analysisPeriodDefault>
+    </econParam>
+</buildingfile>

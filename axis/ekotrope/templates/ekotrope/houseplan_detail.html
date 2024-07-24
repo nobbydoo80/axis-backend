@@ -1,0 +1,117 @@
+{% extends "base_detail.html" %}
+{% load bootstrap_tags %}
+{% load humanize %}
+
+{% block sidebar %}
+{% include "ekotrope/includes/ekotrope_sidebar.html" with object=object %}
+{% endblock %}
+
+{% block header_text %}Viewing Ekotrope&trade; Verification Summary{% endblock %}
+
+
+{% block detail_content %}
+{% if errors|length %}
+<div class="row">
+    <div class="col-md-12 alert alert-danger">
+        This Ekotrope data set was not successfully imported.
+        Please delete this and try again.
+        <ul>
+            {% for error in errors %}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4 key">Project ID</div>
+            <div class="col-md-8 value"> {{ object.project_id }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 key">Houseplan ID</div>
+            <div class="col-md-8 value"> {{ object.id }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 key">Property</div>
+            <div class="col-md-8 value"> {{ summary.project.location.streetAddress|default:"-" }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 key"></div>
+            <div class="col-md-8 value">
+                {{ summary.project.location.city|default:"-" }},
+                    {{ summary.project.location.state|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Builder's Name</div>
+                <div class="col-md-8 value">{{ summary.project.builder|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Building Name</div>
+                <div class="col-md-8 value">{{ summary.project.community.name|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">RESNET Reg ID</div>
+                <div class="col-md-8 value">{{ summary.project.hersRatingDetails.registryId|default:"-" }}</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            {# <div class="row"> #}
+            {#     <div class="col-md-4 key">Rating No.</div> #}
+            {#     <div class="col-md-8 value">{{ '?'|default:"-" }}</div> #}
+            {# </div> #}
+            <div class="row">
+                <div class="col-md-4 key">Rating Org.</div>
+                <div class="col-md-8 value">{{ summary.project.hersRatingDetails.rater.ratingCompany.name|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Rater Name</div>
+                <div class="col-md-8 value">{{ summary.project.hersRatingDetails.rater.name|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Rater ID</div>
+                <div class="col-md-8 value">{{ summary.project.hersRatingDetails.rater.resnetRaterId|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Rating Date</div>
+                <div class="col-md-8 value">{{ summary.project.hersRatingDetails.ratingDate|default:"-" }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Rating Type</div>
+                <div class="col-md-8 value">{{ summary.project.hersRatingDetails.ratingType|default:"-" }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock detail_content %}
+
+{% block tabs %}
+    {% bootstrap_navtabs %}
+        {% tab "Bldg. Info" %}
+            {% include "ekotrope/includes/tabs/ekotrope_building_information.html" %}
+
+
+        {% tab "Thermal Envelope" %}
+            {% include "ekotrope/includes/tabs/ekotrope_thermal_envelope.html" %}
+
+
+        {% tab "Mech. Systems" %}
+            {% include "ekotrope/includes/tabs/ekotrope_mechanical_systems.html" %}
+
+
+        {# {% tab "Lights &amp; Appl." %} #}
+        {#     {% include "ekotrope/includes/tabs/ekotrope_lights_and_appliances.html" %} #}
+
+
+        {% tab "Energy Analysis" %}
+            {% include "ekotrope/includes/tabs/ekotrope_analysis.html" %}
+
+
+        {% tab "Homes / Refs" %}
+            {% include "ekotrope/includes/tabs/ekotrope_homes.html" %}
+
+    {% endbootstrap_navtabs %}
+{% endblock tabs %}

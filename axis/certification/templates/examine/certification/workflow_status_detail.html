@@ -1,0 +1,50 @@
+<div>
+    <div class="min-height-100">
+        {% block object_detail %}
+            <div class="row" ng-if="regionObject.fields.owner || ({{ request.company.id }} != regionObject.object.owner)">
+                <div class="col-md-3">
+                    <label>[[ regionObject.object.owner_info.company_type_name ]]</label>
+                </div>
+                <div class="col-md-9">
+                    <a ng-href="[[ regionObject.object.owner_info.url ]]">[[ regionObject.object.owner_info.name ]]</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>[[ regionObject.fields.eep_program.label ]]</label>
+                </div>
+                <div class="col-md-9"
+                     ng-switch="regionObject.helpers.display_program_link">
+                    <a ng-switch-when="true"
+                       ng-href="[[ regionObject.object.eep_program_info.url ]]">
+                        [[ regionObject.object.eep_program_info.name ]]
+                    </a>
+                    <span ng-switch-when="false">
+                        [[ regionObject.object.eep_program_info.name ]]
+                    </span>
+                </div>
+            </div>
+        {% endblock object_detail %}
+
+        {# TODO: Cook up a way to generically publish data points to this area. #}
+        <div class="data-peek">
+            {% block data_peek %}{% endblock data_peek %}
+        </div>
+
+        {# TODO: Floorplan area #}
+        <div class="floorplans">
+            {% block floorplans %}{% endblock floorplans %}
+        </div>
+
+        {# TODO: Calculations section (RTF, ETO, etc) #}
+        <div class="calculations">
+            {% block calculations %}{% endblock calculations %}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="data-browser">
+        {% block data_fields %}{% endblock data_fields %}
+    </div>
+</div>

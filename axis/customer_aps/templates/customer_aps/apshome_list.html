@@ -1,0 +1,17 @@
+{% extends 'base_list.html' %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block header_text %} APS Homes {% endblock %}
+
+{% block actions_buttons %}
+    <div class="col-md-2">
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{% url 'aps_bulk_homes_add' %}">Upload Meterset Data</a>
+        </div>
+    </div>
+{% endblock %}

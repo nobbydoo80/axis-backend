@@ -1,0 +1,140 @@
+{% extends "base_detail.html" %}
+{% load bootstrap_tags %}
+
+{% block detail_content %}
+<div class="row">
+    <div class="col-md-6 col-md-push-6">
+        {% include 'geographic/map.html' %}
+    </div>
+    <div class="col-md-6 col-md-pull-6">
+        <br/>
+
+        {% if user.is_superuser %}
+            <div class="row">
+                <div class="col-md-4 key">Legacy Site ID:</div>
+                <div class="col-md-8 value">{{ object.aps_id }}</div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-4 key">Premise ID:</div>
+            <div class="col-md-8 value">{{ object.premise_id }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 key">Meter set Date:</div>
+            <div class="col-md-8 value">{{ object.meterset_date }}</div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-4 key">Lot Number:</div>
+            <div class="col-md-8 value">{% if object.raw_lot_number %} {{ object.raw_lot_number }} {% else %} - {% endif %} </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 key">Street:</div>
+            <div class="col-md-8 value">
+                {{ object.raw_street_line_1 }}
+
+                {% if object.raw_street_line_2 %}
+                    <br/>
+                    {{ object.raw_street_line_2 }}
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 key">City:</div>
+            <div class="col-md-8 value">{{ object.raw_city }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 key">State:</div>
+            <div class="col-md-8 value">{{ object.raw_state }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 key">ZIP Code:</div>
+            <div class="col-md-8 value">{{ object.raw_zip }}</div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-4 key">Confirmed:</div>
+            <div class="col-md-2 value">{{ object.confirmed_address }}</div>
+            <div class="col-md-4 key">Manual Override:</div>
+            <div class="col-md-2 value">{{ object.address_override }}</div>
+        </div>
+
+        {% if object.confirmed_address %}
+            <br><br><br><div class="row">
+            <div class="panel-group" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      Geocoded Result
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4 key">Street:</div>
+                        <div class="col-md-8 value">
+                            {{ object.street_line1 }}
+                            {% if object.street_line1 %}
+                                <br/>
+                                {{ object.street_line2 }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 key">City:</div>
+                        <div class="col-md-8 value">{{ object.city.name }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 key">State:</div>
+                        <div class="col-md-8 value">{{ object.state }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 key">ZIP Code:</div>
+                        <div class="col-md-8 value">{{ object.zipcode }}</div>
+                    </div>
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        {% endif %}
+
+        {% if object.legacyapshome_set.all|length %}
+            <br>
+            <h5>Legacy APS Home which this Premise ID is tied to:</h5>
+            <ul>
+                {% for oldhome in object.legacyapshome_set.all %}
+                    <li><a href="{{ oldhome.get_absolute_url }}">{{ oldhome }}</a></li>
+                {% endfor %}
+
+            </ul>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
+
+{% block tabs %}
+    {% bootstrap_navtabs %}
+        {% tab "Axis Home" show=object.home %}
+            {% include 'customer_aps/includes/home.html' with object=object.home %}
+
+        {% tab "Incentive Payments" show=show_ipp|length %}
+            {% include 'customer_aps/tabs/incentive_payments.html' with object_list=show_ipp %}
+
+        {% tab "History" %}
+            <script>datatableview.autoInitialize = true</script>
+            {% include "simple_history/includes/history_list.html" with object=object app_label="customer_aps" model="apshome" field="id" constraint=object.id %}
+
+    {% endbootstrap_navtabs %}
+{% endblock tabs %}

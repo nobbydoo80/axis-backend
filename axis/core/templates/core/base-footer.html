@@ -1,0 +1,19 @@
+<footer>
+    <div class="row">
+        <div class="col-md-3">
+            {% for sponsor in request.company.sponsor_list %}
+                <a href="{{ sponsor.url }}" target="_blank">
+                    <img src="{{ STATIC_URL }}images/sponsor_{{ sponsor.slug }}.png" alt="{{ sponsor.name }} Sponsor">
+                </a>
+            {% endfor %}
+        </div>
+        <div class="col-md-9">
+            <p class="text-muted text-right" style="font-size: x-small">
+                Copyright © 2011-2023 Pivotal Energy Solutions. All Rights Reserved.
+                {% if request.user.is_superuser %}
+                    <br /><i class="fa fa-github-alt"></i>&nbsp;{{ git_href|safe|truncatewords:10 }}
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</footer>

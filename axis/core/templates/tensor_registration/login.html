@@ -1,0 +1,23 @@
+{% extends "base_form.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}Logon{% endblock page_title %}
+
+{% block header_text %}Welcome! Please log on to {{ site.name }}{% endblock %}
+{% block form_content %}
+    <div class="row">
+        <div class="col-md-4">{{ form.username|as_crispy_field }}</div>
+    </div> <div class="row">
+        <div class="col-md-4">{{ form.password|as_crispy_field }}</div>
+    </div>
+{% endblock form_content %}
+
+{% block tabs %}
+    <p class="text-center"><a href="{% url "password_reset" %}">Forgot</a> your password? Contact your company
+        administrator for access or <a href="http://support.pivotalenergysolutions.com">contact</a> your friendly
+        support representative for assistance.</p>
+{% endblock tabs %}
+
+{% block form_actions %}
+    <button type="submit" id="id_submit" class="btn btn-primary">Login</button>
+{% endblock form_actions %}

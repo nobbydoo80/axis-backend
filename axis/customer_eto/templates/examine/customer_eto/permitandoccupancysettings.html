@@ -1,0 +1,81 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="vm.cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Building Permit &amp; Certificate of Occupancy<br>for <em>[[ vm.regionObject.object_name ]]</em></h4>
+</div>
+<div class="modal-body permitandoccupancysettings"
+     ng-init="settings=vm.regionObject.helpers.permitandoccupancysettings">
+
+    <div ng-repeat="grouping in settings.question_data">
+        <div ng-repeat="item in grouping.items"
+             class="community-selection">
+            <div>
+                <label>[[ settings.form[item.name].label ]]:</label>
+            </div>
+            <div class="inherited" ng-repeat="parent in settings.parents">
+                <h5>[[ parent ]]</h5>
+                <label>
+                    <input
+                        ng-model="vm.regionObject.object[item.name]"
+                        ng-disabled="!settings[parent][item.name]"
+                        ng-checked="
+                            !settings.form[item.name].value
+                                && settings[parent] && settings[parent][item.name]
+                        "
+                        value="[[ parent ]]"
+                        type="radio"
+                        name="[[ item.name ]]"
+                    >
+                    [[ settings[parent][item.name + '_display'] || '--' ]]
+                </label>
+            </div>
+
+            <h5 ng-if="settings.type !== 'company'">
+                [[ settings.type ]]
+            </h5>
+            <div>
+                <axis-field ng-if="item.show_label" field="settings.form[item.name]"></axis-field>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="compliance-options-preview"
+         ng-repeat="grouping in settings.question_data">
+
+        <div class="panel panel-default"
+             ng-repeat="item in grouping.items">
+            <div class="panel-heading">
+                <span class="panel-title"
+                      ng-bind="settings.form[item.name].label">
+                </span>
+            </div>
+
+            {% comment %}
+            Default case:
+                `regionObject.object[item.name]`` is a valid compliance code
+            Inherited case:
+                `regionObject.object[item.name]` is an indirection key,
+                namely one of 'company' or 'subdivision', which is a valid key within `settings`.
+            {% endcomment %}
+            <div class="panel-body"
+                 ng-bind-html="
+                    {# Essentially, choices[compliance_code] #}
+                    (settings.html_choices[vm.regionObject.object[item.name]]
+                    {# Essentially, choices[settings[parent_type]] #}
+                    || settings.html_choices[settings[vm.regionObject.object[item.name]][item.name]]
+                    || 'Select a compliance option to see extended details.')
+                        | trustAsHtml
+                ">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <div class="pull-right">
+        <button type="submit" class="btn btn-primary" ng-click="vm.ok()">Save</button>
+        <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+{% load numbers %}
+
+<div class="row">
+    <div class="col-md-3">{{ form.conditioned_area|as_crispy_field }}</div>
+</div>
+
+<div class="row">
+    <div class="col-md-12"><h4>Code Values</h4></div>
+    <div class="col-md-2">{{ form.code_heating_therms|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.code_heating_kwh|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.code_cooling_kwh|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.code_hot_water_therms|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.code_hot_water_kwh|as_crispy_field }}</div>
+</div>
+<div class="row">
+    <div class="col-md-2">{{ form.code_lights_and_appliances_therms|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.code_lights_and_appliances_kwh|as_crispy_field }}</div>
+    <div class="col-md-2">{% crispy_addon form.code_electric_cost prepend="$" form_show_labels=True %}</div>
+    <div class="col-md-2">{% crispy_addon form.code_gas_cost prepend="$" form_show_labels=True %}</div>
+</div>
+<div class="row">
+    <div class="col-md-12"><h4>Improved Values</h4></div>
+    <div class="col-md-2">{{ form.improved_heating_therms|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.improved_heating_kwh|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.improved_cooling_kwh|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.improved_hot_water_therms|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.improved_hot_water_kwh|as_crispy_field }}</div>
+</div>
+<div class="row">
+    <div class="col-md-2">{{ form.improved_lights_and_appliances_therms|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.improved_lights_and_appliances_kwh|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.improved_solar_hot_water_therms|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.improved_solar_hot_water_kwh|as_crispy_field }}</div>
+    <div class="col-md-2">{{ form.improved_pv_kwh|as_crispy_field }}</div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        {% crispy_addon form.improved_electric_cost prepend="$" form_show_labels=True %}</div>
+    <div class="col-md-2">
+        {% crispy_addon form.improved_gas_cost prepend="$" form_show_labels=True %}</div>
+</div>

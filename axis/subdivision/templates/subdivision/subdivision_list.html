@@ -1,0 +1,26 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .dataTable th[data-name="name"] { width: 15%; }
+        .dataTable th[data-name="builder"] { width: 15%; }
+        .dataTable th[data-name="community"] { width: 15%; }
+        .dataTable th[data-name="city"] { width: 15%; }
+        .dataTable th[data-name="eep-provider"] { width: 15%; }
+        .dataTable th[data-name="rater-provider"] { width: 15%; }
+        .dataTable th[data-name="associations"] { width: 10%; }
+        .dataTable a.add { color: #6db557; }
+        .dataTable a.reject { color: #8a1f11; }
+    </style>
+{% endblock %}
+
+{% block list_content %}
+    {{ block.super }}
+    {% include "core/includes/address_confirmation_legend.html" %}
+{% endblock %}

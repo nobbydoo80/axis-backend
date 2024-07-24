@@ -1,0 +1,40 @@
+{% extends "base_form.html" %}
+{% load crispy_forms_filters %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block form_content %}
+    <fieldset>
+        <div class="row">
+            <div class="col-md-6 col-md-push-6">
+                {% if form.instance.pk %}
+                    {% include "geographic/map.html" %}
+                {% endif %}
+            </div>
+            <div class="col-md-6 col-md-pull-6">
+                <div class="row">
+                    <div class="col-md-6">{{ form.name|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">{{ form.county|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">{{ form.land_area_meters|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.water_area_meters|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.latitude|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.longitude|as_crispy_field }}</div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+{% endblock %}

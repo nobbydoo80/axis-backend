@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-md-4 key">Client:</div>
+    <div class="col-md-8 value">[[ regionObject.object['project_client_display'] || '-' ]]</div>
+</div>
+<div class="row">
+    <div class="col-md-4 key">Invoicee:</div>
+    <div class="col-md-8 value">[[ regionObject.object['entity_responsible_for_payment_display'] || '-' ]]</div>
+</div>
+<div class="row">
+    <div class="col-md-4 key">Number Of Lots:</div>
+    <div class="col-md-8 value">[[ regionObject.object['number_of_lots'] || '-' ]]</div>
+</div>
+<div class="row">
+    <div class="col-md-4 key">Are all homes in the development seeking NGBS certification?:</div>
+    <div class="col-md-8 value">[[ regionObject.object['are_all_homes_in_ld_seeking_certification'] ? 'Yes' : 'No' ]]</div>
+</div>
+
+<div ng-if="regionObject.object.vr_batch_submission_parent_rough_home_address || regionObject.object.vr_batch_submission_parent_final_home_address">
+    <div class="row">
+        <div class="col-md-6 key">
+            Rough Batch Parent Project:
+        </div>
+        <div class="col-md-6 key">
+            Final Batch Parent Project:
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-12" ng-bind-html="regionObject.object.vr_batch_submission_parent_rough_home_address || '-' | trustAsHtml"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-12" ng-bind-html="regionObject.object.vr_batch_submission_parent_final_home_address || '-' | trustAsHtml"></div>
+        </div>
+    </div>
+
+    <div ng-if="(regionObject.object.vr_batch_submission_parent_childrens_rough && regionObject.object.vr_batch_submission_parent_childrens_rough.length > 0) || (regionObject.object.vr_batch_submission_parent_childrens_final && regionObject.object.vr_batch_submission_parent_childrens_final.length > 0)">
+        <div class="row">
+            <div class="col-md-6 key">
+                Rough Batch Child Projects:
+            </div>
+            <div class="col-md-6 key">
+                Final Batch Child Projects:
+            </div>
+        </div>
+        <div class="row customer-hirl-project-childrens-list">
+            <div class="col-md-6">
+                <div class="row" ng-repeat="children in regionObject.object.vr_batch_submission_parent_childrens_rough">
+                    <div class="col-md-12 value" ng-bind-html="children.home_status_address || '-' | trustAsHtml"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row" ng-repeat="children in regionObject.object.vr_batch_submission_parent_childrens_final">
+                    <div class="col-md-12 value" ng-bind-html="children.home_status_address || '-' | trustAsHtml"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div ng-if="(regionObject.object.vr_batch_submission_rough_childrens && regionObject.object.vr_batch_submission_rough_childrens.length > 0) || (regionObject.object.vr_batch_submission_final_childrens && regionObject.object.vr_batch_submission_final_childrens.length > 0)">
+    <div class="row">
+        <div class="col-md-6 key">
+            Rough Batch Child Projects:
+        </div>
+        <div class="col-md-6 key">
+            Final Batch Child Projects:
+        </div>
+    </div>
+    <div class="row customer-hirl-project-childrens-list">
+        <div class="col-md-6">
+            <div class="row" ng-repeat="children in regionObject.object.vr_batch_submission_rough_childrens">
+                <div class="col-md-12 value" ng-bind-html="children.home_status_address || '-' | trustAsHtml"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row" ng-repeat="children in regionObject.object.vr_batch_submission_final_childrens">
+                <div class="col-md-12 value" ng-bind-html="children.home_status_address || '-' | trustAsHtml"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div class="row">
+        <div class="col-md-12 key">
+            Related Projects:
+        </div>
+    </div>
+    <div class="row customer-hirl-project-childrens-list">
+        <div class="col-md-12">
+            <div class="row" ng-repeat="project in regionObject.helpers.registration_projects_list">
+                <div class="col-md-12 value" ng-bind-html="project.home_status_address || '-' | trustAsHtml"></div>
+            </div>
+        </div>
+    </div>
+</div>

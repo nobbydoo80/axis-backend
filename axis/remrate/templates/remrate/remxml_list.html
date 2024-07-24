@@ -1,0 +1,209 @@
+{% extends "base_list.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <link href="{{ STATIC_URL }}css/jquery-file-upload/9.21.0/jquery.fileupload.css?v=1" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}css/jquery-file-upload/9.21.0/jquery.fileupload-ui.css?v=1" rel="stylesheet" media="screen">
+{% endblock style_sheet %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/plugins/jquery-file-upload/9.21.0/jquery.ui.widget.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/jquery-file-upload/9.21.0/jquery.iframe-transport.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/jquery-file-upload/9.21.0/jquery.fileupload.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/jquery-file-upload/9.21.0/jquery.fileupload-process.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/jquery-file-upload/9.21.0/jquery.fileupload-validate.js' %}"></script>
+{% endblock javascript_head %}
+
+
+{% block full_content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-10">
+                <p><span id="{{ result_counter_id|default:"id_count" }}">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </span>
+                    {% block header_text %}{{ verbose_name_plural }}{% endblock header_text %}
+                    {% if request.user.is_impersonate %} for {{ request.company }}{% endif %}
+                </p>
+            </div>
+        </div>
+    </header>
+
+    {% block detail_content %}
+
+        <br />
+        {% if upload_form %}
+            <fieldset class="row-header">
+                <legend>
+                    <p>
+                        <span>Add BLG Files:</span>
+                    </p>
+                </legend>
+                {% block header_description %}
+                    <p>Upload or drag one or more REM/Rate(TM) .blg file (version 14.6.1 or later) to this page to complete
+                        the XML file conversion. Output files are generated in REM XML format. A history of converted files
+                        is shown in the table below.</p>
+                    <br />
+                    <i>Note:  This will create floorplans automatically.</i>
+                {% endblock header_description %}
+            </fieldset>
+            <br/>
+            <div class="row">
+                <div class="col-md-3">
+                    <span class="btn btn-success fileinput-button form-inline">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>Add files...</span>
+                            <!-- The file input field used as target for the file upload widget -->
+                        <input id="fileupload" type="file" name="blg_file" multiple>
+                    </span>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-3">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-3">
+                            {{ upload_form.create_home|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6" style="margin-top: -25px">
+                            {{ upload_form.builder|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px">
+                        <div class="col-md-3">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-3">
+                            {{ upload_form.simulate_ekotrope|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6" style="margin-top: -25px">
+                            {{ upload_form.program|as_crispy_field }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <!-- The global progress bar -->
+            <div id="progress" class="progress">
+                <div class="progress-bar progress-bar-success"></div>
+            </div>
+            <!-- The container for the uploaded files -->
+            <div id="files" class="files"></div>
+            <br>
+        {% endif %}
+
+        <script>
+            $(function () {
+                'use strict';
+                // Change this to the location of your server-side upload handler:
+                var url = "/api/v2/remxml/",
+                    uploadButton = $('<button/>')
+                        .addClass('btn btn-primary')
+                        .prop('disabled', true)
+                        .text('Processing...')
+                        .on('click', function () {
+                            var $this = $(this),
+                                data = $this.data();
+                            $this
+                                .off('click')
+                                .text('Abort')
+                                .on('click', function () {
+                                    $this.remove();
+                                    data.abort();
+                                });
+                            data.submit().always(function () {
+                                $this.remove();
+                            });
+                        });
+                $('#fileupload').fileupload({
+                    url: url,
+                    dataType: 'json',
+                    autoUpload: true,
+                    acceptFileTypes: /(\.|\/)(blg)$/i,
+                    maxFileSize: 999000,
+                }).bind('fileuploadsubmit', function (e, data) {
+                    data.formData = {
+                        create_home: $('#id_create_home')[0].checked,
+                        program: $('#id_program').val(),
+                        builder: $('#id_builder').val(),
+                        simulate_ekotrope: $('#id_simulate_ekotrope')[0].checked
+                    }
+                }).on('fileuploadadd', function (e, data) {
+                    data.context = $('<div/>').appendTo('#files');
+                    $.each(data.files, function (index, file) {
+                        var node = $('<p/>')
+                            .append($('<strong/>').text(file.name));
+                        if (!index) {
+                            node
+                                .append('<br>')
+                                .append(uploadButton.clone(true).data(data));
+                        }
+                        node.appendTo(data.context);
+                    });
+                }).on('fileuploadprocessalways', function (e, data) {
+                    console.log('fileuploadprocessalways' +  JSON.stringify(data))
+                    var index = data.index,
+                        file = data.files[index],
+                        node = $(data.context.children()[index]);
+                    if (file.error) {
+                        node
+                            .append('<br>')
+                            .append($('<span class="text-danger"/>').text(file.error));
+                    }
+                    console.log("HERE " + index + "Length" + data.files.length)
+                    if (index === data.files.length) {
+                        data.context.find('button')
+                            .text('Upload')
+                            .prop('disabled', !!data.files.error);
+                    }
+                }).on('fileuploadprogressall', function (e, data) {
+                    console.log('fileuploadprogressall' + JSON.stringify(data))
+
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .progress-bar').css(
+                        'width',
+                        progress + '%'
+                    );
+                }).on('fileuploaddone', function (e, data) {
+                    console.log('fileuploaddone' + JSON.stringify(data))
+                    var file = data.result;
+                    console.log(file)
+                    if (file.xml_download_url) {
+                        var link = '<li><a href="' + file.xml_download_url +'"><i class="fa fa-cloud-download"></i>' + file.xml_file_name + "</a>"
+                        if (file.processing_info) {
+                            link += " " + file.processing_info
+                        }
+                        link += "</li>"
+                        $(data.context.children()[0])
+                            .append('<ul>')
+                            .append(link)
+                            .append('</ul>');
+                        data.context.find('button').remove()
+                    };
+                }).on('fileuploadfail', function (e, data) {
+                    console.log('fileuploadfail' + JSON.stringify(data))
+                    var file = data.result;
+                    var error = $('<li class="bg-danger">').text('File upload failed: ' + data.jqXHR.responseText);
+                    $(data.context.children()[0])
+                        .append('<ul>')
+                        .append(error)
+                        .append('</ul>');
+                    data.context.find('button').remove()
+                }).prop('disabled', !$.support.fileInput)
+                    .parent().addClass($.support.fileInput ? undefined : 'disabled');
+            });
+
+        </script>
+    {% endblock detail_content %}
+
+    {% block list_content %}
+        {{ datatable }}
+    {% endblock list_content %}
+
+
+
+{% endblock full_content %}

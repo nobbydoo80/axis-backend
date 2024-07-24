@@ -1,0 +1,26 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <strong>Documents</strong>
+            <div class="list-group">
+                <a ng-href="[[ document.url ]]" class="list-group-item"
+                   ng-repeat="document in regionObject.object.customer_documents">
+
+                <div class="media">
+                        <div class="media-left text-center">
+                            <i class="fa fa-fw fa-cloud-download text-primary"
+                               style="font-size: 20px"></i>
+                        </div>
+                        <div class="media-body text-primary">
+                            [[ document.filename ]]
+                            <small class="text-muted" style="white-space: nowrap"
+                                  ng-if="document.filesize">
+                                ([[ document.filesize | bytes ]])
+                            </small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

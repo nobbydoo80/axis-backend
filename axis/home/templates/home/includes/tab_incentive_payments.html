@@ -1,0 +1,109 @@
+<style type="text/css">
+    .ipp_start { font-weight: bold; color: blue }
+    .ipp_ipp_failed_restart { font-weight: bold; color: yellow;}
+    .ipp_ipp_payment_requirements { font-weight: bold; color: purple; }
+    .ipp_ipp_payment_failed_requirements { font-weight: bold; color: red; }
+    .ipp_ipp_payment_automatic_requirements { font-weight: bold; color: orange; }
+    .ipp_payment_pending { font-weight: bold; color: #808000; }
+    .ipp_complete { font-weight: bold; color: darkgreen;  }
+</style>
+
+{% for object in object_list %}
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Incentive Status for {{ object.home_status.eep_program }}</h5>
+        </div><br />
+        <div class="col-md-3 key">Status:</div>
+        <div class="col-md-3 ipp_{{ object.state }}">{{ object.get_state_display }}</div>
+        <div class="col-md-3 key">Last Update:</div>
+        <div class="col-md-3 value">{{ object.last_update|date:"m/d/Y" }}</div>
+    </div>
+    <br /><br />
+    <div class="panel-group" id="accordion_{{ object.id }}" >
+         <div class="panel panel-default" id="distribution_{{ object.id }}" style="display: none;">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion_{{ object.id }}" class="accordion-toggle"
+                       href="#_pnl_distribution_{{ object.id }}">
+                    Distributions
+                    </a>
+                </h4>
+            </div>
+            <div id="_pnl_distribution_{{ object.id }}" class="panel-collapse collapse">
+                <div class="panel-body" id="_ipp_distributions_{{ object.id }}"></div>
+            </div>
+        </div>
+         <div class="panel panel-default" id="annotation_{{ object.id }}" style="display: none;">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion_{{ object.id }}" class="accordion-toggle"
+                       href="#_pnl_annotation_{{ object.id }}">
+                        Incentive Annotations
+                    </a>
+                </h4>
+            </div>
+            <div id="_pnl_annotation_{{ object.id }}" class="panel-collapse collapse">
+                <div class="panel-body" id="_ipp_annotations_{{ object.id }}"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="text/x-handlebars-template" id="annotations_table">
+        {% include "home/includes/handlebars/annotations.hbs" %}
+    </script>
+    <script type="text/x-handlebars-template" id="distributions_table">
+        {% include "home/includes/handlebars/distributions.hbs" %}
+    </script>
+
+    <script type="text/javascript">
+        $(function() {
+            var object_id = {{ object.id }};
+
+            Handlebars.registerHelper('arrayHasOwnProperty', function(arr, key, options){
+                var len = arr.length;
+                for(var i = 0; i < len; i++){
+                    if(key in arr[i]){
+                        return options.fn(this);
+                    }
+                }
+            });
+
+            var ipp_distributions = $('#_ipp_distributions_' + object_id);
+            var ipp_annotations = $('#_ipp_annotations_' + object_id);
+            var ipp_url = "/api/v2/incentive_payment_status/" + object_id + "/full_status/";
+
+            var annotation_template = Handlebars.compile($("#annotations_table").html());
+            var distribution_template = Handlebars.compile($("#distributions_table").html());
+            $.getJSON(ipp_url, function (data) {
+                var distributions = data.distributions.length;
+                var annotations = data.annotations.length;
+
+                if(distributions != 0){
+                    var distro_html = distribution_template(data);
+                    ipp_distributions.html(distro_html);
+                    ipp_distributions.closest('.panel').show();
+
+                    var selector = $('[id^=distribution_tbl_]');
+                    selector.dataTable({'sDom': '<lf><"clear">rt<i>'});
+                }
+
+                if(annotations != 0){
+                    var anno_html = annotation_template(data);
+                    ipp_annotations.html(anno_html);
+                    ipp_annotations.closest('.panel').show();
+
+                    var selector = $("[id^=annotation_tbl_]");
+                    selector.dataTable({'sDom': '<lf><"clear">rt<i>'});
+                }
+
+                if((distributions && annotations) || distributions){
+                    ipp_distributions.parent().collapse('show');
+                } else if(annotations){
+                    ipp_annotations.parent().collapse('show');
+                }
+            });
+        })
+    </script>
+{% endfor %}

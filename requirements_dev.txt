@@ -1,0 +1,12 @@
+#
+# Axis Development Requirements File
+#
+chardet
+coverage
+lazy-object-proxy
+flake8
+pre-commit
+vine
+black==23.3.0  # Keep this in sync with pre-commit.
+pipdeptree
+freezegun==1.2.1

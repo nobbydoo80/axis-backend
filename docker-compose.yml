@@ -1,0 +1,93 @@
+version: "3.2"
+#  To build `worker` do the following:
+#   -  make sure that your env has a GIT_AUTH_TOKEN in it!  Don't paste it just set it in env. If you don't
+#   have a GitHub PAT, you can read about creating one here:
+#   https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+#
+#   ```
+#   # Put your Personal Access Token from GitHub into an environment variable
+#   export GIT_AUTH_TOKEN="<auth_token>"
+#
+#   # Then build the Axis image
+#   docker build --secret id=github_token,env=GIT_AUTH_TOKEN --tag pivotalenergy/axis:latest .
+#   ```
+services:
+  worker:
+    image: pivotalenergy/axis:latest
+    # We need this service to run in privileged mode to enable it to run docker images of its own,
+    # which we do to run OpenStudio-ERI
+    privileged: true
+    build:
+      context: .
+    links:
+      - db
+      - rabbitmq
+      - memcached
+    env_file:
+    - .env
+    environment:
+      DJANGO_SETTINGS_MODULE: 'settings.dev_docker'
+      CELERY_WORKER: 'on'
+    networks:
+      - main
+    depends_on:
+      - db
+      - rabbitmq
+    volumes:
+      - ../docker/${COMPOSE_PROJECT_NAME:-axis}/app-media:/app/media:rw
+      # DEVELOPMENT ONLY This is all to allow real time editing..
+      - ./axis:/app/axis
+      - ./settings:/app/settings
+      - ./bin:/app/bin
+      - ./manage.py:/app/manage.py
+      - ./celeryapp.py:/app/celeryapp.py
+      - ./urls.py:/app/urls.py
+      - ./.docker-entrypoint.sh:/app/docker-entrypoint.sh
+      - ./.env:/app/.env
+      - ../simulation/simulation:/usr/local/lib/python3.10/site-packages/simulation
+  db:
+    restart: always
+    image: pivotalenergy/mysqldb:latest
+    volumes:
+      - ../docker/${COMPOSE_PROJECT_NAME:-axis}/db-logs:/var/log/mysql:rw
+      - ../docker/${COMPOSE_PROJECT_NAME:-axis}/db-data:/var/lib/mysql:rw
+      # This can be commented back in if you want access to the mysqld directory, which
+      # includes the mysqld socket file - this can be used to interact directly with the
+      # database from the host.
+      # We leave this deactivated by default because it's not used often and it does not
+      # work in a Windows WSL2 environment, as Windows has trouble mounting socket files
+      #- ../docker/${COMPOSE_PROJECT_NAME:-axis}/db-run:/var/run/mysqld:rw
+      - ../docker/${COMPOSE_PROJECT_NAME:-axis}/db-tmp:/tmp:rw
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+      - main
+  memcached:
+    image: memcached:alpine
+    ports:
+      - 11211:11211
+    expose:
+      - "11211"
+    networks:
+      - main
+  rabbitmq:
+    restart: always
+    image: rabbitmq:3.7-rc-management
+    volumes:
+      - ../docker/${COMPOSE_PROJECT_NAME:-axis}/rabbitmq-data:/var/lib/rabbitmq/mnesia
+    env_file:
+      - .env
+    expose:
+      - "5672"
+    ports:
+      - 15672:15672
+      - 5672:5672  # Allows you to run celery locally in development
+    networks:
+      - main
+
+networks:
+  main:

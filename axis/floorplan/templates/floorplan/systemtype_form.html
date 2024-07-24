@@ -1,0 +1,25 @@
+{% extends 'base_form.html' %}
+{% load crispy_forms_tags %}
+{% load verbatim %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block form_content %}
+    {{ form.id }}{{ form.owner }}
+    <div class="row_fluid">
+        <div class="col-md-12"> {{ form.name|as_crispy_field }} </div>
+    </div>
+    <div class="row_fluid">
+        <div class="col-md-12"> {{ form.description|as_crispy_field }} </div>
+    </div>
+    <div class="row_fluid">
+        <div class="col-md-12"> {{ form.is_public|as_crispy_field }} </div>
+    </div>
+    <div class="row_fluid">
+        <div class="col-md-12"> {{ form.company|as_crispy_field }} </div>
+    </div>
+{% endblock %}

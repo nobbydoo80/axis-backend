@@ -1,0 +1,38 @@
+#!/bin/bash
+
+[[ -e bin/django ]] || { echo >&2 "Run this from the repository root instead."; exit 1; }
+
+# Valid server stacks
+# 'production' and 'demo' are unlisted for safety
+SERVERS=( staging beta gamma demo )
+
+if [[ "$1" == "" ]]; then
+    echo "Pass one of the following server groups for an argument: ${SERVERS[@]}"
+    exit 1
+fi
+
+if [[ ! " ${SERVERS[@]} " =~ " $1 " ]]; then
+    echo "Invalid server group '$1'.  Must be one of: ${SERVERS[@]}"
+    exit 1
+fi
+
+SCRIPT_NAME=stack_builder
+
+if [ -e .venv/src/infrastructure/infrastructure/bin/${SCRIPT_NAME}.py  ] ; then
+  SCRIPT=.venv/src/infrastructure/infrastructure/bin/${SCRIPT_NAME}.py
+elif [ -e .venv/bin/${SCRIPT_NAME}.py ]; then
+  SCRIPT=.venv/bin/${SCRIPT_NAME}.py
+else
+  echo "Unable to find infrastructure/${SCRIPT_NAME} script"
+  exit 1
+fi
+
+export $(grep -v '^#' .env | xargs)
+source ${VENV:-.venv}/bin/activate
+$SCRIPT -a axis -c $1 -d "${@:2}"
+
+echo
+echo "Wait until the following url shows that the '(Deleting) $1' configuration has vanished:"
+echo "https://us-west-2.console.aws.amazon.com/ec2/autoscaling/home?region=us-west-2#AutoScalingGroups:id=$1;view=details"
+echo
+echo "When it's gone, run 'bin/server-build $1'"

@@ -1,0 +1,8 @@
+{% extends "html_email_base.html" %}
+
+{% block content %}
+    <p>
+        {{ request.user }} created an account for you {{ created_user }}
+        <a target="_blank" href="{{ approval_url }}">{{ approval_url }}</a>
+    </p>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% verbatim %}
+    <!--<div class="panel panel-success">-->
+        <!--<div class="panel-heading">Successful</div>-->
+        <!--<div class="panel-body">-->
+            <!--{{text}}-->
+            <!--<br><br>-->
+
+            <div class="well">
+                <h4>
+                    {{! TODO: add an 's' after home is there is more than one.}}
+                    {{total_incentives}} home for ${{total_amount}}
+                </h4>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h4>Programs</h4>
+                        <dl>
+                            <div class="panel well-sm">
+                                {{#each programs}}
+                                    <dt>{{name}}</dt>
+                                    <dd>{{count}} - ${{amount}}</dd>
+                                {{/each}}
+                                <a href="{{check_request_url}}" class="btn btn-primary btn-xs">Check Request</a>
+                                <a href="{{check_detail_url}}" class="btn btn-primary btn-xs">Check Detail</a>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="col-xs-6">
+                        <h4>Raters</h4>
+                        <dl>
+                            {{#each raters}}
+                                <div class="panel well-sm">
+                                    <dt>{{name}}</dt>
+                                    {{#if amount}}
+                                        <dd>{{count}} - ${{amount}}</dd>
+                                        <a class="btn btn-primary btn-xs" href="{{check_request_url}}">Check Request</a>
+                                        <a class="btn btn-primary btn-xs" href="{{check_detail_url}}">Check Detail</a>
+                                    {{/if}}
+                                </div>
+                            {{/each}}
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        <!--</div>-->
+        <!--<div class="panel-footer">Annotation: <em>{{annotation}}</em></div>-->
+    <!--</div>-->
+{% endverbatim %}

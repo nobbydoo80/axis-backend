@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-3 key">Ekotrope&#8482; Data:</div>
+    <div class="col-md-9 value">
+        <a ng-if="regionObject.object.ekotrope_houseplan"
+           ng-href="[[ regionObject.object.ekotrope_houseplan_url ]]">
+            [[ regionObject.object.ekotrope_houseplan_name ]]
+        </a>
+        <span ng-if="!regionObject.object.ekotrope_houseplan">-</span>
+    </div>
+</div>
+
+<hr>
+<div ng-if="regionObject.object.data">
+    <div ng-if="regionObject.object.import_failed">
+        <div class="alert alert-danger">
+            There was an error fully importing the project from Ekotrope:
+            <p>
+                <code>[[ regionObject.object.import_error ]]</code>
+            </p>
+        </div>
+    </div>
+    <div ng-if="!regionObject.object.import_failed">
+        <div class="row" ng-if="regionObject.object.data">
+            <div class="col-md-12"><h4>Project Data</h4></div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4 key">Ekotrope&#8482; Version:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.data.algorithmVersion ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">Builder:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.data.builder || '-' ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">Address:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.data.location.streetAddress || '-' ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">City:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.data.location.city || '-' ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">State:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.data.location.state || '-' ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">Building Area:</div>
+                    <div class="col-md-8 value">
+                        [[ regionObject.object.ekotrope_houseplan_data.thermalEnvelope.summary.conditionedArea || '-']]
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"></div>
+                    <div class="col-md-8 value"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="regionObject.object.simulation">
+        <br>
+        <div class="row" ng-if="regionObject.object.simulation">
+            <div class="col-md-3 key">[[ regionObject.verbose_names.simulation ]]:</div>
+            <div class="col-md-7 value"><span ng-if="regionObject.object.simulation">
+                [[ regionObject.object.simulation.as_string]]</span>
+            </div>
+        </div>
+        <div ng-if="regionObject.helpers.show_simulation_specifics">
+            <br>
+            <div class="col-md-3 key">Seed ID:</div>
+            <div class="col-md-7 value">[[ regionObject.object.simulation.seed.id ]]</div>
+            <div class="col-md-3 key">Source:</div>
+            <div class="col-md-7 value">
+                [[ regionObject.object.simulation.seed.source_label ]]
+                ([[ regionObject.object.simulation.seed.source_id ]] )
+            </div>
+            <div class="col-md-3 key">Analyses:</div>
+            <div class="col-md-7 value"> [[ regionObject.object.simulation.available_analyses.length
+                ]] Total
+            </div>
+            <div ng-if="regionObject.object.simulation.seed.exception_info">
+                <div class="col-md-12 key">Exception:</div>
+                <div class="col-md-12 value">
+                    <pre>[[ regionObject.object.simulation.seed.exception_info ]]</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<table class="table table-bordered table-striped examine-table">
+    <thead>
+    <tr>
+        <th>
+            Program
+        </th>
+        <th>
+            Role
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Certification Date
+        </th>
+    </tr>
+    </thead>
+
+    <tr axis-region region-object="regionObject"
+        ng-repeat="regionObject in regionSet.regions">
+    </tr>
+
+    <tr ng-if="regionSet.regions.length == 0 && regionSet.isDoneLoading()">
+        <td colspan="4">
+            <br>
+
+            <p class="text-center">
+                {% block no_regions_text %}
+                    No [[ regionSet.verbose_name_plural | humanize ]] to display.
+                {% endblock %}
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5"
+            region-set-non-field-errors></td>
+    </tr>
+    <tr ng-if="regionSet.new_region_url" ng-hide="regionSet.isFull()">
+        <td colspan="4" class="text-center">
+
+            <button class="btn btn-default examine-add-new"
+                    ng-click="regionSet.fetchNewRegion()"
+                    ng-disabled="regionSet.processing">
+                <i class="fa fa-fw"
+                   ng-class="regionSet.processing ? 'fa-spinner fa-spin' : 'fa-plus-circle'"></i>
+                Add new [[ regionSet.verbose_name | humanize
+                ]]
+            </button>
+        </td>
+    </tr>
+</table>

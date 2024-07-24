@@ -1,0 +1,550 @@
+{% extends 'base_list.html' %}
+{% load crispy_forms_tags %}
+{% load cache %}
+
+{% block page_title %}Home Utility Status Report{% endblock %}
+
+{% block style_sheet %}
+<style type="text/css">
+
+    /*
+    The width of the select 2 elements is being set to a hard 300px.
+    Why you do that Select2, why?
+    */
+    .select2-container.select2-container-multi {
+        width: 100%;
+    }
+
+    .datatable th[data-name="address"] {
+        width: 25%
+    }
+
+    .datatable th[data-name="subdivision"] {
+        width: 20%
+    }
+
+    .datatable th[data-name="floorplan"] {
+        width: 20%
+    }
+
+    .datatable th[data-name="eep-program"] {
+        width: 25%
+    }
+
+    .datatable th[data-name="state"] {
+        width: 10%
+    }
+
+    .datatable th, td {
+        white-space: nowrap;
+    }
+
+    .dataTables_scroll {
+        overflow: auto;
+    }
+
+    #id_activity_start, #id_activity_stop {
+        width: auto;
+    }
+
+    [data-toggle="buttons"] > .btn input[type="radio"],
+    [data-toggle="buttons"] > .btn input[type="checkbox"] {
+        display: none;
+    }
+
+
+    .btn-group-vertical > .btn-group-nested {
+        width: 100%;
+        display: table;
+    }
+
+    .btn-group-vertical > .btn-group-nested > .btn {
+        border-radius: 0px;
+    }
+
+    .btn-group-vertical > .btn + .btn,
+    .btn-group-vertical > .btn + .btn-group-nested,
+    .btn-group-vertical > .btn-group-nested + .btn,
+    .btn-group-vertical > .btn-group-nested + .btn-group-nested,
+    .btn-group-vertical > .btn-group-nested > .btn {
+        margin-top: -1px;
+        margin-left: 0px;
+    }
+
+    .btn-group-vertical > .btn-group-nested .btn {
+        padding-left: 40px;
+        padding-right: 40px;
+        display: table-cell;
+    }
+
+    .btn-group-vertical > .btn-group-nested .btn + .btn,
+    .btn-group-vertical > .btn-group-nested .btn + .btn-group,
+    .btn-group-vertical > .btn-group-nested .btn-group-nested + .btn,
+    .btn-group-vertical > .btn-group-nested .btn-group-nested + .btn-group-nested {
+        margin-left: -5px;
+    }
+
+    .btn-group-vertical > .btn-group-nested > .btn:first-child:not(:last-child) {
+        border-radius: 0px !important;
+    }
+
+    .btn-group-vertical > .btn-group-nested > .btn:last-child:not(:first-child) {
+        border-top-right-radius: 4px;
+    }
+
+    .btn-group-vertical {
+        margin-left: 50px;
+    }
+
+    .btn .fa {
+        display: none;
+        margin-top: 5px;
+        margin-right: -3em;
+    }
+
+    .btn-group-nested .btn .fa {
+        margin-left: -1.5em;
+    }
+
+    .btn-success .fa-check-square-o {
+        display: block;
+    }
+
+    .btn-default .fa-square-o {
+        display: block;
+    }
+
+    #disclaimer.showing .hiding,
+    #disclaimer .showing,
+    #disclaimer p {
+        display: none;
+    }
+
+    #disclaimer.showing .showing,
+    #disclaimer.showing p {
+        display: block;
+    }
+
+</style>
+{% endblock %}
+
+{% block javascript_head %}
+{{ block.super }}
+<script type="text/javascript">
+
+  var stat_limit = 2000;
+
+  function confirm_datatable_options(options) {
+    options.iDisplayLength = 10;
+    options.scrollX = true;
+    options.ajax.data = function (data) {
+      data.builder_id = $('#id_builder').val();
+      data.provider_id = $('#id_provider').val();
+      data.rater_id = $('#id_rater').val();
+      data.utility_id = $('#id_utility').val();
+      data.hvac_id = $('#id_hvac').val();
+      data.qa_id = $('#id_qa').val();
+      data.eep_id = $('#id_eep').val();
+      data.general_id = $('#id_general').val();
+      data.subdivision_id = $('#id_subdivision').val();
+      data.eep_program_id = $('#id_eep_program').val();
+      data.has_bpa_association = $('#id_has_bpa_association').val();
+      data.state = $('#id_state').val();
+      data.ipp_state = $('#id_ipp_state').val();
+      data.qatype = $('#id_qatype').val();
+      data.qastatus = $('#id_qastatus').val();
+      data.qaobservation = $('#id_qaobservation').val();
+      data.city_id = $('#id_city').val();
+      data.metro_id = $('#id_metro').val();
+      data.us_state = $('#id_us_state').val();
+      data.rating_type = $('#id_rating_type').val();
+      data.activity_type = $('#id_activity_type').val();
+      data.activity_start = $('#id_activity_start').val();
+      data.activity_stop = $('#id_activity_stop').val();
+      data.certification_only = $('#id_certification_only').is(':checked');
+      data.heat_source = $('#id_heat_source').val();
+    };
+    options.fnDrawCallback = function (oSettings) {
+      var count = oSettings.fnRecordsDisplay();
+      $('.export_button').attr('disabled', count > stat_limit);
+      $('#count_note').toggle(count > stat_limit);
+    };
+    // options.aoColumnDefs = [ { "bSortable": false, "aTargets": [ 0, 2 ] }];
+
+    return options;
+  }
+
+  // Export fields don't exist when page is loaded. So we grab the defaults while trying to
+  // set the users preselected inputs.
+  var export_rows_defaults = [];
+
+  function set_default_export_row_selection() {
+    $("#export_fields").find("input:radio:checked, input:checkbox:checked").closest('.btn').each(function () {
+      $(this).trigger('click')
+    });
+    setTimeout(function () {
+      for (var name in export_rows_defaults) {
+        var e = $(export_rows_defaults[name]);
+        var checked = e.is(":checked");
+        if (!checked) {
+          e.closest('.btn').trigger('click')
+        }
+      }
+    }, 0)
+  }
+
+  function set_user_export_fields_selection() {
+    if ('home_status_utility_export_fields' in localStorage) {
+      $("#export_fields input:checked").each(function (i, e) {
+        export_rows_defaults.push(e);
+        $(e).attr('checked', false);
+      });
+
+      var reset_data = JSON.parse(localStorage['home_status_utility_export_fields']);
+
+      for (var name in reset_data) {
+        var field = $("[name='" + name + "']");
+        if (field.is(":checkbox")) {
+          field.closest('.btn').trigger('click');
+        } else {
+          $("[name='" + name + "'][value='" + reset_data[name] + "']").closest('.btn').trigger('click');
+        }
+      }
+    }
+
+    // save users export field preferences
+    $("#export_fields input").on('change', function () {
+      var data = $("#export_fields input").serializeArray();
+      var data_to_save = {};
+
+      $.each(data, function (i, obj) {
+        data_to_save[obj.name] = obj.value;
+      });
+
+      localStorage.setItem('home_status_utility_export_fields', JSON.stringify(data_to_save))
+    });
+  }
+
+  function set_export_fields_listeners() {
+    // initialize selected rows for export rows
+    $("input:radio:checked, input:checkbox:checked").closest('.btn').each(function () {
+      $(this).addClass('active btn-success');
+    });
+
+    // add color when buttons are clicked
+    $(".btn").on('change', function () {
+      if ($(this).hasClass('radio')) {
+        $(this).closest('.btn-group-nested').children().each(function () {
+          var checked = $(this).find('input').is(":checked");
+          $(this).toggleClass('btn-success', checked);
+        });
+      } else {
+        var checked = $(this).find('input').is(":checked");
+        $(this).toggleClass('btn-success', checked);
+      }
+    });
+
+    // enable deselection of radio inputs
+    $("input:radio").closest('.btn').on('click', function () {
+      if ($(this).find("input:radio").is(":checked")) {
+        setTimeout(function () {
+          $(this).removeClass('active');
+          $(this).find("input:radio").prop('checked', false).trigger('change');
+        }.bind(this), 0);
+      }
+    });
+  }
+
+  $(function () {
+    // TODO: button for clearing the defaults.
+    // set the export fields to users last known configuration.
+
+    $.ajax({
+      url: '/api/v2/home/status/report/export_fields/',
+      success: function (data) {
+        var dest = $("#export_fields");
+        dest.append($(data));
+        set_user_export_fields_selection();
+        set_export_fields_listeners();
+      }
+    });
+
+    $("#reset_defaults").on('click', set_default_export_row_selection);
+
+    $("#id_search_bar").val($('.dataTables_filter input').val());
+    $('.dataTables_filter input').on('keyup', function () {
+      $("#id_search_bar").val($(this).val());
+    });
+
+    $("form").on('change', function (e) {
+      // don't fire datatable reload on checkbox changes
+      if (!$(e.target).is(":checked, :radio")) {
+        $('#DataTables_Table_0').dataTable().fnDraw();
+      }
+      $(".heat-source").removeClass('active');
+    });
+
+    $("#id_activity_start, #id_activity_stop").datepicker();
+    $("#id_activity_start, #id_activity_stop").on('change', function (e) {
+      var prev_date = $(this).data('prev_selected_date');
+      if (prev_date == undefined) {
+        $(this).data('prev_selected_date', $(this).val());
+
+      } else {
+        if (prev_date == $(this).val()) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+
+        } else {
+          $(this).data('prev_selected_date', $(this).val());
+        }
+      }
+    });
+
+    var date_ranges = $('#date_ranges');
+    // show date by default if they values in them.
+    if ($('#id_activity_start').val() != "" || $('#id_activity_stop').val() != "") {
+      date_ranges.show(400);
+    } else {
+      date_ranges.hide(400);
+    }
+
+    $('#show_dates_href').on('click', function (e) {
+      e.preventDefault();
+      if (date_ranges.is(":visible")) {
+        if ($('#id_activity_start').val() + $('#id_activity_stop').val() == "") {
+          date_ranges.hide(400);
+        }
+      } else {
+        date_ranges.show(400);
+      }
+    });
+
+    // When you filter by a state searching for a certification data
+    // should be false.  When you hit the certification date checkbox (true) clear
+    // reset the selects to the default value.
+    // Triggering the reload should occur whenenver you click the certification_only.
+    // To test you should never see a state (QA/IPP/Home) with a certification_only = True
+
+    $('#id_certification_only').change(function () {
+      if ($(this).is(":checked")) {
+
+        // set all the state inputs to nothing
+        $("#id_state").val('');
+
+        //check if there are dates filled in. If not, throw an informative alert.
+        if (($('#id_activity_start').val() + $('#id_activity_stop').val()) == '') {
+          alert("Please select a date to filter by certification.")
+        }
+      }
+    });
+
+    $("#id_state, #id_ipp_state, #qastatus_state").on('change', function () {
+      $('#id_certification_only').prop('checked', false);
+    });
+
+
+    $("#toggle-snapshot").on('click', function (e) {
+      e.preventDefault();
+      var el = $(this),
+        text = el.text(),
+        showText = "Show Stats",
+        hideText = 'Hide Stats',
+        snapshot = $(".list-group.snapshot");
+
+      if (text == showText) {
+        snapshot.slideDown();
+        el.text(hideText);
+      } else {
+        snapshot.slideUp();
+        el.text(showText);
+      }
+    });
+    $(".list-group.snapshot").tooltip({
+      html: true,
+      title: "Click to add a Heat Source filter. <br/>Number represents all homes in system unfiltered.",
+      trigger: 'hover',
+      placement: 'right'
+    }).on('click', 'a.list-group-item', function (e) {
+      e.preventDefault();
+      $("#id_heat_source").val(this.id).trigger('click');
+      $('#DataTables_Table_0').dataTable().fnDraw();
+    });
+    $("#clear-filters").on('click', function (e) {
+      e.preventDefault();
+      $("a.list-group-item").removeClass('active');
+      $("#query_form").find("input:visible, select:visible").val('');
+      $(".select2-container").select2('val', '');
+      $('#DataTables_Table_0').dataTable().fnDraw();
+    });
+
+    $('#query_form button[type="submit"]').click(function () {
+      var actionUrl = $(this).attr('data-action');
+      $('#query_form').attr('action', actionUrl);
+    });
+  });
+
+</script>
+{% endblock %}
+
+{% block list_content %}
+<div id="disclaimer" class="showing">
+    <p><em>
+        The data within This Utility Dashboard/Report includes data for lists homes
+        participating in various residential new construction programs. The prior Legacy database
+        for Northwest ENERGY STAR Home certifications was disabled on July 1, 2013. All Legacy home
+        information is archived in the with NEEA. Legacy section, accessed through the Places tab in
+        AXIS.
+    </em></p>
+    <p><em>
+        Want more information about the homes and programs that can be found on this report,
+        including the available data for the homes?
+        <a
+          href="https://support.pivotalenergysolutions.com/hc/en-us/articles/115003205346-NEEA-Utility-Report-page">Click
+            here</a>.
+    </em></p>
+    <a class="toggle" href="#">
+        <span class="showing">Hide Disclaimer</span>
+        <span class="hiding">Show Disclaimer</span>
+    </a>
+</div>
+<br/>
+<script type="text/javascript">
+  $(function () {
+    var el = $("#disclaimer"),
+      toggle = el.find('.toggle'),
+      init = JSON.parse(localStorage.getItem('show_nwesh_utility_disclaimer'));
+
+    // Show if localStorage says to, or if there's nothing in localStorage.
+    el.toggleClass('showing', (init === null || init));
+
+    if (init) {
+      el.toggleClass('showing', init);
+    }
+
+    toggle.on('click', function (e) {
+      e.preventDefault();
+      el.toggleClass('showing');
+
+      localStorage.setItem('show_nwesh_utility_disclaimer', el.hasClass('showing'));
+    });
+  });
+</script>
+
+<div class="row">
+    <div class="col-md-3">
+        <h3>Filter Options
+            <small><a id="toggle-snapshot" href="#">Show Stats</a></small></h3>
+        <div class="list-group snapshot" style="display: none;">
+            {% for item, content in heat_source_counter.items %}
+            <a class="list-group-item" href="#" id="{{ content.id }}"> <span class="badge">{{ content.counter }}</span>
+                {{ item }} </a>
+            {% endfor %}
+        </div>
+        <a id="clear-filters" href="#">Clear Filters</a>
+        <form id="query_form" method="post" action="" target="_blank">
+            {% csrf_token %}
+            {{ filter_form.subdivision|as_crispy_field }}
+            {{ filter_form.eep_program|as_crispy_field }}
+            {{ filter_form.builder|as_crispy_field }}
+            {{ filter_form.provider|as_crispy_field }}
+            {{ filter_form.rater|as_crispy_field }}
+            {{ filter_form.utility|as_crispy_field }}
+            {{ filter_form.eep|as_crispy_field }}
+            {{ filter_form.hvac|as_crispy_field }}
+            {{ filter_form.qa|as_crispy_field }}
+            {{ filter_form.general|as_crispy_field }}
+            {{ filter_form.city|as_crispy_field }}
+            {{ filter_form.metro|as_crispy_field }}
+            {{ filter_form.us_state|as_crispy_field }}
+            {{ filter_form.rating_type|as_crispy_field }}
+            {{ filter_form.has_bpa_association|as_crispy_field }}
+            {{ filter_form.state|as_crispy_field }}
+            {{ filter_form.ipp_state|as_crispy_field }}
+            {{ filter_form.qatype|as_crispy_field }}
+            {{ filter_form.qastatus|as_crispy_field }}
+            {{ filter_form.qaobservation|as_crispy_field }}
+            {{ filter_form.search_bar|as_crispy_field }}
+            {{ filter_form.heat_source|as_crispy_field }}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#" id="show_dates_href">Advanced</a>
+                </div>
+            </div>
+            <div id="date_ranges">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ filter_form.activity_start|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ filter_form.activity_stop|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ filter_form.certification_only|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-actions">
+                <button type="button" class="btn btn-primary btn-block export_button"
+                        data-toggle="modal" data-target="#exportModal">
+                    Export Raw Data
+                </button>
+                <button type="submit" class="btn btn-primary btn-block export_button"
+                        data-action="{% url 'neea_utility_custom_document' %}">
+                    NEEA Utility Report
+                </button>
+                {% if has_bpa_association %}
+                <button type="submit" class="btn btn-primary btn-block export_button"
+                        data-action="{% url 'neea_utility_bpa_document' %}">
+                    Performance Path Calculator Summary
+                </button>
+                {% endif %}
+
+                <br/><br/>
+                <div id="count_note" class="well">
+                    Please filter the results to below 2000 items before exporting.
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exportModal" tabindex="-1" role="dialog"
+                 aria-labelledby="exportModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;
+                            </button>
+                            <h4 class="modal-title" id="exportModalLabel">Choose Fields to
+                                Export</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="export_fields" class="btn-group-vertical"
+                                 data-toggle="buttons"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="pull-left" id="reset_defaults" href="#">Reset Defaults</a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-primary" name="submit"
+                                    data-action="{% url 'neea_utility_raw_document' %}">
+                                Export Data
+                            </button>
+                        </div>
+                    </div> <!-- /.modal-content -->
+                </div> <!-- /.modal-dialog -->
+            </div> <!-- /.modal -->
+        </form>
+    </div>
+    <div class="col-md-9">
+        {{ block.super }}
+        {% include "core/includes/address_confirmation_legend.html" %}
+    </div>
+</div>
+{% endblock %}

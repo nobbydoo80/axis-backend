@@ -1,0 +1,31 @@
+{% for program, grouped_raters in grouped_stats.items %}
+<p>
+    The following homes participating in the {{ program }} program are ready for review.
+</p>
+<ul>
+    {% for rater, rater_stats in grouped_raters.items %}
+    <li>
+        <h5>{{ rater }}</h5>
+        <ul>
+            {% for stat in rater_stats %}
+            <li>
+                <a href="{{ base_url }}{{ stat.home.get_absolute_url }}" target="_blank">
+                    {{ stat.home.get_addr }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% if program in requires_qa %}
+<p>
+    Please review these homes. When necessary, initiate File QA via the QA module
+    on the home. File QA must be completed as specified by the QA guidelines of this program.
+
+    Once the home passes File QA, or if File QA is not initiated, click the "Certify" button to
+    finalize the data in AXIS to qualify for utility savings and any incentives associated
+    with this program.
+</p>
+{% endif %}
+{% endfor %}

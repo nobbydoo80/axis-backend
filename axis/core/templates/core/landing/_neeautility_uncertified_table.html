@@ -1,0 +1,72 @@
+{% if neea_or_neea_utility %}
+    <div class="qa-table wider-dollars">
+        <div class="table-title">
+            <i class="fa fa-fw fa-spin fa-spinner pull-right" ng-show="widget.loading.{{ prefix }}loading"></i>
+            <h3 class="panel-title">Homes Not Certified</h3>
+        </div>
+
+        {% include "core/landing/includes/filter_controls.html" with prefix="neeautility_uncertified_" id_prefix="neeautility-uncertified-" hide_dates=True %}
+
+        <table class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Program</th>
+                    <th class="text-center">
+                        Total
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.uncertified.not_complete }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Pending
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.uncertified.pending_inspection }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Active
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.uncertified.inspection }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Inspected
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.uncertified.certification_pending }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Abandoned
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.uncertified.abandoned }}"></i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-if="!widget.neeautility_uncertified_metrics_data">
+                    <td colspan="6" class="text-center">No data to show.</td>
+                </tr>
+                <tr ng-repeat="item in widget.neeautility_uncertified_metrics_data"
+                    ng-if="item.stats.homestatus.not_complete > 0">
+                    <th ng-bind="item.eep_program"></th>
+                    <td>
+                        <a ng-href="{% url "neea_utility_report" %}?eep_program_id=[[ item.eep_program_id ]]&state=-1" target="_blank"
+                           ng-bind="item.stats.homestatus.not_complete">
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-href="{% url "neea_utility_report" %}?eep_program_id=[[ item.eep_program_id ]]&state=pending_inspection" target="_blank"
+                           ng-bind="item.stats.homestatus.pending_inspection || 0">
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-href="{% url "neea_utility_report" %}?eep_program_id=[[ item.eep_program_id ]]&state=inspection" target="_blank"
+                           ng-bind="item.stats.homestatus.inspection || 0">
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-href="{% url "neea_utility_report" %}?eep_program_id=[[ item.eep_program_id ]]&state=certification_pending" target="_blank"
+                           ng-bind="item.stats.homestatus.certification_pending || 0">
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-href="{% url "neea_utility_report" %}?eep_program_id=[[ item.eep_program_id ]]&state=abandoned" target="_blank"
+                           ng-bind="item.stats.homestatus.abandoned || 0">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endif %}

@@ -1,0 +1,25 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+{% block page_title %}Association listing for {{ object }}{% endblock %}
+
+{% block javascript_head %}
+    <script type="text/javascript">
+        function confirm_datatable_options(options) {
+            options.sAjaxSource = "{% url 'relationship:list' app_label=app_label model=model object_id=object_id %}";
+            return options;
+        };
+    </script>
+{% endblock javascript_head %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .datatable th, .datatable td:not(:first-child) {
+            text-align: center;
+        }
+    </style>
+{% endblock style_sheet %}

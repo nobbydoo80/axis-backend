@@ -1,0 +1,30 @@
+{% load crispy_forms_field %}
+
+{% if form %}
+    <div class="row">
+        <div class="col-md-4">
+            {% crispy_addon form.builder_incentive_dollar_value prepend="$" %}
+        </div>
+        <div class="col-md-4">
+            {% crispy_addon form.rater_incentive_dollar_value prepend="$" %}
+        </div>
+        <div class="col-md-4">
+            {% crispy_addon form.per_point_adder prepend="$" %}
+        </div>
+    </div>
+{% else %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-md-6 key">Builder Incentive:</div>
+            <div class="col-md-6 value">${{ object.builder_incentive_dollar_value|default:0.0 }}</div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-6 key">Rater Incentive:</div>
+            <div class="col-md-6 value">${{ object.rater_incentive_dollar_value|default:0.0 }}</div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-6 key">Per/Point Adder:</div>
+            <div class="col-md-6 value">${{ object.per_point_adder|default:0.0 }}</div>
+        </div>
+    </div>
+{% endif %}

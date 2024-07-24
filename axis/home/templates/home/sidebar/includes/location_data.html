@@ -1,0 +1,42 @@
+{% comment %}
+    Requires: object -> Home
+{% endcomment %}
+
+<div class="well">
+    <h4>Location Statistics</h4>
+
+    <style type="text/css">
+        #location_stats.dl-horizontal dd { margin-left: 100px; }
+        #location_stats.dl-horizontal dt { width: 90px;}
+    </style>
+
+    <dl class="dl-horizontal" id="location_stats">
+        {% if object.subdivision.community %}
+            <dt>Community<dd>
+                <a href="{{ object.subdivision.community.get_absolute_url }}">
+                    {{ object.subdivision.community }}</a>
+            </dd></dt>
+        {% endif %}
+        {% if object.subdivision %}
+            <dt>Subdivision<dd>
+                <a href="{{ object.subdivision.get_absolute_url }}">
+                    {{ object.subdivision.get_name }}</a>
+            </dd></dt>
+        {% endif %}
+        {% if object.metro %}
+            <dt>Metropolitan<dd>{{ object.metro }}</dd></dt>
+        {% endif %}
+        {% if object.county %}
+            <dt>County<dd>{{ object.county.name }}</dd></dt>
+        {% endif %}
+        {% if object.state %}
+            <dt>State<dd>{{ object.get_state_display }}</dd></dt>
+        {% endif %}
+        {% if object.climate_zone %}
+            <dt>Climate Zone<dd>{{ object.climate_zone }}</dd></dt>
+        {% endif %}
+        {% if object.latitude and object.longitude %}
+            <dt>Coordinates<dd>{{ object.latitude }}, {{ object.longitude }}</dd></dt>
+        {% endif %}
+    </dl>
+</div>

@@ -1,0 +1,135 @@
+<div>
+    <div ng-switch="regionObject.object.id || region.form_type">
+        <div ng-switch-when="existing">
+
+            <p class="text-center" ng-show="regionObject._autosaving">
+                Preparing floorplan...
+            </p>
+            <div class="row" ng-hide="regionObject._autosaving">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <axis-field field="regionObject.fields.existing_floorplan"
+                                    ng-init="regionObject.object.existing_floorplan = null">
+                        </axis-field>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div ng-switch-default ng-controller="RemdataOnChangeController">
+            <div ng-if="(region.form_type == undefined || region.form_type == 'new')">
+                <div ng-if="!regionObject.object.id && regionObject.fields.remrate_target && regionObject.fields.ekotrope_houseplan"
+                     class="form-group">
+                    <label>Simulation Input</label>
+                    <select ng-model="inputChoice.type" class="form-control">
+                        <option ng-if="regionObject.fields.remrate_target" value="remrate">REM/Rate™</option>
+                        <option ng-if="regionObject.fields.ekotrope_houseplan" value="ekotrope">Ekotrope</option>
+                    </select>
+                </div>
+                <div ng-if="regionObject.fields.remrate_target" ng-show="inputChoice.type == 'remrate' || inputChoice.type == null">
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <axis-field field="regionObject.fields.remrate_target"
+                                        on-change="lookupRemrateInfo()">
+                            </axis-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <axis-field field="regionObject.fields.remrate_data_file"></axis-field>
+                        </div>
+                    </div>
+                    <div class="row" ng-init="show_validation_data" ng-if="validation_data">
+                        <div class="col-md-12">
+                            {% comment %}
+                            <div ng-if="!data_has_mismatches">
+                               <span class="label label-success">Match</span>
+                            </div>
+                            {% endcomment %}
+                            <div ng-if="data_has_mismatches">
+                                <a ng-click="show_validation_data = !show_validation_data">
+                                    [[ show_validation_data ? 'Hide' : 'Show' ]] Validation
+                                </a>
+                                <span class="label label-danger">Mismatch</span>
+                                <div class="well well-sm text-muted" ng-show="show_validation_data">
+                                    <div class="row">
+                                        <div class='col-md-3'
+                                             ng-repeat="(key, value) in validation_data"
+                                             ng-class="[validationClass(value)]"
+                                             tooltip-html-unsafe="Simulation: [[ value.sim ]]<br/>BLG: [[ value.blg ]]"
+                                             tooltip-trigger="click">
+                                            <i class="fa" ng-class="value.matches ? 'fa-check-square' : 'fa-square-o'"></i>
+                                            [[ value.name ]]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-if="regionObject.fields.ekotrope_houseplan" ng-show="inputChoice.type == 'ekotrope' || inputChoice.type == null">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <axis-field field="regionObject.fields.ekotrope_project"
+                                            on-change="updateEkotropeHousePlanOptions()">
+                                </axis-field>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <axis-field field="regionObject.fields.ekotrope_houseplan"
+                                            on-change="lookupEkotropeInfo()">
+                                </axis-field>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr ng-if="!regionObject.object.id && regionObject.fields.remrate_target && regionObject.fields.ekotrope_houseplan">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <i ng-show="loadingInputInfo" class="pull-right fa fa-spinner fa-spin"></i>
+                    <axis-field field="regionObject.fields.name"></axis-field>
+                </div>
+                <div class="col-md-6">
+                    <i ng-show="loadingInputInfo" class="pull-right fa fa-spinner fa-spin"></i>
+                    <axis-field field="regionObject.fields.number"></axis-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <i ng-show="loadingInputInfo" class="pull-right fa fa-spinner fa-spin"></i>
+                    <axis-field field="regionObject.fields.square_footage"></axis-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" ng-init="showComment = !!(regionObject.object.comment)">
+                    <div>
+                        <br>
+                        <a ng-click="showComment = !showComment">
+                            <span ng-hide="showComment">
+                                <span ng-hide="regionObject.object.comment">Add comment</span>
+                                <span ng-show="regionObject.object.comment">Show comment</span>
+                            </span>
+                            <span ng-show="showComment">
+                                Hide comment
+                            </span>
+                        </a>
+                    </div>
+                    <div collapse="!showComment">
+                        <axis-field field="regionObject.fields.comment"></axis-field>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

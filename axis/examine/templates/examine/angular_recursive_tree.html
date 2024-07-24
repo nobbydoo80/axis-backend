@@ -1,0 +1,7 @@
+<li ng-if="!item.length">
+    <a ng-if="item.url" ng-href="[[ item.url ]]">[[ item.text ]]</a>
+    <span ng-if="!item.url">[[ item.text ]]</span>
+</li>
+<ul ng-if="item.length">
+    <span ng-repeat="item in item" ng-include="'angular_recursive_tree.html'"></span>
+</ul>

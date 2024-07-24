@@ -1,0 +1,16 @@
+<style type="text/css">
+    #required-annotations .datatable th[data-name="name"] { width: 75% !important;}
+    #required-annotations .datatable th[data-name="required"] { width: 5% !important; }
+</style>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <p class="key"><span id="annotations_count">
+            <i class="fa fa-spinner fa-spin"></i>
+        </span> Annotations for: {{ object }}</p>
+    </div>
+</div>
+<br />
+
+{{ annotations_datatable }}

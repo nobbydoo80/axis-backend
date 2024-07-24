@@ -1,0 +1,82 @@
+<div id="program_metrics_table" class="qa-table" ng-init="widget.programMetrics()">
+    <div class="table-title">
+        <i class="fa fa-fw fa-spin fa-spinner pull-right" ng-show="widget.loading.{{ prefix }}loading"></i>
+        <h3 class="panel-title">
+            {{ program_metrics_title|default:'Program Metrics' }}
+        </h3>
+    </div>
+
+    {% include "core/landing/includes/filter_controls.html" with prefix="program_" id_prefix="program-metrics-" %}
+
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+        <tr>
+            <th rowspan="2">Program</th>
+            <th rowspan="2" class="text-center">
+                Certified Homes
+                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips.PROGRAM_METRICS_CERTIFIED_HOMES_TOOLTIP }}"></i>
+            </th>
+            <th colspan="2" class="text-center">
+                File QA Complete
+                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips.PROGRAM_METRICS_FILE_QA_COMPLETE_TOOLTIP }}"></i>
+            </th>
+            <th colspan="2" class="text-center">
+                Field QA Complete
+                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips.PROGRAM_METRICS_FIELD_QA_COMPLETE_TOOLTIP }}"></i>
+            </th>
+        </tr>
+        <tr>
+            <th class="text-center">
+                First Time Pass
+                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips.PROGRAM_METRICS_FILE_QA_FIRST_TIME_PASS_TOOLTIP }}"></i>
+            </th>
+            <th class="text-center">
+                Total QA
+                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips.PROGRAM_METRICS_FILE_QA_TOTAL_QA_TOOLTIP }}"></i>
+            </th>
+            <th class="text-center">
+                First Time Pass
+                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips.PROGRAM_METRICS_FIELD_QA_FIRST_TIME_PASS_TOOLTIP }}"></i>
+            </th>
+            <th class="text-center">
+                Total QA
+                <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips.PROGRAM_METRICS_FIELD_QA_TOTAL_QA_TOOLTIP }}"></i>
+            </th>
+        </tr>
+        </thead>
+        <tr ng-if="!widget.program_metrics_data">
+            <td colspan="6" class="text-center">No data to show.</td>
+        </tr>
+        <tr ng-repeat="data in widget.program_metrics_data">
+            <th>[[ data.eep_program_name ]]</th>
+            <td>
+                <a ng-href="{% url report_url|default:'home:report:status' %}?[[ widget.getControlsAsParams('program_') ]]&state=complete&certification_only=1&eep_program_id=[[ data.eep_program_id ]]"
+                   target="_blank">
+                    [[ data.total_count ]]
+                </a>
+            </td>
+            <td>
+                [[ data.file_first_time_count ]]
+                <small class="text-muted">([[ data.file_first_time_percentage ]])</small>
+            </td>
+            <td>
+                <a ng-href="{% url 'home:report:status' %}?[[ widget.getControlsAsParams('program_') ]]&state=complete&eep_program_id=[[ data.eep_program_id ]]&qastatus=complete&qatype=file"
+                   target="_blank">
+                    [[ data.file_qa_count ]]
+                    <small class="text-muted">([[ data.file_qa_percentage ]])</small>
+                </a>
+            </td>
+            <td>
+                [[ data.field_first_time_count ]]
+                <small class="text-muted">([[ data.field_first_time_percentage ]])</small>
+            </td>
+            <td>
+                <a ng-href="{% url 'home:report:status' %}?[[ widget.getControlsAsParams('program_') ]]&state=complete&eep_program_id=[[ data.eep_program_id ]]&qastatus=complete&qatype=field"
+                   target="_blank">
+                    [[ data.field_qa_count ]]
+                    <small class="text-muted">([[ data.field_qa_percentage ]])</small>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

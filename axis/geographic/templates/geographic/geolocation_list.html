@@ -1,0 +1,21 @@
+{% extends 'base_list.html' %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %} Geolocation Listing {% endblock %}
+
+{% block header_text %} <em>Geolocations associated to:</em> {{ object }} {% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+    .dataTable th[data-name="input-address"]{width: 25%;}
+    .dataTable th[data-name="confirmed-address"]{width: 5%;}
+    .dataTable th[data-name="correlations"]{width: 5%;}
+    .dataTable th[data-name="geocoder-engine-name"]{width: 10%;}
+    .dataTable th[data-name="modified-date"]{width: 10%;}
+    </style>
+{% endblock %}

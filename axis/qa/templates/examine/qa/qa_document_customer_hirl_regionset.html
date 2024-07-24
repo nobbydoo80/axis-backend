@@ -1,0 +1,17 @@
+{% extends 'examine/angular_regionset_table.html' %}
+
+{% block add_new_button_text %}
+    <span style="font-size: 18px;">
+        Upload Photos and/or Supporting Documentation
+    </span>
+{% endblock %}
+
+{% block add_new_button %}
+    <button class="btn btn-primary examine-add-new"
+            ng-click="regionSet.fetchNewRegion()"
+            ng-disabled="regionSet.processing" style="font-size: 18px; margin-bottom: 5px;">
+        <i class="fa fa-fw"
+           ng-class="regionSet.processing ? 'fa-spinner fa-spin' : 'fa-plus-circle'"></i>
+        Upload Photos and/or Supporting Documentation
+    </button>
+{% endblock %}

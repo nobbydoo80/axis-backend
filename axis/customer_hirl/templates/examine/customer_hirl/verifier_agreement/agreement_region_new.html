@@ -1,0 +1,23 @@
+{% extends 'examine/angular_region_bottomactions.html' %}
+
+{% block panels %}
+    <p>
+        <em>
+            Please populate the form below (required fields are marked with an asterisk symbol),
+            <a href="{{ request.user.company.get_absolute_url }}#/tabs/coi" target="_blank">provide a certificate of insurance</a>, review the legal agreement, and submit the form for
+            review and approval by NGBS Program Administration Staff.
+        </em>
+    </p>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+            <span class="h4">Company Name:</span>
+            <span ng-bind-html="regionObject.object.company_display | trustAsHtml" style="margin-right: 25px;"></span>
+            <span class="h4">Enrollment Status:</span>
+            <span class="lead">New</span>
+        </div>
+    </div>
+    <hr>
+    {{ block.super }}
+{% endblock panels %}

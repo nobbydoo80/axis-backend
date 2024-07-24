@@ -1,0 +1,21 @@
+{% verbatim %}
+    {{#if strings.length}}
+        <div class="panel panel-{{class}}">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#by_level_accordion"
+                       href="#collapse_{{class}}">
+                        {{label}}
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_{{class}}" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        {{#list strings}}{{this}}{{/list}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+{% endverbatim %}

@@ -1,0 +1,25 @@
+
+<h5>
+    <span id="history_count_{{ app_label }}_{{ model }}_{{ constraint }}">
+        <i class="fa fa-spinner fa-spin"></i>
+    </span>
+    Historical Records for {{ object }}
+</h5>
+<table class="table datatable table-striped table-bordered"
+       cellpadding="0" cellspacing="0" border="0"
+       data-source-url="{% url "history_list" app_label=app_label model=model field=field constraint=constraint %}{% if content_type_id %}?content_type_id={{ content_type_id }}{% endif %}"
+       id="history_{{ app_label }}_{{ model }}_{{ constraint }}"
+       data-result-counter-id="history_count_{{ app_label }}_{{ model }}_{{ constraint }}">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>User</th>
+            <th>Object</th>
+            <th>Type</th>
+            <th>Fields</th>
+            <th>Previous Values</th>
+            <th>Current Values</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>

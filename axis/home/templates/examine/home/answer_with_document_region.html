@@ -1,0 +1,17 @@
+{% extends "examine/angular_region_panel.html" %}
+
+{% block heading %}
+    <span class="label label-primary">[[ regionObject.object.customer_documents.length ]]</span>
+    <strong>[[ regionObject.object.question_name ]]</strong>
+{% endblock heading %}
+
+{% block footer_wrapper %}
+
+    <div class="panel-footer" ng-if="regionObject.object.comment">
+        Additional comment:
+        <em>
+            [[ regionObject.object.comment ]]
+        </em>
+    </div>
+
+{% endblock footer_wrapper %}

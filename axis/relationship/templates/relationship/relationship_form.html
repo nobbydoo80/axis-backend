@@ -1,0 +1,12 @@
+{% extends "base_form.html" %}
+{% load crispy_forms_tags %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block form_content %}
+    {{ form.object|as_crispy_field }}
+{% endblock %}

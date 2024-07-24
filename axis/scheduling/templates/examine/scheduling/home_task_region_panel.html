@@ -1,0 +1,63 @@
+{% extends 'examine/angular_region_panel.html' %}
+
+{% block region %}
+    <div class="panel panel-default scheduling-task-panel">
+        {% block panel %}
+            <div class="panel-heading">
+                <table class="table heading-scheduling-task-table">
+                    <tbody>
+                        <tr>
+                            <td ng-hide="region.editing()" width="30%">
+                                <b>Type:</b>
+                                <span class="text-capitalize">[[ regionObject.object['task_type_display'] ]]</span>
+                            </td>
+                            <td ng-hide="region.editing()" width="15%">
+                                <b>ID:</b>
+                                <span>#[[ regionObject.object['id'] ]]</span>
+                            </td>
+                            <td ng-hide="region.editing()" width="15%">
+                                <b>Date:</b>
+                                <span>[[ regionObject.object['datetime'] | date:'MM/dd/yyyy' || '-' ]]</span>
+                            </td>
+                            <td>
+                                <b>Time:</b>
+                                <span>[[ regionObject.object['datetime'] | date:'h:mm a' || '-' ]]</span>
+                            </td>
+                            <td ng-hide="region.editing()">
+                                <span data-toggle="tooltip"
+                                      title="This task is public and visible for all users"
+                                    ng-if="regionObject.object['is_public']">
+                                    <i class="fa fa-fw fa-users text-success"></i>
+                                </span>
+                            </td>
+                            <td>
+                                <action-strip-set processing="regionSet.processing"
+                                      actions="regionObject.actions"></action-strip-set>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel-body form-target scheduling-task-panel-body-detail" detail-content ng-hide="region.editing()">
+                <div detail-content ng-hide="region.editing()">
+                    <loading-spinner></loading-spinner>
+                </div>
+            </div>
+
+            <div class="panel-body form-target" form-content ng-show="region.editing()">
+                <non-field-errors></non-field-errors>
+                <div form-content ng-show="region.editing()">
+                    <loading-spinner></loading-spinner>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="text-right" style="font-size: 12px;" ng-if="regionObject.object['assigner_display']">
+                    Created by: <a href="/profile/[[ regionObject.object['assigner'] ]]/" target="_blank">[[ regionObject.object['assigner_display'] ]]</a>
+                    <span class="text-muted">[[ regionObject.object['created_at'] | date:'MM/dd/yyyy' ]]</span>
+                </div>
+            </div>
+        {% endblock panel %}
+    </div>
+{% endblock region %}

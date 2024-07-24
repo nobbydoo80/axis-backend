@@ -1,0 +1,16 @@
+{# Depends on a 'field' string variable to inspect the applicable field's background widget #}
+<span ng-if="regionObject.object.data['{{ field }}'] != null"
+      class="pull-right">
+    <action-strip>
+        <action-button options="{
+            size: 'xs',
+            style: 'link',
+            instruction: 'editRelated',
+            templateUrl: regionObject.helpers.data_form['{{ field }}'].widget.attrs['data-view-template-url'],
+            saveUrl: regionObject.helpers.data_form['{{ field }}'].widget.attrs['data-view-url'],
+            dataUrl: regionObject.helpers.data_form['{{ field }}'].widget.attrs['data-view-url']
+        }">
+            View Details
+        </action-button>
+    </action-strip>
+</span>

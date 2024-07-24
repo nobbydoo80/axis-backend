@@ -1,0 +1,53 @@
+{% extends "base_form.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}Add a company user{% endblock page_title %}
+
+{% block header_text %}Add a company user{% endblock %}
+
+{% block form_content %}
+    {% if form.company %}
+        <div class="row">
+            <div class="col-md-8">{{ form.company|as_crispy_field }}</div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#{{ form.company.auto_id }}').select2();
+                })
+            </script>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-6">{{ form.first_name|as_crispy_field }}</div>
+        <div class="col-md-6">{{ form.last_name|as_crispy_field }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">{{ form.email|as_crispy_field }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 misc_info">{{ form.cell_phone|as_crispy_field }}</div>
+        <div class="col-md-6">{{ form.work_phone|as_crispy_field }}</div>
+        <script type="text/javascript">
+            $(function () {
+              $('#{{ form.cell_phone.auto_id }}, #{{ form.work_phone.auto_id }}').mask('(000) 000-0000');
+            })
+        </script>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">{{ form.title|as_crispy_field }}</div>
+        <div class="col-md-6 misc_info">{{ form.department|as_crispy_field }}</div>
+    </div>
+    {% if form.is_company_admin %}
+        <div class="row">
+            <div class="col-md-12">{{ form.is_company_admin|as_crispy_field }}</div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">{{ form.send_registration_email|as_crispy_field }}</div>
+    </div>
+{% endblock form_content %}
+
+{% block form_actions %}
+    <button type="submit" id="id_submit" class="btn btn-primary">Register New Account</button>
+{% endblock form_actions %}

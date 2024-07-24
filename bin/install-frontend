@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[[ -e bin/django ]] || { echo >&2 "Run this from the repository root instead."; exit 1; }
+
+FRONTEND=../axis-frontend
+
+echo
+cd $FRONTEND
+npm install
+cd -

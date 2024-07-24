@@ -1,0 +1,72 @@
+{% with style=style|default:'' %}
+{% with hide_dates=hide_dates|default:False %}
+<div id="{{ prefix }}controls" class="panel-body dashboard-controls" style="background-color: #eee">
+    {# Hidden controls, set up via special {% with %} kwargs to template #}
+    <input type="hidden" name="style" value="{{ style }}"
+           id="{{ id_prefix }}style" class="form-control field-style"
+           ng-model="widget.{{ prefix }}controls.style"/>
+
+    <div class="row form-group">
+        <div class="col-md-3 form-inline">
+            {% if not hide_dates %}
+                <label for="{{ id_prefix }}start">
+                    Start:
+                    {% if tooltips %}
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips.START_DATE_FILTER_FIELD_TOOLTIP }}"></i>
+                    {% endif %}
+                </label>
+                <input id="{{ id_prefix }}start" type="text" class="form-control field-date_start"
+                       name="activity_start"
+                       ng-model="widget.{{ prefix }}controls.date_start" />
+            {% endif %}
+        </div>
+        <div class="col-md-3 form-inline">
+            {% if not hide_dates %}
+                <label for="{{ id_prefix }}end">End:</label>
+                <input id="{{ id_prefix }}end" type="text" class="form-control field-date_end"
+                       name="activity_stop"
+                       ng-model="widget.{{ prefix }}controls.date_end" />
+            {% endif %}
+        </div>
+        <div class="col-md-1 pull-right form-inline">
+             <button class="btn btn-default btn-md pull-right"
+                     data-toggle="tooltip" data-placement="top" title="Update table"
+                     ng-disabled="widget.loading.{{ prefix }}loading"
+                     ng-click="widget.{{ prefix }}update()">
+                 {# <i class="fa fa-fw fa-spinner fa-spin" ng-show="widget.loading.{{ prefix }}loading"></i> #}
+                 <i class="fa fa-fw fa-repeat"></i>
+             </button>
+        </div>
+        {% if us_state_options %}
+            <div class="col-md-2 form-inline">
+                <label for="{{ id_prefix }}us_state">State:</label>
+                <select id="{{ id_prefix }}us_state"
+                        class="form-control field-us_state"
+                        name="us_state"
+                        ng-model="widget.{{ prefix }}controls.us_state">
+                    <option value="" selected="selected">---------</option>
+                    {% for value in us_state_options %}
+                        <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+        {% if show_utility_filter %}
+            <div class="col-md-3 form-inline">
+                <label for="{{ id_prefix }}utility">Utility:</label>
+                <select id="{{ id_prefix }}utility"
+                        class="form-control field-utility"
+                        name="utility"
+                        ng-model="widget.{{ prefix }}controls.utility">
+                    <option value="" selected="selected">---------</option>
+                    <option ng-repeat="item in widget.{{ prefix }}utility_choices"
+                            value="[[ item[0] ]]">
+                        [[ item[1] ]]
+                    </option>
+                </select>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endwith %}
+{% endwith %}

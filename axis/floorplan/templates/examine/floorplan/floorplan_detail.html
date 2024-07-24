@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-2 key">Name:</div>
+            <div class="col-md-4 value" ng-bind="regionObject.object.name || '-'"></div>
+            <div class="col-md-2 key">Number:</div>
+            <div class="col-md-4 value" ng-bind="regionObject.object.number || '-'"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 key">Square Feet:</div>
+            <div class="col-md-4 value" ng-bind="regionObject.object.square_footage || '-'"></div>
+        </div>
+
+        <br>
+        <div class="row" ng-if="regionObject.object.subdivisions.length > 0">
+            <div class="col-md-2 key">Subdivision:</div>
+            <div class="col-md-10 value">
+                <ul class="list-unstyled">
+                    <li ng-repeat="subdivision_info in regionObject.object.subdivisions">
+                        <a ng-href="[[ subdivision_info.url ]]">[[ subdivision_info.name ]]</a>
+                        <span ng-if="subdivision_info.community_url">
+                            ( <a ng-href="[[ subdivision_info.community_url ]]">[[ subdivision_info.community_name ]]</a> )
+                        </span>
+                        {# <span ng-if="!subdivision_info.is_approved">(Not Active)</span> #}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <br>
+        <div class="row" ng-if="regionObject.object.owner_name">
+            <div class="col-md-2 key">Owner:</div>
+            <div class="col-md-4 value">
+                <a ng-href="[[ regionObject.object.owner_url ]]">[[ regionObject.object.owner_name ]]</a>
+            </div>
+        </div>
+        <div class='row' ng-if="regionObject.object.comment">
+            <br>
+            <div class="col-md-12 value">
+                <blockquote>
+                    <strong ng-bind="regionObject.object.comment"></strong>
+                </blockquote>
+            </div>
+        </div>
+            <div ng-if="regionObject.object.remrate_data_file">
+            <hr>
+            <div ng-controller="CompareController as compare">
+                <h4>[[compare.summary ]]</h4>
+
+                <div ng-if="compare.error" class="alert alert-danger">
+                    Cannot show diff: [[ compare.error]]
+                </div>
+
+                <div ng-if="compare.errors.length"  class="alert alert-danger">
+                    <h4>RemXML Differences (Errors)</h4>
+                    <ul><li ng-repeat="data in compare.errors">[[data]]</li></ul>
+                </div>
+                <div ng-if="compare.warnings.length" class="alert alert-warning">
+                    <h4>RemXML Differences (Warnings <i>text differences</i>)</h4>
+                    <ul><li ng-repeat="data in compare.warnings">[[data]]</li></ul>
+                </div>
+                <div ng-if="compare.ignored.length" class="alert alert-info">
+                    <h4>RemXML Differences (Ignored <i>text differences</i>)</h4>
+                    <ul><li ng-repeat="data in compare.ignored">[[data]]</li></ul>
+                </div>
+
+            </div>
+        </div>
+        <div ng-if="regionObject.object.ekotrope_houseplan_name">
+            <hr>
+            <div class="alert alert-info">
+                No diff to show, floorplan using Ekotrope input source.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 sidebar hidden-sm hidden-xs">
+        {% include "examine/floorplan/sidebar.html" %}
+    </div>
+</div>

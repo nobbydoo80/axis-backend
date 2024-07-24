@@ -1,0 +1,78 @@
+{% load crispy_forms_filters %}
+
+{% if form %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-6">{{ form.require_model_file.label_tag }}:</div>
+            <div class="col-md-6">{{ form.require_model_file }}</div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-6">{{ form.require_rem_data.label_tag }}:</div>
+            <div class="col-md-6">{{ form.require_rem_data }}</div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            {{ form.min_hers_score|as_crispy_field }}
+        </div>
+        <div class="col-md-6">
+            {{ form.max_hers_score|as_crispy_field }}
+        </div>
+    </div>
+{% else %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-6 key">REM/Rate&trade; Model File:</div>
+            <div class="col-md-6 value">
+                {% if object.require_model_file %}&#x2714;{% else %}No{% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-6 key">REM/Rate&trade; Data:</div>
+            <div class="col-md-6 value">
+                {% if object.require_rem_data %}&#x2714;{% else %}No{% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-6 key">Min HERS score:</div>
+            <div class="col-md-6 value">{{ object.min_hers_score }}</div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-6 key">Max HERS score:</div>
+            <div class="col-md-6 value">{{ object.max_hers_score }}</div>
+        </div>
+    </div>
+{% endif %}
+
+<hr />
+
+{% if form %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-6">{{ form.allow_sampling.label_tag }}</div>
+            <div class="col-md-6">{{ form.allow_sampling }}</div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-6">{{ form.allow_metro_sampling.label_tag }}</div>
+            <div class="col-md-6">{{ form.allow_metro_sampling }}</div>
+        </div>
+    </div>
+{% else %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 key">Allow Sampling:</div>
+            <div class="col-md-8 value">
+                {% if object.allow_sampling %}&#x2714;{% else %}No{% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4 key">Allow Metro Sampling:</div>
+            <div class="col-md-8 value">
+                {% if object.allow_metro_sampling %}&#x2714;{% else %}No{% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

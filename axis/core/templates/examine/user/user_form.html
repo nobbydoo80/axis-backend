@@ -1,0 +1,285 @@
+<div ng-controller="UserFormProfileController">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.first_name"></axis-field>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.last_name"></axis-field>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.is_public"></axis-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.email"></axis-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.title"></axis-field>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.department"></axis-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.work_phone"></axis-field>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.cell_phone"></axis-field>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.fax_number"></axis-field>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.alt_phone"></axis-field>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Mailing Address:</h4>
+        </div>
+        <div class="col-md-6">
+            <h4>
+                Shipping/Physical Address:
+                <button class="btn btn-primary btn-xs" ng-click="useDifferentShippingAddress()">
+                    <span ng-hide="differentShippingAddress">Click if different from Mailing Address</span>
+                    <span ng-show="differentShippingAddress">Use mailing address</span>
+                </button>
+            </h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <axis-field field="regionObject.fields.mailing_geocode_street_line1"/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <axis-field field="regionObject.fields.mailing_geocode_street_line2"/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-8">
+                    <axis-field field="regionObject.fields.mailing_geocode_city"
+                                on-change="mailingCityChanged($item)"/>
+                </div>
+                <div class="col-md-4">
+                    <axis-field field="regionObject.fields.mailing_geocode_zipcode"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" ng-show="differentShippingAddress">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <axis-field
+                                field="regionObject.fields.shipping_geocode_street_line1"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <axis-field field="regionObject.fields.shipping_geocode_street_line2"/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-8">
+                    <axis-field field="regionObject.fields.shipping_geocode_city"/>
+                </div>
+                <div class="col-md-4">
+                    <axis-field field="regionObject.fields.shipping_geocode_zipcode"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" ng-hide="differentShippingAddress">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>[[ regionObject.fields.shipping_geocode_street_line1.label
+                            ]]</label>
+                        <div style="padding: 0.75rem 0;">
+                            <input type="text" class="form-control"
+                                   ng-value="regionObject.object.mailing_geocode_street_line1"
+                                   disabled="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>[[ regionObject.fields.shipping_geocode_street_line2.label
+                            ]]</label>
+                        <div style="padding: 0.75rem 0;">
+                            <input type="text" class="form-control"
+                                   ng-value="regionObject.object.mailing_geocode_street_line2"
+                                   disabled="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>[[ regionObject.fields.shipping_geocode_city.label ]]</label>
+                        <div style="padding: 0.75rem 0;">
+                            <input type="text" class="form-control"
+                                   ng-value="mailingCity"
+                                   disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>[[ regionObject.fields.shipping_geocode_zipcode.label
+                            ]]</label>
+                        <div style="padding: 0.75rem 0;">
+                            <input type="text" class="form-control"
+                                   ng-value="regionObject.object.mailing_geocode_zipcode"
+                                   disabled="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.hes_username"></axis-field>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.hes_password"></axis-field>
+            </div>
+        </div>
+    </div>
+
+    {% if request.user.is_superuser or request.company.company_type == 'rater' %}
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <axis-field field="regionObject.fields.rater_id"></axis-field>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <axis-field field="regionObject.fields.rater_roles"></axis-field>
+                </div>
+            </div>
+        </div>
+
+        <div id="signature-area" class="row">
+            <div class="col-md-6">
+                <p><label>Document signature</label></p>
+                <p class="text-center"
+                   ng-hide="signature.sourceImage">
+                    <button type="button" class="btn btn-sm btn-default">
+                        <label for="signature_upload">
+                            <i class="fa fa-fw fa-file-o"></i>
+                            Pick image&hellip;
+                        </label>
+                    </button>
+                    <input type="file" id="signature_upload" accept="image/*"
+                           onchange="angular.element(this).scope().signatureChanged(this)"
+                           style="display: none;"/>
+                </p>
+                <p class="text-muted" ng-show="signature.sourceImage">
+                    Drag the image to position the signature within the given area.
+                </p>
+                <image-cropper ng-if="signature.sourceImage && signature.enabled"
+                               image-url="[[ signature.sourceImage ]]"
+                               height="50"
+                               show-controls="true"
+                               fit-on-init="true"
+                               center-on-init="true"
+                               crop-callback="signature.cropper.cropCallback"
+                               check-cross-origin="false"
+                               zoom-step="0.1"
+                               action-labels="signature.cropper.actions">
+                </image-cropper>
+            </div>
+            <div class="col-md-6 signature-preview">
+                <p><label>Preview</label></p>
+                <p class="text-muted" ng-hide="signature.resultImage">
+                    Select and image, then click the <code>"Use this view"</code> button to take a
+                    snapshot of the image viewer on the left.
+                </p>
+                <div ng-show="signature.resultImage">
+                    <p class="text-muted">
+                        When this smaller preview looks correct, click Save to keep the signature.
+                    </p>
+                    <img ng-src="[[ signature.resultImage ]]" style="height: 50px;"/>
+                    <p class="preview-actions">
+                        <button type="button" class="btn btn-xs btn-default"
+                                ng-click="signature.remove()">
+                            <i class="fa fa-fw fa-trash-o"></i> Delete signature
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if request.user.is_superuser or request.company.company_type == 'provider' %}
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <axis-field field="regionObject.fields.resnet_username"></axis-field>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <axis-field field="regionObject.fields.resnet_password"></axis-field>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <axis-field field="regionObject.fields.timezone_preference"></axis-field>
+            </div>
+        </div>
+    </div>
+
+</div>

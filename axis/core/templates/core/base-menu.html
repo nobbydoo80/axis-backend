@@ -1,0 +1,28 @@
+<div ng-controller="MainNavigationController as vm">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand navbar-brand" href="{% url 'home' %}" id="{% if user.is_authenticated %}axis-{% endif %}brand">&nbsp;</a>
+            <div class="impersonate-persist hidden"></div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse nav-collapse-scrollable">
+                <ul class="nav navbar-nav">
+                 {% for menu in menu %}
+                     {% include 'core/menu-item.html' %}
+                 {% endfor %}
+                </ul>
+                <div class="pull-right">
+                    {% if user.is_authenticated %}
+                        {% include 'core/menu-authenticated.html' %}
+                    {% else %}
+                        {% include 'core/menu-login-dropdown.html' %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "core/base_navigation_extras.html" %}
+</div>

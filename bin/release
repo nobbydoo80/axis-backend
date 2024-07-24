@@ -1,0 +1,51 @@
+#!/bin/bash
+
+[[ -e bin/django ]] || { echo >&2 "Run this from the repository root instead."; exit 1; }
+
+export $(grep -v '^#' .env | xargs)
+
+echo
+
+if [[ "x$1" == 'x' ]]; then
+    echo "No PR numbers given, fetching latest merged PRs..."
+    if [[ "x$GITHUB_USERNAME" == 'x' ]]; then
+        echo
+        echo "Please set GITHUB_USERNAME in your .env file."
+        echo
+        exit 1
+    fi
+    if [[ "x$GITHUB_PERSONAL_ACCESS_TOKEN" == 'x' ]]; then
+        echo
+        echo "Please set GITHUB_PERSONAL_ACCESS_TOKEN in your .env file."
+        echo "Personal tokens can be (re)generated at:"
+        echo "    https://github.com/settings/tokens"
+        echo
+        exit 1
+    fi
+
+    echo "Using personal access token from .env file."
+    echo
+    curl -s -u $GITHUB_USERNAME:$GITHUB_PERSONAL_ACCESS_TOKEN 'https://api.github.com/repos/pivotal-energy-solutions/axis/pulls?state=closed&sort=updated&direction=desc' 2>&1 > .pr.json
+
+    python3 - <<'PYTHON'
+import json
+with open('.pr.json') as f:
+    for pr in json.load(f):
+        print(f'''#{pr['number']}  {pr['title']}
+      {pr['merged_at']} -- {pr['merge_commit_sha'][:9]} -- {pr['html_url']}
+      Assigned: {(pr['assignee'] or {}).get('login', '** NOBODY **')} -- Reviewed: {', '.join([r['login'] for r in pr['requested_reviewers']]) or '** NOBODY **'}
+      Labels: {','.join(l['name'] for l in pr['labels']) or '** UNLABLED **'}
+''')
+PYTHON
+    echo "Run this again with one or more PR numbers as arguments (no '#' signs)"
+    echo
+    exit 1
+fi
+
+PR_NUMBERS=( "$@" )
+MSG="Production release ${PR_NUMBERS[@]/#/#}"
+git commit --allow-empty -m "$MSG"
+echo
+echo 'Proceed with:'
+echo '    git push && bin/deploy production'
+echo

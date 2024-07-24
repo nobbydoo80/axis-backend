@@ -1,0 +1,15 @@
+{% block table %}
+    <table class="table table-bordered">
+        {% block table_row %}
+            <tr>
+                {% block table_cell %}
+                    <td ng-repeat="key in regionObject.visible_fields">
+                        {% block cell_content %}
+                            [[ regionObject.object[key+'_display'] || regionObject.object[key] || '-' ]]
+                        {% endblock cell_content %}
+                    </td>
+                {% endblock table_cell %}
+            </tr>
+        {% endblock table_row %}
+    </table>
+{% endblock table %}

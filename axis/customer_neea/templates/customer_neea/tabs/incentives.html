@@ -1,0 +1,23 @@
+{% for object in object_list %}
+    {% if object.legacyneeainspectionincentive_set.all|length  %}
+        <div class="row">
+            <div class="h4">BOP: {{ object.bop|default:"-" }}</div>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                    <th>Incentive</th>
+                    <th>Model</th>
+                    <th>Description</th>
+                    </tr>
+                </thead>
+                {% for incentive in object.legacyneeainspectionincentive_set.all %}
+                    <tr>
+                        <td>{{ incentive.incentive }}</td>
+                        <td>{{ incentive.model }}</td>
+                        <td>{{ incentive.comments }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+{%  endfor %}

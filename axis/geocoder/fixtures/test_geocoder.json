@@ -1,0 +1,271 @@
+[
+  {
+    "pk": 22,
+    "model": "geocoder.geocode",
+    "fields": {
+      "modified_date": "2014-01-03T23:16:37Z",
+      "entity_type": "intersection",
+      "immediate": true,
+      "created_date": "2014-01-03T23:16:35Z",
+      "raw_address": "W Bilby Rd & S Pinto Rd, Drexel Heights, AZ"
+    }
+  },
+  {
+    "pk": 23,
+    "model": "geocoder.geocode",
+    "fields": {
+      "modified_date": "2014-01-03T23:16:53Z",
+      "entity_type": "city",
+      "immediate": true,
+      "created_date": "2014-01-03T23:16:52Z",
+      "raw_address": "Drexel Heights, Pima, AZ"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "geocoder.geocode",
+    "fields": {
+      "modified_date": "2014-01-03T23:17:40Z",
+      "entity_type": "intersection",
+      "immediate": true,
+      "created_date": "2014-01-03T23:17:38Z",
+      "raw_address": "N. Hunt Hwy & Merrill Ranch Pkwy, Florence, AZ"
+    }
+  },
+  {
+    "pk": 25,
+    "model": "geocoder.geocode",
+    "fields": {
+      "modified_date": "2014-01-04T00:01:47Z",
+      "entity_type": "intersection",
+      "immediate": true,
+      "created_date": "2014-01-04T00:01:44Z",
+      "raw_address": "W Bilby & S Pinto, Drexel Heights, AZ"
+    }
+  },
+  {
+    "pk": 26,
+    "model": "geocoder.geocode",
+    "fields": {
+      "modified_date": "2014-01-07T17:53:51Z",
+      "entity_type": "intersection",
+      "immediate": true,
+      "created_date": "2014-01-07T17:53:50Z",
+      "raw_address": "W Main & S Pinto, Drexel Heights, AZ"
+    }
+  },
+  {
+    "pk": 27,
+    "model": "geocoder.geocode",
+    "fields": {
+      "modified_date": "2014-01-14T15:56:42Z",
+      "entity_type": "intersection",
+      "immediate": true,
+      "created_date": "2014-01-14T15:56:39Z",
+      "raw_address": "W Bilby & S Pinto, Drexel Heights AZ"
+    }
+  },
+  {
+    "pk": 28,
+    "model": "geocoder.geocode",
+    "fields": {
+      "modified_date": "2014-01-14T17:43:44Z",
+      "entity_type": "intersection",
+      "immediate": true,
+      "created_date": "2014-01-14T17:43:40Z",
+      "raw_address": "W Bilby Rd & S Pinto Rd, Drexel Heights AZ"
+    }
+  },
+  {
+    "pk": 29,
+    "model": "geocoder.geocode",
+    "fields": {
+      "modified_date": "2014-01-14T19:23:41Z",
+      "entity_type": "intersection",
+      "immediate": true,
+      "created_date": "2014-01-14T19:23:39Z",
+      "raw_address": "Foobar & Fizzbuzz, Drexel Heights, AZ"
+    }
+  },
+  {
+    "pk": 30,
+    "model": "geocoder.geocode",
+    "fields": {
+      "modified_date": "2014-01-22T19:20:01Z",
+      "entity_type": "intersection",
+      "immediate": true,
+      "created_date": "2014-01-22T19:19:59Z",
+      "raw_address": "E Williams Field Rd & S Val Vista Dr, Tucson, AZ"
+    }
+  },
+  {
+    "pk": 39,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Bing",
+      "geocode": 22,
+      "place": "{\"matchCodes\": [\"Good\"], \"confidence\": \"High\", \"name\": \"W Bilby Rd & S Pinto Rd, AZ 85746\", \"point\": {\"type\": \"Point\", \"coordinates\": [\"32.1410254300194\", \"-111.05323571465183\"]}, \"entityType\": \"RoadIntersection\", \"__type\": \"Location:http://schemas.microsoft.com/search/local/ws/rest/v1\", \"bbox\": [\"32.13716271244872\", \"-111.05931794133346\", \"32.14488814759007\", \"-111.0471534879702\"], \"address\": {\"addressLine\": \"W Bilby Rd & S Pinto Rd\", \"formattedAddress\": \"W Bilby Rd & S Pinto Rd, AZ 85746\", \"postalCode\": \"85746\", \"adminDistrict2\": \"Pima Co.\", \"adminDistrict\": \"AZ\", \"countryRegion\": \"United States\"}, \"geocodePoints\": [{\"coordinates\": [\"32.1410254300194\", \"-111.05323571465183\"], \"type\": \"Point\", \"calculationMethod\": \"Interpolation\", \"usageTypes\": [\"Display\", \"Route\"]}]}",
+      "created_date": "2014-01-03T23:16:36Z"
+    }
+  },
+  {
+    "pk": 40,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Google",
+      "geocode": 22,
+      "place": "{\"geometry\": {\"location\": {\"lat\": \"32.1410211\", \"lng\": \"-111.0532391\"}, \"viewport\": {\"northeast\": {\"lat\": \"32.14237008029149\", \"lng\": \"-111.0518901197085\"}, \"southwest\": {\"lat\": \"32.13967211970849\", \"lng\": \"-111.0545880802915\"}}, \"location_type\": \"APPROXIMATE\"}, \"address_components\": [{\"long_name\": \"West Bilby Road\", \"short_name\": \"W Bilby Rd\", \"types\": [\"route\"]}, {\"long_name\": \"Tucson\", \"short_name\": \"Tucson\", \"types\": [\"locality\", \"political\"]}, {\"long_name\": \"Pima\", \"short_name\": \"Pima\", \"types\": [\"administrative_area_level_2\", \"political\"]}, {\"long_name\": \"Arizona\", \"short_name\": \"AZ\", \"types\": [\"administrative_area_level_1\", \"political\"]}, {\"long_name\": \"United States\", \"short_name\": \"US\", \"types\": [\"country\", \"political\"]}, {\"long_name\": \"85746\", \"short_name\": \"85746\", \"types\": [\"postal_code\"]}], \"formatted_address\": \"West Bilby Road & South Pinto Road, Tucson, AZ 85746, USA\", \"types\": [\"intersection\"]}",
+      "created_date": "2014-01-03T23:16:37Z"
+    }
+  },
+  {
+    "pk": 41,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Bing",
+      "geocode": 23,
+      "place": "{\"matchCodes\": [\"Good\"], \"confidence\": \"High\", \"name\": \"Drexel Heights, AZ\", \"point\": {\"type\": \"Point\", \"coordinates\": [\"32.14112854003906\", \"-111.027587890625\"]}, \"entityType\": \"PopulatedPlace\", \"__type\": \"Location:http://schemas.microsoft.com/search/local/ws/rest/v1\", \"bbox\": [\"32.11215815704651\", \"-111.07319209717971\", \"32.17009892303162\", \"-110.98198368407029\"], \"address\": {\"adminDistrict2\": \"Pima Co.\", \"adminDistrict\": \"AZ\", \"countryRegion\": \"United States\", \"formattedAddress\": \"Drexel Heights, AZ\", \"locality\": \"Drexel Heights\"}, \"geocodePoints\": [{\"coordinates\": [\"32.14112854003906\", \"-111.027587890625\"], \"type\": \"Point\", \"calculationMethod\": \"Rooftop\", \"usageTypes\": [\"Display\"]}]}",
+      "created_date": "2014-01-03T23:16:53Z"
+    }
+  },
+  {
+    "pk": 42,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Google",
+      "geocode": 23,
+      "place": "{\"geometry\": {\"location\": {\"lat\": \"32.1411888\", \"lng\": \"-111.028427\"}, \"location_type\": \"APPROXIMATE\", \"viewport\": {\"northeast\": {\"lat\": \"32.177777\", \"lng\": \"-111.002248\"}, \"southwest\": {\"lat\": \"32.104278\", \"lng\": \"-111.095578\"}}, \"bounds\": {\"northeast\": {\"lat\": \"32.177777\", \"lng\": \"-111.002248\"}, \"southwest\": {\"lat\": \"32.104278\", \"lng\": \"-111.095578\"}}}, \"address_components\": [{\"long_name\": \"Drexel Heights\", \"short_name\": \"Drexel Heights\", \"types\": [\"locality\", \"political\"]}, {\"long_name\": \"Pima\", \"short_name\": \"Pima\", \"types\": [\"administrative_area_level_2\", \"political\"]}, {\"long_name\": \"Arizona\", \"short_name\": \"AZ\", \"types\": [\"administrative_area_level_1\", \"political\"]}, {\"long_name\": \"United States\", \"short_name\": \"US\", \"types\": [\"country\", \"political\"]}], \"formatted_address\": \"Drexel Heights, AZ, USA\", \"types\": [\"locality\", \"political\"]}",
+      "created_date": "2014-01-03T23:16:53Z"
+    }
+  },
+  {
+    "pk": 43,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Bing",
+      "geocode": 24,
+      "place": "{\"matchCodes\": [\"Good\"], \"confidence\": \"High\", \"name\": \"N Hunt Hwy & W Merill Ranch Pkwy, Florence, AZ 85132\", \"point\": {\"type\": \"Point\", \"coordinates\": [\"33.06084228526893\", \"-111.4859254155371\"]}, \"entityType\": \"RoadIntersection\", \"__type\": \"Location:http://schemas.microsoft.com/search/local/ws/rest/v1\", \"bbox\": [\"33.05697956769826\", \"-111.49207040401636\", \"33.06470500283961\", \"-111.47978042705783\"], \"address\": {\"addressLine\": \"N Hunt Hwy & W Merill Ranch Pkwy\", \"locality\": \"Florence\", \"formattedAddress\": \"N Hunt Hwy & W Merill Ranch Pkwy, Florence, AZ 85132\", \"postalCode\": \"85132\", \"adminDistrict2\": \"Pinal Co.\", \"adminDistrict\": \"AZ\", \"countryRegion\": \"United States\"}, \"geocodePoints\": [{\"coordinates\": [\"33.06084228526893\", \"-111.4859254155371\"], \"type\": \"Point\", \"calculationMethod\": \"Interpolation\", \"usageTypes\": [\"Display\", \"Route\"]}]}",
+      "created_date": "2014-01-03T23:17:39Z"
+    }
+  },
+  {
+    "pk": 44,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Google",
+      "geocode": 24,
+      "place": "{\"geometry\": {\"location\": {\"lat\": \"33.0607643\", \"lng\": \"-111.4859268\"}, \"viewport\": {\"northeast\": {\"lat\": \"33.0621132802915\", \"lng\": \"-111.4845778197085\"}, \"southwest\": {\"lat\": \"33.0594153197085\", \"lng\": \"-111.4872757802915\"}}, \"location_type\": \"APPROXIMATE\"}, \"address_components\": [{\"long_name\": \"North Hunt Highway\", \"short_name\": \"N Hunt Hwy\", \"types\": [\"route\"]}, {\"long_name\": \"Florence\", \"short_name\": \"Florence\", \"types\": [\"locality\", \"political\"]}, {\"long_name\": \"Pinal\", \"short_name\": \"Pinal\", \"types\": [\"administrative_area_level_2\", \"political\"]}, {\"long_name\": \"Arizona\", \"short_name\": \"AZ\", \"types\": [\"administrative_area_level_1\", \"political\"]}, {\"long_name\": \"United States\", \"short_name\": \"US\", \"types\": [\"country\", \"political\"]}, {\"long_name\": \"85132\", \"short_name\": \"85132\", \"types\": [\"postal_code\"]}], \"formatted_address\": \"North Hunt Highway & Merrill Ranch Parkway, Florence, AZ 85132, USA\", \"types\": [\"intersection\"]}",
+      "created_date": "2014-01-03T23:17:40Z"
+    }
+  },
+  {
+    "pk": 45,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Bing",
+      "geocode": 25,
+      "place": "{\"matchCodes\": [\"Good\"], \"confidence\": \"High\", \"name\": \"W Bilby Rd & S Pinto Rd, AZ 85746\", \"point\": {\"type\": \"Point\", \"coordinates\": [\"32.1410254300194\", \"-111.05323571465183\"]}, \"entityType\": \"RoadIntersection\", \"__type\": \"Location:http://schemas.microsoft.com/search/local/ws/rest/v1\", \"bbox\": [\"32.13716271244872\", \"-111.05931794133346\", \"32.14488814759007\", \"-111.0471534879702\"], \"address\": {\"addressLine\": \"W Bilby Rd & S Pinto Rd\", \"formattedAddress\": \"W Bilby Rd & S Pinto Rd, AZ 85746\", \"postalCode\": \"85746\", \"adminDistrict2\": \"Pima Co.\", \"adminDistrict\": \"AZ\", \"countryRegion\": \"United States\"}, \"geocodePoints\": [{\"coordinates\": [\"32.1410254300194\", \"-111.05323571465183\"], \"type\": \"Point\", \"calculationMethod\": \"Interpolation\", \"usageTypes\": [\"Display\", \"Route\"]}]}",
+      "created_date": "2014-01-04T00:01:46Z"
+    }
+  },
+  {
+    "pk": 46,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Google",
+      "geocode": 25,
+      "place": "{\"geometry\": {\"location\": {\"lat\": \"32.1410211\", \"lng\": \"-111.0532391\"}, \"viewport\": {\"northeast\": {\"lat\": \"32.14237008029149\", \"lng\": \"-111.0518901197085\"}, \"southwest\": {\"lat\": \"32.13967211970849\", \"lng\": \"-111.0545880802915\"}}, \"location_type\": \"APPROXIMATE\"}, \"address_components\": [{\"long_name\": \"West Bilby Road\", \"short_name\": \"W Bilby Rd\", \"types\": [\"route\"]}, {\"long_name\": \"Tucson\", \"short_name\": \"Tucson\", \"types\": [\"locality\", \"political\"]}, {\"long_name\": \"Pima\", \"short_name\": \"Pima\", \"types\": [\"administrative_area_level_2\", \"political\"]}, {\"long_name\": \"Arizona\", \"short_name\": \"AZ\", \"types\": [\"administrative_area_level_1\", \"political\"]}, {\"long_name\": \"United States\", \"short_name\": \"US\", \"types\": [\"country\", \"political\"]}, {\"long_name\": \"85746\", \"short_name\": \"85746\", \"types\": [\"postal_code\"]}], \"partial_match\": true, \"formatted_address\": \"West Bilby Road & South Pinto Road, Tucson, AZ 85746, USA\", \"types\": [\"intersection\"]}",
+      "created_date": "2014-01-04T00:01:47Z"
+    }
+  },
+  {
+    "pk": 47,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Google",
+      "geocode": 26,
+      "place": "{\"geometry\": {\"location\": {\"lat\": \"32.1411888\", \"lng\": \"-111.028427\"}, \"location_type\": \"APPROXIMATE\", \"viewport\": {\"northeast\": {\"lat\": \"32.177777\", \"lng\": \"-111.002248\"}, \"southwest\": {\"lat\": \"32.104278\", \"lng\": \"-111.095578\"}}, \"bounds\": {\"northeast\": {\"lat\": \"32.177777\", \"lng\": \"-111.002248\"}, \"southwest\": {\"lat\": \"32.104278\", \"lng\": \"-111.095578\"}}}, \"address_components\": [{\"long_name\": \"Drexel Heights\", \"short_name\": \"Drexel Heights\", \"types\": [\"locality\", \"political\"]}, {\"long_name\": \"Pima\", \"short_name\": \"Pima\", \"types\": [\"administrative_area_level_2\", \"political\"]}, {\"long_name\": \"Arizona\", \"short_name\": \"AZ\", \"types\": [\"administrative_area_level_1\", \"political\"]}, {\"long_name\": \"United States\", \"short_name\": \"US\", \"types\": [\"country\", \"political\"]}], \"partial_match\": true, \"formatted_address\": \"Drexel Heights, AZ, USA\", \"types\": [\"locality\", \"political\"]}",
+      "created_date": "2014-01-07T17:53:51Z"
+    }
+  },
+  {
+    "pk": 48,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Bing",
+      "geocode": 27,
+      "place": "{\"matchCodes\": [\"Good\"], \"confidence\": \"High\", \"name\": \"W Bilby Rd & S Pinto Rd, AZ 85746\", \"point\": {\"type\": \"Point\", \"coordinates\": [\"32.1410254300194\", \"-111.05323571465183\"]}, \"entityType\": \"RoadIntersection\", \"__type\": \"Location:http://schemas.microsoft.com/search/local/ws/rest/v1\", \"bbox\": [\"32.13716271244872\", \"-111.05931794133346\", \"32.14488814759007\", \"-111.0471534879702\"], \"address\": {\"addressLine\": \"W Bilby Rd & S Pinto Rd\", \"formattedAddress\": \"W Bilby Rd & S Pinto Rd, AZ 85746\", \"postalCode\": \"85746\", \"adminDistrict2\": \"Pima Co.\", \"adminDistrict\": \"AZ\", \"countryRegion\": \"United States\"}, \"geocodePoints\": [{\"coordinates\": [\"32.1410254300194\", \"-111.05323571465183\"], \"type\": \"Point\", \"calculationMethod\": \"Interpolation\", \"usageTypes\": [\"Display\", \"Route\"]}]}",
+      "created_date": "2014-01-14T15:56:41Z"
+    }
+  },
+  {
+    "pk": 49,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Google",
+      "geocode": 27,
+      "place": "{\"geometry\": {\"location\": {\"lat\": \"32.1410211\", \"lng\": \"-111.0532391\"}, \"viewport\": {\"northeast\": {\"lat\": \"32.14237008029149\", \"lng\": \"-111.0518901197085\"}, \"southwest\": {\"lat\": \"32.13967211970849\", \"lng\": \"-111.0545880802915\"}}, \"location_type\": \"APPROXIMATE\"}, \"address_components\": [{\"long_name\": \"West Bilby Road\", \"short_name\": \"W Bilby Rd\", \"types\": [\"route\"]}, {\"long_name\": \"Tucson\", \"short_name\": \"Tucson\", \"types\": [\"locality\", \"political\"]}, {\"long_name\": \"Pima\", \"short_name\": \"Pima\", \"types\": [\"administrative_area_level_2\", \"political\"]}, {\"long_name\": \"Arizona\", \"short_name\": \"AZ\", \"types\": [\"administrative_area_level_1\", \"political\"]}, {\"long_name\": \"United States\", \"short_name\": \"US\", \"types\": [\"country\", \"political\"]}, {\"long_name\": \"85746\", \"short_name\": \"85746\", \"types\": [\"postal_code\"]}], \"partial_match\": true, \"formatted_address\": \"West Bilby Road & South Pinto Road, Tucson, AZ 85746, USA\", \"types\": [\"intersection\"]}",
+      "created_date": "2014-01-14T15:56:42Z"
+    }
+  },
+  {
+    "pk": 50,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Bing",
+      "geocode": 28,
+      "place": "{\"matchCodes\": [\"Good\"], \"confidence\": \"High\", \"name\": \"W Bilby Rd & S Pinto Rd, AZ 85746\", \"point\": {\"type\": \"Point\", \"coordinates\": [\"32.1410254300194\", \"-111.05323571465183\"]}, \"entityType\": \"RoadIntersection\", \"__type\": \"Location:http://schemas.microsoft.com/search/local/ws/rest/v1\", \"bbox\": [\"32.13716271244872\", \"-111.05931794133346\", \"32.14488814759007\", \"-111.0471534879702\"], \"address\": {\"addressLine\": \"W Bilby Rd & S Pinto Rd\", \"formattedAddress\": \"W Bilby Rd & S Pinto Rd, AZ 85746\", \"postalCode\": \"85746\", \"adminDistrict2\": \"Pima Co.\", \"adminDistrict\": \"AZ\", \"countryRegion\": \"United States\"}, \"geocodePoints\": [{\"coordinates\": [\"32.1410254300194\", \"-111.05323571465183\"], \"type\": \"Point\", \"calculationMethod\": \"Interpolation\", \"usageTypes\": [\"Display\", \"Route\"]}]}",
+      "created_date": "2014-01-14T17:43:42Z"
+    }
+  },
+  {
+    "pk": 51,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Google",
+      "geocode": 28,
+      "place": "{\"geometry\": {\"location\": {\"lat\": \"32.1410211\", \"lng\": \"-111.0532391\"}, \"viewport\": {\"northeast\": {\"lat\": \"32.14237008029149\", \"lng\": \"-111.0518901197085\"}, \"southwest\": {\"lat\": \"32.13967211970849\", \"lng\": \"-111.0545880802915\"}}, \"location_type\": \"APPROXIMATE\"}, \"address_components\": [{\"long_name\": \"West Bilby Road\", \"short_name\": \"W Bilby Rd\", \"types\": [\"route\"]}, {\"long_name\": \"Tucson\", \"short_name\": \"Tucson\", \"types\": [\"locality\", \"political\"]}, {\"long_name\": \"Pima\", \"short_name\": \"Pima\", \"types\": [\"administrative_area_level_2\", \"political\"]}, {\"long_name\": \"Arizona\", \"short_name\": \"AZ\", \"types\": [\"administrative_area_level_1\", \"political\"]}, {\"long_name\": \"United States\", \"short_name\": \"US\", \"types\": [\"country\", \"political\"]}, {\"long_name\": \"85746\", \"short_name\": \"85746\", \"types\": [\"postal_code\"]}], \"formatted_address\": \"West Bilby Road & South Pinto Road, Tucson, AZ 85746, USA\", \"types\": [\"intersection\"]}",
+      "created_date": "2014-01-14T17:43:44Z"
+    }
+  },
+  {
+    "pk": 52,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Bing",
+      "geocode": 29,
+      "place": "{\"matchCodes\": [\"Good\", \"UpHierarchy\"], \"confidence\": \"Medium\", \"name\": \"Drexel Heights, AZ\", \"point\": {\"type\": \"Point\", \"coordinates\": [\"32.14112854003906\", \"-111.027587890625\"]}, \"entityType\": \"PopulatedPlace\", \"__type\": \"Location:http://schemas.microsoft.com/search/local/ws/rest/v1\", \"bbox\": [\"32.11215815704651\", \"-111.07319209717971\", \"32.17009892303162\", \"-110.98198368407029\"], \"address\": {\"adminDistrict2\": \"Pima Co.\", \"adminDistrict\": \"AZ\", \"countryRegion\": \"United States\", \"formattedAddress\": \"Drexel Heights, AZ\", \"locality\": \"Drexel Heights\"}, \"geocodePoints\": [{\"coordinates\": [\"32.14112854003906\", \"-111.027587890625\"], \"type\": \"Point\", \"calculationMethod\": \"Rooftop\", \"usageTypes\": [\"Display\"]}]}",
+      "created_date": "2014-01-14T19:23:40Z"
+    }
+  },
+  {
+    "pk": 53,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Google",
+      "geocode": 29,
+      "place": "{\"geometry\": {\"location\": {\"lat\": \"32.1411888\", \"lng\": \"-111.028427\"}, \"location_type\": \"APPROXIMATE\", \"viewport\": {\"northeast\": {\"lat\": \"32.177777\", \"lng\": \"-111.002248\"}, \"southwest\": {\"lat\": \"32.104278\", \"lng\": \"-111.095578\"}}, \"bounds\": {\"northeast\": {\"lat\": \"32.177777\", \"lng\": \"-111.002248\"}, \"southwest\": {\"lat\": \"32.104278\", \"lng\": \"-111.095578\"}}}, \"address_components\": [{\"long_name\": \"Drexel Heights\", \"short_name\": \"Drexel Heights\", \"types\": [\"locality\", \"political\"]}, {\"long_name\": \"Pima\", \"short_name\": \"Pima\", \"types\": [\"administrative_area_level_2\", \"political\"]}, {\"long_name\": \"Arizona\", \"short_name\": \"AZ\", \"types\": [\"administrative_area_level_1\", \"political\"]}, {\"long_name\": \"United States\", \"short_name\": \"US\", \"types\": [\"country\", \"political\"]}], \"partial_match\": true, \"formatted_address\": \"Drexel Heights, AZ, USA\", \"types\": [\"locality\", \"political\"]}",
+      "created_date": "2014-01-14T19:23:41Z"
+    }
+  },
+  {
+    "pk": 54,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Bing",
+      "geocode": 30,
+      "place": "{\"matchCodes\": [\"Good\"], \"confidence\": \"High\", \"name\": \"E Williams Field Rd & S Val Vista Dr, Gilbert, AZ 85295\", \"point\": {\"type\": \"Point\", \"coordinates\": [\"33.30667053552375\", \"-111.75568650248263\"]}, \"entityType\": \"RoadIntersection\", \"__type\": \"Location:http://schemas.microsoft.com/search/local/ws/rest/v1\", \"bbox\": [\"33.302807817953074\", \"-111.76184875486437\", \"33.31053325309443\", \"-111.74952425010089\"], \"address\": {\"addressLine\": \"E Williams Field Rd & S Val Vista Dr\", \"locality\": \"Gilbert\", \"formattedAddress\": \"E Williams Field Rd & S Val Vista Dr, Gilbert, AZ 85295\", \"postalCode\": \"85295\", \"adminDistrict2\": \"Maricopa Co.\", \"adminDistrict\": \"AZ\", \"countryRegion\": \"United States\"}, \"geocodePoints\": [{\"coordinates\": [\"33.30667053552375\", \"-111.75568650248263\"], \"type\": \"Point\", \"calculationMethod\": \"Interpolation\", \"usageTypes\": [\"Display\", \"Route\"]}]}",
+      "created_date": "2014-01-22T19:20:00Z"
+    }
+  },
+  {
+    "pk": 55,
+    "model": "geocoder.geocoderesponse",
+    "fields": {
+      "engine": "Google",
+      "geocode": 30,
+      "place": "{\"geometry\": {\"location\": {\"lat\": \"32.2217429\", \"lng\": \"-110.926479\"}, \"location_type\": \"APPROXIMATE\", \"viewport\": {\"northeast\": {\"lat\": \"32.32016490000001\", \"lng\": \"-110.708204\"}, \"southwest\": {\"lat\": \"31.9916539\", \"lng\": \"-111.059406\"}}, \"bounds\": {\"northeast\": {\"lat\": \"32.320166\", \"lng\": \"-110.708204\"}, \"southwest\": {\"lat\": \"31.9916539\", \"lng\": \"-111.059406\"}}}, \"address_components\": [{\"long_name\": \"Tucson\", \"short_name\": \"Tucson\", \"types\": [\"locality\", \"political\"]}, {\"long_name\": \"Pima\", \"short_name\": \"Pima\", \"types\": [\"administrative_area_level_2\", \"political\"]}, {\"long_name\": \"Arizona\", \"short_name\": \"AZ\", \"types\": [\"administrative_area_level_1\", \"political\"]}, {\"long_name\": \"United States\", \"short_name\": \"US\", \"types\": [\"country\", \"political\"]}], \"partial_match\": true, \"formatted_address\": \"Tucson, AZ, USA\", \"types\": [\"locality\", \"political\"]}",
+      "created_date": "2014-01-22T19:20:01Z"
+    }
+  }
+]

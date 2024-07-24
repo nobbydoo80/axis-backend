@@ -1,0 +1,241 @@
+{% extends "base_nonangular.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}Sample Set Control Panel{% endblock %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/sampleset.css" type="text/css" media="screen" charset="utf-8" />
+{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/vendor/angular-route/1.2.25/angular-route{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/SampleSetControlCenterApp{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/controllers{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/directives{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/services{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/filters{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript">
+        angular.module('SampleSetControlCenterApp')
+                .constant('ExamineSettings', {
+                    static_url: '{% if not debug %}https:{% endif %}{{ STATIC_URL }}',
+                    debug: {{ debug|yesno:'true,false' }}
+        });
+    </script>
+    <script type="text/x-handlebars-template" id="dragndrop">
+        {% verbatim %}
+            <div class="table-drag-info">
+                <b>Address</b>: {{ address }} <br/>
+                <b>Program</b>: {{ program }} <br/>
+                <b>Builder</b>: {{ builder }} <br/>
+                <b>Subdivision</b>: {{ subdivision }} <br/>
+            </div>
+        {% endverbatim %}
+    </script>
+{% endblock %}
+
+{% block raven_overrides %}
+    ravenLogger = 'Sampling Control Center';
+{% endblock raven_overrides %}
+
+{% block full_content %}
+
+    <header>
+        <div class="row row-header">
+            <div class="col-md-12">
+                <p>
+                    Sample Set Control Panel:
+                    <span id="id_count"> <i class="fa fa-spinner fa-spin"></i> </span>
+                    {{ verbose_name_plural }}
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <div class="row" data-angular-app="SampleSetControlCenterApp">
+        <div class="col-xs-12">
+            <div ng-view></div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <script type="text/javascript">
+        window.custom_event = document.createEvent('Event');
+        custom_event.initEvent('used_homes_updated', true, true);
+        $(function(){
+            var checkViewingHomesTimeout;
+            $.dndPageScroll();
+            var form = $('#query_form');
+            var table = $(form.attr('data-table'));
+            datatableview.initialize(table, {
+                fnServerParams: function(data){
+                    {% for field in query_form.visible_fields %}
+                    data.{{ field.name }} = $("#{{ field.auto_id }}").val();
+                    {% endfor %}
+                },
+                fnDrawCallback: function(){
+                    checkViewingHomes();
+                },
+                fnRowCallback: function(element){
+                    var el = $(element);
+                    if(!isLocked(el)){
+                        el.attr('draggable', true);
+                        el.find('a').attr('draggable', false);
+                    }
+                }
+            });
+
+            function isLocked(row){
+                /**
+                 * Locked is being sent down with in the SampleSet column.
+                 * Check for an attribute on the button, or the text, to determine if
+                 * a row should be draggable.
+                 */
+                return row.children().eq(4).children('[data-is_locked]').attr('data-is_locked').toLowerCase() === 'true';
+            }
+            function checkViewingHomesHandler(){
+                /**
+                 * This event is thrown by both homeAdd and homeRemove.
+                 * To make sure we always have the latest data, only use the most recent call.
+                 */
+                clearTimeout(checkViewingHomesTimeout);
+                checkViewingHomesTimeout = setTimeout(checkViewingHomes, 300);
+            }
+
+            function checkViewingHomes(){
+                var viewingIds;
+                /**
+                 * Cross references the homes on the datatable with the homes currently in
+                 * Sample Sets on the page.
+                 * If the home is in a Sample Set the button will be disabled.
+                 */
+                var ids_on_table = [];
+                $("tr[draggable]").each(function(index, element){
+                    ids_on_table.push(parseInt($(element).attr('id'), 10));
+                });
+
+                var scope = $('[ng-view]').scope();
+                if(!scope){
+                    // angular is not available at this time. abort!!!
+                    return;
+                }
+
+                try{
+                    viewingIds = scope.getViewingHomeIdsAndSampleSets();
+                } catch(e){
+                    viewingIds = []
+                }
+
+                for(var i = 0; i < ids_on_table.length; i++){
+                    var id = ids_on_table[i];
+                    var el = $("tr#"+id);
+                    var sampleSetTD = $(el.children()[4]);
+                    if(viewingIds.hasOwnProperty(id)){
+                        if(sampleSetTD.text().trim() == 'No Sample Set'){
+                            sampleSetTD.text('Used in ' + viewingIds[id].split('-')[0]);
+                            el.attr('draggable', false);
+                        }
+                    } else {
+                        sampleSetTD.text('No Sample Set');
+                        el.attr('draggable', true);
+                    }
+                }
+
+            }
+            window.addEventListener('used_homes_updated', checkViewingHomesHandler, false);
+
+            form.on('change', function(){
+                table.dataTable().fnDraw();
+            });
+
+            var datatable = $(".datatable");
+            datatable.on('click', 'a.datatable-sampleset', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var scope = $('[ng-view]').scope();
+                var id = $(this).data('sample_set_id');
+                scope.$apply(function(){
+                    scope.addSampleSet(id);
+                })
+            });
+
+            datatable.on('click', 'a.datatable-no-sampleset', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var scope = $("[ng-view]").scope();
+                var home_id = $(this).parent().find('.home_id').val();
+                if($(this).hasClass('new-sampleset')){
+                    scope.$apply(function(){
+                        scope.makeSampleSetWithHome(home_id);
+                    })
+                } else if($(this).hasClass('move-sampleset')){
+                    scope.$apply(function(){
+                        scope.addHomeToSampleSet(sample_set, home_id);
+                    })
+                }
+                $(".popover-dismiss[home_id='"+home_id+"']").attr('disabled', true);
+                $(".popover-dismiss").popover('hide');
+            });
+
+            function setDataTransferData(event, sampleSetId, home){
+                event.originalEvent.dataTransfer.setData('text', [sampleSetId||'-', home||'-'].join('.'));
+            }
+
+            datatable.on('dragstart', function(e){
+                var els = $(e.target).children('td');
+                var template = Handlebars.compile($("#dragndrop").html());
+                var context = {
+                    address: $(els[0]).find('a').text(),
+                    program: $(els[0]).find('span.text-muted').text(),
+                    builder: $(els[2]).text(),
+                    subdivision: $(els[3]).text()
+                };
+
+                var draggie = $(template(context));
+                draggie.appendTo('body');
+
+                var scope = $('[ng-view]').scope();
+                var home_id = $(e.target).attr('id');
+                setDataTransferData(e, false, home_id);
+{#                e.originalEvent.dataTransfer.setData('home', home_id);#}
+                // if the empty ones automatically open the drag is lost on the element.
+                scope.$apply(function(){
+                    scope.startDragging();
+                });
+                console.log("drag start on random item.");
+            });
+
+            datatable.on('drag', function(e){
+                $('.table-drag-info').offset({top: e.originalEvent.pageY, left: e.originalEvent.pageX});
+            });
+
+            datatable.on('dragend', function(e){
+                console.log("dragend on random item");
+                $(".table-drag-info").remove();
+                var scope = $('[ng-view]').scope();
+
+                scope.$apply(function(){
+                    scope.cancelDragging();
+                });
+            });
+
+        });
+
+    </script>
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Filter Options</h3>
+
+            <form id="query_form" data-table=".datatable">
+                {% for field in query_form.visible_fields %}
+                    {{ field|as_crispy_field }}
+                {% endfor %}
+            </form>
+        </div>
+        <div class="col-md-9">
+            {{ datatable }}
+        </div>
+    </div>
+{% endblock %}

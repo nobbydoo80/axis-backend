@@ -1,0 +1,15 @@
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>
+            <!-- TODO: truncate long document names. -->
+            <a ng-href="[[ regionObject.fields.document.value ]]">
+                <i class="fa fa-cloud-download"></i>
+                [[ regionObject.fields.document.value_label ]]
+            </a>
+        </td>
+        <td>[[ regionObject.object.description ]]</td>
+        <td class="text-center">
+            <i class="fa fa-fw" ng-class="regionObject.object.is_public ? 'fa-check' : 'fa-times'"></i>
+        </td>
+    </tr>
+</table>

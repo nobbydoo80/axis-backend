@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Building Information</h4></div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Conditioned Area (sq ft)</th>
+                        <td>{{ summary.houseplan.thermalEnvelope.summary.conditionedArea|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Conditioned Volume (cubic ft)</th>
+                        <td>{{ summary.houseplan.thermalEnvelope.summary.conditionedVolume|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Window Area (sq ft)</th>
+                        <td>{{ summary.houseplan.thermalEnvelope.summary.windowArea|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Wall Area (sq ft)</th>
+                        <td>{{ summary.houseplan.thermalEnvelope.summary.wallArea|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Floor Area (sq ft)</th>
+                        <td>{{ summary.houseplan.thermalEnvelope.summary.floorArea|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ceiling Area (sq ft)</th>
+                        <td>{{ summary.houseplan.thermalEnvelope.summary.ceilingArea|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Slab Area (sq ft)</th>
+                        <td>{{ summary.houseplan.thermalEnvelope.summary.slabArea|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Number of Bedrooms</th>
+                        <td>{{ summary.houseplan.details.bedrooms }}</td>
+                    </tr>
+                    <tr>
+                        <th>Housing Type</th>
+                        <td>{{ summary.houseplan.details.residenceType }}</td>
+                    </tr>
+                    <tr>
+                        <th>Foundation Type</th>
+                        <td>{{ summary.houseplan.thermalEnvelope.foundationType }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Site Data</h4></div>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>City Label</th>
+                    <td colspan="2">{{ object.project.data.location.city }}</td>
+                </tr>
+                <tr>
+                    <th>Climate Zone</th>
+                    <td>{{ object.project.climate_zone }}</td>
+                    <th>&nbsp;</th>
+                    <td>&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">HERS</h4></div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>HERS Index w/o PV</th>
+                        <td>{{ summary.analysis.hersScoreNoPv|floatformat:0 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        {% for item in summary.analysis.energy.breakdown.byComponent %}
+            {% if item.heatingLoad or item.coolingLoad %}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title">{{ item.category }}</h4></div>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Heating Load:</th>
+                                <td style="width: 80px">{{ item.heatingLoad|floatformat:4 }}</td>
+                            </tr>
+                            <tr>
+                                <th>Cooling Load:</th>
+                                <td style="width: 80px">{{ item.coolingLoad|floatformat:4 }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

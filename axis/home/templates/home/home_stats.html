@@ -1,0 +1,305 @@
+{% extends 'base_list.html' %}
+{% load crispy_forms_tags %}
+{% load cache %}
+{% load static %}
+
+{% block page_title %}Project Report{% endblock %}
+
+{% block style_sheet %}
+<style type="text/css">
+
+    /*
+    The width of the select 2 elements is being set to a hard 300px.
+    Why you do that Select2, why?
+    */
+    .select2-container.select2-container-multi {
+        width: 100%;
+    }
+
+    .datatable th[data-name="address"] {
+        width: 25%
+    }
+
+    .datatable th[data-name="subdivision"] {
+        width: 20%
+    }
+
+    .datatable th[data-name="floorplan"] {
+        width: 20%
+    }
+
+    .datatable th[data-name="eep-program"] {
+        width: 25%
+    }
+
+    .datatable th[data-name="state"] {
+        width: 10%
+    }
+
+    #id_activity_start, #id_activity_stop {
+        width: auto;
+    }
+
+        [data-toggle="buttons"] > .btn input[type="radio"],
+        [data-toggle="buttons"] > .btn input[type="checkbox"] {
+            display: none;
+        }
+
+        .btn-group-vertical > .btn-group-nested {
+            width: 100%;
+            display: table;
+        }
+
+        .btn-group-vertical > .btn-group-nested > .btn {
+            border-radius: 0px;
+        }
+
+        .btn-group-vertical > .btn + .btn,
+        .btn-group-vertical > .btn + .btn-group-nested,
+        .btn-group-vertical > .btn-group-nested + .btn,
+        .btn-group-vertical > .btn-group-nested + .btn-group-nested,
+        .btn-group-vertical > .btn-group-nested > .btn {
+            margin-top: -1px;
+            margin-left: 0px;
+        }
+
+        .btn-group-vertical > .btn-group-nested .btn {
+            padding-left: 40px;
+            padding-right: 40px;
+            display: table-cell;
+        }
+
+        .btn-group-vertical > .btn-group-nested .btn + .btn,
+        .btn-group-vertical > .btn-group-nested .btn + .btn-group,
+        .btn-group-vertical > .btn-group-nested .btn-group-nested + .btn,
+        .btn-group-vertical > .btn-group-nested .btn-group-nested + .btn-group-nested {
+            margin-left: -5px;
+        }
+
+        .btn-group-vertical > .btn-group-nested > .btn:first-child:not(:last-child) {
+            border-radius: 0px !important;
+        }
+
+        .btn-group-vertical > .btn-group-nested > .btn:last-child:not(:first-child) {
+            border-top-right-radius: 4px;
+        }
+
+        .btn-group-nested .btn .fa {
+            margin-left: -1.5em;
+        }
+
+        .btn-default .fa-square-o,
+        .btn-default.btn-success .fa-check-square-o {
+            display: block;
+            margin-top: 5px;
+            margin-right: -3em;
+        }
+
+        .btn-default .fa-check-square-o,
+        .btn-success .fa-square-o {
+            display: none;
+        }
+
+        .items-selected {
+            display: none;
+        }
+
+    </style>
+{% endblock %}
+
+{% block javascript_head %}
+    <script src="{% static 'home/js/home_status_report.js' %}"></script>
+    <script src="{% static 'home/js/xls_export.js' %}"></script>
+{% endblock %}
+
+{% block list_content %}
+    <div class="row">
+        <div class="col-md-3">
+        {% block form_title %} <h3>Filter Options</h3> {% endblock %}
+            {% block before_form %} {% endblock %}
+            <form id="query_form" method="post" action="" target="_blank">{# 'form_actions' submit buttons update the 'action' #}
+                {% csrf_token %}
+
+                {# Optional top section for form actions #}
+                <div class="form-actions">
+                    {% block form_actions_top %}
+                        {% if show_form_actions_above_filters %}
+                            <button type="button" id="export_button" class="btn btn-primary btn-block"
+                                    data-toggle="modal" data-target="#myModal">
+                                Export Data
+                            </button>
+                        {% endif %}
+                    {% endblock form_actions_top %}
+                    {% if show_form_actions_above_filters %}
+                        <br/><br/>
+                        <div id="count_note" class="well">
+                            Please filter the results to below 2000 items before exporting.
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% block filter_fields %}
+                    {{ filter_form.subdivision|as_crispy_field }}
+                    {{ filter_form.eep_program|as_crispy_field }}
+                    {{ filter_form.builder|as_crispy_field }}
+                    {{ filter_form.provider|as_crispy_field }}
+                    {{ filter_form.rater|as_crispy_field }}
+                    {{ filter_form.utility|as_crispy_field }}
+                    {{ filter_form.eep|as_crispy_field }}
+                    {{ filter_form.architect|as_crispy_field }}
+                    {{ filter_form.developer|as_crispy_field }}
+                    {{ filter_form.communityowner|as_crispy_field }}
+                    {{ filter_form.hvac|as_crispy_field }}
+                    {{ filter_form.qa|as_crispy_field }}
+                    {{ filter_form.general|as_crispy_field }}
+                    {{ filter_form.rater_of_record|as_crispy_field }}
+                    {{ filter_form.metro|as_crispy_field }}
+                    {% if filter_form.eto_region %}{{ filter_form.eto_region|as_crispy_field }}{% endif %}
+                    {{ filter_form.city|as_crispy_field }}
+                    {{ filter_form.us_state|as_crispy_field }}
+                    {{ filter_form.rating_type|as_crispy_field }}
+                    {{ filter_form.state|as_crispy_field }}
+                    {{ filter_form.ipp_state|as_crispy_field }}
+                    {{ filter_form.qatype|as_crispy_field }}
+                    {{ filter_form.qastatus|as_crispy_field }}
+                    {{ filter_form.qa_designee|as_crispy_field }}
+                    {{ filter_form.qaobservation|as_crispy_field }}
+                    {{ filter_form.search_bar|as_crispy_field }}
+                    {{ filter_form.exclude_ids|as_crispy_field }}
+                    {{ filter_form.heat_source|as_crispy_field }}
+                    {{ filter_form.task_type|as_crispy_field }}
+                    {{ filter_form.task_assignee|as_crispy_field }}
+                    {% block extra_filters %} {% endblock %}
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#" id="show_dates_href">Advanced</a>
+                        </div>
+                    </div>
+                    <div id="date_ranges">
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ filter_form.activity_start|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ filter_form.activity_stop|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ filter_form.certification_only|as_crispy_field }}
+                            </div>
+                        </div>
+                        {% if filter_form.paid_date_start %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                            <div class="col-md-6">
+                                {{ filter_form.paid_date_start|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ filter_form.paid_date_stop|as_crispy_field }}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if filter_form.program_activity_start %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                            <div class="col-md-6">
+                                {{ filter_form.program_activity_start|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ filter_form.program_activity_stop|as_crispy_field }}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if filter_form.home_created_date_start %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ filter_form.home_created_date_start|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ filter_form.home_created_date_end|as_crispy_field }}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% block extra_advanced_filters %} {% endblock %}
+                    </div>
+                {% endblock %}
+
+                <br>
+                <div class="form-actions">
+                    {% block form_actions %}
+                        {% if not show_form_actions_above_filters %}
+                            <button type="button" id="export_button" class="btn btn-primary btn-block"
+                                    data-toggle="modal" data-target="#myModal">
+                                Export Data
+                            </button>
+                        {% endif %}
+                    {% endblock %}
+                    {% if not show_form_actions_above_filters %}
+                        <br/><br/>
+                        <div id="count_note" class="well">
+                            Please filter the results to below 2000 items before exporting.
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% block form_modals %}
+                    {# Modal #}
+                    {% comment %}
+                    This modal is in the form and not the modal block because
+                    it's used for XLS Export, and we use the regular form submission
+                    for that instead of ajax.
+                    {% endcomment %}
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Choose Fields to Export</h4>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="export_fields" class="btn-group-vertical" data-toggle="buttons" style="width: 100%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="pull-left" id="reset_defaults" href="#">Reset Defaults</a>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                        Close
+                                    </button>
+
+                                    <button type="submit" name="submit" class="btn btn-primary"
+                                            data-action="{% url 'home:report:stats_document' %}">
+                                        <span class="no-items-selected">
+                                            Export All Visible Items
+                                        </span>
+                                        <span class="items-selected">
+                                            Export <span class="checked-item-counter"></span> Selected Item(s).
+                                        </span>
+                                    </button>
+                                </div>
+                            </div> <!-- /.modal-content -->
+                        </div> <!-- /.modal-dialog -->
+                    </div> <!-- /.modal -->
+                {% endblock form_modals %}
+            </form>
+            {% block after_form %}{% endblock %}
+            {% block modals %}{% endblock %}
+        </div>
+        <div class="col-md-9">
+            {% block before_table %} {% endblock before_table %}
+            {{ block.super }}
+            {% include "core/includes/address_confirmation_legend.html" %}
+        </div>
+    </div>
+{% endblock %}

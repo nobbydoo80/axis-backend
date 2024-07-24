@@ -1,0 +1,18 @@
+{% verbatim %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <a data-toggle="collapse" data-parent="#chronological_accordion" href="#time_panel_{{strip label}}">
+                    {{label}}
+                </a>
+            </div>
+        </div>
+        <div id="time_panel_{{strip label}}" class="panel-collapse collapse">
+            <div class="panel-body">
+                {{#list messages}}
+                   {{this}}
+                {{/list}}
+            </div>
+        </div>
+    </div>
+{% endverbatim %}

@@ -1,0 +1,108 @@
+<!--  NOTE!!  This is not live - it must be placed in the Flatpage -->
+<div class="row col-md-12">
+
+    <div id="axis-carousel-holder">
+        <div id="axis-carousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#axis-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#axis-carousel" data-slide-to="1"></li>
+                <li data-target="#axis-carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="{{ STATIC_URL }}images/homes/shutterstock_20398510.png" alt="">
+
+                    <div class="carousel-caption">
+                        <h4>Enabling Energy Efficiency Program Management.</h4>
+
+                        <p>Axis enables Energy Efficiency Program (EEP) program
+                            adminstrators a simple way to manage thier programs enabling seamless
+                            visibiiity and access to all stakeholders.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{{ STATIC_URL }}images/homes/shutterstock_104946530.png" alt="">
+
+                    <div class="carousel-caption">
+                        <h4>Enabling HERS Providers data storage and collection.</h4>
+
+                        <p>Axis provides full access controls enabling you to effectively manage
+                            your raters and efficiently certify your ENERGY STAR® V3 homes.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{{ STATIC_URL }}images/homes/shutterstock_62935258.png" alt="">
+
+                    <div class="carousel-caption">
+                        <h4>Providing HERS Raters and HVAC Contractors a single place to store your
+                            data.</h4>
+
+                        <p>REMRate data and files, Rhac files and Wrightsoft HVAC Manual-D/J/S.  We
+                            store them all.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{{ STATIC_URL }}images/homes/shutterstock_104946536.png" alt="">
+
+                    <div class="carousel-caption">
+                        <h4>Easy insight for Builders into the Energy Efficiency of there homes.</h4>
+
+                        <p>Home builders can easily query or report on the status energy
+                            efficiency within thier subdivisions and communities.</p>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#axis-carousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#axis-carousel" data-slide="next">&rsaquo;</a>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.carousel').carousel({
+                interval: 8000
+            });
+        });
+    </script>
+
+    <!-- row of columns -->
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Advanced Energy Selects Pivotal’s Axis</h2>
+
+            <p><a href="http://www.advancedenergy.org/">Advanced Energy</a> Selects Pivotal’s Axis for
+                Quality-Assured Professional (QAP) for HVAC
+                Program Data Entry and Management. Advanced Energy, a leader in energy efficiency
+                research, training, and program design for the commercial, industrial, and residential
+                markets, has selected Pivotal's Axis cloud-hosted database solution for the
+                administration of their Quality-Assured Professional (QAP) for HVAC program
+                for residential new home construction. </p>
+
+            <p><a class="btn" href="/news/advanced_energy/">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <div style="text-align: center;">
+                <object id="evolve" type="image/svg+xml"
+                        data="{{ STATIC_URL }}images/axis_logo_square.svg" height="108"
+                        width="180">
+                    <param name="src" value="{{ STATIC_URL }}images/axis_logo_square.svg">
+                </object>
+                <h2 style="margin-top: -5px">evolve.</h2>
+
+                <p><i>A shared, cloud-hosted database solution targeted for the HERS industry.<br/>
+                    <a href="mailto://info@pivotalenergysolutions.com">Learn more</a></i>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>NEEA Chooses Axis</h2>
+
+            <p>The <a href="http://neea.org">Northwest Energy Efficiency Alliance</a> (NEEA) has
+                selected the Axis software
+                platform
+                from Pivotal Energy Solutions to manage the data for its award winning Northwest
+                ENERGY STAR® Homes new construction program starting in 2013.</p>
+
+            <p><a class="btn" href="/news/neea">View details &raquo;</a></p>
+        </div>
+    </div>
+</div>

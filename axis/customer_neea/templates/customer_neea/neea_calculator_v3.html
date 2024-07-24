@@ -1,0 +1,144 @@
+{% extends "base_form.html" %}
+{% load bootstrap_tags %}
+{% load rest_framework %}
+
+{% block page_title %}BetterBuiltNW Performance Path Savings Estimator{% endblock %}
+
+{% block full_content %}
+    {% block form %}
+        <form id="axis_form" action="" method="post" enctype="multipart/form-data" data-validate="parsley">
+            {% csrf_token %}
+            <fieldset class="row-header">
+                <legend><p>BetterBuilt<sup>NW</sup> Performance Path Savings Estimator V3</p></legend>
+            </fieldset>
+            {% if errors.non_field_errors %}
+                <div class="row">
+                    <div class="alert alert-block alert-danger">
+                        {% if form_error_title %}<h4 class="alert-heading">{{ form_error_title }}</h4>{% endif %}
+                        <ul>
+                            {{ errors.non_field_errors|unordered_list }}
+                        </ul>
+                    </div>
+                </div>
+            {% else %}
+            <div class="row">
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <strong>Disclaimer</strong> This Performance Path Savings Estimator tool
+                    provides estimated savings and may be used for preliminary reviews and design
+                    consulting with builders.
+                    <button class="btn btn-xs pull-right" type="button" data-toggle="collapse"
+                            data-target="#collapse_estimate" aria-expanded="false"
+                            aria-controls="collapse_estimate">Details
+                    </button>
+                    <div class="collapse" id="collapse_estimate">
+                        <br/>
+                        <div class="card card-body">
+                            <p>Participating utilities must have their Performance Path program
+                                requirements configured in AXIS before homes can be submitted for
+                                incentives. Requirements vary by utility and may include space
+                                heating fuel and/or equipment, water heating fuel and/or equipment,
+                                % improvement over code, home certification, etc. The regional
+                                minimum % improvement over code is 10%, utilities may set higher
+                                minimums for their program. Incentive amounts vary by utility.
+                                Contact your utility for more specifics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-6">
+                    {% include "customer_neea/includes/neea_calculator_v3_form.html" with serializer=serializer style=style %}
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-10 pull-right">
+                            <h4>Results</h4>
+                            {% include "customer_neea/includes/neea_calculator_v3_results.html" %}
+                        </div>
+                    </div>
+
+                    <hr />
+
+
+                    <h4>Step 4: Appliances</h4>
+                    <p>Select the type of Installed Appliances</p>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {% render_field serializer.estar_std_refrigerators_installed style=style %}
+                        </div>
+                        <div class="col-md-3">
+                            {% render_field serializer.estar_dishwasher_installed style=style %}
+                        </div>
+                        <div class="col-md-4">
+                            {% render_field serializer.estar_front_load_clothes_washer_installed style=style %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            {% render_field serializer.clothes_dryer_fuel style=style %}
+                        </div>
+                        <div class="col-md-3">
+                            {% render_field serializer.clothes_dryer_tier style=style %}
+                        </div>
+                    </div>
+
+                    <h4>Step 5: Misc</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% render_field serializer.certified_earth_advantage style=style %}
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <br/>
+            <div class="form-actions">
+                {% block form_actions %}
+                    <button type="submit" id="id_submit" class="btn btn-primary" onclick="javascript: form.action='/neea/calculator/v3/';">Calculate</button>
+                    <button type="submit" id="download" class="btn" onclick="javascript: form.action='/neea/calculator/v3/download/';">Download</button>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <input class="btn" type="button" value="Reset" onclick="location.href='{% url 'neea_calculator_v3' %}'"  />
+                {% endblock form_actions %}
+            </div>
+        </form>
+
+        {% if request.user.is_superuser %}
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+
+                {% bootstrap_navtabs %}
+
+                    {% tab "Summary" %}
+                    {% include 'customer_neea/tabs/standard_protocol_summary.html' %}
+
+                    {% tab "Heating / Cooling" %}
+                    {% include 'customer_neea/tabs/standard_protocol_heating_cooling.html' %}
+
+                    {% tab "Appliances" %}
+                    {% include "customer_neea/tabs/standard_protocol_lights_and_appliances.html" %}
+
+                    {% tab "Thermostat Data" %}
+                    {% include "customer_neea/tabs/standard_protocol_shower_appliances.html" %}
+
+                {% endbootstrap_navtabs %}
+            </div>
+        </div>
+        {% endif %}
+
+    {% endblock form %}
+{% endblock full_content %}
+
+{% block javascript_tail %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#home_status_id").addClass("hidden");
+        });
+    </script>
+{% endblock %}

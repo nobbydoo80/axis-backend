@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %} Home certification Printing {% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css" xmlns="http://www.w3.org/1999/html">
+        .dataTable th[data-name="address"] { width: 35%; }
+        .dataTable th[data-name="subdivision"] { width: 20%; }
+        .dataTable th[data-name="floorplan"] { width: 15%; }
+        .dataTable th[data-name="eep-programs"] { width: 25%; }
+        .dataTable th[data-name="state"] { width: 5%; }
+    </style>
+{% endblock %}
+
+{% block full_content %}
+    <fieldset>
+        <legend><h2>Project Certificate</h2></legend>
+        <div class="row">
+            <div class="col-md-6">
+
+                <form id="myform" action="{{ request.path }}" method="post"
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="row">
+                            <div class="col-md-12">{{ form.non_field_errors }}</div>
+                        </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div>{{ form.certifier|as_crispy_field }}</div>
+                        </div>
+                    </div>
+                    <div class="row hidden">
+                            <div id="homesform">{{ form.homes }}</div>
+                    </div>
+                    <div class="row" style="min-height: 75px">&nbsp;</div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" title="Submit" name="Submit" value="Submit"
+                                   class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><h3>Instructions</h3></strong>
+                        <em>This is meant to print on user defined certificates.</em>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol>
+                            <li>Select the projects(s) for which certificates are to be generated</li>
+                            <li>Select the Certifier whose name will be printed on the certificate</li>
+                            <li>Click the “Submit” button</li>
+                            <li>Open and print the auto-generated PDF document</li>
+                        </ol>
+                        <em>The auto-generated PDF document includes all program-specific formatting</em>
+                    </div>
+                </div>
+                <br>
+
+            </div>
+        </div>
+    </fieldset>
+    <hr>
+
+    {{ datatable }}
+
+{% endblock %}
+
+{% block javascript_head %}
+    {# Data Tables  #}
+    <script type="text/javascript" charset="utf-8">
+        datatableview.autoInitialize = true;
+        var oTable;
+        var selected = [];
+        var builder_id;
+        var toggle = false;
+
+        $(function(){
+            $('th[data-name=select]')
+                    .off('click')
+                    .html('Select All<br><input class="checkall" type="checkbox">');
+            $('.datatable').on('click', '.checkall', function(e){
+                e.stopPropagation();
+                toggle = $(this).is(":checked");
+                $('table').find(':checkbox:not(.checkall)').each(function(){
+                    if(toggle){
+                        $(this).prop('checked', true).change();
+                    } else {
+                        $(this).prop('checked', false).change();
+                    }
+                });
+                $(this).prop('checked', toggle);
+            });
+
+            $('input[type="submit"]').prop('disabled', true);
+
+            $('.datatable').on('change', 'tbody :checkbox', function(){
+                var row = $(this).closest('tr');
+                var iId = $(row).attr('id');
+                is_in_array = $.inArray(iId, selected);
+                if(is_in_array == -1){
+                    selected.push(iId);
+                } else {
+                    selected = $.grep(selected, function(value){
+                        return value != iId;
+                    });
+                }
+                $('#id_homes').val(selected);
+                if(selected.length == 0){
+                    $('input[type="submit"]').prop('disabled', true);
+                } else {
+                    $('input[type="submit"]').prop('disabled', false);
+                }
+                console.log('Selected: ', selected)
+            });
+
+            $("#myform").on('submit', function(e){
+                setTimeout(function(){
+                    selected = [];
+                    $("#id_homes").val(selected);
+                    $('table').find(':checkbox').each(function(){
+                        $(this).prop('checked', false);
+                    })
+                }, 300)
+            });
+        });
+    </script>
+{% endblock %}

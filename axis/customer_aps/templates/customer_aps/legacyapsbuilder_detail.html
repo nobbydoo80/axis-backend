@@ -1,0 +1,82 @@
+{% extends 'base_detail.html' %}
+{% load crispy_forms_tags %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block detail_content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 key">Street:</div>
+                <div class="col-md-6 value">
+                    {{ object.mail_addr1 }}
+                    {% if object.mail_addr2 %} <br>{{ object.mail_addr2 }} {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">City:</div>
+                <div class="col-md-6 value">{{ object.mail_city }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">State:</div>
+                <div class="col-md-6 value">{{ object.mail_state }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">ZIP Code:</div>
+                <div class="col-md-6 value">{{ object.mail_zip }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6 key">DBA:</div>
+                <div class="col-md-6 value">{{ object.dba }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6 key">Phone:</div>
+                <div class="col-md-6 value">{{ object.phone }}</div>
+            </div>
+            {% if object.web_address %}
+                <div class="row">
+                    <div class="col-md-6 key">Website:</div>
+                    <div class="col-md-6 value">{{ object.web_address }}</div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 key">Vendor Number:</div>
+                <div class="col-md-6 value">{{ object.vendor_no }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6 key">Charge Number:</div>
+                <div class="col-md-6 value">{{ object.charge_no }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6 key">Axis Builder Link:</div>
+                <div class="col-md-6 value">
+                    <a href="{{ object.builder.get_absolute_url }}"> {{ object.builder }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 key">Legacy APS Subdivisions:</div>
+        <div class="row value">
+            <ul>
+                {% for item in object.legacyapssubdivision_set.all %}
+                    <div class="col-md-6">
+                        <li><a href="{{ item.get_absolute_url }}">{{ item }}</a></li>
+                    </div>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+{% endblock %}

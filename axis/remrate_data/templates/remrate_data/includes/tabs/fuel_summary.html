@@ -1,0 +1,184 @@
+{% load humanize %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Annual Energy Cost ($/yr)</h4></div>
+            <table class="table">
+                <tbody>
+                    {% for item in object.fuelsummary_set.get_fuel_summary.all %}
+                        {% if item.total_cost > 0 %}
+                            <tr>
+                                <th>{{ item.get_fuel_type_display }}</th>
+                                <td>${{ item.total_cost|floatformat:2 }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Annual End-Use Cost ($/yr)</h4></div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Heating</th>
+                        <td>${{ object.results.heating_cost|floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cooling</th>
+                        <td>${{ object.results.cooling_cost|floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Water Heating</th>
+                        <td>${{ object.results.hot_water_cost|floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lights & Appliances</th>
+                        <td>${{ object.results.lights_and_appliances_total_cost|floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Photovoltaics</th>
+                        <td>-${{ object.results.photo_voltaic_cost|floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Service Charges</th>
+                        <td>${{ object.results.service_cost|floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>${{ object.results.total_cost|floatformat:2 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Annual End-Use Consumption</h4></div>
+            <table class="table">
+                <tbody>
+                    {% for item in object.fuelsummary_set.all %}
+                        {% if item.heating_consumption|default:0 > 3 and item.fuel_units != 7 %}
+                            <tr>
+                                <th>Heating ({{ item.get_fuel_units_display }})</th>
+                                <td>{{ item.heating_consumption|floatformat:0 }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    {% for item in object.fuelsummary_set.all %}
+                        {% if item.cooling_consumption|default:0 > 3 and item.fuel_units != 8 %}
+                            <tr>
+                                <th>Cooling ({{ item.get_fuel_units_display }})</th>
+                                <td>{{ item.cooling_consumption|floatformat:0 }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    {% for item in object.fuelsummary_set.all %}
+                        {% if item.hot_water_consumption|default:0 > 3 %}
+                            <tr>
+                                <th>Hot Water ({{ item.get_fuel_units_display }})</th>
+                                <td>{{ item.hot_water_consumption|floatformat:0 }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    {% for item in object.fuelsummary_set.all %}
+                        {% if item.lights_and_appliances_consumption|default:0 > 3 %}
+                            <tr>
+                                <th>Lights & Appliances ({{ item.get_fuel_units_display }})</th>
+                                <td>{{ item.lights_and_appliances_consumption|floatformat:0 }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    {% for item in object.fuelsummary_set.all %}
+                        {% if item.photo_voltaics_consumption|default:0 %}
+                            <tr>
+                                <th>Photovoltaics ({{ item.get_fuel_units_display }})</th>
+                                <td>{{ item.photo_voltaics_consumption|floatformat:0 }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Annual Energy Demands (kW)</h4></div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Heating</th>
+                        <td>{{ object.fuelsummary_set.get_winter_fuel_demands.all.0.heating_consumption|floatformat:1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cooling</th>
+                        <td>{{ object.fuelsummary_set.get_summer_fuel_demands.all.0.cooling_consumption|floatformat:1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Water Heating (Winter Peak)</th>
+                        <td>{{ object.fuelsummary_set.get_winter_fuel_demands.all.0.hot_water_consumption|floatformat:1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Water Heating (Summer Peak)</th>
+                        <td>{{ object.fuelsummary_set.get_summer_fuel_demands.all.0.hot_water_consumption|floatformat:1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lights and Appliances (Winter Peak)</th>
+                        <td>{{ object.fuelsummary_set.get_winter_fuel_demands.all.0.lights_and_appliances_consumption|floatformat:1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lights and Appliances (Summer Peak)</th>
+                        <td>{{ object.fuelsummary_set.get_summer_fuel_demands.all.0.lights_and_appliances_consumption|floatformat:1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Total Winter Peak</th>
+                        <td>{{ object.fuelsummary_set.get_winter_fuel_demands.all.0.total_cost|floatformat:1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Total Summer Peak</th>
+                        <td>{{ object.fuelsummary_set.get_summer_fuel_demands.all.0.total_cost|floatformat:1 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <h4>Utility Rates</h4>
+    <p class="text-muted">Rates are listed in $/kWh service fees are also included.</p>
+
+    {% for item in object.utilityrate_set.all %}
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4 class="panel-title">{{ item.get_fuel_type_display }}</h4></div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td colspan="2" class="text-muted">{{ item.name }}</td>
+                            <th>Min</th>
+                            <th>Max</th>
+                            <th>Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for season in item.seasonalrate_set.all %}
+                            {% for data in season.block_set.get_data_lists %}
+                                <tr>
+                                    {% if forloop.first %}
+                                        <th class="col-md-4">{{ season.get_start_month_display }} - {{ season.get_end_month_display }}</th>
+                                        <td class="col-md-2">${{ season.cost|floatformat:2 }}</td>
+                                    {% else %}
+                                        <td class="col-md-6" colspan="2"></td>
+                                    {% endif %}
+                                    <td class="col-md-2">${{ data.min|floatformat:2 }}</td>
+                                    <td class="col-md-2">${{ data.max_consumption|floatformat:2 }}</td>
+                                    <td class="col-md-2">${{ data.dollars_per_unit_per_month|floatformat:4 }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endfor %}
+</div>

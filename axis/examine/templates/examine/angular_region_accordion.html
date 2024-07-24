@@ -1,0 +1,18 @@
+{% extends "examine/angular_region_panel.html" %}
+
+{% block object_name %}
+    <a data-toggle="collapse"
+       data-parent="#accordion-[[ regionObject.type_name ]]"
+       id="[[ regionObject.type_name ]]_[[ regionObject.id ]]"
+       href="#[[ regionObject.type_name ]]_[[ regionObject.id ]]_collapsible">{% block heading %}{{ block.super }}{% endblock heading %}</a>
+{% endblock object_name %}
+
+{# Add the collapser target wrapping the internal detail/form divs #}
+{% block panel_body_wrapper %}
+    <div id="[[ regionObject.type_name ]]_[[ regionObject.id ]]_collapsible"
+         class="panel-collapse collapse"
+         {# ng-class="{'in': (!regionObject.object.id) || regionSet.regions.length === 1 || $index === 0}"> #}
+         ng-class="{'in': region.hasEdited || regionSet.regions.length === 1}">
+        {{ block.super }}
+    </div>
+{% endblock panel_body_wrapper %}

@@ -1,0 +1,72 @@
+{% extends "base_form.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}Register a new account{% endblock page_title %}
+
+{% block header_text %}Register a new account{% endblock %}
+
+{% block form_content %}
+    <div class="row">
+        <div class="col-md-8">{{ form.company|as_crispy_field }}</div>
+        <script type="text/javascript">
+            $(function () {
+                $('#{{ form.company.auto_id }}').select2({
+                    placeholder: "Search company",
+                    minimumInputLength: 3
+                });
+            })
+        </script>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="help-block">
+                Leave this field blank if you do not see your company
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">{{ form.first_name|as_crispy_field }}</div>
+        <div class="col-md-6">{{ form.last_name|as_crispy_field }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">{{ form.email|as_crispy_field }}</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6 misc_info">{{ form.cell_phone|as_crispy_field }}</div>
+        <div class="col-md-6">{{ form.work_phone|as_crispy_field }}</div>
+        <script type="text/javascript">
+            $(function () {
+              $('#{{ form.cell_phone.auto_id }}, #{{ form.work_phone.auto_id }}').mask('(000) 000-0000');
+            })
+        </script>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">{{ form.title|as_crispy_field }}</div>
+        <div class="col-md-6 misc_info">{{ form.department|as_crispy_field }}</div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-md-6">{{ form.password1|as_crispy_field }}</div>
+        <div class="col-md-6 misc_info">{{ form.password2|as_crispy_field }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">{{ form.tos|as_crispy_field }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            By clicking you acknowledge receipt and agreement to the
+            <a href="/license/" target="_blank">License and Terms of Service</a>.
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">{{ form.captcha }}</div>
+    </div>
+{% endblock form_content %}
+
+{% block form_actions %}
+    <button type="submit" id="id_submit" class="btn btn-primary">Register New Account</button>
+{% endblock form_actions %}

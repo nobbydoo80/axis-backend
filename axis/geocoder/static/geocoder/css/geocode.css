@@ -1,0 +1,23 @@
+/* !important is not cool, but it is currently by far the easiest way to
+ * modify bootstrap popover layout in specific locations.
+ *
+ * .popover elements inside of .form-actions are for prompting regarding
+ * geocoding results. The buttons are on the far-left, so we need to move the
+ * .popover to the right so it looks more natural and does not bump up against
+ * the left side of the window.
+ */
+.geo_form .form-actions .popover {
+    left: -10px !important;
+    /* Must be wide enough to hold long addresses that the user may need to
+     * choose from. */
+    max-width: 510px !important;
+}
+.geo_form .form-actions .popover.top .arrow {
+    /* Unfortunately this is only rough placement, and the arrow is not exactly
+     * centered, but it is sufficient. */
+    left: 15% !important;
+}
+.geo_form .form-actions .popover .btn-primary {
+    /* Add a little space to the right in case there is a secondary button. */
+    margin-right: 4px;
+}

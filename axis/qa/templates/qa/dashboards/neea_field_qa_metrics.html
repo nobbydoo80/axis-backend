@@ -1,0 +1,18 @@
+{% extends 'qa/dashboards/field_qa_metrics.html' %}
+
+{% block panel_title %}
+    NEEA Field QA
+    {% if style == 'rater' %}
+        by Rater
+    {% elif style == 'utility' %}
+        by Utility
+    {% endif %}
+{% endblock %}
+
+{% block metrics %}
+    {% with style=style|default:'' %}
+    {% with prefix='neea'|add:style|add:'_' %}
+        {{ block.super }}
+    {% endwith %}
+    {% endwith %}
+{% endblock metrics %}

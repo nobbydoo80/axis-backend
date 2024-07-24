@@ -1,0 +1,39 @@
+<style type="text/css">
+    #checklist-questions .datatable th[data-name='name'] { width: 75% !important; }
+    #checklist-questions .datatable th[data-name='required'] { width: 75% !important; }
+</style>
+
+<div class="row" ng-if="regionObject.object.required_checklists_names.length > 1">
+    <div class="col-md-12">
+        <h4>[[ regionObject.object.required_checklists_names.length ]]
+            Checklist[[ !regionObject.object.required_checklists_names.length || regionObject.object.required_checklists_names.length > 1 ? 's' : '']]</h4>
+    </div>
+</div>
+<br>
+<div ng-repeat="checklist in regionObject.object.required_checklists_names">
+    <h5>[[ ::checklist.name ]]</h5>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Question</th>
+            <th>Answer Type</th>
+            <th>Required</th>
+            {% if user.is_superuser %}
+            <th>Slug</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="question in checklist.questions">
+            <td ng-if="question.url"><a ng-href="[[ question.url ]]"
+                                        target="_blank">[[ question.question ]]</a></td>
+            <td ng-if="! question.url">[[ question.question ]]</td>
+            <td ng-bind="::question.type"></td>
+            <td><span boolean-checkmark="questions.required"></span></td>
+            {% if user.is_superuser %}
+            <td ng-bind="::question.slug"></td>
+            {% endif %}
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,311 @@
+{% load static %}
+
+<div>
+    <div ng-if="regionObject.object.verifier == {{ request.user.id }} && (regionObject.object.state == 'expired' || regionObject.object.state == 'countersigned')">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Agreement:</h4>
+                <div class="row">
+                    <div class="col-md-5 key">[[ regionObject.verbose_names.agreement_start_date
+                        ]]:
+                    </div>
+                    <div class="col-md-7"
+                         ng-bind="regionObject.object.agreement_start_date || '-'"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 key">[[
+                        regionObject.verbose_names.agreement_expiration_date ]]:
+                    </div>
+                    <div class="col-md-7"
+                         ng-bind="regionObject.object.agreement_expiration_date || '-'"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h4><span ng-bind-html="regionObject.object.company_display | trustAsHtml"></span> COI: <small><a
+                        href="[[ regionObject.object.company_url ]]#/tabs/coi">View all</a></small></h4>
+                <div class="panel panel-default"
+                     ng-repeat="verifier_company_coi in regionObject.object.verifier_company_cois">
+                    <div class="panel-heading">
+                        <span class="key">Policy Number:</span>
+                        <span>[[ verifier_company_coi.policy_number || '-' ]]</span>
+                        <span class="key">Start date:</span>
+                        <span>[[ verifier_company_coi.start_date || '-' ]]</span>
+                        <span class="key">Expiration date:</span>
+                        <span>[[ verifier_company_coi.expiration_date || '-' ]]</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a ng-href="[[ verifier_company_coi.url ]]"
+                                   target="_blank" title="Download document">
+                                    <i class="fa fa-download"></i>
+                                </a>
+                                -
+                                <i>[[ verifier_company_coi.description || 'No description provided'
+                                    ]]</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <hr>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Mailing Address:</h4>
+        </div>
+        <div class="col-md-6">
+            <h4>
+                Shipping/Physical Address:
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4 key">Street line 1:
+                        </div>
+                        <div class="col-md-8"
+                             ng-bind="regionObject.object.mailing_geocode_street_line1 || '-'"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 key">Street line 2:
+                        </div>
+                        <div class="col-md-8"
+                             ng-bind="regionObject.object.mailing_geocode_street_line2 || '-'"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 key">City:</div>
+                        <div class="col-md-8"
+                             ng-bind="regionObject.object.mailing_geocode_city_display || '-'"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 key">Zip Code:
+                        </div>
+                        <div class="col-md-8"
+                             ng-bind="regionObject.object.mailing_geocode_zipcode || '-'"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div ng-show="regionObject.object.shipping_geocode_street_line1 || regionObject.object.shipping_geocode_street_line2 || regionObject.object.shipping_geocode_city || regionObject.object.shipping_geocode_zipcode">
+                        <div class="row">
+                            <div class="col-md-4 key">Street line 1:</div>
+                            <div class="col-md-8"
+                                 ng-bind="regionObject.object.shipping_geocode_street_line1 || '-'"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 key">Street line 2:</div>
+                            <div class="col-md-8"
+                                 ng-bind="regionObject.object.shipping_geocode_street_line2 || '-'"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 key">City:</div>
+                            <div class="col-md-8"
+                                 ng-bind="regionObject.object.shipping_geocode_city_display || '-'"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 key">Zip Code:</div>
+                            <div class="col-md-8"
+                                 ng-bind="regionObject.object.shipping_geocode_zipcode || '-'"></div>
+                        </div>
+                    </div>
+
+                    <div ng-hide="regionObject.object.shipping_geocode_street_line1 || regionObject.object.shipping_geocode_street_line2 || regionObject.object.shipping_geocode_city || regionObject.object.shipping_geocode_zipcode">
+                        <div class="row">
+                            <div class="col-md-4 key">Street line 1:
+                            </div>
+                            <div class="col-md-8"
+                                 ng-bind="regionObject.object.mailing_geocode_street_line1 || '-'"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 key">Street line 2:
+                            </div>
+                            <div class="col-md-8"
+                                 ng-bind="regionObject.object.mailing_geocode_street_line2 || '-'"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 key">City:</div>
+                            <div class="col-md-8"
+                                 ng-bind="regionObject.object.mailing_geocode_city_display || '-'"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 key">Zip Code:
+                            </div>
+                            <div class="col-md-8"
+                                 ng-bind="regionObject.object.mailing_geocode_zipcode || '-'"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Individual Verifier (Applicant) Information:</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2 key">First Name:</div>
+                        <div class="col-md-4"
+                             ng-bind="regionObject.object.applicant_first_name || '-'"></div>
+                        <div class="col-md-2 key">Last Name:</div>
+                        <div class="col-md-4"
+                             ng-bind="regionObject.object.applicant_last_name || '-'"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 key">Title:</div>
+                        <div class="col-md-4"
+                             ng-bind="regionObject.object.applicant_title || '-'"></div>
+                        <div class="col-md-2 key">Email:</div>
+                        <div class="col-md-4"
+                             ng-bind="regionObject.object.applicant_email || '-'"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 key">Phone Number:
+                        </div>
+                        <div class="col-md-4"
+                             ng-bind="regionObject.object.applicant_phone_number || '-'"></div>
+                        <div class="col-md-2 key">Cell Number:</div>
+                        <div class="col-md-4"
+                             ng-bind="regionObject.object.applicant_cell_number || '-'"></div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="regionObject.object.administrative_contact_first_name || regionObject.object.administrative_contact_last_name || regionObject.object.administrative_contact_phone_number || regionObject.object.administrative_contact_email">
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Administrative contact:</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2 key">First Name:</div>
+                            <div class="col-md-4"
+                                 ng-bind="regionObject.object.administrative_contact_first_name || '-'"></div>
+                            <div class="col-md-2 key">Last Name:</div>
+                            <div class="col-md-4"
+                                 ng-bind="regionObject.object.administrative_contact_last_name || '-'"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 key">Phone number:</div>
+                            <div class="col-md-4"
+                                 ng-bind="regionObject.object.administrative_contact_phone_number || '-'"></div>
+                            <div class="col-md-2 key">Email:
+                            </div>
+                            <div class="col-md-4"
+                                 ng-bind="regionObject.object.administrative_contact_email || '-'"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="regionObject.object.company_officer_first_name || regionObject.object.company_officer_last_name || regionObject.object.company_officer_phone_number || regionObject.object.company_officer_email">
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Officer/Principal of Company:</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2 key">First Name:</div>
+                            <div class="col-md-4"
+                                 ng-bind="regionObject.object.company_officer_first_name || '-'"></div>
+                            <div class="col-md-2 key">Last Name:</div>
+                            <div class="col-md-4"
+                                 ng-bind="regionObject.object.company_officer_last_name || '-'"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 key">Phone number:</div>
+                            <div class="col-md-4"
+                                 ng-bind="regionObject.object.company_officer_phone_number || '-'"></div>
+                            <div class="col-md-2 key">Email:
+                            </div>
+                            <div class="col-md-4"
+                                 ng-bind="regionObject.object.company_officer_email || '-'"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="regionObject.object.us_states_display">
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Geographic Areas Served:</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"
+                         ng-bind="regionObject.object.us_states_display"></div>
+                </div>
+            </div>
+            <div ng-show="regionObject.object.provided_services_display">
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Services Provided by Company:</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"
+                         ng-bind="regionObject.object.provided_services_display"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Preview of Legal Agreement (electronic signature will be required via DocuSign):</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" ng-switch="[[ regionObject.helpers.va_version_to_sign ]]">
+                    <iframe style="width: 100%; height: 25rem"
+                            src="{% static 'customer_hirl/verifier_embedded_agreement.pdf' %}"
+                            ng-switch-when="1"></iframe>
+                    <iframe style="width: 100%; height: 25rem"
+                            src="{% static 'customer_hirl/verifier_embedded_agreement_v2.pdf' %}" ng-switch-default></iframe>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    By clicking "Submit for Review and Approval by NGBS" you are acknowledging that
+                    you have read the Verifier Agreement;
+                    that you understand that if your employment by the Company is terminated you
+                    will no longer be authorized to act as
+                    a Verifier for the NGBS Green Certification Program unless and until you submit
+                    a new application and
+                    proof of insurance that is accepted by the Company; and that you understand and
+                    agree to be bound by
+                    the terms of the Verifier Agreement, including but not limited to the conflict
+                    of interest,
+                    non-competition, and dispute resolution provisions in Section 8 thereof. If you do not
+                    agree to the terms and conditions as stated above, or if you have any questions prior to
+                    proceeding,
+                    you may contact the NGBS Program Staff by emailing 
+                    <a href="mailto:verificationreport@homeinnovation.com" >verificationreport@homeinnovation.com</a>.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" ng-switch="[[ regionObject.helpers.va_version_to_sign ]]">
+                    <a href="{% static 'customer_hirl/verifier_embedded_agreement.pdf' %}" ng-switch-when="1">Click here to download the
+                        sample PDF.</a>
+                    <a href="{% static 'customer_hirl/verifier_embedded_agreement_v2.pdf' %}" ng-switch-default>Click here to download the
+                        sample PDF.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

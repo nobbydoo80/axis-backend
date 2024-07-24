@@ -1,0 +1,213 @@
+<div class="row">
+    {% block columns %}
+
+    <div class="col-md-9">
+        {% block detail %}
+            <div class="row">
+                <div class="col-md-6 col-md-push-6">
+                    {% include "geographic/angular_map.html" %}
+                </div>
+                <div class="col-md-6 col-md-pull-6">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.lot_number ]]:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.lot_number || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.street_line1 ]]:</div>
+                            <div class="col-md-7">
+                                <div class="address">
+
+                                    [[ regionObject.object.street_line1_display ]]
+                                    <span ng-if="regionObject.object.company_display_raw_addresses==='geocoded'">
+                                        [[ regionObject.object.address_designator ]]
+                                    </span>
+                                    <span ng-if="regionObject.object.street_line2_display">
+                                        <br>
+                                        [[ regionObject.object.street_line2_display ]]
+                                    </span>
+                                    <span ng-if="regionObject.object.is_multi_family"
+                                          class="label label-default">
+                                         Multi-family
+                                    </span>
+                                    <span ng-if="regionObject.object.building_type_display"
+                                          class="label label-default">
+                                         [[ regionObject.object.building_type_display ]]
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.subdivision ]]:</div>
+                            <div class="col-md-7">
+                                <span ng-show="regionObject.object.subdivision_name">
+                                    <a href="[[ regionObject.object.subdivision_url ]]">
+                                        [[ regionObject.object.subdivision_name ]]
+                                    </a>
+                                    <span ng-if="regionObject.object.community_name">
+                                        (<a href="[[ regionObject.object.community_url ]]">
+                                            [[ regionObject.object.community_name ]]
+                                        </a>)
+                                    </span>
+                                </span>
+                                <span ng-if="regionObject.object.subdivision_is_multi_family"
+                                      class="label label-default">
+                                     Multi-family
+                                </span>
+                                <span ng-hide="regionObject.object.subdivision_name">-</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.city ]]:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.city_name || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="regionObject.object.county_name">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.state | humanize ]]:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.state_display || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="!regionObject.object.county_name">
+                            <div class="col-md-5 key">Country:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.country_name || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">[[ regionObject.verbose_names.zipcode ]]:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.zipcode_display || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 key">Climate Zone:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.climate_zone || '-'"></div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="regionObject.object.eto_region">
+                            <div class="col-md-5 key">ETO Region:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.eto_region"></div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-5 key">Site ID:</div>
+                            <div class="col-md-7">
+                                <div ng-bind="regionObject.object.id || '-'"></div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row" ng-if="regionObject.object.construction_stage_name">
+                            <div class="col-md-5 key">Const. Status:</div>
+                            <div class="col-md-4 col-xs-12">
+                                <div ng-bind="regionObject.object.construction_stage_name"></div>
+                            </div>
+                            <div class="col-md-3 text-right hidden-xs hidden-sm">
+                                [[ regionObject.object.construction_stage_start_date ]]
+                            </div>
+                            <div class="col-xs-12 visible-xs visible-sm">
+                                [[ regionObject.object.construction_stage_start_date ]]
+                            </div>
+                        </div>
+
+                        <br>
+                        {% block aps_home %}
+                            <axis-single-region ng-if="regionObject.helpers.machinery.apshome"
+                                                options="regionObject.helpers.machinery.apshome">
+                                <loading-spinner ng-show="!regionSet.region"></loading-spinner>
+                            </axis-single-region>
+                            <br>
+                        {% endblock %}
+                        {% block location_statistics %}
+                            <a ng-click="showingCompleted = !showingCompleted"
+                               class="text-muted">
+                                <span ng-hide="showingCompleted">Show</span>
+                                <span ng-show="showingCompleted">Hide</span>
+                                additional location statistics
+                            </a>
+                            <br>
+
+                            <div ng-show="showingCompleted">
+                                <div class="row" ng-if="regionObject.object.metro_name" >
+                                    <div class="col-md-5 key">Metropolitan:</div>
+                                    <div class="col-md-7">[[ regionObject.object.metro_name ]]</div>
+                                </div>
+                                <div class="row" ng-if="regionObject.object.county_name">
+                                    <div class="col-md-5 key">County:</div>
+                                    <div class="col-md-7">[[ regionObject.object.county_name ]]</div>
+                                </div>
+                                <div class="row" ng-if="!regionObject.object.county_name">
+                                    <div class="col-md-5 key">Country:</div>
+                                    <div class="col-md-7">[[ regionObject.object.country_name ]]</div>
+                                </div>
+                                <div class="row" ng-if="regionObject.object.latitude">
+                                    <div class="col-md-5 key">Coordinates:</div>
+                                    <div class="col-md-7">[[ regionObject.object.latitude ]], [[ regionObject.object.longitude ]]</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 key">Address Type:</div>
+                                    <div class="col-md-7">[[ regionObject.object.company_display_raw_addresses ]]</div>
+                                </div>
+                            </div>
+                            <br>
+                        {% endblock %}
+                        <div ng-if="regionObject.object.gbr_id || regionObject.object.gbr_status">
+                            <div class="row">
+                                <div class="col-md-5 key">GBR ID:</div>
+                                <div class="col-md-7" ng-if="regionObject.object.gbr_external_url != ''">
+                                    <a href="[[ regionObject.object.gbr_external_url ]]" target="_blank">[[ regionObject.object.gbr_id ]]</a>
+                                </div>
+                                <div class="col-md-7" ng-if="regionObject.object.gbr_external_url == ''">
+                                    [[ regionObject.object.gbr_id ]]
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 key">GBR Status:</div>
+                                <div class="col-md-7">[[ regionObject.object.gbr_status ]]</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endblock %}
+        {% block sidebar %}
+            <div class="col-md-3 sidebar hidden-sm hidden-xs">
+                {% include "examine/home/sidebar.html" %}
+
+                <div class="well"
+                     ng-if="regionObject.helpers.permitandoccupancysettings !== undefined"
+                     ng-controller="CityOfHillsboroController as hillsboroCtrl">
+                    <h4>City Of Hillsboro<br /> Energy Efficiency Compliance </h4>
+                    <button class="btn btn-default btn-sm btn-block" ng-click="region.handleAction({instruction: 'permitandoccupancysettings', modal: {templateUrl: '/examine/customer_eto/permitandoccupancysettings.html'}})" ng-disabled="region.isProcessing()">
+                        <i class="fa fa-fw fa-spin fa-spinner" ng-if="region.isProcessing('permitandoccupancysettings')"></i>
+                        Edit Compliance Option
+                    </button>
+                    <button class="btn btn-default btn-sm btn-block"
+                            ng-if="regionObject.helpers.permitandoccupancysettings.report_button_name !== null"
+                            ng-click="hillsboroCtrl.linkThenReload(regionObject.helpers.permitandoccupancysettings.download_url)"
+                            ng-disabled="hillsboroCtrl.isProcessing">
+                        <i class="fa fa-fw fa-spin fa-spinner" ng-if="hillsboroCtrl.isProcessing"></i>
+                        <span ng-bind-html="regionObject.helpers.permitandoccupancysettings.report_button_name | trustAsHtml"></span>
+                    </button>
+                    <button class="btn btn-default btn-sm btn-block"
+                       ng-if="regionObject.helpers.permitandoccupancysettings.report_button_name === null"
+                       ng-bind-html="regionObject.helpers.permitandoccupancysettings.no_button_status | trustAsHtml"
+                       disabled>
+                    </button>
+                </div>
+            </div>
+        {% endblock %}
+    {% endblock %}
+</div>

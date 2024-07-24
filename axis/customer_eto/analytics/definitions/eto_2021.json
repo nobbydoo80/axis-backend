@@ -1,0 +1,334 @@
+{
+  "metrics": [
+    {
+      "name": "home-status-info",
+      "short_name": "Home Status Breakout",
+      "updating_method": "axis.home.models.eep_program_home_status.EEPProgramHomeStatus.get_references",
+      "is_reference_method": true,
+      "provides_for": [
+        "home_id",
+        "home_status_id",
+        "eep_program_id",
+        "rating_company_id",
+        "rater_of_record_id",
+        "rater_collection_request_id",
+        "qa_collection_request_id",
+        "associated_company_ids",
+        "floorplan_id",
+        "simulation_id",
+        "city_id",
+        "county_id",
+        "us_state",
+        "address_long",
+        "climate_zone_id",
+        "state",
+        "analysis_type"
+      ]
+    },
+    {
+      "name": "home-misc-details",
+      "short_name": "Home Misc Details",
+      "updating_method": "axis.home.analytics.get_home_misc_details",
+      "provides_for": [
+        "rater_of_record",
+        "climate_zone"
+      ]
+    },
+    {
+      "name": "home-status-associations",
+      "short_name": "Home Status Company Associations",
+      "updating_method": "axis.relationship.analytics.get_home_status_associations",
+      "provides_for": [
+        "builder",
+        "builder_id",
+        "electric_utility",
+        "electric_utility_id",
+        "gas_utility",
+        "gas_utility_id",
+        "provider",
+        "provider_id",
+        "rater",
+        "rater_id",
+        "other_companies"
+      ]
+    },
+    {
+      "name": "simulation-data",
+      "short_name": "Simulation Data",
+      "updating_method": "simulation.analytics.get_simulation_export_data",
+      "provides_for": [
+        "simulation_rating_company",
+        "simulation_rater_of_record",
+        "simulation_builder",
+        "simulation_property_address",
+        "simulation_climate_zone_id",
+        "simulation_property_state",
+        "simulation_electric_company",
+        "simulation_gas_company",
+        "weather_station",
+        "simulation_square_footage",
+        "eto_reference_home_type",
+        "qty_heating",
+        "qty_hot_water",
+        "has_hydronic_system",
+        "foundation_type",
+        "crawl_space_type",
+        "housing_type",
+        "has_dwhr",
+        "recirculation_pump",
+        "fixture_max_length",
+        "low_flow_fixtures_used",
+        "pipes_fully_insulated",
+        "mechanical_ventilation_type",
+        "mech_vent_watts",
+        "mechanical_ventilation_type",
+        "refrigerator_kwh",
+        "dishwasher_kwh",
+        "shelter_class",
+        "range_fuel",
+        "dryer_fuel",
+        "fuels_used",
+        "heating",
+        "hot_water",
+        "cooling",
+        "hvac_distribution_systems"
+      ]
+
+    },
+    {
+      "name": "eto-certified-homes-counts",
+      "short_name": "Rater/Builder Homes Count",
+      "updating_method": "axis.customer_eto.analytics.get_certified_program_counts",
+      "externally_influenced": true,
+      "provides_for": [
+        "rater_builder_completed_homes"
+      ]
+    },
+    {
+      "name": "eto-2021-home-status-checklist-responses",
+      "short_name": "ETO-2021 Checklist Responses",
+      "updating_method": "axis.customer_eto.analytics.get_collection_responses",
+      "is_reference_method": true,
+      "provides_for": [
+        "is_affordable_housing",
+        "is_adu",
+        "builder_payment_redirected",
+        "has_battery_storage",
+        "applicable_solar_incentive",
+        "smart_thermostat_brand",
+        "primary_heating_equipment_type",
+        "equipment_furnace",
+        "equipment_heat_pump",
+        "equipment_water_heater",
+        "equipment_air_conditioner_brand",
+        "equipment_air_conditioner_model_number_indoor",
+        "equipment_air_conditioner_model_number_outdoor",
+        "equipment_refrigerator",
+        "equipment_dishwasher",
+        "equipment_clothes_washer",
+        "equipment_clothes_dryer",
+        "equipment_ventilation_balanced",
+        "equipment_ventilation_exhaust",
+        "ceiling_r_value",
+        "eto_additional_incentives",
+        "solar_elements",
+        "grid_harmonization_elements",
+        "non_ets_annual_pv_watts",
+        "ets_annual_etsa_kwh"
+      ]
+    },
+    {
+      "name": "eto-2021-home-status-qa-checklist-responses",
+      "short_name": "ETO-2021 QA Checklist Responses",
+      "updating_method": "axis.customer_eto.analytics.get_qa_collection_responses",
+      "is_reference_method": true,
+      "provides_for": [
+        "qa_responses"
+      ]
+    },
+    {
+      "name": "eto-eps-required-data",
+      "short_name": "Get ETO Required Data",
+      "updating_method": "axis.customer_eto.analytics.get_eps_required_data",
+      "is_reference_method": true,
+      "provides_for": [
+        "percent_improvement"
+      ]
+    },
+    {
+      "name": "eto-analytics-heater-inputs",
+      "short_name": "Heater compare inputs",
+      "updating_method": "axis.customer_eto.analytics.eto_simulation_heater_model_characteristics",
+      "provides_for": [
+        "model_heater_characteristics"
+      ]
+    },
+    {
+      "name": "eto-analytics-heat-pump-inputs",
+      "short_name": "Heater compare inputs",
+      "updating_method": "axis.customer_eto.analytics.eto_simulation_heat_pump_model_characteristics",
+      "provides_for": [
+        "model_heat_pump_characteristics"
+      ]
+    },
+    {
+      "name": "eto-analytics-hot-water-inputs",
+      "short_name": "Hot Water compare inputs",
+      "updating_method": "axis.customer_eto.analytics.eto_simulation_water_heater_model_characteristics",
+      "provides_for": [
+        "model_water_heater_characteristics"
+      ]
+    },
+    {
+      "name": "eto-analytics-ventilation-inputs",
+      "short_name": "Ventilation compare inputs",
+      "updating_method": "axis.customer_eto.analytics.eto_simulation_ventilation_model_characteristics",
+      "provides_for": [
+        "model_ventilation_characteristics"
+      ]
+    },
+    {
+      "name": "eto-analytics-refrigerator-inputs",
+      "short_name": "Refrigerator compare inputs",
+      "updating_method": "axis.customer_eto.analytics.eto_simulation_refrigerator_model_characteristics",
+      "provides_for": [
+        "model_refrigerator_characteristics"
+      ]
+    },
+    {
+      "name": "eto-analytics-dishwasher-inputs",
+      "short_name": "Refrigerator compare inputs",
+      "updating_method": "axis.customer_eto.analytics.eto_simulation_diswasher_model_characteristics",
+      "provides_for": [
+        "model_dishwasher_characteristics"
+      ]
+    },
+    {
+      "name": "eto-analytics-clothes-washer-inputs",
+      "short_name": "Washer compare inputs",
+      "updating_method": "axis.customer_eto.analytics.eto_simulation_clothes_washer_model_characteristics",
+      "provides_for": [
+        "model_clothes_washer_characteristics"
+      ]
+    },
+    {
+      "name": "eto-analytics-clothes-dryer-inputs",
+      "short_name": "Dryer compare inputs",
+      "updating_method": "axis.customer_eto.analytics.eto_simulation_clothes_dryer_model_characteristics",
+      "provides_for": [
+        "model_clothes_dryer_characteristics"
+      ]
+    },
+    {
+      "name": "eto-analytics-heating-allocation",
+      "short_name": "Heating / Cooling Load allocations",
+      "updating_method": "axis.customer_eto.analytics.eto_heating_load_allocations",
+      "provides_for": [
+        "heating_load_allocations",
+        "cooling_load_allocations"
+      ]
+    },
+
+    {
+      "name": "eto-similar-home-ids",
+      "short_name": "Get ETO Required Data",
+      "updating_method": "axis.customer_eto.analytics.get_similar_homes",
+      "externally_influenced": true,
+      "provides_for": [
+        "similar_total_simulation_ids",
+        "similar_total_simulation_last_18mo_ids",
+        "similar_insulation_simulation_ids",
+        "similar_insulation_simulation_last_18mo_ids",
+        "similar_heating_simulation_ids",
+        "similar_heating_simulation_last_18mo_ids",
+        "similar_hot_water_simulation_ids",
+        "similar_hot_water_simulation_last_18mo_ids"
+      ]
+    },
+    {
+      "name": "eto-analytics-output",
+      "short_name": "Similar Total Home Data",
+      "updating_method": "axis.customer_eto.analytics.get_output_analytics",
+      "provides_for": [
+        "heating_consumption_kwh",
+        "heating_consumption_therms",
+        "cooling_consumption_kwh",
+        "hot_water_consumption_kwh",
+        "hot_water_consumption_therms",
+        "lights_and_appliances_consumption_kwh",
+        "total_consumption",
+        "total_consumption_no_pv"
+      ]
+    },
+    {
+      "name": "eto-analytics-insulation",
+      "short_name": "Similar Home Insulation Data",
+      "updating_method": "axis.customer_eto.analytics.get_insulation_analytics",
+      "provides_for": [
+        "total_frame_floor_area",
+        "dominant_floor_insulation_r_value",
+        "total_slab_floor_area",
+        "dominant_slab_insulation_r_value",
+        "total_above_grade_wall_area",
+        "dominant_above_grade_wall_r_value",
+        "total_ceiling_area",
+        "dominant_ceiling_r_value",
+        "dominant_window_u_value",
+        "dominant_window_shgc_value",
+        "total_window_area"
+      ]
+    },
+    {
+      "name": "eto-analytics-mechanical",
+      "short_name": "Similar Home Mechanical Data",
+      "updating_method": "axis.customer_eto.analytics.get_mechanical_analytics",
+      "provides_for": [
+        "heater_heating_capacity",
+        "heater_heating_efficiency",
+        "air_conditioner_cooling_capacity",
+        "air_conditioner_cooling_efficiency",
+        "ground_source_heat_pump_heating_capacity",
+        "ground_source_heat_pump_heating_efficiency",
+        "ground_source_heat_pump_cooling_capacity",
+        "ground_source_heat_pump_cooling_efficiency",
+        "air_source_heat_pump_heating_capacity",
+        "air_source_heat_pump_heating_efficiency",
+        "air_source_heat_pump_cooling_capacity",
+        "air_source_heat_pump_cooling_efficiency",
+        "water_heater_tank_size",
+        "water_heater_energy_factor"
+
+      ]
+    },
+    {
+      "name": "eto-analytics-ducts",
+      "short_name": "Similar Home Duct Data",
+      "updating_method": "axis.customer_eto.analytics.get_duct_analytics",
+      "provides_for": [
+        "duct_system_total_real_leakage",
+        "duct_system_total_leakage",
+        "duct_supply_conditioned_avg_r_value",
+        "duct_supply_unconditioned_avg_r_value",
+        "duct_return_conditioned_avg_r_value",
+        "duct_return_unconditioned_avg_r_value"
+      ]
+    },
+    {
+      "name": "eto-analytics-infiltration",
+      "short_name": "Similar Home Infiltration Data",
+      "updating_method": "axis.customer_eto.analytics.get_infiltration_analytics",
+      "provides_for": [
+        "annual_infiltration_value"
+      ]
+    },
+    {
+      "name": "eto-analytics-ventilation",
+      "short_name": "Similar Home Ventilation Data",
+      "updating_method": "axis.customer_eto.analytics.get_ventilation_analytics",
+      "provides_for": [
+        "ventilation_rate",
+        "ventilation_watts"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{% extends 'examine/angular_regionset_table.html' %}
+
+{% block region %}
+    {{ block.super }}
+    <tr ng-show="regionSet.regions.length > 1 && (!$root.examineApp.creating) && region.regionsEditing() > 1"
+        ng-controller="MultipleDocumentController">
+        <td colspan="[[ regionSet.visible_fields.length ]]"></td>
+        <td>
+            <action-strip>
+                <action-button btn-type="button" btn-style="primary" btn-size="xs" instruction="multipleDocumentSave">Save All</action-button>
+            </action-strip>
+        </td>
+    </tr>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base_list.html' %}
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .dataTable th[data-name="floorplan-name-number"] { width: 35%; }
+        .dataTable th[data-name="subdivision"] { width: 30%; }
+        .dataTable th[data-name="comment"] { width: 20%; }
+        .dataTable th[data-name="company"] { width: 15%; }
+    </style>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% comment %}
+    Do we still need this template for anything?
+{% endcomment %}
+
+{% if perms.customer_aps.view_apshome %}
+    <li><a href="{% url 'aps_home_list_view' %}"><span>Meter Set Import</span></a></li>
+{% endif %}

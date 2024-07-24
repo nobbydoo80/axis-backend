@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6" ng-if="regionObject.fields.agreement_start_date || regionObject.fields.agreement_expiration_date">
+                <h4>Agreement:</h4>
+                <div class="row form-group">
+                    <div class="col-md-12" ng-if="regionObject.fields.agreement_start_date">
+                        <axis-field field="regionObject.fields.agreement_start_date"/>
+                    </div>
+                    <div class="col-md-12" ng-if="regionObject.fields.agreement_expiration_date">
+                        <axis-field field="regionObject.fields.agreement_expiration_date"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

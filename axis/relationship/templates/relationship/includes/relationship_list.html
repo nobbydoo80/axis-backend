@@ -1,0 +1,30 @@
+{% comment %}
+    Requires: app_label, model, object_id
+{% endcomment %}
+
+<h5>
+    <span id="relationship_{{ app_label }}_{{ model }}_{{ object_id }}">
+        <i class="fa fa-spinner fa-spin"></i>
+    </span>
+    Historical Records for {{ object }}
+</h5>
+<table class="table datatable table-striped table-bordered"
+       cellpadding="0" cellspacing="0" border="0"
+       data-source-url="{% url "relationship:list" app_label=app_label model=model object_id=object_id %}"
+       id="relationship_{{ app_label }}_{{ model }}_{{ object_id }}"
+       data-result-counter-id="relationship_{{ app_label }}_{{ model }}_{{ object_id }}">
+    <thead>
+    <tr>
+        <th>Company</th>
+        <th>Delete</th>
+        <th>Customer</th>
+        <th>Owned</th>
+        <th>Attached</th>
+        <th>Viewable</th>
+        <th>Reportable</th>
+        <th>Calc Attached</th>
+        <th>Calc Accepted</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>

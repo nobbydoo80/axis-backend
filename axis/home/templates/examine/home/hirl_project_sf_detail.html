@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-md-4 key">Is this project Build-To-Rent?:</div>
+    <div class="col-md-8 value">[[ regionObject.helpers['is_build_to_rent'] ? 'Yes' : 'No' ]]</div>
+</div>
+<div class="row">
+    <div class="col-md-4 key">Is this an appeals project?:</div>
+    <div class="col-md-8 value">[[ regionObject.helpers['is_appeals_project'] ? 'Yes' : 'No' ]]</div>
+</div>
+<div ng-show="regionObject.object['is_accessory_structure']">
+    <div class="row">
+        <div class="col-md-4 key">Accessory Structure Description:</div>
+        <div class="col-md-8 value">[[ regionObject.object['accessory_structure_description'] || '-' ]]</div>
+    </div>
+</div>
+<div ng-show="regionObject.object['is_accessory_dwelling_unit']">
+    <div class="row">
+        <div class="col-md-4 key">Accessory Dwelling Unit Description:</div>
+        <div class="col-md-8 value">[[ regionObject.object['accessory_dwelling_unit_description'] || '-' ]]</div>
+    </div>
+</div>
+<div ng-if="!regionObject.object['is_accessory_structure'] && !regionObject.object['is_accessory_dwelling_unit']">
+    <div class="row">
+        <div class="col-md-4 key">NGBS Green+ Badges:</div>
+        <div class="col-md-8 value">[[ regionObject.object['green_energy_badges_display'] || '-' ]]</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 key">HUD Disaster Case Number:</div>
+        <div class="col-md-8 value">[[ regionObject.object['hud_disaster_case_number'] || '-' ]]</div>
+    </div>
+    <div class="row" ng-if="regionObject.helpers['is_require_rough_inspection']">
+        <div class="col-md-4 key">Will this remodel project require a rough inspection?</div>
+        <div class="col-md-8 value">[[ regionObject.object['is_require_rough_inspection'] ? 'Yes' : 'No' ]]</div>
+    </div>
+    <div class="row" ng-if="regionObject.helpers['is_require_wri_certification']">
+        <div class="col-md-4 key">Is this project seeking a WRI?</div>
+        <div class="col-md-8 value">[[ regionObject.object['is_require_wri_certification'] ? 'Yes' : 'No' ]]</div>
+    </div>
+    <div class="row" ng-if="regionObject.helpers['is_require_water_sense_certification']">
+        <div class="col-md-4 key">Is the project seeking WaterSense Certification?</div>
+        <div class="col-md-8 value">[[ regionObject.object['is_require_water_sense_certification'] ? 'Yes' : 'No' ]]
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 key">Sampling:</div>
+        <div class="col-md-8 value">[[ regionObject.object['registration_sampling_display'] || 'N/A' ]]</div>
+    </div>
+</div>
+
+<div ng-if="regionObject.object.vr_batch_submission_parent_rough_home_address || regionObject.object.vr_batch_submission_parent_final_home_address">
+    <div class="row">
+        <div class="col-md-6 key">
+            Rough Batch Parent Project:
+        </div>
+        <div class="col-md-6 key">
+            Final Batch Parent Project:
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-12"
+                 ng-bind-html="regionObject.object.vr_batch_submission_parent_rough_home_address || '-' | trustAsHtml"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-12"
+                 ng-bind-html="regionObject.object.vr_batch_submission_parent_final_home_address || '-' | trustAsHtml"></div>
+        </div>
+    </div>
+
+    <div ng-if="(regionObject.object.vr_batch_submission_parent_childrens_rough && regionObject.object.vr_batch_submission_parent_childrens_rough.length > 0) || (regionObject.object.vr_batch_submission_parent_childrens_final && regionObject.object.vr_batch_submission_parent_childrens_final.length > 0)">
+        <div class="row">
+            <div class="col-md-6 key">
+                Rough Batch Child Projects:
+            </div>
+            <div class="col-md-6 key">
+                Final Batch Child Projects:
+            </div>
+        </div>
+        <div class="row customer-hirl-project-childrens-list">
+            <div class="col-md-6">
+                <div class="row" ng-repeat="children in regionObject.object.vr_batch_submission_parent_childrens_rough">
+                    <div class="col-md-12 value" ng-bind-html="children.home_status_address || '-' | trustAsHtml"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row" ng-repeat="children in regionObject.object.vr_batch_submission_parent_childrens_final">
+                    <div class="col-md-12 value" ng-bind-html="children.home_status_address || '-' | trustAsHtml"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div ng-if="(regionObject.object.vr_batch_submission_rough_childrens && regionObject.object.vr_batch_submission_rough_childrens.length > 0) || (regionObject.object.vr_batch_submission_final_childrens && regionObject.object.vr_batch_submission_final_childrens.length > 0)">
+    <div class="row">
+        <div class="col-md-6 key">
+            Rough Batch Child Projects:
+        </div>
+        <div class="col-md-6 key">
+            Final Batch Child Projects:
+        </div>
+    </div>
+    <div class="row customer-hirl-project-childrens-list">
+        <div class="col-md-6">
+            <div class="row" ng-repeat="children in regionObject.object.vr_batch_submission_rough_childrens">
+                <div class="col-md-12 value" ng-bind-html="children.home_status_address || '-' | trustAsHtml"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row" ng-repeat="children in regionObject.object.vr_batch_submission_final_childrens">
+                <div class="col-md-12 value" ng-bind-html="children.home_status_address || '-' | trustAsHtml"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<td>[[ regionObject.object.history_date ]]</td>
+<td>[[ regionObject.object.history_user ]]</td>
+<td>[[ regionObject.object.history_object ]]</td>
+<td>[[ regionObject.object.history_type ]]</td>
+<td>
+    <div ng-class="{odd: $odd, even: $even}" ng-repeat="item in regionObject.object.delta.fields track by $index">[[ item ]]</div>
+</td>
+<td>
+    <div ng-class="{odd: $odd, even: $even}" ng-repeat="item in regionObject.object.delta.previous track by $index">[[ item ]]</div>
+</td>
+<td>
+    <div ng-class="{odd: $odd, even: $even}" ng-repeat="item in regionObject.object.delta.updated track by $index">[[ item ]]</div>
+</td>

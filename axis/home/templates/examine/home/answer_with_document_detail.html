@@ -1,0 +1,66 @@
+<div>
+    <div class="panel-chips clearfix">
+        <div class="pull-left">
+            <span class="panel-chip">Answer: <strong><em>[[ regionObject.object.answer ]]</em></strong></span>
+            <span class="panel-chip">By: <em>[[ regionObject.object.full_name ]]</em></span>
+            <span class="panel-chip">On: <em>[[ regionObject.object.created_date ]]</em></span>
+        </div>
+        <div class="pull-right">
+            <span class="panel-chip text-info" ng-if="regionObject.object.email_sent">
+                <i class="fa fa-fw fa-share"></i>Email sent</span>
+            <span class="panel-chip text-info" ng-if="regionObject.object.failure_is_reviewed">
+                <i class="fa fa-fw fa-check-square-o"></i>Reviewed</span>
+            <span class="panel-chip text-danger" ng-if="regionObject.object.is_considered_failure">
+                <i class="fa fa-fw fa-times"></i>Failing answer</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" ng-show="regionObject.object.num_images">
+            <strong>Photos</strong>
+            <div class="list-group">
+                <a ng-href="[[ document.url ]]" class="list-group-item"
+                   ng-repeat="document in regionObject.object.customer_documents"
+                   ng-if="document.type == 'image'">
+
+                    <div class="media">
+                        <div class="media-left text-center">
+                            <i class="fa fa-fw fa-cloud-download text-primary"
+                               style="font-size: 20px"></i>
+                        </div>
+                        <div class="media-body text-primary">
+                            [[ document.filename ]]
+                            <small class="text-muted" style="white-space: nowrap"
+                                  ng-if="document.filesize">
+                                ([[ document.filesize | bytes ]])
+                            </small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-6" ng-show="regionObject.object.num_documents">
+            <strong>Documents</strong>
+            <div class="list-group">
+                <a ng-href="[[ document.url ]]" class="list-group-item"
+                   ng-repeat="document in regionObject.object.customer_documents"
+                   ng-if="document.type == 'document'">
+                    <div class="media">
+                        <div class="media-left">
+                            <i class="fa fa-fw fa-cloud-download text-primary"
+                               style="font-size: 20px;"></i>
+                        </div>
+                        <div class="media-body text-primary">
+                            [[ document.filename ]]
+                            <small class="text-muted" style="white-space: nowrap"
+                                   ng-if="document.filesize">
+                                ([[ document.filesize | bytes ]])
+                            </small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

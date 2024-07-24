@@ -1,0 +1,22 @@
+[
+    {
+        "pk": 1,
+        "model": "floorplan.systemtype",
+        "fields": {
+            "is_public": true,
+            "company": "1",
+            "name": "HVAC System",
+            "description": "Heating, Cooling, and Ventilation System"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "floorplan.systemtype",
+        "fields": {
+            "is_public": true,
+            "company": "1",
+            "name": "Ventilation System",
+            "description": "All Air Infiltration Systems"
+        }
+    }
+]

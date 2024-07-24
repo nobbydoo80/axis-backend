@@ -1,0 +1,62 @@
+{% extends "base_form.html" %}
+{% load crispy_forms_filters %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block jquery_validate_rules %}
+    <script type="text/javascript">
+        $(function(){
+            $("#axis_form").validate({
+                rules: {
+                    username:{ required: true, alphanumeric: true, maxlength: 12, minlength: 3},
+                    password: {required:true, minlength: 6},
+                    new_password2: {required:true, equalTo: "#id_password"},
+                    csrfmiddlewaretoken:{required:true}
+                }
+            })
+        });
+    </script>
+{% endblock jquery_validate_rules %}
+
+{% block form_content %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">{{ form.username|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">{{ form.password|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">{{ form.new_password2|as_crispy_field }}</div>
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Passwords must:
+                    <div class="pull-right">
+                        <a href="https://www.random.org/strings/?num=10&len=10&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new" target="_blank"
+                           class="btn btn-default btn-xs">
+                            Need Password
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>Password must be longer than 6 characters.</li>
+                        <li>Not be based upon common dictionary words or sequences (such as 12345)
+                        </li>
+                        <li>Password must contain at least 1 uppercase letter.</li>
+                        <li>Password must contain at least 1 lowercase letter.</li>
+                        <li>Password must contain at least 1 digit.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

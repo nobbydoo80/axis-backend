@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{# Generic base for detail views. #}
+
+{% block page_title %}{{ verbose_name|capfirst }}: {{ object }}{% endblock page_title %}
+
+{% block content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-{% block title-width %}9{% endblock %}">
+                <p>
+                {% block header_text %}
+                    <span>Viewing {{ verbose_name|capfirst }}:</span>
+                    <span class="value">{{ object }}</span>
+                {% endblock header_text %}</p>
+            </div>
+            <div class="col-md-{% block actions-width %}3{% endblock %}">
+                <div class="text-right">
+                    {% block action_buttons %}
+    					{% block delete_button %}
+    	                    {% if can_delete %}
+    	                        <a href="{{ delete_url }}" class="btn btn-primary">Delete</a>
+    	                    {% endif %}
+    					{% endblock %}
+    					{% block edit_button %}
+    	                    {% if can_edit %}
+    	                        &nbsp;
+    	                        <a href="{{ edit_url }}" class="btn btn-primary">Edit</a>
+    	                    {% endif %}
+    					{% endblock %}
+                    {% endblock action_buttons %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% if relationship_not_attached %}
+        <div class="alert alert-warning">
+            {{ user.company }} currently has a relationship with '{{ object }}' but it is not active.
+            <a class="btn btn-primary btn-xs add_relationship pull-right" href="{{ relationship_url }}">Reinstate this Relationship</a>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                $(".add_relationship, .reject_relationship").on('click', function(e){
+                    e.preventDefault();
+                    var self = $(this);
+                    var url = self.attr('href');
+                    $.ajax({
+                        url: url,
+                        method: 'POST',
+                        success: function(data, status, text_status){
+                            window.location.reload(true);
+                            self.parent().html(data.message)
+                        }
+                    })
+                })
+            })
+        </script>
+    {% endif %}
+
+    {% block detail_content %}
+        {# Main details go here. #}
+    {% endblock detail_content %}
+
+    <br><br>
+    <div class="row">
+        {% block tabs %}
+            {# Allocated area for content tabs. #}
+        {% endblock tabs %}
+    </div>
+
+{% endblock content %}

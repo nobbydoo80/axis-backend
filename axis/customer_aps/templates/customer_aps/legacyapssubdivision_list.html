@@ -1,0 +1,12 @@
+{% extends 'base_list.html' %}
+
+{% block style_sheet %}
+{{ block.super }}
+    <style type="text/css">
+        .datatable th[data-name="name"] { width: 30% }
+        .datatable th[data-name="subdivision-id"] { width: 15% }
+        .datatable th[data-name="city"] { width: 15% }
+        .datatable th[data-name="state"] { width: 15% }
+        .datatable th[data-name="phone"] { width: 15% }
+    </style>
+{% endblock %}

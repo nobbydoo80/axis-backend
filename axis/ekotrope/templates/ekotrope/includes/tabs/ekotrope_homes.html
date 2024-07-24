@@ -1,0 +1,63 @@
+{% with homes=homes.all %}
+{% if homes %}
+    <table class="table table-bordered">
+        <tbody>
+            {% for home in homes %}
+                {% if forloop.counter0|divisibleby:2 %}
+                    <tr>
+                {% endif %}
+                <td class="col-md-6">
+                    <a href="{{ home.get_absolute_url }}">{{ home }}</a>
+                </td>
+                {% if forloop.counter|divisibleby:2 %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    No homes are using this data.
+{% endif %}
+{% endwith %}
+
+{% if object.references.all|length %}
+<div class="row"><div class="col-md-12">
+    <hr />
+    References:
+    <ul>
+        {% for item in object.references.all %}
+            {% if request.user == object.company or request.user.is_superuser %}
+                <li><a href="{{ item.get_absolute_url }}">{{ item }}</a></li>
+            {% else %}
+                <li>{{ item }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div></div>
+{% endif %}
+
+{% if request.user == object.company or request.user.is_superuser %}
+    {% if object.similar.all|length %}
+    <div class="row"><div class="col-md-12">
+        <hr />
+        Similar Data:
+        <ul>
+            {% for item in object.similar.all %}
+                <li><a href="{{ item.get_absolute_url }}">{{ item }}</a></li>
+            {% endfor %}
+        </ul>
+    </div></div>
+    {% endif %}
+{% endif %}
+
+{% if object.base_building.all|length %}
+<div class="row"><div class="col-md-12">
+    <hr />
+    Base Building:
+    <ul>
+        {% for item in object.base_building.all %}
+            <li><a href="{{ item.get_absolute_url }}">{{ item }}</a></li>
+        {% endfor %}
+    </ul>
+</div></div>
+{% endif %}

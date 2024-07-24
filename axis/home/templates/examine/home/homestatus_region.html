@@ -1,0 +1,75 @@
+{% extends "examine/angular_region_accordion.html" %}
+
+{% block panel_heading %}
+    {# Going to float right, needs to come before block.super's <action-set> #}
+    <program-progress-bar
+            object-id="regionObject.object.id"
+            progress-url="regionObject.object.progress_url"
+            has-ipp-payments="regionObject.object.has_ipp_payments"
+            object-state="regionObject.object.state"
+            certification-date="regionObject.object.certification_date"
+            region="region"
+    ></program-progress-bar>
+
+    {# Program name #}
+    {{ block.super }}
+
+    <span ng-if="regionObject.object.id && regionObject.object.certification_date === null"
+          class="label label-default">
+        [[ regionObject.object.state_name ]]
+    </span>
+
+{% endblock panel_heading %}
+
+{# Removes the leading "Program:" #}
+{% block heading %}{% if user.is_superuser %}[ [[ regionObject.object.id ]] ] {% endif %}<strong>[[ regionObject.object_name ]]</strong>{% endblock heading %}
+
+{% block panels %}
+    <div id="[[ regionObject.type_name ]]_[[ regionObject.id ]]_panel" class="row">
+        <div class="col-md-9">
+            {{ block.super }}
+
+            {# Displaying child panel as a sibling, instead of nesting it within the detail content. #}
+            <div ng-if="regionObject.helpers.machinery.hirl_project">
+                <axis-single-region options="regionObject.helpers.machinery.hirl_project"></axis-single-region>
+            </div>
+
+            <div ng-if="regionObject.helpers.machinery.annotations">
+                <div ng-if="regionObject.helpers.show_disclaimer"  ng-controller="NWESHDisclaimerController">
+                    <div collapse="!showDisclaimer" ng-if="regionObject.helpers.show_nwesh_disclaimer"><i>
+                        The Northwest ENERGY STAR® Homes program highly suggests that copies of
+                        ENERGY STAR checklists and supporting documentation are added to home records
+                        in Axis for supplemental record-saving. Checklists and other documents may be required
+                        and/or requested for review by Providers, QA Designees, utilities, H-QUITOs, NEEA,
+                        EPA, or by RESNET for quality assurance purposes. It is ultimately the discretion of
+                        Providers and QA Designees to require that Raters upload documentation to each
+                        home, sample set, or multifamily project in Axis. If checklists or other documents are not
+                        in Axis, contact the Rater who inspected the home.
+                    </i></div>
+                    <div collapse="!showDisclaimer" ng-if="regionObject.helpers.show_hp_disclaimer"><i>
+                        It is highly recommended that copies of supporting documentation are added to home records
+                        in Axis for supplemental record-saving. Checklists and other documents may be required
+                        and/or requested for review by utilities or NEEA for quality assurance purposes.
+                    </i></div>
+                    <a ng-click="toggleDisclaimer($event)" href>
+                        <span ng-show="showDisclaimer">Hide Prompt</span>
+                        <span ng-show="!showDisclaimer">Show Prompt</span>
+                    </a>
+                </div>
+                <axis-single-region options="regionObject.helpers.machinery.annotations"></axis-single-region>
+            </div>
+        </div>
+
+        <div class="col-md-3 requirements-sidebar" ng-if="regionObject.object.id">
+            <div>
+                <program-progress-list
+                    progress-url="regionObject.object.progress_url"
+                    type-name="regionobject.type_name"
+                    region-object="regionObject"
+                    region="region"
+                ></program-progress-list>
+                <generic-annotations-list></generic-annotations-list>
+            </div>
+        </div>
+    </div>
+{% endblock panels %}

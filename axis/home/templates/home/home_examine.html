@@ -1,0 +1,300 @@
+{% extends "base_examine_wide.html" %}
+{% load bootstrap_tags %}
+{% load static %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}home/examine{% if not debug %}.min{% endif %}.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}home/financial_checklist{% if not debug %}.min{% endif %}.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{% static 'customer_eto/permitandoccupancysettings.css' %}" type="text/css" media="screen, projection" />
+    <style>
+    html, body, .full-height{
+        height: 100%;
+    }
+    .scrollable{
+        height: 72vh;
+        overflow-x: hidden
+    }
+    .list-group.list-group-root {
+        padding: 0;
+        overflow: scroll;
+    }
+
+    .list-group.list-group-root .list-group {
+        margin-bottom: 0;
+    }
+
+    .list-group.list-group-root .list-group-item {
+        border-radius: 0;
+        border-width: 1px 0 0 0;
+    }
+
+    .list-group.list-group-root > .list-group-item:first-child {
+        border-top-width: 0;
+    }
+
+    .list-group.list-group-root > .list-group > .list-group-item {
+        padding-left: 30px;
+    }
+
+    .list-group.list-group-root > .list-group > .list-group > .list-group-item {
+        padding-left: 45px;
+    }
+    </style>
+{% endblock style_sheet %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script src="{% static 'js/relationship/relationship.js' %}"></script>
+    <script src="{{ STATIC_URL }}filehandling/examine/customer_documents.js"></script>
+    <script src="{{ STATIC_URL }}scheduling/js/tasks.js"></script>
+
+    <script type="text/javascript">
+        window.relationship_url = "{% url "relationship:sidebar_ajax" app_label='home' model='home' object_id="0" %}";
+        window.__ExamineSettings['can_add_qa'] = {{ show_qa|yesno:'true,false' }};
+    </script>
+    <script src="{% static 'home/examine.js' %}"></script>
+    <script src="{% static 'analytics/examine/analytics.js' %}"></script>
+
+    <script src="{% static 'vendors~checklist~collection.bundle.js' %}"></script>
+    {% if input_collection %}
+        <script>
+            {% if debug %}window["allow_debug"] = true;{% endif %}
+        </script>
+        <script src="{% static 'collection.bundle.js' %}"></script>
+    {% else %}
+        <script src="{% static 'checklist.bundle.js' %}"></script>
+    {% endif %}
+
+    {# JQUERY FILE UPLOAD SCRIPTS #}
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ui.widget@1.10.3/jquery.ui.widget.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.iframe-transport/1.0.1/jquery.iframe-transport.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.31.0/js/jquery.fileupload.min.js"></script>
+{% endblock javascript_head %}
+
+{% block axis_angular_dependencies %}
+    {{ block.super }}.concat([{% if input_collection %}'collection'{% else %}'checklist'{% endif %}])
+{% endblock %}
+
+{% block examine_init %}
+    {{ block.super }}
+    <script>
+        angular.module('examineApp').run(function($rootScope, $transitions, $state){
+            let name = window.location.hash.replace('#/', '').replace('/', '.')
+            if (!name) {
+                name = 'tabs.programs'
+            }
+            const unhook = $transitions.onStart({}, () => {
+                $rootScope.$emit('$stateChangeStart', { name }, {}, $state.current, {})
+                unhook();
+            })
+        })
+    </script>
+{% endblock examine_init %}
+
+{% block datatable_initialize %}
+    <script type="text/javascript">
+        angular.module('examineApp').run(function($rootScope, RegionService){
+            {% if view.create_new %}
+                $rootScope.$watch(function(){
+                    return $rootScope.examineApp.creating;
+                }, function(newValue, oldValue){
+                    if (newValue !== oldValue && newValue === false) {
+                        var primaryRegion = RegionService.getRegionFromTypeName('{{ primary_type }}');
+                        var object_id = primaryRegion.object.id;
+
+                        var tables = $('.existing-object-only .datatable');
+                        tables.each(function(){
+                            var datatable = $(this);
+                            var source_url = datatable.attr('data-source-url');
+                            source_url = source_url.replace(/\/(None|0)($|\/)/, "/" + object_id + "$2");
+                            datatable.attr('data-source-url', source_url);
+                        });
+                        datatableview.initialize(tables);
+                    }
+                });
+            {% else %}
+                $(function(){
+                    datatableview.initialize($('.existing-object-only .datatable'));
+                });
+            {% endif %}
+        });
+    </script>
+{% endblock datatable_initialize %}
+
+
+{% block primary_content %}
+    {% if not is_contributor %}
+        <div class="alert alert-info">
+            This home has been shared with you by {{ association_owners|join:", " }}.
+        </div>
+    {% endif %}
+    {{ block.super }}
+{% endblock primary_content %}
+
+
+{% block tabs %}
+    <tabset>
+
+        <tab tab-helper endpoint="tabs.programs" heading="Programs">
+            <axis-region-set options="pageRegions.home_status"></axis-region-set>
+        </tab>
+
+        <tab tab-helper endpoint="tabs.companies" heading="Companies"
+             disabled="examineApp.creating">
+            <div class="row" ng-if="!examineApp.creating">
+                <div class="col-md-9">
+                    <axis-single-region options="pageRegions.relationships"></axis-single-region>
+                </div>
+            </div>
+        </tab>
+
+        {% if is_contributor %}
+            <tab tab-helper endpoint="tabs.users" heading="Contacts">
+                <axis-region-set options="pageRegions.hirl_project_registration_home_status"></axis-region-set>
+            </tab>
+        {% endif %}
+
+        {% if show_invoicing_tab %}
+            <tab tab-helper endpoint="tabs.invoicing" heading="Invoicing">
+                <axis-region-set options="pageRegions.invoice_home_status"></axis-region-set>
+            </tab>
+        {% endif %}
+
+        {% if is_contributor %}
+            <tab tab-helper endpoint="tabs.incentives" heading="Incentive Payments"
+                 disabled="examineApp.creating || !{{ ipp_objects|length }}">
+                {% if ipp_objects %}
+                <div class="row" ng-if="!examineApp.creating">
+                    <div class="col-md-9">
+                        {% include 'home/includes/tab_incentive_payments.html' with object_list=ipp_objects %}
+                    </div>
+                </div>
+                {% endif %}
+            </tab>
+        {% endif %}
+
+        {% if is_contributor %}
+            <tab tab-helper endpoint="tabs.qa" heading="QA" disabled="examineApp.creating || !{{ show_qa|yesno:'true,false' }}">
+                {% if has_mf_qa %}
+                    <div class="alert alert-info">
+                        This unit is part of a multi-family group.  It's QA can be managed from its
+                        subdivision,
+                        <a href="{% url "subdivision:view" object.subdivision.id %}#/tabs/qa">{{ object.subdivision }}</a>
+                    </div>
+                {% endif %}
+                <div ng-controller="QAStatusController">
+                    <axis-region-set options="pageRegions.qa_status"></axis-region-set>
+                </div>
+            </tab>
+        {% endif %}
+
+        {% if is_contributor and show_analytics %}
+            <tab tab-helper endpoint="tabs.analytics" heading="Analytics" disabled="examineApp.creating">
+                <axis-region-set options="pageRegions.analytics"></axis-region-set>
+            </tab>
+        {% endif %}
+
+        <tab tab-helper badge-counter="examineApp.getRegionCounter"
+                        badge-counter-types="['home_documents']"
+                        badge-counter-extra="{{ extra_document_count }}"
+                        endpoint="tabs.documents">
+            <tab-heading>
+                Documents
+                <i ng-hide="badgeController.isLoaded" class="fa fa-spinner fa-fw fa-spin"></i>
+                <span class="badge">[[ badgeController.count ]]</span>
+            </tab-heading>
+            <div class="row" ng-show="badgeController.count > 1" ng-controller="CustomerDocumentTabController">
+                <div class="col-md-12 text-right" style="margin-bottom: 2px;">
+                    <button class="btn btn-primary btn-xs"
+                            ng-click="downloadAll($event, '/api/v3/homes/{{ object.id }}/documents/download_all/');">
+                        Download All
+                        <i class="fa fa-fw fa-spin fa-spinner" ng-if="downloadAllIsLoading"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row" ng-if="pageRegions.home_document_actions" style="margin-bottom: 2px;">
+                <div class="col-md-12">
+                    <axis-single-region options="pageRegions.home_document_actions"></axis-single-region>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <axis-region-set options="pageRegions.documents"></axis-region-set>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <axis-region-set options="pageRegions.answers_with_docs"></axis-region-set>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <axis-region-set options="pageRegions.qaanswers_with_docs"></axis-region-set>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <axis-region-set options="pageRegions.qanotes_with_docs"></axis-region-set>
+                </div>
+            </div>
+        </tab>
+
+        {% if object.pk %}
+            <tab tab-helper endpoint="tabs.gallery" heading="Gallery">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="home-photos">
+                        </div>
+
+                        <script>
+                            $('#home-photos').load("{% url 'home:home_photo' object.pk %}");
+                        </script>
+                    </div>
+                </div>
+            </tab>
+        {% endif %}
+
+        <tab tab-helper endpoint="tabs.checklist" heading="Checklist" disabled="examineApp.creating">
+            {% if input_collection %}
+                <input-collector home-id="{{ object.id }}"></input-collector>
+            {% else %}
+                <div checklist home-id="{{ object.id }}" eep-program-id="{{ eep_program_ids }}" debug="false"></div>
+            {% endif %}
+        </tab>
+
+        <tab tab-helper endpoint="tabs.tasks" heading="Scheduling">
+            <div class="row">
+                <div class="col-md-12">
+                    <axis-region-set options="pageRegions.home_task"></axis-region-set>
+                </div>
+            </div>
+        </tab>
+
+        {% if is_contributor %}
+            <tab tab-helper endpoint="tabs.history" heading="History"
+                 disabled="examineApp.creating">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="existing-object-only">
+                            {% bootstrap_accordion id="history_accordion" %}
+
+                            {% panel "Home History" %}
+                            {% include "simple_history/includes/history_list.html" with object=object app_label="home" model="home" field="id" constraint=object.id %}
+
+                            {% panel "Project Status History" %}
+                            {% include "simple_history/includes/history_list.html" with object=object app_label="home" model="eepprogramhomestatus" field="home" constraint=object.id %}
+
+                            {% panel "Home Document History" %}
+                            {% include "simple_history/includes/history_list.html" with object=object app_label="filehandling" model="customerdocument" content_type_id=object.content_type_id field="object_id" constraint=object.id %}
+
+                            {% endbootstrap_accordion %}
+                        </div>
+                    </div>
+                </div>
+            </tab>
+        {% endif %}
+
+    </tabset>
+{% endblock tabs %}

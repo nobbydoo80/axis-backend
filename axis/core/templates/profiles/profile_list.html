@@ -1,0 +1,8 @@
+{% extends "base_list.html" %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <style type="text/css">
+        .datatable th[data-name="phone-number"] { width: 150px; }
+    </style>
+{% endblock style_sheet %}

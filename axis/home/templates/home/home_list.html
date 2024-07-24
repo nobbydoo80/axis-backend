@@ -1,0 +1,98 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .dataTable th[data-name="lot"] { width: 10%; }
+        .dataTable th[data-name="address"] { width: 25%; }
+        .dataTable th[data-name="subdivision"] { width: 20%; }
+        .dataTable th[data-name="floorplan"] { width: 20%; }
+        .dataTable th[data-name="eep-programs"] { width: 20%; }
+        .dataTable th[data-name="complete"],
+        .dataTable th[data-name="ms-date"] { width: 5%; }
+    </style>
+{% endblock %}
+
+{% block list_content %}
+
+    {% if custom_home_relationships|length %}
+        <hr/>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Custom homes which {{ request.user.company }} does not have an association with</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Lot</th>
+                            <th>Address</th>
+                            <th>Builder</th>
+                            <th>Program</th>
+                            {% if perms.home.change_home %}
+                                <th>Associations</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    {% for home in custom_home_relationships %}
+                        <tr>
+                            <td><a href="{{ home.get_absolute_url }}">{{ home.lot_number }}</a></td>
+                            <td>{{ home.get_addr }}</td>
+                            <td>{{ home.get_builder }}</td>
+                            <td>
+                                {% with stats=home.get_eep_program_stats %}
+                                    {% for stat in stats %}
+                                        {{ stat }}, {{ stat.eep_program }}, {{ stat.eep_program.owner.slug }}
+                                    {% endfor %}
+
+
+                                {% endwith %}
+                            </td>
+                            <td>
+                            {% if perms.home.change_home %}
+                                <a url="{% url 'apiv2:relationship-add' model='home' app_label='home' object_id=home.id %}"
+                                   class="add_relationship" href="{% url "relationship:add_id" model="home" app_label="home" object_id=home.id %}">Add</a>
+                                /
+                                <a url="{% url 'apiv2:relationship-reject' model='home' app_label='home' object_id=home.id %}"
+                                   class="reject_relationship" href="{% url "relationship:reject_id" model="home" app_label="home" object_id=home.id %}">Reject</a>
+                            {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    {% endif %}
+
+    {{ block.super }}
+    {% include "core/includes/address_confirmation_legend.html" %}
+
+{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript">
+    $(function(){
+        $(".add_relationship, .reject_relationship").on('click', function(e){
+            e.preventDefault();
+            var self = $(this);
+            var url = $(this).attr('url');
+            $.ajax({
+                url: url,
+                method: 'POST',
+                success: function(data, status, text_status){
+                    self.parent().html(data.message);
+                }
+            })
+        })
+    })
+    </script>
+{% endblock %}

@@ -1,0 +1,63 @@
+
+<br>
+<h4>Home Size</h4>
+<div class="row">
+    <div class="col-md-9 key">Dwelling Type:</div>
+    <div class="col-md-3 value">[[ regionObject.object['dwelling-type'] || '-' ]]</div>
+</div>
+<div class="row">
+    <ul>
+        <li>Small Dwelling: 1.5 Credits</li>
+        <li>Medium Dwelling: 3.5 Credits</li>
+        <li>Large Dwelling: 4.5 Credits</li>
+    </ul>
+</div>
+<br>
+<h4>Energy Code Compliance Options</h4>
+<div class="row">
+    <div class="col-md-9 key">1. Building Envelope Type:</div>
+    <div class="col-md-3 value">[[ regionObject.object['efficient-building-envelope'] || '-' ]]</div>
+</div>
+
+<div class="row">
+    <div class="col-md-9 key">2. Air Leakage Control & Efficient Ventilation</div>
+    <div class="col-md-3 value">[[ regionObject.object['efficient-building-air-leakage'] || '-' ]]</div>
+</div>
+
+<div class="row">
+    <div class="col-md-9 key">3. High Efficiency HVAC</div>
+    <div class="col-md-3 value">[[ regionObject.object['efficient-building-hvac'] || '-' ]]</div>
+</div>
+
+<div class="row">
+    <div class="col-md-9 key">4. High Efficiency HVAC Distribution</div>
+    <div class="col-md-3 value">[[ regionObject.object['efficient-building-hvac-distribution'] || '-' ]]</div>
+</div>
+
+<div class="row">
+    <div class="col-md-9 key">5a.  Efficient Water Heating</div>
+    <div class="col-md-3 value">[[ regionObject.object['efficient-building-water-heating-5a'] || '-' ]]</div>
+</div>
+
+<div class="row">
+    <div class="col-md-9 key">5b/c.  Efficient Water Heating</div>
+    <div class="col-md-3 value">[[ regionObject.object['efficient-building-water-heating-5bc'] || '-' ]]</div>
+</div>
+
+<div class="row">
+    <div class="col-md-9 key">5d.  Efficient Water Heating</div>
+    <div class="col-md-3 value">[[ regionObject.object['efficient-building-water-heating-5d'] || '-' ]]</div>
+</div>
+
+<div class="row">
+    <div class="col-md-9 key">6. Renewable Electric Energy</div>
+    <div class="col-md-3 value">[[ regionObject.object['efficient-building-renewable-energy'] || '-' ]]</div>
+</div>
+
+
+<br/><br/>
+<div class="row">
+    <div class="col-md-9 key"><strong>Total Credits</strong></div>
+    <div class="col-md-3 value"><strong>[[ regionObject.object['wa-code-study-score'] || '-' ]]</strong></div>
+</div>
+<br/>

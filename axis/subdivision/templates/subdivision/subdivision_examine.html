@@ -1,0 +1,190 @@
+{% extends "base_examine_wide.html" %}
+{% load bootstrap_tags %}
+{% load static %}
+
+{% block page_title %}{% if object.is_multi_family %}Multi-Family Project:{% else %}Subdivision:{% endif %} {{ object }}{% endblock page_title %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}subdivision/examine.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}home/financial_checklist.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{% static 'customer_eto/permitandoccupancysettings.css' %}" type="text/css" media="screen, projection" />
+{% endblock style_sheet %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}subdivision/examine.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/relationship/relationship.js"></script>
+    <script type="text/javascript">
+        function confirm_datatable_options(options){
+            var green_marker = '//www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png';
+            function getLink(){
+                return '<a href="https://maps.google.com/maps?q=' + this.coords.latitude + '+' + this.coords.longitude + '" target="_blank" >View in Google</a>';
+            }
+            options.fnRowCallback = function(el, data){
+                if (data[4] === undefined) {
+                    return
+                }
+                var coords = data[4].split(' ').map(parseFloat);
+                if(!coords[0] || !coords[1]) return;
+                var marker = {
+                    coords: {latitude: coords[0], longitude: coords[1]},
+                    id: window.__extraMapMarkers.length + 2,
+                    show: false,  // determines if the info box is going to be shown
+                    windowOptions: {visible: false},
+                    title: $(data[0]).text(),
+                    icon: green_marker,
+                    link: getLink
+                };
+                marker.link = marker.link();
+                window.__extraMapMarkers.push(marker);
+            };
+            return options;
+        }
+
+        window.relationship_url = "{% url "relationship:sidebar_ajax" app_label='subdivision' model='subdivision' object_id="0" %}";
+        window.__ExamineSettings['can_add_qa'] = {{ show_qa|yesno:'true,false' }};
+        angular.module('examineApp').run(function($rootScope){
+            $rootScope.$on('SingleRegionLoaded:{{ primary_type }}:detailTemplateLoaded', build_relationship_sidebar);
+            $rootScope.$on('SingleRegionLoaded:subdivision_relationships:success', build_relationship_sidebar);
+        })
+    </script>
+{% endblock javascript_head %}
+
+{% block datatable_initialize %}
+    <script type="text/javascript">
+        angular.module('examineApp').run(function($rootScope, RegionService){
+            {% if view.create_new %}
+                $rootScope.$watch(function(){
+                    return $rootScope.examineApp.creating;
+                }, function(newValue, oldValue){
+                    if (newValue !== oldValue && newValue === false) {
+                        var primaryRegion = RegionService.getRegionFromTypeName('{{ primary_type }}');
+                        var object_id = primaryRegion.object.id;
+
+                        var tables = $('.existing-object-only .datatable');
+                        tables.each(function(){
+                            var datatable = $(this);
+                            var source_url = datatable.attr('data-source-url');
+                            source_url = source_url.replace(/\/(None|0)($|\/)/, "/" + object_id + "$2");
+                            datatable.attr('data-source-url', source_url);
+                        });
+                        datatableview.initialize(tables);
+                    }
+                });
+            {% else %}
+                $(function(){
+                    datatableview.initialize($('.existing-object-only .datatable'));
+                });
+            {% endif %}
+        });
+    </script>
+{% endblock datatable_initialize %}
+
+{% block tabs %}
+    <div class="row">
+        <div class="col-md-12">
+            <tabset>
+
+                {% if hirl_project_registration %}
+                    <tab tab-helper endpoint="tabs.customer_hi_homes" heading="Projects"
+                     disabled="examineApp.creating">
+                    <div>
+                        <h3><span id="id_home_count"><i class="fa fa-spinner fa-spin"></i></span> Projects</h3>
+                    </div>
+
+                    <div class="existing-object-only">{{ customer_hirl_homes_datatable }}</div>
+                </tab>
+                {% else %}
+                    <tab tab-helper endpoint="tabs.homes" heading="Projects"
+                     disabled="examineApp.creating">
+                        <div>
+                            {% if perms.home.add_home %}
+                                <div class="pull-right">
+                                    <a class="btn btn-default btn-xs" href="{% url "home:upload" %}">Bulk Upload</a>
+                                    <a class="btn btn-primary btn-xs" href="{% url "home:add" %}">Add</a>
+                                </div>
+                            {% endif %}
+                            <h3><span id="id_home_count"><i class="fa fa-spinner fa-spin"></i></span> Projects</h3>
+                        </div>
+
+                        <div class="existing-object-only">{{ homes_datatable }}</div>
+                    </tab>
+                {% endif %}
+
+                <tab tab-helper endpoint="tabs.companies" heading="Companies"
+                     disabled="examineApp.creating">
+                    <axis-single-region options="pageRegions.relationships"></axis-single-region>
+                </tab>
+
+                <tab tab-helper endpoint="tabs.users" heading="Contacts" ng-if="pageRegions.hirl_project_registration_home_status">
+                    <axis-region-set options="pageRegions.hirl_project_registration_home_status"></axis-region-set>
+                </tab>
+
+                {% if show_samplesets %}
+                <tab tab-helper endpoint="tabs.samplesets" heading="Sample Sets"
+                     disabled="examineApp.creating">
+                    <div>
+                        {% if perms.sampleset.add_sampleset %}
+                            <div class="pull-right">
+                                <a class="btn btn-default btn-xs" href="{% url "home:upload" %}">Bulk Upload</a>
+                                <a class="btn btn-primary btn-xs" href="{% url "home:add" %}">Add</a>
+                            </div>
+                        {% endif %}
+                        <h3><span id="id_count"><i class="fa fa-spinner fa-spin"></i></span> Sample Sets</h3>
+                    </div>
+
+                    <div class="existing-object-only">{{ samplesets_datatable }}</div>
+                </tab>
+                {% endif %}
+
+                {% if show_qa %}
+                <tab tab-helper endpoint="tabs.qa" heading="QA">
+                    <axis-region-set options="pageRegions.qa_status"></axis-region-set>
+                </tab>
+                {% endif %}
+
+                <tab tab-helper badge-counter="examineApp.getRegionCounter"
+                                badge-counter-types="['subdivision_documents']"
+                                endpoint="tabs.documents">
+                    <tab-heading>
+                        Documents
+                        <i ng-hide="badgeController.isLoaded" class="fa fa-spinner fa-fw fa-spin"></i>
+                        <span class="badge">[[ badgeController.count ]]</span>
+                    </tab-heading>
+
+                    <axis-region-set options="pageRegions.documents"></axis-region-set>
+                </tab>
+
+                {% if show_floorplans %}
+                <tab tab-helper endpoint="tabs.floorplans" heading="Floorplans">
+                    <div ng-hide="examineApp.creating">
+                        <h3><span id="id_floorplan_count"><i class="fa fa-spinner fa-spin"></i></span> Floorplans</h3>
+                        <div class="existing-object-only">{{ floorplans_datatable }}</div>
+                    </div>
+                </tab>
+                {% endif %}
+
+                <tab tab-helper endpoint="tabs.history" heading="History"
+                     disabled="examineApp.creating">
+
+                    <div class="existing-object-only">
+                        {% bootstrap_accordion id="history_accordion" %}
+
+                            {% panel heading="Subdivision History" %}
+                                {% include "simple_history/includes/history_list.html" with object=object app_label="subdivision" model="subdivision" field="id" constraint=object.id %}
+
+                            {% panel heading="Document History" %}
+                                {% include "simple_history/includes/history_list.html" with object=object app_label="filehandling" model="customerdocument" content_type_id=object.content_type_id field="object_id" constraint=object.id %}
+
+                            {# {% panel heading="Floorplan History" %} #}
+                            {#     {% include "simple_history/includes/history_list.html" with object=object app_label="floorplan" model="floorplan" field="subdivision" constraint=object.id %} #}
+
+                        {% endbootstrap_accordion %}
+                    </div>
+                </tab>
+
+            </tabset>
+        </div>
+    </div>
+{% endblock tabs %}

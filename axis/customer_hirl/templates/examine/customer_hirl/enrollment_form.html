@@ -1,0 +1,329 @@
+{% load static %}
+
+<div ng-controller="BuilderAgreementEnrollmentFormController">
+    <h3>[[ regionObject.helpers.ui_SECTION_LABELS.mailing_information ]]:</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Mailing Address:</h4>
+        </div>
+        <div class="col-md-6">
+            <h4>
+                Shipping/Physical Address:
+                <button class="btn btn-primary btn-xs" ng-click="useDifferentShippingAddress()">
+                    <span ng-hide="differentShippingAddress">Click if different from Mailing Address</span>
+                    <span ng-show="differentShippingAddress">Use mailing address</span>
+                </button>
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <axis-field field="regionObject.fields.mailing_geocode_street_line1"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <axis-field field="regionObject.fields.mailing_geocode_street_line2"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-8">
+                            <axis-field field="regionObject.fields.mailing_geocode_city"
+                                        on-change="mailingCityChanged($item)"/>
+                        </div>
+                        <div class="col-md-4">
+                            <axis-field field="regionObject.fields.mailing_geocode_zipcode"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" ng-show="differentShippingAddress">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <axis-field
+                                        field="regionObject.fields.shipping_geocode_street_line1"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <axis-field field="regionObject.fields.shipping_geocode_street_line2"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-8">
+                            <axis-field field="regionObject.fields.shipping_geocode_city"/>
+                        </div>
+                        <div class="col-md-4">
+                            <axis-field field="regionObject.fields.shipping_geocode_zipcode"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" ng-hide="differentShippingAddress">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>[[ regionObject.fields.shipping_geocode_street_line1.label
+                                    ]]</label>
+                                <div style="padding: 0.75rem 0;">
+                                    <input type="text" class="form-control"
+                                           ng-value="regionObject.object.mailing_geocode_street_line1"
+                                           disabled="true">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>[[ regionObject.fields.shipping_geocode_street_line2.label
+                                    ]]</label>
+                                <div style="padding: 0.75rem 0;">
+                                    <input type="text" class="form-control"
+                                           ng-value="regionObject.object.mailing_geocode_street_line2"
+                                           disabled="true">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>[[ regionObject.fields.shipping_geocode_city.label ]]</label>
+                                <div style="padding: 0.75rem 0;">
+                                    <input type="text" class="form-control"
+                                           ng-value="mailingCity"
+                                           disabled="true">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>[[ regionObject.fields.shipping_geocode_zipcode.label
+                                    ]]</label>
+                                <div style="padding: 0.75rem 0;">
+                                    <input type="text" class="form-control"
+                                           ng-value="regionObject.object.mailing_geocode_zipcode"
+                                           disabled="true">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <axis-field field="regionObject.fields.website"/>
+                </div>
+            </div>
+
+            <hr>
+            <h3>[[ regionObject.helpers.ui_SECTION_LABELS.contact_information ]]:</h3>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <h4>[[ regionObject.helpers.ui_SECTION_LABELS.primary_contact ]]:</h4>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.primary_contact_first_name"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.primary_contact_last_name"/>
+                        </div>
+
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.primary_contact_email_address"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.primary_contact_phone_number"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.primary_contact_title"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.primary_contact_cell_number"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>[[ regionObject.helpers.ui_SECTION_LABELS.secondary_contact ]]:</h4>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.secondary_contact_first_name"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.secondary_contact_last_name"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field
+                                    field="regionObject.fields.secondary_contact_email_address"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.secondary_contact_phone_number"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.secondary_contact_title"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.secondary_contact_cell_number"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>[[ regionObject.helpers.ui_SECTION_LABELS.payment_contact ]]:</h4>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.payment_contact_first_name"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.payment_contact_last_name"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.payment_contact_email_address"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.payment_contact_phone_number"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.payment_contact_title"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.payment_contact_cell_number"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row form-group">
+                        <div class="col-md-12 padded-3">
+                            <axis-field
+                                    field="regionObject.fields.use_payment_contact_in_ngbs_green_projects"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>[[ regionObject.helpers.ui_SECTION_LABELS.marketing_contact ]]:</h4>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.marketing_contact_first_name"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.marketing_contact_last_name"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field
+                                    field="regionObject.fields.marketing_contact_email_address"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.marketing_contact_phone_number"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.marketing_contact_title"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.marketing_contact_cell_number"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>[[ regionObject.helpers.ui_SECTION_LABELS.website_contact ]]:</h4>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.website_contact_first_name"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.website_contact_last_name"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.website_contact_email_address"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.website_contact_phone_number"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.website_contact_title"/>
+                        </div>
+                        <div class="col-md-6">
+                            <axis-field field="regionObject.fields.website_contact_cell_number"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <h3>Preview of Legal Agreement (electronic signature will be required via DocuSign):</h3>
+            <div class="row">
+                <div class="col-md-12" ng-switch="[[ regionObject.helpers.ca_version_to_sign ]]">
+                    <iframe style="width: 100%; height: 25rem"
+                            src="{% static 'customer_hirl/builder_embedded_agreement.pdf' %}"
+                            ng-switch-when="1"></iframe>
+                    <iframe style="width: 100%; height: 25rem"
+                            src="{% static 'customer_hirl/builder_embedded_agreement_v2.pdf' %}"
+                            ng-switch-when="2"></iframe>
+                    <iframe style="width: 100%; height: 25rem"
+                            src="{% static 'customer_hirl/builder_embedded_agreement_v3.pdf' %}"
+                            ng-switch-when="3"></iframe>
+                    <iframe style="width: 100%; height: 25rem"
+                            src="{% static 'customer_hirl/builder_embedded_agreement_v4.pdf' %}" ng-switch-default></iframe>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    By clicking "Submit for Review and Approval by NGBS" you are acknowledging that
+                    your
+                    company agrees to the legal terms and conditions as stated above. Once you click
+                    “Submit for Review and Approval by NGBS”, a legal agreement will be emailed to
+                    the
+                    Primary Contact specified above for signature. This legal agreement must be
+                    signed,
+                    dated, and returned prior to participation in an NGBS program. If you do not
+                    agree to
+                    the terms and conditions as stated above, or if you have any questions prior to
+                    proceeding,
+                    you may contact the NGBS Program Staff by emailing 
+                    <a href="mailto:verificationreport@homeinnovation.com">verificationreport@homeinnovation.com</a>.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" ng-switch="[[ regionObject.helpers.ca_version_to_sign ]]">
+                    <a href="{% static 'customer_hirl/builder_embedded_agreement.pdf' %}" ng-switch-when="1">Click here to download the
+                        sample PDF.</a>
+                    <a href="{% static 'customer_hirl/builder_embedded_agreement_v2.pdf' %}" ng-switch-when="2">Click here to download the
+                        sample PDF.</a>
+                    <a href="{% static 'customer_hirl/builder_embedded_agreement_v3.pdf' %}" ng-switch-when="3">Click here to download the
+                        sample PDF.</a>
+                    <a href="{% static 'customer_hirl/builder_embedded_agreement_v4.pdf' %}" ng-switch-default>Click here to download the
+                        sample PDF.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

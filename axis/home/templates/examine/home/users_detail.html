@@ -1,0 +1,12 @@
+<div class="row" ng-show="regionObject.object.users_names">
+    <div class="col-md-3 key">Users:</div>
+    <div class="col-md-9">
+        <span ng-repeat="(id, value) in regionObject.object.users_names">
+            <a ng-if="regionObject.object.users_urls[id]" href="[[ regionObject.object.users_urls[id] ]]">
+                [[ value ]]</a>[[ $last ? '' : ', ' ]]
+            <span ng-if="!regionObject.object.users_urls[id]">
+                [[ value ]][[ $last ? '' : ', ' ]]
+            </span>
+        </span>
+    </div>
+</div>

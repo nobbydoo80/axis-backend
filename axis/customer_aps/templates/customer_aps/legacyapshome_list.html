@@ -1,0 +1,13 @@
+{% extends 'base_list.html' %}
+
+{% block style_sheet %}
+{{ block.super }}
+    <style type="text/css">
+        .datatable th[data-name="lot-no"] { width: 10% }
+        .datatable th[data-name="address"] { width: 30% }
+        .datatable th[data-name="site-id"] { width: 15% }
+        .datatable th[data-name="city"] { width: 15% }
+        .datatable th[data-name="zip-code"] { width: 15% }
+        .datatable th[data-name="subdivision"] { width: 20% }
+    </style>
+{% endblock %}

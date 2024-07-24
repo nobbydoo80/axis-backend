@@ -1,0 +1,12 @@
+
+<div class="panel-group" id="accordion">
+    {% if results.by_context_row.general %}
+        {% include 'filehandling/includes/results_panel.html' with object=results.by_context_row.general label="General Issues" row_id="general" open_in=1 %}
+    {% endif %}
+
+    {% for row, issues in results.by_context_row.items %}
+        {% if row != "general" %}
+            {% include 'filehandling/includes/results_panel.html' with object=issues row_id=row %}
+        {% endif %}
+    {% endfor %}
+</div>

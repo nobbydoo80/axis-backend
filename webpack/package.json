@@ -1,0 +1,56 @@
+{
+  "name": "axis",
+  "version": "2.0.0",
+  "description": "Axis frontend",
+  "scripts": {
+    "watch": "webpack --progress --config=webpack.dev.config.js --watch",
+    "build": "webpack --progress --config=webpack.config.js --bail",
+    "test": "jest ..axis/webpack/*/[!qa]/*.test.js",
+    "test:qa": "jest --runInBand ../axis/*/webpack/*/qa/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pivotal-energy-solutions/axis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/pivotal-energy-solutions/axis/issues"
+  },
+  "homepage": "https://github.com/pivotal-energy-solutions/axis#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.4",
+    "expect-puppeteer": "^4.3.0",
+    "jest": "^24.8.0",
+    "jest-puppeteer": "^4.3.0",
+    "puppeteer": "^1.19.0",
+    "uglifyjs-webpack-plugin": "^2.1.2",
+    "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-bundle-tracker": "^0.4.2-beta",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.20",
+    "angular": "1.4.9",
+    "angular-ui-bootstrap": "0.13.0",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.15",
+    "multi-select": "^0.3.4",
+    "ng-redux": "^4.1.0-alpha",
+    "npm": "^6.4.1",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "redux-ui-router": "^0.7.3",
+    "reselect": "^4.0.0",
+    "ui-select": "^0.19.8",
+    "user-agent-parser": "^0.6.0",
+    "webpack-visualizer-plugin": "^0.1.11"
+  }
+}

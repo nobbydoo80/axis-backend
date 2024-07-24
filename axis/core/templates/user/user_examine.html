@@ -1,0 +1,145 @@
+{% extends "base_examine_wide.html" %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/user/examine.css" type="text/css" media="screen, projection" />
+    <script type="text/javascript" src="{{ STATIC_URL }}js/vendor/angular-image-cropper/angular-image-cropper{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/core/user.js"></script>
+    <script src="{{ STATIC_URL }}scheduling/js/tasks.js"></script>
+{% endblock javascript_head %}
+
+{% block axis_angular_dependencies %}
+    {{ block.super }}.concat(['imageCropper'])
+{% endblock axis_angular_dependencies %}
+
+{% block content %}
+    <div ng-controller="CoreProfileController as ctrl">
+        {{ block.super }}
+    </div>
+{% endblock content %}
+
+
+{% block header %}
+    <div class="row row-header">
+        <div class="col-md-8">
+            <p>
+                {% block header_text %}
+                    <span>
+                    {% block object_header %}
+                        <span ng-show="$root.examineApp.creating">{% block creating_prefix %}
+                            Adding{% endblock creating_prefix %}</span>
+                        <span ng-bind="regionObject.verbose_name"></span>:
+                        <span ng-hide="$root.examineApp.creating" class="value"
+                              ng-bind="regionObject.object_name">{{ object_name|default:object }}</span>
+                    {% endblock object_header %}
+                </span>
+                {% endblock header_text %}</p>
+        </div>
+        <div class="col-md-4">
+            <div class="text-right">
+                <action-strip-set ng-hide="region.editing()" single-instance="default"
+                                  processing="regionSet.processing"></action-strip-set>
+            </div>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block tabs %}
+    <div class="row">
+        <div class="col-md-12">
+            <tabset>
+                {% if show_accreditation %}
+                <tab tab-helper endpoint="tabs.accreditation" heading="Accreditation">
+                    <tabset>
+                        {% for year in accreditation_years %}
+                            <tab heading="{{ year }}">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <axis-region-set
+                                                options="pageRegions.user_accreditation_{{ year }}"></axis-region-set>
+                                    </div>
+                                </div>
+                            </tab>
+                        {% endfor %}
+                    </tabset>
+                </tab>
+                {% endif %}
+                {% if show_training %}
+                <tab tab-helper endpoint="tabs.training" heading="Training">
+                    <tabset>
+                        {% for year in training_years %}
+                            <tab heading="{{ year }}">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <axis-region-set
+                                                options="pageRegions.user_training_{{ year }}"></axis-region-set>
+                                    </div>
+                                </div>
+                            </tab>
+                        {% endfor %}
+                    </tabset>
+                </tab>
+                {% endif %}
+                {% if show_inspection_grade %}
+                    <tab tab-helper endpoint="tabs.inspection_grade" heading="Grading">
+                        <tabset>
+                            {% for year in inspection_grade_years %}
+                                <tab heading="{{ year }}">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <axis-region-set
+                                                    options="pageRegions.user_inspection_grade_{{ year }}"></axis-region-set>
+                                        </div>
+                                    </div>
+                                </tab>
+                            {% endfor %}
+                        </tabset>
+                    </tab>
+                {% endif %}
+                {% if show_certification_metric %}
+                <tab tab-helper endpoint="tabs.certification_metric" heading="Metrics">
+                    <tabset>
+                        {% for year in certification_metric_years %}
+                            <tab heading="{{ year }}">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <axis-region-set
+                                                options="pageRegions.user_certification_metric_{{ year }}"></axis-region-set>
+                                    </div>
+                                </div>
+                            </tab>
+                        {% endfor %}
+                    </tabset>
+                </tab>
+                {% endif %}
+
+                <tab tab-helper endpoint="tabs.scheduling" heading="Scheduling">
+                    <axis-region-set options="pageRegions.user_task"></axis-region-set>
+                </tab>
+                {% if show_hirl_settings %}
+                {% comment %}
+                    NGBS Only Settings
+                {% endcomment %}
+                    <tab tab-helper endpoint="tabs.hirl_user_profile" heading="Advanced">
+                        {% if show_hirl_rater_settings %}
+                            {% if hirl_rater_user_internal_id %}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <b>Internal User ID</b>: {{ hirl_rater_user_internal_id }}
+                                    </div>
+                                </div>
+                                <hr>
+                            {% endif %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <axis-single-region
+                                            options="pageRegions.hirl_user_profile"></axis-single-region>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </tab>
+                {% endif %}
+            </tabset>
+        </div>
+    </div>
+{% endblock %}

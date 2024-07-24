@@ -1,0 +1,24 @@
+{% with zoom=zoom|default:15 %}
+<div ng-controller="MapController as vm">
+    <ui-gmap-google-map
+            center="vm.map.center"
+            zoom="vm.map.zoom"
+            draggable="true"
+            ng-if="vm.showMap"
+            options="vm.map.options">
+        <ui-gmap-markers models="vm.extraMarkers" coords="'coords'" click="'onClick'">
+            <ui-gmap-windows show="'show'">
+                <div ng-non-bindable>
+                    [[ rawAddress ]]
+                    [[ geocodedAddress ]]
+                    [[ link ]]
+                </div>
+            </ui-gmap-windows>
+        </ui-gmap-markers>
+    </ui-gmap-google-map>
+    <div ng-hide="vm.showMap" class="img-rounded text-center default-map">
+        Axis was unable to confirm and map this address. Please verify the accuracy of the address.
+        If the address entered is correct, it may be too new for our mapping engines to find it.
+    </div>
+</div>
+{% endwith %}

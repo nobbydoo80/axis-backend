@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+    <tr>
+        <td>
+            [[ regionObject.object.content ]]
+        </td>
+        <td>
+            [[ regionObject.object.user_display ]]
+        </td>
+        <td>
+            [[ regionObject.object.created_on | date : 'M/d/yy h:mm a' ]]
+        </td>
+        <td class="text-center">
+            <i class="fa" ng-class="{
+                'fa-users': regionObject.object.is_public && regionObject.object.company !== {{ user.company_id }},
+                'fa-check': regionObject.object.company === {{ user.company_id }},
+                'fa-times': !regionObject.object.is_public
+            }" tooltip="[[ regionObject.object.company !== {{ user.company_id }} ? 'Shared by others' : '' ]]"></i>
+        </td>
+    </tr>
+</table>

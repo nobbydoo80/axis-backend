@@ -1,0 +1,25 @@
+{% extends "core/landing/builder.html" %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <style>
+        /*.wider-programs thead tr th:first-child {
+            width: 250px !important;  {# NEEA program names are kind of long and mess up the table #}
+        }*/
+        .wider-dollars .dollar-column {
+            width: 120px;
+            padding-right: 2em !important; {# down from 5em #}
+        }
+    </style>
+{% endblock style_sheet %}
+
+
+{% block landing_content %}
+    <h4>Metrics</h4>
+
+    <div dashboard-widget dashboard-widget-metrics>
+        {% include 'qa/dashboards/qa_tables.html' with program_metrics_title="Certified Homes and QA Status &ndash; Performance Path" %}
+    </div>
+
+    <hr>
+{% endblock landing_content %}

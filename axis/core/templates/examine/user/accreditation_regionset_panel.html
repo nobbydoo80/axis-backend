@@ -1,0 +1,10 @@
+<axis-region region-object="regionObject"
+             ng-repeat="regionObject in regionSet.regions"></axis-region>
+
+<div class="text-center" ng-hide="regionSet.isFull()">
+    <a class="btn btn-default" ng-click="regionSet.fetchNewRegion()"
+       ng-if="regionSet.new_region_url">
+        <i class="fa fa-fw fa-plus-circle"></i>
+        Add New Accreditation
+    </a>
+</div>

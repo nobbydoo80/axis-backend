@@ -1,0 +1,133 @@
+{% comment %}
+    Requires:
+        object: the Simulation instance
+{% endcomment %}
+{% load tz %}
+
+<style type="text/css">
+    .sim_results dt { padding-left: 10px; text-align: left; font-weight: normal; }
+    .sim_results dd { margin-left: 175px; }
+    .sim_dl dt { width: 80px; }
+    .sim_dl dd { margin-left: 100px; }
+</style>
+
+<div class="well">
+    <h4>Programs</h4>
+    <dl class="dl-horizontal sim_results">
+        <dt>EnergySTAR v2.0</dt>
+        <dd>{% if object.energystar.passes_energy_star_v2 %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>EnergySTAR v2.5</dt>
+        <dd> {% if object.energystar.passes_energy_star_v2p5 %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>EnergySTAR v3.0</dt>
+        <dd>{% if object.energystar.passes_energy_star_v3 %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>EnergySTAR v3.1</dt>
+        <dd>{% if object.energystar.passes_energy_star_v3p1 %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>EnergySTAR v3.2</dt>
+        <dd>{% if object.energystar.passes_energy_star_v3p2 %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>DOE Challenge</dt>
+        <dd>{% if object.energystar.passes_doe_zero %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>&nbsp;</dt>
+        <dd></dd>
+
+        <dt>RESNET HERS</dt>
+        <dd>{{ object.hers.score|floatformat:0 }}</dd>
+
+        <dt>&nbsp;</dt>
+        <dd></dd>
+
+        <dt>EPACT Tax Credit</dt>
+        <dd>{% if object.hers.passes_2005_epact_tax_credit %}Passes{% else %}Fails{% endif %}</dd>
+    </dl>
+
+    <h4>Compliance</h4>
+    <dl class="dl-horizontal sim_results">
+        <dt>IECC 2018</dt>
+        <dd>{% if object.iecc.passes_iecc18_code %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>IECC 2015</dt>
+        <dd>{% if object.iecc.passes_iecc15_code %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>IECC 2012</dt>
+        <dd>{% if object.iecc.passes_iecc12_code %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>IECC 2009</dt>
+        <dd>{% if object.iecc.passes_iecc09_code %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>IECC 2006</dt>
+        <dd>{% if object.iecc.passes_iecc06_code %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>IECC 2004</dt>
+        <dd>{% if object.iecc.passes_iecc04_code %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>IECC 2003</dt>
+        <dd>{% if object.iecc.passes_iecc03_consumption_compliance %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>IECC 2001</dt>
+        <dd>{% if object.iecc.meets_iecc01_consumption_compliance %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>IECC 2000</dt>
+        <dd>{% if object.iecc.meets_iecc00_consumption_compliance %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>IECC 1998</dt>
+        <dd>{% if object.iecc.meets_iecc98_consumption_compliance %}Passes{% else %}Fails{% endif %}</dd>
+
+        <dt>&nbsp;</dt>
+        <dd></dd>
+
+        {% if "NC" in object.site.site_label %}
+            <dt>NC 2012 Code</dt>
+            <dd>{% if object.regionalcode.passes_nc_2012_code %}Passes{% else %}Fails{% endif %}</dd>
+            <dt>NC 2012 Hero Code</dt>
+            <dd>{% if object.regionalcode.passes_nc_hero_2012_code %}Passes{% else %}Fails{% endif %}</dd>
+        {% endif  %}
+
+        {% if "NY" in object.site.site_label %}
+            <dt>NY ECC 2010</dt>
+            <dd>{% if object.regionalcode.passes_ny_eccc_2010_consumption_compliance %}Passes{% else %}Fails{% endif %}</dd>
+        {% endif %}
+
+        {% if "NV" in object.site.site_label %}
+            <dt>NV Energy Plus Rebate</dt>
+            <dd>{{ object.regionalcode.passes_nv_ecc_consumption_compliance|floatformat:0 }}</dd>
+            <dt>NV ECC Compliance</dt>
+            <dd>{% if object.regionalcode.passes_nv_ecc_consumption_compliance %}Passes{% else %}Fails{% endif %}</dd>
+        {% endif %}
+
+    </dl>
+
+    <h4>Data Statistics</h4>
+
+    <dl class="dl-horizontal sim_dl">
+        <dt>Version</dt>
+        <dd>{{ object.version }}</dd>
+
+        <dt>Flavor</dt>
+        <dd>{{ object.flavor|default:"-" }}</dd>
+
+        <dt>Uploaded</dt>
+        <dd>{{ object.building.created_on|timezone:request.user.timezone_preference|date:"m/d/Y G:i" }}</dd>
+
+        <dt>Simulated</dt>
+        <dd>{{ object.simulation_date|date:"m/d/Y G:i" }}</dd>
+
+        {% if object.udrh_filename or object.udrh_checksum %}
+
+            <dt>UDRH Filename</dt>
+            <dd>{{ object.udrh_filename }}</dd>
+
+            <dt>UDRH Checksum</dt>
+            <dd>{{ object.udrh_checksum }}</dd>
+        {% endif %}
+
+        <dt>Filename</dt>
+        <dd>{{ object.building.filename }}</dd>
+
+
+    </dl>
+</div>

@@ -1,0 +1,43 @@
+{% extends "base_detail.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block detail_content %}
+    <div class="row">
+        <div class="col-md-6 col-md-push-6">
+            {% include 'geographic/map.html' %}
+        </div>
+        <div class="col-md-6 col-md-pull-6">
+            <div class="row">
+                <div class="col-md-4 key">Name:</div>
+                <div class="col-md-8 value">
+                    <a href="{{ object.city.get_absolute_url }}">{{ object.name }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">County:</div>
+                <div class="col-md-8 value">{{ object.county }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Land Area (m&sup2;):</div>
+                <div class="col-md-8 value">{{ object.land_area_meters }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Water Area (m&sup2;):</div>
+                <div class="col-md-8 value">{{ object.water_area_meters }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Latitude:</div>
+                <div class="col-md-8 value">{{ object.latitude }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Longitude:</div>
+                <div class="col-md-8 value">{{ object.longitude }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock detail_content %}

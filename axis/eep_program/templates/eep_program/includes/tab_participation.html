@@ -1,0 +1,6 @@
+<h4>Subdivision participating in this Program</h4>
+<ul class='value'>
+    {% for subdivision in subdivisions %}
+        <li><a href="{{ subdivision.get_absolute_url }}">{{ subdivision }}</a></li>
+    {% endfor %}
+</ul>

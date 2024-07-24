@@ -1,0 +1,98 @@
+{% extends 'base_form.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}About Us{% endblock %}
+
+{% block jquery_validate_rules %}
+    <script type="text/javascript">
+        $(function () {
+            $("#axis_form").validate({
+                rules: {
+                    name: {required: true},
+                    email: {required: true, email: true},
+                    subject: {required: true},
+                    message: {required: true},
+                    phone: {phoneUS: true},
+                    body: {required: false},
+                    csrfmiddlewaretoken: {required: true}
+                }
+            });
+        });
+    </script>
+{% endblock jquery_validate_rules %}
+
+{% block header_text %}Contact Us{% endblock %}
+
+
+{% block form_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <p>Please use the form below to submit your contact request and we will reply as soon as possible.</p>
+            <br/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <br/>
+
+            <div class="row">
+                <div class="col-md-6">{{ form.name|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{ form.email|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">{{ form.phone|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">{{ form.subject|as_crispy_field }}</div>
+            </div>
+            <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;">
+                <div class="col-md-10">{{ form.body|as_crispy_field }}</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img class="img-rounded align-right" src="{{ STATIC_URL }}images/contact.jpg" width="250px"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">{{ form.message|as_crispy_field }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">{{ form.captcha }}</div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="well contact-links">
+        <div class="contact-link-section">
+            <h5>Contact Us</h5>
+            <p>
+                Phone: <a href="tel:8009802947">1-800-980-AXIS</a><br/>
+                Email: <a title="info@pivotalenergysolutions.com" href="mailto:info@pivotalenergysolutions.com">Info Email</a>
+            </p>
+        </div>
+        <div class="contact-link-section">
+            <h5>Existing Customers</h5>
+            <p>
+                Web: <a href="//pivotalenergysolutions.zendesk.com">Support Website</a><br/>
+                Email: <a title="support@pivotalenergysolutions.com" href="mailto:support@pivotalenergysolutions.com">Support Email</a>
+            </p>
+        </div>
+    </div>
+    <style>
+        .contact-links {
+            margin-top: 45px;
+        }
+        .contact-links h5 {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .contact-link-section {
+            margin-bottom: 20px;
+        }
+        .contact-link-section:last-of-type {
+            margin-bottom: 0;
+        }
+    </style>
+{% endblock %}

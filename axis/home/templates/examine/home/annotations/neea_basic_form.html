@@ -1,0 +1,75 @@
+<br />
+<div class="row" ng-controller="NEEABOPController">
+    <div class="col-md-4" id="bop">
+        <axis-field field="regionObject.fields['bop']"
+                    on-change="updateChoicesFromBOP(regionObject.object.bop)"
+                    >
+        </axis-field>
+    </div>
+    <div class="col-md-4" id="heat">
+        <axis-field field="regionObject.fields['heat-source']"></axis-field>
+    </div>
+    <div class="col-md-4" id="tco">
+        <axis-field field="regionObject.fields['tco-options']"></axis-field>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4"><axis-field field="regionObject.fields['project-start']"></axis-field></div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4"><axis-field field="regionObject.fields['gas-utility-account-number']"></axis-field></div>
+    <div class="col-md-4"><axis-field field="regionObject.fields['electric-utility-account-number']"></axis-field></div>
+    <div class="col-md-4"><axis-field field="regionObject.fields['eto']"></axis-field></div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4"><axis-field field="regionObject.fields['home-type']"></axis-field></div>
+    <div class="col-md-4"><axis-field field="regionObject.fields['reference-home-site-id']"></axis-field></div>
+    <div class="col-md-4"><axis-field field="regionObject.fields['builder-owner']"></axis-field></div>
+</div>
+
+<div class="row">
+    <div class="col-md-12"><axis-field field="regionObject.fields['residence-description']"></axis-field></div>
+</div>
+
+<hr />
+<h5>Utility Incentives</h5>
+<div class="row">
+    <div class="col-md-12"><i>Please enter model number (if applicable) and comments</i></div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-5"><axis-field field="regionObject.fields['advanced-lighting-package']"></axis-field></div>
+    <div class="col-md-5 col-md-offset-1"><axis-field field="regionObject.fields['clothes-washer']"></axis-field></div>
+</div>
+
+<div class="row">
+    <div class="col-md-5"><axis-field field="regionObject.fields['ducts']"></axis-field></div>
+    <div class="col-md-5 col-md-offset-1"><axis-field field="regionObject.fields['faucet-aerators']"></axis-field></div>
+</div>
+
+<div class="row">
+    <div class="col-md-5"><axis-field field="regionObject.fields['house-fans']"></axis-field></div>
+    <div class="col-md-5 col-md-offset-1"><axis-field field="regionObject.fields['hvac']"></axis-field></div>
+</div>
+
+<div class="row">
+    <div class="col-md-5"><axis-field field="regionObject.fields['light-bulbs']"></axis-field></div>
+    <div class="col-md-5 col-md-offset-1"><axis-field field="regionObject.fields['lighting-fixtures']"></axis-field></div>
+</div>
+
+<div class="row">
+    <div class="col-md-5"><axis-field field="regionObject.fields['low-flow-showerheads']"></axis-field></div>
+    <div class="col-md-5 col-md-offset-1"><axis-field field="regionObject.fields['refrigerator']"></axis-field></div>
+</div>
+
+<div class="row">
+    <div class="col-md-5"><axis-field field="regionObject.fields['water-heater']"></axis-field></div>
+    <div class="col-md-5 col-md-offset-1"><axis-field field="regionObject.fields['other']"></axis-field></div>
+</div>

@@ -1,0 +1,94 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .datatable th[data-name="name"] {
+            width: 40%;
+        }
+
+        .datatable th[data-name="sponsor"] {
+            width: 30%;
+        }
+
+        .datatable th[data-name="comment"] {
+            width: 10%;
+        }
+
+        .datatable th[data-name='participate'] {
+            width: 10%;
+        }
+
+        .datatable tbody tr td:last-child {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script>
+    $(function(){
+        var tooltip = $("<i></i>").addClass('fa fa-fw fa-info-circle').tooltip({
+            title: "Select/deselect programs based on your company's participation. " +
+            "Only selected programs will appear in the \"Program\" list when creating " +
+            "a new home. Selecting/deselecting programs will not affect the visibility of " +
+            "homes associated with those programs."
+        })
+        $(".datatable th[data-name='participate']").append(tooltip);
+
+        $(".datatable").on('change', ':checkbox', function(e){
+            var el = $(this);
+            el.attr('disabled', true);
+            var companyId = el.attr('data-company-id');
+            var programId = el.attr('data-program-id');
+            var url = '/api/v2/company/eep_programs/'+companyId+'/';
+            const approveIgnore = this.checked;
+            if(approveIgnore){
+                url += 'approve_program_for_home_status_creation/';
+            } else {
+                url += 'ignore_program_for_home_status_creation/';
+            }
+            $.ajax({
+                method: 'POST',
+                url: url,
+                data: {program_id: programId},
+                success: function(data){
+                    var text = approveIgnore ? 'Participating' : 'Not Participating';
+                    var success = $("<div></div>").addClass('text-success').text(text).hide();
+                    el.hide();
+                    el.parent().append(success);
+                    success.fadeIn('fast', function(){
+                        setTimeout(function(){
+                            success.fadeOut('slow', function(){
+                                el.fadeIn('fast', function(){
+                                    success.remove();
+                                });
+                            });
+                        }, 500);
+                    });
+                },
+                error: function(){
+                    var text = "An Error has occurred.";
+                    var error = $("<div></div>").addClass('text-danger').text(text).hide();
+                    el.hide();
+                    el.parent().append(error);
+                    error.fadeIn('fast');
+                },
+                complete: function(){
+                    el.attr('disabled', false);
+                }
+            })
+        });
+    });
+
+    </script>
+
+{% endblock %}
+
+{% block page_title %}Energy Efficiency Program listing{% endblock %}

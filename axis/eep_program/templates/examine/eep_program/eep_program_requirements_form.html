@@ -1,0 +1,179 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th></th>
+        <th>
+            Assigned
+            <i class="fa fa-fw fa-info-circle" data-toggle="tooltip" title=""></i>
+        </th>
+        <th>
+            Relationship
+            <i class="fa fa-fw fa-info-circle" data-toggle="tooltip" title=""></i>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+        {% if user.company.company_type != 'builder' %}
+            <tr>
+                <th>Builder</th>
+                <td><axis-field no-label field="regionObject.fields.require_builder_assigned_to_home"></axis-field></td>
+                <td><axis-field no-label field="regionObject.fields.require_builder_relationship"></axis-field></td>
+            </tr>
+        {% endif %}
+        {% if user.company.company_type != 'hvac' %}
+            <tr>
+                <th>HVAC Contractor</th>
+                <td><axis-field no-label field="regionObject.fields.require_hvac_assigned_to_home"></axis-field></td>
+                <td><axis-field no-label field="regionObject.fields.require_hvac_relationship"></axis-field></td>
+            </tr>
+        {% endif %}
+        {% if user.company.company_type != 'utility' %}
+            <tr>
+                <th>Utility Company</th>
+                <td><axis-field no-label field="regionObject.fields.require_utility_assigned_to_home"></axis-field></td>
+                <td><axis-field no-label field="regionObject.fields.require_utility_relationship"></axis-field></td>
+            </tr>
+        {% endif %}
+        {% if user.company.company_type != 'provider' %}
+            <tr>
+                <th>Provider</th>
+                <td><axis-field no-label field="regionObject.fields.require_provider_assigned_to_home"></axis-field></td>
+                <td><axis-field no-label field="regionObject.fields.require_provider_relationship"></axis-field></td>
+            </tr>
+        {% endif %}
+        {% if user.company.company_type != 'rater' %}
+        <tr>
+            <th>Rater (if applicable)</th>
+            <td>
+                <axis-field no-label
+                            field="regionObject.fields.require_rater_assigned_to_home"></axis-field>
+            </td>
+            <td>
+                <axis-field field="regionObject.fields.require_rater_relationship"
+                            no-label></axis-field>
+            </td>
+        </tr>
+        {% endif %}
+        {% if user.company.company_type != 'qa' %}
+        <tr>
+            <th>QA Organization (if applicable)</th>
+            <td>
+                <axis-field field="regionObject.fields.require_qa_assigned_to_home"
+                            no-label></axis-field>
+            </td>
+            <td>
+                <axis-field field="regionObject.fields.require_qa_relationship"
+                            no-label></axis-field>
+            </td>
+        </tr>
+        {% endif %}
+        {% if user.company.company_type != 'developer' %}
+        <tr>
+            <th>Developer (if applicable)</th>
+            <td>
+                <axis-field field="regionObject.fields.require_developer_assigned_to_home"
+                            no-label></axis-field>
+            </td>
+            <td>
+                <axis-field field="regionObject.fields.require_developer_relationship"
+                            no-label></axis-field>
+            </td>
+        </tr>
+        {% endif %}
+        {% if user.company.company_type != 'architect' %}
+        <tr>
+            <th>Architect (if applicable)</th>
+            <td>
+                <axis-field field="regionObject.fields.require_architect_assigned_to_home"
+                            no-label></axis-field>
+            </td>
+            <td>
+                <axis-field field="regionObject.fields.require_architect_relationship"
+                            no-label></axis-field>
+            </td>
+        </tr>
+        {% endif %}
+        {% if user.company.company_type != 'communityowner' %}
+        <tr>
+            <th>Community Owner (if applicable)</th>
+            <td>
+                <axis-field field="regionObject.fields.require_communityowner_assigned_to_home"
+                            no-label></axis-field>
+            </td>
+            <td>
+                <axis-field field="regionObject.fields.require_communityowner_relationship"
+                            no-label></axis-field>
+            </td>
+        </tr>
+        {% endif %}
+
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-4">
+        <axis-field field="regionObject.fields.require_rater_of_record"></axis-field>
+    </div>
+    <div class="col-md-4">
+        <axis-field field="regionObject.fields.require_energy_modeler"></axis-field>
+    </div>
+    <div class="col-md-4">
+        <axis-field field="regionObject.fields.require_field_inspector"></axis-field>
+    </div>
+</div>
+
+<br>
+<div class="row form-group">
+    <div class="col-md-12"><h5>Simulation Requirements</h5></div>
+
+    <div class="col-md-12">
+        <axis-field field="regionObject.fields.require_input_data"></axis-field>
+    </div>
+    <div class="col-md-12">
+        <axis-field field="regionObject.fields.require_rem_data"></axis-field>
+    </div>
+    <div class="col-md-12">
+        <axis-field field="regionObject.fields.require_ekotrope_data"></axis-field>
+    </div>
+    <div class="col-md-12">
+        <axis-field field="regionObject.fields.require_model_file"></axis-field>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <axis-field field="regionObject.fields.min_hers_score"></axis-field>
+    </div>
+    <div class="col-md-4">
+        <axis-field field="regionObject.fields.max_hers_score"></axis-field>
+    </div>
+    <div class="col-md-4">
+        <axis-field field="regionObject.fields.per_point_adder"></axis-field>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <axis-field field="regionObject.fields.allow_sampling"></axis-field>
+    </div>
+    <div class="col-md-4">
+        <axis-field field="regionObject.fields.allow_metro_sampling"></axis-field>
+    </div>
+    <div class="col-md-4">
+        <axis-field field="regionObject.fields.require_resnet_sampling_provider"></axis-field>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <axis-field field="regionObject.fields.workflow"></axis-field>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <axis-field field="regionObject.fields.builder_incentive_dollar_value"></axis-field>
+    </div>
+    <div class="col-md-6">
+        <axis-field field="regionObject.fields.rater_incentive_dollar_value"></axis-field>
+    </div>
+</div>

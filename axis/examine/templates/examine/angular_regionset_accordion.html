@@ -1,0 +1,12 @@
+{% extends "examine/angular_regionset_panel.html" %}
+
+{% block regions %}
+    <loading-spinner ng-if="!regionSet.isDoneLoading()" class="blockstyle"></loading-spinner>
+    <div class="panel-group" id="accordion-[[ regionSet.type_name ]]">
+        <div axis-region
+             ng-repeat="regionObject in regionSet.regions"
+             region-object="regionObject"
+             class="panel panel-default">
+        </div>
+    </div>
+{% endblock regions %}

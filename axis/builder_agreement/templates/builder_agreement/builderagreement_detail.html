@@ -1,0 +1,105 @@
+{% extends "base_detail.html" %}
+{% load bootstrap_tags %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+
+{% block detail_content %}
+    {% if request.user.company.company_type == 'builder' %}
+        <div class="row">
+            <div class="col-md-2 key">EEP Sponsor:</div>
+            <div class="col-md-10 value">
+                <a href="{{ object.owner.get_absolute_url }}">{{ object.owner }}</a>
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-2 key">Builder:</div>
+        <div class="col-md-10 value">
+            <a href="{{ object.builder_org.get_absolute_url }}">{{ object.builder_org }}</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 key">Subdivision:</div>
+        <div class="col-md-10 value">
+            {% if object.subdivision %}
+                <a href="{{ object.subdivision.get_absolute_url }}">{{ object.subdivision }}</a>
+            {% else %} - {% endif %}
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-12 key">Programs eligible for payment:</div>
+    </div>
+    <div class="row">
+        {% for eep_program in object.eep_programs.all %}
+            <div class="col-md-4 value">
+                <a href="{{ eep_program.get_absolute_url }}">{{ eep_program }}</a>
+            </div>
+        {% empty %}
+            <div class="col-md-12 value">No Programs</div>
+        {% endfor %}
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4 key">Start Date:</div>
+                <div class="col-md-8 value">{{ object.start_date|date:'m/d/Y'|default:'-' }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Total Lots:</div>
+                <div class="col-md-8 value">{{ object.total_lots|default:'-' }}</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4 key">End Date:</div>
+                <div class="col-md-8 value">{{ object.expire_date|date:'m/d/Y'|default:'-' }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Lots Paid:</div>
+                <div class="col-md-8 value">{{ object.lots_paid|default:'-' }}</div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-2 key">Primary Agreement:</div>
+        <div class="col-md-10 value">
+            {% if object.document %}
+                <a href="{{ object.document.url }}">{{ object.filename }}</a>
+            {% else %} - {% endif %}
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-2 key">Comment:</div>
+        <div class="col-md-10 value"><blockquote>{{ object.comment|default:'-' }}</blockquote></div>
+    </div>
+
+{% endblock %}
+
+{% block tabs %}
+    {% bootstrap_navtabs %}
+        {% tab "Supplementary Documents" %}
+            {% include 'filehandling/includes/shared_documents.html' with object_name=verbose_name %}
+
+        {% tab "History" show=perms.community.change_community %}
+            {% bootstrap_accordion id="my_accordion" %}
+                {% panel heading="Agreement History" %}
+                    {% include "simple_history/includes/history_list.html" with object=object app_label="builder_agreement" model="builderagreement" field="id" constraint=object.id %}
+                {% panel heading="Supplement Document History" %}
+                    {% include "simple_history/includes/history_list.html" with object=object app_label="builder_agreement" model="builderagreementdocument" field="builder_agreement" constraint=object.id %}
+            {% endbootstrap_accordion %}
+
+    {% endbootstrap_navtabs %}
+{% endblock %}

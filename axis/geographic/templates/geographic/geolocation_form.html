@@ -1,0 +1,64 @@
+{% extends 'base_form.html' %}
+{% load crispy_forms_tags %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript">
+        function validateAddress(address_options, entity_type){
+            console.log("Here we go!");
+            entity_type = typeof entity_type === 'undefined' ? 'street_address' : entity_type;
+            street_line1 = (typeof address_options['street_line1'] === "undefined" ? "" : address_options['street_line1']);
+            street_line2 = (typeof address_options['street_line2'] === "undefined" ? "" : address_options['street_line2']);
+            city = (typeof address_options['city'] === "undefined" ? "" : address_options['city']);
+            state = (typeof address_options['state'] === "undefined" ? "" : address_options['state']);
+            county = (typeof address_options['county'] === "undefined" ? "" : address_options['county']);
+            zipcode = (typeof address_options['zipcode'] === "undefined" ? "" : address_options['zipcode']);
+            address = street_line1 + " " + street_line2 + " " + city + " " + state + " " + zipcode;
+            console.log("Untrimmed *" + address + "*");
+            return $.ajax({
+                type: 'POST',
+                url: '{% url 'geolocation:add' %}',
+                data: {
+                    entity_type: entity_type,
+                    input_address: address,
+                    csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value
+                },
+                error: function(){
+                    console.log("We failed...")
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Register a change..
+            $('#geocode_form :input').change(function () {
+                var address = $('#id_input_address').val();
+                var entity_type = $('#id_entity_type').val();
+                if ($.trim(address) != '' && $.trim(entity_type) != '') {
+                    console.log("Looking up " + entity_type + " with " + address);
+                    data = validateAddress({'street_line1': address}, entity_type);
+                    console.log("Data: " + data['formatted_address'])
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block form_content %}
+    <div class="row">
+        <div class="col-md-6 col-md-push-6">
+            {% include 'geographic/map.html' %}
+        </div>
+        <div class="col-md-6 col-md-pull-6">
+            {{ form.entity_type|as_crispy_field }}
+            {{ form.input_address|as_crispy_field }}
+        </div>
+    </div>
+{% endblock %}

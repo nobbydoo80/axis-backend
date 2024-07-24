@@ -1,0 +1,18 @@
+{% extends "email_base.txt" %}
+
+{% block content %}{% if message.user %}
+Hello {{ message.user.full_name }}, {% endif %}
+
+{{ message.content }}
+
+{% if message.url %}
+This notification originated here: https://{{ domain }}{{ message.url }}
+{% endif %}
+{% if not required %}
+You can update your Axis notification settings here: https://{{ domain }}/messaging/
+{% endif %}
+
+    The AXIS Support Team
+
+
+{% endblock content %}

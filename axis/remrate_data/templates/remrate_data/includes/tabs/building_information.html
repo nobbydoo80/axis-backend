@@ -1,0 +1,180 @@
+<div class="row">
+    <div class="col-md-12"></div>
+
+
+    </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Building Information</h4></div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Conditioned Area (sq ft)</th>
+                        <td>{{ object.building.building_info.conditioned_area|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Conditioned Volume (cubic ft)</th>
+                        <td>{{ object.building.building_info.volume|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Insulated Shell Area (sq ft)</th>
+                        <td>{{ object.results.shell_area|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Number of Bedrooms</th>
+                        <td>{{ object.building.building_info.number_bedrooms }}</td>
+                    </tr>
+                    <tr>
+                        <th>Housing Type</th>
+                        <td>{{ object.building.building_info.get_type_display }}</td>
+                    </tr>
+                    <tr>
+                        <th>Foundation Type</th>
+                        <td>{{ object.building.building_info.get_foundation_type_display }}</td>
+                    </tr>
+                        <th>Thermal Boundary</th>
+                        <td>{{ object.building.building_info.get_thermal_boundary_display }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="estar2p5_heading">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#estar2p5"
+                           aria-expanded="true" aria-controls="estar2p5">
+                            ENERGYSTAR 2.5
+                        </a>
+                    </h4>
+                </div>
+                <div id="estar2p5" class="panel-collapse collapse {% if not object.energystar.energy_star_v3_hers_score %}in{% endif %}" role="tabpanel" aria-labelledby="estar2p5_heading">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>HERS Index w/o PV</th>
+                            <td>{{ object.energystar.energy_star_v2p5_pv_score|floatformat:0 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Reference Design HERS Index</th>
+                            <td>{{ object.energystar.energy_star_v2p5_hers_score|floatformat:0 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Reference Design HERS Index (SAF adjusted)</th>
+                            <td>{{ object.energystar.energy_star_v2p5_hers_saf_score|floatformat:0 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Size adjustment Factor</th>
+                            <td>{{ object.energystar.energy_star_v2p5_hers_saf|floatformat:2 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% if object.energystar.energy_star_v3_hers_score %}
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="estar3_heading">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#estar3"
+                           aria-expanded="true" aria-controls="estar3">
+                            ENERGYSTAR 3.0
+                        </a>
+                    </h4>
+                </div>
+                <div id="estar3" class="panel-collapse collapse in" role="tabpanel"
+                     aria-labelledby="estar3_heading">
+                    <table class="table">
+                        <tbody>
+
+                        <tr>
+                            <th>HERS Index w/o PV</th>
+                            <td>{{ object.energystar.energy_star_v3_pv_score|floatformat:0 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Reference Design HERS Index</th>
+                            <td>{{ object.energystar.energy_star_v3_hers_score|floatformat:0 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Reference Design HERS Index (SAF adjusted)</th>
+                            <td>{{ object.energystar.energy_star_v3_hers_saf_score|floatformat:0 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Size adjustment Factor</th>
+                            <td>{{ object.energystar.energy_star_v3_hers_saf|floatformat:2 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="estar3p1_heading">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#estar3p1"
+                           aria-expanded="true" aria-controls="estar3p1">
+                            ENERGYSTAR 3.1
+                        </a>
+                    </h4>
+                </div>
+                <div id="estar3p1" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="estar3p1_heading">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>HERS Index w/o PV</th>
+                            <td>{{ object.energystar.energy_star_v3p1_pv_score|floatformat:0 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Reference Design HERS Index</th>
+                            <td>{{ object.energystar.energy_star_v3p1_hers_score|floatformat:0 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Reference Design HERS Index (SAF adjusted)</th>
+                            <td>{{ object.energystar.energy_star_v3p1_hers_saf_score|floatformat:0 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Size adjustment Factor</th>
+                            <td>{{ object.energystar.energy_star_v3p1_hers_saf|floatformat:2 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">Site Data</h4></div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>City Label</th>
+                        <td colspan="2">{{ object.site.site_label }}</td>
+                    </tr>
+                    <tr>
+                        <th>Climate Zone</th>
+                        <td>{{ object.site.climate_zone }}</td>
+                        <th>Elevation</th>
+                        <td>{{ object.site.elevation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Avg Heating Temp</th>
+                        <td>{{ object.site.avg_seasonal_heating_temp|floatformat:1  }}</td>
+                        <th>Avg Cooling Temp</th>
+                        <td>{{ object.site.avg_seasonal_cooling_temp|floatformat:1  }}</td>
+                    </tr>
+                    <tr>
+                        <th>Avg Num Heating Days</th>
+                        <td>{{ object.site.num_heating_season_days  }}</td>
+                        <th>Avg Num Cooling Days</th>
+                        <td>{{ object.site.num_cooling_season_days|floatformat:1  }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

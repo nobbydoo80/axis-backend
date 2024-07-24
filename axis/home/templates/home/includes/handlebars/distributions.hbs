@@ -1,0 +1,32 @@
+{% verbatim %}
+    <table class="table table-striped table-bordered" id="distribution_tbl_{{id}}">
+        <thead>
+            <tr>
+                <th>Invoice</th>
+                <th>Customer</th>
+                <th>Check Request Date</th>
+                <th>Check Paid Date</th>
+                {{#arrayHasOwnProperty distributions 'check_number'}}
+                    <th>Check Number</th>
+                {{/arrayHasOwnProperty}}
+                <th>Amount</th>
+            </tr>
+        </thead>
+        {{#each distributions}}
+            <tr>
+                <td><a href="{{url}}">{{invoice_number}}</a></td>
+                <td><a href="{{customer_url}}">{{check_to_name}}</a></td>
+                <td>{{check_requested_date}}</td>
+                <td>{{paid_date}}</td>
+                {{#arrayHasOwnProperty ../distributions 'check_number'}}
+                    {{#if check_number}}
+                        <td>{{check_number}}</td>
+                    {{else}}
+                        <td></td>
+                    {{/if}}
+                {{/arrayHasOwnProperty}}
+                <td>{{total}}</td>
+            </tr>
+        {{/each}}
+    </table>
+{% endverbatim %}

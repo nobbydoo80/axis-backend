@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <title>Recent log viewer</title>
+    <link href="{{ STATIC_URL }}css/vendor/bootstrap/3.3.2/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        header {
+            margin: 1em 0;
+        }
+        header form .input-group {
+            width: 120px;
+        }
+        .btn.off {
+            opacity: 0.5;
+        }
+        pre {
+            font-size: 0.8em;
+            overflow-x: scroll;
+            word-wrap: normal;
+            white-space: pre;
+            counter-reset: line-numbering;
+        }
+        pre > div::before {
+            position: absolute;
+            display: inline-block;
+            content: counter(line-numbering);
+            counter-increment: line-numbering;
+            padding-right: 1em; /* space after numbers */
+            width: 1.5em;
+            text-align: right;
+            opacity: 0.5;
+            margin-left: -4.5em;
+        }
+        pre div.off {
+            margin-bottom: -1em;
+            position: absolute;
+            left: -10000px;
+        }
+        .text-critical {
+            color: ;
+        }
+    </style>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('header .btn[target]').click(function(){
+                $($(this).toggleClass('off').attr('target'), 'pre').toggleClass('off').each(function(){
+                    var row = $(this);
+                    var text = row.text();
+                    var attr = row.attr('data-text');
+                    row.attr('data-text', text);
+                    row.text(attr || "");
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+<body class="container">
+    <header>
+        <form action="" method="get" class="form-inline">
+            <div class="input-group pull-right">
+                <input type="text" class="form-control" placeholder="{{ lines }}" name="n">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="submit">lines</button>
+                </span>
+            </div>
+
+            <button class="btn btn-default" target="[rel=DEBUG]">DEBUG</button>
+            <button class="btn btn-info" target="[rel=INFO]">INFO</button>
+            <button class="btn btn-warning" target="[rel=WARNING]">WARNING</button>
+            <button class="btn btn-danger" target="[rel=ERROR]">ERROR</button>
+            <button class="btn btn-danger" target="[rel=CRITICAL]">CRITICAL</button>
+        </form>
+    </header>
+    <pre>{% for i in offset_range %}<div class="off"></div>{% endfor %}
+{% for level, classification, line in data %}<div rel="{{ level }}" class="text-{{ classification }}">{{ line }}</div>{% endfor %}
+    </pre>
+</body>
+</html>

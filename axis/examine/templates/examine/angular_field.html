@@ -1,0 +1,379 @@
+<div ng-switch="field.widget.input_type">
+    <span ng-if="field.widget.attrs['data-add-new-url']"
+          class="pull-right">
+        <action-strip>
+            <action-button options="{
+                size: 'xs',
+                style: 'link',
+                instruction: 'editRelated',
+                templateUrl: field.widget.attrs['data-add-new-template-url'],
+                saveUrl: field.widget.attrs['data-add-new-url'],
+                extraData: field.widget.attrs['data-add-new-scope']
+            }">
+                Add new
+            </action-button>
+        </action-strip>
+    </span>
+
+    <label class="control-label" ng-if="field.widget.input_type != 'checkbox' && field.widget.input_type != 'radio' && field.widget._widget != 'HiddenInput' && showLabel">
+        [[ label || field.label ]]<span ng-if="field.options.required">*</span>
+        <i ng-if="(!helpMode || helpMode === 'tooltip') && field.help_text"
+            class="text-muted fa fa-info-circle"
+            tooltip-placement="right"
+            tooltip="[[ field.help_text ]]"></i>
+    </label>
+
+    <!-- ======================================================================================= -->
+    <!-- TEXT -->
+    <!-- ======================================================================================= -->
+    <div ng-switch-when="text">
+        <div ng-switch="field.widget._widget">
+            <div ng-switch-when="DateInput">
+                <span class="input-group" datepicker-helper>
+                    <input type="text" class="form-control"
+                            name="[[ field.prefixed_name ]]"
+                            ng-change="onChange()"
+                            datepicker-popup="[[ format ]]"
+                            ng-model="date"
+                            ng-model-options="{'updateOn': 'default blur', 'debounce': {'default': 500, 'blur': 0 } }"
+                            ng-required="field.options.required"
+                            ng-disabled="field.widget.attrs.disabled"
+                            datepicker-options="{showWeeks: false}"
+                            is-open="opened"
+                            date-disabled="disabled(date, mode)"
+                            close-text="Close"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"
+                                ng-disabled="field.widget.attrs.disabled"
+                                tabindex="-1">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </span>
+            </div>
+            <div ng-switch-when="TimeInput">
+                <span class="input-group" timepicker-helper>
+                    <timepicker
+                            ng-model="time"
+                            ng-model-options="{'updateOn': 'default blur', 'debounce': {'default': 500, 'blur': 0 } }"
+                            ng-change="onChange()"
+                            hour-step="1"
+                            minute-step="15"
+                            ng-required="field.options.required">
+                    </timepicker>
+                </span>
+            </div>
+            <div ng-switch-default>
+                <span ng-class="{'input-group': field.widget.attrs['data-addon-start'] || field.widget.attrs['data-addon-end']}">
+                    <span class="input-group-addon" ng-if="::field.widget.attrs['data-addon-start'] !== undefined">
+                        [[ ::field.widget.attrs['data-addon-start'] ]]
+                    </span>
+                    <input class="form-control" type="[[ field.widget.input_type ]]"
+                           name="[[ field.prefixed_name ]]"
+                           ng-attr-placeholder="[[ field.widget.attrs.placeholder ]]"
+                           ng-change="onChange()"
+                           ng-disabled="field.widget.attrs.disabled"
+                           ng-model="regionObject.object[field.field_name]"
+                           ng-model-options="{'updateOn': 'default blur', 'debounce': {'default': 500, 'blur': 0 } }"
+                           ng-required="field.options.required"/>
+                </span>
+                <span class="input-group-addon" ng-if="::field.widget.attrs['data-addon-end'] !== undefined">
+                    [[ ::field.widget.attrs['data-addon-end'] ]]
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- ======================================================================================= -->
+    <!-- HTML 5 TEXT (URL, NUMBER) -->
+    <!-- ======================================================================================= -->
+    <div ng-switch-when="number">
+        <span ng-if="::hasAttr('min')">
+            <span ng-class="{'input-group': field.widget.attrs['data-addon-start'] || field.widget.attrs['data-addon-end']}">
+                <span class="input-group-addon" ng-if="::field.widget.attrs['data-addon-start'] !== undefined">
+                    [[ ::field.widget.attrs['data-addon-start'] ]]
+                </span>
+                <input class="form-control"
+                       type="text"
+                       name="[[ field.prefixed_name ]]"
+                       ng-attr-placeholder="[[ field.widget.placeholder ]]"
+                       ng-change="onChange()"
+                       ng-disabled="field.widget.attrs.disabled"
+                       ng-model="regionObject.object[field.field_name]"
+                       ng-model-options="{'updateOn': 'default blur', 'debounce': {'default': 500, 'blur': 0 } }"
+                       non-negative-number
+                       ng-required="field.options.required">
+                <span class="input-group-addon" ng-if="::field.widget.attrs['data-addon-end'] !== undefined">
+                    [[ ::field.widget.attrs['data-addon-end'] ]]
+                </span>
+            </span>
+        </span>
+        <span ng-if="::!hasAttr('min')">
+            <span ng-class="{'input-group': field.widget.attrs['data-addon-start'] || field.widget.attrs['data-addon-end']}">
+                <span class="input-group-addon" ng-if="::field.widget.attrs['data-addon-start'] !== undefined">
+                    [[ ::field.widget.attrs['data-addon-start'] ]]
+                </span>
+                <input class="form-control"
+                       type="text"
+                       name="[[ field.prefixed_name ]]"
+                       ng-attr-placeholder="[[ field.widget.placeholder ]]"
+                       ng-change="onChange()"
+                       ng-disabled="field.widget.attrs.disabled"
+                       ng-model="regionObject.object[field.field_name]"
+                       ng-model-options="{'updateOn': 'default blur', 'debounce': {'default': 500, 'blur': 0 } }"
+                       ng-required="field.options.required">
+                <span class="input-group-addon" ng-if="::field.widget.attrs['data-addon-end'] !== undefined">
+                    [[ ::field.widget.attrs['data-addon-end'] ]]
+                </span>
+            </span>
+        </span>
+    </div>
+    <div ng-switch-when="email">
+        <input class="form-control"
+               type="email"
+               name="[[ field.prefixed_name ]]"
+               ng-attr-placeholder="[[ field.widget.placeholder ]]"
+               ng-change="onChange()"
+               ng-disabled="field.widget.attrs.disabled"
+               ng-model="regionObject.object[field.field_name]"
+               ng-model-options="{'updateOn': 'default blur', 'debounce': {'default': 500, 'blur': 0 } }"
+               ng-required="field.options.required">
+    </div>
+    <div ng-switch-when="url">
+        <input class="form-control"
+               type="url"
+               name="[[ field.prefixed_name ]]"
+               ng-attr-placeholder="[[ field.widget.placeholder ]]"
+               ng-change="onChange()"
+               ng-disabled="field.widget.attrs.disabled"
+               ng-model="regionObject.object[field.field_name]"
+               ng-model-options="{'updateOn': 'default blur', 'debounce': {'default': 500, 'blur': 0 } }"
+               ng-required="field.options.required">
+    </div>
+
+    <!-- ======================================================================================= -->
+    <!-- CHECKBOX -->
+    <!-- ======================================================================================= -->
+    <div ng-switch-when="checkbox">
+        <div ng-class="showLabel ? 'checkbox' : ''">
+            <label class="control-label">
+                <input class="checkboxinput checkbox" type="checkbox"
+                       name="[[ field.prefixed_name ]]"
+                       ng-disabled="field.widget.attrs.disabled"
+                       ng-model="regionObject.object[field.field_name]"
+                       ng-init="regionObject.object[field.field_name] = !!regionObject.object[field.field_name]"
+                       ng-change="onChange()">
+                <span ng-if="showLabel">
+                    [[ label || field.label ]]
+                </span>
+            </label>
+        </div>
+    </div>
+    <!-- ======================================================================================= -->
+    <!-- RADIO -->
+    <!-- ======================================================================================= -->
+    <div ng-switch-when="radio">
+        <div ng-repeat="choice in field.widget.choices" data-choice="[[ choice[0] ]]">
+            <div ng-class="showLabel ? 'radio' : ''">
+                <label class="control-label">
+                    <input type="radio"
+                           name="[[ field.prefixed_name ]]"
+                           ng-value="choice[0]"
+                           ng-disabled="field.widget.attrs.disabled"
+                           ng-model="regionObject.object[field.field_name]"
+                           ng-required="field.options.required"
+                           ng-change="onChange()">
+                    <span ng-if="showLabel">
+                        [[ label || choice[1] ]]<span ng-if="field.options.required">*</span>
+                        <i class="text-muted fa fa-info-circle" tooltip-placement="right" tooltip="[[ field.help_text ]]" ng-if="field.help_text"></i>
+                    </span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div ng-switch-when="select" style="position: relative; width: 100%;">
+        <div ng-switch="field.widget._widget">
+
+            <!-- =============================================================================== -->
+            <!-- SELECT2 PROVIDED CHOICES -->
+            <!-- =============================================================================== -->
+            <div ng-switch-when="Select2Widget">
+                <ui-select ui-select-helper ng-model="regionObject.object[field.field_name]"
+                           ng-change="onChange()" name="[[ field.prefixed_name ]]"
+                           ng-disabled="field.widget.attrs.disabled"
+                           theme="bootstrap">
+                    <ui-select-match ng-attr-placeholder="[[ field.widget.options.placeholder ]]">
+                        [[ $select.selected.text | truncateAtBreak ]]
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="choice.id as choice in selectOptions | filter:$select.search">
+                        <div ng-bind-html="trustAsHtml((choice.text | highlight:$select.search))"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div ng-switch-when="Select2MultipleWidget">
+                {# <ui-select ui-select-helper ng-model="regionObject.object[field.field_name]" multiple> #}
+                {#     <ui-select-match ng-attr-placeholder="[[ field.widget.options.placeholder ]]">[[ $item.text ]]</ui-select-match> #}
+                {#     <ui-select-choices #}
+                {#             group-by="'type'" #}
+                {#             repeat="choice.id as choice in selectOptions | filter:$select.search"> #}
+                {#         <div ng-bind-html="trustAsHtml((choice.text | highlight:$select.search))"></div> #}
+                {#     </ui-select-choices> #}
+                {# </ui-select> #}
+                <multi-select
+                        name="[[ field.prefixed_name ]]"
+                        on-item-click="onChange()"
+                        multi-select-helper
+                        input-model="selectOptions"
+                        output-model="tempOutputList"
+                        tick-property="selected"
+                        disable-property="checkboxDisabled"
+                        helper-elements="filter"
+                        default-label="-------"
+                        button-label="text"
+                        item-label="text"
+                        ng-required="field.options.required"
+                        is-disabled="field.widget.attrs.disabled"
+                        >
+                </multi-select>
+            </div>
+            <div ng-switch-when="SelectMultiple">
+                <multi-select
+                        name="[[ field.prefixed_name ]]"
+                        on-item-click="onChange()"
+                        multi-select-helper
+                        input-model="selectOptions"
+                        output-model="tempOutputList"
+                        tick-property="selected"
+                        disable-property="checkboxDisabled"
+                        helper-elements="filter"
+                        default-label="-------"
+                        button-label="text"
+                        item-label="text"
+                        ng-required="field.options.required"
+                        is-disabled="regionObject.helpers.locked_company_ids.indexOf(tempOutputList[0].id) > -1 || field.widget.attrs.disabled"
+                        >
+                </multi-select>
+            </div>
+            <div ng-switch-when="BigSelectMultiple"
+                 duallist-helper>
+                <duallist duallist-option="{}"
+                          template-url="/examine/bigselect.html"
+                          leftscope="selectOptions"
+                          rightscope="tempOutputList">
+                </duallist>
+            </div>
+
+            <div ng-switch-default>
+                <div ng-switch="field.widget.widget_id">
+                    <div ng-switch-when="null">
+                        <multi-select
+                                name="[[ field.prefixed_name ]]"
+                                on-item-click="onChange()"
+                                multi-select-helper
+                                input-model="selectOptions"
+                                output-model="tempOutputList"
+                                tick-property="selected"
+                                disable-property="checkboxDisabled"
+                                helper-elements="filter"
+                                default-label="-------"
+                                button-label="text"
+                                item-label="text"
+                                ng-required="field.options.required"
+                                selection-mode="single"
+                                is-disabled="regionObject.helpers.locked_company_ids.indexOf(tempOutputList[0].id) > -1 || field.widget.attrs.disabled"
+                                >
+                        </multi-select>
+                    </div>
+                    <div ng-switch-default>
+                        <!-- =============================================================================== -->
+                        <!-- SELECT2 AJAX -->
+                        <!-- =============================================================================== -->
+                        <ui-select
+                                name="[[ field.prefixed_name ]]"
+                                ui-select-helper
+                                ui-select-relationship
+                                on-select="choiceSelected($item, $model)"
+{#                                ng-change="onChange()"#}
+                                ng-attr-disabled="[[ field.widget.attrs.disabled ]]"
+                                ng-required="field.options.required"
+                                ng-model="regionObject.object[field.field_name]"
+                                reset-search-input="false"
+                                spinner-enabled="true"
+                                {# spinner-class="fa fa-spinner fa-spin" #}
+                                theme="bootstrap">
+                            <ui-select-match
+                                    ng-attr-placeholder="[[ field.widget.attrs.placeholder ]]">
+                                [[ $select.selected.text | truncateAtBreak ]]
+                            </ui-select-match>
+                            <ui-select-choices
+                                    group-by="'type'"
+                                    refresh="refreshField($select.search)"
+                                    repeat="choice.id as choice in selectOptions | selectFilter:$select.search">
+                                <div ng-bind-html="trustAsHtml((choice.text | highlight:$select.search))"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-switch-when="hidden">
+        <div ng-switch="field.widget._widget">
+            <div ng-switch-when="HiddenInput">
+                <input type="hidden" name="[[ field.prefixed_name ]]"
+                       ng-model="regionObject.object[field.field_name]"
+                       ng-value="regionObject.object[field.field_name]"
+                       ng-required="field.options.required" />
+            </div>
+            <div ng-switch-default>
+                input_type : [[ field.widget.input_type ]] <br/>
+                widget: [[ field.widget._widget ]]
+            </div>
+        </div>
+    </div>
+    <div ng-switch-when="file">
+        <!-- TODO: Settings for existing files -->
+        <div class="form-group">
+            <div class="controls">
+
+                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                    <div class="form-control" data-trigger="fileinput">
+                        <i class="fa fa-file fileinput-exists"></i>
+                        <span class="fileinput-filename" title="[[ field.value | filename | limitTo:-50 ]]">[[ field.value | filename | limitTo:-50 ]]</span>
+                    </div>
+                        <span class="input-group-addon btn btn-default btn-file" ng-disabled="field.widget.attrs.disabled">
+                            <span class="fileinput-new">Select File</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input type="file"
+                                   file-field-helper="field.prefixed_name"
+                                   name="[[ field.prefixed_name ]]">
+                        </span>
+                    <a class="input-group-addon btn btn-default fileinput-exists"
+                       data-dismiss="fileinput"
+                       href="#">Remove</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-switch-when="textarea">
+        <div class="row">
+            <div class="col-md-12">
+                <textarea class="form-control" ng-attr-placeholder="[[ field.widget.attrs.placeholder ]]"
+                          name="[[ field.prefixed_name ]]"
+                          ng-model="regionObject.object[field.field_name]"
+                          ng-required="field.options.required"
+                          ng-disabled="field.widget.attrs.disabled"
+                          ng-change="onChange()">[[ field.value ]]</textarea>
+            </div>
+        </div>
+    </div>
+    <div ng-switch-default>
+        input_type : [[ field.widget.input_type ]] <br/>
+        widget: [[ field.widget._widget ]]
+    </div>
+    <p class="small text-muted"
+        ng-if="helpMode == 'below' && field.help_text"
+        ng-bind-html="field.help_text | trustAsHtml">
+    </p>
+    <field-error></field-error>
+</div>

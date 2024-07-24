@@ -1,0 +1,100 @@
+<div ng-if="!ctrl.show_admin">
+    {% include "customer_eto/includes/eps_calculations_table.html" %}
+</div>
+
+<div ng-if="ctrl.show_admin">
+    <ul ng-if="ctrl.has_reports" class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#eps_summary">Summary</a></li>
+        <li ng-if="ctrl.result.reports.inputs"><a data-toggle="tab" href="#eps_inputs">Input Data</a></li>
+        <li ng-if="ctrl.result.reports.code_calculations"><a data-toggle="tab" href="#eps_calculations">Calculations</a></li>
+        <li ng-if="ctrl.result.reports.modeled_savings"><a data-toggle="tab" href="#eps_modeled_savings">Modeled Savings</a></li>
+        <li ng-if="ctrl.result.reports.incentives"><a data-toggle="tab" href="#eps_incentive">Incentives</a></li>
+        <li ng-if="ctrl.result.reports.projected"><a data-toggle="tab" href="#eps_similar">Similar Size</a></li>
+        <li ng-if="ctrl.result.reports.eps_sheet"><a data-toggle="tab" href="#eps_sheet">EPS Sheet</a></li>
+        <li ng-if="ctrl.result.reports.carbon"><a data-toggle="tab" href="#carbon">Carbon</a></li>
+        <li ng-if="ctrl.result.us_state!='WA' && ctrl.result.reports.net_zero">
+            <a data-toggle="tab" href="#nz_eps">Net Zero</a></li>
+    </ul>
+
+    <div ng-if="ctrl.has_reports" class="tab-content">
+        <div id="eps_summary" class="tab-pane fade in active">
+            {% include "customer_eto/includes/eps_calculations_table.html" %}
+            <div class="col-md-12" ng-if="ctrl.show_debug">
+                <pre> [[ ctrl.result.reports.summary ]] </pre>
+            </div>
+        </div>
+        <div id="eps_inputs" class="tab-pane fade" ng-if="ctrl.result.reports.inputs">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.inputs ]] </pre>
+                </div>
+            </div>
+            <div class="row" ng-if="ctrl.show_debug">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.input_dump ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="eps_calculations" class="tab-pane fade" ng-if="ctrl.result.reports.code_calculations">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.code_calculations ]] </pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.improved_calculations ]] </pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.improvements ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="eps_modeled_savings" class="tab-pane fade"  ng-if="ctrl.result.reports.modeled_savings">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.modeled_savings ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="eps_incentive" class="tab-pane fade"  ng-if="ctrl.result.reports.incentives">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.incentives ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="eps_similar" class="tab-pane fade" ng-if="ctrl.result.reports.projected">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.projected ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="eps_sheet" class="tab-pane fade" ng-if="ctrl.result.reports.eps_sheet">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.eps_sheet ]] </pre>
+                </div>
+            </div>
+        </div>
+        <div id="carbon" class="tab-pane fade" ng-if="ctrl.result.reports.carbon">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.carbon ]] </pre>
+                </div>
+            </div>
+        </div>
+
+        <div id="nz_eps" class="tab-pane fade" ng-if="ctrl.result.us_state!='WA' && ctrl.result.reports.net_zero">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre style="white-space: pre-wrap !important;"> [[ ctrl.result.reports.net_zero ]] </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

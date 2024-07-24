@@ -1,0 +1,607 @@
+<div id="[[ regionObject.type_name ]]_[[ regionObject.id ]]">
+
+    <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="#analytics-home-analysis"
+                                                  data-toggle="pill">Home&nbsp;<span
+          class="badge"
+          ng-if="regionObject.object.home_analysis.warnings">[[regionObject.object.home_analysis.warnings]]</span></a>
+        </li>
+        <li role="presentation" ng-if="regionObject.helpers.view_analysis==true"><a
+          href="#analytics-analytics" data-toggle="pill">Analysis <span
+          class="badge"
+          ng-if="regionObject.object.analytics.warnings">[[regionObject.object.analytics.warnings]]</span></a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="analytics-home-analysis"
+             ng-init="obj = regionObject.object.home_analysis">
+            <br>
+            <div ng-if="regionObject.object.home_analysis.home_overview">
+                <h4>Home Overview</h4>
+                <table class="table table-condensed">
+                    <thead>
+                    <th>Name</th>
+                    <th>Simulation Value
+                        <a
+                          ng-href="[[ regionObject.object.home_analysis.home_overview.fields.simulation_url.value ]]"
+                          ng-if="regionObject.object.home_analysis.home_overview.fields.simulation_url.value"
+                          target="_blank"><i class="fa fa-external-link"></i>
+                        </a>
+                    </th>
+                    <th>Comparing Value</th>
+                    </thead>
+                    <tr
+                      ng-class="regionObject.object.home_analysis.home_overview.fields.rating_company.warning  ? 'danger': ''">
+                        <th>
+                            [[ regionObject.object.home_analysis.home_overview.fields.rating_company.label]]
+                        </th>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.rating_company.value]]
+                        </td>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.rating_company.compared_to]]
+                        </td>
+                    </tr>
+                    <tr
+                      ng-class="regionObject.object.home_analysis.home_overview.fields.rater.warning  ? 'danger': ''">
+                        <th>
+                            [[ regionObject.object.home_analysis.home_overview.fields.rater.label]]
+                        </th>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.rater.value]]
+                        </td>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.rater.compared_to]]
+                        </td>
+                    </tr>
+                    <tr
+                      ng-class="regionObject.object.home_analysis.home_overview.fields.builder_company.warning  ? 'danger': ''">
+                        <th>
+                            [[ regionObject.object.home_analysis.home_overview.fields.builder_company.label
+                            ]]
+                        </th>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.builder_company.value
+                            ]]
+                        </td>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.builder_company.compared_to
+                            ]]
+                        </td>
+                    </tr>
+                    <tr
+                      ng-class="regionObject.object.home_analysis.home_overview.fields.address.warning  ? 'danger': ''">
+                        <th>[[ regionObject.object.home_analysis.home_overview.fields.address.label
+                            ]]
+                        </th>
+                        <td>[[ regionObject.object.home_analysis.home_overview.fields.address.value
+                            ]]
+                        </td>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.address.compared_to
+                            ]]
+                        </td>
+                    </tr>
+                    <tr
+                      ng-class="regionObject.object.home_analysis.home_overview.fields.electric_utility.warning  ? 'danger': ''">
+                        <th>
+                            [[ regionObject.object.home_analysis.home_overview.fields.electric_utility.label
+                            ]]
+                        </th>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.electric_utility.value
+                            ]]
+                        </td>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.electric_utility.compared_to
+                            ]]
+                        </td>
+                    </tr>
+                    <tr
+                      ng-class="regionObject.object.home_analysis.home_overview.fields.gas_utility.warning  ? 'danger': ''">
+                        <th>
+                            [[ regionObject.object.home_analysis.home_overview.fields.gas_utility.label
+                            ]]
+                        </th>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.gas_utility.value
+                            ]]
+                        </td>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.gas_utility.compared_to
+                            ]]
+                        </td>
+                    </tr>
+                    <tr
+                      ng-class="regionObject.object.home_analysis.home_overview.fields.udrh.warning  ? 'danger': ''">
+                        <th>[[ regionObject.object.home_analysis.home_overview.fields.udrh.label
+                            ]]
+                        </th>
+                        <td>[[ regionObject.object.home_analysis.home_overview.fields.udrh.value
+                            ]]
+                        </td>
+                        <td>[[ regionObject.object.home_analysis.home_overview.fields.udrh.warning
+                            ]]
+                        </td>
+                    </tr>
+                    <tr
+                      ng-class="regionObject.object.home_analysis.home_overview.fields.climate_zone.warning  ? 'danger': ''">
+                        <th>
+                            [[ regionObject.object.home_analysis.home_overview.fields.climate_zone.label
+                            ]]
+                        </th>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.climate_zone.value
+                            ]]
+                        </td>
+                        <td>
+                            [[ regionObject.object.home_analysis.home_overview.fields.climate_zone.compared_to
+                            ]]
+                        </td>
+                    </tr>
+                </table>
+                <div class="col-md-12"
+                     ng-class="regionObject.object.home_analysis.home_overview.fields.recent_homes.warning  ? 'bg-danger': ''">
+                    <strong>[[ regionObject.object.home_analysis.home_overview.fields.recent_homes.label
+                        ]]:</strong>
+                    &nbsp;[[ regionObject.object.home_analysis.home_overview.fields.recent_homes.value
+                    ]]
+                </div>
+                <br>
+            </div>
+
+            <div ng-if="regionObject.object.home_analysis.eps_admin.fields.length">
+                <br>
+                <h4>EPS Admin</h4>
+                <table class="table table-condensed"
+                       ng-if="regionObject.object.home_analysis.eps_admin.fields.length">
+                    <thead>
+                    <th>EPS Admin</th>
+                    <th>Checklist Response</th>
+                    </thead>
+                    <tr ng-repeat="data in regionObject.object.home_analysis.eps_admin.fields">
+                        <th>[[ data.label ]]</th>
+                        <td>[[ data.value ]]</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div ng-if="regionObject.object.home_analysis.model_complexity.fields">
+                <br>
+                <h4>Model Complexity</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-condensed">
+                            <thead>
+                            <th>Name</th>
+                            <th>Simulation Value</th>
+                            </thead>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.qty_heating.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.qty_heating.label
+                                    ]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.qty_heating.value
+                                    ]]
+                                </td>
+                            </tr>
+                            <tr
+                              ng-if="regionObject.object.home_analysis.model_complexity.fields.qty_hot_water.value > 1"
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.qty_hot_water.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.qty_hot_water.label
+                                    ]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.qty_hot_water.value
+                                    ]]
+                                </td>
+                            </tr>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.distribution_systems.warning  ? 'danger': ''">
+                            <tr>
+                                <th colspan="2">
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.distribution_systems.label]]
+                                </th>
+                            </tr>
+                            <tr
+                              ng-repeat="row in regionObject.object.home_analysis.model_complexity.fields.distribution_systems.value">
+                                <td colspan="2">&nbsp;&nbsp;&bullet; [[ row ]]</td>
+                            </tr>
+                            </tr>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.duct_return_unconditioned_avg_r_value.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.duct_return_unconditioned_avg_r_value.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.duct_return_unconditioned_avg_r_value.value]]
+                                </td>
+                            </tr>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.duct_supply_unconditioned_avg_r_value.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.duct_supply_unconditioned_avg_r_value.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.duct_supply_unconditioned_avg_r_value.value]]
+                                </td>
+                            </tr>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.has_hydronic_system.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.has_hydronic_system.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.has_hydronic_system.value]]
+                                </td>
+                            </tr>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.mechanical_ventilation_type.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.mechanical_ventilation_type.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.mechanical_ventilation_type.value]]
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-condensed">
+                            <thead>
+                            <th>Name</th>
+                            <th>Simulation Value</th>
+                            </thead>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.foundation_type.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.foundation_type.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.foundation_type.value]]
+                                    <span
+                                      ng-if="regionObject.object.home_analysis.model_complexity.fields.crawl_space_type.value">
+                                        ([[ regionObject.object.home_analysis.model_complexity.fields.crawl_space_type.value]])</span>
+                                </td>
+                            </tr>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.recirculation_pump.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.recirculation_pump.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.recirculation_pump.value ? "Yes" : "No"]]
+                                </td>
+                            </tr>
+
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.shelter_class.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.shelter_class.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.shelter_class.value]]
+                                </td>
+                            </tr>
+
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.has_dwhr.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.has_dwhr.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.has_dwhr.value ? "Yes" : "No"]]
+                                </td>
+                            </tr>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.fixture_max_length.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.fixture_max_length.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.fixture_max_length.value]]
+                                </td>
+                            </tr>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.range_fuel.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.range_fuel.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.range_fuel.value]]
+                                </td>
+                            </tr>
+                            <tr
+                              ng-class="regionObject.object.home_analysis.model_complexity.fields.dryer_fuel.warning  ? 'danger': ''">
+                                <th>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.dryer_fuel.label]]
+                                </th>
+                                <td>
+                                    [[ regionObject.object.home_analysis.model_complexity.fields.dryer_fuel.value]]
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="regionObject.object.home_analysis.model_inputs.fields.length">
+                <br>
+                <h4>Model Inputs</h4>
+                <table class="table table-condensed"
+                       ng-if="regionObject.object.home_analysis.model_inputs.fields">
+                    <thead>
+                    <th>Name</th>
+                    <th>Simulation Value</th>
+                    <th>Checklist Value</th>
+                    <th>Warnings</th>
+                    </thead>
+
+                    <tr ng-repeat="item in regionObject.object.home_analysis.model_inputs.fields"
+                        ng-class="item.warning  ? 'danger': ''">
+                        <th>[[ item.label ]]</th>
+                        <td>[[ item.simulation ]]</td>
+                        <td>[[ item.checklist ]]</td>
+                        <td>[[ item.warning ]]</td>
+                    </tr>
+                </table>
+                <p class="text-muted text-right" style="font-size: x-small">Note: "+" indicates a
+                    custom model was used</p>
+            </div>
+
+            <div ng-if="regionObject.object.home_analysis.heating_allocations.values.length">
+                <h4>Heating/Cooling Allocations</h4>
+                <div
+                  ng-class="regionObject.object.home_analysis.heating_allocations.warning  ? 'danger': ''"
+                  role="alert">
+                    <ul>
+                        <li
+                          ng-repeat="allocation in regionObject.object.home_analysis.heating_allocations.values track by $index">
+                            [[ allocation ]]
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div ng-if="regionObject.object.home_analysis.field_qa.fields.length">
+                <br>
+                <h4>Field QA</h4>
+                <table class="table table-condensed">
+                    <thead>
+                    <th>Checklist Question</th>
+                    <th>QA Checklist Response</th>
+                    <th>Rater Checklist Response</th>
+                    </thead>
+                    <tr ng-repeat="data in regionObject.object.home_analysis.field_qa.fields"
+                        ng-class="data.warning  ? 'danger': ''">
+                        <th>[[ data.label ]]</th>
+                        <td>[[ data.value ]]</td>
+                        <td>[[ data.compared_to ]]</td>
+                    </tr>
+                    <div ng-if="regionObject.object.home_analysis.field_qa.warning"
+                         class="alert alert-danger" role="alert">
+                        [[ regionObject.object.home_analysis.field_qa.warning ]]
+                    </div>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane" id="analytics-analytics"
+             ng-if="regionObject.helpers.view_analysis==true">
+            <br>
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="2" class="text-center">Output Analytics</th>
+                </tr>
+                <tr ng-repeat="table in regionObject.object.analytics.output_analysis.fields">
+                    <td ng-repeat="col in table" ng-class="col.warning  ? 'danger': ''">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th colspan="3" class="text-center">[[ col.label ]]:
+                                    [[ col.value | number:2 ]]
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    Sample Size: [[ col.sample_size ]]
+                                    <span ng-if="col.narrowed_data"> (Limited to last 18 mos)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    Mean: [[ col.mean | number:2 ]]
+                                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                                    Std. Dev: ±[[ col.standard_deviation | number:2 ]]
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">-2σ</td>
+                                <td class="text-center">Mean</td>
+                                <td class="text-center">+2σ</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">[[ col.standard_deviations[0] | number:2
+                                    ]]
+                                </td>
+                                <td class="text-center">[[ col.standard_deviations[1] | number:2
+                                    ]]
+                                </td>
+                                <td class="text-center">[[ col.standard_deviations[2] | number:2
+                                    ]]
+                                </td>
+                            </tr>
+                            <tr ng-if="col.warning">
+                                <td colspan="6" class="text-center text-danger">
+                                    <strong>[[col.warning]]</strong></td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="2" class="text-center">Insulation Analytics</th>
+                </tr>
+                <tr ng-repeat="table in regionObject.object.analytics.insulation_analysis.fields">
+                    <td ng-repeat="col in table" ng-class="col.warning  ? 'danger': ''">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th colspan="3" class="text-center">[[ col.label ]]:
+                                    [[ col.value | number:2 ]]
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    Sample Size: [[ col.sample_size ]]
+                                    <span ng-if="col.narrowed_data"> (Limited to last 18 mos)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    Mean: [[ col.mean | number:2 ]]
+                                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                                    Std. Dev: ±[[ col.standard_deviation | number:2 ]]
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">-2σ</td>
+                                <td class="text-center">Mean</td>
+                                <td class="text-center">+2σ</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">[[ col.standard_deviations[0] | number:2
+                                    ]]
+                                </td>
+                                <td class="text-center">[[ col.standard_deviations[1] | number:2
+                                    ]]
+                                </td>
+                                <td class="text-center">[[ col.standard_deviations[2] | number:2
+                                    ]]
+                                </td>
+                            </tr>
+                            <tr ng-if="col.warning">
+                                <td colspan="6" class="text-center text-danger">
+                                    <strong>[[col.warning]]</strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="2" class="text-center">Mechanical Equipment Analytics</th>
+                </tr>
+                <tr ng-repeat="table in regionObject.object.analytics.mechanical_analysis.fields">
+                    <td ng-repeat="col in table" ng-class="col.warning  ? 'danger': ''">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th colspan="3" class="text-center">[[ col.label ]]:
+                                    [[ col.value | number:2 ]]
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    Sample Size: [[ col.sample_size ]]
+                                    <span ng-if="col.narrowed_data"> (Limited to last 18 mos)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    Mean: [[ col.mean | number:2 ]]
+                                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                                    Std. Dev: ±[[ col.standard_deviation | number:2 ]]
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">-2σ</td>
+                                <td class="text-center">Mean</td>
+                                <td class="text-center">+2σ</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">[[ col.standard_deviations[0] | number:2
+                                    ]]
+                                </td>
+                                <td class="text-center">[[ col.standard_deviations[1] | number:2
+                                    ]]
+                                </td>
+                                <td class="text-center">[[ col.standard_deviations[2] | number:2
+                                    ]]
+                                </td>
+                            </tr>
+                            <tr ng-if="col.warning">
+                                <td colspan="6" class="text-center text-danger">
+                                    <strong>[[col.warning]]</strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="2" class="text-center">Duct Systems, Infiltration and Ventilation
+                        Analytics
+                    </th>
+                </tr>
+                <tr
+                  ng-repeat="table in regionObject.object.analytics.ducts_infiltration_analysis.fields">
+                    <td ng-repeat="col in table" ng-class="col.warning  ? 'danger': ''">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th colspan="3" class="text-center">[[ col.label ]]:
+                                    [[ col.value | number:2 ]]
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    Sample Size: [[ col.sample_size ]]
+                                    <span ng-if="col.narrowed_data"> (Limited to last 18 mos)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    Mean: [[ col.mean | number:2 ]]&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                                    Std. Dev: ±[[ col.standard_deviation | number:2 ]]
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">-2σ</td>
+                                <td class="text-center">Mean</td>
+                                <td class="text-center">+2σ</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">[[ col.standard_deviations[0] | number:2
+                                    ]]
+                                </td>
+                                <td class="text-center">[[ col.standard_deviations[1] | number:2
+                                    ]]
+                                </td>
+                                <td class="text-center">[[ col.standard_deviations[2] | number:2
+                                    ]]
+                                </td>
+                            </tr>
+                            <tr ng-if="col.warning">
+                                <td colspan="6" class="text-center text-danger">
+                                    <strong>[[col.warning]]</strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

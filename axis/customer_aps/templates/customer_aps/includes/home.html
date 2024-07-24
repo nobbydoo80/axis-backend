@@ -1,0 +1,35 @@
+            <h5>Axis Match</h5>
+            <div class="row">
+                <div class="col-md-4 key">Lot Number:</div>
+                <div class="col-md-8 value">
+                    <a href="{{ object.get_absolute_url }}">{{ object.lot_number }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Street:</div>
+                <div class="col-md-8 value">{{ axis_match_display.street_line1 }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">City:</div>
+                <div class="col-md-8 value">{{ axis_match_display.city }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">State:</div>
+                <div class="col-md-8 value">{{ axis_match_display.state }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">ZIP Code:</div>
+                <div class="col-md-8 value">{{ axis_match_display.zipcode }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Subdivision:</div>
+                <div class="col-md-8 value">
+                    <a href="{{ object.subdivision.get_absolute_url }}">{{ object.subdivision.name }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Builder:</div>
+                <div class="col-md-8 value">
+                    <a href="{{ object.subdivision.builder_org.get_absolute_url }}">{{ object.subdivision.builder_org.name }}</a>
+                </div>
+            </div>

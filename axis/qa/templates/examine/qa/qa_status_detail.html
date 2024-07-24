@@ -1,0 +1,270 @@
+<div ng-controller="QAStatusDetailController">
+    <div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th class="key" style="width: 350px;">Current Status</th>
+                <td colspan="3" class="value qa_[[ regionObject.object.state ]]">
+                    [[ regionObject.object.state_display ]]
+                    <span ng-if="regionObject.object.result == 'pass'"
+                          class="label label-success pull-right"
+                          ng-bind="regionObject.object.result_display"></span>
+                    <span ng-if="regionObject.object.result == 'fail'"
+                          class="label label-danger pull-right"
+                          ng-bind="regionObject.object.result_display"></span>
+                </td>
+            </tr>
+            <tr>
+                <th class="key">Program</th>
+                <td colspan="3" class="value">[[ regionObject.object.requirement_eep_program_name ]]</td>
+            </tr>
+            <tr ng-if="regionObject.helpers.is_customer_hirl_project_program">
+                <th class="key">Verifier</th>
+                <td colspan="3" class="value" ng-bind-html="regionObject.object.customer_hirl_verifier_display || '-' | trustAsHtml"></td>
+            </tr>
+            <tr>
+                <th class="key">QA Company</th>
+                <td colspan="3" class="value">[[ regionObject.object.requirement_qa_company_name ]]</td>
+            </tr>
+            <tr>
+                <th class="key">QA Designee</th>
+                <td colspan="3" class="value">
+                    <axis-field ng-if="regionObject.helpers.can_edit_qa_designee" no-label field="regionObject.fields.qa_designee"></axis-field>
+                    <span ng-if="!regionObject.helpers.can_edit_qa_designee" ng-bind="regionObject.object.qa_designee_name"></span>
+                </td>
+            </tr>
+            <tr>
+                <th class="key">Will Gate Certification</th>
+                <td>[[ regionObject.object.requirement_gate_certification ? 'Yes' : 'No' ]]</td>
+                <th class="key">[[ regionObject.object.state == 'complete' ? 'Complete' : 'Last Update' ]]</th>
+                <td>[[ regionObject.object.last_update | date: 'M/d/yy h:mm a' ]]</td>
+            </tr>
+            <tr>
+                <th class="key">Type</th>
+                <td colspan="3" class="value">[[ regionObject.object.requirement_type_display ]]</td>
+            </tr>
+            <tr>
+                <th class="key">Observations</th>
+                <td colspan="3" class="value">
+                    <span ng-show="regionObject.object.observations.length == 0">
+                        --
+                    </span>
+                    <span ng-repeat="observation in regionObject.object.observations">
+                        [[ observation.observation_type ]][[ $last ? '': ',' ]]
+                    </span>
+                </td>
+            </tr>
+            <tr ng-if="regionObject.helpers.can_view_hirl_verifier_fields && regionObject.fields.hirl_verifier_points_reported">
+                <th class="key">Verifier Points Reported*</th>
+                <td colspan="3" class="value" ng-if="regionObject.helpers.can_edit_hirl_verifier_fields">
+                    <axis-field no-label field="regionObject.fields.hirl_verifier_points_reported"></axis-field>
+                </td>
+                <td colspan="3" class="value" ng-if="!regionObject.helpers.can_edit_hirl_verifier_fields">
+                    [[ regionObject.object.hirl_verifier_points_reported  || '-' ]]
+                </td>
+            </tr>
+            <tr ng-if="regionObject.helpers.can_view_hirl_verifier_fields && regionObject.fields.hirl_verifier_points_awarded">
+                <th class="key">Reviewer Points Awarded*</th>
+                <td colspan="3" class="value" ng-if="regionObject.helpers.can_edit_hirl_verifier_fields">
+                    <axis-field no-label field="regionObject.fields.hirl_verifier_points_awarded" on-change="warningChecks()"></axis-field>
+                </td>
+                <td colspan="3" class="value" ng-if="!regionObject.helpers.can_edit_hirl_verifier_fields">
+                    [[ regionObject.object.hirl_verifier_points_awarded || '-' ]]
+                </td>
+            </tr>
+            <tr ng-if="regionObject.helpers.can_view_hirl_verifier_fields && regionObject.fields.hirl_certification_level_awarded">
+                <th class="key">Certification Level Awarded*</th>
+                <td colspan="3" class="value" ng-if="regionObject.helpers.can_edit_hirl_verifier_fields">
+                    <axis-field no-label field="regionObject.fields.hirl_certification_level_awarded" on-change="warningChecks()"></axis-field>
+                    <div class="alert alert-warning" role="alert" ng-if="certificationLevelWarningMessage">
+                        [[ certificationLevelWarningMessage ]]
+                    </div>
+                </td>
+                <td colspan="3" class="value" ng-if="!regionObject.helpers.can_edit_hirl_verifier_fields">
+                    [[ regionObject.object.hirl_certification_level_awarded_display || '-' ]]
+                </td>
+            </tr>
+            <tr ng-if="regionObject.helpers.can_view_hirl_verifier_fields && regionObject.fields.hirl_badges_awarded">
+                <th class="key">NGBS Green+ Badges Awarded*</th>
+                <td colspan="3" class="value" ng-if="regionObject.helpers.can_edit_hirl_verifier_fields">
+                    <axis-field no-label field="regionObject.fields.hirl_badges_awarded" on-change="warningChecks()"></axis-field>
+                    <div class="alert alert-warning" role="alert" ng-if="greenEnergyBadgesWarningMessage">
+                        [[ greenEnergyBadgesWarningMessage ]]
+                    </div>
+                </td>
+                <td colspan="3" class="value" ng-if="!regionObject.helpers.can_edit_hirl_verifier_fields">
+                    [[ regionObject.object.hirl_badges_awarded_display || '-' ]]
+                </td>
+            </tr>
+            <tr ng-if="regionObject.helpers.can_view_hirl_verifier_fields && regionObject.fields.hirl_commercial_space_confirmed">
+                <th class="key">Commercial Space Confirmed*</th>
+                <td colspan="3" class="value" ng-if="regionObject.helpers.can_edit_hirl_verifier_fields">
+                    <axis-field no-label field="regionObject.fields.hirl_commercial_space_confirmed"></axis-field>
+                </td>
+                <td colspan="3" class="value" ng-if="!regionObject.helpers.can_edit_hirl_verifier_fields">
+                    [[ regionObject.object.hirl_commercial_space_confirmed ? "Yes" : "No" ]]
+                </td>
+            </tr>
+            <tr ng-if="regionObject.helpers.can_view_hirl_verifier_fields && regionObject.fields.hirl_reviewer_wri_value_awarded">
+                <th class="key">
+                    Reviewer WRI Value Awarded
+                    <span ng-if="regionObject.fields.hirl_reviewer_wri_value_awarded.options.required">*</span>
+                </th>
+                <td colspan="3" class="value" ng-if="regionObject.helpers.can_edit_hirl_verifier_fields">
+                    <axis-field no-label field="regionObject.fields.hirl_reviewer_wri_value_awarded" on-change="warningChecks()"></axis-field>
+                    <div class="alert alert-warning" role="alert" ng-if="wriValueAwardedWarningMessage">
+                        [[ wriValueAwardedWarningMessage ]]
+                    </div>
+                </td>
+                <td colspan="3" class="value" ng-if="!regionObject.helpers.can_edit_hirl_verifier_fields">
+                    [[ regionObject.object.hirl_reviewer_wri_value_awarded || '-' ]]
+                </td>
+            </tr>
+            <tr ng-if="regionObject.helpers.can_view_hirl_verifier_fields && regionObject.fields.hirl_water_sense_confirmed">
+                <th class="key">WaterSense Confirmed*</th>
+                <td colspan="3" class="value" ng-if="regionObject.helpers.can_edit_hirl_verifier_fields">
+                    <axis-field no-label field="regionObject.fields.hirl_water_sense_confirmed" on-change="warningChecks()"></axis-field>
+                    <div class="alert alert-warning" role="alert" ng-if="waterSenseConfirmedsWarningMessage">
+                        [[ waterSenseConfirmedsWarningMessage ]]
+                    </div>
+                </td>
+                <td colspan="3" class="value" ng-if="!regionObject.helpers.can_edit_hirl_verifier_fields">
+                    [[ regionObject.object.hirl_water_sense_confirmed ? "Yes" : "No" ]]
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+    <div ng-if="regionObject.helpers.use_qa_notes_form">
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row form-group">
+                    <div class="col-md-4" ng-show="regionObject.fields.new_state.widget.choices.length > 1">
+                        <div>
+                            <axis-field field="regionObject.fields.new_state" expect-update></axis-field>
+                        </div>
+                    </div>
+                    <div class="col-md-4" ng-if="regionObject.object.new_state.indexOf('to_complete') > -1">
+                        <axis-field field="regionObject.fields.result"></axis-field>
+                    </div>
+                    <div class="col-md-4" ng-if="regionObject.fields.observation_types && ((regionObject.object.state == 'correction_required' && regionObject.object.new_state === null) || regionObject.object.new_state.length > 0)">
+                        {# NOTE: the indexOf()>0 is on purpose in this line.  We only want to show #}
+                        {# this field if 'correction_required' is the destination state, not the #}
+                        {# originating state where it's LEAVING the correction required, such as #}
+                        {# ``correction_required_to_correction_received``. #}
+                        <axis-field expect-update
+                                    field="regionObject.fields.observation_types"
+                        ></axis-field>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <axis-field field="regionObject.fields.note"></axis-field>
+                    </div>
+                </div>
+                <div class="row" ng-if="regionObject.helpers.customer_hirl_documents_machinery">
+                    <div class="col-md-12">
+                        <div class="row" ng-controller="CustomerDocumentTabController">
+                            <div class="col-md-12 text-right" style="margin-bottom: 2px;">
+                                <button class="btn btn-primary btn-xs"
+                                        ng-click="downloadAll($event, '/api/v3/qa_statuses/'+ regionObject.object.id +'/documents/download_all/');">
+                                    Download All
+                                    <i class="fa fa-fw fa-spin fa-spinner" ng-if="downloadAllIsLoading"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <axis-region-set options="regionObject.helpers.customer_hirl_documents_machinery"></axis-region-set>
+                    </div>
+                </div>
+                <div class="row form-group" ng-if="!regionObject.helpers.customer_hirl_documents_machinery">
+                    <div class="col-md-12">
+                        <axis-region-set options="regionObject.helpers.new_documents"
+                            skip-child-registration="true"
+                        ></axis-region-set>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="regionObject.helpers.machinery.user_inspection_grade">
+        <div class="col-md-12">
+            <axis-region-set
+                    options="regionObject.helpers.machinery.user_inspection_grade" hot-update skip-child-registration="true"></axis-region-set>
+        </div>
+    </div>
+    <div class="row" ng-if="regionObject.helpers.verifier">
+        <div class="col-md-12 text-right">
+            <a href="[[ regionObject.helpers.verifier.profile_url ]]#/tabs/inspection_grade"
+               target="_blank">
+                View [[ regionObject.helpers.verifier.full_name ]] Inspection Grades
+            </a>
+        </div>
+    </div>
+    <div ng-if="regionObject.helpers.machinery.qa_notes">
+        <hr>
+        <h4>Notes</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <axis-region-set options="regionObject.helpers.machinery.qa_notes"
+                                 hot-update skip-child-registration="true"></axis-region-set>
+            </div>
+        </div>
+    </div>
+    <h4>Cycle Times <span class="badge" ng-bind="regionObject.helpers.history.length"></span></h4>
+    <table class="table table-striped table-bordered" ng-init="cycleTimeCollapsed=true;">
+        <thead>
+            <tr>
+                <th>QA Status</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>
+                    Duration
+                    <span class="pull-right">
+                        <button class="btn btn-xs btn-default" ng-click="cycleTimeCollapsed=!cycleTimeCollapsed">
+                            [[ cycleTimeCollapsed ? 'Show' : 'Hide' ]] Cycle Times
+                        </button>
+                    </span>
+                </th>
+            </tr>
+        </thead>
+        <tbody collapse="cycleTimeCollapsed">
+            <tr ng-if="!regionObject.helpers.history.length">
+                <td colspan="4" class="value text-center"> No Transitions to display.</td>
+            </tr>
+            <tr ng-repeat="history in regionObject.helpers.history track by history.id">
+                <td>[[ ::history.state ]]</td>
+                <td>[[ ::history.start_time | date: 'M/d/yy h:mm a' ]]</td>
+                <td>[[ history.end_time || '-' | date: 'M/d/yy h:mm a' ]]</td>
+                <td>
+                    <span ng-if="history.end_time">
+                        [[ history.duration | axisDurationFormat : 'seconds' : 'd [days]' : 2 ]]
+                    </span>
+                    <span ng-if="!history.end_time">
+                        [[ history.start_time | amDifference : regionObject.helpers.history[0].start_time : 'seconds' | axisDurationFormat : 'seconds' : 'd [days Total]' : 2 ]]
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-if="regionObject.helpers.mismatched_answers.length && regionObject.object.requirement_type_display == 'Field'">
+        <h4>Mismatched Answers</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>QA Answer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="mismatch in regionObject.helpers.mismatched_answers">
+                <td>[[ mismatch.question.question ]]</td>
+                <td>[[ mismatch.answer.answer ]]</td>
+                <td>[[ mismatch.qa_answer.answer ]]</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

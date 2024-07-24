@@ -1,0 +1,122 @@
+UDRH
+Label: "UDRH: Oregon 4"
+AreaRange: -1 -1
+Dates: -1 -1 -1 -1 -1 -1
+HtgFuelType: All
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; (c) 2002, Conservation Services Group. Unauthorized use or reproduction is prohibited
+; created BWHarley, 6/12/01
+;
+; Updated 12/2011 to reflect 2011 OR Residential Specialty Code by Samantha Taylor and Todd Poehlmann 12/23/2011
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+SetBothReferenceAndAsIsBuildings
+
+;HeatingValues: All All NoChange -1 68
+;CoolingValues: All All NoChange -1 75
+
+SetReferenceBuildingOnly
+ActiveSolarEliminate:
+PhotovoltaicEliminate:
+
+FndWallLibrary: All/Cond->Any "R19,G1,6-16"
+FndWallLibrary: All/Uncond->Any "R0,8 in"
+FndWallLibrary: All/EnclosedCrawl->OutdoorOrAmbient "R0,8 in"
+
+SlabFloorLibraryValues: OnGrade RadiantNo 15 2 0 0 NoChange
+SlabFloorLibraryValues: OnGrade RadiantYes 15 .3 10 20 NoChange
+SlabFloorLibraryValues: BelowGrade RadiantNo 15 2 0 0 NoChange
+SlabFloorLibraryValues: BelowGrade RadiantYes 15 .3 10 0 NoChange
+
+FrameFloorUo: All/Cond->OutdoorOrAmbient 0.034
+FrameFloorUo: All/Cond->Buffer 0.035
+
+JoistUo: All/Cond->Any 0.058
+AGWallUo: All/Cond->Any 0.058
+
+CeilingUo: Attic 0.032
+CeilingUo: Vaulted 0.042
+
+; R-5.0 FOR DOOR Uo.
+
+DoorUo: All/Cond->Any 0.2
+
+WindowUo: All/Cond->Any All 0.35
+WindowSHGC: All/Cond->Any All 0.35
+
+SkylightUo: All 0.60
+SkylightSHGC: All 0.40
+
+Infiltration: 6.0 6.0 ACH50 4
+MechanicalVentilation: AirCycler -2 0 6 280 0
+
+EquipmentValues: All All Unconditioned 100
+
+HeatingLibraryValues: Gas FuelFiredAirDistribution Gas FuelFiredAirDistribution -1 -1 92 AFUE 712 Eae -1 -1 -1
+;;Boiler Reference is 80% w/ corrected 170 Eae for pump operation;
+HeatingLibraryValues: Gas FuelFiredHydronicDistribution Gas FuelFiredAirDistribution -1 -1 80 AFUE 170 Eae -1 -1 -1
+HeatingLibraryValues: Gas FuelFiredUnitHeater Gas FuelFiredUnitHeater -1 -1 74 AFUE 0 Eae -1 -1 -1
+
+HeatingLibraryValues: Electric ElectricBaseboardOrRadiant Electric ElectricBaseboardOrRadiant -1 -1 100 %EFF 0 Eae -1 -1 -1
+HeatingLibraryValues: Electric ElectricAirDistribution Electric AirSourceHeatPump -1 -1 8.5 HSPF 0 kWh/yr -1 -1 -1
+HeatingLibraryValues: Electric ElectricHydronicDistribution Electric ElectricBaseboardOrRadiant -1 -1 100 %EFF 0 Eae -1 -1 -1
+
+ASHPLibraryValues: 8.5 -1 -1 13 -1 -1 No -1
+HeatingLibraryValues: All AirSourceHeatPump NoChange AirSourceHeatPump -1 -1 8.5 HSPF -1 NoChange -1 -1 -1
+GSHPLibraryValues: All 2.5 -1 13 -1 -1 -1 NoChange -1 NoChange No -1
+HeatingLibraryValues: Electric GroundSourceHeatPump NoChange AirSourceHeatPump -1 -1 8.5 HSPF -1 NoChange -1 -1 -1
+
+IntegratedLibraryValues: Gas All HydronicWAir NoChange NoChange NoChange 75 0.80 0.6
+IntegratedLibraryValues: Gas All HydronicOnly NoChange NoChange NoChange 75 0.80 0.6
+
+CoolingLibraryValues: Electric AirConditioner NoChange NoChange -1 13 SEER -1 -1 -1 -1
+
+WaterHeatingLibraryValues: Gas Conventional Gas Conventional 0.59 0.79 50 0
+WaterHeatingLibraryValues: Gas Integrated Gas Integrated 0.59 0.79 50 0
+WaterHeatingLibraryValues: Gas Instant Gas Conventional 0.59 0.79 50 0
+
+WaterHeatingLibraryValues: Electric Conventional Electric Conventional 0.90 0.98 50 0
+WaterHeatingLibraryValues: Electric Instant Electric Conventional 0.90 0.98 50 0
+WaterHeatingLibraryValues: Electric HeatPump Electric Conventional 0.90 0.98 50 0
+WaterHeatingLibraryValues: Electric GroundSourceHeatPump Electric Conventional 0.90 0.98 50 0
+
+DuctInsulation:	All/Cond All 8.0 Garage
+;This sets ducts in conditioned space to outside because REM does not count duct leakage to outside
+;when all ducts are in conditioned space!
+
+DuctInsulation:	All/Uncond All 8.0 NoChange
+
+DuctInsulation:	UncondBasement Return 8.0 NoChange
+DuctInsulation:	UncondBasement Supply 8.0 NoChange
+
+DuctInsulation:	AtticUnderIns All -1 AtticExposed
+
+DuctInsulation:	AtticExposed Supply 8.0 NoChange
+DuctInsulation:	AtticExposed Return 8.0 NoChange
+
+DuctLeakageTotal: 0.0382 CFM25/CFA
+
+;;;;;Light and Appliances have new terms (v14.2)  Specific entries for the following;;;;;;;;;
+;;Using original/old info for Refrigerator, diswhaser and CFLs for now, others defaults 7/22/13
+;
+;LAValues: [RefrigerationKWh] [DishwasherEF] [%Fluorescent] [%CFL] [CeilingFanCFMWatt]
+;These are the RESNET defaults except lighting from 2005 MA baseline
+;LAValues: 775 0.58 0 50.0 0
+;
+;LAAudit Type: Rating, Audit or No Change
+;LALightingFanValues: [%Flourescnet] [%CFL] [%ExtLighting] [%GarageLighting] [CeilingFanCFM/Watt]
+;LARefrigeratorValues: [RefrigeratorkWh] [RefrigeratorLoc]
+;LADishwasherValues: [DishwasherEF] [PlaceSetCapacity]
+;LAOvenRangeValues: ForOven/RangeFuel [Induction Range] [convenctionOven]
+;LAClothesDryer: ForDryerFuel [DryerLoc] [DryerEnergyFactor] [WasherMEF] [MoistureSensing] [GasEnergyFactor]
+;LAClothesWasher: [WasherLoc] [LabeledEnergyRating] [washerCapacity] [ElectricRate] [GasRate] [AnnualGasCost]
+;
+;;;;;;;;;;;;;
+
+
+LARefrigeratorValues: 775 Conditioned
+LADishwasherValues: 0.58 -1
+LALightingFanValues: 0 50 0 0 0

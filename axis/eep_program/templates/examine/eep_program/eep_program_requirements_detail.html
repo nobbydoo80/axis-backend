@@ -1,0 +1,168 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th></th>
+        <th>
+            Assigned
+            <i class="fa fa-fw fa-info-circle text-muted" data-toggle="tooltip" title="Require that company type X (at least 1) be assigned to a home"></i>
+        </th>
+        <th>
+            Relationship
+            <i class="fa fa-fw fa-info-circle text-muted" data-toggle="tooltip" title="Require that you have a association with that company"></i>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if user.company.company_type != 'builder' %}
+        <tr>
+            <th>Builder</th>
+            <td><span boolean-checkmark="regionObject.object.require_builder_assigned_to_home"></span></td>
+            <td><span boolean-checkmark="regionObject.object.require_builder_relationship"></span></td>
+        </tr>
+    {% endif %}
+    {% if user.company.company_type != 'hvac' %}
+        <tr>
+            <th>HVAC Contractor</th>
+            <td><span boolean-checkmark="regionObject.object.require_hvac_assigned_to_home"></span></td>
+            <td><span boolean-checkmark="regionObject.object.require_hvac_relationship"></span></td>
+        </tr>
+    {% endif %}
+    {% if user.company.company_type != 'utility' %}
+        <tr>
+            <th>Utility Company</th>
+            <td><span boolean-checkmark="regionObject.object.require_utility_assigned_to_home"></span></td>
+            <td><span boolean-checkmark="regionObject.object.require_utility_relationship"></span></td>
+        </tr>
+    {% endif %}
+    {% if user.company.company_type != 'provider' %}
+        <tr>
+            <th>Provider</th>
+            <td><span boolean-checkmark="regionObject.object.require_provider_assigned_to_home"></span></td>
+            <td><span boolean-checkmark="regionObject.object.require_provider_relationship"></span></td>
+        </tr>
+    {% endif %}
+    {% if user.company.company_type != 'rater' %}
+    <tr>
+        <th>Rater (if applicable)</th>
+        <td><span boolean-checkmark="regionObject.object.require_rater_assigned_to_home"></span>
+        </td>
+        <td><span boolean-checkmark="regionObject.object.require_rater_relationship"></span>
+        </td>
+    </tr>
+    {% endif %}
+    {% if user.company.company_type != 'qa' %}
+    <tr>
+        <th>QA Organization (if applicable)</th>
+        <td><span boolean-checkmark="regionObject.object.require_qa_assigned_to_home"></span></td>
+        <td><span boolean-checkmark="regionObject.object.require_qa_relationship"></span></td>
+    </tr>
+    {% endif %}
+    {% if user.company.company_type != 'developer' %}
+    <tr>
+        <th>Developer (if applicable)</th>
+        <td><span boolean-checkmark="regionObject.object.require_developer_assigned_to_home"></span>
+        </td>
+        <td><span boolean-checkmark="regionObject.object.require_developer_relationship"></span>
+        </td>
+    </tr>
+    {% endif %}
+    {% if user.company.company_type != 'architect' %}
+    <tr>
+        <th>Architect (if applicable)</th>
+        <td><span boolean-checkmark="regionObject.object.require_architect_assigned_to_home"></span>
+        </td>
+        <td><span boolean-checkmark="regionObject.object.require_architect_relationship"></span>
+        </td>
+    </tr>
+    {% endif %}
+    {% if user.company.company_type != 'communityowner' %}
+    <tr>
+        <th>Community Owner (if applicable)</th>
+        <td><span
+          boolean-checkmark="regionObject.object.require_communityowner_assigned_to_home"></span>
+        </td>
+        <td><span
+          boolean-checkmark="regionObject.object.require_communityowner_relationship"></span></td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-3 key">[[ ::regionObject.fields.require_rater_of_record.label ]]:</div>
+    <div class="col-md-1 value"><span
+      boolean-checkmark="regionObject.object.require_rater_of_record"></span></div>
+    <div class="col-md-3 key">[[ ::regionObject.fields.require_energy_modeler.label ]]:</div>
+    <div class="col-md-1 value"><span
+      boolean-checkmark="regionObject.object.require_energy_modeler"></span></div>
+    <div class="col-md-3 key">[[ ::regionObject.fields.require_field_inspector.label ]]:</div>
+    <div class="col-md-1 value"><span
+      boolean-checkmark="regionObject.object.require_field_inspector"></span></div>
+</div>
+<br>
+<div
+  ng-if="regionObject.object.require_input_data || regionObject.object.require_rem_data || regionObject.object.require_ekotrope_data || regionObject.object.require_model_file">
+    <hr>
+    <div class="row">
+        <div class="col-md-12"><h5>Simulation Requirements</h5></div>
+        <div class="col-md-8 key">[[ ::regionObject.fields.require_input_data.label ]]:</div>
+        <div class="col-md-4 value"><span
+          boolean-checkmark="regionObject.object.require_input_data"></span></div>
+        <div class="col-md-8 key">[[ ::regionObject.fields.require_rem_data.label ]]:</div>
+        <div class="col-md-4 value"><span
+          boolean-checkmark="regionObject.object.require_rem_data"></span></div>
+        <div class="col-md-8 key">[[ ::regionObject.fields.require_ekotrope_data.label ]]:</div>
+        <div class="col-md-4 value"><span
+          boolean-checkmark="regionObject.object.require_ekotrope_data"></span></div>
+        <div class="col-md-8 key">[[ ::regionObject.fields.require_model_file.label ]]:</div>
+        <div class="col-md-4 value"><span
+          boolean-checkmark="regionObject.object.require_model_file"></span></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3 key">[[ ::regionObject.fields.min_hers_score.label ]]:</div>
+        <div class="col-md-1 value">[[ regionObject.object.min_hers_score ]]</div>
+        <div class="col-md-3 key">[[ ::regionObject.fields.max_hers_score.label ]]:</div>
+        <div class="col-md-1 value">[[ regionObject.object.max_hers_score ]]</div>
+        <div class="col-md-3 key">[[ ::regionObject.fields.per_point_adder.label ]]:</div>
+        <div class="col-md-1 value">[[ regionObject.object.per_point_adder || 0 | currency: '$' ]]
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3 key">[[ ::regionObject.fields.allow_sampling.label ]]:</div>
+        <div class="col-md-1 value"><span
+          boolean-checkmark="regionObject.object.allow_sampling"></span></div>
+        <div class="col-md-3 key">[[ ::regionObject.fields.allow_metro_sampling.label ]]:</div>
+        <div class="col-md-1 value"><span
+          boolean-checkmark="regionObject.object.allow_metro_sampling"></span></div>
+        <div class="col-md-3 key">[[ ::regionObject.fields.require_resnet_sampling_provider.label
+            ]]:
+        </div>
+        <div class="col-md-1 value"><span
+          boolean-checkmark="regionObject.object.require_resnet_sampling_provider"></span></div>
+
+    </div>
+</div>
+
+<div class="row" ng-if="regionObject.object.workflow_name">
+    <div class="col-md-8 key">[[ ::regionObject.fields.workflow.label ]]:</div>
+    <div class="col-md-4 value">[[ regionObject.object.workflow_name || '-' ]]</div>
+</div>
+
+<div
+  ng-if="regionObject.object.builder_incentive_dollar_value || regionObject.object.rater_incentive_dollar_value">
+    <div class="row">
+        <div class="col-md-12"><strong>Incentives</strong></div>
+        <div class="col-md-4 key">[[ ::regionObject.fields.builder_incentive_dollar_value.label
+            ]]:
+        </div>
+        <div class="col-md-2 value">
+            [[ regionObject.object.builder_incentive_dollar_value || 0 | currency: '$' ]]
+        </div>
+        <div class="col-md-4 key">[[ ::regionObject.fields.rater_incentive_dollar_value.label ]]:
+        </div>
+        <div class="col-md-2 value">
+            [[ regionObject.object.rater_incentive_dollar_value || 0 | currency: '$' ]]
+        </div>
+    </div>
+</div>

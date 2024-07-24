@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block page_title %}Annotation Type Listing{% endblock %}
+
+{% block javascript_head %}
+    <script type="text/javascript">
+        // This handles the client side validation for a formset.
+        jQuery.validator.prototype.checkForm = function () {
+            this.prepareForm();
+            for (var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++) {
+                if (this.findByName(elements[i].name).length != undefined && this.findByName(elements[i].name).length > 1) {
+                    for (var cnt = 0; cnt < this.findByName(elements[i].name).length; cnt++) {
+                        this.check(this.findByName(elements[i].name)[cnt]);
+                    }
+                } else {
+                    this.check(elements[i]);
+                }
+            }
+            return this.valid();
+        };
+
+        $().ready(function() {
+            // validate the comment form when it is submitted
+            $("#annotation_form").validate({
+                rules: {
+                    {% for field in formset.0.visible_fields %}
+                        {% if field.field.required %}
+                            "{{ field.name }}[]": {required: true} , {% endif %}
+                    {% endfor %}
+                    csrfmiddlewaretoken:{required:true}
+                }
+            });
+
+            // Formset add rows
+            $('.annotation-row').formset({
+               prefix: '{{ formset.prefix }}',
+               addText: 'Add another',
+               deleteText: ''
+            });
+
+            // Show/hide multiple-choice value specifier input
+            $('select[id$=-data_type]').change(function(){
+                var select = $(this);
+                var values_div = select.closest('.annotation-row').find('.multiple-choice-values');
+                if (select.val() == 'multiple-choice') {
+                    values_div.slideDown(100);
+                } else {
+                    values_div.slideUp(100);
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    <form id="annotation_form" action="{% url "annotation:manage" %}" method="post">
+        {% csrf_token %}
+        {{ formset.management_form }}
+
+        <div class="accordion" id="annotation_accordian">
+        {% for form in formset %}
+            <div class="accordion-group annotation-row">
+                <div class="accordion-heading">
+
+                    <a class="accordion-toggle" data-toggle="collapse"
+                       data-parent="#annotation_accordian" href="#collapse-{{ forloop.counter }}">
+                        {% if form.instance.pk %}
+                            Annotation: {{ form.instance.name }}
+                        {% else %}New Annotation Type{% endif %}</a>
+                </div>
+                <div id="collapse-{{ forloop.counter }}"
+                     class="accordion-body collapse{% if not form.instance.pk %} in {% endif %}">
+                    <div class="accordion-inner">
+                        {# The actual work  #}
+                        {{ form|as_crispy_errors }}{{ form.id }}
+                        <div class="row"><div class="row col-md-12">
+                            <div class="col-md-6">
+
+                                <div class="col-md-12">{{ form.name|as_crispy_field }}</div>
+                                <div class="row">
+                                    <div class="col-md-12">{{ form.description|as_crispy_field }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">{{ form.data_type|as_crispy_field }}</div>
+                                </div>
+                                <div class="col-md-12 multiple-choice-values"
+                                    {% if form.instance.data_type != 'multiple-choice' %}
+                                        style="display: none;"
+                                    {% endif %}>
+                                    {{ form.valid_multiplechoice_values|as_crispy_field }}
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-12">
+                                    {{ form.applicable_content_types|as_crispy_field }}</div>
+                                <div class="row">
+                                    <div class="col-md-6">{{ form.is_unique|as_crispy_field }}</div>
+                                    <div class="col-md-6">{{ form.is_required|as_crispy_field }}</div>
+                                </div>
+
+                                <div class="row">&nbsp;</div>
+                                <div class="row">&nbsp;</div>
+                                {% if form.instance.pk %}
+                                    <div class="row">
+                                    <div class="col-md-10">&nbsp;</div>
+                                    <div class="col-md-2">
+                                        <a href="{% url "annotation:delete" pk=form.instance.pk %}"
+                                           class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+
+                                {% endif %}
+
+                            </div>
+                        </div></div>
+                        {# End actual work  #}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="form-actions">
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
+            <a class="btn" href="{% url "home" %}">Cancel</a>
+        </div>
+    </form>
+{% endblock content %}

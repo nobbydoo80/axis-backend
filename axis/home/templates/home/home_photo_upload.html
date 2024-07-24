@@ -1,0 +1,201 @@
+<div class="well text-muted text-center" style="padding-top: 4rem; padding-bottom: 2rem;">
+    <span class="glyphicon glyphicon-arrow-down" style="font-size: 4rem;"></span>
+    <h3>Drag & Drop Marketing Photos Here</h3>
+    <p>(Use “QA” or “Documents” tab for inspection photos)</p>
+</div>
+
+<input id="home-photo-fileupload" type="file" name="file" multiple
+       style="display: none;"
+       data-url="{% url 'home:home_photo' home.pk %}"
+       data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+
+<div class="row">
+    <div class="col-xs-12 text-right">
+        <button type="button" class="btn btn-primary home-photo-upload-button" style="margin-bottom: 2rem;">
+            <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <table id="home-photo-gallery" class="table table-bordered" data-home-id="{{ home.pk }}" style="white-space: nowrap;">
+            <thead>
+            <tr>
+                <th width="100%">Photo</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for photo in home_photos %}
+                    <tr data-home-photo-id="{{ photo.pk }}" class="photo-row{% if photo.is_primary %} active{% endif %}">
+                        <td>
+                            <a href="{{ photo.file.url }}" target="_blank">
+                                <img src="{{ photo.file.url }}" width="256">
+                            </a>
+                        </td>
+                        <td class="text-right">
+                            <a href="#" class="btn btn-primary as-primary-photo" style="display: {% if photo.is_primary %}none{% else %}auto{% endif %}">Set as primary</a>
+                            <a href="#" class="btn btn-danger delete-photo">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr class="empty-row" style="display: {% if home_photos %}none{% else %}auto{% endif %}">
+                    <td class="text-center" colspan="2">
+                        No photos uploaded yet
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="home-photo-modal-progress" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Uploading...</h4>
+            </div>
+            <div class="modal-body">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="home-photo-modal-confirm-delete" class="modal fade" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Are you sure ?</h4>
+            </div>
+            <div class="modal-body">
+                Do you want to delete this photo ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary" id="home-photo-confirm-delete-btn">Delete
+                </button>
+                <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        let $homePhotoGallery = $('#home-photo-gallery');
+        let $homePhotoProgressModal = $('#home-photo-modal-progress');
+        let $emptyRow = $homePhotoGallery.find('.empty-row');
+
+        $(".home-photo-upload-button").click(function () {
+            $("#home-photo-fileupload").click();
+        });
+
+        $("#home-photo-fileupload").fileupload({
+            dataType: 'json',
+            sequentialUploads: true, // send file one by one
+            start: function (e) {
+                $homePhotoProgressModal.modal("show");
+            },
+            stop: function (e) {
+                $homePhotoProgressModal.modal("hide");
+            },
+            progressall: function (e, data) {
+                let progress = parseInt(data.loaded / data.total * 100, 10);
+                let strProgress = progress + "%";
+                $homePhotoProgressModal.find('.progress-bar').css({"width": strProgress}).text(strProgress);
+            },
+            done: function (e, data) {
+                if (data.result.is_valid) {
+                    $emptyRow.hide();
+                    let $trElem = $(
+                        '<tr data-home-photo-id="'+ data.result.id + '" class="photo-row">' +
+                        '<td>' +
+                        '<a href="' + data.result.url + '" target="_blank"><img src="' + data.result.url + '" width="256"></a>' +
+                        "</td>" +
+                        '<td>' +
+                        '<a href="#" class="btn btn-primary as-primary-photo">Set as primary</a>' +
+                        '<a href="#" class="btn btn-danger delete-photo">Delete</a>' +
+                        '</td>' +
+                        '</tr>'
+                    );
+                    $homePhotoGallery.find('tbody').prepend($trElem);
+                    if (data.result.is_primary) {
+                        $trElem.addClass('active');
+                        $trElem.find('.as-primary-photo').hide();
+                    }
+                }
+            }
+        });
+
+        $homePhotoGallery.on('click', '.as-primary-photo', function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+
+            let $trElem = $(this).parent().parent();
+            let url = '/home/'+ $homePhotoGallery.data('home-id') +'/home-photo-detail/' + $trElem.data('home-photo-id') + '/';
+
+            $.ajax({
+                url: url,
+                method: 'POST',
+                data: {
+                    'is_primary': true
+                },
+                success: function () {
+                    $homePhotoGallery.find('tr').removeClass('active');
+                    $homePhotoGallery.find('.as-primary-photo').show();
+
+                    $trElem.addClass('active');
+                    $trElem.find('.as-primary-photo').hide();
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            });
+
+        });
+
+        $homePhotoGallery.on('click', '.delete-photo', function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+
+            let $trElem = $(this).parent().parent();
+            let homePhotoId = $trElem.data('home-photo-id');
+
+            $('#home-photo-modal-confirm-delete').unbind();
+            $('#home-photo-modal-confirm-delete').modal().one('click', '#home-photo-confirm-delete-btn', function (e) {
+                deleteHomePhoto(homePhotoId);
+            });
+        });
+
+        function deleteHomePhoto(homePhotoId) {
+            let $trElem = $homePhotoGallery.find('.photo-row[data-home-photo-id="' + homePhotoId +'"]');
+            let url = '/home/'+ $homePhotoGallery.data('home-id') +'/home-photo-detail/' + $trElem.data('home-photo-id') + '/';
+            $.ajax({
+                url: url,
+                method: 'DELETE',
+                success: function (data) {
+                    $trElem.fadeOut(150, function(){
+                        $(this).remove();
+                        if (!$homePhotoGallery.find('.photo-row').length) {
+                            $emptyRow.show();
+                        } else {
+                            // set active another photo from gallery
+                            if (data.id) {
+                                let $newTrElem = $homePhotoGallery.find('.photo-row[data-home-photo-id="' + data.id +'"]');
+                                $newTrElem.addClass('active');
+                                $newTrElem.find('.as-primary-photo').hide();
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    alert(error.text);
+                }
+            });
+        }
+    });
+</script>

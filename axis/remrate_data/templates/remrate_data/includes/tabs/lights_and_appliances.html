@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-bordered table-striped">
+            <tbody>
+                {% if object.lightsandappliance.pct_interior_led or object.lightsandappliance.pct_exterior_led or object.lightsandappliance.pct_garage_led %}
+                    <tr>
+                        <th>Percent LED Interior Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_interior_led|floatformat:1 }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Percent LED Exterior Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_exterior_led|floatformat:1 }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Percent LED Garage Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_garage_led|floatformat:1 }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Percent CFL/FL Interior Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_interior_cfl|floatformat:1 }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Percent CFL/FL Exterior Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_exterior_cfl|floatformat:1 }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Percent CFL/FL Garage Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_garage_cfl|floatformat:1 }}%</td>
+                    </tr>
+
+                {% else %}
+                    <tr>
+                        <th>Percent Fluorescent Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_florescent|floatformat:1 }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Percent CFL Interior Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_interior_cfl|floatformat:1 }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Percent CFL Exterior Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_exterior_cfl|floatformat:1 }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Percent CFL Garage Lighting</th>
+                        <td>{{ object.lightsandappliance.pct_garage_cfl|floatformat:1 }}%</td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <th>Refrigerator (kWh/yr)</th>
+                    <td>{{ object.lightsandappliance.refrigerator_kw_yr|floatformat:2 }}</td>
+                </tr>
+                <tr>
+                    <th>Dishwasher (kWH/yr)</th>
+                    <td>{{ object.lightsandappliance.dishwasher_kw_yr|floatformat:2 }}</td>
+                </tr>
+                <tr>
+                    <th>Dishwasher Energy Factor</th>
+                    <td>{{ object.lightsandappliance.dishwasher_energy_factor|floatformat:2 }}</td>
+                </tr>
+                <tr>
+                    <th>Ceiling Fan (cfm/Watt)</th>
+                    <td>{{ object.lightsandappliance.ceiling_fan_cfm_watt|floatformat:1 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <th>Clothes Dryer Fuel</th>
+                    <td>{{ object.lightsandappliance.get_clothes_dryer_fuel_display }}</td>
+                </tr>
+                <tr>
+                    <th>Clothes Dryer Energy Factor</th>
+                    <td>{{ object.lightsandappliance.clothes_dryer_energy_factor|floatformat:2 }}</td>
+                </tr>
+                <tr>
+                    <th>Clothes Washer LER</th>
+                    <td>{{ object.lightsandappliance.clothes_washer_label_energy_rating|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Clothes Washer Capacity</th>
+                    <td>{{ object.lightsandappliance.clothes_washer_capacity|floatformat:1 }}</td>
+                </tr>
+                <tr>
+                    <th>Range/Oven Fuel</th>
+                    <td>{{ object.lightsandappliance.get_oven_fuel_display }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

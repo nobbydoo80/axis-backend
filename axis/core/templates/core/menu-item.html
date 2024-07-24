@@ -1,0 +1,20 @@
+{% if menu.add_divider %}<li class="divider"></li>{% endif %}
+{% if menu.add_header %}<li class="dropdown-header">{{ menu.add_header }}</li>{% endif %}
+<li class="{% if menu.active %}active{% endif %} {% if menu.children|length %}dropdown{% endif %}">
+    <a href="{{ menu.get_url }}" {{ menu.url_attrs }}
+       {% if menu.children|length %}class="dropdown-toggle" data-toggle="dropdown"{% endif %}>
+    {{ menu.title|safe }}{% if menu.children|length %} <b class="caret"></b>{% endif %}</a>
+    {% if menu.children|length %}
+        <ul class="dropdown-menu">
+            {% for child in menu.children %}
+                {% with menu=child %}
+                    {% if menu.add_divider %}<li class="divider"></li>{% endif %}
+                    {% if menu.add_header %}<li class="dropdown-header">{{ menu.add_header }}</li>{% endif %}
+                    <li class="{% if menu.active %}active{% endif %}{% if menu.add_indent %} sub-menu-indent{% endif %}">
+                    <a href="{{ menu.get_url }}" {{ menu.url_attrs }} axis-auto-link>
+                            {{ menu.title|safe }}</a></li>
+                {% endwith %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

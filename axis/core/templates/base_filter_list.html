@@ -1,0 +1,79 @@
+{% extends "base_list.html" %}
+
+{# Generic base for filterable list views. #}
+
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script>
+        datatableview.finalizeOptions = (function(){
+            var super_finalizeOptions = datatableview.finalizeOptions;
+
+            return function _confirm_datatable_options(datatable, options){
+                options = super_finalizeOptions(datatable, options);
+                options.ajax.data = function(data){
+                    {% for field in form %}
+                        data.{{ field.name }} = $("#{{ field.auto_id }}")
+                            {% if field.field.widget.input_type == 'checkbox' %}
+                                .is(':checked') ? 'on' : 'off'
+                            {% else %}
+                                .val()
+                            {% endif %}
+                            ;
+                    {% endfor %}
+                }
+                return options
+            }
+        })();
+
+        $(function(){
+            var dateFields = $('[type=date]'),
+                dataTableSearchInput = $("");
+
+            /* Turn on external field enhancements */
+            $('#filters .select2 select').css('width', '100%').select2();
+            $('#filters .datepicker input').datepicker().on('change', preventDateFieldEvent);
+
+            /* Register reload events */
+            $('#filters').find('input,select').on('change', function(){
+                $('.datatable').dataTable().fnDraw();
+            });
+
+            function preventDateFieldEvent(e){
+                var el = $(this),
+                    prev_date = el.data('prev_selected_date'),
+                    curr_date = el.val();
+
+                if(prev_date == curr_date){
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                } else {
+                    el.data('prev_selected_date', curr_date);
+                }
+            }
+        });
+    </script>
+{% endblock javascript_head %}
+
+
+{% block list_content %}
+    <div class="row">
+        <div id="filters" class="col-md-3">
+            {% block filters %}
+                {% for field in form %}
+                    <div class="form-group">
+                        {% if field.field.widget.show_label %}
+                            <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                        {% endif %}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+            {% endblock filters %}
+        </div>
+        <div class="col-md-9">
+            {% block table %}
+                {{ datatable }}
+            {% endblock table %}
+        </div>
+    </div>
+{% endblock list_content %}

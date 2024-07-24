@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="row">
+        <div class="col-md-12"><b>Invoice:</b>
+            <a href="/app/hi/invoices/[[ regionObject.object['invoice'] ]]" ng-if="regionObject.object['invoice']">[[ regionObject.object['invoice'] ]]</a>
+            <span ng-if="!regionObject.object['invoice']">-</span>
+            <span class="label approve-label"
+                              ng-class="{'label-info': regionObject.object['invoice_state']==='new', 'label-success': regionObject.object['invoice_state']==='paid', 'label-danger': regionObject.object['invoice_state']==='cancelled'}">
+                            [[ regionObject.object['invoice_state'] ]]
+                        </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12"><b>Total Paid:</b> [[ regionObject.object['total_paid'] || 0 | currency ]]</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12"><b>Current Balance:</b> [[ regionObject.object['current_balance'] || 0 | currency ]]</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12"><b>Total:</b> <span class="total">[[ regionObject.object['total'] || 0 | currency ]]</span></div>
+    </div>
+</div>

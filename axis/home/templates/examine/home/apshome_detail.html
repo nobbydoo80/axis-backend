@@ -1,0 +1,25 @@
+<div>
+    <div ng-if="regionObject.helpers.legacy_payments.length">
+        <div class="row">
+            <div class="col-md-4 key">
+                Legacy Payment:
+            </div>
+            <div class="col-md-8">
+                <ul>
+                    <li ng-repeat="item in regionObject.helpers.legacy_payments">
+                        <a href="[[ item.url ]]">[[ item.premise_id ]]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 key">Meterset:</div>
+        <div class="col-md-8">
+            <a href="[[ regionObject.absolute_url ]]">
+                [[ regionObject.object.meterset_date | date:'M/d/yy' || '-' ]]
+            </a>
+        </div>
+    </div>
+</div>

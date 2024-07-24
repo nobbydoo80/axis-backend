@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-md-3 key">[[ regionObject.verbose_names.remrate_target ]]:</div>
+    <div class="col-md-7 value">
+        <a ng-if="regionObject.object.remrate_target_name"
+           ng-href="[[ regionObject.object.remrate_target_url ]]">
+            [[ regionObject.object.remrate_target_name ]]
+        </a>
+        <span ng-if="!regionObject.object.remrate_target_name">-</span>
+    </div>
+    <div class="col-md-2">
+        <a ng-if="regionObject.object.remrate_target && regionObject.helpers.can_download_xml"
+           href="[[ regionObject.object.remrate_data_sim_xml_url ]]" class="btn btn-default btn-xs pull-right"
+           role="button">
+            <i class="fa fa-download"></i>&nbsp;Download RemXML</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 key">[[ regionObject.verbose_names.remrate_data_file ]]:</div>
+    <div class="col-md-7 value">
+        <a ng-if="regionObject.object.remrate_data_file"
+           ng-href="[[ regionObject.object.remrate_data_file_url ]]">
+            [[ regionObject.object.remrate_data_file_name ]]
+        </a>
+        <span ng-if="!regionObject.object.remrate_data_file">-</span>
+    </div>
+    <div class="col-md-2">
+        <a ng-if="regionObject.object.remrate_data_file && regionObject.helpers.can_download_xml"
+           href="[[ regionObject.object.remrate_data_blg_xml_url ]]"
+           class="btn btn-default btn-xs pull-right"
+           role="button">
+            <i class="fa fa-download"></i>&nbsp;Download RemXML</a>
+    </div>
+</div>
+
+<div ng-if="regionObject.object.simulation">
+    <br>
+    <div class="row" ng-if="regionObject.object.simulation">
+        <div class="col-md-3 key">[[ regionObject.verbose_names.simulation ]]:</div>
+        <div class="col-md-7 value">
+            <span ng-if="regionObject.object.simulation">[[ regionObject.object.simulation.as_string
+                ]]</span>
+        </div>
+    </div>
+    <div ng-if="regionObject.helpers.show_simulation_specifics">
+        <br>
+        <div class="col-md-3 key">Seed ID:</div>
+        <div class="col-md-7 value">[[ regionObject.object.simulation.seed.id ]]</div>
+        <div class="col-md-3 key">Source:</div>
+        <div class="col-md-7 value">
+            [[ regionObject.object.simulation.seed.source_label ]]
+            ([[ regionObject.object.simulation.seed.source_id ]] )
+        </div>
+        <div class="col-md-3 key">Analyses:</div>
+        <div class="col-md-7 value"> [[ regionObject.object.simulation.available_analyses.length ]]
+            Total
+        </div>
+        <div ng-if="regionObject.object.simulation.seed.exception_info">
+            <div class="col-md-12 key">Exception:</div>
+            <div class="col-md-12 value">
+                <pre>[[ regionObject.object.simulation.seed.exception_info ]]</pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+<div ng-if="regionObject.object.blg_data">
+    <div ng-if="regionObject.object.blg_data.error">
+        <div class="alert alert-danger">[[ regionObject.object.blg_data.error ]]</div>
+    </div>
+    <div ng-if="!regionObject.object.blg_data.error">
+        <div class="row" ng-if="regionObject.object.blg_data">
+            <div class="col-md-12"><h4>BLG Data</h4></div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4 key">REM/Rate&#8482; Version:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.version ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">Builder:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.project.builder_name ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">Address:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.location.street_line1 ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">City:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.location.city_name ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">State:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.location.us_state.abbr ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">Building Area:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.conditioned_area ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key">Year Built:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.project.construction_year ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"></div>
+                    <div class="col-md-8 value"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4 key"># of Above Grade Walls:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.above_grade_walls.length ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"># of Ceilings:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.roofs.length ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"># of Doors:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.doors.length ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"># of Distribution Systems:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.distribution_systems.length || 0]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"># of Frame Floors:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.frame_floors.length ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"># of Foundation Walls:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.foundation_walls.length ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"># of Joists:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.rim_joists.length ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"># of Photovoltaics:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.photovoltaics.length ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"># of Slab Floors:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.slabs.length ]]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 key"># of Windows:</div>
+                    <div class="col-md-8 value">[[ regionObject.object.blg_data.windows.length ]]</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

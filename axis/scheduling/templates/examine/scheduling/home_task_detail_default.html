@@ -1,0 +1,19 @@
+<table class="table scheduling-task-table">
+    <tbody>
+        <tr>
+            <td width="30%">
+                <b>Status:</b>
+                [[ regionObject.object['status_display'] ]]
+            </td>
+            <td width="30%">
+                <b>Assignee(s):</b>
+                <span ng-bind-html="regionObject.object['assignees_display'] | trustAsHtml"></span>
+            </td>
+            <td width="40%">
+                <div ng-show="regionObject.object['note']">
+                    <b>Notes:</b> [[ regionObject.object['note'] ]]
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

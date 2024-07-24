@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-8 key">[[ regionObject.fields.is_approved.label ]]:</div>
+    <div class="col-md-4 text-right  value">[[ regionObject.object.is_active ? '&#x2714;' : '-' ]]</div>
+</div>
+<div class="row" ng-show="regionObject.object.is_active">
+    <div class="col-md-8"><i>[[ regionObject.object.approved_by ]]</i></div>
+    <div class="col-md-4 text-right"><i>[[ regionObject.object.approved_date | date: 'M/d/yyyy' ]]</i></div>
+</div>
+<br />
+<div class="row" ng-show="regionObject.object.is_active">
+    <div class="col-md-10 key">[[ regionObject.fields.thermostat_qty.label ]]</i></div>
+    <div class="col-md-2 text-right value">[[ regionObject.object.thermostat_num  ]]</div>
+</div>

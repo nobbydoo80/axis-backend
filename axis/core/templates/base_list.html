@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{# Generic base for list views. #}
+
+{% block page_title %}{{ verbose_name_plural }}{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript">
+        datatableview.autoInitialize = true;
+    </script>
+{% endblock javascript_head %}
+
+{% block full_content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-10">
+                <p><span id="{{ result_counter_id|default:"id_count" }}">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </span>
+                {% block header_text %}
+                    {{ verbose_name_plural }}
+                {% endblock header_text %}
+                {% if request.user.is_impersonate %} for {{ request.company }}{% endif %}
+                </p>
+            </div>
+            {% block action_button %}
+                {% if can_add %}
+                    <div class="col-md-2">
+                        <div class="pull-right">
+                            <a href="{% block add_url %}{{ add_url }}{% endblock add_url %}"
+                               class="btn btn-primary">
+                                Add New
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endblock %}
+        </div>
+    </header>
+
+    {% block list_content %}
+        {# Defaults to rendering a datatable variable. #}
+        {{ datatable }}
+    {% endblock list_content %}
+
+{% endblock full_content %}

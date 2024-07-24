@@ -1,0 +1,672 @@
+<div>
+    <div class="row">
+        <div class="col-md-3">
+            <label>Floorplan Data:</label>
+        </div>
+        <div class="col-md-8">
+            <label>Name:</label>
+            <a href="[[ regionObject.absolute_url ]]">
+                [[ regionObject.object.name ]]
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <label>Number:</label>
+            [[ regionObject.object.number ]]
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-8">
+            <label>Square footage:</label>
+            [[ regionObject.object.square_footage ]]
+        </div>
+    </div>
+    <div class="row"
+         ng-if="regionObject.object.ekotrope_houseplan_name || regionObject.object.ekotrope_project_required">
+        <div class="col-md-3">
+            <label>Ekotrope Data:</label>
+        </div>
+        <div class="col-md-7">
+            <a href="[[ regionObject.object.ekotrope_houseplan_url ]]"
+               ng-if="regionObject.object.ekotrope_houseplan_name">
+                [[ regionObject.object.ekotrope_houseplan_name ]]
+            </a>
+            <span ng-if="!regionObject.object.ekotrope_houseplan_name"> - </span>
+        </div>
+    </div>
+    <div class="row" ng-if="regionObject.object.remrate_target || regionObject.object.remrate_target_required">
+        <div class="col-md-3">
+            <label>REM/Rate™ Data:</label>
+        </div>
+        <div class="col-md-7">
+            <a href="[[ regionObject.object.remrate_target_url ]]" ng-if="regionObject.object.remrate_target_name">
+                [[ regionObject.object.remrate_target_name ]]
+            </a>
+            <span ng-if="!regionObject.object.remrate_target_name"> - </span>
+        </div>
+        <div class="col-md-2">
+            <a ng-if="regionObject.object.remrate_target && regionObject.helpers.can_download_xml"
+               href="[[ regionObject.object.remrate_data_sim_xml_url ]]"
+               class="btn btn-default btn-xs pull-right"
+               role="button">
+                <i class="fa fa-download"></i>&nbsp;Download RemXML</a>
+        </div>
+    </div>
+    <div ng-if="regionObject.object.simulation">
+        <br>
+        <div class="row">
+            <div class="col-md-3 key">[[ regionObject.verbose_names.simulation ]]:</div>
+            <div class="col-md-9 value">
+                <span ng-if="regionObject.object.simulation">
+                    [ [[ regionObject.object.simulation.id]] ]&nbsp;
+                    [[ regionObject.object.simulation.as_string ]]
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 key">Analyses:</div>
+            <div class="col-md-7 value">
+                <div ng-if="regionObject.object.simulation.available_analyses.length > 2">
+                    [[ regionObject.object.simulation.available_analyses.length]] Total
+                </div>
+                <div ng-if="regionObject.object.simulation.available_analyses.length <= 2">
+                    <ul>
+                        <li ng-repeat="analysis in regionObject.object.simulation.available_analyses">
+                            [[ analysis ]]
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-if="regionObject.object.simulation.seed.exception_info">
+                <div class="col-md-12 key">Exception:</div>
+                <div class="col-md-12 value">
+                    <pre>[[ regionObject.object.simulation.seed.exception_info ]]</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row"
+         ng-if="regionObject.object.remrate_data_file || regionObject.object.remrate_data_file_required">
+        <div class="col-md-3">
+            <label>REM/Rate™ File:</label>
+        </div>
+        <div class="col-md-7">
+            <a href="[[ regionObject.object.remrate_data_file_url ]]"
+               ng-if="regionObject.object.remrate_data_file_name">
+                <i class="fa fa-cloud-download"></i>
+                [[ regionObject.object.remrate_data_file_name ]]
+            </a>
+            <span ng-if="!regionObject.object.remrate_data_file_name"> - </span>
+        </div>
+        <div class="col-md-2">
+            <a ng-if="regionObject.object.remrate_data_file && regionObject.helpers.can_download_xml"
+               href="[[ regionObject.object.remrate_data_blg_xml_url ]]" class="btn btn-default btn-xs pull-right"
+               role="button">
+                <i class="fa fa-download"></i>&nbsp;Download RemXML</a>
+        </div>
+    </div>
+
+    <div class="row"
+         ng-if="regionObject.helpers.open_studio_eri_data.error_msg">
+        <div class="col-md-3">
+            <label>OpenStudio-ERI Error:</label>
+        </div>
+    </div>
+    <div class="row"
+         ng-if="regionObject.helpers.open_studio_eri_data.error_msg">
+        <div class="col-md-12"><pre>[[ regionObject.helpers.open_studio_eri_data.error_msg ]]</pre></div>
+    </div>
+
+
+    <div class="row"
+         ng-if="regionObject.helpers.hes_score_data.errors.length">
+        <div class="col-md-3">
+            <label>Home Energy Score Error:</label>
+        </div>
+        <div class="col-md-9" ng-repeat="err in regionObject.helpers.hes_score_data.errors">
+            [[ err ]]
+        </div>
+    </div>
+
+    <div class="row"
+         ng-if="regionObject.helpers.hes_score_data.can_download_hpxml">
+        <a href="[[ regionObject.helpers.hes_score_data.hpxml_url ]]"
+           class="btn btn-default btn-xs pull-right"
+           role="button">
+            Download HPXML
+        </a>
+    </div>
+
+    <div>
+        <br/>
+        <div class="row">
+            <div class="btn-group btn-group-justified" role="group">
+                <div class="btn-group" role="group">
+                    <a type="button" class="btn btn-default" ng-class="showInputData ? 'active' : ''"
+                       aria-pressed="false" ng-click="showInputData = !showInputData">
+                        Rating Input
+                        <span ng-if="regionObject.object.normalized_input_data.valid" class="badge pull-right">
+                            [[ regionObject.object.normalized_input_data.source_name ]]
+                            <span ng-if="regionObject.object.normalized_input_data.source_type == 'remrate'">
+                                <i class="fa fa-flag"></i>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a type="button"
+                       class="btn btn-default"
+                       data-toggle="button"
+                       aria-pressed="false"
+                       ng-click="showOutputData = !showOutputData"
+                       ng-disabled="!(regionObject.object.normalized_remrate_result_data.valid || regionObject.object.normalized_ekotrope_result_data.valid || regionObject.object.normalized_hes_result_data.valid || regionObject.object.normalized_open_studio_eri_result_data.valid)">
+                        Rating Output
+                        <span ng-if="regionObject.object.normalized_remrate_result_data.valid" class="badge pull-right">REM Export</span>
+                        <span ng-if="regionObject.object.normalized_ekotrope_result_data.valid"
+                              class="badge pull-right">Ekotrope</span>
+                        <span ng-if="regionObject.object.normalized_hes_result_data.valid" class="badge pull-right">HES Score</span>
+                        <span ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid"
+                              class="badge pull-right">OpenStudio-ERI</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div collapse="!showInputData">
+            <br/>
+            <div class="row">
+                <div class="col-md-4 key">Style:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.housing_type || "-" ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key"># of Bedrooms:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.num_bedrooms || "-" ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key"># of Stories:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.num_stories || "-" ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Foundation Type:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.foundation_type || "-" ]]
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-md-4 key">Cond. Area:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.conditioned_area || "-" ]]
+                    <span ng-show="regionObject.object.normalized_input_data.conditioned_area">sq ft</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Cond. Volume</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.conditioned_volume || "-" ]]
+                    <span ng-show="regionObject.object.normalized_input_data.conditioned_volume">cu ft</span>
+                </div>
+            </div>
+            <div class="row" ng-show="regionObject.object.normalized_input_data.shell_area">
+                <div class="col-md-4 key">Shell Area:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.shell_area ]] sq ft
+                </div>
+            </div>
+
+            <br>
+            <div class="row" ng-show="regionObject.helpers.show_ceiling_r_values">
+                <div class="col-md-4 key">Ceiling R-Values:</div>
+                <div class="col-md-8 value">
+                    Attic:
+                    <span ng-init="ceilings = regionObject.object.normalized_input_data.ceilings.attic"
+                          ng-switch="ceilings">
+                        <span ng-switch-when="null">-</span>
+                        <span ng-switch-default ng-repeat="ceiling in ceilings track by $index">
+                            <span ng-bind="ceiling.r_value || '-'"/>
+                        </span>
+                    </span>
+                    &#x2003;
+                    Vaulted:
+                    <span ng-init="ceilings = regionObject.object.normalized_input_data.ceilings.attic"
+                          ng-switch="regionObject.object.normalized_input_data.ceilings.vaulted">
+                        <span ng-switch-when="null">-</span>
+                        <span ng-switch-default ng-repeat="ceiling in ceilings track by $index">
+                            <span ng-bind="ceiling.r_value || '-'"/><span ng-if="$index < ceilings.length - 1">,</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Wall R-Value:</div>
+                <div class="col-md-8 value">
+                    <span ng-if="!regionObject.object.normalized_input_data.above_grade_wall">-</span>
+                    <span ng-if="regionObject.object.normalized_input_data.above_grade_wall">
+                        [[ regionObject.object.normalized_input_data.above_grade_wall.r_value ]]
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Floor R-Value:</div>
+                <div class="col-md-8 value">
+                    <span ng-if="!regionObject.object.normalized_input_data.floor">-</span>
+                    <span ng-if="regionObject.object.normalized_input_data.floor">
+                        [[ regionObject.object.normalized_input_data.floor.r_value ]]
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 key">Window U-Values:</div>
+                <div class="col-md-8 value">
+                    <span ng-if="regionObject.object.normalized_input_data.windows.length === 0">-</span>
+                    <span ng-repeat="window in regionObject.object.normalized_input_data.windows">
+                        [[ window.u_value ]]<span ng-if="!$last">,</span>
+                    </span>
+                </div>
+            </div>
+
+            <br/>
+            <div class="row">
+                <div class="col-md-4 key">Infiltration:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.infiltration || "-" ]]
+                </div>
+            </div>
+            <div class="row" ng-if="regionObject.object.normalized_input_data.total_duct_leakage.length == 1">
+                <div class="col-md-4 key">Duct Leakage:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.total_duct_leakage[0] ]]
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 key">Duct Inside Percent:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.duct_inside_percent || "-" ]]
+                    <span ng-show="regionObject.object.normalized_input_data.duct_inside_percent">%</span>
+                </div>
+            </div>
+
+            <div class="row" ng-if="regionObject.object.normalized_input_data.dominant_equipment.dominant_heating.fuel">
+                <div class="col-md-4 key">Primary Heating Fuel:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.dominant_equipment.dominant_heating.fuel || '-' ]]
+                </div>
+            </div>
+
+            <div class="row" ng-repeat="equipment in regionObject.object.normalized_input_data.dominant_equipment"
+                 ng-if="equipment.type">
+                <div class="col-md-4 key">[[ equipment.type_name_pretty ]]:</div>
+                <div class="col-md-8 value">
+                    [[ equipment.type ]],
+                    [[ equipment.fuel ]],
+                    <span ng-switch="k">
+                        <span ng-switch-when="dominant_heating">
+                            [[ equipment.capacity | number:1 ]] kBtuh,
+                            [[ equipment.efficiency | number:1 ]] [[ equipment.units_pretty ]]
+                        </span>
+                        <span ng-switch-when="dominant_cooling">
+                            [[ equipment.capacity | number:1 ]] kBtuh,
+                            [[ equipment.efficiency | number:1 ]] [[ equipment.units_pretty ]]
+                        </span>
+                        <span ng-switch-when="dominant_hot_water">
+                            [[ equipment.tank_size ]] Gal EF
+                            [[ equipment.energy_factor | number:2 ]]
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row" ng-if="regionObject.object.normalized_input_data.ventilation">
+                <div class="col-md-4 key">Ventilation:</div>
+                <div class="col-md-8 value">
+                    [[ regionObject.object.normalized_input_data.ventilation | json ]]
+                </div>
+            </div>
+
+            <div class="row" ng-if="regionObject.object.normalized_input_data.solar.length">
+                <div class="col-md-4 key">Photovoltaics:</div>
+                <div class="col-md-8 value">
+                    <div class="row" ng-repeat="item in regionObject.object.normalized_input_data.solar">
+                        <div class="col-md-12">[[ item ]]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div collapse="!showOutputData">
+            <hr>
+            <div class="row">
+                <div class="col-md-3 key">Simulator:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    <label>[[ regionObject.object.normalized_hes_result_data.engine]]</label></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    <label>[[ regionObject.object.normalized_ekotrope_result_data.engine]]</label></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    <label>[[ regionObject.object.normalized_remrate_result_data.engine]]</label></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    <label>[[ regionObject.object.normalized_open_studio_eri_result_data.engine]]</label></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Analysis:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    <label>[[ regionObject.object.normalized_hes_result_data.type]]</label></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    <label>[[ regionObject.object.normalized_ekotrope_result_data.type]]</label></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    <label>[[ regionObject.object.normalized_remrate_result_data.type]]</label></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    <label>[[ regionObject.object.normalized_open_studio_eri_result_data.type]]</label></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Version:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.version]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.version]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.version]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.version]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Simulation Date:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.simulation_date | date : 'M/d/yy h:mm a' ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.simulation_date | date : 'M/d/yy h:mm a' ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.simulation_date | date : 'M/d/yy h:mm a' ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.simulation_date | date : 'M/d/yy h:mm a']]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">ERI/HERS:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_hes_result_data.energy_rating_index | number:0]]</strong>
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_ekotrope_result_data.energy_rating_index | number:0]]</strong>
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_remrate_result_data.energy_rating_index | number:0]]</strong>
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid"><strong>[[ regionObject.object.normalized_open_studio_eri_result_data.energy_rating_index | number:0]]</strong>
+                </div>
+            </div>
+            <div class="row" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                <div class="col-md-3 key">HES Score:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_hes_result_data.hes_score | number:0]]</strong></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_ekotrope_result_data.hes_score | number:0]]</strong></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_remrate_result_data.hes_score | number:0]]</strong></div>
+            </div>
+
+
+            <br>
+            <div class="row">
+                <div class="col-md-12"><label>Annual Consumption Data (MMBtu/yr)</label></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Heating:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.consumption.total_heating_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.consumption.total_heating_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.consumption.total_heating_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.consumption.total_heating_consumption | number:1
+                    ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Cooling:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.consumption.total_cooling_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.consumption.total_cooling_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.consumption.total_cooling_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.consumption.total_cooling_consumption | number:1
+                    ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Hot Water:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.consumption.total_hot_water_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.consumption.total_hot_water_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.consumption.total_hot_water_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.consumption.total_hot_water_consumption | number:1
+                    ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Lights and Appliances:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.consumption.total_light_and_appliances_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.consumption.total_light_and_appliances_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.consumption.total_light_and_appliances_consumption | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.consumption.total_light_and_appliances_consumption | number:1
+                    ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">PV (On-site Gen):</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.consumption.total_onsite_generation | number:1 ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.consumption.total_onsite_generation | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.consumption.total_onsite_generation | number:1
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.consumption.total_onsite_generation | number:1
+                    ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Total:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.consumption.total_energy_consumption | number:1 ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_ekotrope_result_data.consumption.total_energy_consumption | number:1
+                        ]]</strong></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_remrate_result_data.consumption.total_energy_consumption | number:1
+                        ]]</strong></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid"><strong>[[ regionObject.object.normalized_open_studio_eri_result_data.consumption.total_energy_consumption | number:1
+                    ]]</strong></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12"><label>Annual Cost Data</label></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Heating:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.costs.annual_heating_cost | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.costs.annual_heating_cost | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.costs.annual_heating_cost | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.costs.annual_heating_cost | currency
+                    ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Cooling:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.costs.annual_cooling_cost | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.costs.annual_cooling_cost | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.costs.annual_cooling_cost | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.costs.annual_cooling_cost | currency
+                    ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Hot Water:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.costs.annual_hot_water_cost | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.costs.annual_hot_water_cost | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.costs.annual_hot_water_cost | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.costs.annual_hot_water_cost | currency
+                    ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Lights and Appliances:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.costs.annual_light_and_appliances_cost | currency
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.costs.annual_light_and_appliances_cost | currency
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.costs.annual_light_and_appliances_cost | currency
+                    ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.costs.annual_light_and_appliances_cost | currency
+                    ]]
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 key">PV (On-site Gen):</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.costs.annual_generation | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    [[ regionObject.object.normalized_ekotrope_result_data.costs.annual_generation | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    [[ regionObject.object.normalized_remrate_result_data.costs.annual_generation | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    [[ regionObject.object.normalized_open_studio_eri_result_data.costs.annual_generation | currency ]]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key">Total Annual Cost:</div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid">
+                    [[ regionObject.object.normalized_hes_result_data.costs.total_annual_costs | currency ]]
+                </div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_ekotrope_result_data.costs.total_annual_costs | currency
+                        ]]</strong></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid">
+                    <strong>[[ regionObject.object.normalized_remrate_result_data.costs.total_annual_costs | currency
+                        ]]</strong></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid"><strong>[[ regionObject.object.normalized_open_studio_eri_result_data.costs.total_annual_costs | currency
+                    ]]</strong></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 key"></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_hes_result_data.valid"></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_ekotrope_result_data.valid"></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_remrate_result_data.valid"></div>
+                <div class="col-md-3" ng-if="regionObject.object.normalized_open_studio_eri_result_data.valid">
+                    <a ng-href="[[ regionObject.object.normalized_open_studio_eri_result_data.urls.rated_html_document ]]"
+                       download>Full Results</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-if="regionObject.parentRegionObject.helpers.show_performance_items && regionObject.object.remrate_target">
+    </div>
+
+    <blockquote class="comment" ng-if="regionObject.object.comment">
+        <footer>Comment:</footer>
+        <p>[[ regionObject.object.comment ]]</p>`
+    </blockquote>
+
+    <div ng-if="regionObject.parentRegionObject.helpers.show_floorplan_review">
+        <hr/>
+        <div class="row">
+            <div class="col-md-2 key">Is Active:</div>
+            <div class="col-md-1 value">[[ regionObject.object.is_reviewed ? '&#x2714;' : '-' ]]</div>
+            <div class="col-md-4" ng-show="regionObject.object.is_reviewed"><i>[[ regionObject.object.reviewed_by ]]</i>
+            </div>
+            <div class="col-md-4" ng-show="regionObject.object.is_reviewed"><i>[[ regionObject.object.review_date ]]</i>
+            </div>
+        </div>
+    </div>
+</div>

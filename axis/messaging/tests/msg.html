@@ -1,0 +1,22 @@
+{% comment %}
+Notes on how to use these..
+- THIS IS THE CONTENT ONLY.
+- This will include our default css
+- This will include our unsubscribe stuff.
+{% endcomment %}
+
+First this is a django template so we have full template tag support here.
+
+{% if user %}
+<p>{{ user }} is here</p>
+{% endif %}
+
+{% for item in elements %}
+{% if forloop.first %}
+<ul> {% endif %}
+    <li>{{item}}</li>
+    {% if forloop.last %}
+</ul> {% endif %}
+{% endfor %}
+
+DJANGO_EMAIL_CONTENT

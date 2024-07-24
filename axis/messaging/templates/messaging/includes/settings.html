@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col-md-9">
+        <div ng-controller="MessagePreferencesController as messageSettings">
+            <label>
+                Message settings
+                <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="right"
+                   title="Choose how you would like to receive notifications real time."></i>
+            </label>
+            <div category="category" preferences="preferences"
+                              ng-repeat="(category, preferences) in messageSettings.preferences">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="text-transform: capitalize">
+                                [[ category ]]
+                            </th>
+                            {# <th class="checkbox-column"> #}
+                            {#     <i class="fa fa-fw fa-thumb-tack" data-toggle="tooltip" data-placement="top" #}
+                            {#        title="In-system alert is sticky (requires acknowledgement to dismiss)"></i> #}
+                            {# </th> #}
+                            <th class="checkbox-column">
+                                <i class="fa fa-fw fa-bell-o" data-toggle="tooltip" data-placement="top"
+                                   title="Receive In-system alert"></i>
+                            </th>
+                            <th class="checkbox-column">
+                                <i class="fa fa-fw fa-envelope-o" data-toggle="tooltip" data-placement="top"
+                                   title="Receive Email notification"></i>
+                            </th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(name, preference) in ::preferences" {% if not user.is_superuser %}ng-hide="preference.required"{% endif %}>
+                            <td>
+                                <i
+                                   class="fa fa-fw [[ ::preference.level | fontawesomecontext ]] text-[[ ::preference.level | bootstrapcontext ]]"
+                                   data-toggle="tooltip" data-placement="left"
+                                   title="[[ preference.level ]]"></i>
+                                <span data-toggle="tooltip" data-placement="right"
+                                      title="[[ ::preference.description ]]">
+                                    [[ preference.verbose_name || name ]]
+                                </span>
+                                {% if user.is_superuser %}
+                                    <div class="row">
+                                        <div class="col-md-11 col-md-offset-1 text-muted small">
+                                            <code>company_admins_only</code>:
+                                            [[ ::preference.company_admins_only ]]
+                                            <br>
+                                            <code>company_type</code>:
+                                            [[ ::preference.company_types]]
+                                            <br>
+                                            <code>company.slug</code>:
+                                            [[ ::preference.company_slugs || "any" ]]
+                                            <br>
+                                            <code>relationship</code>:
+                                            [[ ::preference.companies_with_relationship || preference.companies_with_relationship_or_self || "any" ]]
+                                            <span
+                                              ng-if="::preference.companies_with_relationship_or_self">(or self)</span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </td>
+                            {# <td class="checkbox-column"> #}
+                            {#     <span ng-if="::preference.sticky_alert" class="fa-stack"> #}
+                            {#         <i class="fa fa-square fa-stack-1x text-primary"></i> #}
+                            {#         <i class="fa fa-thumb-tack fa-stack-1x fa-inverse"></i> #}
+                            {#     </span> #}
+                            {# </td> #}
+                            <td class="checkbox-column"><input type="checkbox" ng-disabled="preference.required" ng-model="preference.receive_notification"/></td>
+                            <td class="checkbox-column"><input type="checkbox" ng-disabled="preference.required" ng-model="preference.receive_email"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+            <div class="text-left">
+                <button class="btn btn-primary btn-xs"
+                        ng-click="messageSettings.save()"
+                        ng-disabled="messageSettings.busy">
+                    <i class="fa fa-spinner fa-spin" ng-show="messageSettings.busy"></i>
+                    <i class="fa fa-exclamation-circle" ng-show="messageSettings.error"></i>
+                    Save delivery settings
+                </button>
+                <div class="text-danger"
+                     ng-show="messageSettings.error"
+                     ng-bind="messageSettings.error">
+                </div>
+                <div class="text-success" ng-if="messageSettings.success">
+                    Preferences successfully updated.
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div ng-controller="DigestPreferenceController as digestSettings">
+            <label for="digest-setting">
+                Digest Subscription
+                <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="left"
+                   title="Choose whether you would like to receive a nightly email summary of the selected notifications."></i>
+            </label>
+            <p>
+                <select ng-model="digestSettings.threshold">
+                    <option value="">Unsubscribed</option>
+                    <option value="alerts">In-system-only alerts</option>
+                    <option value="all">Everything</option>
+                </select>
+            </p>
+            <p class="text-muted">
+                Digests are generated at 9pm Pacific time
+            </p>
+            <div class="text-left">
+                <button class="btn btn-primary btn-xs"
+                        ng-click="digestSettings.save()"
+                        ng-disabled="digestSettings.busy">
+                    <i class="fa fa-spinner fa-spin" ng-show="digestSettings.busy"></i>
+                    <i class="fa fa-exclamation-circle" ng-show="digestSettings.error"></i>
+                    Save digest setting
+                </button>
+                <div class="text-danger"
+                     ng-show="digestSettings.error"
+                     ng-bind="digestSettings.error">
+                </div>
+                <div class="text-success" ng-if="digestSettings.success">
+                    Preference successfully updated.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

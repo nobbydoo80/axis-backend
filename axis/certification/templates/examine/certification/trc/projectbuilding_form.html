@@ -1,0 +1,17 @@
+{% extends "examine/certification/certifiable_object_form.html" %}
+
+{% block settings_fields %}
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.building_name"><axis-field field="regionObject.helpers.settings_form.building_name"></axis-field></div>
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_name"><axis-field field="regionObject.helpers.settings_form.project_name"></axis-field></div>
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_number"><axis-field field="regionObject.helpers.settings_form.project_number"></axis-field></div>
+    </div>
+    <div class="row data-browser">
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_street1"><axis-field field="regionObject.helpers.settings_form.project_street1"></axis-field></div>
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_street2"><axis-field field="regionObject.helpers.settings_form.project_street2"></axis-field></div>
+    </div>
+    <div class="row data-browser">
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_city"><axis-field field="regionObject.helpers.settings_form.project_city"></axis-field></div>
+        <div class="col-md-4" ng-if="regionObject.helpers.settings_form.project_county"><axis-field field="regionObject.helpers.settings_form.project_county"></axis-field></div>
+        <div class="col-md-2" ng-if="regionObject.helpers.settings_form.project_state"><axis-field field="regionObject.helpers.settings_form.project_state"></axis-field></div>
+        <div class="col-md-2" ng-if="regionObject.helpers.settings_form.project_zip"><axis-field field="regionObject.helpers.settings_form.project_zip"></axis-field></div>
+{% endblock settings_fields %}

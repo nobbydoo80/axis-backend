@@ -1,0 +1,133 @@
+{% extends 'examine/angular_region_default.html' %}
+
+{% block panels %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-9">
+                <p>
+                    <span>NGBS Verifier Enrollment:</span>
+                    <span>[[ regionObject.object.verifier_name_display ]]</span>
+                    <span ng-if="regionObject.object.state == 'expired'" style="color: red">
+                        EXPIRED
+                        <a class="btn btn-primary btn-sm" href="{% url 'hirl:verifier_agreements:enroll' %}" ng-if="regionObject.object.verifier == {{ request.user.id }}" style="margin-bottom: 5px;">
+                            Initiate New Agreement
+                        </a>
+                    </span>
+                    <span ng-if="regionObject.object.state == 'countersigned' || regionObject.object.state == 'approved'">
+                        <a class="btn btn-primary btn-sm initiate-new" ng-if="regionObject.object.verifier == {{ request.user.id }}" style="margin-bottom: 5px;">
+                            Initiate New Agreement
+                        </a>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </header>
+    <div ng-switch="regionObject.object.state">
+        <p ng-switch-when="new">
+            <em ng-if="regionObject.object.verifier == {{ request.user.id }}">
+                Your enrollment has been forwarded to NGBS Program Administration Staff for review
+                and
+                approval. The signing of the legal agreement
+                is
+                completed using DocuSign. Please check your email inbox for correspondence regarding
+                the
+                legal agreement. The certificate of insurance may be submitted to NGBS from this
+                <a href="{{ request.user.company.get_absolute_url }}#/tabs/coi" target="_blank">page</a>.
+            </em>
+            <em ng-if="regionObject.object.owner == {{ request.company.id }}">
+                Please review the enrollment information provided and contact the builder directly
+                to
+                resolve any issues. Once reviewed, approve the enrollment by clicking "Approve
+                Verifier
+                Enrollment".
+            </em>
+        </p>
+        <p ng-switch-when="approved">
+            <em ng-if="regionObject.object.verifier == {{ request.user.id }}">
+                Your enrollment has been forwarded to NGBS Program Administration Staff for review
+                and
+                approval. The signing of the legal agreement
+                is
+                completed using DocuSign. Please check your email inbox for correspondence regarding
+                the
+                legal agreement. The certificate of insurance may be submitted to NGBS from this
+                <a href="{{ request.user.company.get_absolute_url }}#/tabs/coi" target="_blank">page</a>.
+            </em>
+            <em ng-if="regionObject.object.owner == {{ request.company.id }}">
+                If the legal agreement has been
+                signed by
+                the client, initiate counter-signing of the legal agreement by clicking "Route
+                Agreement
+                for Counter-Signing".
+            </em>
+        </p>
+        <p ng-switch-when="verified">
+            <em ng-if="regionObject.object.verifier == {{ request.user.id }}">
+                The NGBS Program Administration Staff has approved your enrollment. The legal
+                agreement
+                is being counter-signed and a copy of the fully executed legal agreement will be
+                emailed
+                to you and will also be available to you on the "Documents" tab below.
+            </em>
+            <em ng-if="regionObject.object.owner == {{ request.company.id }}">
+                Legal agreement has been routed internally for counter-signature. Please update the
+                agreement and certificate of insurance start and expiration dates based on the
+                documents
+                provided by the Verifier.
+            </em>
+        </p>
+        <p ng-switch-when="countersigned">
+            <em ng-if="regionObject.object.verifier == {{ request.user.id }}">
+                Your enrollment has been completed. Copies of your
+                fully executed legal agreement are available on the "Documents" tab below. If
+                you have
+                any questions regarding your enrollment status, please contact NGBS
+                <a href="mailto:verificationreport@homeinnovation.com" >verificationreport@homeinnovation.com</a>.
+            </em>
+            <em ng-if="regionObject.object.owner == {{ request.company.id }}">
+                Verifier enrollment has been completed. Legal agreement has been signed by both
+                parties.
+            </em>
+        </p>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4">
+            <span>Company Name:</span>
+        </div>
+        <div class="col-md-4">
+            <span ng-bind-html="regionObject.object.company_display | trustAsHtml"></span>
+        </div>
+        <div class="col-md-2 key">Enrollment Status:</div>
+        <div class="col-md-2 text-right" ng-bind="regionObject.object.state_display"></div>
+    </div>
+    <hr>
+
+    {{ block.super }}
+
+    <div class="modal fade" id="confirm-initiate-new" tabindex="-1" role="dialog"
+         aria-labelledby="confirmInitiateNewLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Confirm Initiate New Agreement
+                </div>
+                <div class="modal-body">
+                    Current agreement will be expired and new enrollment will started. Do you want to continue ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                    </button>
+                    <a class="btn btn-danger btn-ok" href="{% url 'hirl:verifier_agreements:initiate_new' %}">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    $("body").on("click", ".initiate-new", function (e) {
+        e.preventDefault();
+        $('#confirm-initiate-new').modal('show');
+    });
+    </script>
+{% endblock panels %}

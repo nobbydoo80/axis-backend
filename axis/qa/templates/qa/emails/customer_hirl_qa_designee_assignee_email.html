@@ -1,0 +1,30 @@
+<p>
+    Dear {{ qa_designee_name }}:
+</p>
+<p>
+    {{ requirement_type }} Review Assigned
+</p>
+<p>
+    <a href="{{ home_link }}">View details</a>
+</p>
+<p>
+    <b>Verifier</b>: <a href="{{ verifier_url }}">{{ verifier_name }}</a>
+</p>
+<p>
+    <b>Project address</b>: <a href="{{ home_link }}">{{ home_address }}</a>
+</p>
+<p>
+    <b>Program</b>: {{ qa_status.home_status.eep_program.name }}
+</p>
+{% if notes %}
+<p>
+    <b>Notes</b>:
+</p>
+    {% for note in notes %}
+        <ul>
+            <li>
+                <b>{{ note.user }}</b>: {{ note.content }}
+            </li>
+        </ul>
+    {% endfor %}
+{% endif %}

@@ -1,0 +1,117 @@
+{% extends "base_detail.html" %}
+{% load humanize %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Cost basis analysis report - {{ object }}{% endblock %}
+{% block header_text %}Est. Cost Analysis for {{ subdivision.name }}{% endblock header_text %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        tbody tr:first-child {
+            border-top: 4px solid #bf0d25;
+        }
+        tbody th {
+            height: 20px;
+            border-bottom: 1px solid #666 !important;
+        }
+        tr.extend-border td {
+            border-bottom: 1px solid #666 !important;
+        }
+    </style>
+{% endblock style_sheet %}
+
+{% block detail_content %}
+{% with num_floorplans=floorplans|length %}
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th class="col-md-6"><h4>Plan Names</h4></th>
+            {% for floorplan in floorplans %}
+                <th class="text-center">{{ floorplan.name }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Square feet</th>
+            {% for floorplan in floorplans %}
+                <th class="text-center">{{ floorplan.square_footage }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th colspan="{{ 1|add:num_floorplans }}"><h6>Average Annual Heating/Cooling Estimate</h6></th>
+        </tr>
+        <tr>
+            <td>Electric and Gas</td>
+            {% for item in remdata %}
+                <td class="text-center"> ${{ item.results.get_heating_and_cooling_total_cost|floatformat:0|intcomma }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th colspan="{{ 1|add:num_floorplans }}"><h6>Water Heating</h6></th>
+        </tr>
+        <tr>
+            <td>Electric and Gas</td>
+            {% for item in remdata %}
+                <td class="text-center">${{ item.results.hot_water_cost|floatformat:0|intcomma }}</td>
+            {% endfor %}
+        <tr>
+            <th colspan="{{ 1|add:num_floorplans }}"><h6>Lights and Appliances</h6></th>
+        </tr>
+        <tr>
+            <td>Electric and Gas</td>
+            {% for item in remdata %}
+                <td class="text-center">${{ item.results.lights_and_appliances_total_cost|floatformat:0|intcomma }}</td>
+            {% endfor %}
+        <tr>
+            <th colspan="{{ 1|add:num_floorplans }}"><h6>Service Fees and Taxes</h6></th>
+        </tr>
+        <tr>
+            <td>Electric and Gas</td>
+            {% for item in remdata %}
+                <td class="text-center">${{ item.results.service_cost|floatformat:0|intcomma }}</td>
+            {% endfor %}
+        </tr>
+
+        <tr class="extend-border">
+            <th>TOTAL ANNUAL ELECTRIC &amp; GAS</th>
+            {% for item in remdata %}
+                <td class="text-center">${{ item.results.total_cost|floatformat:0|intcomma }}</td>
+            {% endfor %}
+        </tr>
+
+        <tr class="extend-border">
+            <th>ESTIMATED AVERAGE MONTHLY ELECTRIC &amp; GAS</th>
+            {% for item in remdata %}
+                <td class="text-center">${{ item.results.get_monthly_total_cost|floatformat:0|intcomma }}</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+
+    {% if show_energy_star_picture %}
+<div class="row">
+    <div class="col-md-12">
+        <img src="https://img.skitch.com/20110831-g6kcqhn6dfpebeqkasjwub3m1s.jpg" />
+    </div>
+</div>
+    {% endif %}
+
+
+<div class="form-actions">
+    <a class="btn btn-primary" href="{% url "report:energy_cost_svg" subdivision_id=object.id company_id=request.user.company.id %}">
+        View SVG
+    </a>
+    <a class="btn btn-default" href="{% url "report:energy_cost_svg_dl" subdivision_id=object.id company_id=request.user.company.id %}">
+        Download SVG <i class="fa fa-cloud-download"></i>
+    </a>
+</div>
+{% endwith %}
+{% endblock detail_content %}
+
+{% block sidebar %}{% endblock %}

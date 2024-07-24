@@ -1,0 +1,290 @@
+{% extends "base_list.html" %}
+{% load crispy_forms_tags %}
+
+{% block javascript_head %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/helpers/handlebars/handlebars_helpers.js"></script>
+    <script type="text/javascript">
+        /*
+         * action_name: {
+         *      active: BOOLEAN - which table will be active when page is loaded, not fully implemented
+         *      element: STRING - element which object will be bound to (the button)
+         *      title: STRING - title of the object, unused currently
+         *      form_url: URL - url to download form associated with datatable
+         *      datatable_url: URL - url to download datatable skeleton
+         *      filter_state: STRING - default IncentivePayment status to filter results be
+         *      submit_validator_string: STRING - function to make sure form can be submitted
+         *      state_change_handler_string: STRING - function to fire when state filter is changed
+         *      submit_handler_string: STRING - function to prep data for submission
+         *      dependent: LIST OF STRINGS - list of objects that need to be refreshed after action is done
+         *      propagate_filter_changes: BOOLEAN - if the filter changes while on this table, apply filter settings to all tables
+         *      disallow_filter_by: LIST - list of element ids that are not allowed to be considered for filtering this table
+         *      counter_element: STRING - where to look to place the count of entries in the table
+         *      parent_element: STRING - This allows the activating element to be nested (e.g. dropdown)
+         * }
+         *
+         * unused
+         * 'rejected': {
+         *      element: 'rejected',
+         *      title: "Need Corrections",
+         *      datatable_url: " url 'incentive_payment:datatable_rejected' ",
+         *  },
+         */
+        var actions = {
+            pending: {
+                element: "#pending",
+                form_url: "{% url 'apiv2:ipp-form' form='pending' %}",
+                title: "Received",
+                datatable_url: "{% url 'apiv2:ipp-datatable' datatable='pending' %}",
+                filter_state: "start",
+                submit_validator_string: "validate_advance_state_form",
+                state_change_handler_string: "state_change_handler",
+                submit_handler_string: "advance_state_submission_setup",
+                dependent: ["received", "required", "approved"],
+                disallow_filter_by: ["id_eep_program"],
+                counter_element: ".pending_count"
+            },
+            received: {
+                element: "#received",
+                form_url: "{% url 'apiv2:ipp-form' form='pending' %}",
+                title: "Corrections Received",
+                datatable_url: "{% url 'apiv2:ipp-datatable' datatable='received' %}",
+                filter_state: "ipp_failed_restart",
+                submit_validator_string: "validate_advance_state_form",
+                state_change_handler_string: "state_change_handler",
+                submit_handler_string: "advance_state_submission_setup",
+                dependent: ["pending"],
+                counter_element: ".corrections_received",
+{#                parent_element: "#corrections_received"#}
+            },
+            required: {
+                element: "#required",
+                form_url: "{% url 'apiv2:ipp-form' form='pending' %}",
+                state_change_handler_string: "state_change_handler",
+                title: "Corrections Required",
+                datatable_url: "{% url 'apiv2:ipp-datatable' datatable='required' %}",
+                submit_handler_string: "advance_state_submission_setup",
+                filter_state: "ipp_payment_failed_requirements",
+                counter_element: ".corrections_required",
+{#                parent_element: "#corrections_required",#}
+                filterable: false
+            },
+            approved: {
+                element: "#approved",
+                form_url: "{% url 'apiv2:ipp-form' form='new' %}",
+                title: "Approved For Payment",
+                datatable_url: "{% url 'apiv2:ipp-datatable' datatable='approved' %}",
+                filter_state: "ipp_payment_automatic_requirements",
+                validate_on_checkbox: true,
+                submit_validator_string: "validate_create_incentive_form",
+                submit_handler_string: "create_incentive_submission_setup",
+                dependent: ["distribution"],
+                counter_element: ".approved_count"
+            },
+{#            distribution: {#}
+{#                element: "#distribution",#}
+{#                title: "Incentive Distributions",#}
+{#                datatable_url: "{% url 'apiv2:ipp-datatable' datatable='distribution' %}",#}
+{#                disallow_filter_by: ["id_eep_program", "id_subdivision", "id_state"]#}
+{#            }#}
+        };
+
+        {% if show_received_approved_tables %}
+            actions.pending.active = true;
+        {% else %}
+            actions.required.active = true;
+        {% endif %}
+
+        var builder_agreements = {{ builder_dict|safe }};
+{#        $('body').scroll(function () {#}
+{#            $('#scroll_data').css('top', $(this).scrollTop());#}
+{#        });#}
+    </script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/incentive_payment/incentive_payment.js"></script>
+    <script type="text/x-handlebars-template" id="builder_agreement_info">
+        {% include "incentive_payment/control_center/handlebars/builder_agreement_info.hbs" %}
+    </script>
+    <script type="text/x-handlebars-template" id="exceeding_builder_agreement_notice">
+        {% include "incentive_payment/control_center/handlebars/exceeding_builder_agreement_notice.hbs" %}
+    </script>
+    <script type="text/javascript">
+    $(function(){
+        // Handlebars templates
+        var builder_agreement_info_template = Handlebars.compile($("#builder_agreement_info").html());
+        window.builder_agreement_info_template = builder_agreement_info_template;
+        var exceeding_ba_notice = Handlebars.compile($("#exceeding_builder_agreement_notice").html());
+        window.exceeding_ba_notice = exceeding_ba_notice;
+    })
+    </script>
+{% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+    .hide-form{
+        display: none;
+    }
+    a.btn-primary{
+        color: #ffffff !important;
+    }
+    .filtered-by{
+        font-size: 14px;
+    }
+    #selected_form div{
+        position: relative;
+    }
+    .reload_form{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10;
+    }
+    </style>
+{% endblock %}
+
+{% block full_content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-6">
+                <p> {{ total_count }} Total Incentive Payments in Queue </p>
+            </div>
+            <div class="col-md-6" style="display: none;">
+                <p class="filtered-by">
+                    <span id="filtered_results_count"></span>
+                    filtered by
+                    <span id="filtered_by">Builder</span>
+                </p>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="row">
+{% if show_received_approved_tables %}
+        <div class="col-md-3">
+            <button class="btn btn-block btn-default btn-lg" id="pending" disabled>
+                <span class="counter pending_count"> {{ pending_count }} </span>
+                <span class="title">Pending Requests <!--(Approve)--></span>
+            </button>
+        </div>
+
+    <div class="col-md-3">
+        <button class="btn btn-block btn-default btn-lg" id="received" disabled>
+            <span class="counter corrections_received">{{ corrections_received }}</span>
+            <span class="title">Correction Received</span>
+        </button>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-block btn-default btn-lg" id="required" disabled>
+            <span class="counter corrections_required">{{ corrections_required }}</span>
+            <span class="title">Correction Required</span>
+        </button>
+    </div>
+
+{#        <div class="col-md-3">#}
+{#            <div class="btn-group btn-block">#}
+{#                <button type="button" class="btn btn-default dropdown-toggle btn-lg btn-block"#}
+{#                        data-toggle="dropdown" id="corrections" disabled>#}
+{#                    <span class="counter corrections_received">{{ corrections_received }}</span>#}
+{#                    (<span class="counter corrections_required">{{ corrections_required }}</span>)#}
+{##}
+{#                    <span class="title">Corrections</span>#}
+{#                    <span class="caret"></span>#}
+{#                </button>#}
+{#                <ul class="dropdown-menu">#}
+{#                    <li><a href="#" id="received" class="btn-block" disabled>#}
+{#                        <span class="counter corrections_received">{{ corrections_received }}</span>#}
+{#                        Received Corrections#}
+{#                    </a></li>#}
+{#                    <li><a href="#" id="required" class="btn-block" disabled>#}
+{#                        <span class="counter corrections_required">{{ corrections_required }}</span>#}
+{#                        Required Corrections#}
+{#                    </a></li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+
+{% else %}
+        <div class="col-md-3">
+            <button class="btn btn-block btn-default btn-lg" id="required" disabled>
+                <span class="counter corrections_required"> {{ corrections_required }} </span>
+                <span class="title">Corrections Required</span>
+            </button>
+        </div>
+{% endif %}
+
+{% if show_received_approved_tables %}
+        <div class="col-md-3">
+            <button class="btn btn-block btn-default btn-lg" id="approved" disabled>
+                <span class="counter approved_count"> {{ approved_count }} </span>
+                <span class="title">Add New Distribution</span>
+            </button>
+        </div>
+{% endif %}
+
+{#        <div class="col-md-3">#}
+{#            <button class="btn btn-block btn-default btn-lg" id="rejected" disabled>#}
+{#                <span id="rejected_count" class="counter"> {{ rejected_count }} </span>#}
+{#                Rejected#}
+{#            </button>#}
+{#        </div>#}
+
+{#        <div class="col-md-3">#}
+{#            <button class="btn btn-block btn-default btn-lg" id="distribution" disabled>#}
+{#                <span id="incentive_distribution_count" class="counter"> {{ incentives_count }} </span>#}
+{#                <span class="title">Incentive Distributions</span>#}
+{#            </button>#}
+{#        </div>#}
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3" id="form_holder">
+            <div id="scroll_data">
+                <h3>Filter Options <small><a href="#" id="toggle_filter">show</a></small> </h3>
+                <form id="query_form" style="display: none;">{% csrf_token %}
+                    <a id="clear_filter" href="#">Clear Filters</a>
+                    {{ query_form.builder|as_crispy_field }}
+                    {{ query_form.provider|as_crispy_field }}
+                    {{ query_form.eep_program|as_crispy_field }}
+                    {{ query_form.subdivision|as_crispy_field }}
+                    {{ query_form.state|as_crispy_field }}
+                    <div class="row">
+                        <div class="col-md-6">{{ query_form.activity_start|as_crispy_field }}</div>
+                        <div class="col-md-6">{{ query_form.activity_stop|as_crispy_field }}</div>
+                    </div>
+                </form>
+                <hr>
+                <div id="work_form" class="well">
+                    <div id="selected_form">
+                        <div id="pending_form" class="hide-form"></div>
+                        <div id="received_form" class="hide-form"></div>
+                        <div id="required_form" class="hide-form"></div>
+                        <div id="approved_form" class="hide-form"></div>
+                        <div id="rejected_form" class="hide-form"></div>
+                        <div id="distribution_form" class="hide-form"></div>
+                    </div>
+                    <div id="instructions">
+                        <em>
+                            A Home must be selected to start Processing.
+                        </em>
+                    </div>
+                </div>
+
+                <div id="processing"></div>
+            </div>
+        </div>
+        <div class="col-md-9" id="datatable_holder">
+            <div id="table_loading">
+                <h4 class="text-center"> <div class="fa fa-spinner fa-spin"></div> Getting DataTable</h4>
+            </div>
+            <div id="pending_table" style="display: none;"></div>
+            <div id="received_table" style="display: none;"></div>
+            <div id="required_table" style="display: none;"></div>
+            <div id="approved_table" style="display: none;"></div>
+            <div id="rejected_table" style="display: none;"></div>
+            <div id="distribution_table" style="display: none;"></div>
+        </div>
+    </div>
+
+
+<div id="modal_wrapper"> </div>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% verbatim %}
+    {{#each by_context_row}}
+        <div class="panel {{panel-class logs}}" data-row="{{row}}">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#context_row_accordion" href="#row_panel_{{row}}">
+                        {{#compare row 'general'}} General {{else}} {{#if logs.row_label}}{{logs.row_label}}{{else}}Row {{row}}{{/if}}{{/compare}}
+                    </a>
+                    &emsp;
+                    {{#if logs.has_row_flags}}
+                        {{#compare row 'general' operator='!='}}
+                                {{#if logs.home_updated}}
+                                    <span class="label label-warning">Home Updated</span>
+                                {{else}}
+                                    {{#if logs.home_created}}
+                                        <span class="label label-success">Home Created</span>
+                                    {{else}}
+                                        <span class="label label-danger">Home Not Created</span>
+                                    {{/if}}
+                                {{/if}}
+
+                                {{#if logs.home_already_certified}}
+                                    <span class="label label-warning">Home Already Certified</span>
+                                {{else}}
+                                    {{#if logs.certification_date}}
+                                        {{#if logs.home_certified}}
+                                            <span class="label label-success">Home Certified</span>
+                                        {{else}}
+                                            <span class="label label-danger">Home Not Certified</span>
+                                        {{/if}}
+                                    {{else}}
+                                        {{#if logs.program_added}}
+                                            <span class="label label-success">Program Added</span>
+                                        {{else}}
+                                            <span class="label label-danger">Program Not Added</span>
+                                        {{/if}}
+
+                                    {{/if}}
+                                {{/if}}
+
+                                {{#if logs.qa_added}}
+                                    <span class="label label-success">QA Added</span>
+                                {{/if}}
+                        {{/compare}}
+                    {{/if}}
+
+                    <div class="pull-right">
+                        {{#if logs.CRITICAL.length}} <span class="btn btn-danger btn-xs">Critical</span> {{/if}}
+                        {{#if logs.ERROR.length}} <span class="btn btn-danger btn-xs">Error</span> {{/if}}
+                        {{#if logs.WARNING.length}} <span class="btn btn-warning btn-xs">Warning</span> {{/if}}
+                        {{#if logs.INFO.length}} <span class="btn btn-info btn-xs">Info</span> {{/if}}
+                        {{#if logs.DEBUG.length}} <span class="btn btn-default btn-xs">Debug</span> {{/if}}
+                    </div>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" id="row_panel_{{row}}">
+                <div class="panel-body">
+                    {{#if logs.links}}
+                        {{#each logs.links}}
+                            {{@key}}: {{{this}}}<br/>
+                        {{/each}}
+                        <hr/>
+                    {{/if}}
+                    <ul class="nav nav-tabs">
+                        {{#if logs.CRITICAL.length}}
+                            <li class="{{active-tab logs 'CRITICAL'}}">
+                                <a data-toggle="tab" href="#{{../row}}_CRITICAL_tab">Critical</a>
+                            </li>
+                        {{/if}}
+                        {{#if logs.ERROR.length}}
+                            <li class="{{active-tab logs 'ERROR'}}">
+                                <a data-toggle="tab" href="#{{../row}}_ERROR_tab">Error</a>
+                            </li>
+                        {{/if}}
+                        {{#if logs.WARNING.length}}
+                            <li class="{{active-tab logs 'WARNING'}}">
+                                <a data-toggle="tab" href="#{{../row}}_WARNING_tab">Warning</a>
+                            </li>
+                        {{/if}}
+                        {{#if logs.INFO.length}}
+                            <li class="{{active-tab logs 'INFO'}}">
+                                <a data-toggle="tab" href="#{{../row}}_INFO_tab">Info</a>
+                            </li>
+                        {{/if}}
+                        {{#if logs.DEBUG.length}}
+                            <li class="{{active-tab logs 'DEBUG'}}">
+                                <a data-toggle="tab" href="#{{../row}}_DEBUG_tab">Debug</a>
+                            </li>
+                        {{/if}}
+                    </ul>
+                    <div class="tab-content">
+                        {{#if logs.CRITICAL.length}}
+                           <div class="tab-pane {{active-tab logs 'CRITICAL'}}" id="{{../row}}_CRITICAL_tab">
+                               {{#list logs.CRITICAL}}
+                                   {{{this}}}
+                               {{/list}}
+                           </div>
+                        {{/if}}
+                        {{#if logs.ERROR.length}}
+                            <div class="tab-pane {{active-tab logs 'ERROR'}}" id="{{../row}}_ERROR_tab">
+                                {{#list logs.ERROR}}
+                                    {{{this}}}
+                                {{/list}}
+                            </div>
+                        {{/if}}
+                        {{#if logs.WARNING.length}}
+                            <div class="tab-pane {{active-tab logs 'WARNING'}}" id="{{../row}}_WARNING_tab">
+                                {{#list logs.WARNING}}
+                                    {{{this}}}
+                                {{/list}}
+                            </div>
+                        {{/if}}
+                        {{#if logs.INFO.length}}
+                            <div class="tab-pane {{active-tab logs 'INFO'}}" id="{{../row}}_INFO_tab">
+                                {{#list logs.INFO}}
+                                    {{{this}}}
+                                {{/list}}
+                            </div>
+                        {{/if}}
+                        {{#if logs.DEBUG.length}}
+                            <div class="tab-pane {{active-tab logs 'DEBUG'}}" id="{{../row}}_DEBUG_tab">
+                                {{#list logs.DEBUG}}
+                                    {{{this}}}
+                                {{/list}}
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+{% endverbatim %}

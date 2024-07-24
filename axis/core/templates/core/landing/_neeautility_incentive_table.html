@@ -1,0 +1,81 @@
+{% if neea_or_neea_utility %}
+    <div class="qa-table wider-dollars">
+        <div class="table-title">
+            <i class="fa fa-fw fa-spin fa-spinner pull-right" ng-show="widget.loading.{{ prefix }}loading"></i>
+            <h3 class="panel-title">Certified Homes and Payment Status &ndash; Performance Path</h3>
+        </div>
+
+        {% include "core/landing/includes/filter_controls.html" with prefix="neeautility_cert_payment_" id_prefix="neeautility-cert-payment-" %}
+
+        <table class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Program</th>
+                    <th class="text-center">
+                        Certified Homes
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.certified_incentives.n }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Total Savings (kWh)
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.certified_incentives.savings_kwh }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Total Savings (Therms)
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.certified_incentives.savings_therms }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Payment Approved
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.certified_incentives.approved_payments }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Approval Pending
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.certified_incentives.pending_payments }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Amount Approved
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.certified_incentives.approved_dollars }}"></i>
+                    </th>
+                    <th class="text-center">
+                        Amount Pending
+                        <i class="text-muted fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{ tooltips_neeautilities.certified_incentives.pending_dollars }}"></i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-if="!widget.neeautility_cert_payment_metrics_data">
+                    <td colspan="8" class="text-center">No data to show.</td>
+                </tr>
+                <tr ng-repeat="item in widget.neeautility_cert_payment_metrics_data">
+                    <th ng-bind="item.grouped_name"></th>
+                    <td>
+                        <a ng-href="{% url "neea_utility_report" %}?activity_start=[[ widget.neeautility_cert_payment_controls.date_start ]]&activity_stop=[[ widget.neeautility_cert_payment_controls.date_end ]]&eep_program_id=[[ item.grouped_id ]]&state=complete&certification_only=1" target="_blank"
+                           ng-bind="item.n || 0">
+                        </a>
+                    </td>
+                    <td>
+                        <span ng-bind="(item.stats.savings_kwh || 0) | number:2"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="(item.stats.savings_therms || 0) | number:2"></span>
+                    </td>
+                    <td>
+                        <a ng-href="{% url "neea_utility_report" %}?activity_start=[[ widget.neeautility_cert_payment_controls.date_start ]]&activity_stop=[[ widget.neeautility_cert_payment_controls.date_end ]]&eep_program_id=[[ item.grouped_id ]]&state=complete&certification_only=1&ipp_state=ipp_payment_automatic_requirements" target="_blank"
+                           ng-bind="item.stats.approved_payments || 0">
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-href="{% url "neea_utility_report" %}?activity_start=[[ widget.neeautility_cert_payment_controls.date_start ]]&activity_stop=[[ widget.neeautility_cert_payment_controls.date_end ]]&eep_program_id=[[ item.grouped_id ]]&state=complete&certification_only=1&ipp_state=start" target="_blank"
+                           ng-bind="item.stats.pending_payments || 0">
+                        </a>
+                    </td>
+                    <td class="dollar-column">
+                        <span ng-bind="'$ ' + ((item.stats.approved_dollars || '0') | number:2)"></span>
+                    </td>
+                    <td class="dollar-column">
+                        <span ng-bind="'$ ' + ((item.stats.pending_dollars || '0') | number:2)"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endif %}

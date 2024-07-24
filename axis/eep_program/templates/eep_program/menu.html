@@ -1,0 +1,6 @@
+{% if perms.eep %}
+    {% if perms.eep.view_builderagreement %}
+        <li><a href="{% url 'eep_builder_agreement:list' %}"><span>Builder Agreements</span></a>
+        </li>
+    {% endif %}
+{% endif %}

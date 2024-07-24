@@ -1,0 +1,20 @@
+{% block detail %}
+    <div class="row" ng-repeat="field_name in regionObject.visible_fields">
+        <div class="col-md-3 key">
+            [[ regionObject.verbose_names[field_name] ]]:
+        </div>
+        <div class="col-md-9">
+            <span ng-if="regionObject.object[field_name].length">
+                <span ng-repeat="value in regionObject.object[field_name]">
+                    <a href="[[ regionObject.object.urls[value] ]]">
+                        [[ regionObject.object.names[value] ]]</a>[[ $last ? '' : ', ' ]]
+                </span>
+            </span>
+            <span ng-if="!(regionObject.object[field_name].length) && regionObject.object[field_name]">
+                <a href="[[ regionObject.object.urls[ regionObject.object[field_name] ] ]]">
+                    [[ regionObject.object.names[ regionObject.object[field_name] ] ]]
+                </a>
+            </span>
+        </div>
+    </div>
+{% endblock detail %}

@@ -1,0 +1,261 @@
+{% extends 'base_examine_wide.html' %}
+{% load static %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script src="{% static 'filehandling/examine/customer_documents.js' %}"></script>
+    <script src="{% static 'customer_hirl/examine/builder_agreements.js' %}"></script>
+    <script>
+        window.API_PATH = '{% url "apiv2:hirl_builder_agreement-list" %}';
+    </script>
+    <style type="text/css">
+        axis-single-region[options*="hirl_builder_enrollment"] .fileinput > .form-control {
+            background-color: transparent;
+        }
+
+        .padded-1 {
+            margin-top: 1em;
+        }
+
+        .padded-2 {
+            margin-top: 2em;
+        }
+
+        .padded-3 {
+            margin-top: 3.3em;
+        }
+
+
+        axis-region-set[options*="documents"] th:nth-child(2),
+        axis-region-set[options*="documents"] table table td:nth-child(2) {
+            width: 200px;
+        }
+
+        axis-region-set[options*="documents"] th:nth-child(3),
+        axis-region-set[options*="documents"] table table td:nth-child(3) {
+            width: 120px;
+        }
+
+        axis-region-set[options*="documents"] th:nth-child(4),
+        axis-region-set[options*="documents"] table table td:nth-child(4) {
+            width: 80px;
+        }
+
+        axis-region-set[options*="notes"] th:nth-child(2),
+        axis-region-set[options*="notes"] table table td:nth-child(2),
+        axis-region-set[options*="notes"] th:nth-child(3),
+        axis-region-set[options*="notes"] table table td:nth-child(3),
+        axis-region-set[options*="notes"] th:nth-child(4),
+        axis-region-set[options*="notes"] table table td:nth-child(4) {
+            width: 80px;
+        }
+    </style>
+    <script>
+        angular.module('axis').run(function (Actions) {
+            Actions.addPostMethodToType('save', ['hirl_builder_enrollment'], function (regionObject) {
+                window.location.reload();
+            });
+        })
+    </script>
+{% endblock javascript_head %}
+
+
+{% block header %}
+    {# Create mode only, since the machinery area will replace this. #}
+    <div class="row row-header">
+    <div class="col-md-4">
+        <p><span>NGBS Client Enrollment</span></p>
+    </div>
+    <div class="col-md-8">
+        <div class="text-right">
+            <action-strip-set
+                    ng-hide="region.editing()"
+                    single-instance="default"
+                    processing="regionSet.processing">
+            </action-strip-set>
+        </div>
+    </div>
+{% endblock header %}
+
+
+{% block tabs %}
+    <tabset>
+        {% if is_owner %}
+            <tab tab-helper endpoint="tabs.enrollment" heading="Contact Information">
+                <axis-single-region options="pageRegions.hirl_builder_enrollment"/>
+            </tab>
+        {% endif %}
+
+        <tab ng-if="true" tab-helper badge-counter="examineApp.getRegionCounter"
+             badge-counter-types="['hirl_builder_agreement_documents']"
+             endpoint="tabs.documents"
+             disabled="examineApp.creating">
+            <tab-heading>
+                Documents
+                <i ng-hide="badgeController.isLoaded" class="fa fa-spinner fa-fw fa-spin"></i>
+                <span class="badge">[[ badgeController.count ]]</span>
+            </tab-heading>
+            <axis-region-set options="pageRegions.documents"></axis-region-set>
+        </tab>
+        <!-- Use ng-if to make badgeController as isolated scope -->
+        <tab ng-if="true" tab-helper endpoint="tabs.notes" badge-counter="examineApp.getRegionCounter" badge-counter-types="['builderagreement_annotations']" disabled="examineApp.creating">
+            <tab-heading>
+                Notes
+                <i ng-hide="badgeController.isLoaded" class="fa fa-spinner fa-fw fa-spin"></i>
+                <span class="badge">[[ badgeController.count ]]</span>
+            </tab-heading>
+            <div class="existing-object-only">
+                <axis-region-set options="pageRegions.notes"></axis-region-set>
+            </div>
+        </tab>
+
+        <tab tab-helper endpoint="tabs.history" heading="History" disabled="examineApp.creating">
+            <div class="existing-object-only">
+                {% if object.id %}
+                    {% include 'simple_history/includes/history_list.html' with object=object app_label='customer_hirl' model='builderagreement' field='id' constraint=object.id %}
+                {% endif %}
+            </div>
+        </tab>
+
+        {% if debug and request.user.is_superuser or request.impersonator %}
+            <tab tab-helper endpoint="tabs.dev">
+                <tab-heading>
+                    <i class="fa fa-cog"></i>
+                </tab-heading>
+                <pre style="whitespace: pre-line">{{ object.data | pprint }}</pre>
+            </tab>
+        {% endif %}
+    </tabset>
+
+    <div id="modal_insurance_certificate"
+         class="modal fade"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="label_insurance_certificate"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5 class="modal-title" id="label_insurance_certificate">
+                                Requirement for Certificate of Insurance
+                            </h5>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h4>Builder Insurance Requirements</h4>
+                    <p>
+                        NGBS Green certification requires you to maintain the insurance coverage
+                        shown below
+                        while doing business with Home Innovation Research Labs.</p>
+                    <p>Obtaining the needed certificate of insurance is typically a routine matter
+                        for your
+                        insurance agent/broker. Please provide him/her the following
+                        information.</p>
+                    <p>
+                        <strong>MINIMUM</strong> required coverage per occurrence:
+                    </p>
+                    <p>
+                        GENERAL LIABILITY: $1,000,000
+                    </p>
+                    <p>
+                        Your insurance certificate must list, as the certificate holder and as an
+                        additional
+                        insured, Home Innovation Research Labs, 400 Prince George’s Boulevard, Upper
+                        Marlboro, MD
+                        20774-8731. The verbiage below must be shown on the certificate of
+                        insurance:
+                    </p>
+                    <blockquote>
+                        Home Innovation Research Labs and its officers, directors, agents,
+                        affiliates, and
+                        employees as additional insureds for liability with respect to or arising
+                        out of the
+                        work of the Builder/Client.
+                    </blockquote>
+                    <p>
+                        Alternatively, if your General Liability policy provides additional insured
+                        status
+                        when it is required in a written contract or agreement, such as this, then a
+                        COI with
+                        said provision displayed would satisfy the requirements and should be
+                        submitted.
+                    </p>
+                    <p>
+                        Home Innovation does not need to be an “Additional Named Insured.”
+                    </p>
+
+                    <h4>Home Innovation Needs to be Additional Insured</h4>
+                    <p>
+                        An “Additional Insured” is a party listed on an insurance policy that has
+                        some type
+                        of liability interest in the property. The “Additional Insured” has no right
+                        or
+                        authority to make policy changes or to cancel the policy. An “Additional
+                        Insured” is
+                        ONLY afforded liability protection under the liability portion of the policy
+                        and there
+                        is no coverage for physical losses resulting from vandalism, theft, fire,
+                        wind and hail,
+                        and so on. In some cases, there is confusion between what we ask, to be an
+                        “additional
+                        insured”, and an “additional named insured” (which we don’t ask).
+                    </p>
+                    <p>
+                        For example if a property is seller-financed, the seller holds the mortgage
+                        note and
+                        they are listed as an “Additional Insured” on the policy instead of as a
+                        mortgagee, then
+                        in the event of a physical loss (the home burned to the ground), the seller
+                        has no legal
+                        right under the policy to receive claim funds to pay off the mortgage debt
+                        and/or there
+                        is no control of managing claim funds to ensure repairs.
+                    </p>
+                    <p>
+                        If there is litigation involving the property or its use and the “Additional
+                        Insured” is
+                        named in the suit for any reason, the policy provides liability protection
+                        for legal and
+                        defense costs for the “Additional Insured” and the insurance company issuing
+                        the coverage
+                        would have a ‘duty to defend’ any and all “Additional Insured parties”
+                        listed in the
+                        policy. The most common example of this involves commercial policies, such
+                        as general
+                        liability. Home Innovation, for instance, may be listed as an “Additional
+                        Insured” on a
+                        builder or a developer’s insurance so that in the event of a liability claim
+                        caused by the
+                        builder/developer (such as faulty work, property damage, or bodily injury)
+                        where Home
+                        Innovation is also listed in the claim, Home Innovation would receive
+                        coverage for legal
+                        and defense costs from the builder’s policy. Insurance companies routinely
+                        provide this
+                        coverage. Also if your General Liability policy provides additional insured
+                        status when
+                        it is required in a written contract or agreement, such as the agreement you
+                        sign with
+                        Home Innovation, then a COI with said provision displayed would satisfy the
+                        requirements
+                        and should be submitted. If you or your insurance company has an questions,
+                        please contact
+                        us.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock tabs %}

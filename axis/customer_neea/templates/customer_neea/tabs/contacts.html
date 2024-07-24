@@ -1,0 +1,9 @@
+<div class="row">
+    {% for contact in object_list %}
+        <div class="col-md-6" >
+            <a href="{{ contact.get_absolute_url }}">
+                {{ contact.first_name }} {{ contact.last_name }}</a>
+            ({{ contact.office_phone }})
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,17 @@
+{
+    "name": "axis.messaging",
+    "description": "A basic Socket IO implementation",
+    "repository": "https://github.com/pivotal-energy-solutions/axis/tree/master/axis/messaging/server",
+    "private": true,
+    "version": "1.0.0",
+    "scripts": {
+        "serve": "npx forever server.js"
+    },
+    "dependencies": {
+        "body-parser": "latest",
+        "dotenv": "^8.2.0",
+        "express": "latest",
+        "node-uuid": "latest",
+        "socket.io": "latest"
+    }
+}

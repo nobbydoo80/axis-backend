@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# Generic base for "examine" combination views for create, update, and detail. #}
+
+{% block jquery %}
+    <script src="{{ STATIC_URL }}js/vendor/jquery/1.11.0/jquery-1.11.0.min.js"></script>
+{% endblock jquery %}
+
+{% block page_title %}{% spaceless %}
+    {% if view.create_new %}
+        Adding
+    {% endif %}
+    {{ verbose_name|capfirst }}
+    {% if not view.create_new %}
+        {{ object_name|default:object }}
+    {% endif %}
+{% endspaceless %}{% endblock page_title %}
+
+{% block axis_angular_dependencies %}
+    ['examineApp']
+{% endblock axis_angular_dependencies %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}geocoder/css/geocode.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}examine/css/examine_view.css" type="text/css" media="screen, projection" />
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}js/vendor/angular-multi-select/angular-multi-select.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}js/vendor/angular-multi-select/local_mods.css" type="text/css" media="screen, projection" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}js/vendor/angular-ui-select/0.19.6/select.min.css" type="text/css" media="screen, projection" />
+{% endblock %}
+
+
+{# Be careful changing the order of very much here. It's fairly delicate with angular/examine/geo #}
+{% block javascript_head %}
+    {{ block.super }}
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    {% if allow_geocoding %}
+    <script src="//maps.googleapis.com/maps/api/js?{% if not debug %}client=gme-pivotalenergysolutions&{% endif %}sensor=false"
+            type="text/javascript"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/angular-google-maps/bluebird.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/angular-google-maps/angular-google-maps.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}examine/js/maps/index.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}examine/js/maps/maps.js"></script>
+    {% endif %}
+    <script type="text/javascript">
+        window.__extraMapMarkers = []; // used by templates in confirm_datatable_options.
+        // {{ view.get_support_modules }}
+        window.__extraDependencies = [
+            'multi-select',
+            'angularMoment',
+            {% if allow_geocoding %}
+                'google-maps'.ns(),
+                'axis.maps',
+            {% endif %}
+            {% block extra_dependencies %}{% endblock %}
+        ];
+        window.__ExamineSettings = {
+            static_url: '{% if not debug %}https:{% endif %}{{ STATIC_URL }}',
+            primary_region_endpoint: '{{ primary_region }}',
+            regions_endpoints: {{ regions|safe }},
+            debug: {{ debug|yesno:"true,false" }},
+            creating: {{ view.create_new|yesno:'true,false' }},
+            page: '{{ primary_type }}',
+            server_type: '{{ server_type }}',
+            user: {
+                username: '{{ request.user }}',
+                email: '{{ request.user.email }}',
+                id: {{ request.user.id }}
+            }
+        };
+    </script>
+
+    {# Extras - load before app.js so that __extraDependencies above can be modified. #}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/examine_utils.js"></script>
+    <script src="{% static 'js/build/examine.bundle.js' %}"></script>
+    {% if allow_geocoding %}
+    <script type="text/javascript" src="{{ STATIC_URL }}geocoder/js/examine_geocode.js"></script>
+    {% endif %}
+
+    {% block examine_init %}
+    <script type="text/javascript">
+        angular.module('examineApp').run(function($rootScope, $http, $templateCache){
+            $templateCache.put('angular_recursive_tree.html', $http.get('/examine/angular_recursive_tree.html'));
+        });
+        $(function(){
+            var injector = angular.element($('#examine-view-controller')).injector()
+            var TabService = injector.get('TabService')
+            if (!window.location.hash) {
+                TabService.go()
+            }
+        })
+    </script>
+    {% endblock examine_init %}
+
+    {# datatableview auto initialize is pretty busted when nested in an angular directive. #}
+    {% block datatable_initialize %}
+    <script type="text/javascript">
+        $(function(){
+            datatableview.initialize($('.datatable'));
+        })
+    </script>
+    {% endblock datatable_initialize %}
+
+{% endblock javascript_head %}
+
+{% block full_content %}
+    <span id="examine-view-controller" ng-controller="ExamineViewController as examineApp">
+        {% block content %}
+
+            {% block form %}
+                {% block form_errors %}{% include "bootstrap3/errors.html" %}{% endblock %}
+                {% csrf_token %}
+                <div class="primary-content" style="min-height: 400px;">
+                {% block primary_content %}
+                    <axis-single-region options="pageRegions.{{ primary_type }}" primary-region="id" primary-region-flip="examineApp.creating">
+                        <axis-region-heading>
+                            <header>
+                                {% block header %}
+                                    <div class="row row-header">
+                                        <div class="col-md-9">
+                                            <p>
+                                            {% block header_text %}
+                                                <span>
+                                                    {% block object_header %}
+                                                        <span ng-show="$root.examineApp.creating">{% block creating_prefix %}Adding{% endblock creating_prefix %}</span>
+                                                        <span ng-bind="regionObject.verbose_name"></span>:
+                                                        <span ng-hide="$root.examineApp.creating" class="value" ng-bind="regionObject.object_name">{{ object_name|default:object }}</span>
+                                                    {% endblock object_header %}
+                                                </span>
+                                            {% endblock header_text %}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="text-right">
+                                                <action-strip-set ng-hide="region.editing()" single-instance="default" processing="regionSet.processing"></action-strip-set>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endblock header %}
+                            </header>
+                        </axis-region-heading>
+                    </axis-single-region>
+                {% endblock primary_content %}
+                </div>
+
+                <br />
+                <div class="row">
+                    {% block tabs %}
+                        {# Allocated area for page tabs. #}
+                    {% endblock tabs %}
+                </div>
+            {% endblock form %}
+
+        {% endblock content %}
+    </span>
+
+    <div id="inline-add-new-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add</h4>
+                </div>
+                <div class="modal-body">
+                    <form></form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+{% endblock full_content %}

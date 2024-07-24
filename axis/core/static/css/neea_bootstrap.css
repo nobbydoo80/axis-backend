@@ -1,0 +1,35 @@
+#brand-neea{
+    background-image: url(../images/BetterBuiltNW_logo_Master.jpg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: 130%; /* BBNW logo is much shorter than the NWESH logo, with lots of top-bottom padding */
+    background-position: -21px 50%; /* logo has rather large left-right padding */
+    padding-left: 130px;
+    background-color: white;
+}
+
+.navbar-neea{
+    background-color: #3f4854;
+    border-color: #1a1e22;
+}
+
+.navbar-neea .navbar-nav > li > a {
+    color: #ffffff;
+}
+.navbar-neea .navbar-nav > li > a:hover {
+    color: #c7c8ca;
+}
+.navbar-neea .navbar-nav > .dropdown > a .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+.navbar-neea .navbar-nav > .dropdown > a:hover .caret {
+    border-top-color: #c7c8ca;
+    border-bottom-color: #c7c8ca;
+}
+.navbar-neea .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    color: #c7c8ca;
+    background-color: #1a1e22;
+}

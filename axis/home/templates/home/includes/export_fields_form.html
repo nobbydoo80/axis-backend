@@ -1,0 +1,23 @@
+{% for field in form %}
+
+    {% if field.field.widget.attrs.type == 'checkbox' %}
+        <label class="btn btn-default" for="{{ field.html_name }}">
+            <i class="pull-left fa fa-lg fa-square-o"></i>
+            <i class="pull-left fa fa-lg fa-check-square-o"></i>
+            {{ field }} {{ field.label }}
+        </label>
+    {% elif field.field.widget.attrs.type == 'radio' %}
+        <div class="btn-group-nested" data-toggle="buttons">
+            {% for choice in field %}
+                <label class="btn btn-default radio" for="{{ choice.html_name }}">
+                    <i class="pull-left fa fa-lg fa-square-o"></i>
+                    <i class="pull-left fa fa-lg fa-check-square-o"></i>
+                    {{ choice }}
+                </label>
+            {% endfor %}
+
+        </div>
+    {% else %}
+        {{ field }}
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+
+<form action="{{ form.action }}" method="post">
+        {% csrf_token %}
+    <div class="hide-form">
+        {{ form.new_state|as_crispy_field }}
+        {{ form.stats|as_crispy_field }}
+        {{ form.annotation|as_crispy_field }}
+
+        <div class="form-actions">
+            <input class="btn btn-primary"
+                   title="Submit" name="submit"
+                   value="Update"
+                   type="submit">
+        </div>
+        <div class="messages" style="display: none;"></div>
+    </div>
+
+</form>

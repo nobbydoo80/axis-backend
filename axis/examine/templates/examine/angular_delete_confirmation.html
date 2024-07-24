@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        {% block title %}
+            Delete [[ vm.regionObject.verbose_name ]] <em>[[ vm.regionObject.object_name ]]</em>
+        {% endblock title %}
+    </h3>
+</div>
+<div class="modal-body">
+    {% block body %}
+        <div ng-if="vm.extraData.related_objects">
+            <p>
+                The result of this will <span style="text-decoration: underline"><strong>permanently delete</strong></span> the following items: </p>
+            <ul>
+                <span ng-repeat="item in vm.extraData.related_objects" ng-include="'angular_recursive_tree.html'"></span>
+            </ul>
+        </div>
+        <div ng-if="!vm.extraData.related_objects">
+            <p>
+                Are you sure you would like to <span style="text-decoration: underline"><strong>permanently delete</strong></span> this?
+            </p>
+        </div>
+    {% endblock body %}
+</div>
+<div class="modal-footer">
+    {% block footer %}
+        <button class="btn btn-primary" ng-click="vm.ok()">Delete</button>
+        <button class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+    {% endblock footer %}
+</div>

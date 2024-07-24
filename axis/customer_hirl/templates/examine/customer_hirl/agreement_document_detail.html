@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+    <tr>
+        <td>
+            <a ng-href="[[ regionObject.fields.document.value ]]">
+                <i class="fa fa-cloud-download"></i>
+                [[ regionObject.fields.document.value_label ]]
+            </a>
+            <small class="text-muted"
+                  ng-if="regionObject.object.filesize">
+                ([[ regionObject.object.filesize | bytes ]])
+            </small>
+        </td>
+        <td>[[ regionObject.object.description ]]</td>
+        <td>[[ regionObject.object.last_update | date: 'M/d/yy h:mm a' ]]</td>
+        <td class="text-center">
+            <i class="fa" ng-class="{
+                'fa-users': regionObject.object.is_public && regionObject.object.company !== {{ user.company_id }},
+                'fa-check': regionObject.object.company === {{ user.company_id }},
+                'fa-times': !regionObject.object.is_public
+            }" tooltip="[[ regionObject.object.company !== {{ user.company_id }} ? 'Shared by others' : '' ]]"></i>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,20 @@
+{% extends "base_form.html" %}
+{% load bootstrap_tags %}
+{% load crispy_forms_filters %}
+{% load crispy_file %}
+
+{% block form_content %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form.owner|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form.home_status|as_crispy_field }}
+        </div>
+        <div class="col-md-6">
+            {{ form.result|as_crispy_field }}
+        </div>
+    </div>
+{% endblock %}

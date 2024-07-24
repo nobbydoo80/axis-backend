@@ -1,0 +1,134 @@
+{% extends "base_form.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Green &amp; Energy Efficient Addendum{% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .datatable th[data-name="address"] { width: 25% }
+        .datatable th[data-name="subdivision"] { width: 20% }
+        .datatable th[data-name="floorplan"] { width: 20% }
+        .datatable th[data-name="eep-program"] { width: 25% }
+        .datatable th[data-name="state"] { width: 10% }
+    </style>
+{% endblock %}
+
+{% block javascript_head %}
+    {# {{ block.super }} - Intentional no validation #}
+    <script type="text/javascript">
+        var selected =  [];
+        var toggle = false;
+        function confirm_datatable_options(options) {
+            // This adds the header select all
+            options.fnHeaderCallback = function( nHead, aasData, iStart, iEnd, aiDisplay ) {
+                if ($("#select_column_header").length < 1){
+                    var selectheader = $('<th id="select_column_header"></th>');
+                    selectheader.attr('title', 'Select All')
+                        .addClass('selectColumn')
+                        .addClass('selectColumnButton')
+                        .click(function() {
+                           $('#DataTables_Table_0 tbody').find('input[type=checkbox]').each(function () {
+                               $(this).attr("checked",!toggle);
+                               var row = $(this).closest('tr');
+                               var iId = $(row).attr('id');
+                               if (!toggle) {
+                                   is_in_array = jQuery.inArray(iId, selected);
+                                   if (is_in_array == -1) {
+                                       selected[selected.length]=iId;
+                                   }
+                                   $(row).addClass('row_selected')
+                               } else {
+                                   is_in_array = jQuery.inArray(iId, selected);
+                                   if (is_in_array != -1) {
+                                       selected.splice($.inArray(iId, selected),1);
+                                   }
+                                   $(row).removeClass('row_selected')
+                               }
+                           });
+                           toggle = !toggle;
+                           console.log("Selected: " + selected);
+                           $('select[name=homes]').val(selected);
+                           return false;
+                    });
+                    $(nHead).prepend(selectheader)
+                }
+            };
+            // This adds the row select
+            options.fnRowCallback = function( nRow, aData, iDisplayIndex ) {
+                if($(nRow).find('td[id="select_td_' + $(nRow).attr('id') + '"]').length < 1 ) {
+                    var select_row_template = $('<td id="select_td_' + $(nRow).attr('id') +
+                                                '" style="text-align:center; width:24px;">' +
+                                                '<input id="select_row_' + $(nRow).attr('id') +
+                                                '" type="checkbox" / ></td>');
+                    $(nRow).prepend(select_row_template)
+                }
+            };
+            // This adds the click
+            options.fnDrawCallback = function ( oSettings ) {
+                $('#DataTables_Table_0 input[type="checkbox"]').each( function () {
+                    var row = $(this).closest('tr');
+                    var iId = $(row).attr('id');
+                    $(this).click( function () {
+                        console.log("Click: " + iId);
+                        is_in_array = jQuery.inArray(iId, selected);
+                        if (is_in_array==-1) {
+                            selected[selected.length]=iId;
+                        } else {
+                            selected = jQuery.grep(selected, function(value) {
+                               return value != iId;
+                            });
+                        }
+                        $('select[name=homes]').val(selected);
+                        if ( $(row).hasClass('row_selected') ) {
+                            $(row).removeClass('row_selected');
+
+                        } else {
+                            $(row).addClass('row_selected');
+                        }
+                        console.log("Selected: " + selected);
+                        console.log("Selected: " + $('select[name=homes]').val());
+                    });
+                });
+            };
+            return options;
+        }
+    </script>
+
+{% endblock %}
+
+{% block header_text %}
+    Green &amp; Energy Efficient Addendum
+{% endblock header_text %}
+
+{% block form_content %}
+    {# This is hidden and manipulated by the javascript on the datatable. #}
+    <div id="homesform" style="display: none;">{{ form.homes }}</div>
+
+    <div>This will use the RemRate data to print off a Green Addendum.</div>
+    <br />
+
+    <div class="alert warning">
+        Note: We currently only support printing the first selected item.
+    </div>
+
+    {% if form.homes.errors %}
+        <div class="alert error">You must select some homes!</div>
+    {% endif %}
+
+    <div class="form-actions">
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <br />
+
+    {{ datatable }}
+
+{% endblock form_content %}
+
+{% block form_actions %}
+    {# Empty so that we can position them above the datatable #}
+{% endblock form_actions %}

@@ -1,0 +1,7 @@
+{% extends 'core/landing/dashboard.html' %}
+{% load static %}
+
+{% block sidebar %}
+    {{ block.super }}
+    <div dashboard-widget dashboard-widget-epa-quarterly-report></div>
+{% endblock %}

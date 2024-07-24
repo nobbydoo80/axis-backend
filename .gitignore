@@ -1,0 +1,104 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.pyo
+__pycache__/
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+!axis-pdf-lock-filled-values-1.0.0-standalone.jar
+
+# Logs and databases #
+######################
+*.log
+*.log.*
+*_log.json
+*_log.json.*
+*django.json
+*django_*.json
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store?
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# PyCharm
+###################
+.idea
+
+# VSCode
+###################
+.vscode
+
+# Tree-specific
+###################
+/static
+webpack/webpack-stats.json
+webpack/dist/stats.html
+!/axis/aec_remrate/sql/*.sql
+!/axis/aec_remrate/data/*.sql
+!/axis/aec_remrate/data/*.log
+!/axis/messaging/server/package-lock.json
+!/axis/messaging/server/package.json
+!/axis/*/fixtures/compiled/
+
+# Docker artifacts I'm too lazy to figure out.
+/MWvfD2Fue4co8biks
+/vhZ
+
+# Leftovers..
+*.min.min.*
+*.js.map
+.pr.json
+
+# Domain-specific #
+###################
+*.orig
+.hg
+backup
+media
+djangorc
+local_settings.py
+.favorites.json
+.tm_properties
+.coverage
+.env
+.venv
+.pyenv
+env
+htmlcov
+._versions
+node_modules
+coverage
+celeryev.pid
+.python-version
+src
+/axis/*/tests/sources/
+!/axis/remrate/tests/sources
+!/axis/messaging/server/package-lock.json
+/cdk/cdk.out/*
+
+# User-specific local development settings
+settings/benjamin
+/webpack/.nvmrc

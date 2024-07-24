@@ -1,0 +1,21 @@
+<div badge-counter="$root.examineApp.getRegionCounter"
+     badge-counter-types="['eepprogramhomestatus_annotations']">
+    <span ng-if="badgeController.count"
+          class="pull-right completed-toggler">
+        <a class="show-completed-steps text-muted"
+                ng-click="toggleNotes()">
+            <span ng-show="showingNotes">Hide</span>
+            <span ng-hide="showingNotes">Show</span>
+            notes
+        </a>
+    </span>
+
+    <h5>
+        Notes
+        <i ng-hide="badgeController.isLoaded" class="fa fa-spinner fa-fw fa-spin"></i>
+        <span class="badge">[[ badgeController.count ]]</span>
+    </h5>
+    <div ng-show="showingNotes">
+        <axis-region-set options="regionObject.helpers.machinery.notes"></axis-region-set>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+{% extends "core/landing/dashboard.html" %}
+{% load static %}
+
+
+{% block landing_content %}
+    <h4>Metrics</h4>
+
+    <div dashboard-widget dashboard-widget-metrics>
+        {% include 'qa/dashboards/qa_tables.html' %}
+
+        {% include 'core/landing/includes/_collapse_group_start.html' with title="File QA Metrics" collapse_id='file-qa-stats' %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">File QA Metrics</h3>
+            </div>
+
+            {% include "core/landing/includes/filter_controls.html" with prefix="" id_prefix="qa-" %}
+
+            <table class="table table-bordered table-striped">
+                <tr class="header-divider">
+                    <th>Success Rate By Program</th>
+                    <th class="text-center">Total QA</th>
+                    <th class="text-center">Correction Required</th>
+                    <th class="text-center">Success Rate</th>
+                </tr>
+                <tr ng-if="widget.data.success_by_program.length === 0">
+                    <td colspan="4" class="text-center"><em>No data to show for assigned Raters of Record.</em></td>
+                </tr>
+                <tr ng-repeat="item in widget.data.success_by_program">
+                    <th>
+                        <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.controls.date_start ]]&activity_stop=[[ widget.controls.date_end ]]&qastatus=correction_required&eep_program_id=[[ item[0].eep_program_id ]]"
+                           target="_blank">
+                            [[ item[0].eep_program ]]
+                        </a>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-success" style="width: [[ item[0].percentage ]]%"></div>
+                          <div class="progress-bar progress-bar-warning" style="width: [[ item[0].corrected_percentage ]]%"></div>
+                          <div class="progress-bar progress-bar-danger" style="width: [[ item[1].percentage ]]%"></div>
+                        </div>
+                    </th>
+                    <td class="text-center">[[ item[0].total ]]</td>
+                    <td class="text-center">[[ (item[0].total - item[0].n) ]]</td>
+                    <td class="text-center">[[ item[0].percentage ]]%</td>
+                    {# <td class="text-center">[[ item[0].corrected ]]</td> #}
+                    {# <td class="text-center">[[ item[0].corrected_percentage ]]%</td> #}
+                </tr>
+
+                <tr class="header-divider">
+                    <th>Failures By Type</th>
+                    <th colspan="5">Current</th>
+                </tr>
+                <tr ng-if="widget.data.failures_by_type.length === 0">
+                    <td colspan="4" class="text-center"><em>No failure data.</em></td>
+                </tr>
+                <tr ng-repeat="item in widget.data.failures_by_type">
+                    <th>
+                        <a ng-href="{% url "home:report:status" %}?qaobservation=[[ item.type_id ]]"
+                           target="_blank">
+                            [[ item.type ]]
+                        </a>
+                    </th>
+                    <td>[[ item.n ]]</td>
+                    <td colspan="2"></td>
+                </tr>
+            </table>
+        </div>
+        {% include 'core/landing/includes/_collapse_group_end.html' with title="File QA Metrics" collapse_id='file-qa-stats' %}
+    </div>
+
+    {{ block.super }}
+{% endblock landing_content %}
+
+
+{% block sidebar %}
+    {% include "core/landing/includes/observations_sidebar.html" %}
+    <div dashboard-widget dashboard-widget-epa-quarterly-report></div>
+{% endblock sidebar %}

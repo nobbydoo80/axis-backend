@@ -1,0 +1,32 @@
+[
+    {
+      "pk": 1,
+      "model": "scheduling.constructionstage",
+      "fields": {
+        "order": 0,
+        "is_public": true,
+        "name": "Not Started",
+        "description": "The home has not yet started construction."
+      }
+    },
+    {
+      "pk": 2,
+      "model": "scheduling.constructionstage",
+      "fields": {
+        "order": 1,
+        "is_public": true,
+        "name": "Started",
+        "description": "The home has started construction."
+      }
+    },
+    {
+      "pk": 3,
+      "model": "scheduling.constructionstage",
+      "fields": {
+        "order": 100,
+        "is_public": true,
+        "name": "Completed",
+        "description": "The home is completed."
+      }
+    }
+]

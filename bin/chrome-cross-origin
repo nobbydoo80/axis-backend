@@ -1,0 +1,5 @@
+#!/bin/bash
+
+osascript -e 'quit app "Google Chrome"'
+sleep 1
+open -a "Google Chrome" --args --remote-debugging-port=9222 --disable-web-security --user-data-dir=$(pwd)/.venv

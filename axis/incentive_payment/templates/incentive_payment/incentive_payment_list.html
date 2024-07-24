@@ -1,0 +1,59 @@
+{% extends 'base_list.html' %}
+{% load crispy_forms_tags %}
+
+{% block header_text %} Incentive Checks {% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript">
+        function confirm_datatable_options(options){
+            options.ajax.data = function(data){
+                data.builder_id = $("#id_builder").val();
+                data.provider_id = $("#id_provider").val();
+                data.activity_start = $("#id_activity_start").val();
+                data.activity_stop = $("#id_activity_stop").val();
+            };
+            return options
+        }
+        $(function(){
+            $('form').on('change', function(e){
+                $('.datatable').dataTable().fnDraw();
+            });
+            $("#id_activity_start, #id_activity_stop").datepicker();
+            $("#clear-filters").on('click', function(e){
+                e.preventDefault();
+                $('#query_form').find('input:visible, select:visible').val('').change();
+            })
+        })
+    </script>
+{% endblock %}
+
+{% block list_content %}
+    <div class="row">
+        {% comment %}
+        In the cases where there are few items in the table,
+        the date filter doesn't think it has enough room
+        to show below the input, so it pops up.
+        It has less room up there. So we need to provide some space
+        for it to pop down into.
+        {% endcomment %}
+        <div class="col-md-3" style="min-height: 350px;">
+            <h3>Filter Options</h3>
+            <a href="#" id="clear-filters">Clear Filters</a>
+            <form id="query_form" method="post">
+                {% csrf_token %}
+                {{ form.builder|as_crispy_field }}
+                {{ form.provider|as_crispy_field }}
+                <div class="row">
+                    <div class="col-md-6">{{ form.activity_start|as_crispy_field }}</div>
+                    <div class="col-md-6">{{ form.activity_stop|as_crispy_field }}</div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9">
+            {{ block.super }}
+        </div>
+    </div>
+
+
+{% endblock %}

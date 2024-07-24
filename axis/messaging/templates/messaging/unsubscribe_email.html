@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Unsubscribed{% endblock %}
+
+{% block content %}
+    <article>
+        <br />
+        <h2 class="text-center">
+            <i class="fa fa-thumbs-up text-success"></i> You have been successfully unsubscribed from
+            <span>"{{ modern_message.verbose_name }}"</span>
+            email notifications
+        </h2>
+        <br />
+        <br />
+        <br />
+        <p class="text-center">
+            <a href="http://support.pivotalenergysolutions.com">Contact</a>
+            your friendly support representative for assistance.
+        </p>
+    </article>
+{% endblock %}

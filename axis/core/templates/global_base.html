@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+{% load cache %}
+{% load tags %}
+{% load static %}
+
+<html lang="en">
+  <head>
+    <title>{% block page_title %}Pivotal Energy Solutions{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pivotal Energy Solution">
+    <meta name="author" content="Pivotal Energy Solutions">
+    <meta charset="UTF-8">
+    {% include "core/favicons.html" %}
+    <meta property="og:url" content="https://pivotalenergysolutions.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pivotal Energy Solutions" />
+    <meta property="og:description" content="Pivotal Energy Solutions is a technology company focused on delivering innovative software solutions for the energy efficiency market. Our flagship product, Axis, is a cloud-hosted software platform designed to enable operational efficiencies and transparency for energy efficiency program administrators, participants, and evaluators." />
+    <meta property="og:image" content="{{ STATIC_URL }}images/homes/Single_Page_FB.jpg" />
+    {# CSS #}
+    <link href="{{ STATIC_URL }}css/bootstrap/3.3.2/bootstrap{% if not debug %}.min{% endif %}.css?v=1" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}css/font-awesome/4.4.0/font-awesome.min.css?v=1" rel="stylesheet" media="screen">
+
+    <link href="{{ STATIC_URL }}css/datatable/1.10.9/dataTables.bootstrap.min.css?v=1" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}css/datatable/1.10.9/buttons/1.0.3/buttons.bootstrap.min.css?v=1" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" type="text/css" media="screen, projection" />
+    <link href="{{ STATIC_URL }}css/main{% if not debug %}.min{% endif %}.css?v=1" rel="stylesheet" media="screen">
+
+    {# Empty unless a ``site-*/base.html`` is going to add something to it. #}
+      {% if neea_enabled %}
+          <link rel="stylesheet" href="{{ STATIC_URL }}css/neea_bootstrap{% if not debug %}.min{% endif %}.css"
+                rel='stylesheet' media='screen'>
+      {% elif home_innovation_enabled %}
+          <link rel="stylesheet" href="{{ STATIC_URL }}css/home_innovation_bootstrap.css"
+                rel='stylesheet' media='screen'>
+      {% endif %}
+
+    {# Page-specific styles.  Avoid template inheritance block.super, because many pages assume #}
+    {# that they are the only template using the block.  Use ``extra_head`` for changes within #}
+    {# intermediate templates, and keep this block reserved for leaf pages. #}
+    {% block style_sheet %}{% endblock style_sheet %}
+
+      <script type="text/javascript">
+          /*
+          Declare public path for webpack to load async files.
+          We do it here so we don't have to add anything special to the
+          build step for each server.
+           */
+          {% if docker_enabled %}
+              window.resourcePublicPath = '{{ STATIC_URL }}' + 'js/build/';  //Docker
+          {% else %}
+              window.resourcePublicPath = '{% if not debug %}https:{% endif %}{{ STATIC_URL }}' + 'js/build/';
+          {% endif %}
+      </script>
+
+    <script type="text/javascript" src="{% static 'js/build/vendor.bundle.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendor/handlebars/1.3.0/handlebars.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/build/helpers.bundle.js' %}"></script>
+
+    {# main.js has to come before datatableview so our document onready runs before auto-inits #}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/datatableview.js' %}"></script>
+
+    {# This was added to deal with IE11 and Jquery validate not playing nicely #}
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.js"></script>
+
+    {# Notifications #}
+    <script type="text/javascript" src="{% static 'js/vendor/angular-datatables/0.4.2/angular-datatables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendor/angular-datatables/0.4.2/angular-datatables.bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="//{{ MESSAGING_HOST }}/services/websocket/socket.io.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}messaging/messaging{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}angular-notify{% if not debug %}.min{% endif %}.js"></script>
+    <link href="{{ STATIC_URL }}angular-notify.min.css" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}messaging/messaging{% if not debug %}.min{% endif %}.css?v=1" rel="stylesheet" media="screen">
+
+    <script type="text/javascript" src="{{ STATIC_URL }}js/nav.js"></script>
+
+    {% include "includes/jq_validate.html" with form=form %}
+
+    {# Angular configuration for global app.  Note that app.js must be loaded AFTER. #}
+    <script type="text/javascript">
+        axis.geographic = {};
+        axis.geographic.maps_api_key = "{{ GOOGLE_MAPS_API_KEY }}";
+        window.axis_angular_dependencies = {% spaceless %}
+        {% block axis_angular_dependencies %}[]{% endblock axis_angular_dependencies %}
+        {% endspaceless %};
+
+        {% if docker_enabled %}
+            window.STATIC_URL = '{{ STATIC_URL }}';  //Docker
+        {% else %}
+            window.STATIC_URL = '{% if not debug %}https:{% endif %}{{ STATIC_URL }}';
+        {% endif %}
+
+        window.WEBSOCKET_HOST = window.location.protocol + '//{{ MESSAGING_HOST }}';
+        window.WEBSOCKET_ENDPOINT = '/services/websocket';
+        window.session_key = '{{ request.session.session_key|default:"" }}';
+        window.user_id = {{ request.user.id|default:'null' }};
+        window.impersonator_id = {% if request.impersonator %}{{ request.impersonator.id}}{% else %}{{request.user.id|default:'null' }}{% endif %};
+        window.is_impersonate = {{ request.user.is_impersonate|yesno:'true,false' }};
+    </script>
+    {% block angular_page_config %}{% endblock angular_page_config %}
+    <script src="{% static 'js/build/app.bundle.js' %}"></script>
+
+    {% block javascript_head %}
+    {% endblock %}
+    {% block extra_head %}{% endblock %}
+    {% block googletracking %}{% googleanalyticsjs %}{% endblock %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="{{STATIC_URL}}js/vendor/html-5-shiv/3.7.2/html5shiv{% if not debug %}.min{% endif %}.js"></script>
+      <script src="{{STATIC_URL}}js/vendor/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    {% block body %}
+        <div ng-app="axis"{% if user.is_authenticated %} messaging-wrapper{% endif %}>
+            {# Do NOT Cache this - active pages highlight the current page's menu item #}
+            {% block menu %}
+                {% if neea_enabled %}
+                    {% include "site-neea/core/base-menu.html" %}
+                {% elif home_innovation_enabled %}
+                    {% include "site-home-innovation/core/base-menu.html" %}
+                {% else %}
+                    {% include "core/base-menu.html" %}
+                {% endif %}
+            {% endblock %}
+
+            {% if user.is_authenticated %}
+                <view-message ng-show="messages.inspectMessage"></view-message>
+            {% endif %}
+            {% block jumbotron %}{% endblock jumbotron %}
+            <div id="content" class="container">
+                <ul id="toast-area" class="list-group"></ul>
+                {# {% include "messages/includes/bootstrap_messages.html" %} #}
+
+                {% block full_content %}
+                    <div class="row">
+                        <div class="col-md-9">
+                            {% block content %}
+                            <div class="jumbotron">
+                                <h1>Hello, world!</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum interdum neque non turpis pulvinar id porttitor diam eleifend. Morbi feugiat, neque sit amet tincidunt vulputate, felis massa convallis lectus, ac dignissim leo sem eu libero. Integer ut erat erat. Sed id tellus justo, volutpat pellentesque metus. Aenean diam odio, aliquam in tempus at, pulvinar eget magna. Cras massa velit, adipiscing nec gravida sit amet, imperdiet at mauris. Aliquam erat volutpat. Vivamus lectus orci, tincidunt ac pellentesque nec, luctus eget lorem. Nam ac dui odio, ac pharetra mi. Aliquam neque turpis, faucibus quis sodales in, convallis et velit. Integer vitae felis ipsum, quis mollis mauris. Nulla dignissim metus eget eros mattis ullamcorper. Nulla ornare accumsan ipsum, nec sollicitudin leo consectetur nec. Maecenas dapibus eleifend est, eget laoreet turpis commodo eget.</p>
+                                <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+                            </div>
+                            {% endblock content %}
+                        </div>
+                        <div class="col-md-3">
+                            {% block sidebar %}
+                                {% include "core/base-sidebar.html" %}
+                            {% endblock sidebar %}
+                        </div>
+                    </div>
+                {% endblock full_content %}
+                <hr>
+                {% cache 2500 footer request.user.username request.user.is_impersonate %}
+                    {% block footer %}{% include "core/base-footer.html" %}{% endblock footer %}
+                {% endcache %}
+            </div>
+            {% include 'core/zendesk_feedback_tab.html' %}
+        </div>
+    {% endblock body %}
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.django-select2').select2();
+        })
+    </script>
+    <!-- https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html#basic-usage -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  </body>
+</html>
+{% block javascript_tail %}{% endblock %}

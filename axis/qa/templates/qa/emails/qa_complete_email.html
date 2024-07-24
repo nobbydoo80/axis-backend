@@ -1,0 +1,46 @@
+<p>
+    {{ qa_company }} has completed {{ type }} QA on <a href="{{ obj_edit }}">{{ obj }}</a>.
+</p>
+<hr>
+<p>
+    <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <td style="font-weight: bold; border: 1px solid black;">
+                    Last Update
+                </td>
+                <td style="font-weight: bold; border: 1px solid black;">
+                    User
+                </td>
+                <td style="font-weight: bold; border: 1px solid black;">
+                    Observation
+                </td>
+                <td style="font-weight: bold; border: 1px solid black;">
+                    Note
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for qa_note in  qa_notes %}
+                <tr>
+                    <td style="border: 1px solid black;">
+                        {{ qa_note.last_update }}
+                    </td>
+                    <td style="border: 1px solid black;">
+                        {{ qa_note.user }}
+                    </td>
+                    <td style="border: 1px solid black;">
+                        {% for observation in qa_note.observation_set.all %}
+                            <div>
+                                {{ observation.observation_type }}
+                            </div>
+                        {% endfor %}
+                    </td>
+                    <td style="border: 1px solid black;">
+                        {{ qa_note.note }}
+                    </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</p>

@@ -1,0 +1,92 @@
+Dear {{  project.registration.registration_user.first_name }} {{ project.registration.registration_user.last_name }},
+<br><br>
+Congratulations!  You have successfully registered the project below for the {{ project.registration.eep_program }} program.
+<hr>
+Your Project ID:
+<br>
+<b><a href="https://{{ site.domain }}{{ project.get_absolute_url }}">{{ project.pk }}</a></b>
+<p>
+    Be sure to keep this Project ID in a safe place as you will need it throughout the certification process.
+</p>
+<hr>
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <b>Verifier Name:</b>
+            </td>
+            <td>
+                {{ project.registration.registration_user.first_name }} {{ project.registration.registration_user.last_name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Verifier Organization:</b>
+            </td>
+            <td>
+                <a href="https://{{ site.domain }}{{ project.registration.registration_user.company.get_absolute_url }}">
+                    {{ project.registration.registration_user.company }}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Developer Organization:</b>
+            </td>
+            <td>
+                <a href="https://{{ site.domain }}{{ project.registration.builder_organization.get_absolute_url }}">
+                    {{ project.registration.developer_organization }}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Standard and Scoring Path:</b>
+            </td>
+            <td>
+                <a href="https://{{ site.domain }}{{ project.registration.eep_program.get_absolute_url }}">
+                    {{ project.registration.eep_program }}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Project Address/Lot:</b>
+            </td>
+            <td>
+                {{ project.home_address_geocode.raw_street_line1 }} {{ project.home_address_geocode.raw_street_line2 }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Project State:</b>
+            </td>
+            <td>
+                {{ project.home_address_geocode.raw_city.state }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Project City:</b>
+            </td>
+            <td>
+                {{ project.home_address_geocode.raw_city.name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Project ZIP Code:</b>
+            </td>
+            <td>
+                {{ project.home_address_geocode.raw_zipcode }}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+We look forward to working with you as an NGBS Green Partner. If you have any questions about the certification process, please <a href="#">contact us</a>.
+</p>
+<p>
+    If you didn't submit this project for registration please <a href="#">let us know</a>.
+</p>

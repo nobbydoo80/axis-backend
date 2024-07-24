@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}{{ site.name }}{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}messaging/inbox.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}core/dashboard/dashboard.js"></script>
+{% endblock javascript_head %}
+
+{% block axis_angular_dependencies %}
+    ['axis.messaging.inbox']
+{% endblock axis_angular_dependencies %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        #DataTables_Table_0 th[data-name="messages"] { width: 50%; }
+        #DataTables_Table_0 th[data-name="level"] { width: 20%; }
+        #DataTables_Table_0 th[data-name="created"] { width: 15%; }
+        #DataTables_Table_0 th[data-name="mark-as-read"] { width: 15%; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <header>
+        <div class="row row-header">
+            <div class="col-md-12"><p><span>
+                {% block welcome %}
+                    Welcome {{ request.user.get_full_name }}
+                {% endblock welcome %}
+            </span></p></div>
+        </div>
+    </header>
+
+    {% with collapsed=False %}
+    {% block news %}
+        <ul class="list-unstyled">
+            <li message item="message" ng-repeat="message in messages.unread | filter:{level: 'system'} track by message.id"
+                class="unread list-group-item-[[ message.level | bootstrapcontext ]]"
+                ng-class="{'private': message.sender}">
+            </li>
+        </ul>
+
+        {% if collapsed %}
+        <div class="panel panel-default">
+            <div class="panel-heading" id="news-panel">
+                <i class="fa fa-fw fa-newspaper-o text-muted"></i>
+                <a href="#news-panel-body" data-toggle="collapse"><strong>Latest site news</strong></a>
+                <span class="text-muted">
+                    &mdash;
+                    {{ news.0.created_at | date }}
+                </span>
+            </div>
+            <div id="news-panel-body" class="collapse">
+                <div class="panel-body">
+        {% endif %} {# collapsed=True #}
+
+                    <div class="row" style="min-height: 300px">
+                        <div class="col-md-12">
+                            <img class="img-rounded pull-right" width='400'
+                                 src="{{ STATIC_URL }}images/homes/summer/main_home.jpg"/>
+                            {% block news_loop %}
+                                {% for page in news %}
+                                    {% if forloop.first %}<h4>Latest site news:</h4>{% endif %}
+                                    <strong>{{ page.created_at | date }} - {{ page.title|safe }}</strong>
+                                    <p>{{ page.content|safe }}</p><br />
+                                {% endfor %}
+                            {% endblock news_loop %}
+                        </div>
+                    </div>
+
+        {% if collapsed %}
+                </div>
+            </div>
+        </div>
+        {% endif %} {# collapsed=True #}
+    {% endblock news %}
+    {% endwith %}
+
+    {% block landing_content %}
+        {# pass #}
+    {% endblock landing_content %}
+
+    {% block messages %}
+        {% include "messaging/includes/message_list.html" with show_viewall_link=True %}
+    {% endblock messages %}
+
+{% endblock %}

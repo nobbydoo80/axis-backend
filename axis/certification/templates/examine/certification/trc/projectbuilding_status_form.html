@@ -1,0 +1,226 @@
+{% extends "examine/certification/workflow_status_form.html" %}
+
+{% block data_fields %}
+    <div faux-tab-switcher>
+        <div class="row button-row">
+            <div class="col-md-12 text-center">
+                <div class="nav btn-group btn-group-sm">
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'participation-status-[[ regionObject.id ]]'}"
+                       ng-click="switcherCtrl.setActive('participation-status-'+[[ regionObject.id ]])"
+                       ng-if="regionObject.helpers.group_has_fields['Participation Status']"
+                       data-switcher="participation-status">
+                        Participation Status
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'project-data-[[ regionObject.id ]]'}"
+                       ng-click="switcherCtrl.setActive('project-data-'+[[ regionObject.id ]])"
+                       ng-if="regionObject.helpers.group_has_fields['Project Data']"
+                       data-switcher="project-data">
+                        Project Data
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'project-contacts-[[ regionObject.id ]]'}"
+                       ng-click="switcherCtrl.setActive('project-contacts-'+[[ regionObject.id ]])"
+                       ng-if="regionObject.helpers.group_has_fields['Project Contacts']"
+                       data-switcher="project-contacts">
+                        Project Contacts
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'energy-data-[[ regionObject.id ]]'}"
+                       ng-click="switcherCtrl.setActive('energy-data-'+[[ regionObject.id ]])"
+                       ng-if="regionObject.helpers.group_has_fields['Energy Data']"
+                       data-switcher="energy-data">
+                        Energy Data
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'prescriptive-details-[[ regionObject.id ]]'}"
+                       ng-click="switcherCtrl.setActive('prescriptive-details-'+[[ regionObject.id ]])"
+                       ng-if="regionObject.helpers.group_has_fields['Prescriptive Details']"
+                       data-switcher="prescriptive-details">
+                        Prescriptive Details
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': switcherCtrl.getActive() == 'incentive-details-[[ regionObject.id ]]'}"
+                       ng-click="switcherCtrl.setActive('incentive-details-'+[[ regionObject.id ]])"
+                       ng-if="regionObject.helpers.group_has_fields['Incentive Details']"
+                       data-switcher="incentive-details">
+                        Incentive Details
+                    </a>
+                    <a class="btn btn-default"
+                       ng-class="{'active': statusCtrl.showNotes}"
+                       ng-if="regionObject.helpers.machinery.notes !== undefined"
+                       ng-click="switcherCtrl.setActive('notes')">
+                        Notes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div ng-class="{'active': switcherCtrl.getActive() == 'participation-status-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Participation Status']"
+                 data-switcher="participation-status">
+
+                <h4>Pre-qualification</h4>
+                <div class="row form-group">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.lead_contact_date"><axis-field field="regionObject.helpers.data_form.lead_contact_date"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.pre_qual_start_date"><axis-field field="regionObject.helpers.data_form.pre_qual_start_date"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.application_form_received"><axis-field field="regionObject.helpers.data_form.application_form_received"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.application_package_complete_date"><axis-field field="regionObject.helpers.data_form.application_package_complete_date"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.bond_applicant"><axis-field field="regionObject.helpers.data_form.bond_applicant"></axis-field></div>
+                </div>
+                <hr>
+
+                <h4>Technical Review</h4>
+                <div class="row form-group">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.energy_advisor"><axis-field field="regionObject.helpers.data_form.energy_advisor"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.energy_model_received"><axis-field field="regionObject.helpers.data_form.energy_model_received"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.assessment_report_received"><axis-field field="regionObject.helpers.data_form.assessment_report_received"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.photos_received"><axis-field field="regionObject.helpers.data_form.photos_received"></axis-field></div>
+                    {# <div class="col-md-4" ng-if="regionObject.helpers.data_form.project_complete_date"><axis-field field="regionObject.helpers.data_form.project_complete_date"></axis-field></div> #}
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_review_started"><axis-field field="regionObject.helpers.data_form.date_review_started"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_comments_sent"><axis-field field="regionObject.helpers.data_form.date_comments_sent"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_review_complete"><axis-field field="regionObject.helpers.data_form.date_review_complete"></axis-field></div>
+                </div>
+                <div class="row" ng-if="regionObject.helpers.data_form.review_memo_field">
+                    <div class="col-md-12"><axis-field field="regionObject.helpers.data_form.review_memo_field"></axis-field></div>
+                </div>
+
+                <hr>
+                <h4>Verification</h4>
+                <div class="row form-group">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_type"><axis-field field="regionObject.helpers.data_form.verification_type"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_documents_received"><axis-field field="regionObject.helpers.data_form.verification_documents_received"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.trc_verifier"><axis-field field="regionObject.helpers.data_form.trc_verifier"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_scheduled"><axis-field field="regionObject.helpers.data_form.verification_scheduled"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_performed"><axis-field field="regionObject.helpers.data_form.verification_performed"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verification_complete"><axis-field field="regionObject.helpers.data_form.verification_complete"></axis-field></div>
+                    {# <div class="col-md-4" ng-if="regionObject.helpers.data_form.tech_assist_start_date"><axis-field field="regionObject.helpers.data_form.tech_assist_start_date"></axis-field></div> #}
+                </div>
+                <div class="row" ng-if="regionObject.helpers.data_form.verification_memo_field">
+                    <div class="col-md-12"><axis-field field="regionObject.helpers.data_form.verification_memo_field"></axis-field></div>
+                </div>
+
+                <hr>
+                <h4>Dropped/Waitlist</h4>
+                <div class="row form-group">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.dropped_date"><axis-field field="regionObject.helpers.data_form.dropped_date"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.dropped_reason"><axis-field field="regionObject.helpers.data_form.dropped_reason"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.waitlist_date"><axis-field field="regionObject.helpers.data_form.waitlist_date"></axis-field></div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'project-data-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Project Data']"
+                 data-switcher="project-data">
+                <div class="row form-group">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.number_of_buildings"><axis-field field="regionObject.helpers.data_form.number_of_buildings"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.number_of_floors"><axis-field field="regionObject.helpers.data_form.number_of_floors"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.number_of_units"><axis-field field="regionObject.helpers.data_form.number_of_units"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.conditioned_floor_area"><axis-field field="regionObject.helpers.data_form.conditioned_floor_area"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.property_class"><axis-field field="regionObject.helpers.data_form.property_class"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.rise_type"><axis-field field="regionObject.helpers.data_form.rise_type"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.resident_type"><axis-field field="regionObject.helpers.data_form.resident_type"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.expected_construction_start_date"><axis-field field="regionObject.helpers.data_form.expected_construction_start_date"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.expected_construction_completion_date"><axis-field field="regionObject.helpers.data_form.expected_construction_completion_date"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.energy_modeling_method"><axis-field field="regionObject.helpers.data_form.energy_modeling_method"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.retrofit_scope_of_work"><axis-field field="regionObject.helpers.data_form.retrofit_scope_of_work"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.code_year"><axis-field field="regionObject.helpers.data_form.code_year"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.year_built"><axis-field field="regionObject.helpers.data_form.year_built"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.year_renovated"><axis-field field="regionObject.helpers.data_form.year_renovated"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.utility_electric"><axis-field field="regionObject.helpers.data_form.utility_electric"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.utility_gas"><axis-field field="regionObject.helpers.data_form.utility_gas"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.water_heater_fuel_type"><axis-field field="regionObject.helpers.data_form.water_heater_fuel_type"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.space_heat_fuel_type"><axis-field field="regionObject.helpers.data_form.space_heat_fuel_type"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.water_heater_distribution_type"><axis-field field="regionObject.helpers.data_form.water_heater_distribution_type"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.space_heat_distribution_type"><axis-field field="regionObject.helpers.data_form.space_heat_distribution_type"></axis-field></div>
+                </div>
+                <div class="row" ng-if="regionObject.helpers.data_form.project_memo_field">
+                    <div class="col-md-12"><axis-field field="regionObject.helpers.data_form.project_memo_field"></axis-field></div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'project-contacts-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Project Contacts']"
+                 data-switcher="project-contacts">
+                <div class="row form-group">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.payee_company"><axis-field field="regionObject.helpers.data_form.payee_company" expect-update></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.payee_contact"><axis-field field="regionObject.helpers.data_form.payee_contact" expect-update></axis-field></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.customer_company"><axis-field field="regionObject.helpers.data_form.customer_company" expect-update></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.customer_contact"><axis-field field="regionObject.helpers.data_form.customer_contact" expect-update></axis-field></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.application_package_coordinator"><axis-field field="regionObject.helpers.data_form.application_package_coordinator" expect-update></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.energy_modeler"><axis-field field="regionObject.helpers.data_form.energy_modeler" expect-update></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.verifier"><axis-field field="regionObject.helpers.data_form.verifier" expect-update></axis-field></div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'energy-data-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Energy Data']"
+                 data-switcher="energy-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Enrollment</h4>
+                        <div class="row form-group">
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.kwh_savings"><axis-field field="regionObject.helpers.data_form.kwh_savings"></axis-field></div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.therms_savings"><axis-field field="regionObject.helpers.data_form.therms_savings"></axis-field></div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.percent_improvement"><axis-field field="regionObject.helpers.data_form.percent_improvement"></axis-field></div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.percent_above_code"><axis-field field="regionObject.helpers.data_form.percent_above_code"></axis-field></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Installed</h4>
+                        <div class="row form-group">
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.kwh_savings_installed"><axis-field field="regionObject.helpers.data_form.kwh_savings_installed"></axis-field></div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.therms_savings_installed"><axis-field field="regionObject.helpers.data_form.therms_savings_installed"></axis-field></div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.percent_improvement_installed"><axis-field field="regionObject.helpers.data_form.percent_improvement_installed"></axis-field></div>
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.percent_above_code_installed"><axis-field field="regionObject.helpers.data_form.percent_above_code_installed"></axis-field></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="regionObject.object.certifiable_object_info.type == 'project'">
+                    <div class="col-md-12">
+                        <em class="text-muted">
+                            This data is aggregated at the Building level.
+                        </em>
+                    </div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'prescriptive-details-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Prescriptive Details']"
+                 data-switcher="prescriptive-details">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Enrollment</h4>
+                        <div class="row form-group">
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.prescriptive_measures_section"><axis-field field="regionObject.helpers.data_form.prescriptive_measures_section"></axis-field></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Installed</h4>
+                        <div class="row form-group">
+                            <div class="col-md-12" ng-if="regionObject.helpers.data_form.prescriptive_measures_section_installed"><axis-field field="regionObject.helpers.data_form.prescriptive_measures_section_installed"></axis-field></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-class="{'active': switcherCtrl.getActive() == 'incentive-details-[[ regionObject.id ]]'}"
+                 ng-if="regionObject.helpers.group_has_fields['Incentive Details']"
+                 data-switcher="incentive-details">
+                <div class="row form-group">
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.incentive_type"><axis-field field="regionObject.helpers.data_form.incentive_type"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.total_incentive"><axis-field field="regionObject.helpers.data_form.total_incentive"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.total_incentive_installed"><axis-field field="regionObject.helpers.data_form.total_incentive_installed"></axis-field></div>
+
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_reservation_sent"><axis-field field="regionObject.helpers.data_form.date_reservation_sent"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.date_reserved"><axis-field field="regionObject.helpers.data_form.date_reserved"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.incentive_forecast_date"><axis-field field="regionObject.helpers.data_form.incentive_forecast_date"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.incentive_request_date"><axis-field field="regionObject.helpers.data_form.incentive_request_date"></axis-field></div>
+                    <div class="col-md-4" ng-if="regionObject.helpers.data_form.incentive_delivered_date"><axis-field field="regionObject.helpers.data_form.incentive_delivered_date"></axis-field></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock data_fields %}

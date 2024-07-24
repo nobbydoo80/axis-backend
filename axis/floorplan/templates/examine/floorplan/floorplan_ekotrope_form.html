@@ -1,0 +1,15 @@
+<div validate-rem-vs-blg update-remdata-on-change="">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <axis-field field="regionObject.fields.ekotrope_project"
+                        on-change="updateEkotropeHousePlanOptions()"></axis-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <axis-field field="regionObject.fields.ekotrope_houseplan"
+                        on-change="lookupEkotropeInfo()"
+                        expect-update></axis-field>
+        </div>
+    </div>
+</div>

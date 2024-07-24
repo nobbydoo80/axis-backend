@@ -1,0 +1,293 @@
+{% extends "core/landing/dashboard.html" %}
+
+
+{% block landing_content %}
+    <h4>Metrics</h4>
+
+    <div dashboard-widget dashboard-widget-metrics>
+        {% block program_table %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Program Metrics</h3>
+                </div>
+
+                {% include "core/landing/includes/filter_controls.html" with prefix="builder_program_" id_prefix="builder_program-" %}
+
+                <table class="table table-bordered table-striped text-center">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Program</th>
+                        <th class="text-center">Certified Homes</th>
+                        <th class="text-center">Incentives Paid</th>
+                        <th class="text-center">Estimated Incentive</th>
+                        <th class="text-center">Energy Savings</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>Totals</th>
+                        <td>
+                            <a ng-href="{% url 'home:report:status' %}?state=complete" target="_blank"
+                                ng-bind="widget.getTotalForKey('builder_program', 'certifications')">
+                            </a>
+                        </td>
+                        <td class="dollar-column" ng-bind="'$ ' + (widget.getTotalForKey('builder_program', 'incentives_paid') | number:2)"></td>
+                        <td class="dollar-column" ng-bind="'$ ' + (widget.getTotalForKey('builder_program', 'stats.homestatus.outstanding_payment') | number:2)"></td>
+                        <td class="dollar-column" ng-bind="(widget.getTotalForKey('builder_program', 'energy_savings') | number:2) + ' MBtu'"></td>
+                    </tr>
+                    <tr ng-repeat="item in widget.builder_program_metrics_data">
+                        <th ng-bind="item.eep_program"></th>
+                        <td>
+                            <a ng-href="{% url 'home:report:status' %}?&eep_program_id=[[ item.eep_program_id ]]&state=complete" target="_blank"
+                               ng-bind="item.certifications">
+                            </a>
+                        </td>
+                        <td class="dollar-column" ng-bind="'$ ' + (item.incentives_paid || '0.00')"></td>
+                        <td class="dollar-column" ng-bind="'$ ' + (item.stats.homestatus.outstanding_payment | number:2)"></td>
+                        <td class="dollar-column" ng-bind="(item.energy_savings | number:2 || '0.00') + ' MBtu'"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endblock %}
+        {% block home_status_table %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Project Metrics</h3>
+                </div>
+
+                {% include "core/landing/includes/filter_controls.html" with prefix="home_status_" id_prefix="home-status-" %}
+
+                <table class="table table-bordered table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center" rowspan="2">Project</th>
+                            <th class="text-center" rowspan="2">Certified</th>
+                            <th class="text-center" colspan="6">Not Certified</th>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Pending</th>
+                            <th class="text-center">Active</th>
+                            <th class="text-center">Pending QA</th>
+                            <th class="text-center">Inspected</th>
+                            <th class="text-center">Abandoned</th>
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Totals</th>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&state=complete" target="_blank"
+                                   ng-bind="widget.getTotalForKey('home_status', 'stats.homestatus.complete') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&state=pending_inspection" target="_blank"
+                                   ng-bind="widget.getTotalForKey('home_status', 'stats.homestatus.pending_inspection') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&state=inspection" target="_blank"
+                                   ng-bind="widget.getTotalForKey('home_status', 'stats.homestatus.inspection') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&state=qa_pending" target="_blank"
+                                   ng-bind="widget.getTotalForKey('home_status', 'stats.homestatus.qa_pending') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&state=certification_pending" target="_blank"
+                                   ng-bind="widget.getTotalForKey('home_status', 'stats.homestatus.certification_pending') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&state=abandoned" target="_blank"
+                                   ng-bind="widget.getTotalForKey('home_status', 'stats.homestatus.abandoned') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&state=-1" target="_blank"
+                                   ng-bind="widget.getTotalForKey('home_status', 'stats.homestatus.not_complete') || 0">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="item in widget.home_status_metrics_data">
+                            <th ng-bind="item.eep_program"></th>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&eep_program_id=[[ item.eep_program_id ]]&state=complete" target="_blank"
+                                   ng-bind="item.stats.homestatus.complete || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&eep_program_id=[[ item.eep_program_id ]]&state=pending_inspection" target="_blank"
+                                   ng-bind="item.stats.homestatus.pending_inspection || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&eep_program_id=[[ item.eep_program_id ]]&state=inspection" target="_blank"
+                                   ng-bind="item.stats.homestatus.inspection || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&eep_program_id=[[ item.eep_program_id ]]&state=qa_pending" target="_blank"
+                                   ng-bind="item.stats.homestatus.qa_pending || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&eep_program_id=[[ item.eep_program_id ]]&state=certification_pending" target="_blank"
+                                   ng-bind="item.stats.homestatus.certification_pending || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&eep_program_id=[[ item.eep_program_id ]]&state=abandoned" target="_blank"
+                                   ng-bind="item.stats.homestatus.abandoned || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?activity_start=[[ widget.home_status_controls.date_start ]]&activity_stop=[[ widget.home_status_controls.date_end ]]&eep_program_id=[[ item.eep_program_id ]]&state=-1" target="_blank"
+                                   ng-bind="item.stats.homestatus.not_complete || 0">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endblock %}
+        {% block payment_status_table %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Payment Status Metrics</h3>
+                </div>
+
+                {% include "core/landing/includes/filter_controls.html" with prefix="payment_status_" id_prefix="payment-status-" %}
+
+                <table class="table table-striped table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center" rowspan="2">Payment Status</th>
+                            <th class="text-center" rowspan="2">Paid</th>
+                            <th class="text-center" colspan="7">Not Paid</th>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Received</th>
+                            <th class="text-center">Correction Required</th>
+                            <th class="text-center">Correction Received</th>
+                            <th class="text-center">Approved for Payment</th>
+                            <th class="text-center">Payment Pending</th>
+                            <th class="text-center">Total</th>
+                            <th class="text-center">Outstanding Payments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Totals</th>
+                            <td>
+                                <a ng-href="{% url 'home:report:status' %}?[[ widget.getControlsAsParams('builder_program_') ]]&ipp_state=complete"
+                                   target="_blank"
+                                   ng-bind="widget.getTotalForKey('payment_status', 'stats.incentivepaymentstatus.complete') || 0"></a>
+                            </td>
+                            <td>
+                                <a ng-href="{% url 'home:report:status' %}?[[ widget.getControlsAsParams('builder_program_') ]]&ipp_state=start"
+                                   target="_blank"
+                                   ng-bind="widget.getTotalForKey('payment_status', 'stats.incentivepaymentstatus.start') || 0"></a>
+                            </td>
+                            <td>
+                                <!-- Correction Required -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&ipp_state=ipp_payment_failed_requirements"
+                                   target="_blank"
+                                   ng-bind="widget.getTotalForKey('payment_status', 'stats.incentivepaymentstatus.ipp_payment_failed_requirements') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Correction Received -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&ipp_state=ipp_failed_restart"
+                                   target="_blank"
+                                   ng-bind="widget.getTotalForKey('payment_status', 'stats.incentivepaymentstatus.ipp_failed_restart') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Approved for Payment -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&ipp_state=ipp_payment_automatic_requirements"
+                                   target="_blank"
+                                   ng-bind="widget.getTotalForKey('payment_status', 'stats.incentivepaymentstatus.ipp_payment_automatic_requirements') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Payment Pending -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&ipp_state=payment_pending"
+                                   target="_blank"
+                                   ng-bind="widget.getTotalForKey('payment_status', 'stats.incentivepaymentstatus.payment_pending') || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Total -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&ipp_state=-1"
+                                   target="_blank"
+                                   ng-bind="widget.getTotalForKey('payment_status', 'stats.incentivepaymentstatus.not_complete') || 0">
+                                </a>
+                            </td>
+                            <td class="dollar-column"
+                                ng-bind="'$' + (widget.getTotalForKey('payment_status', 'stats.incentivepaymentstatus.outstanding_payment') | number:2)"></td>
+                        </tr>
+                        <tr ng-repeat="item in widget.payment_status_metrics_data">
+                            <th ng-bind="item.eep_program"></th>
+                            <td>
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&eep_program_id=[[ item.eep_program_id ]]&ipp_state=complete"
+                                   target="_blank"
+                                   ng-bind="item.stats.incentivepaymentstatus.complete || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Received -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&eep_program_id=[[ item.eep_program_id ]]&ipp_state=start"
+                                   target="_blank"
+                                   ng-bind="item.stats.incentivepaymentstatus.start || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Correction Required -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&eep_program_id=[[ item.eep_program_id ]]&ipp_state=ipp_payment_failed_requirements"
+                                   target="_blank"
+                                   ng-bind="item.stats.incentivepaymentstatus.ipp_payment_failed_requirements || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Correction Received -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&eep_program_id=[[ item.eep_program_id ]]&ipp_state=ipp_failed_restart"
+                                   target="_blank"
+                                   ng-bind="item.stats.incentivepaymentstatus.ipp_failed_restart || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Approved for Payment -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&eep_program_id=[[ item.eep_program_id ]]&ipp_state=ipp_payment_automatic_requirements"
+                                   target="_blank"
+                                   ng-bind="item.stats.incentivepaymentstatus.ipp_payment_automatic_requirements || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Payment Pending -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&eep_program_id=[[ item.eep_program_id ]]&ipp_state=payment_pending"
+                                   target="_blank"
+                                   ng-bind="item.stats.incentivepaymentstatus.payment_pending || 0">
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Total -->
+                                <a ng-href="{% url "home:report:status" %}?[[ widget.getControlsAsParams('builder_program_') ]]&eep_program_id=[[ item.eep_program_id ]]&ipp_state=-1"
+                                   target="_blank"
+                                   ng-bind="item.stats.incentivepaymentstatus.not_complete || 0">
+                                </a>
+                            </td>
+                            <td class="dollar-column"
+                                ng-bind="'$' + (item.stats.incentivepaymentstatus.outstanding_payment | number:2)"></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

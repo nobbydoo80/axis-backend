@@ -1,0 +1,138 @@
+{% extends 'base_detail.html' %}
+{% load bootstrap_tags %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/sampleset.css" type="text/css" media="screen" charset="utf-8" />
+{% endblock %}
+
+{% block axis_angular_dependencies %}
+'SampleSetDetailApp'
+{% endblock %}
+
+{% block javascript_head %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/SampleSetDetailApp{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/controllers{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/directives{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/services{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/sampleset/filters{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript">
+    angular.module('SampleSetDetailApp').constant('ExamineSettings', {
+        static_url: '{% if not debug %}https:{% endif %}{{ STATIC_URL }}'
+    })
+    </script>
+{% endblock %}
+
+{% block title-width %}7{% endblock %}
+{% block actions-width %}5{% endblock %}
+{% block action_buttons %}
+    {% if perms.sampleset.view_samplesethomestatus %}
+        <a href="{% url "sampleset:control_center" %}?id={{ object.id }}" class="btn btn-default">
+            Sampling Control
+        </a>
+    {% endif %}
+    {{ block.super }}
+{% endblock action_buttons %}
+
+{% block detail_content %}
+    <div class="row">
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-6 key">Name:</div>
+                <div class="col-md-6 value">{{ object }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">Target EEP Program:</div>
+                <div class="col-md-6 value">{% if object.discover_eep_program %}
+                    {{ object.discover_eep_program }}{% else %}<i>Multiple</i>{% endif %}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">Sampling Type:</div>
+                <div class="col-md-6 value">
+                    {% with subdivision=object.discover_subdivision %}
+                    {% if subdivision %}
+                        <a href="{% url 'sampleset:list' subdivision_id=subdivision.id %}">
+                            {{ sample_type|capfirst }}
+                        </a>
+                    {% else %}
+                        {{ sample_type|capfirst }}
+                    {% endif %}
+                    {% endwith %}
+                </div>
+            </div><br>
+            <div class="row">
+                {% if request.user.is_superuser or request.user.company != object.owner %}
+                    <div class="col-md-6 key">Company:</div>
+                    <div class="col-md-6 value">{{ object.owner }}</div>
+                {% endif %}
+                <div class="col-md-6 key">Builder:</div>
+                <div class="col-md-6 value">{{ object.discover_builder_org }}</div>
+            </div>
+            <br>
+            {% if object.alt_name or request.user.is_superuser %}
+                <div class="row">
+                    {% if object.alt_name %}
+                        <div class="col-md-6 key">Alternate ID:</div>
+                        <div class="col-md-6 value">{{ object.alt_name }}</div>
+                    {% endif %}
+                    {% if request.user.is_superuser %}
+                        <div class="col-md-6 key">Axis ID:</div>
+                        <div class="col-md-6 value">{{ object.id }}</div>
+                    {% endif %}
+                </div>
+            <br>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-md-6 key">Start Date:</div>
+                <div class="col-md-6 value">{{ object.start_date }}</div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6 key">Result:</div>
+                <div class="col-md-6 value">{% if object.is_full %}Full{% else %}Available for additions{% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 key">Checklist Completion:</div>
+                <div class="col-md-6 value">{{ object.get_completion_percentage }}%
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6 key">Confirm Date:</div>
+                <div class="col-md-6 value">{% if object.is_full %}{{ object.confirm_date }}{% else %} -{% endif %}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {% if has_failures %}
+                        <br />
+                        <em>{{ has_failures }} Failing answers found (some of which
+                         may have been subsequently corrected)</em>
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-7" ng-controller="SampleSetDetailController" ng-init="go({{ object.id }})">
+            <accordion close-others="false">
+                <sample-set ng-repeat="sampleSet in viewingSampleSets" accordion-open="true" drag-n-drop="false"></sample-set>
+            </accordion>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block tabs %}
+    {% bootstrap_navtabs %}
+        {% tab "Homes" %}
+            {% include 'sampleset/tabs/tab_homes.html' %}
+
+        {% tab "Answers" %}
+            {% include 'sampleset/tabs/tab_answers.html' %}
+
+        {% tab "Failures" show=has_failures %}
+            {% include 'sampleset/tabs/tab_failures.html' %}
+
+    {% endbootstrap_navtabs %}
+{% endblock %}

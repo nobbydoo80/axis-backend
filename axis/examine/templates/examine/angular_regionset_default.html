@@ -1,0 +1,19 @@
+{% block regionset %}
+
+    {% block regions %}
+        <axis-region region-object="regionObject" ng-repeat="regionObject in regionSet.regions"></axis-region>
+    {% endblock regions %}
+
+    <div class="text-center" ng-hide="regionSet.isFull()">
+        {% block add_new_button %}
+            <a class="btn btn-default" ng-click="regionSet.fetchNewRegion()"
+               ng-if="regionSet.new_region_url">
+                <i class="fa fa-fw fa-plus-circle"></i>
+                {% block add_new_button_text %}
+                    Add new [[ regionSet.verbose_name | humanize ]]
+                {% endblock %}
+            </a>
+        {% endblock add_new_button %}
+    </div>
+
+{% endblock %}

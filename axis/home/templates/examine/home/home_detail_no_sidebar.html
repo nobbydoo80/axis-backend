@@ -1,0 +1,12 @@
+{% extends 'examine/home/home_detail.html' %}
+
+{% block columns %}
+    <div class="col-md-12">
+        {% block detail %}
+            {{ block.super }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block aps_home %} {% endblock %}
+{% block checklist_button %} {% endblock %}

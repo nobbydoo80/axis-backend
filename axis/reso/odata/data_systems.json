@@ -1,0 +1,23 @@
+{
+  "odata.metadata": "${base_url}/DataSystem/$$metadata",
+  "value": [
+    {
+      "Name": "RESO_MLS",
+      "ServiceURI": "${base_url}OData/RESO_MLS/Properties/",
+      "DateTimeStamp": "${now}",
+      "TransportVersion": "${transport_version}",
+      "DataDictionaryVersion": "${data_dictionary_version}",
+      "Resources": [
+        {
+          "Name": "Property",
+          "ResourcePath": "Property",
+          "Description": "RESO Standard Property Resource",
+          "DateTimeStamp": "${now}",
+          "TimeZoneOffset": "${tzoffset}",
+          "Localizations": []
+        }
+      ],
+      "ID": "RESO_MLS"
+    }
+  ]
+}

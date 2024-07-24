@@ -1,0 +1,13 @@
+{% block region %}
+    <td colspan="[[ regionObject.visible_fields.length ]]" class="form-target">
+        {% block panels %}
+            <div detail-content ng-hide="region.editing()"><loading-spinner></loading-spinner></div>
+            <div form-content ng-show="region.editing()"><loading-spinner></loading-spinner></div>
+        {% endblock panels %}
+    </td>
+    <td class="actions text-center">
+        {% block action_strip_set %}
+            <action-strip-set actions="regionObject.actions"></action-strip-set>
+        {% endblock action_strip_set %}
+    </td>
+{% endblock region %}

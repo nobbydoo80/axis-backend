@@ -1,0 +1,123 @@
+{% extends "base_list.html" %}
+{% load crispy_forms_filters %}
+
+{% block page_title %} Builder Agreement Payment Status {% endblock %}
+
+{% block style_sheet %}
+    <style type="text/css">
+        .datatable th[data-name="builder"] { width: 20% }
+        .datatable th[data-name="subdivision"] { width: 15% }
+        .datatable th[data-name="community"] { width: 15% }
+        .datatable th[data-name="eep-program"] { width: 15% }
+        .datatable th[data-name="provider"] { width: 20% }
+        .datatable th[data-name="signed-lots"] { width: 5%; text-align: center; }
+        .datatable th[data-name="lots-paid"] { width: 5%; text-align: center; }
+        .datatable th[data-name="builder-amount-paid"] { width: 10%; text-align: center; }
+        .datatable th[data-name="contract-signed-date"] { width: 10% }
+    </style>
+{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript">
+        // Reload the table when the filters change
+        $(function(){
+            $("#id_start").datepicker({ dateFormat: 'yy-mm-dd'});
+            $("#id_end").datepicker({ dateFormat: 'yy-mm-dd'});
+
+            $(".controls").off();
+            $('form').on('change', function(){
+                $('.datatable').dataTable().fnDraw();
+            })
+            $("#id_search_bar").val($('.dataTables_filter input').val());
+            $('.dataTables_filter input').on('keyup', function(){
+                $("#id_search_bar").val($(this).val());
+            });
+            $("#clear-filters").on('click', function(e){
+                e.preventDefault();
+                $("#query_form").find('input:visible, select:visible').val('').change();
+            });
+
+        });
+
+        var stat_limit = 100;
+
+        // Push the filter values into the request parameters when the table asks for updates
+        function confirm_datatable_options(options) {
+            options.ajax.data = function(data){
+                data.subdivision_id = $('#id_subdivision').val();
+                data.builder_id = $('#id_builder').val();
+                data.community_id = $("#id_community").val();
+                data.city_id = $("#id_city").val();
+                data.provider_id = $("#id_provider").val();
+                data.rater_id = $("#id_rater").val();
+                data.hers_min = $("#id_hers_min").val();
+                data.hers_max = $("#id_hers_max").val();
+                data.start_date = $("#id_start").val();
+                data.end_date = $("#id_end").val();
+            };
+            options.fnDrawCallback = function(oSettings){
+                var count = oSettings.fnRecordsDisplay();
+                $('#export_button').attr('disabled', count > stat_limit);
+                $('#count_note').toggle(count > stat_limit);
+            };
+
+            return options;
+        }
+
+    </script>
+{% endblock %}
+
+{% block header_text %} Builder Agreements {% endblock header_text %}
+
+{% block list_content %}
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Filter Options</h3>
+
+            <a href="#" id="clear-filters">Clear Filters</a>
+            <form id="query_form" method="post" action="{% url 'builder_agreement:status_export' %}">{% csrf_token %}
+                {{ form.builder|as_crispy_field }}
+                {{ form.subdivision|as_crispy_field }}
+                {{ form.community|as_crispy_field }}
+                {{ form.city|as_crispy_field }}
+                {{ form.provider|as_crispy_field }}
+                {{ form.rater|as_crispy_field }}
+                {{ form.search_bar|as_crispy_field }}
+
+                <div class="row"><div class="col-md-12"><b>HERS Score</b></div></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.hers_min|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.hers_max|as_crispy_field }}
+                    </div>
+                </div>
+
+                <div class="row"><div class="col-md-12"><b>Agreement Signed Date Range</b></div></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.start|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.end|as_crispy_field }}
+                    </div>
+                </div>
+
+                <br>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="export_button">Subdivision Report</button>
+                    <br/><br/>
+                    <div id="count_note" class="well">
+                        Please filter the results to below 100 items before exporting.
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-9">
+            {{ block.super }}
+        </div>
+    </div>
+{% endblock %}

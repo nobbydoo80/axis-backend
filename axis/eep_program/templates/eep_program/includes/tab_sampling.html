@@ -1,0 +1,27 @@
+{% if form %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-6">{{ form.allow_sampling.label_tag }}:</div>
+            <div class="col-md-6">{{ form.allow_sampling }}</div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-6">{{ form.allow_metro_sampling.label_tag }}:</div>
+            <div class="col-md-6">{{ form.allow_metro_sampling }}</div>
+        </div>
+    </div>
+{% else %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 key">Allow Sampling:</div>
+            <div class="col-md-8 value">
+                {% if object.allow_sampling %}&#x2714;{% else %}No{% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4 key">Allow Metro Sampling:</div>
+            <div class="col-md-8 value">
+                {% if object.allow_metro_sampling %}&#x2714;{% else %}No{% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

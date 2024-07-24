@@ -1,0 +1,10 @@
+{% block region %}
+    {% block action_strip_set %}
+        <action-strip-set actions="regionObject.actions"></action-strip-set>
+    {% endblock action_strip_set %}
+
+    {% block panels %}
+        <div detail-content ng-hide="region.editing()"><loading-spinner></loading-spinner></div>
+        <div form-content ng-show="region.editing()"><loading-spinner></loading-spinner></div>
+    {% endblock panels %}
+{% endblock region %}

@@ -1,0 +1,76 @@
+{% load crispy_forms_filters %}
+
+<form id="appsearch-form" action="{{ search.url }}" method="get">
+    {{ search.constraint_formset.management_form }}
+
+    <div class="row">
+        <div id="model-select-wrapper" class="col-md-6">
+            {{ search.model_selection_form.model|as_crispy_field }}
+        </div>
+        <div class="col-md-6 text-right">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <div class="constraints-wrapper">
+        {% for form in search.constraint_formset %}
+        {% with operator=form.operator.value %}
+            <div class="panel constraint-form panel-{% if form.errors %}danger{% else %}default{% endif %}">
+                {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
+
+                {% if form.errors %}
+                    <div class="panel-heading">
+                        Please correct errors in this constraint:
+                    </div>
+                {% endif %}
+                <div class="panel-body">
+                    <div class="row">
+                        {% include "bootstrap3/errors.html" %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 constraint-type">{{ form.type|as_crispy_field }}</div>
+                        <div class="col-md-3 constraint-field">{{ form.field|as_crispy_field }}</div>
+                        <div class="col-md-2 constraint-operator">{{ form.operator|as_crispy_field }}</div>
+                        <div class="col-md-4 constraint-terms">
+                            <div class="row">
+                                <div class="col-md-12 term begin-term{% if form.term.errors %} error{% endif %}"
+                                        {% if not form.term.errors %}
+                                        {% if operator == "exists" or operator == "doesn't exist" %}
+                                        style="display: none;"
+                                        {% endif %}
+                                        {% endif %}
+                                        >
+                                    {{ form.term }}
+                                </div>
+                                <div class="col-md-6 term end-term{% if form.end_term.errors %} error{% endif %}"
+                                        {% if operator != "range" and not form.end_term.errors and not form.end_term.value %}
+                                        style="display: none;"
+                                        {% endif %}>
+                                    {{ form.end_term }}
+                                </div>
+                            </div>
+                            {% if form.term.errors or form.end_term.errors %}
+                                <div class="row">
+                                    <ul>{{ form.term.errors|add:form.end_term.errors|unordered_list }}</ul>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-1 delete-button-column text-right">
+                            <a href="#"><i class="fa fa-trash-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endwith %}
+        {% endfor %}
+
+        <div class="row">
+            <div id="add-button-column" class="col-md-4 col-md-offset-4 text-center">
+                <button class="btn btn-default btn-block">
+                    <i class="fa fa-plus-square"></i>
+                    Add another constraint
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

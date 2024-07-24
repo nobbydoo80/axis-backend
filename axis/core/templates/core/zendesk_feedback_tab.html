@@ -1,0 +1,66 @@
+<div zendesk class='zendesk row'>
+    <div class="col-sm-12" ng-if="zendesk.show">
+        <div class="panel panel-default">
+            <div class="overlay" ng-if="zendesk.processing">
+                <i class="fa fa-spinner fa-spin" ng-show="zendesk.processing==1"></i>
+                <i class="fa fa-check" ng-show="zendesk.processing==2"></i>
+                <i class="fa fa-times" ng-show="zendesk.processing==3"></i>
+            </div>
+            <div class="panel-heading top-bar text-center" ng-click="zendesk.toggle()">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="panel-title">Help</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay white" ng-if="zendesk.ticket && !zendesk.processing">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        To follow up on the issue you just submitted, you can go to
+                        <a target="_blank" ng-href="[[ ::zendesk.ticket.url ]]">[[ ::zendesk.ticket.url ]]</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" ng-if="zendesk.is_open">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <bold class="name">[[ zendesk.requester_name ]]<br/>
+                        <small class="email">[[ zendesk.requester_email ]]</small></bold>
+                        <br/><br/>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" ng-model="zendesk.model.subject" class="form-control" placeholder="Subject..." ng-required="true"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea name="note" ng-model="zendesk.model.description" rows="3" class="form-control" placeholder="Description..." ng-required="true"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="type">Type</label>
+                                    <select name="type" ng-model="zendesk.ticket_type"
+                                            ng-options="option.value as option.name for option in ::zendesk.type_options"
+                                            class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="priority">Priority</label>
+                                    <select name="priority" class="form-control" ng-model="zendesk.ticket_priority"
+                                            ng-options="option.value as option.name for option in ::zendesk.priority_options">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group pull-right">
+                            <button type="button" class="btn btn-primary" ng-click="zendesk.submit($event)">Send</button>
+                            <button type="button" class="btn btn-default" ng-click="zendesk.toggle()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

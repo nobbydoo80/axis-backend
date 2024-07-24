@@ -1,0 +1,27 @@
+{% extends "examine/angular_region_panel.html" %}
+
+{% block heading %}
+    {% if user.is_superuser %}[ [[ regionObject.object.id ]] ] {% endif %}
+    <strong>[[ regionObject.object.name ]]</strong>
+    <div class="pull-right"></div>
+{% endblock heading %}
+
+{% block panels %}
+    <non-field-errors></non-field-errors>
+    <div detail-content ng-hide="region.editing()">
+        <loading-spinner></loading-spinner>
+    </div>
+    <div form-content ng-show="region.editing()">
+        <loading-spinner></loading-spinner>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <axis-region-set options="regionObject.helpers.machineries.contact_card_phone"></axis-region-set>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <axis-region-set options="regionObject.helpers.machineries.contact_card_email"></axis-region-set>
+        </div>
+    </div>
+{% endblock panels %}

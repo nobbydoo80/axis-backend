@@ -1,0 +1,67 @@
+<div class="panel panel-default training-panel"
+     ng-controller="UserTrainingController as userTrainingController">
+    <div class="panel-heading">
+        <div class="text-right actions">
+            <action-strip-set processing="regionSet.processing"
+                              actions="regionObject.actions"></action-strip-set>
+        </div>
+
+        <div class="approve-progressbar-wrapper" ng-hide="region.editing()">
+            <progress>
+                <bar ng-repeat="bar in stackedProgessBar track by $index" value="bar.value"
+                     type="[[bar.type]]"><span
+                        ng-hide="bar.value < 10">[[bar.value]]%</span></bar>
+            </progress>
+            <div class="popover bottom approve-list-popover" role="tooltip">
+                <div class="arrow"></div>
+                <h3 class="popover-title">Approve list</h3>
+                <div class="popover-content">
+                    <ul class="list-group approver-list">
+                        <li ng-repeat="item in regionObject.object['training_statuses']"
+                            class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    [[ item['company']['name'] ]]
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="label approve-label"
+                                         ng-class="{'label-info': item['state']==='new', 'label-success': item['state']==='approved', 'label-warning': item['state']==='expired', 'label-danger': item['state']==='rejected'}">
+                                        [[ item['state'] ]]
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="object-name" ng-hide="region.editing()">
+            <b>Training Name:</b>
+            <span class="text-capitalize">[[ regionObject.object['name'] ]]</span>
+            <b>Date:</b>
+            <span>[[ regionObject.object['training_date'] ]]</span>
+            <b>Credit Hours:</b>
+            <span>[[ regionObject.object['credit_hours'] ]]</span>
+            <a ng-show="regionObject.object['certificate']" href="[[ regionObject.object['certificate'] ]]"
+               target="_blank" tooltip="Training certificate">
+                <i class="fa fa-cloud-download"></i>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="panel-body form-target training-panel-body-detail" detail-content ng-hide="region.editing()">
+        <div detail-content ng-hide="region.editing()">
+            <loading-spinner></loading-spinner>
+        </div>
+    </div>
+
+    <div class="panel-body form-target" form-content ng-show="region.editing()">
+        <non-field-errors></non-field-errors>
+        <div form-content ng-show="region.editing()">
+            <loading-spinner></loading-spinner>
+        </div>
+    </div>
+
+</div>

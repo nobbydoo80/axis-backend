@@ -1,0 +1,108 @@
+{% extends 'base_examine.html' %}
+{% load static %}
+
+{% block style_sheet %}
+    {{ block.super }}
+    <!-- Company css loaded for duallist styling. -->
+    <link rel="stylesheet" href="{% static 'company/examine.css' %}">
+    <style>
+        axis-single-region[primary-region] .examine-spinner,
+        axis-single-region[primary-region] header {
+            width: 100%;
+        }
+
+        #checklist-questions .datatable th[data-name="name"] {
+            width: 75% !important;
+        }
+
+        #checklist-questions .datatable th[data-name="required"] {
+            width: 5% !important;
+        }
+
+        #required-annotations .datatable th[data-name="name"] {
+            width: 75% !important;
+        }
+
+        #required-annotations .datatable th[data-name="required"] {
+            width: 5% !important;
+        }
+    </style>
+{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script>
+    angular.module('examineApp').directive('booleanCheckmark', function(){
+        return {
+            restrict: 'A',
+            scope: {
+                booleanCheckmark: '=',
+                trueValue: '@',
+                falseValue: '@',
+            },
+            template: function(tElement, tAttrs){
+                var falseValue = tAttrs.falseValue || '&#10008;';
+                var trueValue = tAttrs.trueValue || '&#x2714;'
+                return '[[ booleanCheckmark ? "' + trueValue + '" : "' + falseValue + '" ]]';
+            },
+        }
+    })
+    datatableview.autoInitialize = true;
+    </script>
+{% endblock %}
+
+{% block extra_dependencies %}
+    'ng-duallist',
+{% endblock extra_dependencies %}
+
+{% block datatable_initialize %}
+    <script type="text/javascript">
+        angular.module('examineApp').run(function($rootScope, RegionService){
+            {% if view.create_new %}
+                $rootScope.$watch(function(){
+                    return $rootScope.examineApp.creating;
+                }, function(newValue, oldValue){
+                    if (newValue !== oldValue && newValue === false) {
+                        var primaryRegion = RegionService.getRegionFromTypeName('{{ primary_type }}');
+                        var object_id = primaryRegion.object.id;
+
+                        var tables = $('.existing-object-only .datatable');
+                        tables.each(function(){
+                            var datatable = $(this);
+                            var source_url = datatable.attr('data-source-url');
+                            source_url = source_url.replace(/\/(None|0)($|\/)/, "/" + object_id + "$2");
+                            datatable.attr('data-source-url', source_url);
+                        });
+                        datatableview.initialize(tables);
+                    }
+                });
+            {% else %}
+                $(function(){
+                    datatableview.initialize($('.existing-object-only .datatable'));
+                });
+            {% endif %}
+        });
+    </script>
+{% endblock datatable_initialize %}
+
+{% block tabs %}
+    <tabset>
+        <tab tab-helper endpoint="tabs.requirements" heading="Program Requirements">
+            <axis-single-region options="pageRegions.eep_program_requirements"></axis-single-region>
+        </tab>
+        <tab tab-helper endpoint="tabs.settings" heading="Program Settings">
+            <axis-single-region options="pageRegions.eep_program_settings"></axis-single-region>
+        </tab>
+        <tab tab-helper endpoint="tabs.annotation" heading="Annotations">
+            <axis-single-region options="pageRegions.eep_program_annotations"></axis-single-region>
+        </tab>
+        <tab endpoint="tabs.checklist" heading="Input Data" tab-helper>
+            <axis-single-region options="pageRegions.eep_program_checklists"></axis-single-region>
+        </tab>
+        <tab tab-helper endpoint="tabs.history" heading="History">
+            <div class="existing-object-only">
+                {% include "simple_history/includes/history_list.html" with object=object app_label="eep_program" model="eepprogram" field="id" constraint=object.id %}
+            </div>
+        </tab>
+    </tabset>
+{% endblock %}

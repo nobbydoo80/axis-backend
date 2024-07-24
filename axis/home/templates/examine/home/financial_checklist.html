@@ -1,0 +1,68 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="vm.cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Financial Checklist for <em>[[ vm.regionObject.object_name ]]</em></h4>
+</div>
+<div class="modal-body">
+    <p class="text-right">
+        <button class="btn btn-default btn-xs" ng-click="vm.regionObject.controller.handleAction({instruction: 'clear_financial_checklist'})">
+            <i class="fa fa-fw fa-spin fa-spinner" ng-if="vm.regionObject.controller.isProcessing('clear_financial_checklist')"></i>
+            Clear overrides
+        </button>
+    </p>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Settings</th>
+                <th ng-if="vm.regionObject.helpers.standarddisclosuresettings.type !== 'company'"></th>
+                <th class="text-center">
+                    Company
+                </th>
+                <th class="text-center"
+                    ng-if="vm.regionObject.helpers.standarddisclosuresettings.parents.indexOf('company') > -1">
+                    Subdivision
+                </th>
+                <th class="text-center"
+                    ng-if="vm.regionObject.helpers.standarddisclosuresettings.parents.indexOf('subdivision') > -1">
+                    Home
+                </th>
+            </tr>
+        </thead>
+
+        <tr ng-repeat-start="grouping in vm.regionObject.helpers.standarddisclosuresettings.question_data"
+            class="header-prompt">
+            <th colspan="5" ng-if="grouping.header !== null" ng-bind="grouping.header"></th>
+        </tr>
+        <tr ng-repeat-end ng-repeat="item in grouping.items">
+            <td>
+                <label>[[ vm.regionObject.helpers.standarddisclosuresettings.form[item.name].label ]]:</label>
+            </td>
+            <td ng-class="{'active-selection': vm.regionObject.object[item.name] === item.null_value}"
+                ng-if="vm.regionObject.helpers.standarddisclosuresettings.type !== 'company'">
+                <input name="[[ item.name ]]" id="item_[[ item.name ]]" type="radio" ng-model="vm.regionObject.object[item.name]" ng-value="item.null_value">
+            </td>
+            <td class="text-center" ng-repeat="parent in vm.regionObject.helpers.standarddisclosuresettings.parents"
+                ng-class="{'active-selection': vm.regionObject.object[item.name] === item.null_value,
+                           'active-setting': vm.regionObject.helpers.standarddisclosuresettings[parent][item.name] !== null,
+                           'inactive-setting': vm.regionObject.helpers.standarddisclosuresettings[parent][item.name] === null,
+                           'position-reverse': vm.regionObject.helpers.standarddisclosuresettings.parents.length === 2}">
+                <label for="item_[[ item.name ]]"
+                       ng-switch="vm.regionObject.helpers.standarddisclosuresettings[parent][item.name]">
+                    <span ng-switch-when="null">--</span>
+                    <span ng-switch-when="undefined">--</span>
+                    <span ng-switch-default>[[ vm.regionObject.helpers.standarddisclosuresettings[parent][item.name + '_display'] ]]</span>
+                </label>
+            </td>
+            <td ng-class="{'active-selection': vm.regionObject.object[item.name] !== item.null_value}">
+                <axis-field ng-if="item.show_label" field="vm.regionObject.helpers.standarddisclosuresettings.form[item.name]"></axis-field>
+                <axis-field ng-if="!item.show_label" no-label field="vm.regionObject.helpers.standarddisclosuresettings.form[item.name]"></axis-field>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <div class="pull-right">
+        <button type="submit" class="btn btn-primary" ng-click="vm.ok()">Save</button>
+        <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</div>

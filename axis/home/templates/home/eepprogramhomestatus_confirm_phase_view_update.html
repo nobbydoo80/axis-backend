@@ -1,0 +1,32 @@
+{% extends "base_confirm.html" %}
+
+{% comment %}
+    Author: Michael Jeffrey <mjeffrey@pivotalenergysolutions.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Home Inspection Phase Advancement{% endblock %}
+
+{% block header_text %}
+    Home Program Phase Advancement
+{% endblock header_text %}
+
+{% block prompt %}
+    Please confirm you want to move this to the next phase {{ next_phase }}.
+
+    {% if eep_home_stat.sampleset %}
+        <div class="row">
+            <div class="col-md-12">
+                <em>Note: This will also advance all homes attached to sample set
+                    <a href="{{ eep_home_stat.sampleset.get_absolute_url }}" target="_blank">{{ eep_home_stat.sampleset }}</a>
+                    to phase {{ next_phase }}
+                </em>
+            </div>
+        </div>
+    {% endif %}
+{% endblock prompt %}
+
+{% block confirm_button_text %}
+    Yes
+{% endblock confirm_button_text %}

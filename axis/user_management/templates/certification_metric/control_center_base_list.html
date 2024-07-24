@@ -1,0 +1,119 @@
+{% extends "base_list.html" %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}Metrics{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/certification_metric/certification_metric_control_center_base_list.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <script>
+        datatableview.finalizeOptions = (function(){
+            var super_finalizeOptions = datatableview.finalizeOptions;
+            return function _confirm_datatable_options(datatable, options){
+                if (options['columns'] &&
+                    options['columns'].length) {
+                    for (var i=0; i<options['columns'].length; i++) {
+                        if (options['columns'][i]['name'] &&
+                            options['columns'][i]['name'].indexOf('data-idall') !== -1) {
+                            options.select = {
+                                style: 'multi',
+                                selector: 'td:first-child'
+                            }
+                            options['columns'][i]['sClass'] = 'select-checkbox'
+                        }
+                    }
+                }
+                options = super_finalizeOptions(datatable, options);
+                options.ajax.data = function(data){
+                    {% for field in form %}
+                        data.{{ field.name }} = $("#{{ field.auto_id }}")
+                            {% if field.field.widget.input_type == 'checkbox' %}
+                                .is(':checked') ? 'on' : 'off'
+                            {% else %}
+                                .val()
+                            {% endif %}
+                            ;
+                    {% endfor %}
+                }
+                return options
+            }
+        })();
+        $(function(){
+            $('#filters .select2 select').css('width', '100%').select2();
+            $('#filters .datepicker input').datepicker();
+        });
+    </script>
+{% endblock javascript_head %}
+
+{% block list_content %}
+    <div ng-controller="CertificationMetricControlCenterListController as ctrl">
+        <div class="row">
+            <div class="col-md-3">
+                <form id="filters" action="" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {% if form.company.field.widget.show_label %}
+                                    <label for="{{ form.company.auto_id }}">{{ form.company.label }}</label>
+                                {% endif %}
+                                {{ form.company }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {% if form.eep_program.field.widget.show_label %}
+                                    <label for="{{ form.eep_program.auto_id }}">{{ form.eep_program.label }}</label>
+                                {% endif %}
+                                {{ form.eep_program }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group datepicker">
+                                {% if form.date_start.label %}
+                                    <label for="{{ form.date_start.auto_id }}">{{ form.date_start.label }}</label>
+                                {% endif %}
+                                {{ form.date_start }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group datepicker">
+                                {% if form.date_end.label %}
+                                    <label for="{{ form.date_end.auto_id }}">{{ form.date_end.label }}</label>
+                                {% endif %}
+                                {{ form.date_end }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary btn-block" type="submit">Apply filters
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                {% block table %}
+                    {{ datatable }}
+                {% endblock table %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

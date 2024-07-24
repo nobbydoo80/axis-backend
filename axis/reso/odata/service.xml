@@ -1,0 +1,12 @@
+<service xmlns="http://www.w3.org/2007/app"
+         xmlns:atom="http://www.w3.org/2005/Atom"
+         xmlns:m="http://docs.oasis-open.org/odata/ns/metadata"
+         xml:base="http://services.odata.org/V4/OData/OData.svc/"
+         m:context="http://services.odata.org/V4/OData/OData.svc/$metadata">
+    <workspace>
+        <atom:title type="text">Default</atom:title>
+        <collection href="Properties">
+            <atom:title type="text">Properties</atom:title>
+        </collection>
+    </workspace>
+</service>

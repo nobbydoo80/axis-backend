@@ -1,0 +1,27 @@
+<p>
+    Dear {{ qa_designee }},
+</p>
+<p>
+    You have been assigned QA for the following project:
+</p>
+<p>
+    <b>Program</b>: {{ qa_status.home_status.eep_program.name }}
+</p>
+<p>
+    <b>Project address</b>: <a href="{{ home_link }}">{{ home_address }}</a>
+</p>
+{% if notes %}
+<p>
+    <b>Notes</b>:
+</p>
+    {% for note in notes %}
+        <ul>
+            <li>
+                <b>{{ note.user }}</b>: {{ note.content }}
+            </li>
+        </ul>
+    {% endfor %}
+{% endif %}
+<p>
+    <a href="{{ home_link }}">View details in AXIS</a>
+</p>

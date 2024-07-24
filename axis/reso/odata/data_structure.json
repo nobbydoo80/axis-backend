@@ -1,0 +1,2084 @@
+{
+  "METADATA": {
+    "METADATA-SYSTEM": {
+      "SYSTEM": {
+        "METADATA-RESOURCE": {
+          "Resource": [
+            {
+              "ResourceID": "Property",
+              "METADATA-CLASS": {
+                "Class": [
+                  {
+                    "ClassName": "RESI",
+                    "METADATA-TABLE": {
+                      "Field": [
+                        {
+                          "SystemName": "ACCESSHOME",
+                          "StandardName": "",
+                          "LongName": "Accessible/Adaptive Home",
+                          "MaximumLength": "3",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "FullYesNo"
+                        },
+                        {
+                          "SystemName": "ACTIVATIONDATE",
+                          "StandardName": "",
+                          "LongName": "Activation Date",
+                          "MaximumLength": "20",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "ADDITIONALCAN1",
+                          "StandardName": "",
+                          "LongName": "Additional County AcctNo 1",
+                          "MaximumLength": "25",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "ADDITIONALCAN2",
+                          "StandardName": "",
+                          "LongName": "Additional County AcctNo 2",
+                          "MaximumLength": "25",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "ADDITIONALCAN3",
+                          "StandardName": "",
+                          "LongName": "Additional County AcctNo 3",
+                          "MaximumLength": "25",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "ADDITIONALCAN4",
+                          "StandardName": "",
+                          "LongName": "Additional County AcctNo 4",
+                          "MaximumLength": "25",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "ADDITIONALCAN5",
+                          "StandardName": "",
+                          "LongName": "Additional County AcctNo 5",
+                          "MaximumLength": "25",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "ApprxAge",
+                          "StandardName": "",
+                          "LongName": "Apprx Age",
+                          "MaximumLength": "10",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "AssocTrFee3",
+                          "StandardName": "",
+                          "LongName": "Association Transfer Fee 3",
+                          "MaximumLength": "20",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "Bedrooms",
+                          "StandardName": "BedroomsTotal",
+                          "LongName": "Bedrooms",
+                          "MaximumLength": "3",
+                          "DataType": "Number",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "Block",
+                          "StandardName": "",
+                          "LongName": "Block",
+                          "MaximumLength": "5",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "Building",
+                          "StandardName": "",
+                          "LongName": "Building",
+                          "MaximumLength": "5",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "CURRENTLYLEASED",
+                          "StandardName": "",
+                          "LongName": "Currently Being Leased",
+                          "MaximumLength": "3",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "FullYesNo"
+                        },
+                        {
+                          "SystemName": "CityTax",
+                          "StandardName": "",
+                          "LongName": "City Tax",
+                          "MaximumLength": "18",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "CondoName",
+                          "StandardName": "",
+                          "LongName": "Condo Name",
+                          "MaximumLength": "10",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "CondoName_Lkp_2"
+                        },
+                        {
+                          "SystemName": "Contract",
+                          "StandardName": "ListingAgreement",
+                          "LongName": "Contract",
+                          "MaximumLength": "25",
+                          "DataType": "String List, Single",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "Contract_Lkp"
+                        },
+                        {
+                          "SystemName": "CountyTax",
+                          "StandardName": "",
+                          "LongName": "County Tax",
+                          "MaximumLength": "18",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "ElemSchl",
+                          "StandardName": "",
+                          "LongName": "Elementary School",
+                          "MaximumLength": "10",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "ElemSchl_Lkp_1"
+                        },
+                        {
+                          "SystemName": "EnergyEff",
+                          "StandardName": "",
+                          "LongName": "Energy Efficiency",
+                          "MaximumLength": "20",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "LookupMulti",
+                          "LookupName": "Lkp_EnergyEff"
+                        },
+                        {
+                          "SystemName": "EntryLevel",
+                          "StandardName": "",
+                          "LongName": "Entry Level",
+                          "MaximumLength": "6",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "FEESIMPLE",
+                          "StandardName": "",
+                          "LongName": "Fee Simple",
+                          "MaximumLength": "20",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "FullYesNo"
+                        },
+                        {
+                          "SystemName": "FULLANDHALFBATHS",
+                          "StandardName": "",
+                          "LongName": "Total Baths Composite (Full.Half)",
+                          "MaximumLength": "10",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "FullBaths",
+                          "StandardName": "BathroomsFull",
+                          "LongName": "Full Baths",
+                          "MaximumLength": "3",
+                          "DataType": "Number",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "GreenCert",
+                          "StandardName": "",
+                          "LongName": "Green Certification",
+                          "MaximumLength": "20",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "LookupMulti",
+                          "LookupName": "Lkp_GreenCert"
+                        },
+                        {
+                          "SystemName": "GreenFeat",
+                          "StandardName": "",
+                          "LongName": "Green Features",
+                          "MaximumLength": "20",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "LookupMulti",
+                          "LookupName": "Lkp_GreenFeat"
+                        },
+                        {
+                          "SystemName": "TotalBath",
+                          "StandardName": "BathroomsTotalInteger",
+                          "LongName": "Total Baths",
+                          "MaximumLength": "3",
+                          "DataType": "Number",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "TotalTax",
+                          "StandardName": "",
+                          "LongName": "Total Tax",
+                          "MaximumLength": "18",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "TtlUnits",
+                          "StandardName": "",
+                          "LongName": "Total Units",
+                          "MaximumLength": "10",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "UnitNo",
+                          "StandardName": "UnitNumber",
+                          "LongName": "Unit #",
+                          "MaximumLength": "25",
+                          "DataType": "String",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "VAR_RATE_COM",
+                          "StandardName": "DualVariableCompensationYN",
+                          "LongName": "Variable Rate Commission",
+                          "MaximumLength": "1",
+                          "DataType": "Boolean",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "FullYesNo"
+                        },
+                        {
+                          "SystemName": "VIRTTOUR",
+                          "StandardName": "VirtualTourURLUnbranded",
+                          "LongName": "",
+                          "MaximumLength": "8000",
+                          "DataType": "String",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "VOW",
+                          "StandardName": "",
+                          "LongName": "Virtual Office Website",
+                          "MaximumLength": "100",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "VOW_Lkup"
+                        },
+                        {
+                          "SystemName": "VT_VTourURL",
+                          "StandardName": "",
+                          "LongName": "Virtual Tour",
+                          "MaximumLength": "255",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "YEARBUILT",
+                          "StandardName": "YearBuilt",
+                          "LongName": "Year Built",
+                          "MaximumLength": "4",
+                          "DataType": "Number",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ClassName": "RLSE",
+                    "METADATA-TABLE": {
+                      "Field": [
+                        {
+                          "SystemName": "ACCESSHOME",
+                          "StandardName": "",
+                          "LongName": "Accessible/Adaptive Home",
+                          "MaximumLength": "3",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "FullYesNo"
+                        },
+                        {
+                          "SystemName": "ACTIVATIONDATE",
+                          "StandardName": "",
+                          "LongName": "Activation Date",
+                          "MaximumLength": "20",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "ADDITIONALCAN1",
+                          "StandardName": "",
+                          "LongName": "Additional County AcctNo 1",
+                          "MaximumLength": "25",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "SQFTORACRE",
+                          "StandardName": "",
+                          "LongName": "Sold SQFT/Acre",
+                          "MaximumLength": "20",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "STYLE",
+                          "StandardName": "",
+                          "LongName": "STYLE",
+                          "MaximumLength": "10",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "LookupMulti",
+                          "LookupName": "STYLE"
+                        },
+                        {
+                          "SystemName": "SecrtyDep",
+                          "StandardName": "",
+                          "LongName": "Security Deposit",
+                          "MaximumLength": "18",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "Section8",
+                          "StandardName": "",
+                          "LongName": "Section 8 Qualified",
+                          "MaximumLength": "10",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "Section8_Lkp_5"
+                        },
+                        {
+                          "SystemName": "SourceSQFT_N",
+                          "StandardName": "",
+                          "LongName": "Source SQFT",
+                          "MaximumLength": "10",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "SourceSQFT_Lkp_1_N"
+                        },
+                        {
+                          "SystemName": "Stories",
+                          "StandardName": "StoriesTotal",
+                          "LongName": "Stories in Building",
+                          "MaximumLength": "3",
+                          "DataType": "Number",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "Subdivision",
+                          "StandardName": "SubdivisionName",
+                          "LongName": "Subdivision",
+                          "MaximumLength": "50",
+                          "DataType": "String",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "Subdivision_Lgl",
+                          "StandardName": "",
+                          "LongName": "Subdivision Legal Name",
+                          "MaximumLength": "30",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "TYPE_ALL_N",
+                          "StandardName": "PropertySubType",
+                          "LongName": "",
+                          "MaximumLength": "50",
+                          "DataType": "String List, Single",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "DD_SPT"
+                        },
+                        {
+                          "SystemName": "T_list_tax_property_id",
+                          "StandardName": "",
+                          "LongName": "Tax Property ID",
+                          "MaximumLength": "30",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "TotalBath",
+                          "StandardName": "BathroomsTotalInteger",
+                          "LongName": "Total Baths",
+                          "MaximumLength": "3",
+                          "DataType": "Number",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "UnitNo",
+                          "StandardName": "UnitNumber",
+                          "LongName": "Unit #",
+                          "MaximumLength": "25",
+                          "DataType": "String",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "VAR_RATE_COM",
+                          "StandardName": "DualVariableCompensationYN",
+                          "LongName": "Variable Rate Commission",
+                          "MaximumLength": "1",
+                          "DataType": "Boolean",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "FullYesNo"
+                        },
+                        {
+                          "SystemName": "VIRTTOUR",
+                          "StandardName": "VirtualTourURLUnbranded",
+                          "LongName": "",
+                          "MaximumLength": "8000",
+                          "DataType": "String",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "VOW",
+                          "StandardName": "",
+                          "LongName": "Virtual Office Website",
+                          "MaximumLength": "100",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "Lookup",
+                          "LookupName": "VOW_Lkup"
+                        },
+                        {
+                          "SystemName": "VT_VTourURL",
+                          "StandardName": "",
+                          "LongName": "Virtual Tour",
+                          "MaximumLength": "255",
+                          "DataType": "",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        },
+                        {
+                          "SystemName": "YEARBUILT",
+                          "StandardName": "YearBuilt",
+                          "LongName": "Year Built",
+                          "MaximumLength": "4",
+                          "DataType": "Number",
+                          "Precision": "",
+                          "Interpretation": "",
+                          "LookupName": ""
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "METADATA-LOOKUP": {
+                "Lookup": [
+                  {
+                    "LookupName": "CondoName_Lkp_2",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Four Oaks Tower",
+                          "ShortValue": "FOUR OAKS",
+                          "Value": "FOUR OAKS"
+                        },
+                        {
+                          "LongValue": "Gulfview1",
+                          "ShortValue": "GULFVIEW1",
+                          "Value": "GULFVIEW1"
+                        },
+                        {
+                          "LongValue": "Overlook at Westover",
+                          "ShortValue": "OVERLOOK",
+                          "Value": "OVERLOOK"
+                        },
+                        {
+                          "LongValue": "Sandpiper",
+                          "ShortValue": "SANDPIPER",
+                          "Value": "SANDPIPER"
+                        },
+                        {
+                          "LongValue": "Seabreeze Suites Condominium",
+                          "ShortValue": "SEABREEZE",
+                          "Value": "SEABREEZE"
+                        },
+                        {
+                          "LongValue": "100 El Prado",
+                          "ShortValue": "100ELPRADO",
+                          "Value": "100ELPRADO"
+                        },
+                        {
+                          "LongValue": "122 Chester",
+                          "ShortValue": "122CHESTER",
+                          "Value": "122CHESTER"
+                        },
+                        {
+                          "LongValue": "166 La Quint",
+                          "ShortValue": "166LAQUINT",
+                          "Value": "166LAQUINT"
+                        },
+                        {
+                          "LongValue": "185 La Quint",
+                          "ShortValue": "185LAQUINT",
+                          "Value": "185LAQUINT"
+                        },
+                        {
+                          "LongValue": "Baydancer",
+                          "ShortValue": "BAYDANCER",
+                          "Value": "BAYDANCER"
+                        },
+                        {
+                          "LongValue": "Bent Tree",
+                          "ShortValue": "BENTTREE",
+                          "Value": "BENTTREE"
+                        },
+                        {
+                          "LongValue": "Burning Tree",
+                          "ShortValue": "BURNINGTRE",
+                          "Value": "BURNINGTRE"
+                        },
+                        {
+                          "LongValue": "Burr Road Condominiums",
+                          "ShortValue": "BURR",
+                          "Value": "BURR"
+                        },
+                        {
+                          "LongValue": "CROFTON CONDOMINIUMS",
+                          "ShortValue": "CROFTON CO",
+                          "Value": "CROFTON CO"
+                        },
+                        {
+                          "LongValue": "Calais Villas",
+                          "ShortValue": "CALAIS VLS",
+                          "Value": "CALAIS VLS"
+                        },
+                        {
+                          "LongValue": "Calders Corner",
+                          "ShortValue": "CALDERSCNR",
+                          "Value": "CALDERSCNR"
+                        },
+                        {
+                          "LongValue": "Callaghan Place",
+                          "ShortValue": "CLLGHANPLC",
+                          "Value": "CLLGHANPLC"
+                        },
+                        {
+                          "LongValue": "Camp Street Residences",
+                          "ShortValue": "CAMPSTREET",
+                          "Value": "CAMPSTREET"
+                        },
+                        {
+                          "LongValue": "Camp Warneke Estates",
+                          "ShortValue": "CMPWRNKEST",
+                          "Value": "CMPWRNKEST"
+                        },
+                        {
+                          "LongValue": "Canyon Creek Village",
+                          "ShortValue": "CNYNCRKVLG",
+                          "Value": "CNYNCRKVLG"
+                        },
+                        {
+                          "LongValue": "Dijon North",
+                          "ShortValue": "DIJONNORTH",
+                          "Value": "DIJONNORTH"
+                        },
+                        {
+                          "LongValue": "Elmwood The",
+                          "ShortValue": "ELMWOODTHE",
+                          "Value": "ELMWOODTHE"
+                        },
+                        {
+                          "LongValue": "Enchanted Vi",
+                          "ShortValue": "ENCHANTDVI",
+                          "Value": "ENCHANTDVI"
+                        },
+                        {
+                          "LongValue": "Enclave At 1550",
+                          "ShortValue": "ENCLVE1550",
+                          "Value": "ENCLVE1550"
+                        },
+                        {
+                          "LongValue": "Exeter House",
+                          "ShortValue": "EXETER HSE",
+                          "Value": "EXETER HSE"
+                        },
+                        {
+                          "LongValue": "FLORENCE TNHM CONDO",
+                          "ShortValue": "FLORENCETNHMCONDO",
+                          "Value": "FLORENCETNHMCONDO"
+                        },
+                        {
+                          "LongValue": "Heather The",
+                          "ShortValue": "HEATHERTHE",
+                          "Value": "HEATHERTHE"
+                        },
+                        {
+                          "LongValue": "La Sombra",
+                          "ShortValue": "LA SOMBRA",
+                          "Value": "LA SOMBRA"
+                        },
+                        {
+                          "LongValue": "La Villita Heights",
+                          "ShortValue": "LAVILLITAH",
+                          "Value": "LAVILLITAH"
+                        },
+                        {
+                          "LongValue": "Lafayette Place",
+                          "ShortValue": "LAFYTTEPLC",
+                          "Value": "LAFYTTEPLC"
+                        },
+                        {
+                          "LongValue": "Las Estancias",
+                          "ShortValue": "LASESTNCS",
+                          "Value": "LASESTNCS"
+                        },
+                        {
+                          "LongValue": "Las Haciendas",
+                          "ShortValue": "LASHCIENDS",
+                          "Value": "LASHCIENDS"
+                        },
+                        {
+                          "LongValue": "Las Sombras",
+                          "ShortValue": "LASSOMBRAS",
+                          "Value": "LASSOMBRAS"
+                        },
+                        {
+                          "LongValue": "Left Bank",
+                          "ShortValue": "LEFT BANK",
+                          "Value": "LEFT BANK"
+                        },
+                        {
+                          "LongValue": "Les Chateaux",
+                          "ShortValue": "LESCHTEAUX",
+                          "Value": "LESCHTEAUX"
+                        },
+                        {
+                          "LongValue": "Lodges at Bandit Golf Club",
+                          "ShortValue": "LDGBNDTGOL",
+                          "Value": "LDGBNDTGOL"
+                        },
+                        {
+                          "LongValue": "Monte Vista Condos",
+                          "ShortValue": "MONTEVISTA",
+                          "Value": "MONTEVISTA"
+                        },
+                        {
+                          "LongValue": "Nautilus",
+                          "ShortValue": "NAUTILUS",
+                          "Value": "NAUTILUS"
+                        },
+                        {
+                          "LongValue": "Nb Resort Accom",
+                          "ShortValue": "NBRSRTACCM",
+                          "Value": "NBRSRTACCM"
+                        },
+                        {
+                          "LongValue": "Northern Hil",
+                          "ShortValue": "NORTHRNHIL",
+                          "Value": "NORTHRNHIL"
+                        },
+                        {
+                          "LongValue": "Oak Court",
+                          "ShortValue": "OAK COURT",
+                          "Value": "OAK COURT"
+                        },
+                        {
+                          "LongValue": "Wurzbach Towers",
+                          "ShortValue": "WURZBCHTWR",
+                          "Value": "WURZBCHTWR"
+                        },
+                        {
+                          "LongValue": "Wynnwood",
+                          "ShortValue": "WYNNWOOD",
+                          "Value": "WYNNWOOD"
+                        },
+                        {
+                          "LongValue": "Wynnwood Condominium",
+                          "ShortValue": "WYNNWD CND",
+                          "Value": "WYNNWD CND"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "FullYesNo",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "No",
+                          "ShortValue": "N",
+                          "Value": "NO"
+                        },
+                        {
+                          "LongValue": "Yes",
+                          "ShortValue": "Y",
+                          "Value": "YES"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "Contract_Lkp",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Exclusive Agency",
+                          "ShortValue": "EA",
+                          "Value": "EA"
+                        },
+                        {
+                          "LongValue": "Exclusive Right To Sell",
+                          "ShortValue": "ERS",
+                          "Value": "ERS"
+                        },
+                        {
+                          "LongValue": "Exclusive Right To Sell",
+                          "ShortValue": "ES",
+                          "Value": "ES"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "SELLCONCDESC",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Closing Costs",
+                          "ShortValue": "CLOSINGCOSTS",
+                          "Value": "CLOSINGCOSTS"
+                        },
+                        {
+                          "LongValue": "Home Warranty",
+                          "ShortValue": "HOMEWARRANTY",
+                          "Value": "HOMEWARRANTY"
+                        },
+                        {
+                          "LongValue": "None",
+                          "ShortValue": "NONE",
+                          "Value": "NONE"
+                        },
+                        {
+                          "LongValue": "Other - See Agent Remarks",
+                          "ShortValue": "OTHER",
+                          "Value": "OTHER"
+                        },
+                        {
+                          "LongValue": "Prepaid",
+                          "ShortValue": "PREPAID",
+                          "Value": "PREPAID"
+                        },
+                        {
+                          "LongValue": "Repairs",
+                          "ShortValue": "REPAIRS",
+                          "Value": "REPAIRS"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "Lkp_GreenCert",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Build San Antonio Green",
+                          "ShortValue": "BSAG",
+                          "Value": "BSAG"
+                        },
+                        {
+                          "LongValue": "Energy Star Certified",
+                          "ShortValue": "ESC",
+                          "Value": "ESC"
+                        },
+                        {
+                          "LongValue": "HERS 0-85",
+                          "ShortValue": "H0-85",
+                          "Value": "H0-85"
+                        },
+                        {
+                          "LongValue": "HERS 101+",
+                          "ShortValue": "H100+",
+                          "Value": "H100+"
+                        },
+                        {
+                          "LongValue": "HERS 86-100",
+                          "ShortValue": "H86-100",
+                          "Value": "H86-100"
+                        },
+                        {
+                          "LongValue": "HERS Rated",
+                          "ShortValue": "HRTD",
+                          "Value": "HRTD"
+                        },
+                        {
+                          "LongValue": "LEED Certified",
+                          "ShortValue": "LCRT",
+                          "Value": "LCRT"
+                        },
+                        {
+                          "LongValue": "LEED Gold",
+                          "ShortValue": "LGLD",
+                          "Value": "LGLD"
+                        },
+                        {
+                          "LongValue": "LEED Platinum",
+                          "ShortValue": "LPLT",
+                          "Value": "LPLT"
+                        },
+                        {
+                          "LongValue": "LEED Silver",
+                          "ShortValue": "LSLVR",
+                          "Value": "LSLVR"
+                        },
+                        {
+                          "LongValue": "NGBP - National Green",
+                          "ShortValue": "NTGR",
+                          "Value": "NTGR"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "VOW_Lkup",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "No",
+                          "ShortValue": "N",
+                          "Value": "N"
+                        },
+                        {
+                          "LongValue": "Yes",
+                          "ShortValue": "Y",
+                          "Value": "Y"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "Lkp_GreenFeat",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Drought Tolerant Plants",
+                          "ShortValue": "DTP",
+                          "Value": "DTP"
+                        },
+                        {
+                          "LongValue": "EF Irrigation Control",
+                          "ShortValue": "EFIC",
+                          "Value": "EFIC"
+                        },
+                        {
+                          "LongValue": "Energy Recovery Ventilator",
+                          "ShortValue": "ERV",
+                          "Value": "ERV"
+                        },
+                        {
+                          "LongValue": "Enhanced Air Filtration",
+                          "ShortValue": "EAF",
+                          "Value": "EAF"
+                        },
+                        {
+                          "LongValue": "Geo-Thermal HVAC",
+                          "ShortValue": "GTH",
+                          "Value": "GTH"
+                        },
+                        {
+                          "LongValue": "Low Flow Commode",
+                          "ShortValue": "LFC",
+                          "Value": "LFC"
+                        },
+                        {
+                          "LongValue": "Low Flow Fixture",
+                          "ShortValue": "LFF",
+                          "Value": "LFF"
+                        },
+                        {
+                          "LongValue": "Mechanical Fresh Air",
+                          "ShortValue": "MFA",
+                          "Value": "MFA"
+                        },
+                        {
+                          "LongValue": "Rain Water Catchment",
+                          "ShortValue": "RWC",
+                          "Value": "RWC"
+                        },
+                        {
+                          "LongValue": "Rain/Freeze Sensors",
+                          "ShortValue": "RFS",
+                          "Value": "RFS"
+                        },
+                        {
+                          "LongValue": "Solar Combo",
+                          "ShortValue": "SOLARCOMBO",
+                          "Value": "SOLARCOMBO"
+                        },
+                        {
+                          "LongValue": "Solar Electric System",
+                          "ShortValue": "SEC",
+                          "Value": "SEC"
+                        },
+                        {
+                          "LongValue": "Solar Hot Water",
+                          "ShortValue": "SHW",
+                          "Value": "SHW"
+                        },
+                        {
+                          "LongValue": "Solar Panels",
+                          "ShortValue": "SOLARPANELS",
+                          "Value": "SOLARPANELS"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "Lkp_EnergyEff",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "12'+ Attic Insulation",
+                          "ShortValue": "12+AI",
+                          "Value": "12+AI"
+                        },
+                        {
+                          "LongValue": "13-15 SEER AX",
+                          "ShortValue": "SEERAX",
+                          "Value": "SEERAX"
+                        },
+                        {
+                          "LongValue": "16+ SEER AC",
+                          "ShortValue": "SEERAC",
+                          "Value": "SEERAC"
+                        },
+                        {
+                          "LongValue": "90% Efficient Furnace",
+                          "ShortValue": "EFURN",
+                          "Value": "EFURN"
+                        },
+                        {
+                          "LongValue": "Double Pane Windows",
+                          "ShortValue": "DPWIN",
+                          "Value": "DPWIN"
+                        },
+                        {
+                          "LongValue": "Energy Star Appliances",
+                          "ShortValue": "ESAPP",
+                          "Value": "ESAPP"
+                        },
+                        {
+                          "LongValue": "Foam Insulation",
+                          "ShortValue": "FOAMI",
+                          "Value": "FOAMI"
+                        },
+                        {
+                          "LongValue": "Smart Electric Meter",
+                          "ShortValue": "SEM",
+                          "Value": "SEM"
+                        },
+                        {
+                          "LongValue": "Storm Doors",
+                          "ShortValue": "STDOR",
+                          "Value": "STDOR"
+                        },
+                        {
+                          "LongValue": "Storm Windows",
+                          "ShortValue": "STWIN",
+                          "Value": "STWIN"
+                        },
+                        {
+                          "LongValue": "Tankless Water Heater",
+                          "ShortValue": "TWH",
+                          "Value": "TWH"
+                        },
+                        {
+                          "LongValue": "Variable Speed HVAC",
+                          "ShortValue": "VSH",
+                          "Value": "VSH"
+                        },
+                        {
+                          "LongValue": "Wind Power",
+                          "ShortValue": "WNDPW",
+                          "Value": "WNDPW"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "SourceSQFT_Lkp_1_N",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Appraiser",
+                          "ShortValue": "A",
+                          "Value": "A"
+                        },
+                        {
+                          "LongValue": "Appsl Dist",
+                          "ShortValue": "D",
+                          "Value": "D"
+                        },
+                        {
+                          "LongValue": "Bldr Plans",
+                          "ShortValue": "B",
+                          "Value": "B"
+                        },
+                        {
+                          "LongValue": "HUD",
+                          "ShortValue": "H",
+                          "Value": "H"
+                        },
+                        {
+                          "LongValue": "Survey",
+                          "ShortValue": "E",
+                          "Value": "E"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "DD_SPT",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Apartment",
+                          "ShortValue": "APT",
+                          "Value": "APT"
+                        },
+                        {
+                          "LongValue": "Apts/Retail/Strip/BusPrk",
+                          "ShortValue": "ARSB",
+                          "Value": "ARSB"
+                        },
+                        {
+                          "LongValue": "Auto Service",
+                          "ShortValue": "AUTOSERVICE",
+                          "Value": "AUTOSERVICE"
+                        },
+                        {
+                          "LongValue": "Business Condo",
+                          "ShortValue": "BUSCONDO",
+                          "Value": "BUSCONDO"
+                        },
+                        {
+                          "LongValue": "Business/Professional Park",
+                          "ShortValue": "BUSPROFPARK",
+                          "Value": "BUSPROFPARK"
+                        },
+                        {
+                          "LongValue": "Commercial Land",
+                          "ShortValue": "CMLND",
+                          "Value": "CMLND"
+                        },
+                        {
+                          "LongValue": "Condominium",
+                          "ShortValue": "CONDO",
+                          "Value": "CONDO"
+                        },
+                        {
+                          "LongValue": "Garden/Patio Home/Detchd",
+                          "ShortValue": "GPHD",
+                          "Value": "GPHD"
+                        },
+                        {
+                          "LongValue": "Graze",
+                          "ShortValue": "GRAZE",
+                          "Value": "GRAZE"
+                        },
+                        {
+                          "LongValue": "High-Rise (8+ Stories)",
+                          "ShortValue": "HIRIS",
+                          "Value": "HIRIS"
+                        },
+                        {
+                          "LongValue": "Hotel/Motel",
+                          "ShortValue": "HOTELMOTEL",
+                          "Value": "HOTELMOTEL"
+                        },
+                        {
+                          "LongValue": "Industrial",
+                          "ShortValue": "INDUSTRIAL",
+                          "Value": "INDUSTRIAL"
+                        },
+                        {
+                          "LongValue": "Modular Home",
+                          "ShortValue": "MDHM",
+                          "Value": "MDHM"
+                        },
+                        {
+                          "LongValue": "Multi-Use",
+                          "ShortValue": "MULTIUSE",
+                          "Value": "MULTIUSE"
+                        },
+                        {
+                          "LongValue": "Other",
+                          "ShortValue": "OTHER",
+                          "Value": "OTHER"
+                        },
+                        {
+                          "LongValue": "Other - See Remarks",
+                          "ShortValue": "OTHERREMARKS",
+                          "Value": "OTHERREMARKS"
+                        },
+                        {
+                          "LongValue": "Parking Lot",
+                          "ShortValue": "PARKINGLOT",
+                          "Value": "PARKINGLOT"
+                        },
+                        {
+                          "LongValue": "Resort Property",
+                          "ShortValue": "RSTPR",
+                          "Value": "RSTPR"
+                        },
+                        {
+                          "LongValue": "Restaurant/Bar",
+                          "ShortValue": "RESTAURANTBAR",
+                          "Value": "RESTAURANTBAR"
+                        },
+                        {
+                          "LongValue": "Retail/Shop",
+                          "ShortValue": "RETAILSHOP",
+                          "Value": "RETAILSHOP"
+                        },
+                        {
+                          "LongValue": "Rural",
+                          "ShortValue": "RURAL",
+                          "Value": "RURAL"
+                        },
+                        {
+                          "LongValue": "Triplex",
+                          "ShortValue": "TRIPLEX",
+                          "Value": "TRIPLEX"
+                        },
+                        {
+                          "LongValue": "Warehouse/Storage",
+                          "ShortValue": "WAREHOUSESTORAGE",
+                          "Value": "WAREHOUSESTORAGE"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "Section8_Lkp_5",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "No",
+                          "ShortValue": "No",
+                          "Value": "No"
+                        },
+                        {
+                          "LongValue": "Yes",
+                          "ShortValue": "Yes",
+                          "Value": "Yes"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "STYLE",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "3 or More",
+                          "ShortValue": "3+",
+                          "Value": "3+"
+                        },
+                        {
+                          "LongValue": "A-Frame",
+                          "ShortValue": "A-FRM",
+                          "Value": "A-FRM"
+                        },
+                        {
+                          "LongValue": "Colonial",
+                          "ShortValue": "COLNL",
+                          "Value": "COLNL"
+                        },
+                        {
+                          "LongValue": "Contemporary",
+                          "ShortValue": "CONT",
+                          "Value": "CONT"
+                        },
+                        {
+                          "LongValue": "Craftsman",
+                          "ShortValue": "CRAFTSMAN",
+                          "Value": "CRAFTSMAN"
+                        },
+                        {
+                          "LongValue": "Dome",
+                          "ShortValue": "DOME",
+                          "Value": "DOME"
+                        },
+                        {
+                          "LongValue": "Historic/Older",
+                          "ShortValue": "HSTRC",
+                          "Value": "HSTRC"
+                        },
+                        {
+                          "LongValue": "Log Cabin",
+                          "ShortValue": "CABIN",
+                          "Value": "CABIN"
+                        },
+                        {
+                          "LongValue": "Manufactured Home - Double Wide",
+                          "ShortValue": "MANUDOUBLE",
+                          "Value": "MANUDOUBLE"
+                        },
+                        {
+                          "LongValue": "Manufactured Home - Single Wide",
+                          "ShortValue": "MANUSINGLE",
+                          "Value": "MANUSINGLE"
+                        },
+                        {
+                          "LongValue": "Mediterranean",
+                          "ShortValue": "MDTRN",
+                          "Value": "MDTRN"
+                        },
+                        {
+                          "LongValue": "One Story",
+                          "ShortValue": "1STRY",
+                          "Value": "1STRY"
+                        },
+                        {
+                          "LongValue": "Other",
+                          "ShortValue": "OTHER",
+                          "Value": "OTHER"
+                        },
+                        {
+                          "LongValue": "Ranch",
+                          "ShortValue": "RANCH",
+                          "Value": "RANCH"
+                        },
+                        {
+                          "LongValue": "Spanish",
+                          "ShortValue": "SPNSH",
+                          "Value": "SPNSH"
+                        },
+                        {
+                          "LongValue": "Split Level",
+                          "ShortValue": "SPLIT",
+                          "Value": "SPLIT"
+                        },
+                        {
+                          "LongValue": "Texas Hill Country",
+                          "ShortValue": "TEXAS",
+                          "Value": "TEXAS"
+                        },
+                        {
+                          "LongValue": "Traditional",
+                          "ShortValue": "TRDNL",
+                          "Value": "TRDNL"
+                        },
+                        {
+                          "LongValue": "Tudor",
+                          "ShortValue": "TUDOR",
+                          "Value": "TUDOR"
+                        },
+                        {
+                          "LongValue": "Two Story",
+                          "ShortValue": "2STRY",
+                          "Value": "2STRY"
+                        },
+                        {
+                          "LongValue": "Victorian",
+                          "ShortValue": "VCTRN",
+                          "Value": "VCTRN"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "ElemSchl_Lkp_1",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Adams",
+                          "ShortValue": "ADAMS",
+                          "Value": "ADAMS"
+                        },
+                        {
+                          "LongValue": "Adams Hill",
+                          "ShortValue": "ADAMS HLL",
+                          "Value": "ADAMS HLL"
+                        },
+                        {
+                          "LongValue": "Alkek",
+                          "ShortValue": "ALKEK",
+                          "Value": "ALKEK"
+                        },
+                        {
+                          "LongValue": "Alpine Elementary",
+                          "ShortValue": "ALPINE",
+                          "Value": "ALPINE"
+                        },
+                        {
+                          "LongValue": "Alvarez",
+                          "ShortValue": "ALVAREZ",
+                          "Value": "ALVAREZ"
+                        },
+                        {
+                          "LongValue": "Andy Mireles",
+                          "ShortValue": "MIRELES",
+                          "Value": "MIRELES"
+                        },
+                        {
+                          "LongValue": "Barkley",
+                          "ShortValue": "BARKLEY",
+                          "Value": "BARKLEY"
+                        },
+                        {
+                          "LongValue": "Batesville",
+                          "ShortValue": "BATESVILLE",
+                          "Value": "BATESVILLE"
+                        },
+                        {
+                          "LongValue": "Bellaire",
+                          "ShortValue": "BELLAIRE",
+                          "Value": "BELLAIRE"
+                        },
+                        {
+                          "LongValue": "Benavidez",
+                          "ShortValue": "BENAVIDEZ",
+                          "Value": "BENAVIDEZ"
+                        },
+                        {
+                          "LongValue": "Big Country",
+                          "ShortValue": "BIG CNTRY",
+                          "Value": "BIG CNTRY"
+                        },
+                        {
+                          "LongValue": "Big Wells",
+                          "ShortValue": "BIG WELLS",
+                          "Value": "BIG WELLS"
+                        },
+                        {
+                          "LongValue": "Bill Brown",
+                          "ShortValue": "BILL BROWN",
+                          "Value": "BILL BROWN"
+                        },
+                        {
+                          "LongValue": "Blanco",
+                          "ShortValue": "BLANCO",
+                          "Value": "BLANCO"
+                        },
+                        {
+                          "LongValue": "Blattman",
+                          "ShortValue": "BLATTMAN",
+                          "Value": "BLATTMAN"
+                        },
+                        {
+                          "LongValue": "Bob Lewis Elementary",
+                          "ShortValue": "BOB LEWIS",
+                          "Value": "BOB LEWIS"
+                        },
+                        {
+                          "LongValue": "Bobbye Behlau",
+                          "ShortValue": "BOBBYE BEHLAU",
+                          "Value": "BOBBYE BEHLAU"
+                        },
+                        {
+                          "LongValue": "Boerne",
+                          "ShortValue": "BOERNE",
+                          "Value": "BOERNE"
+                        },
+                        {
+                          "LongValue": "Bonham",
+                          "ShortValue": "BONHAM",
+                          "Value": "BONHAM"
+                        },
+                        {
+                          "LongValue": "Bulverde Creek",
+                          "ShortValue": "BULVERDECR",
+                          "Value": "BULVERDECR"
+                        },
+                        {
+                          "LongValue": "Burke Elementary",
+                          "ShortValue": "BURKE",
+                          "Value": "BURKE"
+                        },
+                        {
+                          "LongValue": "Burleson",
+                          "ShortValue": "BURLESON",
+                          "Value": "BURLESON"
+                        },
+                        {
+                          "LongValue": "Burnet",
+                          "ShortValue": "BURNET",
+                          "Value": "BURNET"
+                        },
+                        {
+                          "LongValue": "CHILTON ELEMENTARY",
+                          "ShortValue": "CHILTON ELEMENTARY",
+                          "Value": "CHILTON ELEMENTARY"
+                        },
+                        {
+                          "LongValue": "CIBOLO CREEK",
+                          "ShortValue": "CIBOLOCREEK",
+                          "Value": "CIBOLOCREEK"
+                        },
+                        {
+                          "LongValue": "Cenizo Park",
+                          "ShortValue": "CENIZO PK",
+                          "Value": "CENIZO PK"
+                        },
+                        {
+                          "LongValue": "East Terrell Hills Ele",
+                          "ShortValue": "E TERRELL",
+                          "Value": "E TERRELL"
+                        },
+                        {
+                          "LongValue": "Elementary School",
+                          "ShortValue": "ELEM",
+                          "Value": "ELEM"
+                        },
+                        {
+                          "LongValue": "Elm Creek",
+                          "ShortValue": "ELM CREEK",
+                          "Value": "ELM CREEK"
+                        },
+                        {
+                          "LongValue": "Elolf",
+                          "ShortValue": "ELOLF",
+                          "Value": "ELOLF"
+                        },
+                        {
+                          "LongValue": "Elrod Jimmy",
+                          "ShortValue": "ELROD JIM",
+                          "Value": "ELROD JIM"
+                        },
+                        {
+                          "LongValue": "Emma Frey",
+                          "ShortValue": "EMMA FREY",
+                          "Value": "EMMA FREY"
+                        },
+                        {
+                          "LongValue": "Erskine",
+                          "ShortValue": "ERSKINE",
+                          "Value": "ERSKINE"
+                        },
+                        {
+                          "LongValue": "Evelyn Scarborough",
+                          "ShortValue": "EVELYNSRCARB",
+                          "Value": "EVELYNSRCARB"
+                        },
+                        {
+                          "LongValue": "Frank Madla",
+                          "ShortValue": "FRANK MADLA",
+                          "Value": "FRANK MADLA"
+                        },
+                        {
+                          "LongValue": "Raba",
+                          "ShortValue": "RABA",
+                          "Value": "RABA"
+                        },
+                        {
+                          "LongValue": "Woodstone",
+                          "ShortValue": "WOODSTONE",
+                          "Value": "WOODSTONE"
+                        },
+                        {
+                          "LongValue": "Wright",
+                          "ShortValue": "WRIGHT",
+                          "Value": "WRIGHT"
+                        },
+                        {
+                          "LongValue": "Yorktown Elementary",
+                          "ShortValue": "YORKTOWNEL",
+                          "Value": "YORKTOWNEL"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "PropType_DD",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Commercial Improved Prop",
+                          "ShortValue": "CM",
+                          "Value": "CM"
+                        },
+                        {
+                          "LongValue": "Commercial Land/Unimprvd",
+                          "ShortValue": "CL",
+                          "Value": "CL"
+                        },
+                        {
+                          "LongValue": "Condominium/Townhome",
+                          "ShortValue": "CO",
+                          "Value": "CO"
+                        },
+                        {
+                          "LongValue": "Farm",
+                          "ShortValue": "FR",
+                          "Value": "FR"
+                        },
+                        {
+                          "LongValue": "Land",
+                          "ShortValue": "LA",
+                          "Value": "LA"
+                        },
+                        {
+                          "LongValue": "Multi-Family (2-8 Units)",
+                          "ShortValue": "MF",
+                          "Value": "MF"
+                        },
+                        {
+                          "LongValue": "Residential",
+                          "ShortValue": "RE",
+                          "Value": "RE"
+                        },
+                        {
+                          "LongValue": "Residential Lease",
+                          "ShortValue": "RR",
+                          "Value": "RR"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "TERRAIN_Lkp_4_N",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Clay",
+                          "ShortValue": "CLAY",
+                          "Value": "CLAY"
+                        },
+                        {
+                          "LongValue": "Gentle Slope",
+                          "ShortValue": "GNTSL",
+                          "Value": "GNTSL"
+                        },
+                        {
+                          "LongValue": "Hilly",
+                          "ShortValue": "HILLY",
+                          "Value": "HILLY"
+                        },
+                        {
+                          "LongValue": "Level",
+                          "ShortValue": "LEVEL",
+                          "Value": "LEVEL"
+                        },
+                        {
+                          "LongValue": "Other",
+                          "ShortValue": "OTHER",
+                          "Value": "OTHER"
+                        },
+                        {
+                          "LongValue": "Rocky",
+                          "ShortValue": "ROCKY",
+                          "Value": "ROCKY"
+                        },
+                        {
+                          "LongValue": "Rolling",
+                          "ShortValue": "RLLNG",
+                          "Value": "RLLNG"
+                        },
+                        {
+                          "LongValue": "Sandy",
+                          "ShortValue": "SANDY",
+                          "Value": "SANDY"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ResourceID": "Office",
+              "METADATA-CLASS": {
+                "Class": {
+                  "ClassName": "Office",
+                  "METADATA-TABLE": {
+                    "Field": [
+                      {
+                        "SystemName": "CompanyType",
+                        "StandardName": "",
+                        "LongName": "Company Type",
+                        "MaximumLength": "25",
+                        "DataType": "",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "FRANCHISOR_FEED",
+                        "StandardName": "",
+                        "LongName": "Franchisor Feed",
+                        "MaximumLength": "1",
+                        "DataType": "",
+                        "Precision": "",
+                        "Interpretation": "Lookup",
+                        "LookupName": "YesNo"
+                      },
+                      {
+                        "SystemName": "O_Email",
+                        "StandardName": "OfficeEmail",
+                        "LongName": "Office Email",
+                        "MaximumLength": "80",
+                        "DataType": "String",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_FaxNumber",
+                        "StandardName": "",
+                        "LongName": "Office Fax Number",
+                        "MaximumLength": "20",
+                        "DataType": "",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_HiddenOtyID",
+                        "StandardName": "",
+                        "LongName": "Office Type",
+                        "MaximumLength": "10",
+                        "DataType": "",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_MemberOfMLS",
+                        "StandardName": "",
+                        "LongName": "MLS Member",
+                        "MaximumLength": "1",
+                        "DataType": "",
+                        "Precision": "",
+                        "Interpretation": "Lookup",
+                        "LookupName": "YesNo"
+                      },
+                      {
+                        "SystemName": "O_OrgAddressNumber",
+                        "StandardName": "",
+                        "LongName": "Offc Addrss Street Number",
+                        "MaximumLength": "15",
+                        "DataType": "",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_OrgAddressStreet",
+                        "StandardName": "",
+                        "LongName": "Offce Address Street Name",
+                        "MaximumLength": "50",
+                        "DataType": "",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_OrgCity",
+                        "StandardName": "OfficeCity",
+                        "LongName": "Office City",
+                        "MaximumLength": "50",
+                        "DataType": "String",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_OrgState",
+                        "StandardName": "OfficeStateOrProvince",
+                        "LongName": "Office State",
+                        "MaximumLength": "2",
+                        "DataType": "String List, Single",
+                        "Precision": "",
+                        "Interpretation": "Lookup",
+                        "LookupName": "State"
+                      },
+                      {
+                        "SystemName": "O_OrgZip",
+                        "StandardName": "OfficePostalCode",
+                        "LongName": "Office Zip5",
+                        "MaximumLength": "10",
+                        "DataType": "String",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_OrganizationName",
+                        "StandardName": "OfficeName",
+                        "LongName": "Office Name",
+                        "MaximumLength": "50",
+                        "DataType": "String",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_PhoneNumber",
+                        "StandardName": "OfficePhone",
+                        "LongName": "Office Phone Number",
+                        "MaximumLength": "16",
+                        "DataType": "String",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_ShortName",
+                        "StandardName": "OfficeMlsId",
+                        "LongName": "Office Identifier",
+                        "MaximumLength": "25",
+                        "DataType": "String",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_ShortName_Key",
+                        "StandardName": "OfficeKey",
+                        "LongName": "",
+                        "MaximumLength": "255",
+                        "DataType": "String",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "O_Status",
+                        "StandardName": "OfficeStatus",
+                        "LongName": "Office Status",
+                        "MaximumLength": "25",
+                        "DataType": "String List, Single",
+                        "Precision": "",
+                        "Interpretation": "Lookup",
+                        "LookupName": "OFFICESTATUS"
+                      },
+                      {
+                        "SystemName": "OfficeUpdateDate",
+                        "StandardName": "ModificationTimestamp",
+                        "LongName": "Office Update Date",
+                        "MaximumLength": "24",
+                        "DataType": "Timestamp",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "OfficeWebsite",
+                        "StandardName": "",
+                        "LongName": "Office Website",
+                        "MaximumLength": "100",
+                        "DataType": "",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      },
+                      {
+                        "SystemName": "ResponsibleID",
+                        "StandardName": "OfficeBrokerMlsId",
+                        "LongName": "Responsible User ID",
+                        "MaximumLength": "25",
+                        "DataType": "String",
+                        "Precision": "",
+                        "Interpretation": "",
+                        "LookupName": ""
+                      }
+                    ]
+                  }
+                }
+              },
+              "METADATA-LOOKUP": {
+                "Lookup": [
+                  {
+                    "LookupName": "State",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "AK",
+                          "ShortValue": "AK",
+                          "Value": "AK"
+                        },
+                        {
+                          "LongValue": "AL",
+                          "ShortValue": "AL",
+                          "Value": "AL"
+                        },
+                        {
+                          "LongValue": "AR",
+                          "ShortValue": "AR",
+                          "Value": "AR"
+                        },
+                        {
+                          "LongValue": "AZ",
+                          "ShortValue": "AZ",
+                          "Value": "AZ"
+                        },
+                        {
+                          "LongValue": "CA",
+                          "ShortValue": "CA",
+                          "Value": "CA"
+                        },
+                        {
+                          "LongValue": "CO",
+                          "ShortValue": "CO",
+                          "Value": "CO"
+                        },
+                        {
+                          "LongValue": "CT",
+                          "ShortValue": "CT",
+                          "Value": "CT"
+                        },
+                        {
+                          "LongValue": "DC",
+                          "ShortValue": "DC",
+                          "Value": "DC"
+                        },
+                        {
+                          "LongValue": "DE",
+                          "ShortValue": "DE",
+                          "Value": "DE"
+                        },
+                        {
+                          "LongValue": "FL",
+                          "ShortValue": "FL",
+                          "Value": "FL"
+                        },
+                        {
+                          "LongValue": "GA",
+                          "ShortValue": "GA",
+                          "Value": "GA"
+                        },
+                        {
+                          "LongValue": "HI",
+                          "ShortValue": "HI",
+                          "Value": "HI"
+                        },
+                        {
+                          "LongValue": "IA",
+                          "ShortValue": "IA",
+                          "Value": "IA"
+                        },
+                        {
+                          "LongValue": "ID",
+                          "ShortValue": "ID",
+                          "Value": "ID"
+                        },
+                        {
+                          "LongValue": "IL",
+                          "ShortValue": "IL",
+                          "Value": "IL"
+                        },
+                        {
+                          "LongValue": "IN",
+                          "ShortValue": "IN",
+                          "Value": "IN"
+                        },
+                        {
+                          "LongValue": "KS",
+                          "ShortValue": "KS",
+                          "Value": "KS"
+                        },
+                        {
+                          "LongValue": "MD",
+                          "ShortValue": "MD",
+                          "Value": "MD"
+                        },
+                        {
+                          "LongValue": "ME",
+                          "ShortValue": "ME",
+                          "Value": "ME"
+                        },
+                        {
+                          "LongValue": "MI",
+                          "ShortValue": "MI",
+                          "Value": "MI"
+                        },
+                        {
+                          "LongValue": "MN",
+                          "ShortValue": "MN",
+                          "Value": "MN"
+                        },
+                        {
+                          "LongValue": "MO",
+                          "ShortValue": "MO",
+                          "Value": "MO"
+                        },
+                        {
+                          "LongValue": "MS",
+                          "ShortValue": "MS",
+                          "Value": "MS"
+                        },
+                        {
+                          "LongValue": "ND",
+                          "ShortValue": "ND",
+                          "Value": "ND"
+                        },
+                        {
+                          "LongValue": "NE",
+                          "ShortValue": "NE",
+                          "Value": "NE"
+                        },
+                        {
+                          "LongValue": "NH",
+                          "ShortValue": "NH",
+                          "Value": "NH"
+                        },
+                        {
+                          "LongValue": "UT",
+                          "ShortValue": "UT",
+                          "Value": "UT"
+                        },
+                        {
+                          "LongValue": "VA",
+                          "ShortValue": "VA",
+                          "Value": "VA"
+                        },
+                        {
+                          "LongValue": "VT",
+                          "ShortValue": "VT",
+                          "Value": "VT"
+                        },
+                        {
+                          "LongValue": "WY",
+                          "ShortValue": "WY",
+                          "Value": "WY"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "YesNo",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "No",
+                          "ShortValue": "N",
+                          "Value": "N"
+                        },
+                        {
+                          "LongValue": "Yes",
+                          "ShortValue": "Y",
+                          "Value": "Y"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "LookupName": "OFFICESTATUS",
+                    "METADATA-LOOKUP_TYPE": {
+                      "LookupType": [
+                        {
+                          "LongValue": "Active",
+                          "ShortValue": "",
+                          "Value": "Active"
+                        },
+                        {
+                          "LongValue": "Inactive",
+                          "ShortValue": "",
+                          "Value": "Inactive"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

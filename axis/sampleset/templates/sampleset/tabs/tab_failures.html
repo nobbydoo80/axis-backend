@@ -1,0 +1,29 @@
+<div class="row header-row">
+    <div class="col-md-12"><h4>{{ has_failures }} Failures</h4></div>
+    <hr/>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <th>Question</th>
+            <th style="text-align: center; width: 5%">Issue Corrected</th>
+            <th style="text-align: center; width: 5%">Number Failed</th>
+            <th style="text-align: center; width: 5%">Number Reviewed</th>
+            <th style="text-align: center; width: 25%">Homes</th>
+            </thead>
+            {% for item in failures %}
+                <tr>
+                    <td>{{ item.question }}</td>
+                    <td style="text-align: center;">{% if item.corrected %}&#10004;{% else %}
+                        &#10008;{% endif %}</td>
+                    <td style="text-align: center;">{{ item.failure_count }}</td>
+                    <td style="text-align: center;">{{ item.passing_count }}</td>
+                    <td style="text-align: center;">{{ item.homes|safe }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+    </div>
+</div>

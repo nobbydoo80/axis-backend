@@ -1,0 +1,1064 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="buildingfile">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="xmlversion" type="xs:int" />
+				<xs:element name="io" type="xs:int" />
+				<xs:element name="building">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="notes" type="xs:string" />
+							<xs:element name="projectinfo">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="buildingname" type="xs:string" />
+										<xs:element name="propertyowner" type="xs:string" />
+										<xs:element name="propertyaddress" type="xs:string" />
+										<xs:element name="propertycity" type="xs:string" />
+										<xs:element name="propertystate" type="xs:string" />
+										<xs:element name="propertyzip" type="xs:int" />
+										<xs:element name="propertyphone" type="xs:string" />
+										<xs:element name="buildername" type="xs:string" />
+										<xs:element name="builderaddress" type="xs:string" />
+										<xs:element name="buildercity" type="xs:string" />
+										<xs:element name="builderphone" type="xs:string" />
+										<xs:element name="builderemail" type="xs:string" />
+										<xs:element name="modelname" type="xs:string" />
+										<xs:element name="developmentname" type="xs:string" />
+										<xs:element name="ratingorgname" type="xs:string" />
+										<xs:element name="ratingorgaddress" type="xs:string" />
+										<xs:element name="ratingorgcity" type="xs:string" />
+										<xs:element name="ratingorgstate" type="xs:string" />
+										<xs:element name="ratingorgzip" type="xs:string" />
+										<xs:element name="ratingorgphone" type="xs:string" />
+										<xs:element name="ratingorgwebsite" type="xs:string" />
+										<xs:element name="ratername" type="xs:string" />
+										<xs:element name="rateremail" type="xs:string" />
+										<xs:element name="ratercertnumber" type="xs:string" />
+										<xs:element name="ratingdate" type="xs:string" />
+										<xs:element name="ratingtype" type="xs:string" />
+										<xs:element name="ratingreason" type="xs:string" />
+										<xs:element name="ratingnumber" type="xs:string" />
+										<xs:element name="providerid" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="buildingInfo">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="bldgLevelType" type="xs:string" />
+										<xs:element name="housingType" type="xs:string" />
+										<xs:element name="numFloors" type="xs:int" />
+										<xs:element name="foundationType" type="xs:string" />
+										<xs:element name="crawlSpaceType" type="xs:string" />
+										<xs:element name="bldgVolume" type="xs:int" />
+										<xs:element name="numBedrooms" type="xs:int" />
+										<xs:element name="numUnits" type="xs:int" />
+										<xs:element name="yearBuilt" type="xs:int" />
+										<xs:element name="condArea" type="xs:int" />
+										<xs:element name="thermBoundary" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="resnetInfo">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="q1" type="xs:boolean" />
+										<xs:element name="q2A" type="xs:boolean" />
+										<xs:element name="q2B" type="xs:boolean" />
+										<xs:element name="q2C" type="xs:boolean" />
+										<xs:element name="q2D" type="xs:boolean" />
+										<xs:element name="q2E" type="xs:boolean" />
+										<xs:element name="q3A" type="xs:boolean" />
+										<xs:element name="q3B" type="xs:boolean" />
+										<xs:element name="q3C" type="xs:boolean" />
+										<xs:element name="hvacInstalled" type="xs:int" />
+										<xs:element name="hvacBusiness" type="xs:int" />
+										<xs:element name="insulationInstalled" type="xs:int" />
+										<xs:element name="insulationBusiness" type="xs:int" />
+										<xs:element name="airSealingInstalled" type="xs:int" />
+										<xs:element name="airSealingBusiness" type="xs:int" />
+										<xs:element name="windowsInstalled" type="xs:int" />
+										<xs:element name="windowsBusiness" type="xs:int" />
+										<xs:element name="appliancesInstalled" type="xs:int" />
+										<xs:element name="appliancesBusiness" type="xs:int" />
+										<xs:element name="constructionInstalled" type="xs:int" />
+										<xs:element name="constructionBusiness" type="xs:int" />
+										<xs:element name="otherInstalled" type="xs:int" />
+										<xs:element name="otherBusiness" type="xs:int" />
+										<xs:element name="otherService" type="xs:string" />
+										<xs:element name="otherProduct" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="foundationwalls">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="foundationwall">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="foundationwallType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="note" type="xs:string" />
+																<xs:element name="type" type="xs:string" />
+																<xs:element name="studtype" type="xs:string" />
+																<xs:element name="thickness" type="xs:double" />
+																<xs:element name="interiorInsContinuousRVal" type="xs:double" />
+																<xs:element name="interiorInsFrameCavityRVal" type="xs:double" />
+																<xs:element name="interiorInsTopEdge" type="xs:double" />
+																<xs:element name="interiorInsTopEdgeType" type="xs:string" />
+																<xs:element name="interiorInsBottomEdge" type="xs:double" />
+																<xs:element name="interiorInsBottomEdgeType" type="xs:string" />
+																<xs:element name="cavityInsGrade" type="xs:string" />
+																<xs:element name="exteriorInsRVal" type="xs:double" />
+																<xs:element name="exteriorInsTopEdge" type="xs:double" />
+																<xs:element name="exteriorInsTopEdgeType" type="xs:string" />
+																<xs:element name="exteriorInsBottomEdge" type="xs:double" />
+																<xs:element name="exteriorInsBottomEdgeType" type="xs:string" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="length" type="xs:double" />
+													<xs:element name="height" type="xs:double" />
+													<xs:element name="heightAboveGrade" type="xs:double" />
+													<xs:element name="depthBelowGrade" type="xs:double" />
+													<xs:element name="location" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="aboveGradeWalls">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="aboveGradeWall">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="aboveGradeWallType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="note" />
+																<xs:element name="inputMode" type="xs:string" />
+																<xs:element minOccurs="0" name="pathLayer">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="quickFillValid" type="xs:boolean" />
+																			<xs:element name="layerNames">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element maxOccurs="unbounded" name="name" type="xs:string" />
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="heatTransferPaths">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element maxOccurs="unbounded" name="heatTransferPath">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="name" type="xs:string" />
+																									<xs:element name="area" type="xs:double" />
+																									<xs:element maxOccurs="unbounded" name="RVal" type="xs:double" />
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element minOccurs="0" name="constructionType" type="xs:string" />
+																<xs:element minOccurs="0" name="continousInsRval" type="xs:double" />
+																<xs:element minOccurs="0" name="frameCavityInsRval" type="xs:double" />
+																<xs:element minOccurs="0" name="cavityInsThickness" type="xs:double" />
+																<xs:element minOccurs="0" name="cavityInsGrade" type="xs:string" />
+																<xs:element minOccurs="0" name="blockCavityInsRval" type="xs:double" />
+																<xs:element minOccurs="0" name="gypsumThickness" type="xs:double" />
+																<xs:element minOccurs="0" name="studSpacing" type="xs:double" />
+																<xs:element minOccurs="0" name="studWidth" type="xs:double" />
+																<xs:element minOccurs="0" name="studDepth" type="xs:double" />
+																<xs:element minOccurs="0" name="defaultFramingFactor" type="xs:boolean" />
+																<xs:element minOccurs="0" name="framingFactor" type="xs:double" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="area" type="xs:double" />
+													<xs:element name="exteriorColor" type="xs:string" />
+													<xs:element name="location" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="roofs">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="roof">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="ceilingType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="note" type="xs:string" />
+																<xs:element name="inputMode" type="xs:string" />
+																<xs:element minOccurs="0" name="insulType" type="xs:string" />
+																<xs:element minOccurs="0" name="unrestrictedRval" type="xs:double" />
+																<xs:element minOccurs="0" name="unrestrictedDepth" type="xs:double" />
+																<xs:element minOccurs="0" name="ceilingWidth" type="xs:double" />
+																<xs:element minOccurs="0" name="ceilingRise" type="xs:double" />
+																<xs:element minOccurs="0" name="trussHeightCenter" type="xs:double" />
+																<xs:element minOccurs="0" name="heelHeight" type="xs:double" />
+																<xs:element minOccurs="0" name="ventilationSpace" type="xs:double" />
+																<xs:element minOccurs="0" name="type" type="xs:string" />
+																<xs:element minOccurs="0" name="continousInsRval" type="xs:double" />
+																<xs:element minOccurs="0" name="cavityInsRval" type="xs:double" />
+																<xs:element minOccurs="0" name="cavityInsThickness" type="xs:double" />
+																<xs:element minOccurs="0" name="cavityInsGrade" type="xs:string" />
+																<xs:element minOccurs="0" name="gypsumThickness" type="xs:double" />
+																<xs:element minOccurs="0" name="chordSpacing" type="xs:double" />
+																<xs:element minOccurs="0" name="chordWidth" type="xs:double" />
+																<xs:element minOccurs="0" name="chordHeight" type="xs:double" />
+																<xs:element minOccurs="0" name="defaultFramingFactor" type="xs:boolean" />
+																<xs:element minOccurs="0" name="framingFactor" type="xs:double" />
+																<xs:element minOccurs="0" name="pathLayer">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="quickFillValid" type="xs:boolean" />
+																			<xs:element name="layerNames">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element maxOccurs="unbounded" name="name" type="xs:string" />
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="heatTransferPaths">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element maxOccurs="unbounded" name="heatTransferPath">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="name" type="xs:string" />
+																									<xs:element name="area" type="xs:double" />
+																									<xs:element maxOccurs="unbounded" name="RVal" type="xs:double" />
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="area" type="xs:double" />
+													<xs:element name="exteriorColor" type="xs:string" />
+													<xs:element name="radiantBarrier" type="xs:string" />
+													<xs:element name="clayTile" type="xs:string" />
+													<xs:element name="ventilation" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="joists">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="joist" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="location" type="xs:string" />
+													<xs:element name="area" type="xs:double" />
+													<xs:element name="continuousInsRVal" type="xs:double" />
+													<xs:element name="cavityInsRVal" type="xs:double" />
+													<xs:element name="spacing" type="xs:double" />
+													<xs:element name="cavityInsThick" type="xs:double" />
+													<xs:element name="cavityInsGrade" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="frameFloors">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="frameFloor">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="floorType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="note" />
+																<xs:element name="inputMode" type="xs:string" />
+																<xs:element minOccurs="0" name="pathLayer">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="quickFillValid" type="xs:boolean" />
+																			<xs:element name="layerNames">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element maxOccurs="unbounded" name="name" type="xs:string" />
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="heatTransferPaths">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element maxOccurs="unbounded" name="heatTransferPath">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="name" type="xs:string" />
+																									<xs:element name="area" type="xs:double" />
+																									<xs:element maxOccurs="unbounded" name="RVal" type="xs:double" />
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element minOccurs="0" name="floorWidth" type="xs:double" />
+																<xs:element minOccurs="0" name="outriggerWidth" type="xs:double" />
+																<xs:element minOccurs="0" name="battRval" type="xs:double" />
+																<xs:element minOccurs="0" name="battThickness" type="xs:double" />
+																<xs:element minOccurs="0" name="blanketRval" type="xs:double" />
+																<xs:element minOccurs="0" name="blanketThickness" type="xs:double" />
+																<xs:element minOccurs="0" name="centerInsulType" type="xs:string" />
+																<xs:element minOccurs="0" name="outriggerInsulType" type="xs:string" />
+																<xs:element minOccurs="0" name="floorCovering" type="xs:string" />
+																<xs:element minOccurs="0" name="continousInsRval" type="xs:double" />
+																<xs:element minOccurs="0" name="cavityInsRval" type="xs:double" />
+																<xs:element minOccurs="0" name="cavityInsThickness" type="xs:double" />
+																<xs:element minOccurs="0" name="cavityInsGrade" type="xs:string" />
+																<xs:element minOccurs="0" name="joistSpacing" type="xs:double" />
+																<xs:element minOccurs="0" name="joistWidth" type="xs:double" />
+																<xs:element minOccurs="0" name="joistHeight" type="xs:double" />
+																<xs:element minOccurs="0" name="defaultFramingFactor" type="xs:boolean" />
+																<xs:element minOccurs="0" name="framingFactor" type="xs:double" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="area" type="xs:double" />
+													<xs:element name="location" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="doors">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="door" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="doorType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="note" />
+																<xs:element name="stormDoor" type="xs:string" />
+																<xs:element name="rvalOpaque" type="xs:double" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="area" type="xs:double" />
+													<xs:element name="wallidref" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="windows">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="window">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="windowType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="note" />
+																<xs:element name="uValue" type="xs:double" />
+																<xs:element name="sHGC" type="xs:double" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="area" type="xs:double" />
+													<xs:element name="orientation" type="xs:string" />
+													<xs:element name="adjacentSummerShading" type="xs:string" />
+													<xs:element name="adjacentWinterShading" type="xs:string" />
+													<xs:element name="interiorSummerShading" type="xs:double" />
+													<xs:element name="interiorWinterShading" type="xs:double" />
+													<xs:element name="overhangDepth" type="xs:double" />
+													<xs:element name="overhangToTopOfWindow" type="xs:double" />
+													<xs:element name="overhangToBottomOfWindow" type="xs:double" />
+													<xs:element name="surfNum" type="xs:int" />
+													<xs:element name="surfType" type="xs:int" />
+                                                    <xs:element name="wallidref" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="skylights">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="skylight" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="windowType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="note" />
+																<xs:element name="uValue" type="xs:double" />
+																<xs:element name="sHGC" type="xs:double" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="area" type="xs:double" />
+													<xs:element name="orientation" type="xs:string" />
+													<xs:element name="summerShading" type="xs:string" />
+													<xs:element name="winterShading" type="xs:string" />
+													<xs:element name="pitch" type="xs:int" />
+													<xs:element name="surfNum" type="xs:int" />
+                                                    <xs:element name="roofidref" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="slabs">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="slab" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="slabType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="note" />
+																<xs:element name="coveringType" type="xs:string" />
+																<xs:element name="insulGrade" type="xs:string" />
+																<xs:element name="perimeterInsRVal" type="xs:double" />
+																<xs:element name="perimeterInsDepth" type="xs:double" />
+																<xs:element name="unSlabInsRVal" type="xs:double" />
+																<xs:element name="unSlabInsWidth" type="xs:double" />
+																<xs:element name="radiantSlab" type="xs:string" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="area" type="xs:double" />
+													<xs:element name="fullPerimeter" type="xs:double" />
+													<xs:element name="exposedPerimeter" type="xs:double" />
+													<xs:element name="onGradeExposedPerimeter" type="xs:double" />
+													<xs:element name="depthBelowGrade" type="xs:double" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="infiltration">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="measType" type="xs:string" />
+										<xs:element name="htgSeasonInfilt" type="xs:double" />
+										<xs:element name="clgSeasonInfilt" type="xs:double" />
+										<xs:element name="units" type="xs:string" />
+										<xs:element name="shelterClass" type="xs:int" />
+										<xs:element name="ieccVerify" type="xs:string" />
+										<xs:element name="mechVentType" type="xs:string" />
+										<xs:element name="sensibleRecoveryEff" type="xs:double" />
+										<xs:element name="totalRecoveryEff" type="xs:double" />
+										<xs:element name="mechVentRate" type="xs:int" />
+										<xs:element name="mechVentHoursPerDay" type="xs:double" />
+										<xs:element name="mechVentFanWatts" type="xs:double" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="interiorMasses">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="dryWallThick" type="xs:double" />
+										<xs:element name="interiorMass">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="location" type="xs:string" />
+													<xs:element name="type" type="xs:string" />
+													<xs:element name="area" type="xs:double" />
+													<xs:element name="thickness" type="xs:double" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="lightApps">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="useDefaults" type="xs:boolean" />
+										<xs:element name="percentCFL" type="xs:double" />
+										<xs:element name="percentFluorescent" type="xs:double" />
+										<xs:element name="percentExtLight" type="xs:double" />
+										<xs:element name="percentGarLight" type="xs:double" />
+										<xs:element name="refrigeratorKWH" type="xs:double" />
+										<xs:element name="refrigeratorLocation" type="xs:string" />
+										<xs:element name="ceilingFanCFMWatt" type="xs:double" />
+										<xs:element name="dishwasherEF" type="xs:double" />
+										<xs:element name="dishwasherCapacity" type="xs:double" />
+										<xs:element name="dishwasherkWhYear" type="xs:double" />
+										<xs:element name="ovenFuel" type="xs:string" />
+										<xs:element name="dryerEF" type="xs:double" />
+										<xs:element name="dryerMEF" type="xs:double" />
+										<xs:element name="dryerGasEF" type="xs:double" />
+										<xs:element name="dryerLocation" type="xs:string" />
+										<xs:element name="dryerMoistureSensing" type="xs:boolean" />
+										<xs:element name="dryerFuel" type="xs:string" />
+										<xs:element name="washerLocation" type="xs:string" />
+										<xs:element name="washerEfficiency" type="xs:string" />
+										<xs:element name="washerLER" type="xs:double" />
+										<xs:element name="washerCapacity" type="xs:double" />
+										<xs:element name="washerGasRate" type="xs:double" />
+										<xs:element name="washerElecRate" type="xs:double" />
+										<xs:element name="washerAnnualGasCost" type="xs:double" />
+										<xs:element name="inductionRange" type="xs:boolean" />
+										<xs:element name="convectionOven" type="xs:boolean" />
+										<xs:element maxOccurs="unbounded" name="lightApp">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="type" type="xs:string" />
+													<xs:element name="fuel" type="xs:string" />
+													<xs:element name="location" type="xs:string" />
+													<xs:element name="rate" type="xs:double" />
+													<xs:element name="rateUnits" type="xs:string" />
+													<xs:element name="use" type="xs:double" />
+													<xs:element name="useUnits" type="xs:string" />
+													<xs:element name="quantity" type="xs:int" />
+													<xs:element name="efficiency" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="equipInfo">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="heatingSetpoint" type="xs:double" />
+										<xs:element name="coolingSetpoint" type="xs:double" />
+										<xs:element name="setbackThermo" type="xs:boolean" />
+										<xs:element name="setupThermo" type="xs:boolean" />
+										<xs:element name="coolingVentilation" type="xs:string" />
+										<xs:element name="equipmentInstances">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="capacityWeightHtg" type="xs:boolean" />
+													<xs:element name="capacityWeightClg" type="xs:boolean" />
+													<xs:element name="capacityWeightDHW" type="xs:boolean" />
+													<xs:element maxOccurs="unbounded" name="equipmentInstance">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="libraryType" type="xs:string" />
+																<xs:element name="location" type="xs:string" />
+																<xs:element name="numberUnits" type="xs:int" />
+																<xs:element name="performanceAdjust" type="xs:double" />
+																<xs:element minOccurs="0" name="integratedType">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="xs:string" />
+																			<xs:element name="note" />
+																			<xs:element name="distributionType" type="xs:string" />
+																			<xs:element name="fuelType" type="xs:string" />
+																			<xs:element name="systemType" type="xs:string" />
+																			<xs:element name="ratedOutCapacity" type="xs:double" />
+																			<xs:element name="spaceHtgEfficiency" type="xs:double" />
+																			<xs:element name="waterHtgEnergyFactor" type="xs:double" />
+																			<xs:element name="useAuxElectDefault" type="xs:boolean" />
+																			<xs:element name="auxiliaryElectric" type="xs:int" />
+																			<xs:element name="auxElecType" type="xs:string" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element minOccurs="0" name="dfhpEquipType">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="xs:string" />
+																			<xs:element name="note" />
+																			<xs:element name="backupHtgEffUnits" type="xs:string" />
+																			<xs:element name="backupHtgFuelType" type="xs:string" />
+																			<xs:element name="htgCap47" type="xs:double" />
+																			<xs:element name="htgHSPF" type="xs:double" />
+																			<xs:element name="clgCap" type="xs:double" />
+																			<xs:element name="clgSEER" type="xs:double" />
+																			<xs:element name="deSuperHeater" type="xs:boolean" />
+																			<xs:element name="backupHtgSeasonalEff" type="xs:double" />
+																			<xs:element name="backupHtgOutputCapacity" type="xs:double" />
+																			<xs:element name="clgSHF" type="xs:double" />
+																			<xs:element name="switchOverTemperature" type="xs:double" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element minOccurs="0" name="ashpEquipType">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="xs:string" />
+																			<xs:element name="note" />
+																			<xs:element name="heatingEfficiency" type="xs:double" />
+																			<xs:element name="heatingRatedOutCapacity47" type="xs:double" />
+																			<xs:element name="heatingRatedOutCapacity17" type="xs:double" />
+																			<xs:element name="sensibleHeatFraction" type="xs:double" />
+																			<xs:element name="coolingEfficiency" type="xs:double" />
+																			<xs:element name="coolingRatedOutCapacity" type="xs:double" />
+																			<xs:element name="elecResistanceBackupCap" type="xs:int" />
+																			<xs:element name="deSuperHeater" type="xs:boolean" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element minOccurs="0" name="gshpEquipType">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="xs:string" />
+																			<xs:element name="note" />
+																			<xs:element name="pumpEnergyType" type="xs:string" />
+																			<xs:element name="distributionType" type="xs:string" />
+																			<xs:element name="htgCOPat32" type="xs:double" />
+																			<xs:element name="htgCAPat32" type="xs:double" />
+																			<xs:element name="clgEERat77" type="xs:double" />
+																			<xs:element name="sensibleHeatFraction" type="xs:double" />
+																			<xs:element name="clgCAPat77" type="xs:double" />
+																			<xs:element name="fanPowerWatts" type="xs:int" />
+																			<xs:element name="elecResistanceBackupCap" type="xs:int" />
+																			<xs:element name="pumpEnergy" type="xs:int" />
+																			<xs:element name="useFanDefaults" type="xs:boolean" />
+																			<xs:element name="deSuperHeater" type="xs:boolean" />
+																			<xs:element name="htgCapacity50kBtuh" type="xs:double" />
+																			<xs:element name="htgCapacity70kBtuh" type="xs:double" />
+																			<xs:element name="clgCapacity50kBtuh" type="xs:double" />
+																			<xs:element name="clgCapacity70kBtuh" type="xs:double" />
+																			<xs:element name="htgCOPat50" type="xs:double" />
+																			<xs:element name="htgCOPat70" type="xs:double" />
+																			<xs:element name="clgEERat50" type="xs:double" />
+																			<xs:element name="clgEERat70" type="xs:double" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element minOccurs="0" name="waterHeatingType">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="xs:string" />
+																			<xs:element name="note" />
+																			<xs:element name="type" type="xs:string" />
+																			<xs:element name="fuelType" type="xs:string" />
+																			<xs:element name="energyFactor" type="xs:double" />
+																			<xs:element name="extraTankIns" type="xs:double" />
+																			<xs:element name="tankVolumeGallons" type="xs:int" />
+																			<xs:element name="recoveryEff" type="xs:double" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element minOccurs="0" name="spaceCoolingType">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="xs:string" />
+																			<xs:element name="note" />
+																			<xs:element name="sysType" type="xs:string" />
+																			<xs:element name="fuelType" type="xs:string" />
+																			<xs:element name="ratedOutCapacity" type="xs:double" />
+																			<xs:element name="seasonalEqEff" type="xs:double" />
+																			<xs:element name="effUnitType" type="xs:string" />
+																			<xs:element name="shf" type="xs:double" />
+																			<xs:element name="deSuperHeater" type="xs:boolean" />
+																			<xs:element name="useFanElectDefault" type="xs:boolean" />
+																			<xs:element name="fanPower" type="xs:double" />
+																			<xs:element name="pumpEnergy" type="xs:double" />
+																			<xs:element name="pumpEnergyType" type="xs:string" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element minOccurs="0" name="spaceHeatingType">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="xs:string" />
+																			<xs:element name="note" />
+																			<xs:element name="sysType" type="xs:string" />
+																			<xs:element name="fuelType" type="xs:string" />
+																			<xs:element name="ratedOutCapacity" type="xs:double" />
+																			<xs:element name="seasonalEqEff" type="xs:double" />
+																			<xs:element name="effUnitType" type="xs:string" />
+																			<xs:element name="deSuperHeater" type="xs:boolean" />
+																			<xs:element name="auxiliaryElectric" type="xs:int" />
+																			<xs:element name="auxElecType" type="xs:string" />
+																			<xs:element name="useAuxElectDefault" type="xs:boolean" />
+																			<xs:element name="useFanElectDefault" type="xs:boolean" />
+																			<xs:element name="fanPower" type="xs:double" />
+																			<xs:element name="pumpEnergy" type="xs:double" />
+																			<xs:element name="pumpEnergyType" type="xs:string" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="gshpWellInfo">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="type" type="xs:string" />
+													<xs:element name="quantity" type="xs:double" />
+													<xs:element name="depth" type="xs:double" />
+													<xs:element name="loopFlowGPM" type="xs:double" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ductSystems">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="ductSystem">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" type="xs:string" />
+													<xs:element name="heatingEquipNumber" type="xs:int" />
+													<xs:element name="coolingEquipNumber" type="xs:int" />
+													<xs:element name="numReturnRegisters" type="xs:int" />
+													<xs:element name="supplyArea" type="xs:double" />
+													<xs:element name="returnArea" type="xs:double" />
+													<xs:element name="condFloorArea" type="xs:double" />
+													<xs:element name="leakageInputType" type="xs:string" />
+													<xs:element name="qualitativeDefault" type="xs:string" />
+													<xs:element name="ductLeakTotal" type="xs:double" />
+													<xs:element name="ductLeakSupply" type="xs:double" />
+													<xs:element name="ductLeakReturn" type="xs:double" />
+													<xs:element name="ductLeakUnits" type="xs:string" />
+													<xs:element name="ductLeakTightTest" type="xs:string" />
+													<xs:element name="annexAFanFlowDefault" type="xs:boolean" />
+													<xs:element name="annexAFanFlow" type="xs:double" />
+													<xs:element name="annexCAirHandlerInstalled" type="xs:boolean" />
+													<xs:element name="annexCAirHandlerCorrection" type="xs:double" />
+													<xs:element name="registerGrillesInstalled" type="xs:boolean" />
+													<xs:element name="registerGrillesCorrection" type="xs:double" />
+													<xs:element name="annex" type="xs:string" />
+													<xs:element name="annexBLeakageType" type="xs:string" />
+													<xs:element name="annexBCfmSupply" type="xs:double" />
+													<xs:element name="annexBCfmReturn" type="xs:double" />
+													<xs:element name="annexBCfmTotal" type="xs:double" />
+													<xs:element name="annexBBufferPressureSupply" type="xs:double" />
+													<xs:element name="annexBBufferPressureReturn" type="xs:double" />
+													<xs:element name="annexBDuctPressureSupply" type="xs:double" />
+													<xs:element name="annexBDuctPressureReturn" type="xs:double" />
+													<xs:element name="annexCFanPressure" type="xs:double" />
+													<xs:element name="annexCMeasuredCfm" type="xs:double" />
+													<xs:element maxOccurs="unbounded" name="duct">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="location" type="xs:string" />
+																<xs:element name="type" type="xs:string" />
+																<xs:element name="percentArea" type="xs:int" />
+																<xs:element name="RVal" type="xs:double" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="activeSolar">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="sysType" type="xs:string" />
+										<xs:element name="loopType" type="xs:string" />
+										<xs:element name="collectorType" type="xs:string" />
+										<xs:element name="collectorOrientation" type="xs:string" />
+										<xs:element name="collectorArea" type="xs:double" />
+										<xs:element name="collectorTilt" type="xs:double" />
+										<xs:element name="storageVol" type="xs:double" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="sunspace">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="sunSpaceMasses">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="sunSpaceMass">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="area" type="xs:int" />
+																<xs:element name="thick" type="xs:double" />
+																<xs:element name="waterStorVol" type="xs:int" />
+																<xs:element name="type" type="xs:string" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="sunSpaceCommonWalls">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="sunSpaceCommonWall">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="area" type="xs:int" />
+																<xs:element name="massThick" type="xs:double" />
+																<xs:element name="ins" type="xs:double" />
+																<xs:element name="fanFlowRate" type="xs:int" />
+																<xs:element name="massType" type="xs:string" />
+																<xs:element name="fanCoupling" type="xs:string" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="sunSpaceFloor">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="floorArea" type="xs:double" />
+													<xs:element name="frFloorIns" type="xs:double" />
+													<xs:element name="expSlabPer" type="xs:double" />
+													<xs:element name="slabDepth" type="xs:double" />
+													<xs:element name="slabThickness" type="xs:double" />
+													<xs:element name="slabPerIns" type="xs:double" />
+													<xs:element name="underSlabIns" type="xs:double" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="sunSpaceRoofWalls">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="exteriorWallArea" type="xs:int" />
+													<xs:element name="roofArea" type="xs:int" />
+													<xs:element name="subgradeWallArea" type="xs:int" />
+													<xs:element name="roofIns" type="xs:double" />
+													<xs:element name="exteriorWallIns" type="xs:double" />
+													<xs:element name="subgradeWallIns" type="xs:double" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="windows">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="window">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="windowType">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="xs:string" />
+																			<xs:element name="note" />
+																			<xs:element name="uValue" type="xs:double" />
+																			<xs:element name="sHGC" type="xs:double" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="area" type="xs:double" />
+																<xs:element name="orientation" type="xs:string" />
+																<xs:element name="adjacentSummerShading" type="xs:double" />
+																<xs:element name="adjacentWinterShading" type="xs:double" />
+																<xs:element name="interiorSummerShading" type="xs:double" />
+																<xs:element name="interiorWinterShading" type="xs:double" />
+																<xs:element name="overhangDepth" type="xs:double" />
+																<xs:element name="overhangToTopOfWindow" type="xs:double" />
+																<xs:element name="overhangToBottomOfWindow" type="xs:double" />
+																<xs:element name="surfNum" type="xs:int" />
+																<xs:element name="surfType" type="xs:int" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="skylights">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="skylight">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="name" type="xs:string" />
+																<xs:element name="windowType">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="xs:string" />
+																			<xs:element name="note" />
+																			<xs:element name="uValue" type="xs:double" />
+																			<xs:element name="sHGC" type="xs:double" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="area" type="xs:double" />
+																<xs:element name="orientation" type="xs:string" />
+																<xs:element name="summerShading" type="xs:double" />
+																<xs:element name="winterShading" type="xs:double" />
+																<xs:element name="pitch" type="xs:int" />
+																<xs:element name="surfNum" type="xs:int" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="photovoltaics" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="collectorOrientation" type="xs:string" />
+										<xs:element name="collectorArea" type="xs:double" />
+										<xs:element name="collectorPeakPower" type="xs:int" />
+										<xs:element name="collectorTilt" type="xs:double" />
+										<xs:element name="inverterEfficiency" type="xs:double" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="starRequirements">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="airBarrierOverall" type="xs:string" />
+										<xs:element name="airBarrierGarageBandJoist" type="xs:string" />
+										<xs:element name="airBarrierAtticEaveBaffles" type="xs:string" />
+										<xs:element name="airBarrierSlabEdgeIns" type="xs:string" />
+										<xs:element name="airBarrierAllBandJoist" type="xs:string" />
+										<xs:element name="airBarrierMinThermalBridging" type="xs:string" />
+										<xs:element name="wallBehindShowerTub" type="xs:string" />
+										<xs:element name="wallBehindFireplace" type="xs:string" />
+										<xs:element name="wallInsAtticSlopes" type="xs:string" />
+										<xs:element name="wallAtticKnee" type="xs:string" />
+										<xs:element name="wallSkylightShaft" type="xs:string" />
+										<xs:element name="wallAdjoiningPorchRoof" type="xs:string" />
+										<xs:element name="wallStaircase" type="xs:string" />
+										<xs:element name="wallDouble" type="xs:string" />
+										<xs:element name="floorInsAboveGarage" type="xs:string" />
+										<xs:element name="floorCantilevered" type="xs:string" />
+										<xs:element name="shaftsDuct" type="xs:string" />
+										<xs:element name="shaftsPiping" type="xs:string" />
+										<xs:element name="shaftsFlue" type="xs:string" />
+										<xs:element name="atticAccessPanel" type="xs:string" />
+										<xs:element name="atticDropDownStair" type="xs:string" />
+										<xs:element name="ceilingDroppedSoffit" type="xs:string" />
+										<xs:element name="ceilingRecessedLighting" type="xs:string" />
+										<xs:element name="ceilingWholeHouseFan" type="xs:string" />
+										<xs:element name="cmnWallBetweenUnits" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="mandatoryRequirements">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="verifyIECC04Requirements" type="xs:boolean" />
+										<xs:element name="verifyIECC06Requirements" type="xs:boolean" />
+										<xs:element name="verifyIECC09Requirements" type="xs:boolean" />
+										<xs:element name="verifyIECCNYRequirements" type="xs:boolean" />
+										<xs:element name="verifyESV2ThermalBypass" type="xs:boolean" />
+										<xs:element name="verifyESV2Products" type="xs:boolean" />
+										<xs:element name="verifyESV3ThermalEnclosure" type="xs:boolean" />
+										<xs:element name="verifyESV3HVACSystemContractor" type="xs:boolean" />
+										<xs:element name="verifyESV3HVACSystemRater" type="xs:boolean" />
+										<xs:element name="verifyESV3WaterManagement" type="xs:boolean" />
+										<xs:element name="verifyESV3IndoorAirPlus" type="xs:boolean" />
+										<xs:element name="verifyESV3Refrigerators" type="xs:boolean" />
+										<xs:element name="verifyESV3CeilingFans" type="xs:boolean" />
+										<xs:element name="verifyESV3ExhaustFans" type="xs:boolean" />
+										<xs:element name="verifyESV3Dishwashers" type="xs:boolean" />
+										<xs:element name="numESV3Refrigerators" type="xs:int" />
+										<xs:element name="numESV3CeilingFans" type="xs:int" />
+										<xs:element name="numESV3ExhaustFans" type="xs:int" />
+										<xs:element name="numESV3Dishwashers" type="xs:int" />
+										<xs:element name="verifyBsmtESV3SAFExclude" type="xs:boolean" />
+										<xs:element name="bmstESV3FloorArea" type="xs:int" />
+										<xs:element name="bsmtESV3Bedrooms" type="xs:int" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="location">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="city" type="xs:string" />
+							<xs:element name="HDD" type="xs:double" />
+							<xs:element name="CDH" type="xs:double" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="utilityRateGroup">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="utilityRate">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="name" type="xs:string" />
+										<xs:element name="note" />
+										<xs:element name="fuelType" type="xs:string" />
+										<xs:element name="fuelTypeUnits" type="xs:string" />
+										<xs:element maxOccurs="unbounded" name="season">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="startMonth" type="xs:int" />
+													<xs:element name="stopMonth" type="xs:int" />
+													<xs:element name="serviceCharge" type="xs:double" />
+													<xs:element maxOccurs="unbounded" name="blockRate">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="max" type="xs:int" />
+																<xs:element name="rate" type="xs:double" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

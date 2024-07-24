@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{# Generic base for create/update views. #}
+
+{% block page_title %}{% spaceless %}
+    {% if object %}
+        Update {{ verbose_name|capfirst }} {{ object.name|default:object }}
+    {% else %}
+        New {{ verbose_name|capfirst }}
+    {% endif %}
+{% endspaceless %}{% endblock page_title %}
+
+{% block style_sheet %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/multi-select{% if not debug %}.min{% endif %}.css" type="text/css" media="screen,projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}geocoder/css/geocode.css" type="text/css" media="screen, projection" />
+{% endblock %}
+
+{% block javascript_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/relationship/relationship{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/helpers/select2/dynamic_add{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}geocoder/js/geocode{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/plugins/jquery/jquery.multi-select{% if not debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/plugins/jquery/jquery.quicksearch{% if not debug %}.min{% endif %}.js"></script>
+    {% block jquery_validate_rules %}
+        <script type="text/javascript">
+            $(function(){
+
+                $('#axis_form').validate({
+                    rules: {
+                        {% for item in form.visible_fields %}
+                        "{{ item.html_name }}": {
+                            {% if item.field.max_value %}max: {{ item.field.max_value }},{% endif %}
+                            {% if item.field.min_value %}min: {{ item.field.min_value }},{% endif %}
+                            {% if item.field.max_length %}maxlength: {{ item.field.max_length }},{% endif %}
+                            required:{% if item.field.required %}true{% else %}false{% endif %}
+                        },
+                        {% endfor %}
+                        csrfmiddlewaretoken:{required:true}
+                    }
+                });
+            });
+        </script>
+    {% endblock jquery_validate_rules %}
+    {% if view.allow_geocoding %}
+    <script type="text/javascript">
+        $(function(){
+            {% if view.geocoding_type %}
+            var geocoding_type = "{{ view.geocoding_type }}";
+            {% elif view.model.get_geocoding_type %}
+            var geocoding_type = "{{ view.model.get_geocoding_type }}";
+            {% elif view.get_queryset.model.get_geocoding_type %}
+            var geocoding_type = "{{ view.get_queryset.model.get_geocoding_type }}";
+            {% endif %}
+            var confirmed_address = "{{ object.confirmed_address|yesno:'true,false' }}";
+
+            $('#axis_form').geocodeForm(geocoding_type, confirmed_address, {
+                {% if form.prefix %}
+                "prefix": "{{ form.prefix }}"
+                {% endif %}
+            });
+        })
+    </script>
+    {% endif %}
+{% endblock javascript_head %}
+
+{% block content %}
+    {% block form %}
+        {% block form_errors %}{% include "bootstrap3/errors.html" %}{% endblock %}
+        <form id="axis_form" action="" method="post" enctype="multipart/form-data"
+              data-validate="parsley">
+            {% csrf_token %}
+            <fieldset class="row-header">
+                <legend>
+                    <p>
+                    {% block header_text %}
+                        {% if object %}
+                            <span>Update {{ verbose_name|capfirst }}:</span>
+                            <span class="value">{{ object.name|default:object }}</span>
+                        {% else %}
+                            <span>Adding {{ verbose_name|capfirst }}:</span>
+                        {% endif %}
+                    {% endblock header_text %}
+                    </p>
+                </legend>
+                {% block header_description %}
+                    {# Description/prompt text goes here, if required. #}
+                {% endblock header_description %}
+            </fieldset>
+            <br />
+            {% block form_content %}
+                FORM CONTENT
+            {% endblock form_content %}
+
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    {% block tabs %}
+                        {# Allocated area for form tabs. #}
+                    {% endblock tabs %}
+                </div>
+            </div>
+
+            <br />
+            <div class="form-actions">
+                {% block form_actions %}
+                    <button type="submit" id="id_submit" class="btn btn-primary">Save</button>
+                    {% if cancel_url %}
+                        <a class="btn btn-default" href="{{ cancel_url }}">Cancel</a>
+                    {% endif %}
+                {% endblock form_actions %}
+            </div>
+        </form>
+    {% endblock form %}
+    {% block modals %} {% endblock modals %}
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends "examine/angular_region_default.html" %}
+
+{% block panels %}
+    <br>
+    <div class="alert alert-info"
+         ng-if="regionObject.helpers.restricted_edit">
+        Some associations may no longer be removed.
+    </div>
+
+    {{ block.super }}
+{% endblock panels %}

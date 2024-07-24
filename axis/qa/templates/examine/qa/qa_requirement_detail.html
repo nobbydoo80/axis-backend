@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3 key">QA Company:</div>
+            <div class="col-md-9 value">[[ regionObject.object.qa_company_name ]]</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 key">EEP Program:</div>
+            <div class="col-md-9 value">[[ regionObject.object.eep_program_name ]]</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 key">Type:</div>
+            <div class="col-md-9 value">[[ regionObject.object.type_display ]]</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 key">Gates Certification:</div>
+            <div class="col-md-9 value">[[ regionObject.object.gate_certification ? 'Yes' : 'No' ]]</div>
+        </div>
+
+        <hr>
+        <axis-single-region ng-if="regionObject.helpers.machinery.add_qa_status"
+                            options="regionObject.helpers.machinery.add_qa_status"></axis-single-region>
+
+        <axis-single-region ng-if="!regionObject.helpers.machinery.add_qa_status"
+                            options="regionObject.helpers.machinery.qa_status"></axis-single-region>
+    </div>
+</div>

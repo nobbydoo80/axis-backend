@@ -1,0 +1,120 @@
+{% extends "examine/angular_region_panel.html" %}
+
+{% block heading %}
+    {% if user.is_superuser %}[ [[ regionObject.object.id ]] ] {% endif %}
+    <strong>[[ regionObject.object_name ]]</strong>
+    <div class="pull-right">
+        <span><b>Total Fees: [[ regionObject.helpers['total_fees'] || 0 | currency ]]</b></span>
+        <span><b>Total Fees Charged: [[ regionObject.helpers['total_fees_charged'] || 0 | currency ]]</b></span>
+        <span><b>Balance Owed: [[ regionObject.helpers['balance_owed'] || 0 | currency ]]</b></span>
+    </div>
+{% endblock heading %}
+
+{% block panels %}
+    <div ng-controller="InvoiceHomeStatusController as vm" ng-init="vm.state=regionObject.helpers['billing_state']">
+        <div class="row">
+            <div class="col-xs-12">
+                <span><b>Client ID:</b> [[ regionObject.helpers['hirlcompanyclient_id'] ]]</span>
+            </div>
+        </div><div class="row">
+            <div class="col-xs-12">
+                <span><b>Invoicee ID:</b> [[ regionObject.helpers['hirlcompanyinvoicee_id'] || '-' ]]</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span><b>H-Number:</b> [[ regionObject.helpers['h_number'] || '-' ]]</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+            <span><b>Billing Status:</b>
+                [[ vm.billingStatesMap[vm.state] ]]
+                {% if request.user.is_superuser or request.user.is_customer_hirl_company_admin_member %}
+                    (<a href=""
+                        data-toggle="modal"
+                        data-target="#billingStateModal[[ regionObject.object.id ]]"
+                    >Edit</a>)
+                {% endif %}
+            </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span><b>JAMIS Milestoned:</b> [[ regionObject.helpers['jamis_milestoned'] ? 'Yes' : 'No' ]]</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span><b>Most Recent Payment Received:</b> [[ regionObject.helpers['most_recent_payment_received'] || '-' ]]</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span><b>Initial Invoice Date:</b> [[ regionObject.helpers['initial_invoice_date'] | date:"MM/dd/yyyy h:mma" || '-' ]]</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span><b>Most Recent Notification Sent:</b> [[ regionObject.helpers['most_recent_notice_sent'] | date:"MM/dd/yyyy h:mma" || '-' ]]</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span><b>Certification Date:</b> [[ regionObject.helpers['certification_date'] | date:"MM/dd/yyyy" || '-' ]]</span>
+            </div>
+        </div>
+
+        <non-field-errors></non-field-errors>
+        <div detail-content ng-hide="region.editing()">
+            <loading-spinner></loading-spinner>
+        </div>
+        <div form-content ng-show="region.editing()">
+            <loading-spinner></loading-spinner>
+        </div>
+
+        <div ng-controller="InvoiceItemGroupMachineriesController">
+            <div ng-repeat="machinery in invoiceItemGroupMachineries">
+                <axis-region-set options="machinery"></axis-region-set>
+            </div>
+        </div>
+
+        <!-- billingStateModal -->
+        <div class="modal fade" id="billingStateModal[[ regionObject.object.id ]]" tabindex="-1"
+             role="dialog" aria-labelledby="Set Billing State Manually">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Change Billing Status</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">New Billing Status:</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" ng-model="vm.newState">
+                                                <option value="">Automatic</option>
+                                                <option value="[[ key ]]" ng-repeat="(key, value) in vm.billingStatesMap">[[ value ]]</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                        </button>
+                        <button type="button" class="btn btn-primary"
+                                ng-click="vm.changeState(regionObject.helpers['customer_hirl_project_id'])">Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock panels %}

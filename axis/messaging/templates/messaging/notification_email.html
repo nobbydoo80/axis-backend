@@ -1,0 +1,44 @@
+{% extends "html_email_base.html" %}
+
+{% block content %}
+
+    {% if message.email_content %}
+        {{ message.email_content|safe }}
+    {% else %}
+        {% if message.user %}
+            <p>
+                Hello {{ message.user.first_name }} {{ message.user.last_name }},
+            </p>
+        {% endif %}
+
+        <p>
+            {{ message.content|safe }}
+        </p>
+
+        {% if message.url %}
+            <p>
+                <a href="https://{{ domain }}{{ message.url }}">Click here</a>
+                to go to where this notification originated.
+            </p>
+        {% endif %}
+    {% endif %}
+
+    <em>The AXIS Support Team</em>
+{% endblock content %}
+
+{% block unsubscribe %}
+    {% if unsubscribe_email_link %}
+        <p>
+            Want to change how you receive these emails ?
+        </p>
+        <p>
+            You can
+            <a href="https://{{ domain }}{% url 'messaging:list' %}">
+                update your preferences
+            </a> or
+            <a href="{{ unsubscribe_email_link }}">
+                unsubscribe from this list
+            </a>
+        </p>
+    {% endif %}
+{% endblock %}

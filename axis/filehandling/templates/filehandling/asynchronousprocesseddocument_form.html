@@ -1,0 +1,85 @@
+{% extends "base_form.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_file %}
+
+{% comment %}
+    Author: Steven Klass <steven.klass@7stalks.com>
+    Copyright 2011-2023 Pivotal Energy Solutions. All rights reserved.
+    See the file LICENSE.txt for licensing information.
+{% endcomment %}
+
+{% block page_title %}
+    {% if form.instance.pk %}
+        Update Processed Document {{ form.instance }}
+    {% else %}
+        New Processed Document Upload - {{ request.user.company }}
+    {% endif %}
+{% endblock %}
+
+
+{% block javascript_head %}
+    <script type="text/javascript">
+        jQuery.validator.setDefaults({debug: false, success: "jvf_valid"});
+        $(function(){
+        	$("#myform").validate({
+        	rules: {
+                {% if form.document.field.required %}document:{required: true},{% endif %}
+    			csrfmiddlewaretoken:{required:true}
+        	}
+            });
+
+            // Place name of last used file, if there is one
+            $("input[type=file]").each(function () {
+                if ($(this).prop('files').length > 0) {
+                    var file_name = $(this).prop('files')[0].name;
+                    if (file_name) {
+                        $(this)
+                                .closest('.fileinput')
+                                .removeClass('fileinput-new')
+                                .addClass('fileinput-exists')
+                                .find('.fileinput-filename')
+                                .text(file_name)
+                                .attr('title', file_name)
+                    }
+                }
+            })
+        });
+    </script>
+{% endblock %}
+
+
+{% block header_text %}
+    {% if title %}
+        {{ title }}
+    {% else %}
+        {{ request.user.company }} Document Upload
+    {% endif %}
+    {% if debug %}
+        for {{ request.user.company }}
+    {% endif %}
+{% endblock header_text %}
+
+
+{% block form_content %}
+    {% if form.errors %}
+        <div class="row">
+            <div class="col-md-12">{{ form.non_field_errors }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">{{ form.errors }}</div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">{{ form.company|as_crispy_field }}</div>
+    </div>
+    {% if form.document %}
+        <div class="row">
+            <div class="col-md-9">{{ form.document|as_crispy_file_field }}</div>
+            <div class="col-md-3">
+                {% if template %}Template:
+                    <a class="btn btn-default" href="{{ template }}">Download</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

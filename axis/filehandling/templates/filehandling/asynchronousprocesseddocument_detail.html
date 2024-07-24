@@ -1,0 +1,333 @@
+{% extends "base_detail.html" %}
+{% load bootstrap_tags %}
+{% load dates %}
+
+{% block detail_content %}
+    <br />
+    <div class="row">
+        <div class="col-md-4 key">Current Status:</div>
+        <div class="col-md-8 value" id="doc_state">{{ state|safe }}</div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4 key">
+            {% if object.download %}Download {% else %}Uploaded {% endif %} Document:</div>
+        <div class="col-md-8 value">
+            {% if object.document %}
+                <a href="{{ object.document.url }}">{{ object.filename }}</a>
+            {% else %}Not Available{% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 key">
+            {% if object.download %}Creation{% else %}Uploaded{% endif %} Date:</div>
+        <div class="col-md-8 value">{{ object.created_date|date }}</div>
+    </div>
+
+    {% if request.user.is_superuser %}
+        <div class="row">
+            <div class="col-md-4 key">Company:</div>
+            <div class="col-md-8 value">
+                 <a href="{{ object.company.get_absolute_url }}">{{ object.company }}</a>
+            </div>
+        </div>
+    {% endif %}
+    <br>
+    <div class="row">
+        <div class="col-md-12 value" id="latest_result">
+            {{ object.result.result|default_if_none:""|safe }}
+        </div>
+    </div>
+    <hr/>
+
+    {% if object.result.traceback and request.user.is_superuser %}
+        <div class="row alert alert-danger">
+            <div class="col-md-12 key"><strong>Traceback:</strong></div>
+            <div class="col-md-12 value">
+                <pre>{{ object.result.traceback }}</pre>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if complete %}
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button class="btn btn-default hide-info" type="button">Hide Info</button>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if not complete and object.download %}
+        <div class="row">
+            <div class="col-md-2 text-right">Processing</div>
+            <div class="col-md-10">
+                <div class="progress progress-striped active">
+                    <div id="processing_bar" class="progress-bar progress-bar-success" role="progressbar" style="width: 0%"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-right">Writing</div>
+            <div class="col-md-10">
+                <div class="progress progress-striped active">
+                    <div id="writing_bar" class="progress-bar progress-bar-success" role="progressbar"
+                         style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% bootstrap_navtabs %}
+        {% tab "<i class='row-spinner fa fa-spin fa-spinner'></i> By Row" id="by-context-row" %}
+            <div class="panel-group" id="context_row_accordion">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3><i class="fa fa-spin fa-spinner"></i>&nbsp;Loading...</h3>
+                    </div>
+                </div>
+            </div>
+
+        {% tab "<i class='level-spinner fa fa-spin fa-spinner'></i> By Message Type" id="by-level" %}
+            <div class="panel-group" id="by_level_accordion">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3><i class="fa fa-spin fa-spinner"></i>&nbsp;Loading...</h3>
+                    </div>
+                </div>
+            </div>
+
+        {% tab "<i class='chronological-spinner fa fa-spin fa-spinner'></i> Chronological" id="chronological" %}
+            <div class="panel-group" id="chronological_accordion">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3><i class="fa fa-spin fa-spinner"></i>&nbsp;Loading...</h3>
+                    </div>
+                </div>
+            </div>
+
+    {% endbootstrap_navtabs %}
+
+{% endblock detail_content %}
+
+{% block javascript_head %}
+
+    {# Handlebars Testing jsbin http://jsbin.com/qofavete/2/ #}
+    {{ block.super }}
+
+    <script type="text/javascript" src="{{ STATIC_URL }}js/helpers/handlebars/handlebars_helpers.js"></script>
+    <script type="text/x-handlebars-template" id="chronological_template"> {% include "filehandling/handlebars/chronological.hbs" %} </script>
+    <script type="text/x-handlebars-template" id="generic_panel_template"> {% include "filehandling/handlebars/generic_panel.hbs" %} </script>
+    <script type="text/x-handlebars-template" id="by_row_template"> {% include "filehandling/handlebars/by_row.hbs" %} </script>
+
+    <script type="text/javascript">
+
+    var task = {{ object.id }};
+
+    function make_panel(panel){
+        var source = Handlebars.compile($(panel.template).html());
+        var html = source(panel);
+        $(panel.holder).append(html);
+    }
+
+    function render_by_row(rows){
+        var holder = '#by-context-row .panel-group';
+        var template = '#by_row_template';
+        var panel = {
+            template: template,
+            holder: holder,
+            by_context_row: rows
+        };
+        $(holder).empty();
+        $(".row-spinner").remove();
+        make_panel(panel);
+        $(holder).children().first().find('.collapse').collapse('show')
+    }
+
+    function render_chronological(chrono){
+        var keys = [];
+        for(var k in chrono) keys.push(k);
+        keys.sort();
+
+        var holder = '#chronological .panel-group';
+        var template = '#chronological_template';
+
+        $(holder).empty();
+        $(".chronological-spinner").remove();
+        for(var key in keys){
+            var label = keys[key];
+            var panel = {
+                template: template,
+                holder: holder,
+                label: label,
+                messages: chrono[label]
+            };
+            make_panel(panel)
+        }
+        $(holder).children().first().find('.collapse').collapse('show');
+    }
+
+    function render_by_level(data){
+        var holder = '#by-level .panel-group';
+        var template = '#generic_panel_template';
+        var panels = [
+            {
+                label: 'Critical',
+                strings: data.critical,
+                template: template,
+                holder: holder,
+                class: 'danger'
+            },
+            {
+                label: 'Errors',
+                strings: data.errors,
+                template: template,
+                holder: holder,
+                class: 'danger'
+            },
+            {
+                label: 'Warnings',
+                strings: data.warnings,
+                template: template,
+                holder: holder,
+                class: 'warning'
+            },
+            {
+                label: 'Info',
+                strings: data.info,
+                template: template,
+                holder: holder,
+                class: 'info'
+            }
+        ];
+        $(holder).empty();
+        $(".level-spinner").remove();
+        for(var i= 0, j=panels.length; i<j; i++){
+            make_panel(panels[i])
+        }
+        $(holder).children().first().find('.collapse').collapse('show');
+    }
+
+    function build_url_string(){
+        var url = ['/api/v2/asynchronous_document', task, 'results'];
+        return url.join('/') + "/";
+    }
+
+    function render_all(results){
+        window.a = results;
+        console.time("by_context_row rendering");
+        if(results.by_context_row.length < 1){
+            $("[data-toggle=tab][href='#by-context-row']").parent().remove();
+        } else {
+            render_by_row(results.by_context_row);
+        }
+        console.timeEnd("by_context_row rendering");
+
+        console.time("chrono making");
+        if($.isEmptyObject(results.chronological)){
+            $("[data-toggle='tab'][href='#chronological']").parent().remove();
+        } else {
+            render_chronological(results.chronological);
+        }
+        console.timeEnd("chrono making");
+
+        console.time('rending by level');
+        render_by_level(results);
+        console.timeEnd('rending by level');
+
+        {% if request.user.is_superuser %}
+            $(".hide-info").trigger('click');
+        {% endif %}
+
+        $(".nav-tabs").find('li:first').find('a').tab('show');
+
+    }
+
+    $(function(){
+
+        $(".hide-info").on('click', function(e){
+            e.preventDefault();
+
+            $(this).text(function(i, text){
+                $(".panel-info").toggle(text != "Hide Info");
+                return text === "Hide Info" ? "Show Info" : "Hide Info";
+            });
+        });
+
+        $('.nav-tabs').on('click', '.disabled', function(e){
+            e.stopImmediatePropagation();
+        });
+
+        $('.tab-content').on('click', '.panel .btn', function(e){
+            e.preventDefault();
+
+            var panel = $(this).closest('.panel');
+            var text = $(this).text();
+
+            panel.find('.collapse').collapse('show');
+            var row = panel.data('row');
+            var lookup = row+"_"+text.toUpperCase()+"_tab";
+            $("[data-toggle='tab'][href='#"+lookup+"']").tab('show');
+        });
+
+        window.ajax = $.ajax({
+            url: build_url_string(),
+            success: render_all
+        });
+    })
+    </script>
+    {% if not complete %}
+        <script type="text/javascript">
+            $(function(){
+                var writing_bar = $("#writing_bar");
+                var processing_bar = $("#processing_bar");
+                var check_writing = true;
+                var check_processing = true;
+                var refreshId;
+
+                refreshId = setInterval(function(){
+                    $.ajax({
+                        url: '{% url "async_document_ajax_status" pk=object.id %}',
+                        success: function(data){
+                            $("#latest_result").html(data['latest']);
+                            $("#doc_state").html(data['state']);
+
+                            if(data['complete']){
+                                writing_bar.width("100%").parent().removeClass('active progress-striped');
+                                processing_bar.width("100%").parent().removeClass('active progress-striped');
+                                clearInterval(refreshId);
+                                console.log("Done...");
+                                window.location.reload(true);
+                            }
+
+                            if('result' in data && typeof data.result != 'string'){
+                                // console.log(data);
+                                // update progress bars
+                                if('writing' in data.result || 'processing' in data.result){
+                                    if(check_writing){
+                                        var writing = data['result']['writing'];
+                                        var progress = writing['current']/writing['total']*100;
+                                        writing_bar.width(progress+"%");
+                                        if(progress > 99){
+                                            writing_bar.width("100%").parent().removeClass('active progress-striped');
+                                            check_writing = false;
+                                        }
+                                    }
+                                    if(check_processing){
+                                        var processing = data['result']['processing'];
+                                        var progress = processing['current']/processing['total']*100;
+                                        processing_bar.width(progress+"%");
+                                        if(progress > 99){
+                                            processing_bar.width("100%").parent().removeClass('active progress-striped');
+                                            check_processing = false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    })
+                }, {% if debug %} 1000 {% else %} 3000 {% endif %})
+            })
+        </script>
+    {% endif %}
+{% endblock %}

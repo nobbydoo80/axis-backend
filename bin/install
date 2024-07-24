@@ -1,0 +1,80 @@
+#!/bin/bash
+
+VENV=.venv
+PYTHON_VERSION="3.10"
+REQUIREMENTS=requirements.txt
+DEV_REQUIREMENTS=requirements_dev.txt
+
+REMOVE_DIRS="false"
+DEV_DEPENDENCIES="false"
+PIP_NO_CACHE=""
+
+while test $# -gt 0
+do
+    case "$1" in
+        -r)
+          REMOVE_DIRS="true"
+          ;;
+        --dev)
+          DEV_DEPENDENCIES="true"
+          ;;
+        --no-cache)
+          PIP_NO_CACHE=" --no-cache"
+          ;;
+        *)
+          ;;
+    esac
+    shift
+done
+
+[[ -d axis ]] || { echo >&2 "Unable to find axis directory."; exit 1; }
+
+if [[ "$(pwd)/${VENV}/bin" == "$(dirname $(which python))" ]]; then
+  echo "You are in a virtualenv - 'deactivate' before running"
+  exit 1
+fi
+
+# Load up a new python
+if ! [ -x "$(command -v python${PYTHON_VERSION})" ]; then
+    echo "Python ${PYTHON_VERSION} was not found."
+    echo "You need to have a python base version ${PYTHON_VERSION} installed"
+    exit 1
+else
+    PYTHON=$(which python${PYTHON_VERSION})
+    PYTHON_VERSION=$(${PYTHON} -V | cut -d " " -f 2)
+    echo "Python ${PYTHON_VERSION} found."
+fi
+
+if [[ "${REMOVE_DIRS}" == "true" && -d ${VENV} ]]; then
+    echo "Removing existing python ${VENV}"
+    rm -rf ${VENV} || { exit 1; }
+fi
+
+if [[ ! -d "${VENV}" && ! -L "${VENV}" ]]; then
+    echo "Creating python ${PYTHON_VERSION} ${VENV}"
+    ${PYTHON} -m venv $VENV || { exit 1; }
+fi
+
+source $VENV/bin/activate || { exit 1; }
+
+# Ensure minimum version of PIP is installed.
+pip install --upgrade "pip>=21.1"
+
+CFLAGS="${CFLAGS}"
+LDFLAGS="${LDFLAGS}"
+if [[ "$(uname)" == "Darwin" &&  $(command -v brew) ]]; then
+    CFLAGS="-I$(brew --prefix openssl)/include \
+            -I$(brew --prefix mysql)/include \
+            -Wno-error=implicit-function-declaration \
+            ${CFLAGS}"
+    LDFLAGS="-L$(brew --prefix openssl)/lib \
+            -I$(brew --prefix mysql)/lib \
+            ${LDFLAGS}"
+fi
+
+if [[ "${DEV_DEPENDENCIES}" == "true" ]]; then
+  CFLAGS=\"${CFLAGS}\" LDFLAGS=\"${LDFLAGS}\" pip install ${PIP_NO_CACHE} -r ${DEV_REQUIREMENTS}
+  pre-commit install
+fi
+
+CFLAGS=\"${CFLAGS}\" LDFLAGS=\"${LDFLAGS}\" pip install ${PIP_NO_CACHE} -r ${REQUIREMENTS}

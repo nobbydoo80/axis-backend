@@ -1,0 +1,85 @@
+{% extends "base_form.html" %}
+{% load bootstrap_tags %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+{% block page_title %}Energy Performance Score Payment update for
+    {% if results.inputs.us_state == "WA" %}Southwest Washington{% else %}Oregon{% endif %}
+{% endblock %}
+
+{% block header_text %}
+    Energy Performance Score Payment update for {% if results.inputs.us_state == "WA" %}Southwest Washington{% else %}Oregon{% endif %}
+{% endblock header_text %}
+
+{% block form_content %}
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">{{ form.project_id|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.solar_project_id|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{ form.submit_status|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.solar_submit_status|as_crispy_field }}</div>
+            </div>
+            <i>Note: In order to resubmit to Project Tracker set the status to Failure</i>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_builder_electric_incentive|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_builder_electric_incentive|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_builder_gas_incentive|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_builder_gas_incentive|as_crispy_field }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_rater_electric_incentive|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_rater_electric_incentive|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_rater_gas_incentive|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_rater_gas_incentive|as_crispy_field }}</div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_net_zero_eps_incentive|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_net_zero_eps_incentive|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_energy_smart_homes_eps_incentive|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_energy_smart_homes_eps_incentive|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_net_zero_solar_incentive|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_net_zero_solar_incentive|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_energy_smart_homes_solar_incentive|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_energy_smart_homes_solar_incentive|as_crispy_field }}</div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_therm_savings|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_therm_savings|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_kwh_savings|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_kwh_savings|as_crispy_field }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{ form.baseline_mbtu_savings|as_crispy_field }}</div>
+                <div class="col-md-6">{{ form.revised_mbtu_savings|as_crispy_field }}</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">{{ form.payment_revision_comment|as_crispy_field }}</div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock form_content %}

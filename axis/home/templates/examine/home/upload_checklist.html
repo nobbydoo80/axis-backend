@@ -1,0 +1,25 @@
+<form action="{% url 'home:single_upload' %}" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="vm.cancel()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Upload Checklist</h4>
+    </div>
+    <div class="modal-body" ng-init="showLabel=true">
+        <div class="row">
+            {# TODO: Really shouldn't be trusting the form not to lie about company #}
+            <axis-field field="vm.regionObject.helpers.checklist_upload_form.company"></axis-field>
+
+            <div class="col-md-12">
+                <axis-field field="vm.regionObject.helpers.checklist_upload_form.document"></axis-field>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">
+            {# No ng-click="ok()" in this situation—we want the form to actually submit to the #}
+            {# target form action url. #}
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+        </div>
+    </div>
+</form>

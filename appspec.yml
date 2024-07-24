@@ -1,0 +1,68 @@
+version: 0.0
+os: linux
+files:
+  - source: axis/
+    destination: /home/pivotal/axis
+  - source: settings/
+    destination: /home/pivotal/settings
+  - source: bin/
+    destination: /home/pivotal/bin
+  - source: webpack/dist/
+    destination: /home/pivotal/webpack/dist
+  - source: manage.py
+    destination: /home/pivotal/
+  - source: urls.py
+    destination: /home/pivotal/
+  - source: wsgi.py
+    destination: /home/pivotal/
+  - source: celeryapp.py
+    destination: /home/pivotal/
+  - source: production_requirements.txt
+    destination: /home/pivotal/
+  - source: LICENSE.txt
+    destination: /home/pivotal/
+permissions:
+  - object: /home/pivotal/
+    pattern: "**"
+    except: ["manage.py"]
+    owner: pivotal
+    group: pivotal
+    mode: "0640"
+    type:
+      - file
+  - object: /home/pivotal/
+    pattern: "**"
+    owner: pivotal
+    group: pivotal
+    except: ["axis/messaging/server"]
+    mode: "750"
+    type:
+      - directory
+  - object: /home/pivotal/
+    pattern: "manage.py"
+    owner: pivotal
+    group: pivotal
+    mode: "750"
+    type:
+      - file
+hooks:
+  ApplicationStop:
+    - location: bin/code_deploy.py
+      timeout: 20
+      runas: pivotal
+  BeforeInstall:
+    - location: bin/code_deploy.py
+      timeout: 30
+      runas: pivotal
+  AfterInstall:
+    - location: bin/code_deploy.py
+      timeout: 600
+      runas: pivotal
+  ApplicationStart:
+    - location: bin/code_deploy.py
+      timeout: 300
+      runas: pivotal
+  ValidateService:
+    - location: bin/code_deploy.py
+      timeout: 300
+      runas: pivotal

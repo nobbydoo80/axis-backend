@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row" ng-if="regionObject.object.account_number">
+            <div class="col-md-4 key">ETO Account:</div>
+            <div class="col-md-8">[[ regionObject.object.account_number || '-' ]]</div>
+        </div>
+        <div class="row" ng-if="regionObject.object.show_ccb_number">
+            <div class="col-md-4 key">CCB Number:</div>
+            <div class="col-md-8">[[ regionObject.object.ccb_number || '-' ]]</div>
+        </div>
+    </div>
+</div>

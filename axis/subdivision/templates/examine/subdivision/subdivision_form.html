@@ -1,0 +1,98 @@
+{% block full_content %}
+
+    <div ng-controller="SubdivisionFormController">
+        {% block non_field_errors %}
+            <non-field-errors></non-field-errors>
+
+        {% endblock non_field_errors %}
+        {% block form_content %}
+
+            <axis-field field="regionObject.fields.geocode_response"></axis-field>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <axis-field field="regionObject.fields.name"></axis-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <axis-field field="regionObject.fields.builder_org"></axis-field>
+                    </div>
+                </div>
+                <div class="col-md-2 add-type-btn visible-desktop">
+                    <a href="{% url "company:add" type="builder" %}" class="btn btn-default btn-sm" target="_blank">Add</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <axis-field field="regionObject.fields.community"
+                                    on-change="makeGeocodeDirty(); lookupCommunityInfo()"
+                                    review-field>
+                        </axis-field>
+                    </div>
+                </div>
+                <div class="col-md-2 add-type-btn visible-desktop">
+                    <a href="{% url "community:add" %}" class="btn btn-default btn-sm" target="_blank">Add</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <axis-field field="regionObject.fields.city"
+                                    on-change="makeGeocodeDirty()"></axis-field>
+                    </div>
+                </div>
+                <div class="col-md-2 add-type-btn visible-desktop">
+                    <a href="{% url "city:add" %}" class="btn btn-default btn-sm" target="_blank">Add</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <axis-field field="regionObject.fields.cross_roads"
+                                    on-change="makeGeocodeDirty()"
+                                    field-review></axis-field>
+                    </div>
+                </div>
+                <div class="col-md-4" style="margin-top: 1.4em">
+                    <div class="form-group">
+                        <axis-field field="regionObject.fields.is_multi_family"
+                                    on-change="makeGeocodeDirty(); validateMultiFamilySetting()"></axis-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <axis-field field="regionObject.fields.builder_name"></axis-field>
+                    </div>
+                </div>
+            </div>
+            {% block sampling_fields %}
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <axis-field field="regionObject.fields.use_sampling" field-review></axis-field>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <axis-field field="regionObject.fields.use_metro_sampling" field-review></axis-field>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            <div class="row" ng-hide="$root.examineApp.creating">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <axis-field field="regionObject.fields.address_override"></axis-field>
+                    </div>
+                </div>
+            </div>
+        {% endblock form_content %}
+    </div>
+{% endblock full_content %}

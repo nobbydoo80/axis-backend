@@ -1,0 +1,27 @@
+{% comment %}
+    Requires: required_annotations
+{% endcomment %}
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Rough</h3>
+    </div>
+    <div class="col-xs-6">
+        <h3>Final</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="row" ng-repeat="field_name in regionObject.visible_fields|endsWith:'-rough'">
+            <div class="col-md-12 key">[[ regionObject.fields[field_name].label ]]:
+            </div>
+            <div class="col-md-12 value">[[ regionObject.object[field_name] || '-' ]]</div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="row" ng-repeat="field_name in regionObject.visible_fields|endsWith:'-final'">
+            <div class="col-md-12 key">[[ regionObject.fields[field_name].label ]]:
+            </div>
+            <div class="col-md-12 value">[[ regionObject.object[field_name] || '-' ]]</div>
+        </div>
+    </div>
+</div>

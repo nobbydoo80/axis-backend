@@ -1,0 +1,82 @@
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th colspan="3" class="text-center">
+            Home as Built
+            <span ng-if="ctrl.result.is_locked"><i class="fa fa-lock"></i></span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>EPS</th>
+            <td class="text-center">[[ ctrl.result.eps_score|number:0 ]]</td>
+            <td>MBtu</td>
+        </tr>
+        <tr>
+            <th>EPS<br><i>If built to Code</i></th>
+            <td class="text-center">[[ ctrl.result.eps_score_built_to_code_score|number:0 ]]</td>
+            <td>MBtu</td>
+        </tr>
+        <tr ng-if="ctrl.result.us_state!='WA'">
+            <th>Percent Improvement</th>
+            <td colspan="2" class="text-center">[[ ctrl.result.pretty_percent_improvement ]]</td>
+        </tr>
+        <tr ng-if="ctrl.result.us_state=='WA'">
+            <th>Gas Percent Improvement</th>
+            <td colspan="2" class="text-center">[[ ctrl.result.pretty_percent_improvement_therms ]]</td>
+        </tr>
+        <tr ng-if="ctrl.show_admin">
+            <th>Electric Improvement</th>
+            <td colspan="2" class="text-center">[[ ctrl.result.pretty_percent_improvement_kwh ]]</td>
+        </tr>
+        <tr ng-if="ctrl.show_admin">
+            <th>Gas Improvement</th>
+            <td colspan="2" class="text-center">[[ ctrl.result.pretty_percent_improvement_therms ]]</td>
+        </tr>
+        <tr ng-if="ctrl.result.pretty_percent_generation_kwh">
+            <th>PV Electric Offset %</th>
+            <td colspan="2" class="text-center">[[ ctrl.result.pretty_percent_generation_kwh ]]</td>
+        </tr>
+        <tr>
+            <th>Incentive</th>
+            <td colspan="2" class="text-center">$[[ ctrl.result.builder_incentive|number: 2 ]]</td>
+        </tr>
+        <tr>
+            <th>This Home's Carbon Score</th>
+            <td class="text-center">[[ ctrl.result.carbon_score|number: 1 ]]</td>
+            <td>Tons CO<sub>2</sub>/year</td>
+        </tr>
+        <tr>
+            <th>This Home's Carbon Score<br><i>If built to Code</i></th>
+            <td class="text-center">[[ ctrl.result.carbon_built_to_code_score|number: 1 ]]</td>
+            <td>Tons CO<sub>2</sub>/year</td>
+        </tr>
+        <tr>
+            <th>Estimated Average<br>Annual Energy Costs</th>
+            <td class="text-center">$[[ ctrl.result.estimated_annual_energy_costs|number: 0 ]]</td>
+            <td>$ per year</td>
+        </tr>
+        <tr>
+            <th>Estimated Average<br>Monthly Energy Costs</th>
+            <td class="text-center">$[[ ctrl.result.estimated_monthly_energy_costs|number: 0 ]]</td>
+            <td>$ per month</td>
+        </tr>
+        <tr>
+            <th>Similar Size [[ ctrl.result.us_state ]] Home<br>EPS</th>
+            <td class="text-center">[[ ctrl.result.similar_size_eps_score|number: 0 ]]</td>
+            <td>MBtu</td>
+        </tr>
+        <tr>
+            <th>Similar Size  [[ ctrl.result.us_state ]] Home<br>Carbon Score</th>
+            <td class="text-center">[[ ctrl.result.similar_size_carbon_score|number: 1 ]]</td>
+            <td>Tons CO<sub>2</sub>/year</td>
+        </tr>
+
+
+
+    </tbody>
+
+
+
+</table>

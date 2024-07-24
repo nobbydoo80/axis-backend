@@ -1,0 +1,18 @@
+<h5>Systems associated to this Floorplan</h5>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="row" ng-repeat="obj in regionObject.object.system_set" ng-if="regionObject.object.system_set.length">
+            <div class="col-md-6 key">
+                Num [[ obj.system_type_name ]]s:
+            </div>
+            <div class="col-md-6 value">
+                [[ obj.quantity ]]
+            </div>
+        </div>
+        <div ng-if="!regionObject.object.system_set.length">No Systems</div>
+    </div>
+    <div class="col-md-6">
+        <em> These are used for checklists which are dependant on the number of systems installed. </em>
+    </div>
+</div>
